@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f20fa8bf044aa626437b0b6a3f678ed1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7a77a3877ceca10eefaafe0031dbf3da.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-week','listing-unit','listing-days','listing-resources',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-week','listing-unit','listing-days','listing-extras',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-week","listing-unit","listing-days","listing-resources"],
+      searchColumns: ["listing-week","listing-unit","listing-days","listing-extras"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -108,9 +108,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-week','listing-unit','listing-days','listing-resources',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-week','listing-unit','listing-days','listing-extras',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-week","listing-unit","listing-days","listing-resources"],
+      searchColumns: ["listing-week","listing-unit","listing-days","listing-extras"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -206,23 +206,27 @@ window.Quarto = {
 <span class="menu-text">Office Hours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
-<span class="menu-text">Notes</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./assignments.html"> 
 <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./tutorials.html"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./extras.html"> 
+<span class="menu-text">Extras</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://edstem.org/" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum"><i class="bi bi-chat-fill"></i></a>
-    <a href="https://www.gradescope.com/" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope"><i class="bi bi-bar-chart-fill"></i></a>
-    <a href="https://stat20.datahub.berkeley.edu/" title="" class="quarto-navigation-tool px-1" aria-label="RStudio"><i class="bi bi-r-circle-fill"></i></a>
+    <a href="https://edstem.org/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
+    <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
+    <a href="https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat20%2Fstat20-labs&amp;urlpath=rstudio%2F&amp;branch=fa26" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -231,6 +235,9 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <div id="quarto-announcement" data-announcement-id="987d214ace333913a153c6bca7785b6d" class="alert alert-warning hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>Course website under construction until the first day of class!</p>
+</div></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
@@ -270,10 +277,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Aug 26</span>
+    <span>Aug 24</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">No class</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -284,6 +291,8 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
@@ -293,7 +302,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Aug 28/29</span>
+    <span>Aug 26</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Understanding the World with Data</span>
@@ -313,7 +322,7 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/01-understanding-the-world/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -330,7 +339,7 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/01-understanding-the-world/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -338,17 +347,15 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/01-understanding-the-world/handout.pdf" class="badge Handout-badge">Handout</a>
+              <span class="badge unpublished">PS</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./1-questions-and-data/labs/unvotes/part-2.html" class="badge Lab: Part II-badge">Lab: Part II</a>
+              <span class="badge unpublished">Lab: Getting Started</span>
             
           
         
@@ -357,6 +364,8 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
@@ -366,74 +375,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Aug 30</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">No class</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-  
-  </div>
-
-  <!-- Create each week -->
-  <h4>Week 2</h4>
-  <div class="week-x-box">
-
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 2</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Labor Day (no class)</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-      <div>
-      <span class="before-in-class">Due tomorrow:</span><br>
-      
-        <ul class="assignment-list">
-        
-          <li>Lab 1</li>
-        
-          <li>WSP 1</li>
-        
-        </ul>
-      
-      </div>
-    
-    </div>
-    </div>
-    
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 3/4</span>
+    <span>Aug 28</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Taxonomy of Data</span>
@@ -451,7 +393,7 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/02-taxonomy-of-data/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -459,7 +401,7 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/02-taxonomy-of-data/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -476,7 +418,7 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/02-taxonomy-of-data/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -484,7 +426,7 @@ window.Quarto = {
             
             
             
-              <a href="./1-questions-and-data/02-taxonomy-of-data/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -493,7 +435,108 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+      <div>
+      <span class="before-in-class">More practice</span><br>
+      <ul class="assignment-list">
+        
+        <li>
+          
+            <a href="./extras/types-of-claims.html">Types of claims</a>
+          
+        </li>
+        
+        <li>
+          
+            <a href="#">Coding basics</a>
+          
+        </li>
+        
+      </ul>
+      </div>
+    
+    
+    </div>
+    </div>
+  
+  </div>
+
+  <!-- Create each week -->
+  <h4>Week 2</h4>
+  <div class="week-x-box">
+
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Aug 31</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 1 registration opens Sep 1
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 8-11</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
+    <!-- ...things that are due tomorrow -->
+    
+      <div>
+      <span class="before-in-class">Due tomorrow:</span><br>
+      
+        <ul class="assignment-list">
+        
+          <li>Problem Set 0 (completed entirely on Gradescope)</li>
+        
+          <li>Problem Set 1</li>
+        
+          <li>Lab: Getting Started</li>
+        
+        </ul>
+      
+      </div>
     
     </div>
     </div>
@@ -502,7 +545,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Sep 5/6</span>
+    <span>Sep 2</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Summarizing Categorical Data</span>
@@ -522,7 +565,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/01-summarizing-categorical-data/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -530,7 +573,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/01-summarizing-categorical-data/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -547,7 +590,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/01-summarizing-categorical-data/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -555,27 +598,15 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/01-summarizing-categorical-data/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./2-summarizing-data/labs/class-survey/slides.html" class="badge Lab: Slides-badge">Lab: Slides</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./2-summarizing-data/labs/class-survey/part-1.pdf" class="badge Lab: Part I-badge">Lab: Part I</a>
+              <span class="badge unpublished">Lab: Class Survey</span>
             
           
         
@@ -584,64 +615,9 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-  
-  </div>
-
-  <!-- Create each week -->
-  <h4>Week 3</h4>
-  <div class="week-x-box">
-
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 9</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Quiz 1</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./assets/quiz-slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-      
-      </div>
-    
-    <!-- ...docs listed directly under day item -->
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
-    
-      <div>
-      <span class="before-in-class">Due tomorrow:</span><br>
-      
-        <ul class="assignment-list">
-        
-          <li>WSP 2</li>
-        
-        </ul>
-      
-      </div>
     
     </div>
     </div>
@@ -650,7 +626,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Sep 10/11</span>
+    <span>Sep 4</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Summarizing Numerical Data</span>
@@ -668,7 +644,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/02-summarizing-numerical-data/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -676,7 +652,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/02-summarizing-numerical-data/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -693,7 +669,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/02-summarizing-numerical-data/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -701,17 +677,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/02-summarizing-numerical-data/ws.pdf" class="badge WS-badge">WS</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./2-summarizing-data/labs/class-survey/part-2.html" class="badge Lab: Part II-badge">Lab: Part II</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -720,7 +686,98 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
+  
+  </div>
+
+  <!-- Create each week -->
+  <h4>Week 3</h4>
+  <div class="week-x-box">
+
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Sep 7</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 1
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 8-11</li>
+            </ul>
+          
+        </li>
+      
+        <li>RETAKE of Quiz 1 registration opens Sep 12
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 14-25</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
+    <!-- ...things that are due tomorrow -->
+    
+      <div>
+      <span class="before-in-class">Due tomorrow:</span><br>
+      
+        <ul class="assignment-list">
+        
+          <li>Problem Set 2</li>
+        
+          <li>Lab: Class Survey</li>
+        
+        </ul>
+      
+      </div>
     
     </div>
     </div>
@@ -729,7 +786,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Sep 12/13</span>
+    <span>Sep 9</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">A Grammar of Graphics</span>
@@ -747,7 +804,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/03-a-grammar-of-graphics/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -755,7 +812,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/03-a-grammar-of-graphics/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -772,7 +829,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/03-a-grammar-of-graphics/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -780,7 +837,15 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/03-a-grammar-of-graphics/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: Flights I</span>
             
           
         
@@ -789,51 +854,9 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-  
-  </div>
-
-  <!-- Create each week -->
-  <h4>Week 4</h4>
-  <div class="week-x-box">
-
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 16</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Lab 2 Workshop</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
-    
-      <div>
-      <span class="before-in-class">Due tomorrow:</span><br>
-      
-        <ul class="assignment-list">
-        
-          <li>Lab 2.1</li>
-        
-          <li>Lab 2.2</li>
-        
-        </ul>
-      
-      </div>
     
     </div>
     </div>
@@ -842,7 +865,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Sep 17/18</span>
+    <span>Sep 11</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Conditioning</span>
@@ -860,7 +883,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/04-conditioning/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -868,7 +891,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/04-conditioning/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -885,7 +908,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/04-conditioning/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -893,27 +916,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/04-conditioning/ws.pdf" class="badge WS-badge">WS</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./2-summarizing-data/labs/flights/slides.html" class="badge Lab: Slides-badge">Lab: Slides</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./2-summarizing-data/labs/flights/part-1.pdf" class="badge Lab: Part I-badge">Lab: Part I</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -922,7 +925,87 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
+  
+  </div>
+
+  <!-- Create each week -->
+  <h4>Week 4</h4>
+  <div class="week-x-box">
+
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Sep 14</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 1
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 14-25</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
+    <!-- ...things that are due tomorrow -->
+    
+      <div>
+      <span class="before-in-class">Due tomorrow:</span><br>
+      
+        <ul class="assignment-list">
+        
+          <li>Problem Set 3</li>
+        
+          <li>Lab: Flights I</li>
+        
+        </ul>
+      
+      </div>
     
     </div>
     </div>
@@ -931,10 +1014,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Sep 19/20</span>
+    <span>Sep 16</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Summarizing Associations</span>
+    <span class="daily-topic">Summarizing Numerical Associations</span>
     </div>
 
     <div class="items-cell">
@@ -949,7 +1032,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/05-summarizing-associations/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -957,206 +1040,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/05-summarizing-associations/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
-            
-          
-        
-      
-      </div>
-    
-    <!-- ...docs listed under in-class key -->
-    
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./2-summarizing-data/05-summarizing-associations/slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-          
-            
-            
-            
-              <a href="./2-summarizing-data/05-summarizing-associations/ws.pdf" class="badge WS-badge">WS</a>
-            
-          
-        
-      
-      </div>
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-  
-  </div>
-
-  <!-- Create each week -->
-  <h4>Week 5</h4>
-  <div class="week-x-box">
-
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 23</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-      <div>
-      <span class="before-in-class">Due tomorrow:</span><br>
-      
-        <ul class="assignment-list">
-        
-          <li>WSP 3</li>
-        
-        </ul>
-      
-      </div>
-    
-    </div>
-    </div>
-    
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 24/25</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 26/27</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-  
-  </div>
-
-  <!-- Create each week -->
-  <h4>Week 6</h4>
-  <div class="week-x-box">
-
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Sep 30</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Lab 3 Workshop</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-      <div>
-      <span class="before-in-class">Due tomorrow:</span><br>
-      
-        <ul class="assignment-list">
-        
-          <li>Nothing!</li>
-        
-        </ul>
-      
-      </div>
-    
-    </div>
-    </div>
-    
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Oct 1/2</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Summarizing Associations</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-      <div>
-      <span class="before-in-class">Before class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./2-summarizing-data/05-summarizing-associations/notes.html" class="badge Notes-badge">Notes</a>
-            
-          
-        
-          
-            
-            
-            
-              <a href="./2-summarizing-data/05-summarizing-associations/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -1173,7 +1057,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/05-summarizing-associations/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1181,17 +1065,15 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/05-summarizing-associations/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./2-summarizing-data/labs/flights/part-2.html" class="badge Lab: Part II-badge">Lab: Part II</a>
+              <span class="badge unpublished">Lab: Flights II</span>
             
           
         
@@ -1199,6 +1081,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -1209,7 +1093,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 3/4</span>
+    <span>Sep 18</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Multiple Linear Regression</span>
@@ -1227,7 +1111,7 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/06-multiple-linear-regression/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -1244,7 +1128,15 @@ window.Quarto = {
             
             
             
-              <a href="./2-summarizing-data/06-multiple-linear-regression/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -1253,27 +1145,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 7</h4>
+  <h4>Week 5</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 7</span>
+    <span>Sep 21</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Quiz 3</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -1282,22 +1190,38 @@ window.Quarto = {
     
     <!-- ...docs listed under in-class key -->
     
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./assets/quiz-slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-      
-      </div>
-    
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 1
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 14-25</li>
+            </ul>
+          
+        </li>
+      
+        <li>Quiz 2 registration opens Sep 21
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 28-Oct 2</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
     
     <!-- ...things that are due tomorrow -->
     
@@ -1306,9 +1230,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>Lab 3.1</li>
+          <li>Problem Set 4</li>
         
-          <li>Lab 3.2</li>
+          <li>Lab: Flights II</li>
         
         </ul>
       
@@ -1321,7 +1245,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 8/9</span>
+    <span>Sep 23</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Intro to Probability</span>
@@ -1341,7 +1265,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/01-prob-foundations/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -1349,7 +1273,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/01-prob-foundations/tutorial.html" class="badge Tutorial-badge">Tutorial</a>
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -1366,7 +1290,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/01-prob-foundations/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1374,7 +1298,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/01-prob-foundations/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: Probability Foundations</span>
             
           
         
@@ -1382,6 +1314,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -1392,7 +1326,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 10/11</span>
+    <span>Sep 25</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Computing Probabilities</span>
@@ -1410,7 +1344,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/02-computing-probs/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -1427,7 +1361,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/02-computing-probs/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1435,7 +1369,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/02-computing-probs/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -1444,27 +1378,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 8</h4>
+  <h4>Week 6</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 14</span>
+    <span>Sep 28</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Probability Workshop</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -1475,6 +1425,37 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 2
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Sep 28-Oct 2</li>
+            </ul>
+          
+        </li>
+      
+        <li>RETAKE of Quiz 2 registration opens Oct 3
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 5-16</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
     <!-- ...things that are due tomorrow -->
     
       <div>
@@ -1482,7 +1463,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>Nothing!</li>
+          <li>Problem Set 5</li>
+        
+          <li>Lab 5</li>
         
         </ul>
       
@@ -1495,7 +1478,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 15/16</span>
+    <span>Sep 30</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Probability Distributions</span>
@@ -1513,7 +1496,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/03-probability-dsns/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -1530,7 +1521,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/03-probability-dsns/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1538,7 +1529,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/03-probability-dsns/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: Probability Distributions</span>
             
           
         
@@ -1546,6 +1545,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -1556,7 +1557,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 17/18</span>
+    <span>Oct 2</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Random Variables</span>
@@ -1574,7 +1575,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/04-random-variables/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -1591,7 +1600,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/04-random-variables/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1599,7 +1608,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/04-random-variables/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -1608,27 +1617,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 9</h4>
+  <h4>Week 7</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 21</span>
+    <span>Oct 5</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Quiz 4</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -1637,22 +1662,27 @@ window.Quarto = {
     
     <!-- ...docs listed under in-class key -->
     
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./assets/quiz-slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-      
-      </div>
-    
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 2
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 5-16</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
     
     <!-- ...things that are due tomorrow -->
     
@@ -1661,7 +1691,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>WSP 4</li>
+          <li>Problem Set 6</li>
+        
+          <li>Lab 6</li>
         
         </ul>
       
@@ -1674,7 +1706,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 22/23</span>
+    <span>Oct 7</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Expected Value and Variance</span>
@@ -1689,10 +1721,12 @@ window.Quarto = {
       
         
           
+        
+          
             
             
             
-              <a href="./3-generalization/05-ev-se/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -1709,7 +1743,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/05-ev-se/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1717,27 +1751,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/05-ev-se/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./3-generalization/labs/elections/slides.html" class="badge Lab: Slides-badge">Lab: Slides</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./3-generalization/labs/elections/part-1.pdf" class="badge Lab: Part I-badge">Lab: Part I</a>
+              <span class="badge unpublished">Lab: Elections</span>
             
           
         
@@ -1745,6 +1767,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -1755,7 +1779,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 24/25</span>
+    <span>Oct 9</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Normal Approximation</span>
@@ -1773,7 +1797,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/06-normal-approx/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -1790,17 +1822,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/06-normal-approx/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./3-generalization/labs/elections/part-2.html" class="badge Lab: Part II-badge">Lab: Part II</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -1809,27 +1839,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 10</h4>
+  <h4>Week 8</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 28</span>
+    <span>Oct 12</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Lab 4 Workshop</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -1840,6 +1886,37 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 2
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 5-16</li>
+            </ul>
+          
+        </li>
+      
+        <li>Quiz 3 registration opens Oct 12
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 19-23</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
     <!-- ...things that are due tomorrow -->
     
       <div>
@@ -1847,9 +1924,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>Lab 4.1</li>
+          <li>Problem Set 7</li>
         
-          <li>Lab 4.2</li>
+          <li>Lab: Elections</li>
         
         </ul>
       
@@ -1862,7 +1939,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 29/30</span>
+    <span>Oct 14</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">From Samples to Populations</span>
@@ -1880,7 +1957,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/07-from-samps-to-pops/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -1897,7 +1974,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/07-from-samps-to-pops/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -1905,27 +1982,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/07-from-samps-to-pops/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./3-generalization/labs/peoples-park/slides.html" class="badge Lab: Slides-badge">Lab: Slides</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./3-generalization/labs/peoples-park/part-1.pdf" class="badge Lab: Part I-badge">Lab: Part I</a>
+              <span class="badge unpublished">Lab: People's Park</span>
             
           
         
@@ -1933,6 +1998,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -1943,7 +2010,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Oct 31/1</span>
+    <span>Oct 16</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Confidence Intervals</span>
@@ -1961,7 +2028,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/08-confidence-intervals/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -1978,17 +2045,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/08-confidence-intervals/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./3-generalization/labs/peoples-park/part-2.html" class="badge Lab: Part II-badge">Lab: Part II</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -1997,27 +2062,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 11</h4>
+  <h4>Week 9</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 4</span>
+    <span>Oct 19</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Quiz 5</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -2026,22 +2107,38 @@ window.Quarto = {
     
     <!-- ...docs listed under in-class key -->
     
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./assets/quiz-slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-      
-      </div>
-    
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 3
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 19-23</li>
+            </ul>
+          
+        </li>
+      
+        <li>RETAKE of Quiz 3 registration opens Oct 24
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 26-Nov 6</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
     
     <!-- ...things that are due tomorrow -->
     
@@ -2050,7 +2147,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>WSP 5</li>
+          <li>Problem Set 8</li>
+        
+          <li>Lab: People's Park I</li>
         
         </ul>
       
@@ -2063,7 +2162,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 5/6</span>
+    <span>Oct 21</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Bootstrapping</span>
@@ -2081,7 +2180,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/09-bootstrapping/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -2098,7 +2205,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/09-bootstrapping/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -2106,7 +2213,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/09-bootstrapping/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: People's Park II</span>
             
           
         
@@ -2114,6 +2229,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -2124,7 +2241,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 7/8</span>
+    <span>Oct 23</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Intro to Hypothesis Tests</span>
@@ -2142,7 +2259,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/10-hypothesis-tests/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -2159,7 +2284,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/10-hypothesis-tests/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -2167,7 +2292,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/10-hypothesis-tests/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -2176,27 +2301,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 12</h4>
+  <h4>Week 10</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 11</span>
+    <span>Oct 26</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">No Class (Veteran's Day)</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -2207,20 +2348,27 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
-    <!-- ...things that are due tomorrow -->
+    <!-- ...quiz heads-up items listed directly under day item -->
     
       <div>
-      <span class="before-in-class">Due tomorrow:</span><br>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
       
-        <ul class="assignment-list">
-        
-          <li>Lab 5.1</li>
-        
-          <li>Lab 5.2</li>
-        
-        </ul>
+        <li>RETAKE of Quiz 3
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 26-Nov 6</li>
+            </ul>
+          
+        </li>
       
+      </ul>
       </div>
+    
+    <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
@@ -2229,10 +2377,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 12/13</span>
+    <span>Oct 28</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Types of Hypothesis Tests</span>
+    <span class="daily-topic">Hypothesis Tests II</span>
     </div>
 
     <div class="items-cell">
@@ -2247,7 +2395,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/11-hypothesis-tests-2/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -2264,7 +2412,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/11-hypothesis-tests-2/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -2272,7 +2420,15 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/11-hypothesis-tests-2/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: Arbuthnot</span>
             
           
         
@@ -2280,6 +2436,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -2290,7 +2448,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 14/15</span>
+    <span>Oct 30</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Wrong By Design</span>
@@ -2308,7 +2466,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/12-wrong-by-design/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -2325,7 +2483,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/12-wrong-by-design/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -2333,7 +2491,7 @@ window.Quarto = {
             
             
             
-              <a href="./3-generalization/12-wrong-by-design/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -2342,27 +2500,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 13</h4>
+  <h4>Week 11</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 18</span>
+    <span>Nov 2</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Quiz 6</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -2371,22 +2545,27 @@ window.Quarto = {
     
     <!-- ...docs listed under in-class key -->
     
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./assets/quiz-slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-      
-      </div>
-    
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 3
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Oct 26-Nov 6</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
     
     <!-- ...things that are due tomorrow -->
     
@@ -2395,7 +2574,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>WSP 6</li>
+          <li>Problem Set 9</li>
+        
+          <li>Lab 9: People's Park II &amp; Mythbusters</li>
         
         </ul>
       
@@ -2408,7 +2589,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 19/20</span>
+    <span>Nov 4</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Defining Causality</span>
@@ -2428,7 +2609,7 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/01-defining-causality/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
             
           
         
@@ -2445,27 +2626,15 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/01-defining-causality/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./4-causation/labs/taste-test/slides.html" class="badge Lab: Slides-badge">Lab: Slides</a>
-            
-          
-        
-          
-            
-            
-              
-            
-            
-              <a href="./4-causation/labs/taste-test/part-1.pdf" class="badge Lab: Part I-badge">Lab: Part I</a>
+              <span class="badge unpublished">Lab: A Matter of Taste Part I</span>
             
           
         
@@ -2473,6 +2642,8 @@ window.Quarto = {
       </div>
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -2483,7 +2654,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 21/22</span>
+    <span>Nov 6</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Randomized Experiments</span>
@@ -2501,7 +2672,15 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/02-experiments/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -2518,17 +2697,15 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/02-experiments/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
           
             
             
-              
             
-            
-              <a href="./4-causation/labs/taste-test/part-2.html" class="badge Lab: Part II-badge">Lab: Part II</a>
+              <span class="badge unpublished">Lab: A Matter of Taste Part II</span>
             
           
         
@@ -2537,27 +2714,43 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week 14</h4>
+  <h4>Week 12</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 25</span>
+    <span>Nov 9</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Lab 6 Workshop</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -2568,6 +2761,26 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 4 registration opens Nov 12
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Nov 19-24</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
     <!-- ...things that are due tomorrow -->
     
       <div>
@@ -2575,9 +2788,9 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>Lab 6.1</li>
+          <li>Problem Set 10</li>
         
-          <li>Lab 6.2</li>
+          <li>Lab: Arbuthnot</li>
         
         </ul>
       
@@ -2590,10 +2803,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Nov 26/27</span>
+    <span>Nov 11</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
+    <span class="daily-topic">Holiday: Veterans Day</span>
     </div>
 
     <div class="items-cell">
@@ -2604,74 +2817,7 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Nov 28/29</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
-    
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-  
-  </div>
-
-  <!-- Create each week -->
-  <h4>Week 15</h4>
-  <div class="week-x-box">
-
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Dec 2</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Quiz 7</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-      <div>
-      <span class="before-in-class">In class:</span><br>
-      
-        
-          
-            
-            
-            
-              <a href="./assets/quiz-slides.html" class="badge Slides-badge">Slides</a>
-            
-          
-        
-      
-      </div>
-    
-    <!-- ...docs listed directly under day item -->
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -2682,7 +2828,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Dec 3/4</span>
+    <span>Nov 13</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic">Causal Effects in Observational Studies</span>
@@ -2700,7 +2846,15 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/03-matching/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -2717,7 +2871,7 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/03-matching/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -2725,7 +2879,7 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/03-matching/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -2734,7 +2888,85 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
+  
+  </div>
+
+  <!-- Create each week -->
+  <h4>Week 13</h4>
+  <div class="week-x-box">
+
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Nov 16</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 4
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Nov 19-24</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
+    <!-- ...things that are due tomorrow -->
+    
+      <div>
+      <span class="before-in-class">Due tomorrow:</span><br>
+      
+        <ul class="assignment-list">
+        
+          <li>Lab: A Matter of Taste</li>
+        
+        </ul>
+      
+      </div>
     
     </div>
     </div>
@@ -2743,10 +2975,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Dec 5/6</span>
+    <span>Nov 18</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">Using Time to Measure Causal effects</span>
+    <span class="daily-topic">The Method of Least Squares</span>
     </div>
 
     <div class="items-cell">
@@ -2761,7 +2993,15 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/04-time/notes.html" class="badge Notes-badge">Notes</a>
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
             
           
         
@@ -2778,7 +3018,7 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/04-time/slides.html" class="badge Slides-badge">Slides</a>
+              <span class="badge unpublished">Slides</span>
             
           
         
@@ -2786,7 +3026,7 @@ window.Quarto = {
             
             
             
-              <a href="./4-causation/04-time/ws.pdf" class="badge WS-badge">WS</a>
+              <span class="badge unpublished">PS</span>
             
           
         
@@ -2795,27 +3035,122 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Nov 20</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">Evaluating and Improving Predictions</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+      <div>
+      <span class="before-in-class">Before class:</span><br>
+      
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
+            
+          
+        
+      
+      </div>
+    
+    <!-- ...docs listed under in-class key -->
+    
+      <div>
+      <span class="before-in-class">In class:</span><br>
+      
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Slides</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: Baseball</span>
+            
+          
+        
+      
+      </div>
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+    <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
   <!-- Create each week -->
-  <h4>Week RRR</h4>
+  <h4>Week 14</h4>
   <div class="week-x-box">
 
   
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span>Dec 9</span>
+    <span>Nov 23</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
+    <span class="daily-topic">This Week</span>
     </div>
 
     <div class="items-cell">
@@ -2826,6 +3161,37 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>Quiz 4 LAST CHANCE
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: through Nov 24</li>
+            </ul>
+          
+        </li>
+      
+        <li>RETAKE of Quiz 4 registration opens Nov 25
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Nov 30-Dec 10</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
     <!-- ...things that are due tomorrow -->
     
       <div>
@@ -2833,7 +3199,7 @@ window.Quarto = {
       
         <ul class="assignment-list">
         
-          <li>WSP 7</li>
+          <li>Problem Set 11</li>
         
         </ul>
       
@@ -2846,10 +3212,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span></span>
+    <span>Nov 25</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
+    <span class="daily-topic">Holiday: Thanksgiving</span>
     </div>
 
     <div class="items-cell">
@@ -2859,6 +3225,8 @@ window.Quarto = {
     <!-- ...docs listed under in-class key -->
     
     <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -2869,10 +3237,10 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span></span>
+    <span>Nov 27</span>
     </div>
     <div class="daily-topic-cell">
-    <span class="daily-topic">No Class</span>
+    <span class="daily-topic">Holiday: Thanksgiving</span>
     </div>
 
     <div class="items-cell">
@@ -2883,12 +3251,384 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
+  
+  </div>
+
+  <!-- Create each week -->
+  <h4>Week 15</h4>
+  <div class="week-x-box">
+
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Nov 30</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 4
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Nov 30-Dec 10</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
+    <!-- ...things that are due tomorrow -->
+    
+      <div>
+      <span class="before-in-class">Due tomorrow:</span><br>
+      
+        <ul class="assignment-list">
+        
+          <li>Problem Set 13</li>
+        
+          <li>Lab: Baseball</li>
+        
+        </ul>
+      
+      </div>
+    
+    </div>
+    </div>
+    
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Dec 2</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">Overfitting</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+      <div>
+      <span class="before-in-class">Before class:</span><br>
+      
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
+            
+          
+        
+      
+      </div>
+    
+    <!-- ...docs listed under in-class key -->
+    
+      <div>
+      <span class="before-in-class">In class:</span><br>
+      
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Slides</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+      
+      </div>
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+    <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Dec 4</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">Logistic Regression</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+      <div>
+      <span class="before-in-class">Before class:</span><br>
+      
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Notes</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Tutorial</span>
+            
+          
+        
+      
+      </div>
+    
+    <!-- ...docs listed under in-class key -->
+    
+      <div>
+      <span class="before-in-class">In class:</span><br>
+      
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Slides</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">PS</span>
+            
+          
+        
+          
+            
+            
+            
+              <span class="badge unpublished">Lab: Diagnosing Cancer</span>
+            
+          
+        
+      
+      </div>
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+    <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
+  
+  </div>
+
+  <!-- Create each week -->
+  <h4>Week RRR</h4>
+  <div class="week-x-box">
+
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Dec 7</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+      <div>
+      <span class="before-in-class">Quiz Information</span>
+      <ul class="assignment-list">
+      
+        <li>RETAKE of Quiz 4
+          
+            (<a href="#">SIGN UP</a>)
+          
+          
+            <ul>
+              <li>Timeslots: Nov 30-Dec 10</li>
+            </ul>
+          
+        </li>
+      
+      </ul>
+      </div>
+    
+    <!-- ...things that are due tomorrow -->
+    
+      <div>
+      <span class="before-in-class">Due tomorrow:</span><br>
+      
+        <ul class="assignment-list">
+        
+          <li>Problem Set 14</li>
+        
+          <li>Lab: Cancer Diagnosis</li>
+        
+        </ul>
+      
+      </div>
+    
+    </div>
+    </div>
+    
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Dec 9</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">Review Session Tuesday/Wednesday</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+    <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Dec 11</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">Review Sessions Friday</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+    <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 
@@ -2900,7 +3640,32 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span></span>
+    <span>Dec 14</span>
+    </div>
+    <div class="daily-topic-cell">
+    <span class="daily-topic">This Week</span>
+    </div>
+
+    <div class="items-cell">
+    <!-- Create badges for docs -->
+    <!-- ...docs listed under before-class key -->
+    
+    <!-- ...docs listed under in-class key -->
+    
+    <!-- ...docs listed directly under day item -->
+    
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
+    <!-- ...things that are due tomorrow -->
+    
+    </div>
+    </div>
+    
+  
+    <!-- Create each day -->
+    <div class="daily-sched">
+    <div class="date-cell">
+    <span>Dec 16</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic"></span>
@@ -2914,28 +3679,7 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
-    <!-- ...things that are due tomorrow -->
-    
-    </div>
-    </div>
-    
-  
-    <!-- Create each day -->
-    <div class="daily-sched">
-    <div class="date-cell">
-    <span>Dec 18 7-10 pm</span>
-    </div>
-    <div class="daily-topic-cell">
-    <span class="daily-topic">Stat 20 Final</span>
-    </div>
-
-    <div class="items-cell">
-    <!-- Create badges for docs -->
-    <!-- ...docs listed under before-class key -->
-    
-    <!-- ...docs listed under in-class key -->
-    
-    <!-- ...docs listed directly under day item -->
+    <!-- ...quiz heads-up items listed directly under day item -->
     
     <!-- ...things that are due tomorrow -->
     
@@ -2946,7 +3690,7 @@ window.Quarto = {
     <!-- Create each day -->
     <div class="daily-sched">
     <div class="date-cell">
-    <span></span>
+    <span>Dec 18</span>
     </div>
     <div class="daily-topic-cell">
     <span class="daily-topic"></span>
@@ -2960,12 +3704,28 @@ window.Quarto = {
     
     <!-- ...docs listed directly under day item -->
     
+    <!-- ...quiz heads-up items listed directly under day item -->
+    
     <!-- ...things that are due tomorrow -->
     
     </div>
     </div>
     
   
+
+    
+    
+    
+    <div class="daily-sched more-practice-resources">
+    <div class="date-cell">
+    <span>Extras</span>
+    </div>
+
+    <div class="items-cell">
+    
+    
+    </div>
+    </div>
   
   </div>
 

@@ -229,34 +229,6 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p>You embark on a mission to estimate a population mean using a simple random sample of <span class="math inline">\(n\)</span> observations.</p>
-<div class="poll">
-<p>What sample size would you need to increase the precision of your estimate by approximately 3x compared to the original sample?</p>
-</div>
-<aside class="notes">
-<p>A. n + 3 B. 3n D. n + 6 C. 6n D. 9n</p>
-<p>This assesses the 1/sqrt(n) relationship between the SE of a mean and the SD of the population. This relationship is worth reviewing. It’s also a good time to underline the definition of SE from the notes, and its link to our notion of “precision”.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div id="timer_99876bac910156ba6346f1322480a7fd96f252ae" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(stat20data)</span>
@@ -277,7 +249,7 @@ STAT 20: Introduction to Probability and Statistics
 <div class="poll">
 <p>What is an approximate 95% confidence interval for the mean air time in <code>flights</code> using the normal curve?</p>
 </div>
-<div id="timer_99876bac910156ba6346f1322480a7fd96f252ae" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -300,71 +272,43 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<p>i</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>You would like to estimate a population mean using a simple random sample of <span class="math inline">\(n\)</span> observations.</p>
+<div class="poll">
+<p>What sample size would you need to increase the precision of your estimate by approximately 3x compared to the original sample?</p>
+</div>
+<aside class="notes">
+<p>A. n + 3 B. 3n D. n + 6 C. 6n D. 9n</p>
+<p>This assesses the 1/sqrt(n) relationship between the SE of a mean and the SD of the population. This relationship is worth reviewing. It’s also a good time to underline the definition of SE from the notes, and its link to our notion of “precision”.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
 </section>
 <section id="section-2" class="slide level2">
-<h2></h2>
-<p>An economist aims to estimate the average weekly cost of groceries per household in two cites: <strong>Oakland</strong>, CA (population ~400,000) and <strong>Fremont</strong>, CA (population ~200,000). Both of these populations of households are presumed to have a similar standard deviation of weekly grocery costs. The economist takes a simple random sample (without replacement) of 100 households from each city, records their costs, and computes a 95% confidence interval for the average weekly cost.</p>
-<div class="poll">
-<p>Approximately how much wider would Oakland’s confidence interval be than Fremont’s?</p>
-</div>
-<aside class="notes">
-<p>A. 1.5 times as wide B. 2 times as wide C. 3 times as wide D. 4 times as wide E. The same width</p>
-<p>It’s more or less E here since N is so large.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div id="timer_99876bac910156ba6346f1322480a7fd96f252ae" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-</section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<p>An economist aims to estimate the average weekly cost of groceries per household in two cites: <strong>Grimes</strong>, CA (population ~400) and <strong>Tranquility</strong>, CA (population ~800). Both of these populations of households are presumed to have a similar standard deviation of weekly grocery costs. The demographer takes a simple random sample (without replacement) of 100 households from each city, records their costs, and computes a 95% confidence interval for the average weekly cost.</p>
-<div class="poll">
-<p>Approximately how much wider would Tranquility’s confidence interval be than Grimes’s?</p>
-</div>
-<aside class="notes">
-<p>A. Half as wide B. Roughly 10% less than Grimes C. The same width D. Roughly 10% more than Grimes E. Twice as wide</p>
-<p>Sampling without replacement in a setting where n is not significantly smaller than N will end up showing less variability in statistics than when N is huge. The effect is slight, so you can eyeball that the answer should be D.</p>
-<p>You can get the precise answer by calculating the finite population correction factor for each one: ((N - n)/(N-1)). This is in a footnotes to the notes but is good for them to be aware of - that we can’t always just use SD(pop)/sqrt(n).</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div id="timer_99876bac910156ba6346f1322480a7fd96f252ae" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-</section>
-<section id="section-4" class="slide level2">
 <h2></h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="poll">
 <p>What will happen to the shape of the <strong>empirical distribution</strong> as we increase <span class="math inline">\(n\)</span>?</p>
 </div>
-<div id="timer_99876bac910156ba6346f1322480a7fd96f252ae" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -387,13 +331,13 @@ STAT 20: Introduction to Probability and Statistics
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="poll">
 <p>What will happen to the shape of the <strong>sampling distribution</strong> as we increase <span class="math inline">\(n\)</span>?</p>
 </div>
-<div id="timer_99876bac910156ba6346f1322480a7fd96f252ae" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -414,9 +358,98 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-
-
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<p>An economist aims to estimate the average weekly cost of groceries per household in two cites: <strong>Oakland</strong>, CA (population ~400,000) and <strong>Fremont</strong>, CA (population ~200,000). Both of these populations of households are presumed to have a similar standard deviation of weekly grocery costs. The economist takes a simple random sample (without replacement) of 100 households from each city, records their costs, and computes a 95% confidence interval for the average weekly cost.</p>
+<div class="poll">
+<p>Approximately how much wider would Oakland’s confidence interval be than Fremont’s?</p>
+</div>
+<aside class="notes">
+<p>A. 1.5 times as wide B. 2 times as wide C. 3 times as wide D. 4 times as wide E. The same width</p>
+<p>It’s more or less E here since N is so large.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<p>An economist aims to estimate the average weekly cost of groceries per household in two cites: <strong>Grimes</strong>, CA (population ~400) and <strong>Tranquility</strong>, CA (population ~800). Both of these populations of households are presumed to have a similar standard deviation of weekly grocery costs. The demographer takes a simple random sample (without replacement) of 100 households from each city, records their costs, and computes a 95% confidence interval for the average weekly cost.</p>
+<div class="poll">
+<p>Approximately how much wider would Tranquility’s confidence interval be than Grimes’s?</p>
+</div>
+<aside class="notes">
+<p>A. Half as wide B. Roughly 10% less than Grimes C. The same width D. Roughly 10% more than Grimes E. Twice as wide</p>
+<p>Sampling without replacement in a setting where n is not significantly smaller than N will end up showing less variability in statistics than when N is huge. The effect is slight, so you can eyeball that the answer should be D.</p>
+<p>You can get the precise answer by calculating the finite population correction factor for each one: ((N - n)/(N-1)). This is in a footnotes to the notes but is good for them to be aware of - that we can’t always just use SD(pop)/sqrt(n).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
 </section></section>
+<section id="problem-set-confidence-intervals" class="title-slide slide level1 center">
+<h1>Problem Set: Confidence Intervals</h1>
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
+</section>
+
+<section id="break" class="title-slide slide level1 center">
+<h1>Break</h1>
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
+</section>
+
+<section id="lab-8-peoples-park" class="title-slide slide level1 center">
+<h1>Lab 8: People’s Park</h1>
+<div id="timer_5091f0b704eaa387d798fc1393ed6ec631a7a3de" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">25</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../site_libs/quarto-contrib/quarto-project/stat20/stat20slides/stat20-hex-vsmall.png" class="slide-logo"></p>
