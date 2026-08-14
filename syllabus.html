@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f063eb5a48805cdf13111a78fea93e15.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-30a8d0237a5519637f0932b84173208c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -146,6 +146,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <a href="https://edstem.org/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat20%2Fstat20-labs&amp;urlpath=rstudio%2F&amp;branch=fa26" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
+    <a href="./#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -358,7 +359,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <td>4</td>
 </tr>
 <tr class="even">
-<td>Attendance (Wed/Fri only)</td>
+<td>Attendance (W/F)</td>
 <td>7%</td>
 <td>27</td>
 <td>4</td>
@@ -372,8 +373,8 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <tr class="even">
 <td>Labs</td>
 <td>10%</td>
-<td>7</td>
-<td>1</td>
+<td>14</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td>Capstone Project</td>
@@ -429,7 +430,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <p><strong>YOU CAN RETAKE ANY QUIZ</strong></p>
 <p>Research shows that people learn better when they study material multiple times, spread out over time. And sometimes you just don’t do as well on a quiz as you’d hoped. In that light, each quiz comes with a chance to re-take it (once). It won’t be exactly the same quiz, but it will be similar and cover the same content.</p>
 <p><strong>Logistics</strong>: You can sign up for a “retake” version of any and all quizzes. Retakes are generally available for 1-2 weeks after the initial quiz. We will <em>average</em> your original quiz score with the retake score. However, these retakes <em>cannot hurt you</em>, so if your retake score is lower, we’ll ignore it and keep your original score only.</p>
-<p>Here is the tentative schedule of quiz windows - this information is also on the main homepage:</p>
+<p>Here is the tentative schedule of quiz windows - <strong>this information is also on the main homepage</strong>:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 19%">
@@ -522,7 +523,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <li>Because there are so many, we bundle worksheets into “worksheet packets.” So a “worksheet packet” submission might have 2 or 4 worksheets in it. We’ll be clear about what sheets are in a packet and when it is due.</li>
 <li>Blank worksheets are always available online in case you miss a class day. You can either print and complete it, or just work on it on your computer directly.</li>
 </ul>
-<p><strong>Labs</strong> are coding-focused assignments. There will be one roughly every-other week, released on Wednesday. Lab instructions are posted online. You will complete the lab by writing code in RStudio, then “rendering” the file to a pdf and submiting that on Gradescope.</p>
+<p><strong>Labs</strong> are coding-focused assignments. There will be one roughly every week, released on Wednesday. Lab instructions are posted online. You will complete the lab by writing code in RStudio, then “rendering” the file to a pdf and submiting that on Gradescope.</p>
 </section>
 <section id="capstone-project" class="level3">
 <h3 class="anchored" data-anchor-id="capstone-project">Capstone Project</h3>
@@ -708,6 +709,17 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 
 </main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const gradeTool = document.querySelector(
+    '.quarto-navigation-tool[aria-label="See my grade calculation"]'
+  );
+
+  if (gradeTool) {
+    gradeTool.setAttribute("title", "See my grade calculation");
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
