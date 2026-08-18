@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Definitions – Stat 20</title>
+<title>Definitions – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,12 +79,12 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
 
 
-<meta property="og:title" content="Definitions – Stat 20">
+<meta property="og:title" content="Definitions – Stat 20 (Fall 2026)">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="866">
-<meta name="twitter:title" content="Definitions – Stat 20">
+<meta name="twitter:title" content="Definitions – Stat 20 (Fall 2026)">
 <meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
 <meta name="twitter:image-height" content="1000">
 <meta name="twitter:image-width" content="866">
@@ -136,7 +136,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://edstem.org/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
+    <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fberkeley-stat20%2Fstat20-labs&amp;urlpath=rstudio%2F&amp;branch=fa26" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
     <a href="./#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
@@ -179,87 +179,70 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <section id="questions-and-data" class="level3">
 <h3 class="anchored" data-anchor-id="questions-and-data">Questions and Data</h3>
 <div class="def">
+<p><strong>Data</strong></p>
+<ul>
+<li>A piece of “data” is just a thing you know and wrote down. Someone’s name. The height of a giraffe. The temperature in Tulsa, Oklahoma at 3pm on July 19, 1987. You get it.</li>
+<li>The word comes from Latin <em>datum</em>: that which is given. Facts.</li>
+<li>So, <strong>data is “stuff we know already”</strong>. When a researcher goes to “gather data,” they are going out to find new facts and information to record (and later, study).</li>
+</ul>
+</div>
+<div class="def">
+<p><strong>Variable</strong></p>
+<ul>
+<li><strong>A “variable” is some <em>kind</em> of information you have on each of the “things” you are studying.</strong> So if we are studying penguins, a variable might be “species”. Some penguins are from the “Adelie” species, some are “Gentoo,” some are” Chinstrap,” etc. That is, the <em>value</em> of “species” will <em>vary</em> among penguins. Another variable could be “body mass” - again, each individual penguin has their own body mass, so “body mass” <em>varies</em> across penguins.</li>
+<li><strong>Note:</strong> In writing computer code, a “variable” means something slightly different. We’ll talk more about this in the tutorial portion.</li>
+</ul>
+</div>
+<div class="def">
+<p><strong>Numerical Variable:</strong></p>
+<ul>
+<li>A variable where the values are <em>numbers</em> with real <em>quantitative meaning</em>(see below).</li>
+</ul>
+</div>
+<div class="def">
 <dl>
-<dt><strong>Data</strong></dt>
+<dt><strong>Categorical Variable:</strong></dt>
 <dd>
-An item of (chiefly numerical) information, especially one obtained by scientific work, a number of which are typically collected together for reference, analysis, or calculation. From Latin <em>datum</em>: that which is given. Facts.
+Anything that is not numerical. Each unique value is called a <em>level</em> (see below).
 </dd>
 </dl>
 </div>
 <div class="def">
-<dl>
-<dt><strong>Variable</strong></dt>
-<dd>
-A “variable” is a characteristic of an object or observational unit that can be measured and recorded.
-</dd>
-<dd>
-(Note: In writing computer code, a “variable” means something slightly different (we’ll get to that))
-</dd>
-</dl>
+<p><strong>Continuous Numerical Variable:</strong> - Values can take any decimal number, though possibly in a restricted range.</p>
 </div>
 <div class="def">
 <dl>
-<dt><strong>Numerical Variable</strong></dt>
-<dd>
-A variable that take numbers as values and where the magnitude of the number has a quantitative meaning.
-</dd>
-</dl>
-</div>
-<div class="def">
-<dl>
-<dt><strong>Categorical Variable</strong></dt>
-<dd>
-A variable that take categories as values. Each unique category is called a <em>level</em>.
-</dd>
-</dl>
-</div>
-<div class="def">
-<dl>
-<dt><strong>Continuous Numerical Variable</strong></dt>
-<dd>
-A numerical variable that takes values on an interval of the real number line.
-</dd>
-</dl>
-</div>
-<div class="def">
-<dl>
-<dt><strong>Discrete Numerical Variable</strong></dt>
+<dt><strong>Discrete Numerical Variable:</strong></dt>
 <dd>
 A numerical variable that takes values that have jumps between them.
 </dd>
 </dl>
 </div>
 <div class="def">
-<dl>
-<dt><strong>Ordinal Categorical Variable</strong></dt>
-<dd>
-A categorical variable with levels that have a natural ordering.
-</dd>
-</dl>
+<p><strong>Nominal Categorical Variable</strong></p>
+<ul>
+<li>A categorical variable with levels with no natural order.</li>
+<li>“Name” is a good one. OK yes, often we order them alphabetically when we make a list of people, but that’s just to it easier to read. It’s not really true that the name “Alice” is “less than” the name “Bob.”</li>
+</ul>
 </div>
 <div class="def">
-<dl>
-<dt><strong>Nominal Categorical Variable</strong></dt>
-<dd>
-A categorical variable with levels with no ordering.
-</dd>
-</dl>
+<p><strong>Ordinal Categorical Variable</strong></p>
+<ul>
+<li>A categorical variable with levels that have a natural order.</li>
+<li>For example, a company might sell a T-shirt in three sizes: small, medium, and large. You can’t really average a bunch of t shirt sizes, but “small” is definitely less than “medium,” which is definitely less than “large.”</li>
+</ul>
 </div>
 <div class="def">
-<dl>
-<dt><strong>Data Frame</strong></dt>
-<dd>
-An array that associates the observations (downs the rows) with the variables measured on each observation (across the columns). Each cell stores a value observed for a variable on an observation.
-</dd>
-</dl>
+<p><strong>Data Frame</strong></p>
+<ul>
+<li>An table that associates the observations (rows) with the variables measured on each observation (columns).</li>
+</ul>
 </div>
 <div class="def">
-<dl>
-<dt><strong>Unit of Observation</strong></dt>
-<dd>
-The class of object on which the variables are observed.
-</dd>
-</dl>
+<p><strong>Unit of Observation</strong></p>
+<ul>
+<li>The “things” we are studying. If it’s a true dataframe, each row is exactly one observation. So the “unit of observation” is just “what does a single row represent?”</li>
+</ul>
 </div>
 <div class="def">
 <dl>
