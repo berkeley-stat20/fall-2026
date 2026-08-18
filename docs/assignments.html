@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-73c360bf8d7b82d96fb8b31ed65124e6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8161c90b79d752bfbacf9e028dfd58b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -209,35 +209,35 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </header>
 
 
-<p>Assignments are hosted on the <a href="../docs/assignments.html">Assignments</a> page and include a list of Labs and a list of Problem Sets. These lists build automatically if the assignment files follow a particular naming scheme. Below we discuss how to add assignments to the list. They can be removed by renaming the files or removing them entirely from the repository.</p>
+<p>Assignments are hosted on the <a href="../docs/assignments.html">Assignments</a> page and include a list of Labs and a list of Worksheet Packets. These lists build automatically if the assignment files follow a particular naming scheme. Below we discuss how to add assignments to the list. They can be removed by renaming the files or removing them entirely from the repository.</p>
 <p>For further reading on how these lists are made, see the Quarto documentation on <a href="https://quarto.org/docs/websites/website-listings.html">document listings</a>.</p>
-<section id="problem-sets" class="level2">
-<h2 class="anchored" data-anchor-id="problem-sets">Problem Sets</h2>
-<p>Problem sets are sets of drill-style problems that provide practice with the concepts and skills of a particular day’s lesson. They are stored within the subdirectory containing all of the materials for that day.</p>
+<section id="worksheets" class="level2">
+<h2 class="anchored" data-anchor-id="worksheets">Worksheets</h2>
+<p>Worksheets are sets of drill-style problems that provide practice with the concepts and skills of a particular day’s lesson. They are stored within the subdirectory containing all of the materials for that day.</p>
 <section id="pdf-handouts" class="level4">
 <h4 class="anchored" data-anchor-id="pdf-handouts">PDF handouts</h4>
 <ol type="1">
-<li><p>Create a file called <code>ps.qmd</code> alongside the notes for a given day’s materials. Your directory should look like this:</p>
+<li><p>Create a file called <code>ws.qmd</code> alongside the notes for a given day’s materials. Your directory should look like this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>intro-to-probability</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>├── notes.qmd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>├── ps.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>├── ws.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>At least two YAML options should be specified in the front-matter, <code>title</code> and the custom handout <code>format</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Calculating Chances</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> stat20handout-pdf</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Upon rendering the site, this assignment should appear on the assignments page. The format of the assignment list is controlled by the <a href="https://github.com/stat20/stat20/blob/main/assets/listings/assignments-ps.ejs#L4">assignments template</a>, which will automatically assign numbers to the problem sets based on their order in the directory.</p></li>
+<li><p>Upon rendering the site, this assignment should appear on the assignments page. The format of the assignment list is controlled by the <a href="https://github.com/stat20/stat20/blob/main/assets/listings/assignments-ws.ejs#L4">assignments template</a>, which will automatically assign numbers to the worksheets based on their order in the directory.</p></li>
 </ol>
 <p>The pdf notes use the <code>stat20handout</code> custom pdf format. See <a href="docs/custom-formats.qmd">Custom Formats</a> for more information on its use.</p>
 </section>
 <section id="qmd-handouts" class="level4">
 <h4 class="anchored" data-anchor-id="qmd-handouts">Qmd handouts</h4>
 <ol type="1">
-<li><p>Just like with pdfs, create a file called <code>ps.qmd</code> alongside the notes for a given day’s materials. Your directory should look like this:</p>
+<li><p>Just like with pdfs, create a file called <code>ws.qmd</code> alongside the notes for a given day’s materials. Your directory should look like this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>intro-to-probability</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>├── notes.qmd</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>├── ps.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Add the following to the front-matter of <code>ps.qmd</code>.</p>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>├── ws.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Add the following to the front-matter of <code>ws.qmd</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Simulation</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
@@ -247,9 +247,9 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">toggle</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sidebar</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>title</code> should have the name of topic, usually the same as the title of the notes. This name will be used in creating the PS name in the listing. The remaining yaml options will provide a link at the top right of the problem set webpage that, when clicked, will produce a pop-up of the source of the qmd file. Students can copy and paste this into a blank qmd file in RStudio (and can remove the extra yaml options).</p></li>
+<p>The <code>title</code> should have the name of topic, usually the same as the title of the notes. This name will be used in creating the worksheet name in the listing. The remaining yaml options will provide a link at the top right of the worksheet webpage that, when clicked, will produce a pop-up of the source of the qmd file. Students can copy and paste this into a blank qmd file in RStudio (and can remove the extra yaml options).</p></li>
 </ol>
-<p>If you have multiple problem set files on a single day, you can differentiate them by adding a single letter or digit following <code>ps</code> and hyphen. <code>ps.qmd</code>, <code>ps-2.qmd</code>, and <code>ps-b.qmd</code> should all work. See the source for the <a href="https://github.com/stat20/stat20/blob/main/assignments.qmd">assignment page</a> for the rule that determines which files show up in the listing.</p>
+<p>If you have multiple worksheet files on a single day, you can differentiate them by adding a single letter or digit following <code>ws</code> and hyphen. <code>ws.qmd</code>, <code>ws-2.qmd</code>, and <code>ws-b.qmd</code> should all work. See the source for the <a href="https://github.com/stat20/stat20/blob/main/assignments.qmd">assignment page</a> for the rule that determines which files show up in the listing.</p>
 </section>
 </section>
 <section id="labs" class="level2">
