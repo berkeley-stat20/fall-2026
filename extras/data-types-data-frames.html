@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-80dfd7b8504e0719b5c6704bb720ee65.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4cd9a4b98d9d6dcc66120e1df4c466c8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -175,6 +175,10 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 
 
 <style>
+details.answer {
+  margin-bottom: 2.5rem;
+}
+
 details.answer .answer-box {
   background-color: #fff8d9;
   border: 1px solid #eadf9c;
@@ -186,9 +190,8 @@ details.answer .answer-box {
 <p>These questions practice the Taxonomy of Data and the structure of a data frame. For variable types, use <strong>continuous numerical</strong>, <strong>discrete numerical</strong>, <strong>ordinal categorical</strong>, or <strong>nominal categorical</strong>.</p>
 <section id="practice-questions" class="level2">
 <h2 class="anchored" data-anchor-id="practice-questions">Practice Questions</h2>
-<ol type="1">
-<li>A researcher records the height, in centimeters, of each student in a class. What is the unit of observation? What variable is recorded, and what type of variable is it?</li>
-</ol>
+<p><strong>Exercise 1</strong></p>
+<p>A researcher records the height, in centimeters, of each student in a class. What is the unit of observation? What variable is recorded, and what type of variable is it?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -199,9 +202,8 @@ Show answer
 <p><strong>Type:</strong> continuous numerical. The values are numbers with quantitative meaning, and height can vary along a continuous scale, even if it is rounded when recorded.</p>
 </div>
 </details>
-<ol start="2" type="1">
-<li>A survey asks students to choose one response: “strongly disagree”, “disagree”, “neutral”, “agree”, or “strongly agree.” What type of variable is this?</li>
-</ol>
+<p><strong>Exercise 2</strong></p>
+<p>A survey asks students to choose one response: “strongly disagree”, “disagree”, “neutral”, “agree”, or “strongly agree.” What type of variable is this?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -210,9 +212,8 @@ Show answer
 <p><strong>Ordinal categorical.</strong> The responses are categories, and the levels have a natural order from strongest disagreement to strongest agreement.</p>
 </div>
 </details>
-<ol start="3" type="1">
-<li>A data set has one row for each penguin and columns for <code>species</code>, <code>bill_length_mm</code>, and <code>island</code>. What is the unit of observation?</li>
-</ol>
+<p><strong>Exercise 3</strong></p>
+<p>A data set has one row for each penguin and columns for <code>species</code>, <code>bill_length_mm</code>, and <code>island</code>. What is the unit of observation?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -221,9 +222,8 @@ Show answer
 <p><strong>One penguin.</strong> Each row stores values measured on a single penguin.</p>
 </div>
 </details>
-<ol start="4" type="1">
-<li>A classroom roster contains one row per student and columns for <code>name</code>, <code>email</code>, <code>major</code>, and <code>year_in_school</code>. Classify each variable.</li>
-</ol>
+<p><strong>Exercise 4</strong></p>
+<p>A classroom roster contains one row per student and columns for <code>name</code>, <code>email</code>, <code>major</code>, and <code>year_in_school</code>. Classify each variable.</p>
 <details class="answer">
 <summary>
 Show answer
@@ -237,9 +237,8 @@ Show answer
 </ul>
 </div>
 </details>
-<ol start="5" type="1">
-<li>The value <code>94720</code> is recorded as a ZIP code. Is this numerical or categorical?</li>
-</ol>
+<p><strong>Exercise 5</strong></p>
+<p>The value <code>94720</code> is recorded as a ZIP code. Is this numerical or categorical?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -248,9 +247,8 @@ Show answer
 <p><strong>Nominal categorical.</strong> Although ZIP codes use digits, the magnitude of the number is not quantitatively meaningful. Averaging ZIP codes or subtracting one from another would not answer a meaningful question.</p>
 </div>
 </details>
-<ol start="6" type="1">
-<li>A table shows counts of students by major in the rows and year in school in the columns. Is this table itself a data frame in the tidy sense used in the notes?</li>
-</ol>
+<p><strong>Exercise 6</strong></p>
+<p>A table shows counts of students by major in the rows and year in school in the columns. Is this table itself a data frame in the tidy sense used in the notes?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -260,9 +258,8 @@ Show answer
 <p>A data frame version would likely have one row per student, with columns such as <code>major</code> and <code>year_in_school</code>.</p>
 </div>
 </details>
-<ol start="7" type="1">
-<li>A doctor records the number of visits each patient made to a clinic last year. What type of variable is <code>number_of_visits</code>?</li>
-</ol>
+<p><strong>Exercise 7</strong></p>
+<p>A doctor records the number of visits each patient made to a clinic last year. What type of variable is <code>number_of_visits</code>?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -271,9 +268,8 @@ Show answer
 <p><strong>Discrete numerical.</strong> The values are counts with quantitative meaning, and there are jumps between possible values: 0, 1, 2, and so on.</p>
 </div>
 </details>
-<ol start="8" type="1">
-<li>A study records blood type for each participant: A, B, AB, or O. What are the levels of the variable? What type of variable is it?</li>
-</ol>
+<p><strong>Exercise 8</strong></p>
+<p>A study records blood type for each participant: A, B, AB, or O. What are the levels of the variable? What type of variable is it?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -283,9 +279,8 @@ Show answer
 <p><strong>Type:</strong> nominal categorical. These are categories with no natural ordering.</p>
 </div>
 </details>
-<ol start="9" type="1">
-<li>A sensor records outdoor temperature every hour. What type of variable is temperature? Why?</li>
-</ol>
+<p><strong>Exercise 9</strong></p>
+<p>A sensor records outdoor temperature every hour. What type of variable is temperature? Why?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -294,9 +289,8 @@ Show answer
 <p><strong>Continuous numerical.</strong> Temperature takes numerical values whose magnitude has meaning, and the underlying phenomenon varies continuously.</p>
 </div>
 </details>
-<ol start="10" type="1">
-<li>A restaurant tracks whether each order was placed in person, online, or by phone. What type of variable is <code>order_method</code>?</li>
-</ol>
+<p><strong>Exercise 10</strong></p>
+<p>A restaurant tracks whether each order was placed in person, online, or by phone. What type of variable is <code>order_method</code>?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -305,9 +299,8 @@ Show answer
 <p><strong>Nominal categorical.</strong> The values are categories, and there is no natural order among in person, online, and phone.</p>
 </div>
 </details>
-<ol start="11" type="1">
-<li>A data frame contains 500 rows and 6 columns. Each row is one apartment listing. What do the rows, columns, and cells represent?</li>
-</ol>
+<p><strong>Exercise 11</strong></p>
+<p>A data frame contains 500 rows and 6 columns. Each row is one apartment listing. What do the rows, columns, and cells represent?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -320,9 +313,8 @@ Show answer
 </ul>
 </div>
 </details>
-<ol start="12" type="1">
-<li>A survey asks people to rate a course as “poor”, “fair”, “good”, “very good”, or “excellent.” Is taking an average of these words meaningful?</li>
-</ol>
+<p><strong>Exercise 12</strong></p>
+<p>A survey asks people to rate a course as “poor”, “fair”, “good”, “very good”, or “excellent.” Is taking an average of these words meaningful?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -331,9 +323,8 @@ Show answer
 <p><strong>Not directly.</strong> The variable is ordinal categorical: the levels have an order, but the labels are not numbers with meaningful arithmetic. If the categories are coded as 1 through 5, an average can be computed, but that requires an additional modeling choice about spacing between categories.</p>
 </div>
 </details>
-<ol start="13" type="1">
-<li>A data set has one row per flight and variables <code>airline</code>, <code>departure_delay_minutes</code>, <code>destination_airport</code>, and <code>number_of_passengers</code>. Classify the variables.</li>
-</ol>
+<p><strong>Exercise 13</strong></p>
+<p>A data set has one row per flight and variables <code>airline</code>, <code>departure_delay_minutes</code>, <code>destination_airport</code>, and <code>number_of_passengers</code>. Classify the variables.</p>
 <details class="answer">
 <summary>
 Show answer
@@ -347,9 +338,8 @@ Show answer
 </ul>
 </div>
 </details>
-<ol start="14" type="1">
-<li>A data table has columns labeled <code>green</code>, <code>blue</code>, and <code>total</code>, and rows labeled <code>morning</code>, <code>afternoon</code>, and <code>night</code>. Each cell contains a count of alien sightings. Why is this not a data frame in the sense used in the notes?</li>
-</ol>
+<p><strong>Exercise 14</strong></p>
+<p>A data table has columns labeled <code>green</code>, <code>blue</code>, and <code>total</code>, and rows labeled <code>morning</code>, <code>afternoon</code>, and <code>night</code>. Each cell contains a count of alien sightings. Why is this not a data frame in the sense used in the notes?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -358,9 +348,8 @@ Show answer
 <p>The columns are not variables measured on a single alien sighting. Instead, the cells contain aggregate counts for combinations of alien color and time of day. A data frame would have one row per sighting and columns such as <code>color</code> and <code>time_of_day</code>.</p>
 </div>
 </details>
-<ol start="15" type="1">
-<li>Convert the alien-sighting table idea into a data frame. If there were 12 green sightings in the morning, what would those 12 rows look like schematically?</li>
-</ol>
+<p><strong>Exercise 15</strong></p>
+<p>Convert the alien-sighting table idea into a data frame. If there were 12 green sightings in the morning, what would those 12 rows look like schematically?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -393,9 +382,8 @@ Show answer
 <p>and so on until all 12 sightings are represented.</p>
 </div>
 </details>
-<ol start="16" type="1">
-<li>A student ID number is stored as <code>303921485</code>. What type of variable is this?</li>
-</ol>
+<p><strong>Exercise 16</strong></p>
+<p>A student ID number is stored as <code>303921485</code>. What type of variable is this?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -404,9 +392,8 @@ Show answer
 <p><strong>Nominal categorical.</strong> A student ID is an identifier. The digits do not have quantitative magnitude in the way a measurement or count does.</p>
 </div>
 </details>
-<ol start="17" type="1">
-<li>A study records the number of siblings each student has. What type of variable is this? What possible values might it take?</li>
-</ol>
+<p><strong>Exercise 17</strong></p>
+<p>A study records the number of siblings each student has. What type of variable is this? What possible values might it take?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -415,9 +402,8 @@ Show answer
 <p><strong>Discrete numerical.</strong> It is a count, so possible values are 0, 1, 2, 3, and so on. Values like 1.7 siblings are not possible for a single student.</p>
 </div>
 </details>
-<ol start="18" type="1">
-<li>A hiking app records trail difficulty as “easy”, “moderate”, “hard”, or “expert.” What type of variable is this?</li>
-</ol>
+<p><strong>Exercise 18</strong></p>
+<p>A hiking app records trail difficulty as “easy”, “moderate”, “hard”, or “expert.” What type of variable is this?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -426,9 +412,8 @@ Show answer
 <p><strong>Ordinal categorical.</strong> These are categories, and they have a natural order from less difficult to more difficult.</p>
 </div>
 </details>
-<ol start="19" type="1">
-<li>A researcher records the amount of rainfall, in inches, at each weather station during a storm. What type of variable is rainfall amount?</li>
-</ol>
+<p><strong>Exercise 19</strong></p>
+<p>A researcher records the amount of rainfall, in inches, at each weather station during a storm. What type of variable is rainfall amount?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -437,9 +422,8 @@ Show answer
 <p><strong>Continuous numerical.</strong> Rainfall amount is quantitative and can vary continuously, even if it is rounded to a fixed number of decimal places.</p>
 </div>
 </details>
-<ol start="20" type="1">
-<li>A professor records each student’s final letter grade: A, B, C, D, or F. What type of variable is this?</li>
-</ol>
+<p><strong>Exercise 20</strong></p>
+<p>A professor records each student’s final letter grade: A, B, C, D, or F. What type of variable is this?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -448,9 +432,8 @@ Show answer
 <p><strong>Ordinal categorical.</strong> The values are categories, but they have a natural academic order.</p>
 </div>
 </details>
-<ol start="21" type="1">
-<li>A spreadsheet has one row per county and columns for <code>county_name</code>, <code>population</code>, <code>median_income</code>, and <code>state</code>. What is the unit of observation? Classify the variables.</li>
-</ol>
+<p><strong>Exercise 21</strong></p>
+<p>A spreadsheet has one row per county and columns for <code>county_name</code>, <code>population</code>, <code>median_income</code>, and <code>state</code>. What is the unit of observation? Classify the variables.</p>
 <details class="answer">
 <summary>
 Show answer
@@ -465,9 +448,8 @@ Show answer
 </ul>
 </div>
 </details>
-<ol start="22" type="1">
-<li>A survey asks, “How many minutes did you spend commuting today?” The response is typed as a whole number. Is the variable continuous or discrete?</li>
-</ol>
+<p><strong>Exercise 22</strong></p>
+<p>A survey asks, “How many minutes did you spend commuting today?” The response is typed as a whole number. Is the variable continuous or discrete?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -481,9 +463,8 @@ Show answer
 <p>The important point is to explain whether you are classifying the underlying phenomenon or the recorded version of it.</p>
 </div>
 </details>
-<ol start="23" type="1">
-<li>A school data set has one row per classroom. One column is <code>number_of_students</code>; another is <code>teacher_name</code>. What is the unit of observation, and what are the variable types?</li>
-</ol>
+<p><strong>Exercise 23</strong></p>
+<p>A school data set has one row per classroom. One column is <code>number_of_students</code>; another is <code>teacher_name</code>. What is the unit of observation, and what are the variable types?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -496,9 +477,8 @@ Show answer
 </ul>
 </div>
 </details>
-<ol start="24" type="1">
-<li>A table has one row for each student and one column for each quiz question. Each cell says whether that student got that question correct. Is this a data frame? What is the unit of observation?</li>
-</ol>
+<p><strong>Exercise 24</strong></p>
+<p>A table has one row for each student and one column for each quiz question. Each cell says whether that student got that question correct. Is this a data frame? What is the unit of observation?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -508,9 +488,8 @@ Show answer
 <p>However, for some analyses a different tidy structure might be better: one row per student-question attempt, with columns like <code>student</code>, <code>question</code>, and <code>correct</code>.</p>
 </div>
 </details>
-<ol start="25" type="1">
-<li>A researcher records <code>birth_month</code> as January, February, March, and so on. Is this ordinal or nominal categorical?</li>
-</ol>
+<p><strong>Exercise 25</strong></p>
+<p>A researcher records <code>birth_month</code> as January, February, March, and so on. Is this ordinal or nominal categorical?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -524,9 +503,8 @@ Show answer
 <p>The best answer depends on how the variable will be used.</p>
 </div>
 </details>
-<ol start="26" type="1">
-<li>In R, you create <code>hometown &lt;- c("Oakland", "Fresno", "San Diego")</code>. What kind of R object is this, and what type of variable could it represent?</li>
-</ol>
+<p><strong>Exercise 26</strong></p>
+<p>In R, you create <code>hometown &lt;- c("Oakland", "Fresno", "San Diego")</code>. What kind of R object is this, and what type of variable could it represent?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -535,9 +513,8 @@ Show answer
 <p>It is a <strong>character vector</strong> in R. As a variable in a data set, hometown would usually be <strong>nominal categorical</strong>, because the values are names of places with no natural order.</p>
 </div>
 </details>
-<ol start="27" type="1">
-<li>In R, you create <code>siblings &lt;- c(0, 2, 1, 4)</code>. What kind of R object is this, and what type of variable could it represent?</li>
-</ol>
+<p><strong>Exercise 27</strong></p>
+<p>In R, you create <code>siblings &lt;- c(0, 2, 1, 4)</code>. What kind of R object is this, and what type of variable could it represent?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -546,9 +523,8 @@ Show answer
 <p>It is a <strong>numeric vector</strong> in R. As a variable, number of siblings is <strong>discrete numerical</strong>, because it is a count.</p>
 </div>
 </details>
-<ol start="28" type="1">
-<li>You combine vectors <code>name</code>, <code>hometown</code>, and <code>siblings</code> into a data frame called <code>my_classmates</code>. If each vector has 6 entries, how many rows and columns should the data frame have? What is the unit of observation?</li>
-</ol>
+<p><strong>Exercise 28</strong></p>
+<p>You combine vectors <code>name</code>, <code>hometown</code>, and <code>siblings</code> into a data frame called <code>my_classmates</code>. If each vector has 6 entries, how many rows and columns should the data frame have? What is the unit of observation?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -558,9 +534,8 @@ Show answer
 <p>The unit of observation is <strong>one classmate</strong>, because each row contains the name, hometown, and sibling count for one person.</p>
 </div>
 </details>
-<ol start="29" type="1">
-<li>Why is “numerical” not the same thing as “written with digits”?</li>
-</ol>
+<p><strong>Exercise 29</strong></p>
+<p>Why is “numerical” not the same thing as “written with digits”?</p>
 <details class="answer">
 <summary>
 Show answer
@@ -569,9 +544,8 @@ Show answer
 <p>A numerical variable has numbers as values <strong>and</strong> the magnitude of those numbers has quantitative meaning. Some digit strings, like ZIP codes, student ID numbers, phone numbers, or jersey numbers, are labels. They are usually nominal categorical even though they are written with digits.</p>
 </div>
 </details>
-<ol start="30" type="1">
-<li>A data set records the variable <code>shirt_size</code> with levels XS, S, M, L, and XL. What type of variable is it? Are the levels ordered?</li>
-</ol>
+<p><strong>Exercise 30</strong></p>
+<p>A data set records the variable <code>shirt_size</code> with levels XS, S, M, L, and XL. What type of variable is it? Are the levels ordered?</p>
 <details class="answer">
 <summary>
 Show answer
