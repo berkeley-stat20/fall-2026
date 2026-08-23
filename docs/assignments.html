@@ -214,24 +214,24 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <section id="worksheets" class="level2">
 <h2 class="anchored" data-anchor-id="worksheets">Worksheets</h2>
 <p>Worksheets are sets of drill-style problems that provide practice with the concepts and skills of a particular day’s lesson. They are stored within the subdirectory containing all of the materials for that day.</p>
-<section id="pdf-handouts" class="level4">
-<h4 class="anchored" data-anchor-id="pdf-handouts">PDF handouts</h4>
+<section id="pdf-worksheets" class="level4">
+<h4 class="anchored" data-anchor-id="pdf-worksheets">PDF worksheets</h4>
 <ol type="1">
 <li><p>Create a file called <code>ws.qmd</code> alongside the notes for a given day’s materials. Your directory should look like this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>intro-to-probability</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>├── notes.qmd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>├── ws.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>At least two YAML options should be specified in the front-matter, <code>title</code> and the custom handout <code>format</code>:</p>
+<li><p>At least two YAML options should be specified in the front-matter, <code>title</code> and the custom worksheet <code>format</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Calculating Chances</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> stat20handout-pdf</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> stat20worksheet-typst</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Upon rendering the site, this assignment should appear on the assignments page. The format of the assignment list is controlled by the <a href="https://github.com/stat20/stat20/blob/main/assets/listings/assignments-ws.ejs#L4">assignments template</a>, which will automatically assign numbers to the worksheets based on their order in the directory.</p></li>
 </ol>
-<p>The pdf notes use the <code>stat20handout</code> custom pdf format. See <a href="docs/custom-formats.qmd">Custom Formats</a> for more information on its use.</p>
+<p>The PDF worksheets use the <code>stat20worksheet</code> custom Typst format. See <a href="docs/custom-formats.qmd">Custom Formats</a> for more information on its use.</p>
 </section>
-<section id="qmd-handouts" class="level4">
-<h4 class="anchored" data-anchor-id="qmd-handouts">Qmd handouts</h4>
+<section id="qmd-worksheets" class="level4">
+<h4 class="anchored" data-anchor-id="qmd-worksheets">Qmd worksheets</h4>
 <ol type="1">
 <li><p>Just like with pdfs, create a file called <code>ws.qmd</code> alongside the notes for a given day’s materials. Your directory should look like this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>intro-to-probability</span>
