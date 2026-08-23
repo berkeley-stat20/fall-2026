@@ -14,6 +14,27 @@
     "text": "More Practice\n  \n  \n    \n    \n      \n        Types of claims\n      \n      [Week 1]\n    \n  \n    \n    \n      \n        Data types and data frames\n      \n      [Week 1]\n    \n  \n    \n    \n      \n        Coding basics\n      \n      [Week 1]\n    \n  \n  \n\n\nNo matching items"
   },
   {
+    "objectID": "2-summarizing-data/labs/flights/slides.html#section",
+    "href": "2-summarizing-data/labs/flights/slides.html#section",
+    "title": "Lab: Flights",
+    "section": "",
+    "text": "This headline is a good introduction to the impact that the pandemic had on flights and on SFO in particular."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/slides.html#section-1",
+    "href": "2-summarizing-data/labs/flights/slides.html#section-1",
+    "title": "Lab: Flights",
+    "section": "",
+    "text": "The Bureau of Transportation Statistics is the federal agency that collects and hosts this data for public download.\nAs a side note, if students are interested in pulling down more recent data, this data was pulled using the allflights R package, which they can download and install in RStudio."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/slides.html#section-2",
+    "href": "2-summarizing-data/labs/flights/slides.html#section-2",
+    "title": "Lab: Flights",
+    "section": "",
+    "text": "The goal of the “Think before you compute” design of these labs is that the students should be able to do their thinking without the distractions of technology. If you project this data frame, that should be sufficient for them to answer all of the questions in Part I.\n\n\n  \n    −\n    +\n \n 25:00"
+  },
+  {
     "objectID": "assignments.html",
     "href": "assignments.html",
     "title": "Assignments",
@@ -91,74 +112,39 @@
     "text": "Before the exam begins\n\n🧹 Clear your desk of everything except a pen/pencil, your cheat sheet, and your ID.\n🧢 Remove hats, hoods, and sunglasses.\n📱 All electronic devices (laptop, phone, airbuds, smart watch) should be remain in your bag for the entire class period. All items should be on the floor not on nearby seats.\nSpread out as much as possible. We may reseat you to space people out.\nWhen you get an exam, do not begin.\n\n\nDuring the exam\n\n✅ All answers must be marked on the answer sheet.\n👀 If a proctor sees your eyes wandering to other students’ work, you will be reseated. If it happens again, it is considered academic misconduct.\nIf you need to use the bathroom, bring phone and exam materials to the front of the class.\n⌛ When you are done with this exam, please bring your exam, answer sheet, and cheat sheet to a proctor at the front of the class.\n\n\nGood luck! 🍀\n\n\n\n−+\n90:00\n\n\n\n\n\n\n−+\n90:00"
   },
   {
-    "objectID": "3-generalization/labs/peoples-park/part-2.html",
-    "href": "3-generalization/labs/peoples-park/part-2.html",
-    "title": "People’s Park",
+    "objectID": "3-generalization/labs/peoples-park/slides.html#section",
+    "href": "3-generalization/labs/peoples-park/slides.html#section",
+    "title": "Lab: People’s Park",
     "section": "",
-    "text": "In answering the following questions, it will be helpful to consult"
+    "text": "This is a promo video produced by the University to make an argument for the project. This was released at roughly the same time as the survey results."
   },
   {
-    "objectID": "3-generalization/labs/peoples-park/part-2.html#part-ii-computing-on-the-data",
-    "href": "3-generalization/labs/peoples-park/part-2.html#part-ii-computing-on-the-data",
-    "title": "People’s Park",
-    "section": "Part II: Computing on the Data",
-    "text": "Part II: Computing on the Data\nThe data collected by the Chancellor’s Office on Cal students can be found as ppk in the stat20data package.\nThe ppk data set represents a subset of questions that were asked in the questionnaire and have had random noise added to them. The results, in aggregate, share similar statistical properties to the raw data, but a given row no longer reflects an individual student’s response completely.\n\nQuestion 1\nPrint the first few rows with the columns that correspond to the responses to survey questions 1, 7, and 8 (Note: we have changed the data back from all numerical data, as suggested by part 1 question 8, to a mix of numerical and categorical data). Please comment on whether your encoding of the data from Q7 on the questionnaire matches the encoding in ppk.\n\n\nQuestion 2\nReturn to your sketches from lab part 1, question 9. Create those visualizations (or more appropriate analogues) using the questionnaire data. For each, add a title and axis labels to make it clear what they are showing, and describe the distribution in words. If your visualization is of ordinal data, the bars should be ordered accordingly. For part a here, you’re welcome to select just one of the priorities to visualize.\n\nQuestion 9\nQuestion 10\nQuestion 18 and 21 (showing, for each individual student, the change from before and after the information in one plot)\n\n\n\nQuestion 3\nCreate a new column called support_before that takes the response data from question 18 and returns TRUE for answers of “Very strongly support”, “Strongly support”, and “Somewhat support” and FALSE otherwise. Use %in% to check if the response is one of these three values. What proportion of the survey participants in each class (freshman, sophomore, etc) supported the People’s Park Project before being presented with the information on the bottom of page 14?\n\n\nQuestion 4\nRepeat the previous question but this time drop any rows with NA (missing data) before starting your calculation. This can be done by using the drop_na() function, which scans any columns that you provide and drop any rows with NA in that column.\n\nppk |&gt;\n  drop_na(Q18_words)\n\nDoes the proportion change? If it does, which proportion do you think most consumers of this data analysis will assume they’re looking at?\n\nFor the remaining questions in this lab, drop rows with NAs in the columns that you’re using for that question.\n\n\n\nQuestion 5\nWhat is the mean and median rating of the condition of People’s Park (question 15 on the survey)?\n\n\nQuestion 6\nCreate a new column called change_in_support that measures the change in support from question 18 to 21 of the survey. What is the mean change in support of the survey participants in each class (freshman, sophomore, etc) for the People’s Park Project after reading the information? What assumption must you make about the values of the Likert scale in order for these statistics to be informative?\n\n\nQuestion 7\nConstruct one additional visualization that captures a variable or relationship between two variables that you are interested in. Describe the structure that you see in the plot.\n\n\nQuestion 8\nCreate a 95% confidence intervals for the mean rating of the condition of People’s Park using the normal curve. Interpret the interval in the context of the problem in a clear sentence.\n\n\nQuestion 9\nCreate a 95% confidence interval using the normal curve for the overall proportion of students who support the People’s Park Project without having been exposed to the information on page 14. Interpret the interval in the context of the problem in a clear sentence. Does your point estimate approximately match that reported in the Chancellor’s email?\n\n\nQuestion 10\nSelect a confidence level lower than 95% and recalculate the interval from the previous question to express this confidence level. In general, are intervals with higher confidence wider or narrower than those with lower confidence?\n\n\nQuestion 11\nUsing the normal curve, create a 95% confidence interval for the mean change in support for the Project across the entire population after being exposed to the information on page 14.\n\n\nQuestion 12\nDoes your interval from the previous question contain 0? What are the implications of that for those working in the Chancellor’s Office on the People’s Park Project?\n\n\nLast Question\nWill you ensure that your submission to Gradescope…\n\nis of a pdf generated from a qmd file,\nhas all of your code visible to readers,\nand assigns each of the questions to all pages that show your work for that question?\n\n(This one is easy! Just answer “yes” or “no”)"
+    "objectID": "3-generalization/labs/peoples-park/slides.html#peoples-park-project",
+    "href": "3-generalization/labs/peoples-park/slides.html#peoples-park-project",
+    "title": "Lab: People’s Park",
+    "section": "People’s Park Project",
+    "text": "People’s Park Project\nThe University wishes to turn a university-owned plot of land called People’s Park into housing.\n\n\nOpponents\n\nAdvocates for the homeless residents living on site\nNeighbors who don’t want a tall tower built\nHistorical preservationists who want to preserve it for its role in countercultural movement of the ’60s.\n\n\nProponents\n\nAdvocates for affordable housing\nNeighbors who want the blight and crime gone\nStudents who want easier access to housing\nCity of Berkeley who wants more housing built"
   },
   {
-    "objectID": "3-generalization/labs/elections/slides.html#iran-election",
-    "href": "3-generalization/labs/elections/slides.html#iran-election",
-    "title": "Lab: Elections",
-    "section": "2009 Iran Election",
-    "text": "2009 Iran Election\n\n\n\nBackground\n\nOngoing public sentiment that previous election was fraudulent\nThe highest voter turnout in Iran’s history\n\n\nLeading candidates\n\nMahmoud Ahmadinejad: Leader of conservatives and incumbent president.\nMir-Hossein Mousavi: Reformist and former prime minister. Seeking rapid political evolution.\n\n\n\n\n\n\n\n\n\nOutcome\nAhmadinejad won the election with 62.6% of the votes cast, while Mousavi received 33.75% of the votes cast."
+    "objectID": "3-generalization/labs/peoples-park/slides.html#the-chancellors-survey",
+    "href": "3-generalization/labs/peoples-park/slides.html#the-chancellors-survey",
+    "title": "Lab: People’s Park",
+    "section": "The Chancellor’s Survey",
+    "text": "The Chancellor’s Survey\n\n\n\n\n\nChancellor Carol Christ\n\n\n\nIn fall of 2021, the Chancellor’s Office commissioned a survey of the Berkeley community to gauge opinions on people’s park.\n\n\n\nIn this lab you will gain access to this survey data."
   },
   {
-    "objectID": "3-generalization/labs/elections/slides.html#post-election-controversies-and-unrest",
-    "href": "3-generalization/labs/elections/slides.html#post-election-controversies-and-unrest",
-    "title": "Lab: Elections",
-    "section": "Post-election controversies and unrest",
-    "text": "Post-election controversies and unrest\n\n\n\n\n\nAllegations of fraud\nPublic protests and unrests\nThe green wave movement, led by Mousavi, against the allegedly fraudulent election and Ahmadinejad’s regime"
+    "objectID": "3-generalization/labs/peoples-park/slides.html#part-i-understanding-the-context-of-the-data",
+    "href": "3-generalization/labs/peoples-park/slides.html#part-i-understanding-the-context-of-the-data",
+    "title": "Lab: People’s Park",
+    "section": "Part I: Understanding the Context of the Data",
+    "text": "Part I: Understanding the Context of the Data\n\n\n\nReference Materials\n\nChancellor’s Email\nBackground Methods PDF\nQuestionnaire\n\n\n  \n    −\n    +\n \n 25:00"
   },
   {
-    "objectID": "3-generalization/labs/elections/slides.html#section",
-    "href": "3-generalization/labs/elections/slides.html#section",
-    "title": "Lab: Elections",
+    "objectID": "3-generalization/labs/elections/learning-objectives.html",
+    "href": "3-generalization/labs/elections/learning-objectives.html",
+    "title": "Stat 20 (Fall 2026)",
     "section": "",
-    "text": "Was the election fraudulent?"
-  },
-  {
-    "objectID": "3-generalization/labs/elections/slides.html#section-1",
-    "href": "3-generalization/labs/elections/slides.html#section-1",
-    "title": "Lab: Elections",
-    "section": "",
-    "text": "What is the distribution of city/town populations in all cities and towns in California?"
-  },
-  {
-    "objectID": "3-generalization/labs/elections/slides.html#section-2",
-    "href": "3-generalization/labs/elections/slides.html#section-2",
-    "title": "Lab: Elections",
-    "section": "",
-    "text": "What is the distribution of the first digit of city/town populations in all cities and towns in California?\n\n\n(these extensive notes were the instructions to TAs when facilitating this spring 2022)\nThis first component can be done either during Berkeley time or at the start of class along with students. It depends on how long you expect the rest of the lesson to take and what you’d like to emphasize: [Write on the board the two “fundamental” distributions that we’ve covered so far: the Binomial and the Bernoulli. ?var:site-urllectures/14/binomial.html#/bernoulli-distributionl will give you a sense of the notation and layout that’s used. Best to replicate each element of these slides, including the plots.]\nIt’s reasonable to ask students to close their laptops for the first part of class.\nAsk students for a guess or two at the population of Berkeley. Write on board then go to Wikipedia and get the true answer and correct the one(s) on the board. From there, follows links through Wikipedia to other towns and cities in California, building up a list of 10 city names and their populations (randomly picking a few of these links is a good method: https://en.wikipedia.org/wiki/Category:Incorporated_cities_and_towns_in_California). Structure this on the board as a data frame with two columns: city and population, and 10 rows.\nAsk students to sketch the distribution of two variables: 1. What they expect the population variable to look like were they to collect the population of all the cities and towns in California. 2. The distribution of the value of the first digit in the population counts of all of these town. This is probably best done think-pair share: give a couple minutes to for them to sketch silently, then ask them to share with a neighbor, then ask a pair to describe their distributions as you draw it on the board.\nProbing questions: 1. Where does this variable sit in the Data Taxonomy? 2. What is the range of possible values this variable can take? 3. What geometry will you use? 4. What shape/modality/center/spread would you expect to see? 5. What labels belong on the axes? 6. What is a good title for this plot?\nThe first should be a histogram or density plot (boxplot is meh) that is heavily right skewed. The second should be a barchart on the integers 1-9, each one having decreasing probabilities.\nWrite out Benford’s Law in a similar way to the other named distributions and describe it as a distribution that we’re going to try to use to describe vote counts. Start the calculation of E and V of Benford’s Law just so that students can see what goes into each term of those sums (I’m actually not sure what the base_10 Benfords E and V are)."
-  },
-  {
-    "objectID": "3-generalization/labs/elections/slides.html#benfords-law-1",
-    "href": "3-generalization/labs/elections/slides.html#benfords-law-1",
-    "title": "Lab: Elections",
-    "section": "Benford’s “Law”",
-    "text": "Benford’s “Law”\nLet \\(X\\) be the first digit of a randomly selected number. \\(X \\sim Benfords()\\) if\n\\[P(X = x) = \\log_{10}\\left(1 + 1/x \\right)\\]"
-  },
-  {
-    "objectID": "3-generalization/labs/elections/slides.html#fraud-detection-using-benfords-law",
-    "href": "3-generalization/labs/elections/slides.html#fraud-detection-using-benfords-law",
-    "title": "Lab: Elections",
-    "section": "Fraud detection using Benford’s Law",
-    "text": "Fraud detection using Benford’s Law\n\nA common theory is that in a normally occurring, fair, election, the first digit of the vote counts county-by-county should follow Benford’s Law. If they do not, that might suggest that vote counts have been manually altered.\n\n\n\nThis theory was brought to bear to determine whether the 2009 presidential election in Iran showed irregularities1.\n\n\nhttps://physicsworld.com/a/benfords-law-and-the-iranian-e/"
-  },
-  {
-    "objectID": "3-generalization/labs/elections/slides.html#lab-elections",
-    "href": "3-generalization/labs/elections/slides.html#lab-elections",
-    "title": "Lab: Elections",
-    "section": "Lab: Elections",
-    "text": "Lab: Elections\nIn this lab we will:\n\nExamine the Benford’s Law probability distribution\n\n\n\nCompare the first digits of vote counts in the 2009 Iranian election to this distribution\n\n\n\n\nReach a conclusion on whether the election was fraudulent (or whether the Benford’s Law is a good tool at detecting fraud in the first place)."
+    "text": "Write down a probability model for vote counts.\nReview\n\n\nUnit of observation\n\n\n\nlibrary(rvest)\n# Reading in the table from Wikipedia\ntab &lt;- read_html(\"https://en.wikipedia.org/wiki/List_of_tallest_buildings\") %&gt;% \n  html_node(\".wikitable\") %&gt;%\n  html_table(fill = TRUE)\n\nReferences:\nOriginal iran analysis:\nhttps://www.researchgate.net/publication/45856921_A_first-digit_anomaly_in_the_2009_Iranian_presidential_election\nhttps://arxiv.org/pdf/0906.2789.pdf\nFollow up by walter mebane:\nhttp://websites.umich.edu/~wmebane/note18jun2009.pdf\nGelman’s take:"
   },
   {
     "objectID": "CONTRIBUTING.html",
@@ -880,39 +866,74 @@
     "text": "diagnosis\nradius_mean\narea_mean\nradius_sd\n\n\n\n\nB\n13.700\n571.1\n0.2431\n\n\nB\n12.720\n501.3\n0.2954\n\n\nB\n11.750\n422.9\n0.4384\n\n\nM\n13.440\n563.0\n0.2385\n\n\nM\n12.450\n477.1\n0.3345\n\n\nM\n19.590\n1214.0\n0.7364\n\n\nB\n12.060\n448.6\n0.1822\n\n\nM\n18.050\n1006.0\n0.9806\n\n\nB\n8.734\n234.3\n0.5169\n\n\nB\n13.210\n537.9\n0.2084\n\n\nM\n15.460\n731.3\n0.3331\n\n\nM\n14.220\n609.9\n0.2860\n\n\nB\n11.500\n407.4\n0.3927\n\n\nM\n14.780\n668.3\n0.3577\n\n\nB\n9.676\n272.5\n0.2744\n\n\nB\n12.580\n489.0\n0.2719\n\n\nB\n9.738\n288.5\n0.1988\n\n\nB\n10.750\n355.3\n0.2525\n\n\nB\n11.060\n366.5\n0.1779\n\n\nB\n12.880\n514.3\n0.2116\n\n\nM\n15.660\n773.5\n1.2920\n\n\nM\n23.090\n1682.0\n1.2910\n\n\nM\n19.450\n1169.0\n0.5959\n\n\n\n\n\n\n\n\n−+\n25:00"
   },
   {
-    "objectID": "3-generalization/labs/elections/learning-objectives.html",
-    "href": "3-generalization/labs/elections/learning-objectives.html",
-    "title": "Stat 20 (Fall 2026)",
+    "objectID": "3-generalization/labs/elections/slides.html#iran-election",
+    "href": "3-generalization/labs/elections/slides.html#iran-election",
+    "title": "Lab: Elections",
+    "section": "2009 Iran Election",
+    "text": "2009 Iran Election\n\n\n\nBackground\n\nOngoing public sentiment that previous election was fraudulent\nThe highest voter turnout in Iran’s history\n\n\nLeading candidates\n\nMahmoud Ahmadinejad: Leader of conservatives and incumbent president.\nMir-Hossein Mousavi: Reformist and former prime minister. Seeking rapid political evolution.\n\n\n\n\n\n\n\n\n\nOutcome\nAhmadinejad won the election with 62.6% of the votes cast, while Mousavi received 33.75% of the votes cast."
+  },
+  {
+    "objectID": "3-generalization/labs/elections/slides.html#post-election-controversies-and-unrest",
+    "href": "3-generalization/labs/elections/slides.html#post-election-controversies-and-unrest",
+    "title": "Lab: Elections",
+    "section": "Post-election controversies and unrest",
+    "text": "Post-election controversies and unrest\n\n\n\n\n\nAllegations of fraud\nPublic protests and unrests\nThe green wave movement, led by Mousavi, against the allegedly fraudulent election and Ahmadinejad’s regime"
+  },
+  {
+    "objectID": "3-generalization/labs/elections/slides.html#section",
+    "href": "3-generalization/labs/elections/slides.html#section",
+    "title": "Lab: Elections",
     "section": "",
-    "text": "Write down a probability model for vote counts.\nReview\n\n\nUnit of observation\n\n\n\nlibrary(rvest)\n# Reading in the table from Wikipedia\ntab &lt;- read_html(\"https://en.wikipedia.org/wiki/List_of_tallest_buildings\") %&gt;% \n  html_node(\".wikitable\") %&gt;%\n  html_table(fill = TRUE)\n\nReferences:\nOriginal iran analysis:\nhttps://www.researchgate.net/publication/45856921_A_first-digit_anomaly_in_the_2009_Iranian_presidential_election\nhttps://arxiv.org/pdf/0906.2789.pdf\nFollow up by walter mebane:\nhttp://websites.umich.edu/~wmebane/note18jun2009.pdf\nGelman’s take:"
+    "text": "Was the election fraudulent?"
   },
   {
-    "objectID": "3-generalization/labs/peoples-park/slides.html#section",
-    "href": "3-generalization/labs/peoples-park/slides.html#section",
-    "title": "Lab: People’s Park",
+    "objectID": "3-generalization/labs/elections/slides.html#section-1",
+    "href": "3-generalization/labs/elections/slides.html#section-1",
+    "title": "Lab: Elections",
     "section": "",
-    "text": "This is a promo video produced by the University to make an argument for the project. This was released at roughly the same time as the survey results."
+    "text": "What is the distribution of city/town populations in all cities and towns in California?"
   },
   {
-    "objectID": "3-generalization/labs/peoples-park/slides.html#peoples-park-project",
-    "href": "3-generalization/labs/peoples-park/slides.html#peoples-park-project",
-    "title": "Lab: People’s Park",
-    "section": "People’s Park Project",
-    "text": "People’s Park Project\nThe University wishes to turn a university-owned plot of land called People’s Park into housing.\n\n\nOpponents\n\nAdvocates for the homeless residents living on site\nNeighbors who don’t want a tall tower built\nHistorical preservationists who want to preserve it for its role in countercultural movement of the ’60s.\n\n\nProponents\n\nAdvocates for affordable housing\nNeighbors who want the blight and crime gone\nStudents who want easier access to housing\nCity of Berkeley who wants more housing built"
+    "objectID": "3-generalization/labs/elections/slides.html#section-2",
+    "href": "3-generalization/labs/elections/slides.html#section-2",
+    "title": "Lab: Elections",
+    "section": "",
+    "text": "What is the distribution of the first digit of city/town populations in all cities and towns in California?\n\n\n(these extensive notes were the instructions to TAs when facilitating this spring 2022)\nThis first component can be done either during Berkeley time or at the start of class along with students. It depends on how long you expect the rest of the lesson to take and what you’d like to emphasize: [Write on the board the two “fundamental” distributions that we’ve covered so far: the Binomial and the Bernoulli. ?var:site-urllectures/14/binomial.html#/bernoulli-distributionl will give you a sense of the notation and layout that’s used. Best to replicate each element of these slides, including the plots.]\nIt’s reasonable to ask students to close their laptops for the first part of class.\nAsk students for a guess or two at the population of Berkeley. Write on board then go to Wikipedia and get the true answer and correct the one(s) on the board. From there, follows links through Wikipedia to other towns and cities in California, building up a list of 10 city names and their populations (randomly picking a few of these links is a good method: https://en.wikipedia.org/wiki/Category:Incorporated_cities_and_towns_in_California). Structure this on the board as a data frame with two columns: city and population, and 10 rows.\nAsk students to sketch the distribution of two variables: 1. What they expect the population variable to look like were they to collect the population of all the cities and towns in California. 2. The distribution of the value of the first digit in the population counts of all of these town. This is probably best done think-pair share: give a couple minutes to for them to sketch silently, then ask them to share with a neighbor, then ask a pair to describe their distributions as you draw it on the board.\nProbing questions: 1. Where does this variable sit in the Data Taxonomy? 2. What is the range of possible values this variable can take? 3. What geometry will you use? 4. What shape/modality/center/spread would you expect to see? 5. What labels belong on the axes? 6. What is a good title for this plot?\nThe first should be a histogram or density plot (boxplot is meh) that is heavily right skewed. The second should be a barchart on the integers 1-9, each one having decreasing probabilities.\nWrite out Benford’s Law in a similar way to the other named distributions and describe it as a distribution that we’re going to try to use to describe vote counts. Start the calculation of E and V of Benford’s Law just so that students can see what goes into each term of those sums (I’m actually not sure what the base_10 Benfords E and V are)."
   },
   {
-    "objectID": "3-generalization/labs/peoples-park/slides.html#the-chancellors-survey",
-    "href": "3-generalization/labs/peoples-park/slides.html#the-chancellors-survey",
-    "title": "Lab: People’s Park",
-    "section": "The Chancellor’s Survey",
-    "text": "The Chancellor’s Survey\n\n\n\n\n\nChancellor Carol Christ\n\n\n\nIn fall of 2021, the Chancellor’s Office commissioned a survey of the Berkeley community to gauge opinions on people’s park.\n\n\n\nIn this lab you will gain access to this survey data."
+    "objectID": "3-generalization/labs/elections/slides.html#benfords-law-1",
+    "href": "3-generalization/labs/elections/slides.html#benfords-law-1",
+    "title": "Lab: Elections",
+    "section": "Benford’s “Law”",
+    "text": "Benford’s “Law”\nLet \\(X\\) be the first digit of a randomly selected number. \\(X \\sim Benfords()\\) if\n\\[P(X = x) = \\log_{10}\\left(1 + 1/x \\right)\\]"
   },
   {
-    "objectID": "3-generalization/labs/peoples-park/slides.html#part-i-understanding-the-context-of-the-data",
-    "href": "3-generalization/labs/peoples-park/slides.html#part-i-understanding-the-context-of-the-data",
-    "title": "Lab: People’s Park",
-    "section": "Part I: Understanding the Context of the Data",
-    "text": "Part I: Understanding the Context of the Data\n\n\n\nReference Materials\n\nChancellor’s Email\nBackground Methods PDF\nQuestionnaire\n\n\n  \n    −\n    +\n \n 25:00"
+    "objectID": "3-generalization/labs/elections/slides.html#fraud-detection-using-benfords-law",
+    "href": "3-generalization/labs/elections/slides.html#fraud-detection-using-benfords-law",
+    "title": "Lab: Elections",
+    "section": "Fraud detection using Benford’s Law",
+    "text": "Fraud detection using Benford’s Law\n\nA common theory is that in a normally occurring, fair, election, the first digit of the vote counts county-by-county should follow Benford’s Law. If they do not, that might suggest that vote counts have been manually altered.\n\n\n\nThis theory was brought to bear to determine whether the 2009 presidential election in Iran showed irregularities1.\n\n\nhttps://physicsworld.com/a/benfords-law-and-the-iranian-e/"
+  },
+  {
+    "objectID": "3-generalization/labs/elections/slides.html#lab-elections",
+    "href": "3-generalization/labs/elections/slides.html#lab-elections",
+    "title": "Lab: Elections",
+    "section": "Lab: Elections",
+    "text": "Lab: Elections\nIn this lab we will:\n\nExamine the Benford’s Law probability distribution\n\n\n\nCompare the first digits of vote counts in the 2009 Iranian election to this distribution\n\n\n\n\nReach a conclusion on whether the election was fraudulent (or whether the Benford’s Law is a good tool at detecting fraud in the first place)."
+  },
+  {
+    "objectID": "3-generalization/labs/peoples-park/part-2.html",
+    "href": "3-generalization/labs/peoples-park/part-2.html",
+    "title": "People’s Park",
+    "section": "",
+    "text": "In answering the following questions, it will be helpful to consult"
+  },
+  {
+    "objectID": "3-generalization/labs/peoples-park/part-2.html#part-ii-computing-on-the-data",
+    "href": "3-generalization/labs/peoples-park/part-2.html#part-ii-computing-on-the-data",
+    "title": "People’s Park",
+    "section": "Part II: Computing on the Data",
+    "text": "Part II: Computing on the Data\nThe data collected by the Chancellor’s Office on Cal students can be found as ppk in the stat20data package.\nThe ppk data set represents a subset of questions that were asked in the questionnaire and have had random noise added to them. The results, in aggregate, share similar statistical properties to the raw data, but a given row no longer reflects an individual student’s response completely.\n\nQuestion 1\nPrint the first few rows with the columns that correspond to the responses to survey questions 1, 7, and 8 (Note: we have changed the data back from all numerical data, as suggested by part 1 question 8, to a mix of numerical and categorical data). Please comment on whether your encoding of the data from Q7 on the questionnaire matches the encoding in ppk.\n\n\nQuestion 2\nReturn to your sketches from lab part 1, question 9. Create those visualizations (or more appropriate analogues) using the questionnaire data. For each, add a title and axis labels to make it clear what they are showing, and describe the distribution in words. If your visualization is of ordinal data, the bars should be ordered accordingly. For part a here, you’re welcome to select just one of the priorities to visualize.\n\nQuestion 9\nQuestion 10\nQuestion 18 and 21 (showing, for each individual student, the change from before and after the information in one plot)\n\n\n\nQuestion 3\nCreate a new column called support_before that takes the response data from question 18 and returns TRUE for answers of “Very strongly support”, “Strongly support”, and “Somewhat support” and FALSE otherwise. Use %in% to check if the response is one of these three values. What proportion of the survey participants in each class (freshman, sophomore, etc) supported the People’s Park Project before being presented with the information on the bottom of page 14?\n\n\nQuestion 4\nRepeat the previous question but this time drop any rows with NA (missing data) before starting your calculation. This can be done by using the drop_na() function, which scans any columns that you provide and drop any rows with NA in that column.\n\nppk |&gt;\n  drop_na(Q18_words)\n\nDoes the proportion change? If it does, which proportion do you think most consumers of this data analysis will assume they’re looking at?\n\nFor the remaining questions in this lab, drop rows with NAs in the columns that you’re using for that question.\n\n\n\nQuestion 5\nWhat is the mean and median rating of the condition of People’s Park (question 15 on the survey)?\n\n\nQuestion 6\nCreate a new column called change_in_support that measures the change in support from question 18 to 21 of the survey. What is the mean change in support of the survey participants in each class (freshman, sophomore, etc) for the People’s Park Project after reading the information? What assumption must you make about the values of the Likert scale in order for these statistics to be informative?\n\n\nQuestion 7\nConstruct one additional visualization that captures a variable or relationship between two variables that you are interested in. Describe the structure that you see in the plot.\n\n\nQuestion 8\nCreate a 95% confidence intervals for the mean rating of the condition of People’s Park using the normal curve. Interpret the interval in the context of the problem in a clear sentence.\n\n\nQuestion 9\nCreate a 95% confidence interval using the normal curve for the overall proportion of students who support the People’s Park Project without having been exposed to the information on page 14. Interpret the interval in the context of the problem in a clear sentence. Does your point estimate approximately match that reported in the Chancellor’s email?\n\n\nQuestion 10\nSelect a confidence level lower than 95% and recalculate the interval from the previous question to express this confidence level. In general, are intervals with higher confidence wider or narrower than those with lower confidence?\n\n\nQuestion 11\nUsing the normal curve, create a 95% confidence interval for the mean change in support for the Project across the entire population after being exposed to the information on page 14.\n\n\nQuestion 12\nDoes your interval from the previous question contain 0? What are the implications of that for those working in the Chancellor’s Office on the People’s Park Project?\n\n\nLast Question\nWill you ensure that your submission to Gradescope…\n\nis of a pdf generated from a qmd file,\nhas all of your code visible to readers,\nand assigns each of the questions to all pages that show your work for that question?\n\n(This one is easy! Just answer “yes” or “no”)"
   },
   {
     "objectID": "assets/quiz-slides.html#before-the-quiz",
@@ -969,27 +990,6 @@
     "title": "Scheduling Documents",
     "section": "",
     "text": "The curriculum for Stat 20 has a lot of individual files - slides, worksheets, notes - that need to be published on a fairly intricate schedule: notes are published before the corresponding lesson and slides and worksheets the day of that lesson. Instead of requiring the course instructors to manually add each new document to the repository each semester and then republish the website, document publishing is automated and controlled via one file called _schedule.yml found in the root of the repository.\nschedule:\n    - week: 1\n      unit: Questions and Data\n      days:\n        - topic: \"No class\"\n          display-date: Jan 20\n        - topic: \"Understanding the World with Data\"\n          display-date: Jan 21/22\n          date: 1/21/25\n          before-class:\n            docs:\n              - type: Notes\n                href: 1-questions-and-data/notes.qmd\n                hide-from-schedule: true\n              - type: Notes\n                href: 1-questions-and-data/01-understanding-the-world/notes.qmd\n          in-class:\n            docs:\n              - type: Slides\n                href: 1-questions-and-data/01-understanding-the-world/slides.qmd\n              - type: Worksheet\n                href: 1-questions-and-data/01-understanding-the-world/ws.qmd\n\nHow it works\nThe scheduled documents feature is enabled by a Quarto extension called scheduled-docs. You can read its documentation at https://github.com/qmd-lab/scheduled-docs and inspect the installed files in this repository in the _extensions/qmd-lab/scheduled-docs subdirectory."
-  },
-  {
-    "objectID": "2-summarizing-data/labs/flights/slides.html#section",
-    "href": "2-summarizing-data/labs/flights/slides.html#section",
-    "title": "Lab: Flights",
-    "section": "",
-    "text": "This headline is a good introduction to the impact that the pandemic had on flights and on SFO in particular."
-  },
-  {
-    "objectID": "2-summarizing-data/labs/flights/slides.html#section-1",
-    "href": "2-summarizing-data/labs/flights/slides.html#section-1",
-    "title": "Lab: Flights",
-    "section": "",
-    "text": "The Bureau of Transportation Statistics is the federal agency that collects and hosts this data for public download.\nAs a side note, if students are interested in pulling down more recent data, this data was pulled using the allflights R package, which they can download and install in RStudio."
-  },
-  {
-    "objectID": "2-summarizing-data/labs/flights/slides.html#section-2",
-    "href": "2-summarizing-data/labs/flights/slides.html#section-2",
-    "title": "Lab: Flights",
-    "section": "",
-    "text": "The goal of the “Think before you compute” design of these labs is that the students should be able to do their thinking without the distractions of technology. If you project this data frame, that should be sufficient for them to answer all of the questions in Part I.\n\n\n  \n    −\n    +\n \n 25:00"
   },
   {
     "objectID": "syllabus.html",

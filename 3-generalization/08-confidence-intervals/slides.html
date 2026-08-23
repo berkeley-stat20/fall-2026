@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-1f58c03bc26265810021d8ae65932dae.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-82d839b58bed452275d4de8694e15738.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -230,15 +230,15 @@ STAT 20: Introduction to Probability and Statistics
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(stat20data)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb1-5"><a></a>flights <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a></a>  <span class="fu">summarize</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(air_time),</span>
-<span id="cb1-8"><a></a>            <span class="at">sx =</span> <span class="fu">sd</span>(air_time),</span>
-<span id="cb1-9"><a></a>            <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat20data)</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(air_time),</span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">sx =</span> <span class="fu">sd</span>(air_time),</span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
    xbar    sx     n
@@ -249,7 +249,7 @@ STAT 20: Introduction to Probability and Statistics
 <div class="poll">
 <p>What is an approximate 95% confidence interval for the mean air time in <code>flights</code> using the normal curve?</p>
 </div>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -294,7 +294,7 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -308,7 +308,7 @@ STAT 20: Introduction to Probability and Statistics
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="poll">
 <p>What will happen to the shape of the <strong>empirical distribution</strong> as we increase <span class="math inline">\(n\)</span>?</p>
 </div>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -337,7 +337,7 @@ STAT 20: Introduction to Probability and Statistics
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="poll">
 <p>What will happen to the shape of the <strong>sampling distribution</strong> as we increase <span class="math inline">\(n\)</span>?</p>
 </div>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -379,7 +379,7 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -408,7 +408,7 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -418,7 +418,7 @@ STAT 20: Introduction to Probability and Statistics
 </section></section>
 <section id="worksheet-confidence-intervals" class="title-slide slide level1 center">
 <h1>Worksheet: Confidence Intervals</h1>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -429,7 +429,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -440,7 +440,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="lab-8-peoples-park" class="title-slide slide level1 center">
 <h1>Lab 8: People’s Park</h1>
-<div id="timer_5268e97a0c9bfcd7cfda82f2059bd4e76f0d0c9c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_948976d62ae1d90474425b6bf83a6210216ee8a7" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -888,6 +888,16 @@ STAT 20: Introduction to Probability and Statistics
             // For example, redirect to a home page or show a message
             window.location.href = '/'; // Redirecting to the home page
           }
+        });
+
+        var warmupNumber = 0;
+        document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+          warmupNumber += 1;
+
+          var label = document.createElement('div');
+          label.className = 'warmup-question-label';
+          label.textContent = 'Warmup Question ' + warmupNumber;
+          slide.prepend(label);
         });
       });
       Reveal.addEventListener('slidechanged', (event) => {

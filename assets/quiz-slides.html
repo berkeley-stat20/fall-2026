@@ -32,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1f58c03bc26265810021d8ae65932dae.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-82d839b58bed452275d4de8694e15738.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -194,7 +194,7 @@ STAT 20: Introduction to Probability and Statistics
 <li>We will collect your cheatsheets and quizzes when time is called.</li>
 </ul>
 </div></div>
-<div id="timer_bfc9a64dc50e4cbb1a407c7d7c4ca4948a97e035" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e7bfe47d1a8b047ceb4daa49099587adeca1b77c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -217,7 +217,7 @@ STAT 20: Introduction to Probability and Statistics
 <li>⌛<span style="color: #3333DD">When done, bring your quiz</span> to a tutor or me. Then <em>please leave the room <strong>quietly</strong></em>.</li>
 </ul>
 </div></div>
-<div id="timer_bfc9a64dc50e4cbb1a407c7d7c4ca4948a97e035" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_e7bfe47d1a8b047ceb4daa49099587adeca1b77c" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -627,6 +627,16 @@ STAT 20: Introduction to Probability and Statistics
             // For example, redirect to a home page or show a message
             window.location.href = '/'; // Redirecting to the home page
           }
+        });
+
+        var warmupNumber = 0;
+        document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+          warmupNumber += 1;
+
+          var label = document.createElement('div');
+          label.className = 'warmup-question-label';
+          label.textContent = 'Warmup Question ' + warmupNumber;
+          slide.prepend(label);
         });
       });
       Reveal.addEventListener('slidechanged', (event) => {

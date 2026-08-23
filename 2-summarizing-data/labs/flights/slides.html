@@ -32,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-1f58c03bc26265810021d8ae65932dae.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-82d839b58bed452275d4de8694e15738.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -235,7 +235,7 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<div id="timer_bc9a7dd894323ed942494b185aaeb8b573fa6b06" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_1dde150eee8d1e800539eb622a7732445b83eb58" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -645,6 +645,16 @@ STAT 20: Introduction to Probability and Statistics
             // For example, redirect to a home page or show a message
             window.location.href = '/'; // Redirecting to the home page
           }
+        });
+
+        var warmupNumber = 0;
+        document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+          warmupNumber += 1;
+
+          var label = document.createElement('div');
+          label.className = 'warmup-question-label';
+          label.textContent = 'Warmup Question ' + warmupNumber;
+          slide.prepend(label);
         });
       });
       Reveal.addEventListener('slidechanged', (event) => {

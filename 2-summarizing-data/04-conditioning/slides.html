@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-1f58c03bc26265810021d8ae65932dae.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-82d839b58bed452275d4de8694e15738.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -243,12 +243,12 @@ STAT 20: Introduction to Probability and Statistics
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">c</span>(<span class="st">"fruit"</span>, <span class="st">"fruit"</span>, <span class="st">"vegetable"</span>) <span class="sc">==</span> <span class="st">"fruit"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"fruit"</span>, <span class="st">"fruit"</span>, <span class="st">"vegetable"</span>) <span class="sc">==</span> <span class="st">"fruit"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="poll">
 <p>What will this line of code return?</p>
 </div>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -259,15 +259,15 @@ STAT 20: Introduction to Probability and Statistics
 <section id="question-2" class="slide level2">
 <h2>Question 2</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>class_survey <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb2-3"><a></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb2-4"><a></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="poll">
 <p>Which observations will be included in the data frame produced by this code (or equivalently, which observations will not be included)?</p>
 </div>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -298,15 +298,15 @@ Q: what is the comparison group: all students or students who are not in their f
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># A</span></span>
-<span id="cb3-2"><a></a><span class="fu">filter</span>(class_survey, time_at_cal <span class="sc">==</span> <span class="st">"This is my first semester!"</span>)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="co"># B</span></span>
-<span id="cb3-5"><a></a>class_survey <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a></a>  <span class="fu">mutate</span>(<span class="at">first_sem =</span> (time_at_cal <span class="sc">==</span> <span class="st">"This is my first semester!"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-7"><a></a>  <span class="fu">filter</span>(first_sem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># A</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(class_survey, time_at_cal <span class="sc">==</span> <span class="st">"This is my first semester!"</span>)</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># B</span></span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_sem =</span> (time_at_cal <span class="sc">==</span> <span class="st">"This is my first semester!"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(first_sem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -319,10 +319,10 @@ Q: what is the comparison group: all students or students who are not in their f
 <h2>Building data pipelines</h2>
 <p>Consider the subset of students here:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>class_survey <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb4-3"><a></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb4-4"><a></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote>
 <p>How do we extract the average of these students’ chance that class will be disrupted by a new COVID variant?</p>
@@ -332,10 +332,10 @@ Q: what is the comparison group: all students or students who are not in their f
 <section id="nesting" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Nesting</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a><span class="fu">filter</span>(class_survey, </span>
-<span id="cb5-2" class="hljs-ln-code"><a></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb5-3" class="hljs-ln-code"><a></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb5-4" class="hljs-ln-code"><a></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(class_survey, </span>
+<span id="cb5-2" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb5-3" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb5-4" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>This set of slides walks through the three different approaches to stringing together functions in R, identifies the pros and cons of each, and encourages students to use the pipe.</p>
@@ -354,42 +354,42 @@ Q: what is the comparison group: all students or students who are not in their f
 <section id="nesting-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Nesting</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a><span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
-<span id="cb6-2" class="hljs-ln-code"><a></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb6-3" class="hljs-ln-code"><a></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb6-4" class="hljs-ln-code"><a></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-5" class="hljs-ln-code"><a></a>       coding_exp_xcale,</span>
-<span id="cb6-6" class="hljs-ln-code"><a></a>       olympics,</span>
-<span id="cb6-7" class="hljs-ln-code"><a></a>       is_entrepreneur,</span>
-<span id="cb6-8" class="hljs-ln-code"><a></a>       covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
+<span id="cb6-2" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb6-3" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb6-4" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-5" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_xcale,</span>
+<span id="cb6-6" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics,</span>
+<span id="cb6-7" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur,</span>
+<span id="cb6-8" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="nesting-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Nesting</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb7-1" class="hljs-ln-code"><a></a><span class="fu">summarize</span>(<span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
-<span id="cb7-2" class="hljs-ln-code"><a></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb7-3" class="hljs-ln-code"><a></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb7-4" class="hljs-ln-code"><a></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
-<span id="cb7-5" class="hljs-ln-code"><a></a>       coding_exp_scale,</span>
-<span id="cb7-6" class="hljs-ln-code"><a></a>       olympics,</span>
-<span id="cb7-7" class="hljs-ln-code"><a></a>       is_entrepreneur,</span>
-<span id="cb7-8" class="hljs-ln-code"><a></a>       covid),</span>
-<span id="cb7-9" class="hljs-ln-code"><a></a>       <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb7-1" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
+<span id="cb7-2" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb7-3" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb7-4" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-5" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale,</span>
+<span id="cb7-6" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics,</span>
+<span id="cb7-7" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur,</span>
+<span id="cb7-8" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       covid),</span>
+<span id="cb7-9" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="nesting-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Nesting</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a></a><span class="fu">summarize</span>(<span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
-<span id="cb8-2" class="hljs-ln-code"><a></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb8-3" class="hljs-ln-code"><a></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb8-4" class="hljs-ln-code"><a></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
-<span id="cb8-5" class="hljs-ln-code"><a></a>       coding_exp_scale,</span>
-<span id="cb8-6" class="hljs-ln-code"><a></a>       olympics,</span>
-<span id="cb8-7" class="hljs-ln-code"><a></a>       is_entrepreneur,</span>
-<span id="cb8-8" class="hljs-ln-code"><a></a>       covid),</span>
-<span id="cb8-9" class="hljs-ln-code"><a></a>       <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
+<span id="cb8-2" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb8-3" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb8-4" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-5" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale,</span>
+<span id="cb8-6" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       olympics,</span>
+<span id="cb8-7" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur,</span>
+<span id="cb8-8" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       covid),</span>
+<span id="cb8-9" class="hljs-ln-code"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   covid_avg
@@ -401,15 +401,15 @@ Q: what is the comparison group: all students or students who are not in their f
 <section id="nesting-4" class="slide level2">
 <h2>Nesting</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">summarize</span>(<span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
-<span id="cb10-2"><a></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb10-3"><a></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb10-4"><a></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
-<span id="cb10-5"><a></a>       coding_exp_scale,</span>
-<span id="cb10-6"><a></a>       olympics,</span>
-<span id="cb10-7"><a></a>       is_entrepreneur,</span>
-<span id="cb10-8"><a></a>       covid),</span>
-<span id="cb10-9"><a></a>       <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">select</span>(<span class="fu">filter</span>(class_survey, </span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>       olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>       coding_exp_scale,</span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>       olympics,</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>       is_entrepreneur,</span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>       covid),</span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <div class="columns">
@@ -433,17 +433,17 @@ Q: what is the comparison group: all students or students who are not in their f
 <h2>Step-by-step</h2>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(class_survey, </span>
-<span id="cb11-2"><a></a>              coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb11-3"><a></a>              olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb11-4"><a></a>              is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-5"><a></a>df2 <span class="ot">&lt;-</span> <span class="fu">select</span>(df1, </span>
-<span id="cb11-6"><a></a>              coding_exp_scale,</span>
-<span id="cb11-7"><a></a>              olympics,</span>
-<span id="cb11-8"><a></a>              is_entrepreneur,</span>
-<span id="cb11-9"><a></a>              covid)</span>
-<span id="cb11-10"><a></a><span class="fu">summarize</span>(df2,</span>
-<span id="cb11-11"><a></a>          <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">filter</span>(class_survey, </span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>              coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>              olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>              is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">select</span>(df1, </span>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>              coding_exp_scale,</span>
+<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>              olympics,</span>
+<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a>              is_entrepreneur,</span>
+<span id="cb11-9"><a aria-hidden="true" tabindex="-1"></a>              covid)</span>
+<span id="cb11-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(df2,</span>
+<span id="cb11-11"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -471,15 +471,15 @@ Q: what is the comparison group: all students or students who are not in their f
 <h2>Using the pipe operator</h2>
 <div class="fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>class_survey <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb12-3"><a></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
-<span id="cb12-4"><a></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">select</span>(coding_exp_scale,</span>
-<span id="cb12-6"><a></a>         olympics,</span>
-<span id="cb12-7"><a></a>         is_entrepreneur,</span>
-<span id="cb12-8"><a></a>         covid) <span class="sc">|&gt;</span></span>
-<span id="cb12-9"><a></a>  <span class="fu">summarize</span>(<span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, <span class="st">"Speed skating"</span>),</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coding_exp_scale,</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>         olympics,</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>         is_entrepreneur,</span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>         covid) <span class="sc">|&gt;</span></span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">covid_avg =</span> <span class="fu">mean</span>(covid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -506,9 +506,9 @@ Q: what is the comparison group: all students or students who are not in their f
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>class_survey <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">select</span>(covid) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">filter</span>(time_at_cal <span class="sc">==</span> <span class="st">"It's my first time_at_cal."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(covid) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time_at_cal <span class="sc">==</span> <span class="st">"It's my first time_at_cal."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `filter()`:
 ℹ In argument: `time_at_cal == "It's my first time_at_cal."`.
@@ -518,8 +518,8 @@ Caused by error:
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>class_survey <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a></a>  <span class="fu">select</span>(covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 816 × 1
    covid
@@ -543,20 +543,20 @@ Caused by error:
 <section id="concept-question" class="slide level2">
 <h2>Concept Question</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>class_survey <span class="sc">|&gt;</span> <span class="co"># A #&lt;&lt;</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
-<span id="cb17-3"><a></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, </span>
-<span id="cb17-4"><a></a>                         <span class="st">"Speed skating"</span>),</span>
-<span id="cb17-5"><a></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="co"># B #&lt;&lt;</span></span>
-<span id="cb17-6"><a></a>  <span class="fu">select</span>(coding_exp_scale,</span>
-<span id="cb17-7"><a></a>         olympics,</span>
-<span id="cb17-8"><a></a>         is_entrepreneur,</span>
-<span id="cb17-9"><a></a>         covid) <span class="sc">|&gt;</span> <span class="co"># C #&lt;&lt;</span></span>
-<span id="cb17-10"><a></a>  <span class="fu">summarize</span>(<span class="at">covid_avg =</span> <span class="fu">mean</span>(covid)) <span class="co"># D #&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>class_survey <span class="sc">|&gt;</span> <span class="co"># A #&lt;&lt;</span></span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coding_exp_scale <span class="sc">&lt;</span> <span class="dv">3</span>,</span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>         olympics <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ice skating"</span>, </span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Speed skating"</span>),</span>
+<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a>         is_entrepreneur <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="co"># B #&lt;&lt;</span></span>
+<span id="cb17-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coding_exp_scale,</span>
+<span id="cb17-7"><a aria-hidden="true" tabindex="-1"></a>         olympics,</span>
+<span id="cb17-8"><a aria-hidden="true" tabindex="-1"></a>         is_entrepreneur,</span>
+<span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a>         covid) <span class="sc">|&gt;</span> <span class="co"># C #&lt;&lt;</span></span>
+<span id="cb17-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">covid_avg =</span> <span class="fu">mean</span>(covid)) <span class="co"># D #&lt;&lt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># note</span></span>
-<span id="cb18-2"><a></a><span class="fu">dim</span>(class_survey)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># note</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(class_survey)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 816  30</code></pre>
 </div>
@@ -564,7 +564,7 @@ Caused by error:
 <div class="poll">
 <p>What are the dimensions (rows x columns) of the data frames output at each stage of this pipe?</p>
 </div>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -575,13 +575,13 @@ Caused by error:
 <section id="section-2" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">summarize</span>(class_survey,</span>
-<span id="cb20-2"><a></a>          <span class="fu">mean</span>(time_at_cal <span class="sc">==</span> <span class="st">"I'm in my first year."</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(class_survey,</span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>          <span class="fu">mean</span>(time_at_cal <span class="sc">==</span> <span class="st">"I'm in my first year."</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="poll">
 <p>What is will this line of code return?</p>
 </div>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -604,7 +604,7 @@ Caused by error:
 </section></section>
 <section id="worksheet-conditioning" class="title-slide slide level1 center">
 <h1>Worksheet: Conditioning</h1>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -615,7 +615,7 @@ Caused by error:
 
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -626,7 +626,7 @@ Caused by error:
 
 <section id="lab-part-i-flights" class="title-slide slide level1 center">
 <h1>Lab Part I: Flights</h1>
-<div id="timer_f8362290bb57db87feda8e98aa4e67df0130de13" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_af9804acc7c62cef2e5e16230a7a2cddc869acdf" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1074,6 +1074,16 @@ Caused by error:
             // For example, redirect to a home page or show a message
             window.location.href = '/'; // Redirecting to the home page
           }
+        });
+
+        var warmupNumber = 0;
+        document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+          warmupNumber += 1;
+
+          var label = document.createElement('div');
+          label.className = 'warmup-question-label';
+          label.textContent = 'Warmup Question ' + warmupNumber;
+          slide.prepend(label);
         });
       });
       Reveal.addEventListener('slidechanged', (event) => {

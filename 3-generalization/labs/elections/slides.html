@@ -32,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-1f58c03bc26265810021d8ae65932dae.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-82d839b58bed452275d4de8694e15738.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -370,7 +370,7 @@ So where to find the link to the raw data?
 </section></section>
 <section id="section-3" class="title-slide slide level1 center" data-background-image="images/elections-screengrab.png" data-background-size="contains">
 <h1></h1>
-<div id="timer_69f1c0296949ecb0dba0c30d63336d425d1abfa6" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_26a8c84e30363335404a230d64e38350a320e9df" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -820,6 +820,16 @@ So where to find the link to the raw data?
             // For example, redirect to a home page or show a message
             window.location.href = '/'; // Redirecting to the home page
           }
+        });
+
+        var warmupNumber = 0;
+        document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+          warmupNumber += 1;
+
+          var label = document.createElement('div');
+          label.className = 'warmup-question-label';
+          label.textContent = 'Warmup Question ' + warmupNumber;
+          slide.prepend(label);
         });
       });
       Reveal.addEventListener('slidechanged', (event) => {
