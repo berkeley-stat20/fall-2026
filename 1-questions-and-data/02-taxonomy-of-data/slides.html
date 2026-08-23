@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-82d839b58bed452275d4de8694e15738.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f4c1d18995c418a56633d4375c667d1c.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -245,8 +245,8 @@ STAT 20: Introduction to Probability and Statistics
 <div class="fragment">
 <div class="answer">
 <ul>
-<li>Categorical ordinal</li>
-<li>They aren’t quite numbers (18-24, 25-34, etc) - they are ranges, and you can’t really add or subtract two age ranges to get a meaningful result.</li>
+<li class="fragment">Categorical ordinal</li>
+<li class="fragment">They aren’t quite numbers (18-24, 25-34, etc) - they are ranges, and you can’t really add or subtract two age ranges to get a meaningful result.</li>
 </ul>
 </div>
 </div>
@@ -262,8 +262,8 @@ STAT 20: Introduction to Probability and Statistics
 <div class="fragment">
 <div class="answer">
 <ul>
-<li>Numerical discrete</li>
-<li>Technically your “age” could be how many microseconds since you were born, but usually when we say “age” we mean “complete revolutions around the sun” which is discrete.</li>
+<li class="fragment">Numerical discrete</li>
+<li class="fragment">Technically your “age” could be how many microseconds since you were born, but usually when we say “age” we mean “complete revolutions around the sun” which is discrete.</li>
 </ul>
 </div>
 </div>
@@ -312,8 +312,9 @@ STAT 20: Introduction to Probability and Statistics
 <div class="fragment">
 <div class="answer">
 <ul>
-<li>“one” (in quotes) is just seen as a blob of text. It’s not “interpreted” any further.</li>
-<li>R doesn’t know how to add a number to a blob of text. So it throws an error.</li>
+<li class="fragment">Error</li>
+<li class="fragment">“one” (in quotes) is just seen as a blob of text. It’s not “interpreted” any further.</li>
+<li class="fragment">R doesn’t know how to add a number to a blob of text. So it throws an error.</li>
 </ul>
 </div>
 </div>
@@ -328,10 +329,13 @@ STAT 20: Introduction to Probability and Statistics
 <div class="fragment">
 <div class="answer">
 <ul>
-<li><code>a</code> is a vector of length four</li>
-<li><code>log</code> and <code>sqrt</code> are functions that, when passed a vector as input, will return a vectors with the function applied to each element.</li>
-<li>So they return vectors of length 4 as well.</li>
-<li>The two functions are nested, so they’ll be evaluated from the inside out</li>
+<li class="fragment">The two functions are nested, so they’ll be run from the inside out</li>
+<li class="fragment"><code>log</code> is run first, taking the natural log of each element</li>
+<li class="fragment"><code>sqrt</code> will then act on each element.</li>
+<li class="fragment">The result is still 4 numbers:
+<ul>
+<li class="fragment"><code>0.0000000 0.8325546 1.0481471 1.1774100</code></li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -346,9 +350,9 @@ STAT 20: Introduction to Probability and Statistics
 <div class="fragment">
 <div class="answer">
 <ul>
-<li>It will print 4</li>
-<li>…but the variable <code>a</code> will still be equal to 3.</li>
-<li>To <em>change</em> <code>a</code> requires the assignment operator. Something like: <code>a &lt;- a + 1</code></li>
+<li class="fragment">It will print 4</li>
+<li class="fragment">…but <code>a</code> will still be equal to 3.</li>
+<li class="fragment">To <em>change</em> <code>a</code> requires the assignment operator. Something like: <code>a &lt;- a + 1</code></li>
 </ul>
 </div>
 <aside class="notes">
@@ -378,10 +382,11 @@ STAT 20: Introduction to Probability and Statistics
 <div class="fragment">
 <div class="answer">
 <ul>
-<li>“character”</li>
-<li>the definition of a vector requires every element to be of the same type</li>
-<li>there’s no way to translate “seven” into 7, so instead 1 and 3.14 must be translated into strings (text blobs)</li>
-<li>it’s as if you did `a &lt;- c(“1”, “3.14”, “seven”)</li>
+<li class="fragment">It will print “character”</li>
+<li class="fragment">Vectors <em>require</em> every element to be of the same type</li>
+<li class="fragment">So far, they <em>aren’t</em> the same type, so R tries to convert them to some common type.</li>
+<li class="fragment">It doesn’t know how to convert “seven” into a number, so instead 1 and 3.14 must be converted into text.</li>
+<li class="fragment">It’s as if you did `a &lt;- c(“1”, “3.14”, “seven”)</li>
 </ul>
 </div>
 <aside class="notes">
@@ -400,43 +405,49 @@ STAT 20: Introduction to Probability and Statistics
           display:block!important;
       }</style></aside>
 </div>
-</section></section>
-<section>
-<section id="intro-to-r-and-rstudio" class="title-slide slide level1 center">
-<h1>Intro to R and RStudio</h1>
-<p>You already did the Intro to Coding tutorial. <strong><em>Right?</em></strong></p>
-<p>Anyway we’ll go through a bit together, then get to work.</p>
+</section>
+<section id="quick-review-r-and-rstudio" class="slide level2">
+<h2>Quick Review: R and RStudio</h2>
+<p>Before class, you should have already done today’s tutorial (“Intro to Coding”)</p>
+<div class="fragment">
+<p>…if not, do that first.</p>
+</div>
+<div class="fragment">
+<p>We’ll go through a bit of it together, then get to work.</p>
 <p>Head to <a href="https://stat20.datahub.berkeley.edu">stat20.datahub.berkeley.edu</a>!</p>
+</div>
 </section>
 <section id="r-and-rstudio" class="slide level2">
 <h2>R and RStudio</h2>
 <ul>
-<li><strong>R</strong>: A free, open-source programming language designed for statistics and data science purposes.</li>
-</ul>
-<div class="fragment">
+<li class="fragment"><span style="color: #DD3333"><strong>R</strong></span>: A language that you can use to tell a computer what to do.
 <ul>
-<li><strong>RStudio</strong>: A software through which you can run R code, compose documents, and easily keep track of your coding session. You can also store and manage your files.</li>
+<li class="fragment">R is free, built with statistics in mind, and open-source (anyone can see how it works).</li>
+</ul></li>
+<li class="fragment"><span style="color: #0077FF"><strong>RStudio</strong></span>: Literally like a studio space where you do your work.
+<ul>
+<li class="fragment">A place to write and run R code, track files, render pretty documents, etc.</li>
+</ul></li>
 </ul>
-</div>
 </section>
 <section id="components-of-rstudio" class="slide level2">
 <h2>Components of RStudio</h2>
 <ul>
-<li><strong>Console</strong>: Where the live R session lives. Type commands into the prompt <code>&gt;</code> and press enter/return to run them. The Console is in the lower-left pane.</li>
+<li><strong>Editor</strong> (upper left pane): Where we do most of our work in this class. In “quarto” files that let you mix text and code.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li><strong>Environment</strong>: The space that keeps track of all of the data and objects that you have created or loaded and have access to. Found in the upper right pane.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><strong>Editor</strong>: Used to compose and edit text (.qmd files) and R code (.r files). Found in the upper left pane.</li>
+<li><strong>Console</strong> (lower left): A different place where you can send individual R commands to the computer.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>File Directory</strong>: Used to navigate between your files/folders on your Rstudio account. Can move, copy, rename, delete, etc. Found in the lower right pane.</li>
+<li><strong>Environment</strong> (upper right): A view into the computer’s “mind” - information on all the variables it knows about right now.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>File Directory</strong> (lower right): Just like a file directory on your regular computer. You can copy, delete, upload, download, make sub-folders, etc. The usual.</li>
 </ul>
 </div>
 </section>
@@ -504,37 +515,57 @@ STAT 20: Introduction to Probability and Statistics
 </div>
 </div></div>
 </section>
-<section id="object-assignment" class="slide level2">
-<h2>Object assignment</h2>
-<p>You can create/save objects using the assignment operator <code>&lt;-</code> . This is the equivalent of <code>=</code> in other programming languages. . . .</p>
+<section id="creating-variables" class="slide level2">
+<h2>Creating variables</h2>
+<p><br>
+</p>
+<p>To hold on to a number, some text, or anything else, store it in a variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>my_fav_num <span class="ot">&lt;-</span> <span class="dv">11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>price <span class="ot">&lt;-</span> <span class="dv">11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<p>In order to be recognized as a valid object name, you have to follow certain conventions; namely, the object name should begin with a letter.</p>
+<p><br>
+</p>
+<p>You can change the meaning of a variable any time</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>price <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>price <span class="ot">&lt;-</span> price <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>price</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="naming-variables" class="slide level2">
+<h2>Naming variables</h2>
+<p>Variable names have restrictions. Roughly:</p>
+<ul>
+<li class="fragment">Start with a letter</li>
+<li class="fragment">Use only letters, numbers, and under_scores</li>
+<li class="fragment">No spaces or other funny business</li>
+<li class="fragment">No using names that already have meaning to R (like <code>sum</code> or <code>c</code>).</li>
+</ul>
+<div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">good names</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">names that cause errors</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">OK</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Not OK</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">a</td>
-<td style="text-align: left;">1trial</td>
+<td style="text-align: left;">sf49ers</td>
+<td style="text-align: left;">49ers</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">b</td>
-<td style="text-align: left;">$</td>
+<td style="text-align: left;">omgBEARS</td>
+<td style="text-align: left;">cash$$$</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">FOO</td>
-<td style="text-align: left;">^mean</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">my_var</td>
 <td style="text-align: left;">my var</td>
 </tr>
@@ -544,43 +575,121 @@ STAT 20: Introduction to Probability and Statistics
 </div>
 </div>
 </section>
-<section id="functions-on-vectors" class="slide level2">
-<h2>Functions on vectors</h2>
-<p>A <em>vector</em> is the simplest structure used in R to store data. It can be created using the function <code>c()</code>.</p>
+<section id="functions" class="slide level2">
+<h2>Functions</h2>
+<p>Functions are specially-named things that take inputs (“arguments”) and give an output (“return value”).</p>
+<div class="fragment">
+<p>R comes with some built-in functions for you:</p>
+<p><br>
+</p>
+</div>
+<div class="fragment">
+<p><code>sum</code> adds up some numbers:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>my_vector</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><br>
+</p>
+<p><code>log10</code> takes the log base 10 of a number</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">1000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="vectors" class="slide level2">
+<h2>Vectors</h2>
+<p>A <strong>vector</strong> is basically a box of stuff.</p>
+<div class="fragment">
+<p>Make a vector with the <code>c</code> function</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>my_vector</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 4</code></pre>
 </div>
 </div>
+</div>
 <div class="fragment">
-<p>A <em>function</em> operates on an R object and produces output. R has many of the mathematical functions that you would expect.</p>
+<p>Remember, all the “stuff” has to be the same kind of stuff (all numbers, all text, etc)</p>
+</div>
+</section>
+<section id="functions-on-vectors" class="slide level2">
+<h2>Functions on vectors</h2>
+<p>Some functions expect a vector as input.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(my_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
+<pre><code>[1] 2.666667</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><br>
+</p>
+<p>Other functions <em>can</em> take a vector, but will do their thing on each element:</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>nums <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(nums)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  3  5 10</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="worksheet-taxonomy-of-data" class="slide level2">
+<h2>Worksheet: <em>Taxonomy of Data</em></h2>
+<p>If you finish early, start looking at the lab (on the website)</p>
+<div id="timer_d63e077acbd623a97494ce46feb49f71c65131bc" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
 </section></section>
 <section>
-<section id="lab-1" class="title-slide slide level1 center">
-<h1>Lab 1</h1>
+<section id="your-first-lab" class="title-slide slide level1 center">
+<h1>Your First Lab</h1>
 
 </section>
-<section id="but-first-dont-forget-your-assignments" class="slide level2">
-<h2>But first: don’t forget your assignments</h2>
+<section id="aside-dont-forget-your-assignments" class="slide level2">
+<h2>Aside: don’t forget your <span style="color: #33AADD">assignments</span>!</h2>
+<div class="small">
 <ul>
-<li>Lab 1 due Tuesday at 8 am on Gradescope.</li>
-<li>“Worksheet” 0 (just 2 google surveys) due Tuesday at 8 am on Gradescope. The links to the surveys are on the gradescope assignment itself.</li>
-<li>You’ll fall behind if you didn’t read the notes and tutorial for <em>Taxonomy of Data</em> (today’s content).</li>
-<li>Start reading the notes for <em>Summarizing Categorical Data</em> (Wednesday’s content).
+<li class="fragment"><span style="color: #DD3333">See Gradescope</span>, it lists everything</li>
+<li class="fragment"><span style="color: #33AADD"><strong>Lab 1</strong></span> due Tuesday at 8 am
 <ul>
-<li>Complete your reading questions (always due the day <em>before</em> the lecture, see Gradescope).</li>
+<li class="fragment">Again, ALL assignments are submitted on Gradescope.</li>
 </ul></li>
-<li>Freely ask questions about the content the <em>Taxonomy of Data</em> or <em>Summarizing Categorical Data</em> threads on Ed.</li>
+<li class="fragment">Scan your <span style="color: #33AADD"><strong>worksheets</strong></span> to pdfs (ask a tutor how), and hold on to those scans for now.</li>
+<li class="fragment"><span style="color: #33AADD"><strong>“Class Surveys”</strong></span> (just 2 google surveys) due Tuesday at 8 am.
+<ul>
+<li class="fragment">The links to the surveys are on the gradescope assignment itself.</li>
+</ul></li>
+<li class="fragment">You’ll fall behind if you didn’t read the notes and tutorial for <em>Taxonomy of Data</em> (today’s content).</li>
+<li class="fragment">Start reading the notes for <em>Summarizing Categorical Data</em> (Wednesday’s content).
+<ul>
+<li class="fragment">Complete your reading questions (RQs) - they are quick.</li>
+<li class="fragment"><span style="color: #33AADD"><strong>RQs</strong></span> are always due the day <em>before</em> the lecture (so Thursday midnight is the deadline for the first one).</li>
+</ul></li>
+<li class="fragment">Freely ask questions about the content the <em>Taxonomy of Data</em> or <em>Summarizing Categorical Data</em> threads on Ed.</li>
 </ul>
+</div>
 <aside class="notes">
 <p>The survey links are on gradescope, they should go there and see. Ask them to please fill out both as we will use them.</p>
 <style type="text/css">
@@ -597,50 +706,32 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section id="general-lab-workflow" class="slide level2">
 <h2>General Lab Workflow</h2>
+<p>(All of this is covered in the video on the homepage)</p>
 <ol type="1">
-<li>Lab instructions are posted on the course website.</li>
-<li>You’ll click the (R) link in the upper right of the website to work in R Studio, which is running on a cloud computer for you.</li>
-<li>You’ll write a “Quarto” document that blends text and R code.</li>
-<li>When finished, you’ll “render” it to create a pdf. Download it.</li>
-<li>Go to Gradescope, find the assignment, and upload that pdf.</li>
-<li>Be sure to “assign pages” – it helps us grade faster (so you get grades back faster).</li>
+<li class="fragment">Lab instructions are posted on the course website.</li>
+<li class="fragment">You’ll click the (R) link in the upper right of the website to work in R Studio, which is running on a cloud computer for you.</li>
+<li class="fragment">You’ll write a “Quarto” document that blends text and R code.</li>
+<li class="fragment">When finished, you’ll “render” it to create a pdf, then download it.</li>
+<li class="fragment">Go to Gradescope, find the assignment, and upload that pdf.</li>
+<li class="fragment">Be sure to “assign pages” – it helps us grade faster (so you get grades back faster).</li>
 </ol>
 </section>
-<section id="if-you-havent-yet-watch-the-video-on-rstudio" class="slide level2">
-<h2>If you haven’t yet – watch the video on RStudio</h2>
+<section id="start-lab-1-rest-of-class" class="slide level2">
+<h2>Start Lab 1 (rest of class)</h2>
 <div class="columns">
-<div class="column" style="width:65%;">
-<p>It’s right at the top of the course website.</p>
-<p><strong>Then start on Lab 1 (link on website).</strong></p>
-<div class="column" style="width:10%;">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment">First <span style="color: #DD3333">watch the video on RStudio</span> if you haven’t yet.</li>
+<li class="fragment">(It’s right at the top of the course website.)</li>
+<li class="fragment">Then get cracking on the lab.</li>
+</ul>
+</div><div class="column" style="width:10%;">
 
-</div><div class="column fragment" style="width:25%;">
+</div><div class="column fragment" style="width:30%;">
 <p><img data-src="https://media.giphy.com/media/XVuBomL9gXMTC/giphy.gif" alt="Animated gif of a shoebill bird."></p>
-</div><section id="break" class="title-slide slide level1 center">
-<h1>Break</h1>
-<div id="timer_1aa4c574aa43d162b86525822442984806da9d7b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-</section>
-
-<section id="worksheet-taxonomy-of-data" class="title-slide slide level1 center">
-<h1>Worksheet: <em>Taxonomy of Data</em></h1>
-<div id="timer_1aa4c574aa43d162b86525822442984806da9d7b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-
-
-</section>
-
 </div></div>
+
+
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
