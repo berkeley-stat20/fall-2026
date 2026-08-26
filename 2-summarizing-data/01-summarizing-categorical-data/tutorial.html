@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d5d35e46843863f30c8283c4d267030e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c57ec23addff93607c17aa7e484eb7a3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -294,26 +294,34 @@ window.Quarto = {
 <section id="help-and-arguments" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="help-and-arguments">Help and Arguments</h3>
 <p>Every function in R has a built-in help file that tells you about how it works. It can be accessed using <code>?</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>This will pop up the help file in a tab next to your Files tab in the lower right hand corner of RStudio. In addition to describing what the function does, the help file lists out the function’s <strong>arguments</strong>. Arguments are the separate pieces of input that you can supply to a function and they can be <em>named</em> or <em>unnamed</em>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Normally, if you run this, it will pop open a help file in a tab next to your Files tab in the lower right hand corner of RStudio. To keep this lesson clean you’d get the output shown in the image on the right a little further down the page. Notice the “Usage” part at the top:</p>
+<pre><code>Usage:
+
+     mean(x, ...)
+     
+     ## Default S3 method:
+     mean(x, trim = 0, na.rm = FALSE, ...)</code></pre>
+<p>Normally, this will pop up the help file in a tab next to your Files tab in the lower right hand corner of RStudio. In addition to describing what the function does, the help file lists out the function’s <strong>arguments</strong> (inputs).</p>
+<p>For a moment, don’t worry about what these arguments all do. We are focusing on the distinction between arguments that are <em>required</em> versus <em>optional</em> for a function to run.</p>
+<p>How can you tell? Well, the first example code line above (<code>mean(x, ...)</code>) shows only the required arguments. In this case, only <code>x</code> is required (you need to give <code>mean</code> <em>something</em> to average).</p>
+<p>By contrast, <code>trim</code> and <code>na.rm</code> are <em>optional</em> arguments. You can tell because, in the second line above (<code>mean(x, trim = 0, na.rm = FALSE, ...)</code>), both <code>trim</code> and <code>na.rm</code> have a default setting. That is, if you don’t say otherwise, the <code>mean</code> function will run with its <code>trim</code> argument set to <code>0</code> and its <code>na.rm</code> argument set to <code>FALSE</code>. so you don’t need to set them if you don’t want to.</p>
 <p>In <em>Taxonomy of Data</em>, we created a vector called <code>my_fav_numbers</code> and then calculated its mean using the <code>mean()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_fav_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">28</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_fav_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_fav_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">28</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_fav_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.75</code></pre>
 </div>
 </div>
 <p>In the second command that we entered above, we used a single <em>unnamed argument</em>, <code>my_fav_numbers</code>. We could have alternatively written this with a <em>named argument</em>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> my_fav_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> my_fav_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.75</code></pre>
 </div>
 </div>
-<p>As the help file suggests, <code>x</code> is the R object (here a vector of numbers) that you want to take the mean of. You can always pass objects to a function as named arguments, or if you want to be more concise, you can pass it unnamed and R will rely on the <em>order</em> to figure things out.</p>
+<p>If you don’t <em>name</em> your arguments, R will just make assumptions based on the <em>order</em> of the arguments. So when you write <code>mean(my_fav_numbers)</code>, is assumes <code>my_fav_numbers</code> is <code>x</code>. This is what the help file is telling you - both what arguments exist, and what order it will assume you’re using. For simple functions like <code>mean</code>, we usually just omit the <code>x =</code> because it’s so obvious what the first argument is.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div id="fig-mean-help" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of the helpfile from the mean function." data-fig-align="center">
@@ -326,29 +334,30 @@ Figure&nbsp;1: Help file for <code>mean()</code>.
 </figcaption>
 </figure>
 </div>
-</div></div><p>To test how this actually works, let’s add a second unnamed argument to our function. From reading the help file, you learn that you can supply it a <code>trim</code> argument to trim off some percent of the highest and lowest values before computing the mean. The <strong>default value</strong> of this argument is 0, but we can change this. Let’s trim off 25% from the lower end and 25% from the upper end.</p>
+</div></div><p>To test how this actually works, let’s add a second unnamed argument to our function. From reading the help file, you learn that you can supply it a <code>trim</code> argument to trim off some percent of the highest and lowest values before computing the mean. The <strong>default value</strong> of this argument is 0 (it removes nothing), but we can change this. Let’s trim off 25% from the lower end and 25% from the upper end.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_fav_numbers, .<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_fav_numbers, .<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
 </div>
 <p>It worked! We trim off the 9 and the 28, then take <span class="math inline">\((11 + 19) / 2 = 15\)</span>. We can also write the command using named arguments. The code will be a bit more verbose but the answer will be the same.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> my_fav_numbers, <span class="at">trim =</span> .<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> my_fav_numbers, <span class="at">trim =</span> .<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
 </div>
+<p>In the professional coding world, usually the <em>required</em> arguments are not named, but any <em>optional</em> arguments are, if you use them. The code above works fine, but typically we’d write <code>mean(my_fav_numbers, trim = .25)</code>.</p>
 <p>What happens if we use unnamed arguments but change the order? Let’s find out.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(.<span class="dv">25</span>, my_fav_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(.<span class="dv">25</span>, my_fav_numbers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mean.default()`:
 ! 'trim' must be numeric of length one</code></pre>
 </div>
 </div>
-<p>Since there are no names, R looks at the second argument and expects it to be the a proportion between 0 and .5 that it will use to trim. You have passed it a vector of three integers instead, so it’s justified in complaining.</p>
+<p>Since there are no names, R looks at the second argument and expects it to be the a proportion between 0 and .5 that it will use to trim. You have passed it a vector of three integers instead, so it’s justified in complaining. The help file already told you what assumptions it’s going to make about the order, and we violated that order. So we got an error.</p>
 </section>
 <section id="libraries" class="level2">
 <h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
@@ -361,17 +370,17 @@ Figure&nbsp;1: Help file for <code>mean()</code>.
 <p>In <em>Taxonomy of Data</em>, we learned about a few different functions that can be used on vectors, such as <code>mean()</code>. We also learned about a function called <code>data.frame()</code>, which allowed us to bring vectors together as part of a new structure called a data frame, with each of the vectors used as columns.</p>
 <p>While the base functionality provided by R is powerful, developers often seek to find more efficient ways to complete tasks. In doing so, they push the power of R forward. R has a vast ecosystem of <strong>libraries</strong> that add new functions. Any installed library can be loaded with the <code>library()</code> function. Here, we will load the <code>tidyverse</code> library, one of the core external libraries that we will be using this semester.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To use these functions within this library (or any other library), you will need to run the above line of code <em>each time you start an RStudio session!</em></p>
 <p>The <code>tidyverse</code> library has many different <strong>packages</strong> which contain smaller pieces of functionality. Today, our focus is to summarize categorical data, and one avenue we have explored already is a visual summary; a bar chart. Let’s explore how the plots shown earlier in this set of notes were made. We will use <code>ggplot2</code>, <code>tidyverse</code>’s resident visualization package.</p>
 <p>First, we should load the <code>penguins</code> data into our environment. The <code>penguins</code> data is actually located in a special library made just for this course called <code>stat20data</code>. This library hosts the datasets which will be the subjects of your labs. Therefore, we need to load this library first.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat20data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat20data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then, we can load in the <code>penguins</code> data by using the aptly named <code>data</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Once you do this, you will see the <code>penguins</code> dataset, in all of its glory, appear in the environment pane at the top right of your RStudio session (you may need to click in the area once or twice).</p>
 <div class="quarto-figure quarto-figure-center">
@@ -391,11 +400,11 @@ Figure&nbsp;1: Help file for <code>mean()</code>.
 <h2 class="anchored" data-anchor-id="a-first-visualization-with-ggplot2">A first visualization with <code>ggplot2</code></h2>
 <p>The main function within the <code>ggplot2</code> package is, well, <code>ggplot()</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="tutorial_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="499"></p>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="499"></p>
 </figure>
 </div>
 </div>
@@ -404,8 +413,22 @@ Figure&nbsp;1: Help file for <code>mean()</code>.
 <p>Let’s now indicate how we want to map our <em>variables</em> to each area of the plot. For now, let’s just focus on the species of penguin; we’ll handle the island later.</p>
 <p>We had species of penguin on the horizontal (<code>x</code>) axis. This piece of information (which is known as an <strong>aesthetic attribute</strong> of the plot), goes into a second argument called <code>mapping</code> and within a function called <code>aes()</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="tutorial_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we’re getting somewhere. We can see the x axis has been set up with labels for the species of penguins.</p>
+<p>All that is left is to actually put the observations on the plot. We do this by declaring what <strong>geometry</strong> we want and adding this information to our existing code. We can add this information via a new <em>layer</em>, which can be added on by using the <code>+</code> syntax and taking a newline.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -414,12 +437,13 @@ Figure&nbsp;1: Help file for <code>mean()</code>.
 </div>
 </div>
 </div>
-<p>Now we’re getting somewhere. We can see the x axis has been set up with labels for the species of penguins.</p>
-<p>All that is left is to actually put the observations on the plot. We do this by declaring what <strong>geometry</strong> we want and adding this information to our existing code. We can add this information via a new <em>layer</em>, which can be added on by using the <code>+</code> syntax and taking a newline.</p>
+<p>The layer we added was a geometry layer corresponding to the bar chart, called <code>geom_bar()</code>.</p>
+<p>Note that the bars are not colored like before, but are just gray. This is because we are missing the island variable! Island was represented by coloring in (filling) the bars for us according to the <em>conditional proportions</em> of penguins within a specific species belonging to a specific island. We can include this by adding to our <code>aes()</code> function in the original layer.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species)) <span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fill =</span> island)) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -428,31 +452,16 @@ Figure&nbsp;1: Help file for <code>mean()</code>.
 </div>
 </div>
 </div>
-<p>The layer we added was a geometry layer corresponding to the bar chart, called <code>geom_bar()</code>.</p>
-<p>Note that the bars are not colored like before, but are just gray. This is because we are missing the island variable! Island was represented by coloring in (filling) the bars for us according to the <em>conditional proportions</em> of penguins within a specific species belonging to a specific island. We can include this by adding to our <code>aes()</code> function in the original layer.</p>
+<p>Almost there! Note that what we have right now is just a <em>stacked</em> bar chart. There’s one more fix that we need to apply. Note that <code>geom_bar()</code> can be thought of as a function as well. One of its arguments, <code>position</code>, will help us solve this issue<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <code>position</code> defaults to a stacked bar chart, but we can fix this by supplying it with <code>"fill"</code>!</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fill =</span> island)) <span class="sc">+</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fill =</span> island)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="tutorial_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Almost there! Note that what we have right now is just a <em>stacked</em> bar chart. There’s one more fix that we need to apply. Note that <code>geom_bar()</code> can be thought of as a function as well. One of its arguments, <code>position</code>, will help us solve this issue<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <code>position</code> defaults to a stacked bar chart, but we can fix this by supplying it with <code>"fill"</code>!</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fill =</span> island)) <span class="sc">+</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="tutorial_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
 </figure>
 </div>
 </div>
