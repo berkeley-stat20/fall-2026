@@ -234,6 +234,12 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
  <span class="menu-text">Summarizing Categorical Data</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-summarizing-data/02-summarizing-numerical-data/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarizing Numerical Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -311,8 +317,28 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </header>
 
 
-<p><span class="dropcap">T</span>he tools for calculating numerical summaries and graphical summaries can be cleanly divided between tools developed for categorical data and tools for numerical data. We’ll discuss each in turn, starting with categorical data.</p>
-<p>When Dr.&nbsp;Gorman collected data near Palmer Station, Antarctica, she recorded a total of eight variables on 333 penguins, 10 rows of which are presented here in a data frame.</p>
+<div class="page-overview callout callout-style-default callout-warning callout-titled" title="This page covers...">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>This page covers…
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Contingency tables</li>
+<li>Types of proportion: marginal, conditional, joint</li>
+<li>Bar chart types: stacked, normalized, dodged, etc</li>
+<li>Identifying associations between categorical variables (e.g.&nbsp;stacked+normalized bar charts)</li>
+</ul>
+</div>
+</div>
+</div>
+<p><span class="dropcap">W</span>hen Dr.&nbsp;Gorman collected data near Palmer Station, Antarctica, she recorded a total of eight variables on 333 penguins, 10 rows of which are presented here in a data frame.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 11%">
@@ -516,7 +542,7 @@ A table that shows the counts or frequencies of observations that occur in every
 </div>
 <p>The stacked bar chart puts one of the variables along the x-axis (the species) and fills up the y-axis according to the counts in each level of the other variable (the island). The side-by-side bar chart is similar, but unstacks the “Adelie” bar to put the three islands besides one another.</p>
 <p>So with two similar to charts to choose from, which one should you pick? The stacked bar chart succeeds in highlighting the total number of Adelie penguins: 146 (also the sum of the top row of the contingency table). The side-by-side version makes that total harder to see, but it is easier to see at a glance the relative sizes of which islands each of those Adelie penguins came from.</p>
-<div id="fig-two-var" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Sketch showing the flow for two variables from raw data to contingency table to barchart." data-fig-align="center">
+<div id="fig-two-var" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Sketch showing the flow for two variables from raw data to contingency table to barchart.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-two-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/two-var.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Sketch showing the flow for two variables from raw data to contingency table to barchart." width="550">

@@ -45,8 +45,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-c7fa3960d0020bc158dbab5312b7b17d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -232,6 +230,12 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
  <span class="menu-text">Summarizing Categorical Data</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../2-summarizing-data/02-summarizing-numerical-data/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarizing Numerical Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -306,6 +310,24 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </header>
 
 
+<div class="page-overview callout callout-style-default callout-warning callout-titled" title="This page covers...">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>This page covers…
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Types of claims (Summary, Generalization, Prediction, Causal)</li>
+</ul>
+</div>
+</div>
+</div>
 <section id="intro-and-syllabus" class="level2">
 <h2 class="anchored" data-anchor-id="intro-and-syllabus">Intro and Syllabus</h2>
 <p><strong>Welcome to Stat 20!</strong> We are very excited to have you here this semester. There are no reading questions for today’s content, but make sure that by the end of class you have:</p>
@@ -362,44 +384,6 @@ A guess about the value of an unknown variable, based on other known variables.
 <p>Example: Based on reading the news and the price of Uber’s stock today, I predict that Uber’s stock price will go up 1.2% tomorrow.</p>
 <p><strong>Want to practice?</strong></p>
 <p>We’ll practice these concepts in class, but for more problems / studying, check out this week’s extras - specifically the one on <a href="../../extras/types-of-claims.html">Types of Claims</a></p>
-<!-- ## Intro to R and RStudio -->
-<!-- If our goal is to construct a claim with data, we need a tool to aid in the construction. Our tool must be able to do two things: it must be able to **store** the data and it must be able to perform **computations** on the data. -->
-<!-- In high school, you gained experience with one such tool: the graphing calculator. This fits our needs: you can enter a list of number into a graphing calculator like the Ti-84, it can store that list and it can execute computations on it, such as taking its sum. But the types of data that a calculator can store are very limited, as is the volume of data, as are the options for computation. -->
-<!-- In this class, we will use a tool that is far more powerful: the computer language called R. The Ti-84 is to R what a tricycle is to the space ship. One of these tools can bring you to the end of the block; the other to the moon. -->
-<!-- R is one of the most powerful languages for doing statistics and data science. One of the reasons for its power and popularity is that it is both free and open-source.  This turns languages like R into something that resembles Wikipedia: a collaborative effort that is constantly evolving. Extensions to the R language have been authored by professional programmers[^pro], people working in industry and government[^gov], professors[^prof], and students like you[^ug]. -->
-<!-- [^pro]: The `googlesheets4` package, which reads spreadsheet data into R was authored by Jenny Bryan, a developer at Posit: :<https://googlesheets4.tidyverse.org/>. -->
-<!-- [^gov]: The statistics office of the province of British Columbia maintains a public R package with all of their data: <https://bcgov.github.io/bcdata/> -->
-<!-- [^prof]: Dr. Christopher Paciorek in the Department of Statistics at UC Berkeley maintains a package to fit a very broad class of statistical models called Bayesian Models: <https://r-nimble.org/>. -->
-<!-- [^ug]: Simon Couch wrote the `stacks` package for model ensembling while an undergraduate <https://stacks.tidymodels.org/index.html>. -->
-<!-- You'll be writing and running code through an app called RStudio. Beyond writing R code, RStudio allows you to manage your files and author polished documents that weave together code and text. RStudio can be run through a browser and we have set up an account for you that you can access by sending a browser tab to <https://stat20.datahub.berkeley.edu/> or clicking the  link in the upper right corner of the course website. -->
-<!-- When you log into RStudio, the place where you can type and run R code is called the **console** and it's located right here: -->
-<!-- ![The R console in RStudio.](images/rstudio-console.png){#fig-console fig-alt="Screenshot showing RStudio in the browser with the console circled in green." fig-align=center} -->
-<!-- :::{.callout-tip} -->
-<!-- ## Code along -->
-<!-- As you read through these notes, keep RStudio open in another window to code along at the console. -->
-<!-- ::: -->
-<!-- ## R as a Calculator -->
-<!-- Although R is like a space ship capable of going to the moon, it's also more than able to go to the end of the block. Type the sum `1 + 2` into the console (the area to the right of the `>`) and press Enter. What you should see is this: -->
-<!-- ```{r} -->
-<!-- 1 + 2 -->
-<!-- ``` -->
-<!-- All of the arithmetic operations work in R. -->
-<!-- ```{r} -->
-<!-- 1 - 2 -->
-<!-- 1 * 2 -->
-<!-- 1 / 2 -->
-<!-- ``` -->
-<!-- Each of these four lines of code is called a **command** and the response from R is the **output**. The `[1]` at the beginning of the output is there just to indicate that it is the first element of the output. This helps you keep track of things when the output spans many lines. -->
-<!-- Although it is easiest to read code when the numbers are separated from the operator by a single space, it's not necessary. R ignores all spaces when it runs your code, so each of the following also work. -->
-<!-- ```{r} -->
-<!-- 1/2 -->
-<!-- 1   /         2 -->
-<!-- ``` -->
-<!-- You can add exponents by using `^`, but don't forget about the order of operations. If you want an alternative ordering, use parentheses. -->
-<!-- ```{r} -->
-<!-- 2 ^ 3 + 1 -->
-<!-- 2 ^ (3 + 1) -->
-<!-- ``` -->
 
 
 </section>
