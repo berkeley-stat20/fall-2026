@@ -253,7 +253,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
   <li><a href="#the-na.rm-argument-which-youll-use-far-more-often" id="toc-the-na.rm-argument-which-youll-use-far-more-often" class="nav-link" data-scroll-target="#the-na.rm-argument-which-youll-use-far-more-often">The <code>na.rm</code> argument, which you’ll use far more often</a></li>
   <li><a href="#one-last-point-about-named-arguments-and-optional-arguments" id="toc-one-last-point-about-named-arguments-and-optional-arguments" class="nav-link" data-scroll-target="#one-last-point-about-named-arguments-and-optional-arguments">One last point about named arguments and optional arguments</a></li>
   </ul></li>
-  <li><a href="#more-about-libraries" id="toc-more-about-libraries" class="nav-link" data-scroll-target="#more-about-libraries">More about libraries</a></li>
+  <li><a href="#more-about-packages" id="toc-more-about-packages" class="nav-link" data-scroll-target="#more-about-packages">More about packages</a></li>
   <li><a href="#a-first-visualization-with-ggplot" id="toc-a-first-visualization-with-ggplot" class="nav-link" data-scroll-target="#a-first-visualization-with-ggplot">A first visualization with <code>ggplot</code></a></li>
   </ul>
 </nav>
@@ -296,6 +296,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <ul>
 <li>Using “help” pages to understand how a function works</li>
 <li>Arguments to functions: required or optional, named or unnamed</li>
+<li>More about packages (<code>tidyverse</code>, <code>stat20data</code>)</li>
 <li>Making plots with <code>ggplot</code></li>
 <li>Making bar charts</li>
 <li>Setting colors and other “aesthetic attributes”</li>
@@ -466,28 +467,28 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 <p>This is equivalent to saying <code>mean(penguin_weights, trim = 0.2, na.rm = TRUE)</code>. You put the argument values in the right places, so R got the idea.</p>
 </section>
 </section>
-<section id="more-about-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="more-about-libraries">More about libraries</h2>
-<p>We talked about libraries in an <a href="1-questions-and-data/02-taxonomy-of-data/tutorial-part-3.qmd">earlier</a> tutorial. Let’s learn a bit more.</p>
+<section id="more-about-packages" class="level2">
+<h2 class="anchored" data-anchor-id="more-about-packages">More about packages</h2>
+<p>We talked about packages in an <a href="1-questions-and-data/02-taxonomy-of-data/tutorial-part-3.qmd">earlier</a> tutorial. Let’s learn a bit more.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/tidyverse-hex.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
-<figcaption>The <code>tidyverse</code> library, which contains many useful librarys for data science</figcaption>
+<figcaption>The <code>tidyverse</code> package, which contains many useful packages for data science</figcaption>
 </figure>
 </div>
 <p>In <em>Intro to Coding</em> (linked to above), we learned about a few different functions that can be used on vectors, such as <code>mean()</code>. We also learned about a function called <code>data.frame()</code>, which allowed us to bring vectors together as part of a new structure called a data frame, with each of the vectors used as columns.</p>
-<p>While the base functionality provided by R is powerful, developers often seek to find more efficient ways to complete tasks. In doing so, they push the power of R forward. R has a vast ecosystem of <strong>libraries</strong> that add new functions. Any installed library can be loaded with the <code>library()</code> function. Here, we will load the <code>tidyverse</code> library, one of the core external libraries that we will be using this semester.</p>
+<p>While the base functionality provided by R is powerful, developers often seek to find more efficient ways to complete tasks. In doing so, they push the power of R forward. R has a vast ecosystem of <strong>libraries</strong> that add new functions. Any installed package can be loaded with the <code>library()</code> function. Here, we will load the <code>tidyverse</code> package, one of the core external libraries that we will be using this semester.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>To use these functions within this library (or any other library), you will need to run the above line of code <em>each time you start an RStudio session!</em></p>
-<p>The <code>tidyverse</code> library is actually a collection of smaller libraries, all of which are useful to us. You don’t need to know their names, but here’s the main ones we care about:</p>
+<p>To use these functions within this package (or any other package), you will need to run the above line of code <em>each time you start an RStudio session!</em></p>
+<p>The <code>tidyverse</code> package is actually a collection of smaller packages, all of which are useful to us. You don’t need to know their names, but here’s the main ones we care about:</p>
 <ul>
 <li><code>ggplot</code> - for making plots and graphs</li>
 <li><code>dplyr</code> - for creating summary tables, cleaning up your data frame, making new columns, and other “data wrangling” tasks (coming soon)</li>
 </ul>
-<p>Today, our focus is to summarize categorical data, and one avenue we have explored already is a visual summary; a bar chart. Let’s explore how the plots shown earlier in this set of notes were made. We will use <code>ggplot</code>, <code>tidyverse</code>’s resident visualization library.</p>
-<p>First, we should load the <code>penguins</code> data into our environment. The <code>penguins</code> data is actually located in a special library made just for this course called <code>stat20data</code>. This library hosts the datasets which will be the subjects of your labs. Therefore, we need to load this library first.</p>
+<p>Today, our focus is to summarize categorical data, and one avenue we have explored already is a visual summary; a bar chart. Let’s explore how the plots shown earlier in this set of notes were made. We will use <code>ggplot</code>, <code>tidyverse</code>’s resident visualization package.</p>
+<p>First, we should load the <code>penguins</code> data into our environment. The <code>penguins</code> data is actually located in a special package made just for this course called <code>stat20data</code>. This package hosts the datasets which will be the subjects of your labs. Therefore, we need to load this package first.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat20data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -521,7 +522,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 </div>
 </div>
-<p>The main function within the <code>ggplot</code> library is, well, <code>ggplot()</code>.</p>
+<p>The main function within the <code>ggplot</code> package is, well, <code>ggplot()</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
