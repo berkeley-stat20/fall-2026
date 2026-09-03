@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/extras.html",
-    "items": []
-  },
-  {
     "listing": "/assignments.html",
     "items": [
       "/2-summarizing-data/labs/class-survey/part-2.html",
@@ -15,6 +11,10 @@
   },
   {
     "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/extras.html",
     "items": []
   }
 ]

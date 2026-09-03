@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c7fa3960d0020bc158dbab5312b7b17d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5d875e6ff9b80b3ef1fcd9a5d370b0e3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -536,7 +536,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal:
+<span class="screen-reader-only">Warning</span>“Desiderata” (what we want this visualization to do for us)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -545,7 +545,7 @@ window.Quarto = {
 </ul>
 </div>
 </div>
-<p>The most commonly used graphic that fulfills this criterion is the <strong>dot plot</strong>.</p>
+<p>One commonly used graphic that fulfills this criterion is the <strong>dot plot</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -556,14 +556,25 @@ window.Quarto = {
 </div>
 </div>
 <p>The dot plot is, in effect, a one-dimensional scatter plot. Each observation shows up as a dot and its value corresponds to its location along the x-axis. Importantly, it fulfills our desiderata: given this graphic, one can recreate the original data perfectly. There was no information loss.</p>
-<p>As the number of observations grow, however, this sort of graphical summary becomes unwieldy. Instead of trying to show the value of <em>every</em> observation, it becomes more practical to focus on the general distribution of the data overall. Let’s consider a broader goal for our graphic.</p>
+<p>A close relative of the dot plot is the <strong>rug plot</strong>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There’s just a little vertical line where every penguin’s bill length is.</p>
+<p>If we have a LOT of data, though, both of these plots get very cluttered and unweildy. Instead of trying to show the value of <em>every</em> observation, it becomes more practical to focus on the general trends of the data overall. Let’s consider a broader goal for our graphic.</p>
 <div class="callout callout-style-simple callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal:
+<span class="screen-reader-only">Warning</span>“Desiderata”
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -572,14 +583,14 @@ window.Quarto = {
 </ul>
 </div>
 </div>
-<p>There are several types of graphics that meet this criterion: the histogram, the density plot, and the violin plot.</p>
+<p>Basically, “simplify things to show us the forest, but don’t totally hide the trees.” There are several types of graphics that meet this criterion: the histogram, the density plot, and the violin plot.</p>
 <section id="histograms" class="level3">
 <h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -594,7 +605,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -609,7 +620,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -621,7 +632,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -637,7 +648,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal:
+<span class="screen-reader-only">Warning</span>“Desiderata”
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -652,18 +663,18 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The distribution of bill length in each species is represented by a shape that often looks like a violin but is in fact a simple density curve reflected about its x-axis. This means that you can tinker with a violin plot the same as a density plot, by changing the <code>bandwidth</code>.</p>
+<p>What do we make of these “violin” shapes? Well, the upper half of a violin plot is just a density curve. What you’d get with <code>geom_density</code>. The bottom half is just a reflection of that density curve about the x-axis. Since it’s based on density curves, you can tinker with the smoothness by changing the <code>bandwidth</code> (larger = smoother).</p>
 <p>A more clear, but information-light graphic is the box plot:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -685,7 +696,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -726,12 +737,12 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal of our statistic:
+<span class="screen-reader-only">Warning</span>“Desiderata”
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Synthesizes the magnitudes of all <span class="math inline">\(n\)</span> observations.</li>
+<li>Combines the values of all <span class="math inline">\(n\)</span> observations.</li>
 <li>Is as close as possible to all of the observations.</li>
 </ul>
 </div>
@@ -749,7 +760,7 @@ window.Quarto = {
 \]</span></p>
 <p>where <span class="math inline">\(x_1\)</span> is the first observation, <span class="math inline">\(x_2\)</span> is the second observation, and so on till the <span class="math inline">\(n^{th}\)</span> observation, <span class="math inline">\(x_n\)</span>; and <span class="math inline">\(\bar{x}\)</span> is said “x bar”.</p>
 <p>The mean is the most commonly used measure of center, but has one notable drawback. What if one of our observations is an <em>outlier</em>, that is, has a value far more extreme than the rest of the data?</p>
-<p>Imagine there is a small restaurant, and we have a list of all 8 employees annual salaries (in thousands of dollars)</p>
+<p>Imagine there is a small restaurant, and we have a list of all employees annual salaries (in thousands of dollars)</p>
 <pre><code>25 40 35 40 30 30 40 45 500</code></pre>
 <p>Notice everyone makes about the same amount, $35,000 or so, except the owner, who makes $500,000!</p>
 <p>If we ask, “how much do employees at this coffee shop make, generally?” we could simply take the mean</p>
@@ -764,7 +775,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal of our statistic:
+<span class="screen-reader-only">Warning</span>“Desiderata”
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -791,7 +802,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal of our statistic:
+<span class="screen-reader-only">Warning</span>“Desiderata”
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -823,18 +834,18 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Goal of our statistic:
+<span class="screen-reader-only">Warning</span>“Desiderata”
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
 <li>The statistic should be low when the numbers are very similar to one another.</li>
 <li>The statistic should be high when the numbers are very different.</li>
-<li>The statistic should not depend on how much data - only the shape.</li>
+<li>The statistic should not change much if we collect more data.</li>
 </ul>
 </div>
 </div>
-<p>These goals are not met by every measure of spread. Here is one such measure of spread which does not meet any of the three!</p>
+<p>These goals are not met by every measure of spread. Let’s explore a few.</p>
 <section id="range" class="level4">
 <h4 class="anchored" data-anchor-id="range">Range</h4>
 <p>The range of a set of numbers is simply the maximum number in the dataset minus its minimum.</p>
@@ -914,15 +925,15 @@ window.Quarto = {
 <li><strong>Using the mean (42):</strong>
 <ul>
 <li>This time, we say, “I’m guessing Alice is 4<strong>2</strong> inches tall!”</li>
-<li>We compute the distances, we get <code>40 - 42 = -2</code>, <code>42 - 41 = 1</code>, and <code>45 - 42 = 3</code>. So the distances (deviations) are -2, -1, and 3.</li>
+<li>We compute the distances, we get <code>40 - 42 = -2</code>, <code>41 - 42 = -1</code>, and <code>45 - 42 = 3</code>. So the distances (deviations) are -2, -1, and 3.</li>
 <li>Mean absolute deviation = <span class="math inline">\(2\)</span>:
 <ul>
 <li>If we make all those distances positive and average them, we get 2: (the average of 2, 1, and 3).</li>
-<li>Notice this is HIGHER than if we had used the median (41) as our guess, where that led to a mean absolute deviation of only <span class="math inline">\(1.66\overline{6}\)</span>.</li>
+<li>Notice this is HIGHER than if we had used the median (41) as our guess, which led to a mean absolute deviation of only <span class="math inline">\(1.66\overline{6}\)</span>.</li>
 </ul></li>
-<li>Mean squared deviation = <span class="math inline">\(4\)</span>:
+<li>Mean squared deviation = <span class="math inline">\(4.66\overline{6}\)</span>:
 <ul>
-<li>If we <em>square</em> the distances before averaging them, we get <span class="math inline">\(\frac{(-2)^2 + (-1)^2 + 3^2}{3} = 4\)</span>.</li>
+<li>If we <em>square</em> the distances before averaging them, we get <span class="math inline">\(\frac{(-2)^2 + (-1)^2 + 3^2}{3} = \frac{14}{3} = 4.66\overline{6}\)</span>.</li>
 <li>Notice this is LOWER than the mean squared deviation when we used the median (41) as our guess. There, the a mean absolute deviation was <span class="math inline">\(5.66\overline{6}\)</span>.</li>
 </ul></li>
 </ul></li>

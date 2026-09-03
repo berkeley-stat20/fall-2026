@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0cda58dd3cce4f25ad5ea7e09172928e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-52ac2789ead9d517d89ee94e1b4ba4f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -409,6 +409,8 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Like most <code>dplyr</code> functions, the first argument to <code>group_by()</code> is a data frame. The second argument is the name of the variable that you want to use to delineate groups. In this case, we want to group by species to calculate three separate mean/standard deviation pairs.</p>
+<p>But look at the dataframe output above. It looks like… it didn’t change the data frame at all! Except notice the little <code>Groups: species [3]</code> annotation at the top of the table. Basically, <code>group_by</code> doesn’t change the dataframe, but it makes notes of which rows belong in which groups. The <code>Groups: species [3]</code> is telling you “I am tracking which rows belong to each species of penguin. There are 3 different species that I see.”</p>
+<p>Downstream, other functions may make use of these groups when they do their job….</p>
 <p>But look at the dataframe output above. It looks like… it didn’t change the data frame at all! Except notice the little <code>Groups: species [3]</code> annotation at the top of the table. Basically, <code>group_by</code> doesn’t change the dataframe, but it makes notes of which rows belong in which groups. The <code>Groups: species [3]</code> is telling you “I am tracking which rows belong to each species of penguin. There are 3 different species that I see.”</p>
 <p>Downstream, other functions may make use of these groups when they do their job….</p>
 <p>Now, assuming we roll with our new <code>grouped_penguins</code> data frame, we can use <code>summarize()</code> like we did before!</p>
