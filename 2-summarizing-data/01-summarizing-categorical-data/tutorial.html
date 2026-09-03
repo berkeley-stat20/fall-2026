@@ -265,7 +265,10 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
   <li><a href="#the-na.rm-argument-which-youll-use-far-more-often" id="toc-the-na.rm-argument-which-youll-use-far-more-often" class="nav-link" data-scroll-target="#the-na.rm-argument-which-youll-use-far-more-often">The <code>na.rm</code> argument, which you’ll use far more often</a></li>
   <li><a href="#one-last-point-about-named-arguments-and-optional-arguments" id="toc-one-last-point-about-named-arguments-and-optional-arguments" class="nav-link" data-scroll-target="#one-last-point-about-named-arguments-and-optional-arguments">One last point about named arguments and optional arguments</a></li>
   </ul></li>
-  <li><a href="#more-about-packages" id="toc-more-about-packages" class="nav-link" data-scroll-target="#more-about-packages">More about packages</a></li>
+  <li><a href="#more-about-packages" id="toc-more-about-packages" class="nav-link" data-scroll-target="#more-about-packages">More about packages</a>
+  <ul>
+  <li><a href="#installing-vs-loading-a-package" id="toc-installing-vs-loading-a-package" class="nav-link" data-scroll-target="#installing-vs-loading-a-package"><em>Installing</em> vs <em>Loading</em> a package</a></li>
+  </ul></li>
   <li><a href="#a-first-visualization-with-ggplot" id="toc-a-first-visualization-with-ggplot" class="nav-link" data-scroll-target="#a-first-visualization-with-ggplot">A first visualization with <code>ggplot</code></a></li>
   </ul>
 </nav>
@@ -335,7 +338,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZW52aXIiOiJ0
 <p>Every function in R has a built-in help file that tells you about how it works. It can be accessed using <code>?</code>.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<div id="fig-mean-help" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of the helpfile from the mean function." data-fig-align="center">
+<div id="fig-mean-help" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Screenshot of the helpfile from the mean function.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mean-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/mean-help.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Screenshot of the helpfile from the mean function." width="300">
@@ -384,7 +387,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 <p><strong>OK so who cares?</strong></p>
 <p>Many functions offer extra <em>optional</em> arguments, which fine-tune how the function runs. The second “Usage” line in the help file is showing you this:</p>
 <pre><code>     mean(x, trim = 0, na.rm = FALSE, ...)</code></pre>
-<p>All of the arguments that end in <code>= (something)</code> are “optional.” To demonstrate, let’s see what <code>trim</code> and <code>na.rm</code> do. Here is <code>mean</code> without either of them:</p>
+<p>All of the arguments that end in <code>= (something)</code> are “optional.” In this function, all arguments are optional except <code>x</code>. <code>x</code> is a <em>required</em> argument, you HAVE to set it. <code>mean</code> NEEDS numbers to do anything useful at all. But the others arguments are optional. Tweaks to how <code>mean</code> behaves.</p>
+<p>To demonstrate, let’s see what <code>trim</code> and <code>na.rm</code> do. Here is <code>mean</code> without either of them:</p>
 <div class="cell" data-envir="tutorial_2_01">
 <div>
 <div id="webr-4" class="exercise-cell">
@@ -395,7 +399,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>The average of these numbers is huge (2030) because you have a giant outlier value (1000) pulling things up. Sometimes you want to discard such outliers. That is, you want to <em>trim off</em> extreme values before taking the mean. This is what <code>trim</code> does:</p>
+<p>The average of these numbers is huge (2030) because you have a giant outlier value (10000) pulling things up. Sometimes you want to discard such outliers. That is, you want to <em>trim off</em> extreme values before taking the mean. This is exactly what <code>trim</code> does:</p>
 <div class="cell" data-envir="tutorial_2_01">
 <div>
 <div id="webr-5" class="exercise-cell">
@@ -406,11 +410,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>This says, “Get rid of the highest 20% of the data and the lowest 20% of the data. Take the mean of the rest.” There’s 5 numbers in the list, so 20% means we cut off the 1 lowest value (<code>0</code>) and the 1 highest value (<code>10000</code>). The result is that we only compute the mean of 46, 49, and 55 (whose mean is 50).</p>
-<p>Look again at our code line, <code>mean(scores, trim = 0.2)</code>. We called <code>mean</code> with two arguments: one required argument (whose name we just omitted), and one optional argument (whose name we gave).</p>
-<p>Also notice the <code>= 0</code> in the help page line:</p>
+<p>The <code>trim = 0.2</code> says, “Ignore the highest 20% of the data and the lowest 20% of the data. Take the mean of what’s left (the middle 60%).” There’s 5 numbers in the list, so 20% means we ignore the 1 lowest value (<code>0</code>) and the 1 highest value (<code>10000</code>) and compute the mean of what’s left: 46, 49, and 55 (whose mean is 50).</p>
+<p>The original <code>scores</code> vector is unchanged by all this. We just told <code>mean</code> to do its calculation a little differently.</p>
+<p>Also, notice the <code>= 0</code> in the help page line:</p>
 <pre><code>mean(x, trim = 0, na.rm = FALSE, ...)</code></pre>
-<p>The <code>trim = 0</code> means that 1) <code>trim</code> is an optional argument, and 2) if you don’t use this argument, <code>mean</code> is going to default to trimming nothing. You can explicitly set <code>trim = 0</code> to see for yourself that it does nothing:</p>
+<p>The fact that <code>trim</code> is followed by <code>= 0</code> means that 1) <code>trim</code> is an optional argument, and 2) if you don’t set this argument, <code>mean</code> is going to assume it is zero (and trim nothing). You can explicitly set <code>trim = 0</code> to see for yourself that it does nothing:</p>
 <div class="cell" data-envir="tutorial_2_01">
 <div>
 <div id="webr-6" class="exercise-cell">
@@ -450,7 +454,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 <p>You have to <em>explicitly</em> tell R that you are okay dropping the <code>NA</code> values from the calculation. This is the purpose of the argument <code>na.rm</code> (as in, “<strong>r</strong>e<strong>m</strong>ove <strong>NA</strong>s”).</p>
 <p>Again, look at the documentation where it says:</p>
 <pre><code>mean(x, trim = 0, na.rm = FALSE, ...)</code></pre>
-<p>Notice the <code>na.rm = FALSE</code>. So unless you say otherwise, it’s not going to remove <code>NA</code> values before doing the mean. You have to explicitly set it to <code>TRUE</code>:</p>
+<p>Notice the <code>na.rm = FALSE</code>. So unless you say otherwise, it’s <em>not</em> going to remove <code>NA</code> values before doing the mean. You have to explicitly set it to <code>TRUE</code>:</p>
 <div class="cell" data-envir="tutorial_2_01">
 <div>
 <div id="webr-9" class="exercise-cell">
@@ -461,7 +465,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>Now this works. You have <strong>changed a default argument</strong> (<code>na.rm</code>) from FALSE to TRUE.</p>
+<p>Now this works. Setting <code>na.rm = TRUE</code> removed the <code>NA</code> before averaging the numbers. It didn’t change the original vector – <code>penguin_weights</code> still has an <code>NA</code> in it – it just now ignores that <code>NA</code> when doing the calculation.</p>
+<p>You accompished this by <strong>changing a default argument</strong> (<code>na.rm</code>) from <code>FALSE</code> to <code>TRUE</code>.</p>
 </section>
 <section id="one-last-point-about-named-arguments-and-optional-arguments" class="level3">
 <h3 class="anchored" data-anchor-id="one-last-point-about-named-arguments-and-optional-arguments">One last point about named arguments and optional arguments</h3>
@@ -484,19 +489,19 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 <p>We talked about packages in an <a href="1-questions-and-data/02-taxonomy-of-data/tutorial-part-3.qmd">earlier</a> tutorial. Let’s learn a bit more.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/tidyverse-hex.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
-<figcaption>The <code>tidyverse</code> package, which contains many useful packages for data science</figcaption>
+<p><img src="images/tidyverse-hex.png" style="width:25.0%;height:25.0%" class="figure-img"></p>
+<figcaption>The <code>tidyverse</code> library, which contains many useful packages for data science</figcaption>
 </figure>
 </div>
 <p>In <em>Intro to Coding</em> (linked to above), we learned about a few different functions that can be used on vectors, such as <code>mean()</code>. We also learned about a function called <code>data.frame()</code>, which allowed us to bring vectors together as part of a new structure called a data frame, with each of the vectors used as columns.</p>
-<p>While the base functionality provided by R is powerful, developers often seek to find more efficient ways to complete tasks. In doing so, they push the power of R forward. R has a vast ecosystem of <strong>libraries</strong> that add new functions. Any installed package can be loaded with the <code>library()</code> function. Here, we will load the <code>tidyverse</code> package, one of the core external libraries that we will be using this semester.</p>
+<p>While the base functionality provided by R is powerful, developers often seek to find more efficient ways to complete tasks. In doing so, they push the power of R forward. R has a vast ecosystem of <strong>packages</strong> that add new functions. Any installed package can be loaded with the <code>library()</code> function. As in, “go into the library and find this package and load it.” Let’s load <code>tidyverse</code>, which has a lot of the core functionality we will use in this course:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>To use these functions within this package (or any other package), you will need to run the above line of code <em>each time you start an RStudio session!</em></p>
+<p>You will need to have this code at the top of *every quarto document where you want to use <code>tidyverse</code> functions. More on that later.</p>
 <p>The <code>tidyverse</code> package is actually a collection of smaller packages, all of which are useful to us. You don’t need to know their names, but here’s the main ones we care about:</p>
 <ul>
-<li><code>ggplot</code> - for making plots and graphs</li>
+<li><code>ggplot</code> (also called <code>ggplot2</code>) - for making plots and graphs</li>
 <li><code>dplyr</code> - for creating summary tables, cleaning up your data frame, making new columns, and other “data wrangling” tasks (coming soon)</li>
 </ul>
 <p>Today, our focus is to summarize categorical data, and one avenue we have explored already is a visual summary; a bar chart. Let’s explore how the plots shown earlier in this set of notes were made. We will use <code>ggplot</code>, <code>tidyverse</code>’s resident visualization package.</p>
@@ -520,11 +525,29 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 <p><img src="images/viewer.png" class="quarto-figure quarto-figure-center figure-img" style="width:50.0%;height:50.0%"></p>
 </figure>
 </div>
-<p>Now, we’re ready to write some <code>ggplot</code> code and make our first visualization of the year! We will create the exact stacked, normalized bar chart you saw earlier in the notes.</p>
+<section id="installing-vs-loading-a-package" class="level3">
+<h3 class="anchored" data-anchor-id="installing-vs-loading-a-package"><em>Installing</em> vs <em>Loading</em> a package</h3>
+<p>Think of a package as a book. When your computer reads that book, it learns new things, new functions, which you can then use and the computer will now understand. It can’t understand <code>ggplot</code> until it’s read the <code>tidyverse</code> book.</p>
+<p>Before you can <em>read</em> a book, you have to get your hands on a copy of it. This is what <strong>installing</strong> a package does. It downloads the package contents onto your computer’s hard drive, permanently storing it. It’s like you are “buying the book” and putting it on your bookshelf. You have it forever. That doesn’t mean you’ve read it, though…</p>
+<p>When you <strong>load</strong> a package, you are telling R to actually open the book and read it. Then it actually learns what (say) <code>ggplot</code> means, so it can understand your commands that use it. If you ever restart R, it gets a full brain-wipe and forgets every package it’s ever loaded. So you have to do it again. You have to load packages fresh in every Quarto document you work in.</p>
+<p>If you tell R to read a book that isn’t on its bookshelf, it will complain. You have to install a package before you can load it.</p>
+<p>Code wise:</p>
+<ul>
+<li><em>Installing</em> a new package looks like this: <code>install.packages("tidyverse")</code>
+<ul>
+<li>You will rarely have to do this in Stat 20. We have pre-installed almost all the packages you’ll ever need in this course.</li>
+<li>You only need to run <code>install.packages</code> once, as it stores real files on the computer’s hard drive. Install it once, <code>tidyverse</code> will forever be ready for reading. Even if you restart R, your computer still has the files it needs for this package, so you don’t need to install it again.</li>
+</ul></li>
+<li><em>Loading</em> a package looks like this: <code>library(tidyverse)</code>
+<ul>
+<li>You need to do this at the top of every Quarto file you work on. When you “render” your Quarto document, the first thing that happens is that R’s “brain” gets wiped, forgetting all the variables and every package it’s ever read, and then it runs your code fresh from the top down. So be sure your Quarto documents always have the right package-loading lines at the top.</li>
+</ul></li>
+</ul>
+</section>
 </section>
 <section id="a-first-visualization-with-ggplot" class="level2">
 <h2 class="anchored" data-anchor-id="a-first-visualization-with-ggplot">A first visualization with <code>ggplot</code></h2>
-<p>Before we start, here’s the plot we’re going to build towards:</p>
+<p>Now, we’re ready to write some <code>ggplot</code> code and make our first visualization of the year! We will create the exact stacked, normalized bar chart you saw earlier in the notes:</p>
 <div class="cell" data-layout-align="center" data-autorun="true">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -534,6 +557,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 </div>
 </div>
+<p>We can’t tell how many penguins are on each island or of each species from this plot, but we can see how island and species are <em>associated</em>. Remember, this plot is “normalized,” meaning each total bar height is the same. You’re comparing the mix of colors in each bar to see if they vary (indicating an association between the variables).</p>
 <p>The main function within the <code>ggplot</code> package is, well, <code>ggplot()</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -625,7 +649,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 <p>And there we have it. Each bar has the same height, and the y axis shows us what <em>proportion</em> of those specific penguins live on each island. You can see that Chinstraps exclusively live on Dream Island, Gentoos on Biscoe Island, and Adelies live on all three islands in roughly equal measure.</p>
 <p><strong>One more type of bar chart: dodged.</strong></p>
-<p>A side-by-side (dodged) bar chart can be produced by replacing <code>"fill"</code> with <code>"dodge"</code>.</p>
+<p>A side-by-side (dodged) bar chart can be produced by replacing <code>"fill"</code> with <code>"dodge"</code>. It makes a separate bar for each species-island combination, but puts same-species bars clustered together. Sometimes this is a helpful way to look at it:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, </span>
@@ -640,7 +664,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 </div>
 <p>Depending on what you’re doing, any of these plots might be the right choice. There are always judgment calls in data visualization – how do you make it easy for the right story to jump off the page?</p>
-<p>We have a whole unit on the <em>art</em> of data visualization in a few weeks. We think you’ll enjoy it.</p>
+<p>We have a whole unit on the art and science of data visualization in a few weeks. We think you’ll enjoy it.</p>
 
 
 <script type="webr-data">
