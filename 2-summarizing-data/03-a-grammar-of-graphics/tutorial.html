@@ -321,7 +321,7 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Indl
 </script>
 </div>
 </div>
-<p>The Grammar of Graphics is an abstract framework of data visualization and so far we’ve kept things abstract. But to construct your own plots you’ll need to be able to implement them in software. We are fortunate to have a translation of the grammar into readible, flexible, and powerful code: the ggplot2 package in R (found within <code>library(tidyverse)</code>).</p>
+<p>The Grammar of Graphics is an abstract framework of data visualization and so far we’ve kept things abstract. But to construct your own plots you’ll need to be able to implement them in software. We are fortunate to have a translation of the grammar into readable, flexible, and powerful code: the ggplot2 package in R (found within <code>library(tidyverse)</code>).</p>
 <p>The basic template for describing a plot in code using <code>ggplot2</code> is:</p>
 <div style="font-size: 1.5em; text-align: center">
 <pre><code>ggplot(DATAFRAME, aes(ATTR = VAR)) +
@@ -610,7 +610,7 @@ This is the power of scaling. From one data set, you can convey four different (
 
 
 ::: {.cell layout-align="center" envir='tutorial_2_03' autorun='false' exercise='2_03_ex_14'}
-```sorrzo
+```bbrwja
 #| envir: tutorial_2_03
 #| autorun: false
 #| fig-align: center
@@ -648,7 +648,7 @@ The result was a data frame with 707 rows (one for every respondent) and 2 colum
 
 
 ::: {.cell envir='tutorial_2_03' autorun='false' exercise='2_03_ex_15'}
-```sorrzo
+```bbrwja
 #| envir: tutorial_2_03
 #| autorun: false
 #| exercise: 2_03_ex_15
@@ -674,7 +674,7 @@ One approach to fixing the problem of points piled on top of one another is to u
 
 
 ::: {.cell envir='tutorial_2_03' autorun='false' exercise='2_03_ex_16'}
-```sorrzo
+```bbrwja
 #| envir: tutorial_2_03
 #| autorun: false
 #| exercise: 2_03_ex_16
@@ -690,11 +690,11 @@ ggplot(class_survey, aes(x = tech,
 
 Ahh . . . there are those previously hidden students. Interestingly, the title on the first plot still holds true: even when we're looking at *all* of the students, there doesn't appear to be much of a pattern. There is certainly not the case in all overplotted data sets! Often overplotting will obscure a pattern that jumps out after the overplotting has been attended to.
 
-The second technique is to make the points transparent by changing an aestheric attribute called the *alpha* value. Let's combine tranparency with jittering to understand the effect.
+The second technique is to make the points transparent by changing an aesthetic attribute called the *alpha* value. Let's combine transparency with jittering to understand the effect.
 
 
 ::: {.cell envir='tutorial_2_03' autorun='false' exercise='2_03_ex_17'}
-```sorrzo
+```bbrwja
 #| envir: tutorial_2_03
 #| autorun: false
 #| exercise: 2_03_ex_17

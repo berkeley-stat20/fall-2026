@@ -467,7 +467,7 @@ difference between the two lines is almost twice as large at the very end of the
 as it is right when the intervention occurs.  This isn't especially plausible in
 the supermarket checkout example (nor does the plot look like it requires two
 separate lines) but may apply in other settings where treatment
-has both an immemdiate and a more gradual long-term effect.  <!--in the first period when the
+has both an immediate and a more gradual long-term effect.  <!--in the first period when the
 treatment is instituted, but is XX several periods later-->
 <!--To fit this model, 
 you would simply fit two regression models, one to the before-treatment period
@@ -578,7 +578,7 @@ sample size.  -->
 </div>
 </div>
 </div>
-<p>To do a hypothesis test or create a confidence interval, we must usually begin by transforming the data frame so each row represents a different unique subject. The <code>pivot_wider</code> command does this, creating new pre- and post- versions of our other variables for ecah store. We call the new data frame <code>checkout_by_store</code>. This code chunk shows how we can calculate the effect estimates from store-specific sales differences using <code>infer</code> commands.</p>
+<p>To do a hypothesis test or create a confidence interval, we must usually begin by transforming the data frame so each row represents a different unique subject. The <code>pivot_wider</code> command does this, creating new pre- and post- versions of our other variables for each store. We call the new data frame <code>checkout_by_store</code>. This code chunk shows how we can calculate the effect estimates from store-specific sales differences using <code>infer</code> commands.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create new data frame with one row per store and pre/post sales difference</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>checkout_by_store <span class="ot">&lt;-</span> checkout_w_control <span class="sc">|&gt;</span></span>

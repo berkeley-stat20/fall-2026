@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignments – Stat 20 (Fall 2026)</title>
+<title>agents – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./assets/stat20-hex.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,63 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-lab-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-course-name','listing-semester','listing-site-url','listing-website','listing-format','listing-execute','listing-language','listing-drafts','listing-title','listing-image','listing-toc','listing-toc-depth','listing-path','listing-outputHref','listing-date','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-type','listing-sub-type','listing-href','listing-unit','listing-topic','listing-display-date','listing-instructor','listing-instructor-color','listing-draft','listing-sidebar',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-course-name","listing-semester","listing-site-url","listing-website","listing-format","listing-execute","listing-language","listing-drafts","listing-title","listing-image","listing-toc","listing-toc-depth","listing-path","listing-outputHref","listing-date","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-type","listing-sub-type","listing-href","listing-unit","listing-topic","listing-display-date","listing-instructor","listing-instructor-color","listing-draft","listing-sidebar"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-lab-listing'] = new List('listing-lab-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-worksheet-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-project','listing-course-name','listing-semester','listing-site-url','listing-website','listing-format','listing-execute','listing-language','listing-drafts','listing-title','listing-title-prefix','listing-fontsize','listing-path','listing-outputHref','listing-date','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-type','listing-href','listing-unit','listing-topic','listing-display-date','listing-instructor','listing-instructor-color','listing-draft','listing-margin',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-course-name","listing-semester","listing-site-url","listing-website","listing-format","listing-execute","listing-language","listing-drafts","listing-title","listing-title-prefix","listing-fontsize","listing-path","listing-outputHref","listing-date","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-type","listing-href","listing-unit","listing-topic","listing-display-date","listing-instructor","listing-instructor-color","listing-draft","listing-margin"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-worksheet-listing'] = new List('listing-worksheet-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
 <script type="text/javascript">
@@ -137,47 +78,16 @@ gtag('js', new Date());
 gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Assignments – Stat 20 (Fall 2026)">
-<meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
+<meta property="og:title" content="Stat 20 (Fall 2026)">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="866">
-<meta name="twitter:title" content="Assignments – Stat 20 (Fall 2026)">
-<meta name="twitter:description" content="Introduction to Probability and Statistics at UC Berkeley">
-<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/1-questions-and-data/labs/unvotes/images/un-logo.png">
-<meta name="twitter:image-height" content="336">
-<meta name="twitter:image-width" content="474">
+<meta name="twitter:title" content="Stat 20 (Fall 2026)">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
+<meta name="twitter:image-height" content="1000">
+<meta name="twitter:image-width" content="866">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -208,7 +118,7 @@ window.Quarto = {
 <span class="menu-text">Office Hours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./assignments.html" aria-current="page"> 
+    <a class="nav-link" href="./assignments.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
@@ -245,90 +155,23 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Assignments</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="labs" class="level2">
-<h2 class="anchored" data-anchor-id="labs">Labs</h2>
-<p>Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be a pdf file generated from a fully reproducible qmd file. For a helpful R reference, see <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/base-r.pdf">base R</a>, <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">data visualization (ggplot2)</a>, and <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">data wrangling (dplyr)</a>.</p>
-<div id="listing-lab-listing" class="quarto-listing quarto-listing-container-custom">
-
-<div class="grid text-center list">
-
-<div class="g-col-12 g-col-sm-6 g-col-md-4">
-<div class="card hovercard">
-<img src="./1-questions-and-data/labs/unvotes/images/un-logo.png" class="card-img-top" loading="lazy" style="border-radius: 40%;" fig-alt="Getting Started logo">
-<div class="card-body">
-<span class="card-title listing-title" style="font-weight: bold;">Lab 1: Getting Started</span><br>
-
-  
-    <a href="./1-questions-and-data/labs/unvotes/part-2.html" class="badge Instructions-badge">Instructions</a>
-  
-
-</div>
-</div>
-</div>
-
-<div class="g-col-12 g-col-sm-6 g-col-md-4">
-<div class="card hovercard">
-<img src="./2-summarizing-data/labs/class-survey/images/survey_icon.png" class="card-img-top" loading="lazy" style="border-radius: 40%;" fig-alt="Class Survey logo">
-<div class="card-body">
-<span class="card-title listing-title" style="font-weight: bold;">Lab 2: Class Survey</span><br>
-
-  
-    <a href="./2-summarizing-data/labs/class-survey/part-2.html" class="badge Instructions-badge">Instructions</a>
-  
-
-</div>
-</div>
-</div>
-
-</div>
-
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-<section id="worksheet-packets" class="level2">
-<h2 class="anchored" data-anchor-id="worksheet-packets">Worksheet Packets</h2>
-<p>On most class days, we will hand out a sheet of paper called a “worksheet.” These are pen-and-paper practice problems that we work on in class. The goal of the worksheets is simply practice: they help you drill the techniques needed to complete the labs. You will scan and submit the worksheets for a given week as a single worksheet packet each Tuesday on Gradescope. Use the “scan to pdf” feature on your phone to get all sides of the worksheets into a single PDF, and submit that. The names of the assignments on Gradescope tell you which worksheets are expected in each packet.</p>
-<div id="listing-worksheet-listing" class="quarto-listing quarto-listing-container-custom">
+<section id="agents.md" class="level1">
+<h1>AGENTS.md</h1>
+<section id="working-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="working-conventions">Working conventions</h2>
 <ul>
-<li>
-<a href="./1-questions-and-data/01-understanding-the-world/ws.pdf">Worksheet Packet: Understanding the World With Data</a>
-</li>
-<li>
-<a href="./1-questions-and-data/02-taxonomy-of-data/ws.pdf">Worksheet Packet: Taxonomy of Data</a>
-</li>
-<li>
-<a href="./2-summarizing-data/01-summarizing-categorical-data/ws.pdf">Worksheet Packet: Summarizing Categorical Data</a>
-</li>
-<li>
-<a href="https://www.gradescope.com">Worksheet Packet: Logistic Regression</a>
-</li>
+<li>It is fine to run <code>quarto render</code> as needed to verify changes.</li>
+<li>But prefer invoking <code>quarto render</code> directly rather than wrapping multiple renders in shell loops or compound shell commands. That is, don’t do “files=(1-questions-and-data/labs/unvotes/lab_rubric.qmd 2-summarizing-data/labs/class-survey/lab_rubric.qmd 2-summarizing-data/labs/flights/lab_rubric.qmd); for f in $files;” and then just run quarto render of those files in the loop. And anytime you chain a <code>quarto render</code> command to another command with &amp;&amp; just do the render first and then run the rest.</li>
+<li>Treat generated PDFs as build artifacts: do not edit them directly. Make changes to the source <code>.qmd</code> files and regenerate the PDFs with Quarto.</li>
 </ul>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
 
 
-
+</section>
 </section>
 
 </main> <!-- /main -->

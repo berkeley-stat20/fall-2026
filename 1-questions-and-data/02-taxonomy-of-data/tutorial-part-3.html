@@ -232,7 +232,7 @@ window.Quarto = {
   <li><a href="#functions-the-workhorse-of-programming" id="toc-functions-the-workhorse-of-programming" class="nav-link active" data-scroll-target="#functions-the-workhorse-of-programming">Functions: the workhorse of programming</a>
   <ul>
   <li><a href="#the-basics" id="toc-the-basics" class="nav-link" data-scroll-target="#the-basics">The basics</a></li>
-  <li><a href="#struture-of-a-function" id="toc-struture-of-a-function" class="nav-link" data-scroll-target="#struture-of-a-function">Struture of a function</a></li>
+  <li><a href="#structure-of-a-function" id="toc-structure-of-a-function" class="nav-link" data-scroll-target="#structure-of-a-function">Structure of a function</a></li>
   <li><a href="#functions-built-in-to-r" id="toc-functions-built-in-to-r" class="nav-link" data-scroll-target="#functions-built-in-to-r">Functions built-in to R</a></li>
   <li><a href="#using-functions-in-real-code" id="toc-using-functions-in-real-code" class="nav-link" data-scroll-target="#using-functions-in-real-code">Using functions in real code</a></li>
   </ul></li>
@@ -320,8 +320,8 @@ window.Quarto = {
 </ul>
 <p>Under the hood, functions are just code. When you use <code>sum</code>, behind the scenes there’s some R code that runs to get the job done. But you don’t need to see this code: you just want to use it. This is the beauty of functions: they hide unnecessary complexity from you, so you can think about more interesting things.</p>
 </section>
-<section id="struture-of-a-function" class="level3">
-<h3 class="anchored" data-anchor-id="struture-of-a-function">Struture of a function</h3>
+<section id="structure-of-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="structure-of-a-function">Structure of a function</h3>
 <p>Typically, a function is given some <em>inputs</em>, does something with them, and gives an output. It’s the same concept as functions in math (e.g., <span class="math inline">\(f(x)\)</span>) Perhaps this visual will help:</p>
 <div id="fig-fun" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="A diagram with the input x pointing into a box labelled function f and then an arrow pointing out of the box to the output y.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -558,7 +558,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMV8wMl9wYXJ0MyIsImV2YWwiOnRy
 </div>
 </div>
 <p>This spirals out of hand quickly if you want to add 20 more things to your cart…</p>
-<p>You really want to be able to <em>group</em> these things together somehow, in one variable, something like a box that can hold many things. Luckily R (and every programming langauge) has something exactly for this.</p>
+<p>You really want to be able to <em>group</em> these things together somehow, in one variable, something like a box that can hold many things. Luckily R (and every programming language) has something exactly for this.</p>
 <p>In R it’s called a “vector.” It is simply a long “box” with a bunch of slots to put stuff in. To make such a box-of-stuff, you use the function called <code>c</code> (I think it stands for “combine”, but it’s how you make a vector):</p>
 <p>Run this:</p>
 <div class="cell" data-envir="tutorial_1_02_part3" data-exercise="1_02_ex_vec_4">
@@ -787,7 +787,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMV8wMl9wYXJ0MiIsImV2YWwiOnRy
 </script>
 </div>
 </div>
-<p>Error. Again, “compters are dumb.” You’re asking it to average a bunch of “Yes” an “No” values, which R thinks are just blobs of text. It can’t average text.</p>
+<p>Error. Again, “computers are dumb.” You’re asking it to average a bunch of “Yes” an “No” values, which R thinks are just blobs of text. It can’t average text.</p>
 <p>However, if the values are <em>logical</em>, it works:</p>
 <div class="cell" data-envir="tutorial_1_02_part2" data-exercise="1_02_ex_bool_b3">
 <div>

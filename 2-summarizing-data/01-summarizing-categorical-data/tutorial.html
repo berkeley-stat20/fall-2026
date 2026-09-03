@@ -329,7 +329,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZW52aXIiOiJ0
 <p>Every function in R has a built-in help file that tells you about how it works. It can be accessed using <code>?</code>.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<div id="fig-mean-help" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Screenshot of the helpfile from the mean function.">
+<div id="fig-mean-help" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of the helpfile from the mean function." data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mean-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/mean-help.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Screenshot of the helpfile from the mean function." width="300">
@@ -569,7 +569,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 </div>
 </div>
-<p>Here we can see that we have about 150 Adelie penguins, about 70 Chinstraps, and about 120 Gentoos. More precistly, the plot is saying “I found 150 rows where the <code>species</code> column was equal to <code>"Adelie"</code>, 70 rows where the <code>species</code> column was <code>"Chinstrap"</code>, and 120 rows where it was <code>"Gentoo"</code>.</p>
+<p>Here we can see that we have about 150 Adelie penguins, about 70 Chinstraps, and about 120 Gentoos. More precisely, the plot is saying “I found 150 rows where the <code>species</code> column was equal to <code>"Adelie"</code>, 70 rows where the <code>species</code> column was <code>"Chinstrap"</code>, and 120 rows where it was <code>"Gentoo"</code>.</p>
 <p>Also notice: we didn’t have to tell it anything about the <code>y</code> axis! <strong>This is special to <code>geom_bar</code></strong>, which inherently makes the y axis mean “count how many rows have this value.” It’s even labeled “count” (see the y axis in the plot above).</p>
 <p>Note that the bars are not colored yet, just a boring gray. One thing we can do is just make every bar a different color; specifically, by adding an extra aesthetic mapping. Note that for bars, <code>fill</code> means the actual bar color, while <code>color</code> just means the <em>outline</em> color of the bar:</p>
 <div class="cell" data-layout-align="center">
@@ -617,7 +617,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 </div>
 </div>
-<p>And there we have it. Each bar has the same height, and the y axis shows us what <em>proportion</em> of those specific penguins live on each island. You can see that Chinstraps exclusively live on Deam island, Gentoos on Biscoe island, and Adelies live on all three islands in roughly equal measure.</p>
+<p>And there we have it. Each bar has the same height, and the y axis shows us what <em>proportion</em> of those specific penguins live on each island. You can see that Chinstraps exclusively live on Dream Island, Gentoos on Biscoe Island, and Adelies live on all three islands in roughly equal measure.</p>
 <p><strong>One more type of bar chart: dodged.</strong></p>
 <p>A side-by-side (dodged) bar chart can be produced by replacing <code>"fill"</code> with <code>"dodge"</code>.</p>
 <div class="cell" data-layout-align="center">

@@ -447,7 +447,7 @@ window.Quarto = {
 <p><em>What should I omit?</em></p>
 <ul>
 <li>Qualities that are irrelevant, <strong>distracting</strong>, or deceptive</li>
-<li>Repeitive or <strong>assumed</strong> information (know your audience…)</li>
+<li>Repetitive or <strong>assumed</strong> information (know your audience…)</li>
 </ul>
 <p>We’ll keep this guidance in mind as we discuss how to summarize numerical data with graphics, in words, and with statistics. Specifically, we will learn how to:</p>
 <ul>
@@ -581,7 +581,7 @@ window.Quarto = {
 <p>At first glance, a histogram looks like deceptively like a bar chart. There are bars arranged along the x-axis according to their values, and the height is how many penguins that bar represents. However, the bars in a <em>true</em> bar chart say “how many observations have <em>this exact x value</em>?” E.g. how many penguins have exactly this bill length or exactly this species.</p>
 <p>The bars in a <em>histogram</em>, by contrast, show how many observations fall in a certain <em>range of values</em>.</p>
 <p>The first step in creating a histogram is to divide the full range of possible values into bins of equal size. You can set the number of bins explicitly, or you can let R pick some reasonable defaults. The second step is to count up the number of observations that occur in each bin.</p>
-<p>Some bins will have no observations in that range (where see no bar at all), some may just have one observation, and some have many. The tallest bar in the plot above, with a count of 3, corresponds to all penguins will bill lengths from 39.09 to 39.30 (there are three such penguins, will bith lengths 39.1, 39.2, and 39.3).</p>
+<p>Some bins will have no observations in that range (where we see no bar at all), some may just have one observation, and some have many. The tallest bar in the plot above, with a count of 3, corresponds to all penguins with bill lengths from 39.09 to 39.30 (there are three such penguins, with bill lengths 39.1, 39.2, and 39.3).</p>
 <p>You can tweak the histogram to be more or less coarse. One way is to change the <em>number of bins</em>, and let R automatically determine how wide that makes them. You can also do it the other way – you set how <em>wide</em> each bin is (<em>binwidth</em>), and R figures out how many bins it needs to cover the range.</p>
 <p>Setting the right binwidth (or number of bins) changes the story that pops out of the plot. Here are four histograms of the same data that use four different binwidths. Notice how they each give a different “feel” to the distribution of penguin bill sizes.</p>
 <div class="cell">
@@ -594,7 +594,7 @@ window.Quarto = {
 </div>
 </div>
 <p>If you are interested in only the coarsest structure in the distribution, best to use the larger binwidths. If you want to see more detailed structure, a smaller binwidth is better.</p>
-<p>There is a saying that warns about times when you, “can’t see the forest for the trees”, being overwhelmed by small details (the trees) and unable to see the bigger picture (the forest). The histogram, as a graphical tool for summarizing the distribution of a numerical variable, offers a way out. Through your choice of binwidth, you can determine how much to focus on the forest (large bindwidth) or the trees (small binwidth).</p>
+<p>There is a saying that warns about times when you “can’t see the forest for the trees,” being overwhelmed by small details (the trees) and unable to see the bigger picture (the forest). The histogram, as a graphical tool for summarizing the distribution of a numerical variable, offers a way out. Through your choice of binwidth, you can determine how much to focus on the forest (large binwidth) or the trees (small binwidth).</p>
 </section>
 <section id="density-plots" class="level3">
 <h3 class="anchored" data-anchor-id="density-plots">Density plots</h3>
@@ -662,7 +662,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>We’ll talk about what the various parts of the box mean after we the next section, but intuitively, the box plot conveys a similar story to the violin plot: Adelies have shorter bills than Chinstraps and Gentoos. Box plots have the advantage of making certain specific measures very clear (more on this later). But they don’t have any kind of “smootness-knob” to reveal more or less detailed information. There are tradeoffs, and the right plot depends on what you’re using it for.</p>
+<p>We’ll talk about what the various parts of the box mean after the next section, but intuitively, the box plot conveys a similar story to the violin plot: Adelies have shorter bills than Chinstraps and Gentoos. Box plots have the advantage of making certain specific measures very clear (more on this later). But they don’t have any kind of “smoothness-knob” to reveal more or less detailed information. There are tradeoffs, and the right plot depends on what you’re using it for.</p>
 </section>
 </section>
 <section id="describing-distributions" class="level2">
@@ -881,8 +881,8 @@ window.Quarto = {
 <li>The deep reason has to do with the nature of making many small, random mistakes.</li>
 </ol>
 <ul>
-<li><strong>Let’s say you’re trying to measure the height of your 4 year old neice, Alice, with some measuring tape.</strong></li>
-<li>You know you won’t get it <em>exactly</em> right, down to the billionth of an inch or whatever. No, you’ll be off a bit, for many reasons: the measuring tape itself might bend a little; your hands are not perfectly steady; your energetic neice doesn’t stand perfectly still or stand perfectly straight, and so forth. Each of these mistakes is kind of random and nudges your measurement up or down a little. Your final measurement will be close, but not exactly on, her true height.</li>
+<li><strong>Let’s say you’re trying to measure the height of your 4 year old niece, Alice, with some measuring tape.</strong></li>
+<li>You know you won’t get it <em>exactly</em> right, down to the billionth of an inch or whatever. No, you’ll be off a bit, for many reasons: the measuring tape itself might bend a little; your hands are not perfectly steady; your energetic niece doesn’t stand perfectly still or stand perfectly straight, and so forth. Each of these mistakes is kind of random and nudges your measurement up or down a little. Your final measurement will be close, but not exactly on, her true height.</li>
 <li>To get more data, you ask a bunch of other family members to measure Alice’s height too. They will also have many small, random mistakes in their measurement, different ones, so they’ll all get slightly different answers.</li>
 <li>If you were to plot everyone’s measurements, it would look like a bell curve (normal distribution). This shape is a consequence of the Central Limit Theorem, which we’ll cover later in the course.</li>
 <li>So what? Well, if <strong>you want to make the <em>best</em> guess of Alice’s true height from everyone’s independent, noisy measures, you should take the mean</strong>. As you’ll see in the example below, the mean naturally minimizes the <em>squared</em> distance between everyone’s measurements and your guess. When errors are normally distributed like this, the most <em>likely</em> true height of Alice <em>is</em> the mean.</li>
@@ -945,7 +945,7 @@ window.Quarto = {
 <section id="iqr-interquartile-range" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="iqr-interquartile-range">IQR (Interquartile Range)</h4>
 <p>Put all the data in order, from smallest to largest. Find the values at the 25th and 75th percentiles (first and third quarters of the data). The distance between these values is the IQR.</p>
-<p>Q is for “quartile,” as we are sort of dividing the data into four parts, by size. “Q0” is the smallest value, “Q1” is whatever is at the 25th percentile, “Q2” is the 50th percentile value (the median), “Q3” is the 75th percentile value, and “Q4” is the alrgest value.</p>
+<p>Q is for “quartile,” as we are sort of dividing the data into four parts, by size. “Q0” is the smallest value, “Q1” is whatever is at the 25th percentile, “Q2” is the 50th percentile value (the median), “Q3” is the 75th percentile value, and “Q4” is the largest value.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>The function in R: <code>IQR()</code></p>
@@ -961,7 +961,7 @@ window.Quarto = {
 </ul>
 <p><span class="math display">\[ IQR = Q_3 - Q_1 = 9.5 - 7 = 2.5 \]</span></p>
 <p>The reason the IQR works well for asymmetric data is because the measure of center it’s based on is the <em>median</em>, not the <em>mean</em>. The median is just the middle point of the data, not a value obtained by calculation of all the numbers in a list. So it’s not impacted when extreme values are tacked onto the end of the list.</p>
-<p>Our final measure of spread is another option which is resillent against outliers, but is based off of the mean instead of the median.</p>
+<p>Our final measure of spread is another option which is resilient against outliers, but is based off of the mean instead of the median.</p>
 </section>
 <section id="mean-absolute-deviation-mad" class="level4">
 <h4 class="anchored" data-anchor-id="mean-absolute-deviation-mad">Mean Absolute Deviation (MAD)</h4>

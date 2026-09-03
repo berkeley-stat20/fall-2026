@@ -518,7 +518,7 @@ Show answer
 Show answer
 </summary>
 <div class="answer-box" data-markdown="1">
-<p>R gives an error because <code>"42"</code> is a character string (text blob). Arithmetic works on numbers, not strings. It’s like trying to to add “apple” to the number 6. It makes no sense.</p>
+<p>R gives an error because <code>"42"</code> is a character string (text blob). Arithmetic works on numbers, not strings. It’s like trying to add “apple” to the number 6. It makes no sense.</p>
 <p>The specific error it gives is: “Error in”42” + 8 : non-numeric argument to binary operator”</p>
 <p>The <code>+</code> is the “binary operator.” It does something (“operates”) on two different quantities (hence, “binary”). It’s saying that it needs both things to be numbers - not one text blob and one number.</p>
 </div>
@@ -1086,7 +1086,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoiZXh0cmFfY29kaW5nX2Jhc2ljcyIsImV2YWwiOnRy
 <p><code>&lt;-</code> is the assignment operator, saying whatever comes after this is going to be saved under the label <code>addup</code></p>
 <p><code>function</code> is a special keyword announcing, “I AM NOW GOING TO DEFINE A NEW FUNCTION”</p>
 <p><code>(a, b)</code> says “this function has two arguments - I’m going to refer to them as <code>a</code> and <code>b</code> in my code.” You can pick any names you want for the arguments, whatever is readable.</p>
-<p><code>{</code> says “now the function starts. whenenver someone calls <code>addup</code>, run this code”</p>
+<p><code>{</code> says “now the function starts. whenever someone calls <code>addup</code>, run this code”</p>
 <p><code>total &lt;- a + b</code> defines a new variable as the sum of a and b</p>
 <p><code>return(total)</code> says “this is my return value - send that back to whoever called me”</p>
 <p><code>}</code> indicates the function is over.</p>
