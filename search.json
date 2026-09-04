@@ -455,7 +455,7 @@
     "href": "assignments.html#worksheet-packets",
     "title": "Assignments",
     "section": "Worksheet Packets",
-    "text": "Worksheet Packets\nOn most class days, we will hand out a sheet of paper called a “worksheet.” These are pen-and-paper practice problems that we work on in class. The goal of the worksheets is simply practice: they help you drill the techniques needed to complete the labs. You will scan and submit the worksheets for a given week as a single worksheet packet each Tuesday on Gradescope. Use the “scan to pdf” feature on your phone to get all sides of the worksheets into a single PDF, and submit that. The names of the assignments on Gradescope tell you which worksheets are expected in each packet.\n\n\n\nWorksheet Packet: Understanding the World With Data\n\n\nWorksheet Packet: Taxonomy of Data\n\n\nWorksheet Packet: Summarizing Categorical Data\n\n\nWorksheet Packet: Logistic Regression\n\n\nNo matching items"
+    "text": "Worksheet Packets\nOn most class days, we will hand out a sheet of paper called a “worksheet.” These are pen-and-paper practice problems that we work on in class. The goal of the worksheets is simply practice: they help you drill the techniques needed to complete the labs. You will scan and submit the worksheets for a given week as a single worksheet packet each Tuesday on Gradescope. Use the “scan to pdf” feature on your phone to get all sides of the worksheets into a single PDF, and submit that. The names of the assignments on Gradescope tell you which worksheets are expected in each packet.\n\n\n\nWorksheet Packet: Understanding the World With Data\n\n\nWorksheet Packet: Taxonomy of Data\n\n\nWorksheet Packet: Summarizing Categorical Data\n\n\nWorksheet Packet: Summarizing Numerical Data\n\n\nWorksheet Packet: Logistic Regression\n\n\nNo matching items"
   },
   {
     "objectID": "license.html",
@@ -1026,6 +1026,41 @@
     "title": "Extras",
     "section": "",
     "text": "More Practice\n  \n  \n    \n    \n      \n        Types of claims\n      \n      [Week 1]\n    \n  \n    \n    \n      \n        Data types and data frames\n      \n      [Week 1]\n    \n  \n    \n    \n      \n        Coding basics\n      \n      [Week 1]\n    \n  \n  \n\n\nNo matching items"
+  },
+  {
+    "objectID": "2-summarizing-data/02-summarizing-numerical-data/slides.html#why-are-measures-of-spread-so-important-consider-the-following-question.",
+    "href": "2-summarizing-data/02-summarizing-numerical-data/slides.html#why-are-measures-of-spread-so-important-consider-the-following-question.",
+    "title": "Summarizing Numerical Data",
+    "section": "Why are measures of spread so important? Consider the following question.",
+    "text": "Why are measures of spread so important? Consider the following question.\n\nThere are two new food delivery services that open in Berkeley: Oski Eats and Cal Cravings. A friend of yours that took Stat 20 collected data on each and noted that Oski Eats has a mean delivery time of 29 minutes and Cal Cravings a mean delivery time of 27 minutes. However, one is more predictable than the other….\n\n\nSo: which would would you rather order from, and why? Debate with your group.\n\n\nMost people probably prefer Oski Eats.\n\nIt’s slightly slower, but more consistent.\nThere’s zero chance of having to wait 40+ minutes for your food.\n\nYou could also prefer Cal Cravings! If either:\n\nYou like to gamble\nYou are in a rush. If you have to leave in 20 minutes, Cal Cravings is the only one who has ever delivered that fast. It still probably won’t get there in time, but if you use Oski Eats it definitely won’t won’t get it in time."
+  },
+  {
+    "objectID": "2-summarizing-data/02-summarizing-numerical-data/slides.html#important-quiz-information",
+    "href": "2-summarizing-data/02-summarizing-numerical-data/slides.html#important-quiz-information",
+    "title": "Summarizing Numerical Data",
+    "section": "Important Quiz information",
+    "text": "Important Quiz information\n\n\n\nStudents absolutely need to come with their Cal ID or have their government ID as a backup. You can’t just pull yourself up on calcentral - that will NOT be accepted as ID.\nWHO HASN’T REGISTERED FOR THE QUIZ YET? Do it today, once we move to worksheet time. Tell your instructor immediately if you have issues so we can fix it on the spot.\n\n\nEnrollment link if you need it:"
+  },
+  {
+    "objectID": "2-summarizing-data/02-summarizing-numerical-data/slides.html#activity-mean-median-mode-which-is-best",
+    "href": "2-summarizing-data/02-summarizing-numerical-data/slides.html#activity-mean-median-mode-which-is-best",
+    "title": "Summarizing Numerical Data",
+    "section": "Activity: mean, median, mode – which is best?",
+    "text": "Activity: mean, median, mode – which is best?\n\n\nIt depends on 1) your data, and 2) what you want your “summary” to speak to.\n\n\n\n\nGet out a piece of paper. You’ll be watching a 3 minute video that discusses characteristics of a typical human. Note which numerical summaries are used and what for."
+  },
+  {
+    "objectID": "2-summarizing-data/02-summarizing-numerical-data/slides.html#section",
+    "href": "2-summarizing-data/02-summarizing-numerical-data/slides.html#section",
+    "title": "Summarizing Numerical Data",
+    "section": "",
+    "text": "After the video, you can write on the board each of mean, median, mode and have students list measures that were reported. There are many modes because lots of the data that they collect is categorical."
+  },
+  {
+    "objectID": "2-summarizing-data/02-summarizing-numerical-data/slides.html#general-advice",
+    "href": "2-summarizing-data/02-summarizing-numerical-data/slides.html#general-advice",
+    "title": "Summarizing Numerical Data",
+    "section": "General Advice",
+    "text": "General Advice\n\n\nMeans are often a good default for symmetric data.\n\n\n\n\nMeans are sensitive to very large and small values, so can be deceptive on skewed data. &gt; Use a median\n\n\n\n\nModes are often the only option for categorical data."
   },
   {
     "objectID": "2-summarizing-data/02-summarizing-numerical-data/tutorial.html",
