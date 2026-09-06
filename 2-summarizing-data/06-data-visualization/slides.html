@@ -247,7 +247,7 @@ STAT 20: Introduction to Probability and Statistics
 <span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
 <span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div class="answer">
+<div class="answer fragment">
 <ul>
 <li class="fragment">Yes, they are equivalent.</li>
 <li class="fragment">color mapping can be specified at the <code>ggplot()</code> level or at the <code>geom_point()</code> level</li>
@@ -268,7 +268,7 @@ STAT 20: Introduction to Probability and Statistics
 <span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(Petal.Length, Petal.Width, <span class="at">color =</span> <span class="st">"blue"</span>)) <span class="sc">+</span></span>
 <span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div class="answer">
+<div class="answer fragment">
 <ul>
 <li class="fragment">No, they are different.</li>
 <li class="fragment"><code>color = "blue"</code> is a <strong>setting</strong></li>
@@ -290,7 +290,7 @@ STAT 20: Introduction to Probability and Statistics
 <span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris) <span class="sc">+</span></span>
 <span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(Petal.Length, Petal.Width))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div class="answer">
+<div class="answer fragment">
 <ul>
 <li class="fragment">Yes, they are equivalent.</li>
 <li class="fragment">the aesthetic mappings can be placed at the <code>ggplot()</code> level or at the <code>geom_point()</code> level.</li>
@@ -310,7 +310,7 @@ STAT 20: Introduction to Probability and Statistics
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris) <span class="sc">+</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">x =</span> Petal.Width, <span class="at">y =</span> Petal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div class="answer">
+<div class="answer fragment">
 <p>the <code>x</code> and <code>y</code> mappings need to be specified inside <code>aes()</code></p>
 </div>
 </div>
@@ -321,7 +321,7 @@ STAT 20: Introduction to Probability and Statistics
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(Petal.Length, Petal.Width))</span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div class="answer">
+<div class="answer fragment">
 <p>the plus sign <code>+</code> is missing after <code>ggplot()</code> and before <code>geom_point()</code></p>
 </div>
 </div>
@@ -332,7 +332,7 @@ STAT 20: Introduction to Probability and Statistics
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length <span class="at">y =</span> Petal.Width) <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">goem_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> Species))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
-<div class="answer">
+<div class="answer fragment">
 <ul>
 <li class="fragment">missing comma between arguments <code>x</code> and <code>y</code> inside 1st <code>aes()</code></li>
 <li class="fragment">missing closing parenthesis of <code>ggplot()</code></li>
@@ -395,7 +395,7 @@ STAT 20: Introduction to Probability and Statistics
 <p>Question: In terms of the way they are constructed …</p>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="1440" class="r-stretch"><p>What do these plots have in common? How do they differ?</p>
-<div id="timer_f0a446c67006777fc5878fd5803bad01558befd9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_914865065af93fb71f10b8d2eed341240ce07f82" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -430,7 +430,7 @@ STAT 20: Introduction to Probability and Statistics
 <h2></h2>
 <p>Question: What do these plots have in common? How do they differ?</p>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div id="timer_f0a446c67006777fc5878fd5803bad01558befd9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div id="timer_914865065af93fb71f10b8d2eed341240ce07f82" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -464,7 +464,7 @@ STAT 20: Introduction to Probability and Statistics
 <h2></h2>
 <p>Question: What are the aesthetic mappings and geometries used here?</p>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><div id="timer_f0a446c67006777fc5878fd5803bad01558befd9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><div id="timer_914865065af93fb71f10b8d2eed341240ce07f82" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

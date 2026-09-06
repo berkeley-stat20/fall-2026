@@ -262,7 +262,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
   <li><a href="#base-plot" id="toc-base-plot" class="nav-link" data-scroll-target="#base-plot">Base plot</a></li>
   <li><a href="#adding-geometry-drawing-stuff" id="toc-adding-geometry-drawing-stuff" class="nav-link" data-scroll-target="#adding-geometry-drawing-stuff">Adding geometry (drawing stuff)</a></li>
   <li><a href="#changing-axis-labels-title-and-caption" id="toc-changing-axis-labels-title-and-caption" class="nav-link" data-scroll-target="#changing-axis-labels-title-and-caption">Changing axis labels, title, and caption</a></li>
-  <li><a href="#quick-comprehension-self-check" id="toc-quick-comprehension-self-check" class="nav-link" data-scroll-target="#quick-comprehension-self-check">Quick comprehension self-check</a>
+  <li><a href="#quick-comprehension-check-exercise" id="toc-quick-comprehension-check-exercise" class="nav-link" data-scroll-target="#quick-comprehension-check-exercise">Quick comprehension check exercise</a>
   <ul class="collapse">
   <li><a href="#a-different-penguins-plot" id="toc-a-different-penguins-plot" class="nav-link" data-scroll-target="#a-different-penguins-plot">A different penguins plot</a></li>
   </ul></li>
@@ -270,8 +270,8 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
   <li><a href="#communicating-with-graphics" id="toc-communicating-with-graphics" class="nav-link" data-scroll-target="#communicating-with-graphics">Communicating with Graphics</a>
   <ul>
   <li><a href="#mapping-vs-setting" id="toc-mapping-vs-setting" class="nav-link" data-scroll-target="#mapping-vs-setting">Mapping vs Setting</a></li>
-  <li><a href="#choosing-a-theme" id="toc-choosing-a-theme" class="nav-link" data-scroll-target="#choosing-a-theme">Choosing a Theme</a></li>
-  <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations">Annotations</a></li>
+  <li><a href="#using-themes" id="toc-using-themes" class="nav-link" data-scroll-target="#using-themes">Using themes</a></li>
+  <li><a href="#annotations-last-part" id="toc-annotations-last-part" class="nav-link" data-scroll-target="#annotations-last-part">Annotations (last part)</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
@@ -371,7 +371,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZW52aXIiOiJ0
 </script>
 </div>
 </div>
-<p>The package we use to make the plot is called <code>ggplot2</code>. It comes along for free with <code>tidyverse</code>. There are other ways to make plots in R, but <code>ggplot2</code> is by far the most widely used. It is designed to follow the idea of a “grammar of graphics,” which you read about in the notes.</p>
+<p>The package we use to make the plot is called <code>ggplot2</code>, which comes along for free with <code>tidyverse</code>. There are other ways to make plots in R, but <code>ggplot2</code> is by far the most widely used. It is designed to follow the idea of a “grammar of graphics,” which you read about in the notes.</p>
 <section id="building-a-plot" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-plot">Building a plot</h2>
 <p>Let’s code up the penguin plot bit by bit. We’ve already loaded your libraries for you, so you can assume all the packages you need are loaded.</p>
@@ -396,9 +396,9 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 <p><img src="images/f_ggplot_penguins.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
 </figure>
 </div>
-<p>So let’s draw some things.</p>
-<p>Crucially – before we do – the grammar of graphics is particular in how it works. Before we start <em>drawing</em> on the canvas, ggplot expects us to tell it how our data relates to visual elements of the plot. For example, we want the x axis to represent penguin bill length, right? ggplot wants to know that up front, before it even knows what kind of shapes and lines you’ll be drawing.</p>
-<p>We use the <code>aes</code> function for this - telling it which visual elements (like x position, or color, or size) should be based on which <em>columns</em> in our dataset. <code>aes</code> creates an object storing this information, which we immediately pass to <code>ggplot</code> alongside the data iself. Run the code below:</p>
+<p>So, <code>ggplot()</code> is a function that makes the canvas itself. Now we need to draw some things on it.</p>
+<p>However, before we start <em>drawing</em> on the canvas, ggplot needs us to tell it how our data relates to visual aspects of the plot. For example, we want the x axis to represent penguin bill length, right? <code>ggplot</code> wants to know things like that up front, before it even knows what kind of shapes and lines you’ll be drawing.</p>
+<p>We use the <code>aes</code> function for this. It creates an “aesthetic mapping,” which tells ggplot which <em>visual attributes</em> (like x position, or color, or size) should be based on which <em>columns</em> in our dataset. <code>aes</code> creates an object storing this information, which we immediately pass to <code>ggplot</code> alongside the data iself. Run the code below:</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false">
 <div>
 <div id="webr-4" class="exercise-cell">
@@ -427,7 +427,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 </div>
 <p>We have a scatter plot!</p>
-<p>The <code>+ geom_point()</code> said, “Draw a point for every row in the dataset.” Of course, the points need to know where to be drawn, and for that it looks to the aesthetic mappings. Each row will create one point, which finds its <code>x</code> and <code>y</code> positions in the columns it sees in the aesthetic mappings (<code>x = bill_length_mm</code> and <code>y = bill_depth_mm</code>). It doesn’t know these are penguins at all. It’s essentially just drawing points based on numbers in a table.</p>
+<p>The <code>+ geom_point()</code> said, “Draw a point on the canvas for every row in the dataset.” Of course, the points need to know <em>where</em> to be drawn (x and y position), and for that it looks to the aesthetic mappings. Each row will become one point, which finds its <code>x</code> and <code>y</code> positions in the columns it sees in the aesthetic mappings (<code>x = bill_length_mm</code> and <code>y = bill_depth_mm</code>). It doesn’t know these are penguins at all. It’s essentially just drawing circles based on numbers in a table.</p>
 <p>Scatter plots are a popular choice for visualizing two numerical variables. The original penguin plot, though, visualized the relationship between <em>three</em> variables (different species had different colors). To complete our plot, let’s make one more aesthetic mapping: the <code>color</code> attribute of all geometries should be determined by the <code>species</code>.</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false">
 <div>
@@ -439,7 +439,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </script>
 </div>
 </div>
-<p>You may want to look back at the plot before this one. What color are the points? They are all black. Every geometry has a lot of different knobs you can tune to change where and how it appears. For <code>geom_point</code>, one of these knobs is color. Each new point tries to ask, “What color should I be?” If we haven’t told it anything about color, it use a default setting (black in this case). But once we map color to species, the question “What color should I be?” finds a ready answer in our aesthetic mappings: the color should be tied to the <code>species</code> column.</p>
+<p>You may want to look back at the plot before this one. What color were the points? They were all black. Every geometry (like a point) has a lot of different knobs you can tune to change where and how it appears. For <code>geom_point</code>, one of these knobs is <code>color</code>. Before being drawn, each point tries to ask, “What color should I be?” If we haven’t told it anything about color, it use a default setting (black in this case). But once we map color to species, the question “What color should I be?” finds a ready answer in our aesthetic mappings: the color should be based on the <code>species</code> column.</p>
 <p>To check in briefly, here’s what’s happening:</p>
 <ul>
 <li>We have a dataset called <code>penguins</code>. Each row has information on one penguin.</li>
@@ -450,7 +450,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </section>
 <section id="changing-axis-labels-title-and-caption" class="level3">
 <h3 class="anchored" data-anchor-id="changing-axis-labels-title-and-caption">Changing axis labels, title, and caption</h3>
-<p>We aren’t quite done yet. Let’s compare the original plot at the top of this page to our most recent plot. Can you spot the differences?</p>
+<p>We aren’t quite done yet. Let’s compare the original plot (from the top of this page) to our most recent plot. Can you spot the differences?</p>
 <div class="cell" data-layout-align="center" data-autorun="false">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -462,12 +462,12 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 <p>There are four things different about the original (on the left):</p>
 <ol type="1">
-<li>The x axis is labeled “Bill Length (mm)”, which is much more human-readabl than ours (“bill_length_mm”, the raw column name).</li>
+<li>The x axis is labeled “Bill Length (mm)”, which is much more human-readable than “bill_length_mm”, the raw column name.</li>
 <li>Same for y axis.</li>
 <li>The original has a title on top (“Penguin Bill Sizes”)</li>
 <li>The original has some text below the plot (a “caption”) about where the data came from.</li>
 </ol>
-<p>These are all kinds of <em>labels</em>. You add some or all of them to the plot with the <code>labs</code> function. Run the cell below:</p>
+<p>These are all kinds of <em>labels</em>. You add some or all of them to the plot with <code>+</code> and the <code>labs</code> function. Run the cell below:</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_trylabels">
 <div>
 <div id="webr-7" class="exercise-cell">
@@ -479,26 +479,26 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 </div>
 <p>Try tinkering with the labels to get a feel for it.</p>
-<p>The title of a plot is especially valuable real estate. In most cases, the title should highlight the most important structure in the data. In the plot above, there appears to be little correspondence between bill length and bill depth. <em>but</em> that changes when give each species its own color. Let’s change our title accordingly.</p>
+<p>The title of a plot is especially valuable real estate. In most cases, the title should highlight the most important structure in the data. In the plot above, there appears to be little correspondence between bill length and bill depth. BUT that changes when give each species its own color. Let’s change our title accordingly.</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_13">
 <div>
 <div id="webr-8" class="exercise-cell">
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMiLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6IjJfMDNfZXhfMTMiLCJmaWctYWxpZ24iOiJjZW50ZXIifSwiY29kZSI6ImdncGxvdChwZW5ndWlucywgYWVzKHggPSBiaWxsX2xlbmd0aF9tbSxcbiAgICAgICAgICAgICAgICAgICAgIHkgPSBiaWxsX2RlcHRoX21tLFxuICAgICAgICAgICAgICAgICAgICAgY29sb3IgPSBzcGVjaWVzKSkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgbGFicyh4ID0gXCJCaWxsIExlbmd0aCAobW0pXCIsXG4gICAgICAgICB5ID0gXCJCaWxsIERlcHRoIChtbSlcIixcbiAgICAgICAgIHRpdGxlID0gXCJCaWxsIGxlbmd0aCBhbmQgZGVwdGggYXJlIHN0cm9uZ2x5IHJlbGF0ZWQgd2l0aGluIHNwZWNpZXNcIlxuICAgICAgICAgY2FwdGlvbiA9IFwiU291cmNlOiBEci4gS3Jpc3RlbiBHb3JtYW4sIFBhbG1lciBTdGF0aW9uLCBBbnRhcmN0aWNhXCIpIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMiLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6IjJfMDNfZXhfMTMiLCJmaWctYWxpZ24iOiJjZW50ZXIifSwiY29kZSI6ImdncGxvdChwZW5ndWlucywgYWVzKHggPSBiaWxsX2xlbmd0aF9tbSxcbiAgICAgICAgICAgICAgICAgICAgIHkgPSBiaWxsX2RlcHRoX21tLFxuICAgICAgICAgICAgICAgICAgICAgY29sb3IgPSBzcGVjaWVzKSkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgbGFicyh4ID0gXCJCaWxsIExlbmd0aCAobW0pXCIsXG4gICAgICAgICB5ID0gXCJCaWxsIERlcHRoIChtbSlcIixcbiAgICAgICAgIHRpdGxlID0gXCJCaWxsIGxlbmd0aCBhbmQgZGVwdGggYXJlIHN0cm9uZ2x5IHJlbGF0ZWQgd2l0aGluIHNwZWNpZXNcIixcbiAgICAgICAgIGNhcHRpb24gPSBcIlNvdXJjZTogRHIuIEtyaXN0ZW4gR29ybWFuLCBQYWxtZXIgU3RhdGlvbiwgQW50YXJjdGljYVwiKSJ9
 </script>
 </div>
 </div>
-<p>The practice of using the plot title to convey the main message of the plot is used to powerful effect by the visualization experts at the British publication, <em>The Financial Times</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. They have developed a wealth of visualizations to help readers understand what is happening with public health throughout the pandemic. The sobering graphic below uses the title to guide the viewer to the most important visual structure in the plot: the yawning vertical gap between dosage rates between high and low income countries.</p>
+<p>The practice of using the plot title to convey the main message is used to powerful effect by the visualization experts at the British publication, <em>The Financial Times</em>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> They have developed a wealth of visualizations to help readers understand what is happening with public health throughout the pandemic. The sobering graphic below uses the title to guide the viewer to the most important visual structure in the plot: the yawning vertical gap between dosage rates between high and low income countries.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/ft.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
 </figure>
 </div>
 </section>
-<section id="quick-comprehension-self-check" class="level3">
-<h3 class="anchored" data-anchor-id="quick-comprehension-self-check">Quick comprehension self-check</h3>
+<section id="quick-comprehension-check-exercise" class="level3">
+<h3 class="anchored" data-anchor-id="quick-comprehension-check-exercise">Quick comprehension check exercise</h3>
 <section id="a-different-penguins-plot" class="level4">
 <h4 class="anchored" data-anchor-id="a-different-penguins-plot">A different penguins plot</h4>
 <p>The code cell below creates our unlabeled penguin plot. Modify the code to:</p>
@@ -533,7 +533,7 @@ Show solution
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper Length in mm"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"Body Mass in grams"</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Heavier penguins have bigger flippers"</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"Males seem generally bigger as well"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">caption =</span> <span class="st">"Males seem generally bigger as well"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -558,14 +558,14 @@ Show solution
 <p>The process of building understanding from a data set is one that should be driven by curiosity, skepticism, and thoughtfulness. As a data scientist, you’ll find yourself in conversation with your data: asking questions of it, probing it for structure, and seeing how it responds. This thoughtful conversation is called <strong>exploratory data analysis</strong> (or <strong>EDA</strong>).</p>
 <p>During EDA, the aim is to uncover the shape and structure of your data and to uncover unexpected features. It’s an informal iterative process where you are your own audience. In this setting, you should construct graphics that work best for you.</p>
 <p>At some point, you’ll find yourself confident in the claim that can be supported by your data and the focus changes to communicating that claim as effectively as possible with a graphic. Here, your audience shifts from yourself to someone else: other scientists, customers, co-workers in a different part of your company, or casual readers. You must consider the context in which they’ll be viewing your graphic: what they know, what they expect, what they want.</p>
-<p>In this tutorial we’ll focus on three ways to hone the message of your data visualization.</p>
+<p>In this tutorial we’ll focus on a few ways to hone the message of your visualization.</p>
 <ol class="example" type="1">
-<li>Mapping versus setting</li>
-<li>Labels for clarity <!-- @. The importance of scale --> <!-- @. Overplotting --></li>
-<li>Choosing a theme</li>
+<li><em>Mapping</em> versus <em>setting</em> visual attributes</li>
+<li>Labels for clarity</li>
+<li>Using themes</li>
 <li>Annotations</li>
 </ol>
-<p>We will use two running examples: a line plot of the number of christenings in 17th century London which were collected by a man named John Arbuthnot, <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and a scatter plot showing the bill sizes of penguins near Palmer Station, Antarctica<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>We will use two running examples: a line plot of the number of christenings (roughly, births) in 17th century London (collected by a man named John Arbuthnot), and a simplified version of our penguin plot.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -578,7 +578,7 @@ Show solution
 <section id="mapping-vs-setting" class="level3">
 <h3 class="anchored" data-anchor-id="mapping-vs-setting">Mapping vs Setting</h3>
 <p>Once you have your first draft of a plot complete and you’re thinking about how to fine tune it for your audience, your eye will turn to the aesthetic attributes. Is that color right? What about the size of the points?</p>
-<p>Consider the first draft of the penguins plot above. It might feel a bit drab to have a large mass of points all in black, the same color as the labels and surrounding text. Let’s make the points blue instead to make them stand out a bit more. Run the code below to see if it works:</p>
+<p>Consider the first draft of the penguins plot above. It might feel a bit drab to have a large mass of points all in black, the same color as the labels and surrounding text. Let’s make the points <span style="color: #3333FF">blue</span> instead to make them stand out a bit more. Run the code below to see if it works:</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_6">
 <div>
 <div id="webr-10" class="exercise-cell">
@@ -590,14 +590,14 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 </div>
 <p>This is . . . unexpected. Why did it color the points red? Is this a bug?</p>
-<p>What we’ve stumbled into is a subtle but essential distinction in the grammar of graphics: <strong>mapping</strong> vs <strong>setting</strong>. When you put an aesthetic attribute (<code>x</code>, <code>color</code>, <code>size</code>, etc.) into the <code>aes()</code> function, you’re mapping that attribute in the plot to whatever data lives in the corresponding column in the data frame. Mapping was this process:</p>
+<p>What we’ve stumbled into is a subtle but essential distinction in the grammar of graphics: <strong>mapping</strong> vs <strong>setting</strong>. When you put an aesthetic attribute (<code>x</code>, <code>color</code>, <code>size</code>, etc.) into the <code>aes()</code> function, you’re mapping that attribute in the plot to a <em>column</em> in the data frame. Mapping was this process:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/mapping.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
 </figure>
 </div>
 <p>Again, <code>aes</code> maps attributes to <strong>columns</strong>. Our code tried to map <code>color</code> to a column named… <code>"blue"</code>. Which does not exist.</p>
-<p>If you think about it, we weren’t trying to do any kind of “mapping” here. We didn’t care about the information in the dataset, we just wanted all the dots to be blue. If you want to change something that is independent of the data itself, you need to <strong>“set”</strong> the attribute. All that means is that you put the code inside the geometry-building function <code>geom_point()</code> instead of inside the data-aesthetics mapping function <code>aes()</code>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>If you think about it, we weren’t trying to do any kind of “mapping” here. We didn’t need the points to be different colors based on what kind of penguin they were. What we want is actually totally unrelated to the dataset itself: we just wanted all the dots to be blue. If you want to change something that is <em>independent of the data values</em>, you need to <strong>“set”</strong> the attribute. All that means is that you put the code inside the geometry-building function <code>geom_point()</code> instead of inside the data-aesthetics mapping function <code>aes()</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_7">
 <div>
 <div id="webr-11" class="exercise-cell">
@@ -608,8 +608,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </script>
 </div>
 </div>
-<p>Ah, that looks much better!</p>
-<p>Color isn’t the only aesthetic attribute that you can set. Let’s increase slightly the size of our points by setting the <code>size</code> attribute to five times the size default size (which is 1).</p>
+<p>Ah, that looks much better. To recap: if you want to make ALL the geometric objects change in the same way, you “set” the attribute. If you want the data points to vary in how they look, according to what’s in the dataset, you “map” the attribute to a column name.</p>
+<p>Color isn’t the only aesthetic attribute that you can set. Let’s increase slightly the size of our points by setting the <code>size</code> attribute to something much bigger than the size default size (which is 1).</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_8">
 <div>
 <div id="webr-12" class="exercise-cell">
@@ -620,8 +620,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </script>
 </div>
 </div>
-<p>It’s not clear that that improves the readability of the plot - there is more overlap between the points now - but the setting worked.</p>
-<p>One strategy to get more visibility on some of the points that were clumped is to make them a little bit see-through. For this, use the <code>alpha</code> mapping. <code>alpha</code> is basically “how opaque is this?” If you set <code>alpha</code> to 1, the points are fully solid. If you set <code>alpha</code> to 0, they are fully transparent (invisible). If you set it to 0.5, they are somewhat see-through. Let’s try that out.</p>
+<p>It’s not clear that that improves the readability of the plot - there is more overlap between the points now - but it works. All the points are the same, bigger size now.</p>
+<p>When you have a lot of overlapping things on your canvas, a common strategy is to make the shapes a little bit see-through. For this, use the <code>alpha</code> mapping. <code>alpha</code> is basically “how opaque should this be?” If you set <code>alpha</code> to 1, the points are fully solid. If you set <code>alpha</code> to 0, they are fully transparent (invisible). If you set it to 0.5, they are somewhat see-through. Let’s try that out:</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_9">
 <div>
 <div id="webr-13" class="exercise-cell">
@@ -632,7 +632,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </script>
 </div>
 </div>
-<p>How would it have looked if instead we had <em>mapped</em> instead of <em>set</em> the size? Well, when you map, you are saying all the points might get different values. Specifically, you need a map <em>to a column</em>. So let’s try mapping size to the <code>species</code> column.</p>
+<p>How would it have looked if instead we had <em>mapped</em> instead of <em>set</em> the size? Well, when you map, you are saying that the points sizes can be different, based on what values are in some <em>column</em>. So let’s try mapping size to the <code>species</code> column.</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_10">
 <div>
 <div id="webr-14" class="exercise-cell">
@@ -646,8 +646,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 <p>We’ve made a mess of our plot now, but it is clear what happened. R looked inside the <code>species</code> column, found a categorical variable with three levels and selected a distinct size for each of those levels.</p>
 <p>All in all, this is another area in which the grammar of graphic guides clear thinking when constructing a graphic. The aesthetic attributes of a plot can be determined either by variability found in a data set or by fixed values that we set. The former is present in all data visualization but it’s the latter that comes into play when fine-tuning your plot for an audience.</p>
 </section>
-<section id="choosing-a-theme" class="level3">
-<h3 class="anchored" data-anchor-id="choosing-a-theme">Choosing a Theme</h3>
+<section id="using-themes" class="level3">
+<h3 class="anchored" data-anchor-id="using-themes">Using themes</h3>
 <p>What piece of software did I use to produce the following plot?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -659,8 +659,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 </div>
 <p>If you said “Excel”, you are correct! Well… it is Excel in spirit. What makes this plot look like it was made in Excel are a series of small visual choices that were made: the background is a dark gray, there are black horizontal guide lines, and the plot and the legend is surrounded by a black box.</p>
-<p><code>ggplot</code> offers ways to tweak a basic plot to look like this, setting every font, every line color, and so forth. But it’s easier to bring a whole bunch of harmonious settings in all together. This is where a <strong>theme</strong> is helpful. Adding a theme is, essentially, “setting” a whole bunch of visual attributes at once. The <code>ggthemes</code> library has a number of themes that mimic the look and feel of popular software packages, like Excel, or publications, like <em>The Economist</em> or <em>The Wall Street Journal</em>.</p>
-<p>To add a theme, you literally add <code>+ theme_NAME()</code> to your plot. For example, here’s the code used to make the Excel-looking plot:</p>
+<p><code>ggplot</code> offers ways to tweak a basic plot to look like this. You can manually configure every font, every line color, and so forth. But that gets tedious. It’s far easier to bring in a whole bunch of harmonious settings in one swoop. This is where a <strong>theme</strong> is helpful. Adding a theme is, essentially, “setting” a whole bunch of visual attributes at once. The <code>ggthemes</code> library has a number of themes that mimic the look and feel of popular software packages, like Excel, or publications, like <em>The Economist</em> and <em>The Wall Street Journal</em>.</p>
+<p>To add a theme, you literally add <code>+ theme_NAME()</code> to your plot. For example, here’s the code used to make the Excel-looking plot. Note the last line as you run this code:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -690,33 +690,33 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 </div>
 <p>They are, from top to bottom, a theme based on <em>The Wall Street Journal</em>, <em>The Economist</em>, and one of the themes built into <code>ggplot2</code> packaged called <code>bw</code> for “black and white” (there are no grays). The <code>ggplot2</code> library has several themes to choose from and yet more live in other packages like <code>ggthemes</code>. To use a theme, all you need to do is add a layer called <code>theme_NAME</code> (e.g.&nbsp;for the black and white theme, use <code>theme_bw()</code>).</p>
-<p>Themeing your plots is an easy way to change the look of your plot. Tinker with a few different themes and considering adding them to your labs<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. But, as with all design decisions around graphics, be sure to think about your audience. You might find the Excel aesthetics ugly and dated, but will your audience? If you’re presenting your plot to a community that works with Excel plots day in and day out, that’s probably a sound choice. If you are preparing a plot for submission to a scientific journal, a more minimalist theme is more appropriate.</p>
+<p>Themeing your plots is an easy way to change the look of your plot. Tinker with a few different themes and considering using them in your work.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> But as with all design decisions around graphics, be sure to think about your audience. You might find the Excel aesthetics ugly and dated, but will your audience? If you’re presenting your plot to a community that works with Excel plots day in and day out, that’s probably a sound choice. If you are preparing a plot for submission to a scientific journal, a more minimalist theme is more appropriate.</p>
 </section>
-<section id="annotations" class="level3">
-<h3 class="anchored" data-anchor-id="annotations">Annotations</h3>
-<p>In the same way that a title highlights the main message of a plot, you can rely upon visual cues to draw attention to certain components or provide helpful context.</p>
+<section id="annotations-last-part" class="level3">
+<h3 class="anchored" data-anchor-id="annotations-last-part">Annotations (last part)</h3>
+<p>In the same way that a title highlights the main message of a plot, you can add visual cues to draw attention to certain components or provide helpful context.</p>
 <p>In the plot below, we visualize the change in total births recorded in London, England in the 17<sup>th</sup> century, stored in the <code>arbuthnot</code> data frame. Although these records seem very simple, they actually capture a wealth of historical information. We can add this information to our plot by adding <em>annotations</em>.</p>
-<div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-edit="false" data-exercise="2_03_ex_19">
+<div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="true" data-exercise="2_03_ex_annotate_arbuthnot">
 <div>
 <div id="webr-15" class="exercise-cell">
 
 </div>
 <script type="webr-15-contents">
-eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZW52aXIiOiJ0dXRvcmlhbF8yXzAzIiwiZXZhbCI6dHJ1ZSwiZXhlcmNpc2UiOiIyXzAzX2V4XzE5IiwiZmlnLWFsaWduIjoiY2VudGVyIiwiZmlnLWhlaWdodCI6NCwiZmlnLXdpZHRoIjo2LCJtZXNzYWdlIjpmYWxzZX0sImNvZGUiOiJsaWJyYXJ5KG9wZW5pbnRybylcbmFyYnV0aG5vdCA8LSBtdXRhdGUoYXJidXRobm90LCB0b3RhbCA9IGdpcmxzICsgYm95cykifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMyIsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiMl8wM19leF9hbm5vdGF0ZV9hcmJ1dGhub3QiLCJmaWctYWxpZ24iOiJjZW50ZXIiLCJmaWctaGVpZ2h0Ijo0LCJmaWctd2lkdGgiOjZ9LCJjb2RlIjoibGlicmFyeShvcGVuaW50cm8pXG5hcmJ1dGhub3QgPC0gbXV0YXRlKGFyYnV0aG5vdCwgdG90YWwgPSBnaXJscyArIGJveXMpXG5cbmdncGxvdChhcmJ1dGhub3QsIGFlcyh4ID0geWVhcixcbiAgICAgICAgICAgICAgICAgICAgICB5ID0gdG90YWwpKSArXG4gICAgZ2VvbV9saW5lKGNvbG9yID0gXCJzdGVlbGJsdWVcIikgK1xuICAgIGxhYnMoeCA9IFwiWWVhclwiLCB5ID0gXCJUb3RhbCBDaHJpc3RlbmluZ3NcIikgK1xuICAgIHRoZW1lX2J3KCkifQ==
 </script>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false" data-exercise="2_03_ex_20">
+<p>Are you curious about what caused that dip in the number of births in 17<sup>th</sup> century London? It happens to correspond to the duration of the English Civil War, when the monarchy was overthrown by a dictator named Oliver Cromwell. This very important context can be conveyed by adding a text label and a line segment through two new <code>annotate()</code> layers:</p>
+<div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="true" data-exercise="2_03_ex_annotate_arbuthnot">
 <div>
 <div id="webr-16" class="exercise-cell">
 
 </div>
 <script type="webr-16-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMiLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6IjJfMDNfZXhfMjAiLCJmaWctYWxpZ24iOiJjZW50ZXIiLCJmaWctaGVpZ2h0Ijo0LCJmaWctd2lkdGgiOjZ9LCJjb2RlIjoiZ2dwbG90KGFyYnV0aG5vdCwgYWVzKHggPSB5ZWFyLFxuICAgICAgICAgICAgICAgICAgICAgIHkgPSB0b3RhbCkpICtcbiAgICBnZW9tX2xpbmUoY29sb3IgPSBcInN0ZWVsYmx1ZVwiKSArXG4gICAgbGFicyh4ID0gXCJZZWFyXCIsIHkgPSBcIlRvdGFsIENocmlzdGVuaW5nc1wiKSArXG4gICAgdGhlbWVfYncoKSArXG4gICAgYW5ub3RhdGUoXCJ0ZXh0XCIsIFxuICAgICAgICAgICAgIGxhYmVsID0gXCJFbmdsaXNoIENpdmlsIFdhciBiZWdpbnNcIixcbiAgICAgICAgICAgICB4ID0gMTY0MiwgeSA9IDEzMDAwKSArXG4gICAgYW5ub3RhdGUoXCJzZWdtZW50XCIsIFxuICAgICAgICAgICAgIHggPSAxNjQyLCB4ZW5kID0gMTY0MixcbiAgICAgICAgICAgICB5ID0gMTI2MDAsIHllbmQgPSAxMDkwMCkifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMyIsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiMl8wM19leF9hbm5vdGF0ZV9hcmJ1dGhub3QiLCJmaWctYWxpZ24iOiJjZW50ZXIiLCJmaWctaGVpZ2h0Ijo0LCJmaWctd2lkdGgiOjZ9LCJjb2RlIjoibGlicmFyeShvcGVuaW50cm8pXG5hcmJ1dGhub3QgPC0gbXV0YXRlKGFyYnV0aG5vdCwgdG90YWwgPSBnaXJscyArIGJveXMpXG5cbmdncGxvdChhcmJ1dGhub3QsIGFlcyh4ID0geWVhcixcbiAgICAgICAgICAgICAgICAgICAgICB5ID0gdG90YWwpKSArXG4gICAgZ2VvbV9saW5lKGNvbG9yID0gXCJzdGVlbGJsdWVcIikgK1xuICAgIGxhYnMoeCA9IFwiWWVhclwiLCB5ID0gXCJUb3RhbCBDaHJpc3RlbmluZ3NcIikgK1xuICAgIHRoZW1lX2J3KCkgK1xuICAgIGFubm90YXRlKFwidGV4dFwiLCBcbiAgICAgICAgICAgICBsYWJlbCA9IFwiRW5nbGlzaCBDaXZpbCBXYXIgYmVnaW5zXCIsXG4gICAgICAgICAgICAgeCA9IDE2NDIsIHkgPSAxMzAwMCkgK1xuICAgIGFubm90YXRlKFwic2VnbWVudFwiLCBcbiAgICAgICAgICAgICB4ID0gMTY0MiwgeGVuZCA9IDE2NDIsXG4gICAgICAgICAgICAgeSA9IDEyNjAwLCB5ZW5kID0gMTA5MDApIn0=
 </script>
 </div>
 </div>
-<p>Were you curious about what caused that dip in the number of births in 17<sup>th</sup> century London? It happens to correspond to the duration of the English Civil War, when the monarchy was overthrown by a dictator named Oliver Cromwell. This very important context can be conveyed by adding a text label and a line segment through two new <code>annotate()</code> layers.</p>
 <p>Within <code>ggplot2</code>, annotations are a flexible way to add the context or comparisons that help guide readers in interpreting your data. You can add text, shapes, lines, points. To learn more, consult the documentation[^annotate].</p>
 <p>So if the drop after 1642 corresponds to the English Civil War, what about the spike down around 1666? What about 1703? If you’re curious, explore Wikipedia to find out and add those events as annotations to this plot.</p>
 <p>To learn more about how to use annotation layers in ggplot2, see: <a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="uri">https://ggplot2.tidyverse.org/reference/annotate.html</a>.</p>
@@ -724,7 +724,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>Over the coming weeks, you’ll get lots of practice with ggplot2. It is an incredibly flexible and powerful piece of software that helps you not just <em>build</em> plots, but <em>think</em> about each of the design decisions that you make. Throughout your journey it is helpful to have a source of documentation to learn about the functionality of the tool. The help files on each function are only so useful. A better option is the official <code>ggplot2</code> documentation: <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>.</p>
+<p>Over the coming weeks, you’ll get lots of practice with ggplot2. It is an incredibly flexible and powerful piece of software that helps you not just <em>build</em> plots, but <em>think</em> about each of the design decisions that you make. Throughout your journey, it is helpful to have a source of documentation to learn about the functionality of the tool. The help files on each function are only so useful. A better option is the official <code>ggplot2</code> documentation: <a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a>.</p>
 <p>There are two main uses for data visualization. The first is as part of exploratory data analysis, when you are constructing plots for yourself to better understand the structure of the data. When you’re ready to communicate with an outside audience using graphics, more thought is needed: you must think about the difference between mapping and setting, the use of labels for clarity, choosing a theme, and emphasizing elements of the plot using annotations.</p>
 
 
@@ -752,10 +752,8 @@ W10=
 
 <ol>
 <li id="fn1"><p>Visualization drawn from the excellent collection of graphics at the Financial Times Covid Tracker <a href="https://ig.ft.com/coronavirus-vaccine-tracker/" class="uri">https://ig.ft.com/coronavirus-vaccine-tracker/</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>For data documentation, see the <code>stat20data</code> R package.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>For data documentation, see the <code>palmerpenguins</code> R package.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>To see the vast (and somewhat strange) palette of color names that R knows, type <code>colors()</code> at the console.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Explore the themes available within <code>ggplot2</code> by reading the documentation <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="uri">https://ggplot2.tidyverse.org/reference/ggtheme.html</a>. For the additional themes held in the <code>ggthemes</code> package, read this: <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/" class="uri">https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/</a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>To see the vast (and somewhat strange) palette of color names that R knows, type <code>colors()</code> at the console.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Explore the themes available within <code>ggplot2</code> by reading the documentation <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="uri">https://ggplot2.tidyverse.org/reference/ggtheme.html</a>. For the additional themes held in the <code>ggthemes</code> package, read this: <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/" class="uri">https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script type="ojs-module-contents">

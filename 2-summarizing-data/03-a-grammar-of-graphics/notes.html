@@ -82,6 +82,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/stat20/stat20notes/sidebar.css">
@@ -362,23 +364,23 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><span class="dropcap">I</span>n the last set of notes, we saw that there is a side to the discipline of Statistics that looks like engineering. Summary statistics - medians, standard deviations, etc. - are carefully crafted tools that capture different characteristics of a data set for use in very specific situations. There is another practice in statistics that looks more like a science; that is, a field that seeks to take many different phenomena and explain them using a systematic overarching theory. That practice is <strong>data visualization</strong>.</p>
-<p>At this point in the course, you’ve seen several several examples of data visualizations.</p>
+<p><strong>L</strong>et’s look back at some of the “data visualizations” (plots) you’ve seen so far in this class:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/plot-collage.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>The diversity of shapes and structures used in these plots suggest that each one is a thing-unto-itself, specially devised to provide one particular style of visualization. But what elements do they share?</p>
+<p>The diversity of shapes and structures used in these plots makes it seem like each one is a thing-unto-itself, specially built to provide one specific style of visualization. But do they have deeper things in common?</p>
 <p>Focus on the nature of the data being used. Exactly half of the plots above are illustrating the distribution of a single variable; the other half illustrate the relation between two variables. Can you tell which is which?</p>
 <p>Consider the manner in which variability in the data is being conveyed used different visual cues. How many of the plots above utilize an x-axis? A y-axis? Color?</p>
 <p>Finally, how are the observations finding their way onto the plot? Three of the plots above share the same data variable, utilize the same visual cues, and differ only in the shape used to encode the observations.</p>
-<p>By asking these questions, we begin to find recurring structures in a wide range of plot types. These recurring structures have been compiled into a widely-used framework called the Grammar of Graphics.</p>
+<p>By asking these questions, we begin to find recurring structures in a wide range of plot types. These recurring structures have been compiled into a widely-used framework called the <strong>Grammar of Graphics</strong>.</p>
 <section id="the-grammar-of-graphics" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-grammar-of-graphics">The Grammar of Graphics</h2>
-<p>In 1999, a statistician named Leland Wilkinson published the first edition of what has been the most influential work in data visualization, <em>The Grammar of Graphics</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The title is fitting. In the same way that a grammar defines the regular structures and composition of a language, his book outlines a framework to structure statistical graphics.</p>
+<p>In 1999, a statistician named Leland Wilkinson published the first edition of what has been the most influential work in data visualization, <em>The Grammar of Graphics</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>The title is fitting. Languages (including both English and R) have rules about how words are formed and put together, but the rules are still flexible enough to allow us to express pretty much anything we want. Could we do the same for graphics? When you construct different plots, with all their different shapes and lines and colors and data, is there a shared set of rules that we could use to build all of them? Wilkinson’s book outlines just such a “language” for data visualizations.</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><img src="images/grammar-of-graphics.png" class="img-fluid"></div></div>
-<p>Nearly every current software tool used to build plots has been informed by this book<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Its influence can be found in Tableau, Plotly, and the Python libraries bokeh, altair, seaborn, and plotnine. The most complete implementation of the grammar is found in an R package called ggplot2 by Hadley Wickham<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Nearly every current software tool used to build plots has been informed by this book<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Its influence can be found in Tableau, Plotly, and the Python libraries bokeh, altair, seaborn, and plotnine. The most complete implementation of the grammar is found in an R package called ggplot2 by Hadley Wickham.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>In Wickham’s adaptation of the grammar of graphics, a plot can be decomposed into three primary elements:</p>
 <ol type="1">
 <li>the <strong>data</strong>,</li>
@@ -399,43 +401,69 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
 <p>What variables are needed to construct the penguin plot above?</p>
-<p>We see <code>bill_length_mm</code> and <code>bill_depth_mm</code>; those are labeled clearly on the x and y axes. We must also know the <code>species</code> of each of these penguins in order to know which color to label each point. In other words, there are three columns of a data frame that we need to have on hand.</p>
+<p>We see <code>bill_length_mm</code> and <code>bill_depth_mm</code>; those are labeled clearly on the x and y axes. We must also know the <code>species</code> of each of these penguins in order to know which color to label each point. These three columns need to exist in our data frame for the plot to work.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 333 × 3
-   bill_length_mm bill_depth_mm species
-            &lt;dbl&gt;         &lt;dbl&gt; &lt;fct&gt;  
- 1           39.1          18.7 Adelie 
- 2           39.5          17.4 Adelie 
- 3           40.3          18   Adelie 
- 4           36.7          19.3 Adelie 
- 5           39.3          20.6 Adelie 
- 6           38.9          17.8 Adelie 
- 7           39.2          19.6 Adelie 
- 8           41.1          17.6 Adelie 
- 9           38.6          21.2 Adelie 
-10           34.6          21.1 Adelie 
-# ℹ 323 more rows</code></pre>
-</div>
-</div>
-<p>Through working on your assignments, you may have also seen the following plot, which is a variant of the “penguin plot”:</p>
-<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="499"></p>
-</figure>
+<table class="lightable-paper caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_length_mm</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">40.9</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: left;">Gentoo</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">41.4</td>
+<td style="text-align: right;">18.5</td>
+<td style="text-align: left;">Adelie</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">51.3</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: left;">Chinstrap</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">49.6</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: left;">Gentoo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46.5</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: left;">Gentoo</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">49.7</td>
+<td style="text-align: right;">18.6</td>
+<td style="text-align: left;">Chinstrap</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">49.2</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: left;">Gentoo</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">46.2</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: left;">Gentoo</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</div>
-<p>In this course we’ve talked plenty about the structure of a data frame, so this part of the grammar of graphics is straight-forward. Be sure that every variable that you wish to include in your plot is present in the same data frame.</p>
-<!-- But maintain some skepticism about the data that you intend to use. In the data frame above, we see that some of the values are listed as `NA`, meaning that they're missing ("NA" stands for "not applicable" or "no answer"). Why are they missing? How will this affect your plot? Real data is often riddled with errors, typos, or other unexpected features, so be sure to check your data[^datacheck]. -->
+<p>Be sure that every variable that you wish to include in your plot is present in your data frame!</p>
 <p>More fundamentally, be sure the data you’re using is well-suited to the message you aim to convey with your plot. Many plots go wrong right here at the outset, so be sure you’re on firm footing.</p>
 </section>
 <section id="aesthetics" class="level3">
 <h3 class="anchored" data-anchor-id="aesthetics">Aesthetics</h3>
-<p>The most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual variation in your plot.</p>
-<p>The penguin plot relies upon three forms of visual variation. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill depth is captured by variation in the location along the y-axis, which is the second form. The third form is color: each of the three species is designated by one of three colors.</p>
+<p>The most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual aspects of your plot.</p>
+<p>The penguin plot relies upon three visual aspects. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill <em>depth</em> is captured on the y-axis: deeper bills are higher up on the plot, shallower bills are lower down. The third is color: each of the three species has its own color.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/mapping.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -460,7 +488,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="geometries" class="level3">
 <h3 class="anchored" data-anchor-id="geometries">Geometries</h3>
-<p>With the data set in place and the aesthetic mappings selected, the final choice in making our plot is to decide how to graphically express the observations themselves. For the penguin plot above, each observation in represented by a point, so it is said to use a “point” geometry. That is just one of many options. Other options are listed below.</p>
+<p>With the data set in place and the aesthetic mappings selected, the final choice in making our plot is to decide how to graphically express the observations themselves. For the penguin plot above, each observation is represented by a point, so it is said to use a “point” geometry. That is just one of many options. Other options are listed below.</p>
 <ul>
 <li><code>point</code></li>
 <li><code>bar</code></li>
@@ -476,7 +504,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -490,7 +518,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -520,7 +548,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -531,7 +559,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>

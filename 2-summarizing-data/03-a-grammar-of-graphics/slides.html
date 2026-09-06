@@ -133,8 +133,6 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../../site_libs/countdown-0.4.0/countdown.js"></script>
 <meta property="og:title" content="A Grammar of Graphics – Stat 20 (Fall 2026)">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/2-summarizing-data/03-a-grammar-of-graphics/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
@@ -159,28 +157,21 @@ STAT 20: Introduction to Probability and Statistics
 
 </section>
 <section>
-<section id="concept-questions" class="title-slide slide level1 center">
-<h1>Concept Questions</h1>
+<section id="warmup-quetions" class="title-slide slide level1 center">
+<h1>Warmup quetions</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="what-are-the-aesthetics-and-geometry-of-this-plot" class="slide level2 warmup-question">
+<h2>What are the aesthetics and geometry of this plot?</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1056"><div class="poll">
-<ol type="1">
-<li>What are the aesthetics and geometry of this plot?</li>
-</ol>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="answer fragment">
+<ul>
+<li>Bill length is mapped to the x</li>
+<li>Species is mapped to the y</li>
+<li>Uses boxplot geometry.</li>
+</ul>
 </div>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
 <aside class="notes">
-<p>ggplot(penguins, aes(x = bill_length_mm, y = species)) + geom_boxplot()</p>
-<p>Correct answer: Bill length is mapped to the x, species is mapped to the y, and it uses the boxplot geometry.</p>
 <p>This is a warm up to get them thinking about the fundamental concept of aesthetic mappings and geometries on a plot style and data set they’ll be familiar with. This should be quite easy.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -194,53 +185,21 @@ STAT 20: Introduction to Probability and Statistics
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<section id="what-code-was-used-to-make-this-plot" class="slide level2 warmup-question">
+<h2>What code was used to make this plot?</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"><div class="poll">
-<p>What code was used to make this plot?</p>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"><div class="answer fragment">
+<p><code>ggplot(penguins, aes(x = island, fill = island)) + geom_bar()</code></p>
 </div>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-<aside class="notes">
-<p>Correct answer: ggplot(penguins, aes(x = island, fill = island)) + geom_bar()</p>
-<p>This demonstrates a practice called “double-mapping”, when the same column is mapped to two different aesthetic attributes. Most consider this a bad practice.</p>
-<p>In a setting like this, usually the author is really just trying to get more color onto the plot. That can be accomplished by <em>setting</em> the color of the bars using something like:</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<h4 id="global-infectious-disease-prevalence-in-1989">Global infectious disease prevalence in 1989</h4>
+<section id="what-are-the-aesthetics-and-geometry-of-this-plot-1" class="slide level2 warmup-question">
+<h2>What are the aesthetics and geometry of this plot?</h2>
+<p>Global infectious disease prevalence in 1989:</p>
 
-<img data-src="images/bubble-chart.png" class="quarto-figure quarto-figure-center r-stretch" alt="A bubble chart showing the prevalence of different infectious diseases. Each disease is represented by a bubble, its size is mapped to the prevalence, and its biological family is mapped to color. The largest bubble is labeled HIV and is green, representing viruses."><div class="poll">
-<ol start="2" type="1">
-<li>What are the aesthetics and geometry of this plot?</li>
-</ol>
+<img data-src="images/bubble-chart.png" class="quarto-figure quarto-figure-center r-stretch" alt="A bubble chart showing the prevalence of different infectious diseases. Each disease is represented by a bubble, its size is mapped to the prevalence, and its biological family is mapped to color. The largest bubble is labeled HIV and is green, representing viruses."><div class="answer fragment">
+<p>Color is mapped to taxonomic family, size is mapped to prevalence, the diseases are represented using the point geometry.</p>
 </div>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
 <aside class="notes">
-<p>Correct answer: Color is mapped to taxonomic family, size is mapped to prevalence, the diseases are represented using the point geometry.</p>
 <p>Good follow up questions and boardwork include:</p>
 <ul>
 <li><p>What does the data frame look like that made this plot? (taxonomy is a categorical variable with three categories: bacteria, virus, and protozoa, prevalence is proportion of population affected by disease, seems that disease is the observation so each point is a disease.)</p></li>
@@ -260,45 +219,8 @@ STAT 20: Introduction to Probability and Statistics
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
-<section>
-<section id="concept-activity" class="title-slide slide level1 center">
-<h1>Concept Activity</h1>
-<!--
-
-
-##
-
-:::{.poll}
-What has changed when moving from the left to the right?
-:::
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](slides_files/figure-revealjs/unnamed-chunk-4-1.png){fig-align='center' width=1056}
-:::
-:::
-
-
-
-::: {.cell}
-::: {.cell-output-display}
-
-```{=html}
-<div class="countdown" id="timer_feba9191" data-update-every="1" tabindex="0" style="top:0;right:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-```
-
-:::
-:::
-
-
--->
 </section>
-<section id="concept-activity-1" class="slide level2">
+<section id="concept-activity" class="slide level2">
 <h2>Concept Activity</h2>
 <p>You will be watching a 2.5 minute video of a presentation by a scientist, Hans Rosling, who studied global public health. He presents data visualizations depicting the change in life expectancy and family size over several decades in the 20th century.</p>
 <div class="poll">
@@ -310,7 +232,7 @@ What has changed when moving from the left to the right?
 </ul>
 </div>
 </section>
-<section id="section-3" class="slide level2" data-menu-title="Hans Rosling's Gapminder">
+<section id="section" class="slide level2" data-menu-title="Hans Rosling's Gapminder">
 <h2></h2>
 <center>
 <iframe src="https://embed.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen="">
@@ -330,7 +252,7 @@ What has changed when moving from the left to the right?
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <p>Please turn to your neighbors and…</p>
 <div class="poll">
@@ -341,7 +263,7 @@ What has changed when moving from the left to the right?
 <li>the geometry</li>
 </ul>
 </div>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_5709dd9a1c44d4daea7fb3a97e1ea70307f59728" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -362,30 +284,29 @@ What has changed when moving from the left to the right?
           display:block!important;
       }</style></aside>
 </section>
-<section id="what-were-the-variables-and-aesthetic-attributes" class="slide level2">
+<section id="what-were-the-variables-and-aesthetic-attributes" class="slide level2 smaller">
 <h2>What were the variables and aesthetic attributes?</h2>
-<div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<h4 id="visual-cues-aesthetics">Visual Cues / Aesthetics</h4>
-<ul>
-<li>Location along the x-axis</li>
-<li>Location along the y-axis</li>
-<li>Size of point</li>
-<li>Color of point</li>
-<li>Animation</li>
-</ul>
+<p><img data-src="images/rosling_screenshot.png"></p>
 </div><div class="column" style="width:50%;">
-<h4 id="variables">Variables</h4>
+<p><strong>Visual Cues / Aesthetics</strong></p>
 <ul>
-<li>Fertility rate</li>
-<li>Life expectancy</li>
-<li>Population</li>
-<li>Region</li>
-<li>Year</li>
+<li class="fragment">Location along the x-axis</li>
+<li class="fragment">Location along the y-axis</li>
+<li class="fragment">Size of point</li>
+<li class="fragment">Color of point</li>
+<li class="fragment">Time (animation)</li>
+</ul>
+<p><strong>Variables</strong></p>
+<ul>
+<li class="fragment">Fertility rate</li>
+<li class="fragment">Life expectancy</li>
+<li class="fragment">Population</li>
+<li class="fragment">Region</li>
+<li class="fragment">Year</li>
 </ul>
 </div></div>
-</div>
 </section>
 <section id="what-did-the-data-frame-look-like" class="slide level2">
 <h2>What did the data frame look like?</h2>
@@ -398,7 +319,7 @@ What has changed when moving from the left to the right?
 <li>A country in a given year</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h4 id="variables-1">Variables</h4>
+<h4 id="variables">Variables</h4>
 <ul>
 <li>Fertility rate (continuous)</li>
 <li>Life expectancy (continuous)</li>
@@ -415,108 +336,17 @@ What has changed when moving from the left to the right?
 <ul>
 <li>Points</li>
 </ul>
-<!--
-# Quiz Recap
-
--   Head to `pollev.com` for a series of former quiz questions and quiz-level questions! *Make sure you take notes*. 
-
-## What type of claim was made?
-
-> The group *Morning Consult* conducted a poll of a representative sample of registered 1,256 Republican voters on August 24, 2023, asking them who they planned to vote for in the primary election. 58% of respondents replied "Trump" and 14% replied "DeSantis". A major news outlet ran a headline, "Trump leads DeSantis by 44 points among registered Republican voters."
-. . . 
-
-
-
-## What type of variable is listeners?
-
-![](images/spotify.png){fig-alt="A dataframe with a column labelled 'Listeners (in million)' with values 40, 66, 60, 73, 57, 75, and 13'}
-
-. . . 
-
-
-
-
-## What type of proportion is used?
-
-![](images/q1.png){fig-alt="An image of a stacked bar chart with the classes along the x-asis - 1, 2, and 3 - and the bars filled with black or gray based the proportion that survived or perished."}
-
-. . . 
-
-> Roughly 68 percent of those passengers who were in the first class survived the wreckage of the Titanic. 
-
-. . . 
-
-
-
-## Which measure of center/spread is least appropriate?
-
-
-::: {.cell}
-::: {.cell-output-display}
-![](slides_files/figure-revealjs/unnamed-chunk-7-1.png){width=960}
-:::
-:::
-
-
-
-
-## What are the aesthetics and geometry of this plot?
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](slides_files/figure-revealjs/unnamed-chunk-8-1.png){fig-align='center' width=1056}
-:::
-:::
-
-
-. . . 
-
-
-
-## What has not changed when moving from left to right?
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](slides_files/figure-revealjs/unnamed-chunk-9-1.png){fig-align='center' width=1056}
-:::
-:::
-
-
--->
 </div>
 </section></section>
-<section id="break" class="title-slide slide level1 center">
-<h1>Break</h1>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-</section>
-
 <section id="worksheet-a-grammar-of-graphics" class="title-slide slide level1 center">
 <h1>Worksheet: A Grammar of Graphics</h1>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<p>If you finish early, get started on the new lab: Flights I.</p>
+<div id="timer_5709dd9a1c44d4daea7fb3a97e1ea70307f59728" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
  </div>
- <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-</section>
-
-<section id="lab-flights" class="title-slide slide level1 center">
-<h1>Lab: Flights</h1>
-<div id="timer_78010476266d4b5b30c4bf76907aadf64c888e0d" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
  </div>
 
 
