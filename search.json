@@ -865,6 +865,69 @@
     ]
   },
   {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-are-the-aesthetics-and-geometry-of-this-plot",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-are-the-aesthetics-and-geometry-of-this-plot",
+    "title": "A Grammar of Graphics",
+    "section": "What are the aesthetics and geometry of this plot?",
+    "text": "What are the aesthetics and geometry of this plot?\n\n\n\nBill length is mapped to the x\nSpecies is mapped to the y\nUses boxplot geometry.\n\n\n\nThis is a warm up to get them thinking about the fundamental concept of aesthetic mappings and geometries on a plot style and data set they’ll be familiar with. This should be quite easy."
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-code-was-used-to-make-this-plot",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-code-was-used-to-make-this-plot",
+    "title": "A Grammar of Graphics",
+    "section": "What code was used to make this plot?",
+    "text": "What code was used to make this plot?\n\n\nggplot(penguins, aes(x = island, fill = island)) + geom_bar()"
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-are-the-aesthetics-and-geometry-of-this-plot-1",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-are-the-aesthetics-and-geometry-of-this-plot-1",
+    "title": "A Grammar of Graphics",
+    "section": "What are the aesthetics and geometry of this plot?",
+    "text": "What are the aesthetics and geometry of this plot?\nGlobal infectious disease prevalence in 1989:\n\n\nColor is mapped to taxonomic family, size is mapped to prevalence, the diseases are represented using the point geometry.\n\n\nGood follow up questions and boardwork include:\n\nWhat does the data frame look like that made this plot? (taxonomy is a categorical variable with three categories: bacteria, virus, and protozoa, prevalence is proportion of population affected by disease, seems that disease is the observation so each point is a disease.)\nWhat determines where the bubbles are placed in the chart? Answer: bubble charts have different methods of doing this. This one appears to use a packing algorithm so get them close together. Important, none of those methods refer to a column in the data frame therefore are not aesthetic mappings.\nnice example of bubble chart that might appeal at https://www.mekkographics.com/top-english-premier-league-goal-scorers/\nIf you really want to go far afield, you could show an example of a beeswarm chart, which is a bubble chart that uses one of the x or the y to map a numerical variable and then uses a packing algorithm to determine placement on the other axis. Here is one showing [Sherlock Holmes canon and adaptations]https://public.tableau.com/app/profile/jessica.bautista/viz/SherlockHolmesCanon/Beeswarm\nOne of the lessons of this bubble chart is that our “named” charts correspond to particular combos of aesthetic mappings and geometries. A “scatterplot” uses the point geometry and maps numerical data to the x and y axes. A “bubble chart” uses the point geometry too, but maps size to a numerical variable (and often uses color too), so adds two more variables."
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#concept-activity",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#concept-activity",
+    "title": "A Grammar of Graphics",
+    "section": "Concept Activity",
+    "text": "Concept Activity\nYou will be watching a 2.5 minute video of a presentation by a scientist, Hans Rosling, who studied global public health. He presents data visualizations depicting the change in life expectancy and family size over several decades in the 20th century.\n\nOn a piece of note paper:\n\nSketch out the data frame used to create the graphic and add the names of the variables.\nList the aesthetic attributes used to encode the data in the graphic.\nIdentify the geometry used in the plot."
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#section",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#section",
+    "title": "A Grammar of Graphics",
+    "section": "",
+    "text": "If you don’t have much time, begin the video at 2:19 and stop at 4:53. If you have a bit of time, begin the video at the beginning, but still, stop at 4:53."
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#section-1",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#section-1",
+    "title": "A Grammar of Graphics",
+    "section": "",
+    "text": "Please turn to your neighbors and…\n\nDiscuss what you came up with in terms of . . .\n\nthe variables present in the data frame\nthe aesthetic attributes used to encode that data in the plot\nthe geometry\n\n\n\n  \n    −\n    +\n \n 01:00\n \n\nChange timer to at least 5:00. Then go on to the next slide, but pause with the slide still blank. Ask them what were the variables and aesthetic attributes, and write them down on the board."
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-were-the-variables-and-aesthetic-attributes",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-were-the-variables-and-aesthetic-attributes",
+    "title": "A Grammar of Graphics",
+    "section": "What were the variables and aesthetic attributes?",
+    "text": "What were the variables and aesthetic attributes?\n\n\n\n\nVisual Cues / Aesthetics\n\nLocation along the x-axis\nLocation along the y-axis\nSize of point\nColor of point\nTime (animation)\n\nVariables\n\nFertility rate\nLife expectancy\nPopulation\nRegion\nYear"
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-did-the-data-frame-look-like",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-did-the-data-frame-look-like",
+    "title": "A Grammar of Graphics",
+    "section": "What did the data frame look like?",
+    "text": "What did the data frame look like?\nWhat was the unit of observation? What were the variables? What were their type?\n\n\n\nUnit of observation\n\nA country in a given year\n\n\nVariables\n\nFertility rate (continuous)\nLife expectancy (continuous)\nPopulation (continuous)\nRegion (nominal)\nYear (discrete)"
+  },
+  {
+    "objectID": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-geometry-is-used-to-represent-the-observations",
+    "href": "2-summarizing-data/03-a-grammar-of-graphics/slides.html#what-geometry-is-used-to-represent-the-observations",
+    "title": "A Grammar of Graphics",
+    "section": "What geometry is used to represent the observations?",
+    "text": "What geometry is used to represent the observations?\n\n\nPoints"
+  },
+  {
     "objectID": "2-summarizing-data/01-summarizing-categorical-data/notes.html",
     "href": "2-summarizing-data/01-summarizing-categorical-data/notes.html",
     "title": "Summarizing Categorical Data",
@@ -1307,6 +1370,83 @@
     ]
   },
   {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#the-data",
+    "href": "2-summarizing-data/labs/flights/part-1.html#the-data",
+    "title": "Lab 3: Flights I",
+    "section": "The Data",
+    "text": "The Data\nBelieve it or not, detailed information about flights is public record! The Bureau of Transportation Statistics, a federal agency, collects and hosts this data for public download. The data we are working with this week (and next) consists of all flights that left OAK and SFO during the 2020 calendar year. Here are some interesting points.:\n\nIf you flew in 2020 out of either of these airports, you can find out the exact plane you were on and exactly when it departed and landed.\n2020 saw the larger, global onset of the COVID-19, so many flights were grounded at the start of the pandemic. Might we see evidence of this in the data?\n\nWe will be answering questions like these (and more) in this lab. The flights data frame is located in the stat20data package. Once you’ve loaded in this package, you can move it to your environment by running the following line of R code:"
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-1",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-1",
+    "title": "Lab 3: Flights I",
+    "section": "Question 1",
+    "text": "Question 1\n\nPart A\nWhat is the unit of observation in the flights data frame?\n\n\nPart B\nWhat are the dimensions of the flights data frame, in rows and columns?"
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-2",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-2",
+    "title": "Lab 3: Flights I",
+    "section": "Question 2",
+    "text": "Question 2\n\nPart A\nList three variables in the flights data frame that are categorical.\n\n\nPart B\nList three variables in the flights data frame that are numerical.\n\n\nPart C\nAre there any variables which are recorded using numbers but should be treated categorically? Write them here.\n\n\nPart D\nAre there any variables which could reasonably be interpreted as either categorical or numerical? Write them here."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-3",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-3",
+    "title": "Lab 3: Flights I",
+    "section": "Question 3",
+    "text": "Question 3\nWhat is your guess for the units/format used to record the departure time? Said another way, what would a value of 1517 represent?"
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-4",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-4",
+    "title": "Lab 3: Flights I",
+    "section": "Question 4",
+    "text": "Question 4\n\nPart A\nWrite ggplot2 code to create a bar chart that shows the distribution by month of all the flights leaving the Bay Area (from SFO and OAK airports together).\n\n\nPart B\nDo you see any sign of an effect of the pandemic?"
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-5",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-5",
+    "title": "Lab 3: Flights I",
+    "section": "Question 5",
+    "text": "Question 5\n\nPart A\nWrite ggplot2 code to create a histogram showing the distribution of departure delays for all flights.\n\n\nPart B\nUsing the lims() ggplot layer, set the limits of the x-axis to focus on where most of the data lie.\n\n\nPart C\nAdd a text annotation to your plot that explains the meaning of a negative departure delay.\n\n\nPart D\nDescribe the shape and modality of the distribution in 1 to 2 sentences."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-6",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-6",
+    "title": "Lab 3: Flights I",
+    "section": "Question 6",
+    "text": "Question 6\n\nWhat is the destination and delay time (in hrs) for the flight that was most delayed?\n\nWrite a dplyr pipeline to answer this question. Then, explain the result of your pipeline in one sentence."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-7",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-7",
+    "title": "Lab 3: Flights I",
+    "section": "Question 7",
+    "text": "Question 7\nIf you flew out of OAK or SFO during the year 2020, what is the tail number of the plane that you were on? Write a dplyr pipeline to answer this question. If you did not fly in this period, find the tail number of the plane that flew JetBlue flight 40 to New York’s JFK Airport from SFO on May 1st."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-8",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-8",
+    "title": "Lab 3: Flights I",
+    "section": "Question 8",
+    "text": "Question 8\n\nPart A\nWhat proportion of all flights left on schedule? Write a dplyr pipeline to answer this question.\n\n\nPart B\nWhat proportion flights left on schedule for each airport (OAK and SFO)? Write a dplyr pipeline to answer this question."
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#question-9",
+    "href": "2-summarizing-data/labs/flights/part-1.html#question-9",
+    "title": "Lab 3: Flights I",
+    "section": "Question 9",
+    "text": "Question 9\nThe plot below shows a relationship between the number of flights going out of SFO and the average departure delay. It illustrates the hypothesis that more flights on a given day would lead to a more congested airport which would lead to greater delays on average. Each point represents a single day in 2020; there are 366 of them on the plot.\n\n\n\n\n\n\n\n\n\n\nPart A\nDescribe the variables featured in the plot and their aesthetic mappings according to the Grammar of Graphics.\n\n\nPart B\nDescribe also any settings that you see, if any, according to the Grammar of Graphics.\n\n\nPart C\nForm a single dplyr pipeline that will reproduce the plot, starting with the original flights data frame. This link might be helpful!"
+  },
+  {
+    "objectID": "2-summarizing-data/labs/flights/part-1.html#last-question",
+    "href": "2-summarizing-data/labs/flights/part-1.html#last-question",
+    "title": "Lab 3: Flights I",
+    "section": "Last Question",
+    "text": "Last Question\nWill you ensure that your submission to Gradescope…\n\nis of a pdf generated from a qmd file,\nhas all of your code visible to readers,\nand assigns each of the questions to all pages that show your work for that question?\n\n(This one is easy! Just answer “yes” or “no”)"
+  },
+  {
     "objectID": "2-summarizing-data/01-summarizing-categorical-data/slides.html#section",
     "href": "2-summarizing-data/01-summarizing-categorical-data/slides.html#section",
     "title": "Summarizing Categorical Data",
@@ -1420,7 +1560,7 @@
     "href": "2-summarizing-data/03-a-grammar-of-graphics/notes.html#the-grammar-of-graphics",
     "title": "A Grammar of Graphics",
     "section": "The Grammar of Graphics",
-    "text": "The Grammar of Graphics\nIn 1999, a statistician named Leland Wilkinson published the first edition of what has been the most influential work in data visualization, The Grammar of Graphics1.\nThe title is fitting. Languages (including both English and R) have rules about how words are formed and put together, but the rules are still flexible enough to allow us to express pretty much anything we want. Could we do the same for graphics? When you construct different plots, with all their different shapes and lines and colors and data, is there a shared set of rules that we could use to build all of them? Wilkinson’s book outlines just such a “language” for data visualizations.\n\nNearly every current software tool used to build plots has been informed by this book2. Its influence can be found in Tableau, Plotly, and the Python libraries bokeh, altair, seaborn, and plotnine. The most complete implementation of the grammar is found in an R package called ggplot2 by Hadley Wickham.3\nIn Wickham’s adaptation of the grammar of graphics, a plot can be decomposed into three primary elements:\n\nthe data,\nthe aesthetic mapping of the variables in the data to visual cues, and\nthe geometry used to encode the observations on the plot.\n\nLet’s go through each of these components one-by-one to understand the role that they play in a plot like this, which we’ll refer to as the “penguin plot”.\n\n\n\n\n\n\n\n\n\nThe above plot is an example new type of plot which involves two numerical variables: a scatter plot. The points may also be colored by a third variable, generally a categorical one.\n\nData\nWhat variables are needed to construct the penguin plot above?\nWe see bill_length_mm and bill_depth_mm; those are labeled clearly on the x and y axes. We must also know the species of each of these penguins in order to know which color to label each point. These three columns need to exist in our data frame for the plot to work.\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nspecies\n\n\n\n\n45.5\n15.0\nGentoo\n\n\n42.9\n13.1\nGentoo\n\n\n51.5\n18.7\nChinstrap\n\n\n46.6\n17.8\nChinstrap\n\n\n38.3\n19.2\nAdelie\n\n\n42.2\n19.5\nAdelie\n\n\n46.5\n14.8\nGentoo\n\n\n42.3\n21.2\nAdelie\n\n\n\n\n\nBe sure that every variable that you wish to include in your plot is present in your data frame!\nMore fundamentally, be sure the data you’re using is well-suited to the message you aim to convey with your plot. Many plots go wrong right here at the outset, so be sure you’re on firm footing.\n\n\nAesthetics\nThe most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual aspects of your plot.\nThe penguin plot relies upon three visual aspects. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill depth is captured on the y-axis: deeper bills are higher up on the plot, shallower bills are lower down. The third is color: each of the three species has its own color.\n\n\n\n\n\nWe can summarize this encoding, or “aesthetic mapping”, as:\n\nbill_length_mm is mapped to the x-axis\nbill_depth_mm is mapped to the y-axis\nspecies is mapped to color\n\nThese are three of many different techniques for visually encoding variability. Here is a list of the aesthetic attributes that are most commonly used:\n\nx: location along the x-axis\ny: location along the y-axis\ncolor: hue of the mark that represents the observation\nalpha: the level of transparency of the color\nsize: the size of the mark representing the observation\nshape: the shape of the mark representing the observation\nfill: the color of the inside of the representation of an observation\n\n\n\nGeometries\nWith the data set in place and the aesthetic mappings selected, the final choice in making our plot is to decide how to graphically express the observations themselves. For the penguin plot above, each observation is represented by a point, so it is said to use a “point” geometry. That is just one of many options. Other options are listed below.\n\npoint\nbar\nline\nhistogram\ndensity\nviolin\ndotplot\nboxplot\n\nWhen we speak about whether a plot is a scatter plot, a bar chart, a histogram, etc, we are discussing the geometry of a plot. The impact of this choice can be seen in the following two plots.\n\n\n\n\n\n\n\n\n\nBoth plots share the same data (penguins) and the same aesthetic mappings(bill_length to the x-axis and species to the y-axis). Where they differ is the geometry: the plot on the left uses the violin while the one on the right uses the boxplot.\n\n\nExample: Births over Time\nThe following plot displays the total number of births over time recorded in London, England during the 17th century.\n\n\n\n\n\n\n\n\n\nIt was constructed from a data frame with 82 rows, the first six of which are shown below.\n\n\n# A tibble: 6 × 2\n   year total\n  &lt;int&gt; &lt;int&gt;\n1  1629  9901\n2  1630  9315\n3  1631  8524\n4  1632  9584\n5  1633  9997\n6  1634  9855\n\n\nWe can decompose this graphic using the grammar of graphics.\n\ndata: the data frame displayed above\naesthetic mappings: year is mapped to the x-axis, total is mapped to the y-axis\ngeometry: the observations are expressed as a line\n\nThis process makes clear what decisions were made in constructing the plot and suggests ways in which we might consider changing the graphic. What if we changed the geometry so that the observations are expressed as points?\n\n\n\n\n\n\n\n\n\nIs this a better graphic? That depends on the message you aim to convey. The line geometry emphasizes the general trend over time. The point geometry makes clearer the total births in each particular year.\nWhat if you wanted to convey both of those messages? If two geometries are compatible, they can be combined.\n\n\n\n\n\n\n\n\n\nIs this a better graphic? Again, that depends. It makes it possible to see both the trend over time and the individual observations. But this plot is more complicated and therefore articulates each of those individual messages less clearly. Sometimes simplicity and a single message is best.\nHere’s another example of a plot that combines two geometries:\n\n\n\n\n\nHere, a density geometry is overlaid on top of a histogram geometry. It is unclear whether this was a good design decision. What do you think? What is the advantage of a stair-step histogram versus the smooth line of a density curve?",
+    "text": "The Grammar of Graphics\nIn 1999, a statistician named Leland Wilkinson published the first edition of what has been the most influential work in data visualization, The Grammar of Graphics1.\nThe title is fitting. Languages (including both English and R) have rules about how words are formed and put together, but the rules are still flexible enough to allow us to express pretty much anything we want. Could we do the same for graphics? When you construct different plots, with all their different shapes and lines and colors and data, is there a shared set of rules that we could use to build all of them? Wilkinson’s book outlines just such a “language” for data visualizations.\n\nNearly every current software tool used to build plots has been informed by this book2. Its influence can be found in Tableau, Plotly, and the Python libraries bokeh, altair, seaborn, and plotnine. The most complete implementation of the grammar is found in an R package called ggplot2 by Hadley Wickham.3\nIn Wickham’s adaptation of the grammar of graphics, a plot can be decomposed into three primary elements:\n\nthe data,\nthe aesthetic mapping of the variables in the data to visual cues, and\nthe geometry used to encode the observations on the plot.\n\nLet’s go through each of these components one-by-one to understand the role that they play in a plot like this, which we’ll refer to as the “penguin plot”.\n\n\n\n\n\n\n\n\n\nThe above plot is an example new type of plot which involves two numerical variables: a scatter plot. The points may also be colored by a third variable, generally a categorical one.\n\nData\nWhat variables are needed to construct the penguin plot above?\nWe see bill_length_mm and bill_depth_mm; those are labeled clearly on the x and y axes. We must also know the species of each of these penguins in order to know which color to label each point. These three columns need to exist in our data frame for the plot to work.\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nspecies\n\n\n\n\n50.8\n19.0\nChinstrap\n\n\n42.7\n13.7\nGentoo\n\n\n46.6\n17.8\nChinstrap\n\n\n46.6\n14.2\nGentoo\n\n\n38.8\n20.0\nAdelie\n\n\n47.6\n14.5\nGentoo\n\n\n45.9\n17.1\nChinstrap\n\n\n48.7\n15.1\nGentoo\n\n\n\n\n\nBe sure that every variable that you wish to include in your plot is present in your data frame!\nMore fundamentally, be sure the data you’re using is well-suited to the message you aim to convey with your plot. Many plots go wrong right here at the outset, so be sure you’re on firm footing.\n\n\nAesthetics\nThe most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual aspects of your plot.\nThe penguin plot relies upon three visual aspects. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill depth is captured on the y-axis: deeper bills are higher up on the plot, shallower bills are lower down. The third is color: each of the three species has its own color.\n\n\n\n\n\nWe can summarize this encoding, or “aesthetic mapping”, as:\n\nbill_length_mm is mapped to the x-axis\nbill_depth_mm is mapped to the y-axis\nspecies is mapped to color\n\nThese are three of many different techniques for visually encoding variability. Here is a list of the aesthetic attributes that are most commonly used:\n\nx: location along the x-axis\ny: location along the y-axis\ncolor: hue of the mark that represents the observation\nalpha: the level of transparency of the color\nsize: the size of the mark representing the observation\nshape: the shape of the mark representing the observation\nfill: the color of the inside of the representation of an observation\n\n\n\nGeometries\nWith the data set in place and the aesthetic mappings selected, the final choice in making our plot is to decide how to graphically express the observations themselves. For the penguin plot above, each observation is represented by a point, so it is said to use a “point” geometry. That is just one of many options. Other options are listed below.\n\npoint\nbar\nline\nhistogram\ndensity\nviolin\ndotplot\nboxplot\n\nWhen we speak about whether a plot is a scatter plot, a bar chart, a histogram, etc, we are discussing the geometry of a plot. The impact of this choice can be seen in the following two plots.\n\n\n\n\n\n\n\n\n\nBoth plots share the same data (penguins) and the same aesthetic mappings(bill_length to the x-axis and species to the y-axis). Where they differ is the geometry: the plot on the left uses the violin while the one on the right uses the boxplot.\n\n\nExample: Births over Time\nThe following plot displays the total number of births over time recorded in London, England during the 17th century.\n\n\n\n\n\n\n\n\n\nIt was constructed from a data frame with 82 rows, the first six of which are shown below.\n\n\n# A tibble: 6 × 2\n   year total\n  &lt;int&gt; &lt;int&gt;\n1  1629  9901\n2  1630  9315\n3  1631  8524\n4  1632  9584\n5  1633  9997\n6  1634  9855\n\n\nWe can decompose this graphic using the grammar of graphics.\n\ndata: the data frame displayed above\naesthetic mappings: year is mapped to the x-axis, total is mapped to the y-axis\ngeometry: the observations are expressed as a line\n\nThis process makes clear what decisions were made in constructing the plot and suggests ways in which we might consider changing the graphic. What if we changed the geometry so that the observations are expressed as points?\n\n\n\n\n\n\n\n\n\nIs this a better graphic? That depends on the message you aim to convey. The line geometry emphasizes the general trend over time. The point geometry makes clearer the total births in each particular year.\nWhat if you wanted to convey both of those messages? If two geometries are compatible, they can be combined.\n\n\n\n\n\n\n\n\n\nIs this a better graphic? Again, that depends. It makes it possible to see both the trend over time and the individual observations. But this plot is more complicated and therefore articulates each of those individual messages less clearly. Sometimes simplicity and a single message is best.\nHere’s another example of a plot that combines two geometries:\n\n\n\n\n\nHere, a density geometry is overlaid on top of a histogram geometry. It is unclear whether this was a good design decision. What do you think? What is the advantage of a stair-step histogram versus the smooth line of a density curve?",
     "crumbs": [
       "Notes",
       "Summarization",
@@ -1753,21 +1893,21 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be a pdf file generated from a fully reproducible qmd file. For a helpful R reference, see base R, data visualization (ggplot2), and data wrangling (dplyr).\n\n\n\n\n\n\n\n\nLab 1: Getting Started\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\n\n\nLab 2: Class Survey\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\nNo matching items"
+    "text": "Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be a pdf file generated from a fully reproducible qmd file. For a helpful R reference, see base R, data visualization (ggplot2), and data wrangling (dplyr).\n\n\n\n\n\n\n\n\nLab 1: Getting Started\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\n\n\nLab 2: Class Survey\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\n\n\nLab 3: Flights I\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments.html#labs",
     "href": "assignments.html#labs",
     "title": "Assignments",
     "section": "",
-    "text": "Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be a pdf file generated from a fully reproducible qmd file. For a helpful R reference, see base R, data visualization (ggplot2), and data wrangling (dplyr).\n\n\n\n\n\n\n\n\nLab 1: Getting Started\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\n\n\nLab 2: Class Survey\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\nNo matching items"
+    "text": "Lab assignments are an opportunity to put the concepts from the notes into practice to answer questions about a real data set. Your lab report should be a pdf file generated from a fully reproducible qmd file. For a helpful R reference, see base R, data visualization (ggplot2), and data wrangling (dplyr).\n\n\n\n\n\n\n\n\nLab 1: Getting Started\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\n\n\nLab 2: Class Survey\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\n\n\nLab 3: Flights I\n\n  \n    Instructions\n  \n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments.html#worksheet-packets",
     "href": "assignments.html#worksheet-packets",
     "title": "Assignments",
     "section": "Worksheet Packets",
-    "text": "Worksheet Packets\nOn most class days, we will hand out a sheet of paper called a “worksheet.” These are pen-and-paper practice problems that we work on in class. The goal of the worksheets is simply practice: they help you drill the techniques needed to complete the labs. You will scan and submit the worksheets for a given week as a single worksheet packet each Tuesday on Gradescope. Use the “scan to pdf” feature on your phone to get all sides of the worksheets into a single PDF, and submit that. The names of the assignments on Gradescope tell you which worksheets are expected in each packet.\n\n\n\nWorksheet Packet: Understanding the World With Data\n\n\nWorksheet Packet: Taxonomy of Data\n\n\nWorksheet Packet: Summarizing Categorical Data\n\n\nWorksheet Packet: Summarizing Numerical Data\n\n\nWorksheet Packet: Logistic Regression\n\n\nNo matching items"
+    "text": "Worksheet Packets\nOn most class days, we will hand out a sheet of paper called a “worksheet.” These are pen-and-paper practice problems that we work on in class. The goal of the worksheets is simply practice: they help you drill the techniques needed to complete the labs. You will scan and submit the worksheets for a given week as a single worksheet packet each Tuesday on Gradescope. Use the “scan to pdf” feature on your phone to get all sides of the worksheets into a single PDF, and submit that. The names of the assignments on Gradescope tell you which worksheets are expected in each packet.\n\n\n\nWorksheet Packet: Understanding the World With Data\n\n\nWorksheet Packet: Taxonomy of Data\n\n\nWorksheet Packet: Summarizing Categorical Data\n\n\nWorksheet Packet: Summarizing Numerical Data\n\n\nWorksheet Packet: A Grammar of Graphics\n\n\nWorksheet Packet: Logistic Regression\n\n\nNo matching items"
   },
   {
     "objectID": "5-prediction/notes.html",
