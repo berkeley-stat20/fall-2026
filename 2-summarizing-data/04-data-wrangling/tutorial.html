@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conditioning – Stat 20 (Fall 2026)</title>
+<title>Data Wrangling – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -83,15 +118,17 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
-<meta property="og:title" content="Conditioning – Stat 20 (Fall 2026)">
-<meta property="og:description" content="Filtering, groupwise operations, and data pipelines.">
-<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-conditioning/assets/stat20-hex.png">
+<meta property="og:title" content="Data Wrangling – Stat 20 (Fall 2026)">
+<meta property="og:description" content="Whipping your data into shape.">
+<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-data-wrangling/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
-<meta name="twitter:title" content="Conditioning – Stat 20 (Fall 2026)">
-<meta name="twitter:description" content="Filtering, groupwise operations, and data pipelines.">
-<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-conditioning/assets/stat20-hex.png">
+<meta name="twitter:title" content="Data Wrangling – Stat 20 (Fall 2026)">
+<meta name="twitter:description" content="Whipping your data into shape.">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-data-wrangling/assets/stat20-hex.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -157,7 +194,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../2-summarizing-data/04-conditioning/tutorial.html">Conditioning</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../2-summarizing-data/04-data-wrangling/tutorial.html">Data Wrangling</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -204,8 +241,8 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../2-summarizing-data/04-conditioning/tutorial.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Conditioning</span></a>
+  <a href="../../2-summarizing-data/04-data-wrangling/tutorial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Wrangling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -226,20 +263,24 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mutate" id="toc-mutate" class="nav-link active" data-scroll-target="#mutate"><code>mutate()</code></a></li>
+  <li><a href="#a-closer-look-at-the-code" id="toc-a-closer-look-at-the-code" class="nav-link active" data-scroll-target="#a-closer-look-at-the-code">A closer look at the code</a></li>
+  <li><a href="#small-but-important-single-equals-vs-double-equals" id="toc-small-but-important-single-equals-vs-double-equals" class="nav-link" data-scroll-target="#small-but-important-single-equals-vs-double-equals">Small but important: single equals <code>=</code> vs double equals <code>==</code></a>
+  <ul>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><code>mutate()</code></a></li>
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><code>select()</code></a></li>
   <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"><code>arrange()</code></a></li>
   <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize"><code>summarize()</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../2-summarizing-data/04-conditioning/tutorial.html">Conditioning</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../2-summarizing-data/04-data-wrangling/tutorial.html">Data Wrangling</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Conditioning</h1>
-<p class="subtitle lead">Filtering, groupwise operations, and data pipelines.</p>
+<h1 class="title">Data Wrangling</h1>
+<p class="subtitle lead">Whipping your data into shape.</p>
 </div>
 
 
@@ -284,6 +325,204 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Indl
 </script>
 </div>
 </div>
+<section id="a-closer-look-at-the-code" class="level4">
+<h4 class="anchored" data-anchor-id="a-closer-look-at-the-code">A closer look at the code</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Most of this should make sense to you. Filter is a function. The first argument is <code>msleep</code>, a dataframe. The last part is the weird one. Why to we write <code>vore == "carni"</code> to tell <code>filter</code> to give us the carnivores only?</p>
+</section>
+<section id="small-but-important-single-equals-vs-double-equals" class="level3">
+<h3 class="anchored" data-anchor-id="small-but-important-single-equals-vs-double-equals">Small but important: single equals <code>=</code> vs double equals <code>==</code></h3>
+<p>The code above uses two equals signs together: <code>vore == "carni"</code>. Why not just one equals, <code>vore = "carni"</code>?</p>
+<p>The reason is that single <code>=</code> and double <code>==</code> do fundamentally different things in R (and most coding languages):</p>
+<ul>
+<li><strong>A single <code>=</code> is a <em>command</em></strong>. It says “make these things equal.” Some examples:
+<ul>
+<li>Variable assignment: <code>x = 4</code> says “MAKE x equal to 4.” We are setting a variable <code>x</code> to the value 4. Though we usually do variable assignment with an arrow (<code>x &lt;- 4</code>).</li>
+<li>Named arguments to functions: when we write <code>mean(numbers, na.rm = TRUE)</code>, the <code>na.rm = TRUE</code> part says “MAKE the na.rm argument equal to TRUE” (recall: this is how we remove missing values, <code>NA</code>, from a list before trying to average them).</li>
+</ul></li>
+<li><strong>A double <code>==</code> is a <em>question</em></strong>. It asks, “<em>are</em> these things equal?” Some examples:
+<ul>
+<li><code>x == 2</code> <em>asks</em> “IS x equal to 2?” The answer will be TRUE or FALSE depending on x’s value.</li>
+<li>If you have a vector, using <code>==</code> will ask the question of <em>every element in the vector</em>. See example code below</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>Since <code>numbers</code> is a vector of three different numbers, <code>numbers == 2</code> will ask, three times, if a number is equal to 2. We’ll get three answers back in a logical vector: <code>FALSE TRUE FALSE</code> (only the second number in <code>numbers</code> is equal to 2).</p>
+<p>Back to our code one more time:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>vore == "carni"</code> part <em>asks</em>, for each row, is the <code>vore</code> column equal to the text <code>carni</code>? We have 83 animals in our dataset, so we’ll get back a vector of 83 TRUE and FALSE answers. <code>filter</code> uses these TRUE and FALSE values to decide which rows to keep.</p>
+<p>To demonstrate, consider the code below, which seems insane but totally works (remember, <code>T</code> and <code>F</code> are valid shorthand for <code>TRUE</code> and <code>FALSE</code>)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, <span class="fu">c</span>(T, F, F, F, F, F, T, F, T, F,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                 F, F, F, F, F, F, F, T, F, F,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                 F, F, F, F, F, F, F, T, F, F,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                 T, T, F, F, F, F, T, F, F, F,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                 F, F, F, F, T, F, T, F, F, F,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                 T, T, T, F, F, F, F, F, T, T,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                 F, F, F, F, F, F, F, F, F, F,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                 F, F, F, F, F, F, F, F, F, T,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                 T, T, T))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">genus</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">order</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_rem</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_cycle</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">awake</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">brainwt</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cheetah</td>
+<td style="text-align: left;">Acinonyx</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">11.90</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">50.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Northern fur seal</td>
+<td style="text-align: left;">Callorhinus</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">vu</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.3833333</td>
+<td style="text-align: right;">15.30</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">20.490</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: left;">Canis</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">domesticated</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">0.3333333</td>
+<td style="text-align: right;">13.90</td>
+<td style="text-align: right;">0.0700</td>
+<td style="text-align: right;">14.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Long-nosed armadillo</td>
+<td style="text-align: left;">Dasypus</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Cingulata</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">0.3833333</td>
+<td style="text-align: right;">6.60</td>
+<td style="text-align: right;">0.0108</td>
+<td style="text-align: right;">3.500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Domestic cat</td>
+<td style="text-align: left;">Felis</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">domesticated</td>
+<td style="text-align: right;">12.5</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">0.4166667</td>
+<td style="text-align: right;">11.50</td>
+<td style="text-align: right;">0.0256</td>
+<td style="text-align: right;">3.300</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pilot whale</td>
+<td style="text-align: left;">Globicephalus</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Cetacea</td>
+<td style="text-align: left;">cd</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">21.35</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">800.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gray seal</td>
+<td style="text-align: left;">Haliochoerus</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">17.80</td>
+<td style="text-align: right;">0.3250</td>
+<td style="text-align: right;">85.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thick-tailed opposum</td>
+<td style="text-align: left;">Lutreolina</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Didelphimorphia</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">19.4</td>
+<td style="text-align: right;">6.6</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">4.60</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.370</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Slow loris</td>
+<td style="text-align: left;">Nyctibeus</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Primates</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">0.0125</td>
+<td style="text-align: right;">1.400</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Northern grasshopper mouse</td>
+<td style="text-align: left;">Onychomys</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Rodentia</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">9.50</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.028</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The first value in the vector is TRUE. So we keep the first row (the Cheetah). The second values is FALSE, so we don’t keep that one (Owl Monkey). And so forth. We are left with just the carnivores.</p>
+<p>Obviously hand-specifying which rows to keep and drop is very tedious, so we use expressions like <code>vore == "carni"</code>. This little side question was just to show you what these expressions are doing: <code>vore == "carni"</code> produces a vector of TRUE and FALSE values, indicating to <code>filter</code> which rows to keep.</p>
+<!-- ############################################################ -->
 <p>This specific set of notes contains references to many functions from the <code>tidyverse</code> library such as <code>mutate()</code>, <code>select()</code>, <code>arrange()</code>, <code>summarize()</code>. We delve more into some of these functions here. Each one of these are code cells are editable so after running them to see the output, play with them by modifying the code and understanding how these functions work – and how they break!</p>
 <section id="mutate" class="level4">
 <h4 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h4>
@@ -396,6 +635,7 @@ eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC04IiwiaW5saW5lIjpmYWxzZSwibWV0
 W10=
 </script>
 </section>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
@@ -403,7 +643,7 @@ eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../2-summarizing-data/04-conditioning";
+window._ojs.paths.runtimeToDoc = "../../2-summarizing-data/04-data-wrangling";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "../..";
 window._ojs.selfContained = false;
