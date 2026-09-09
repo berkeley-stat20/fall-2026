@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2724px" height="617px" viewBox="0 0 2724 617" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>f_nest1</title>
+    <defs>
+        <path d="M0,0 L2724,0 L2724,616 L0,616 L0,0 Z" id="path-1"></path>
+    </defs>
+    <g id="f_nest1" stroke="none" fill="none" transform="translate(0, 0.5)" xlink:href="#path-1">
+        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+        <rect id="f-box" stroke="#3156A1" stroke-width="2" fill="#3156A1" fill-rule="evenodd" x="1463.5" y="46" width="533" height="498" rx="40"></rect>
+        <text id="f-name" font-family="CourierNewPS-BoldMT, Courier New" font-size="90" font-weight="bold" fill="#FFFFFF">
+            <tspan x="1513.96484" y="309">filter()</tspan>
+        </text>
+        <text id="in1" font-family="CourierNewPS-BoldMT, Courier New" font-size="70" font-weight="bold" fill="#000000">
+            <tspan x="725.731692" y="147">flights</tspan>
+        </text>
+        <text id="in1-copy" font-family="CourierNewPS-BoldMT, Courier New" font-size="70" font-weight="bold" fill="#000000">
+            <tspan x="654.404297" y="258">dep_time &gt;= 22</tspan>
+        </text>
+        <text id="in1-copy-2" font-family="CourierNewPS-BoldMT, Courier New" font-size="70" font-weight="bold" fill="#000000">
+            <tspan x="150.322266" y="387.5001">carrier %in% c("UA", "AA")</tspan>
+        </text>
+        <path id="in2_line" d="M1396.25,214.4998 L1435.25,233.9998 L1396.25,253.4998 L1396.249,237.499 L1269.25,237.4998 L1269.25,230.4998 L1396.249,230.499 L1396.25,214.4998 Z" fill="#A5A5A5" fill-rule="nonzero"></path>
+        <path id="in2_line-copy" d="M1395.22819,109.190349 L1434.22819,128.690349 L1395.22819,148.190349 L1395.228,132.19 L1268.22819,132.190349 L1268.22819,125.190349 L1395.228,125.19 L1395.22819,109.190349 Z" fill="#A5A5A5" fill-rule="nonzero"></path>
+        <path id="in3_line" d="M1395.22819,336.5 L1434.22819,356 L1395.22819,375.5 L1395.228,359.5 L1268.22819,359.5 L1268.22819,352.5 L1395.228,352.5 L1395.22819,336.5 Z" fill="#A5A5A5" fill-rule="nonzero"></path>
+        <text id="in1-copy-3" font-family="CourierNewPS-BoldMT, Courier New" font-size="70" font-weight="bold" fill="#000000">
+            <tspan x="696.411133" y="491.0001">dep_delay &lt; 0</tspan>
+        </text>
+        <path id="in3_line-copy" d="M1395.22819,447.5 L1434.22819,467 L1395.22819,486.5 L1395.228,470.5 L1268.22819,470.5 L1268.22819,463.5 L1395.228,463.5 L1395.22819,447.5 Z" fill="#A5A5A5" fill-rule="nonzero"></path>
+        <path id="in1_line-copy" d="M2180.75,281.4999 L2219.75,300.9999 L2180.75,320.4999 L2180.75,304.499 L2053.75,304.4999 L2053.75,297.4999 L2180.75,297.499 L2180.75,281.4999 Z" fill="#A5A5A5" fill-rule="nonzero"></path>
+        <g id="Group" stroke-width="1" fill-rule="evenodd" transform="translate(2233, 238.5)" stroke="#000000">
+            <rect id="Rectangle-3" stroke-width="2" fill="#C8E5D1" x="0" y="1" width="226" height="23"></rect>
+            <rect id="Rectangle-3-Copy" stroke-width="2" fill="#C8E5D1" x="0" y="24" width="226" height="23"></rect>
+            <rect id="Rectangle-3-Copy-2" stroke-width="2" fill="#C8E5D1" x="0" y="47" width="226" height="23"></rect>
+            <rect id="Rectangle-3-Copy-5" stroke-width="2" fill="#C8E5D1" x="0" y="70" width="226" height="23"></rect>
+            <rect id="Rectangle-3-Copy-4" stroke-width="2" fill="#C8E5D1" x="0" y="93" width="226" height="23"></rect>
+            <rect id="Rectangle-3-Copy-3" stroke-width="2" fill="#C8E5D1" x="0" y="116" width="226" height="23"></rect>
+            <line x1="72.5" y1="0.5" x2="72.5" y2="138.5" id="Line" stroke-width="2"></line>
+            <line x1="152.5" y1="0.5" x2="152.5" y2="138.5" id="Line-Copy-4" stroke-width="2"></line>
+        </g>
+        <g id="Group" stroke-width="1" fill-rule="evenodd" transform="translate(1078.5, 57.6193)">
+            <rect id="Rectangle" stroke="#000000" fill="#F2F2F2" x="1" y="1.2613941" width="162" height="140.619303"></rect>
+            <line x1="0.5" y1="71.1903485" x2="163.5" y2="71.1903485" id="Line" stroke="#000000"></line>
+            <line x1="0.5" y1="38.4502499" x2="163.5" y2="38.4502499" id="Line-Copy" stroke="#000000"></line>
+            <line x1="0.5" y1="103.930447" x2="163.5" y2="103.930447" id="Line-Copy-2" stroke="#000000"></line>
+            <line x1="52.5375587" y1="0.761394102" x2="52.5375587" y2="141.910745" id="Line-2" stroke="#000000"></line>
+            <line x1="107.827465" y1="0.761394102" x2="107.827465" y2="141.910745" id="Line-2-Copy" stroke="#000000"></line>
+            <rect id="Rectangle-2" fill-opacity="0.2" fill="#1FB34C" x="0.5" y="0.761394102" width="163" height="19"></rect>
+            <rect id="Rectangle-2-Copy-4" fill-opacity="0.3" fill="#000000" x="0.5" y="19.3806971" width="163" height="19"></rect>
+            <rect id="Rectangle-2-Copy" fill-opacity="0.2" fill="#1FB34C" x="0.5" y="38.4502499" width="163" height="32.5"></rect>
+            <rect id="Rectangle-2-Copy-2" fill-opacity="0.3" fill="#000000" x="0.5" y="70.9502499" width="163" height="16"></rect>
+            <rect id="Rectangle-2-Copy-3" fill-opacity="0.2" fill="#1FB34C" x="0.5" y="86.9107445" width="163" height="55"></rect>
+            <line x1="0.5" y1="19.3806971" x2="163.5" y2="19.3806971" id="Line" stroke="#000000"></line>
+            <line x1="0.5" y1="53.4302472" x2="163.5" y2="53.4302472" id="Line-Copy-3" stroke="#000000"></line>
+            <line x1="0.5" y1="87.2002499" x2="163.5" y2="87.2002499" id="Line-Copy-8" stroke="#000000"></line>
+            <line x1="0.5" y1="121.45035" x2="163.5" y2="121.45035" id="Line-Copy-9" stroke="#000000"></line>
+        </g>
+        <rect id="outer-box" stroke="#CECECE" stroke-width="4" x="3" y="2" width="2719" height="612"></rect>
+    </g>
+</svg>
