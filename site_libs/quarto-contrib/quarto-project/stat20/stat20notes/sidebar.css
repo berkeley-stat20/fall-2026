@@ -23,3 +23,55 @@
       position: static;
     }
 }
+
+/* end-of-notes link to the corresponding tutorial */
+.tutorial-part-nav-bottom {
+  border-top: 2px solid #f8f5f0;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+}
+
+.tutorial-part-nav-bottom p {
+  align-items: center;
+  display: flex;
+  margin-bottom: 0;
+}
+
+.tutorial-part-nav-bottom a.tutorial-nav-next {
+  background-color: #93c54b;
+  border: 1px solid #7eaf38;
+  border-radius: .5rem;
+  box-shadow: 0 .15rem .35rem rgba(0, 0, 0, .12);
+  color: #fff;
+  display: inline-flex;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: .8rem 1.1rem;
+  text-decoration: none;
+  transition: background-color .15s ease-in-out,
+              border-color .15s ease-in-out,
+              box-shadow .15s ease-in-out,
+              transform .15s ease-in-out;
+}
+
+.tutorial-part-nav-bottom a.tutorial-nav-next:hover {
+  background-color: #7eaf38;
+  border-color: #739f33;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.tutorial-part-nav-bottom a.tutorial-nav-next:focus-visible {
+  box-shadow: 0 0 0 .25rem rgba(59, 126, 161, .3);
+  outline: 2px solid #3b7ea1;
+  outline-offset: 2px;
+}
+
+@media (max-width: 575.98px) {
+  .tutorial-part-nav-bottom a.tutorial-nav-next {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+}
