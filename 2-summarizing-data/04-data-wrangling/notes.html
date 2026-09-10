@@ -192,10 +192,6 @@ window.Quarto = {
 <span class="menu-text">Office Hours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../assignments.html"> 
-<span class="menu-text">Assignments</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="../../notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
@@ -376,16 +372,24 @@ window.Quarto = {
    
   <ul>
   <li><a href="#sleeping-like-a-baby-orangutan" id="toc-sleeping-like-a-baby-orangutan" class="nav-link active" data-scroll-target="#sleeping-like-a-baby-orangutan">Sleeping like a baby (orangutan)</a></li>
-  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering">Filtering</a>
+  <li><a href="#filtering---removing-rows" id="toc-filtering---removing-rows" class="nav-link" data-scroll-target="#filtering---removing-rows">Filtering - removing rows</a></li>
+  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators">Comparison Operators</a>
   <ul class="collapse">
-  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators">Comparison Operators</a></li>
+  <li><a href="#important-detail-single-vs-double" id="toc-important-detail-single-vs-double" class="nav-link" data-scroll-target="#important-detail-single-vs-double">Important detail: single <code>=</code> vs double <code>==</code></a></li>
+  <li><a href="#more-comparison-operators" id="toc-more-comparison-operators" class="nav-link" data-scroll-target="#more-comparison-operators">More comparison operators</a></li>
+  </ul></li>
   <li><a href="#multiple-criteria-use-logical-operators-to-join-them." id="toc-multiple-criteria-use-logical-operators-to-join-them." class="nav-link" data-scroll-target="#multiple-criteria-use-logical-operators-to-join-them.">Multiple criteria? Use logical operators to join them.</a></li>
-  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><code>select</code></a></li>
-  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><code>mutate</code></a></li>
-  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"><code>group_by</code></a></li>
+  <li><a href="#select---removing-columns" id="toc-select---removing-columns" class="nav-link" data-scroll-target="#select---removing-columns"><code>select</code> - removing columns</a>
+  <ul class="collapse">
+  <li><a href="#inverse-selection---specify-what-to-drop-not-what-to-keep" id="toc-inverse-selection---specify-what-to-drop-not-what-to-keep" class="nav-link" data-scroll-target="#inverse-selection---specify-what-to-drop-not-what-to-keep">Inverse selection - specify what to <em>drop</em>, not what to keep</a></li>
+  </ul></li>
+  <li><a href="#mutate---modifying-or-adding-columns" id="toc-mutate---modifying-or-adding-columns" class="nav-link" data-scroll-target="#mutate---modifying-or-adding-columns"><code>mutate</code> - modifying or adding columns</a></li>
+  <li><a href="#arrange---sorting-your-rows" id="toc-arrange---sorting-your-rows" class="nav-link" data-scroll-target="#arrange---sorting-your-rows"><code>arrange</code> - sorting your rows</a></li>
+  <li><a href="#group_by---different-calculations-for-different-groups" id="toc-group_by---different-calculations-for-different-groups" class="nav-link" data-scroll-target="#group_by---different-calculations-for-different-groups"><code>group_by</code> - different calculations for different groups</a>
+  <ul class="collapse">
+  <li><a href="#how-summarize-changes-when-given-grouped-data" id="toc-how-summarize-changes-when-given-grouped-data" class="nav-link" data-scroll-target="#how-summarize-changes-when-given-grouped-data">How <code>summarize</code> changes when given grouped data</a></li>
   </ul></li>
   <li><a href="#the-almighty-pipe" id="toc-the-almighty-pipe" class="nav-link" data-scroll-target="#the-almighty-pipe">The Almighty “Pipe”</a></li>
-  <li><a href="#groupwise-operations-revisited" id="toc-groupwise-operations-revisited" class="nav-link" data-scroll-target="#groupwise-operations-revisited">Groupwise Operations Revisited…</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 <div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides-fill"></i>Slides</a></li></ul></div></nav>
@@ -461,7 +465,7 @@ window.Quarto = {
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
 </tr>
@@ -523,20 +527,6 @@ window.Quarto = {
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Dog</td>
-<td style="text-align: right;">10.1</td>
-<td style="text-align: right;">9.5</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">domesticated</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Roe deer</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">9.6</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">lc</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -592,7 +582,7 @@ window.Quarto = {
 <p>See a problem?</p>
 <p>Mammals are a diverse bunch. They have an <em>enormous</em> range of body sizes; tiny mice weighing 10 grams, and elephants weighing 7,000,000 grams. Most mammals are quite small, much closer to the 10-gram end of our range, so we end up with a useless plot that has mostly dots stacked up the y-axis.</p>
 <p>In the plot above, mammal body sizes appear to be wildly asymmetrically distributed (most are closer to 10 than 1000000 grams). But it’s actually a pretty even distribution by <em>order of magnitude</em>. Roughly <span class="math inline">\(10^1\)</span> to <span class="math inline">\(10^7\)</span> (six orders apart, in base 10). Sleep durations don’t have this feature. They are roughly evenly distributed in the 2-20 range. As a result, the sleep durations fit just fine on a standard plot (they’re nicely spread out on the y-axis), but body weights do not (all the points look glued to the left side of the plot).</p>
-<p>Taking the log fixes this problem. At their core, logarithms the very question, “what <em>order of magnitude</em> is this number?”</p>
+<p>Taking the log fixes this problem. <strong>At their core, logarithms the very question, “what <em>order of magnitude</em> is this number?”</strong></p>
 <ul>
 <li>After <span class="math inline">\(log_{10}\)</span>, the numbers 1, 10, 100, and 1000 become their magnitudes: 0, 1, 2, and 3.</li>
 <li>After <span class="math inline">\(log_e\)</span>, the numbers 1, <span class="math inline">\(e\)</span>, <span class="math inline">\(e^2\)</span>, and <span class="math inline">\(e^3\)</span> become their magnitudes: 0, 1, 2, and 3.</li>
@@ -617,233 +607,87 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><br>
-</p>
-<p>By convention, scientists use log base <span class="math inline">\(e\)</span> in most situations. There are good reasons for this, but the downside is that the x-axis labels become hard to interpret. The ‘5’ on such a plot means <span class="math inline">\(e^5\)</span>, but nobody can quickly calculate what actual number that is. As a result, <strong>in this course, you probably should use <code>log10()</code></strong> when you are given a choice. Everything is just easier to interpret. A ‘5’ on the axis means <span class="math inline">\(10^5\)</span> which is 100,000. Easy enough. <strong>But you should be aware</strong> that natural log is generally the implied logarithm when a base isn’t specified, across most sciences.</p>
+<p>By convention, scientists use log base <span class="math inline">\(e\)</span> in most situations. There are good reasons for this, but the downside is that the x-axis labels become hard to interpret. The ‘5’ on the left plot’s x-axis means <span class="math inline">\(e^5\)</span>, but nobody can easily calculate what actual number that is. As a result, <strong>in this course, you probably should use <code>log10()</code></strong> when you are given a choice. Everything is just easier to interpret. A ‘5’ on the right plot’s x-axis means <span class="math inline">\(10^5\)</span> which is 100,000. Easy enough. <strong>But you should be aware</strong> that natural log is generally the implied logarithm when a base isn’t specified, across most sciences.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="filtering" class="level2">
-<h2 class="anchored" data-anchor-id="filtering">Filtering</h2>
+<section id="filtering---removing-rows" class="level2">
+<h2 class="anchored" data-anchor-id="filtering---removing-rows">Filtering - removing rows</h2>
 <p>In the plots above, it <em>sort of</em> looks like bigger animals sleep less, though it’s a blurry relationship. What else might be happening?</p>
 <p>One way to start exploring is to “drill down” on a subset of the data. Maybe just carnivores. Maybe just small animals. Maybe just endangered species.</p>
 <p>The <strong><code>filter</code></strong> function is our tool to extract a subset of rows from a dataset. <code>filter</code> is a function that takes at least two arguments: a dataset, and a <em>condition</em> that has to be met for the row to be kept. For example, to get all the carnivores, we could do:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">genus</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">order</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_rem</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_cycle</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">awake</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">brainwt</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">callout</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt_g</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log10_bodywt</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log10_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Cheetah</td>
-<td style="text-align: left;">Acinonyx</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">12.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">11.90</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">50.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">50000</td>
-<td style="text-align: right;">3.9120230</td>
-<td style="text-align: right;">10.819778</td>
-<td style="text-align: right;">1.6989700</td>
-<td style="text-align: right;">4.698970</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Northern fur seal</td>
-<td style="text-align: left;">Callorhinus</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">vu</td>
 <td style="text-align: right;">8.7</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">0.3833333</td>
-<td style="text-align: right;">15.30</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">20.490</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">20490</td>
-<td style="text-align: right;">3.0199370</td>
-<td style="text-align: right;">9.927692</td>
-<td style="text-align: right;">1.3115420</td>
-<td style="text-align: right;">4.311542</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Dog</td>
-<td style="text-align: left;">Canis</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">domesticated</td>
 <td style="text-align: right;">10.1</td>
-<td style="text-align: right;">2.9</td>
-<td style="text-align: right;">0.3333333</td>
-<td style="text-align: right;">13.90</td>
-<td style="text-align: right;">0.0700</td>
-<td style="text-align: right;">14.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">14000</td>
-<td style="text-align: right;">2.6390573</td>
-<td style="text-align: right;">9.546813</td>
-<td style="text-align: right;">1.1461280</td>
-<td style="text-align: right;">4.146128</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Long-nosed armadillo</td>
-<td style="text-align: left;">Dasypus</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Cingulata</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">17.4</td>
-<td style="text-align: right;">3.1</td>
-<td style="text-align: right;">0.3833333</td>
-<td style="text-align: right;">6.60</td>
-<td style="text-align: right;">0.0108</td>
-<td style="text-align: right;">3.500</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">3500</td>
-<td style="text-align: right;">1.2527630</td>
-<td style="text-align: right;">8.160518</td>
-<td style="text-align: right;">0.5440680</td>
-<td style="text-align: right;">3.544068</td>
+<td style="text-align: right;">8.2</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Domestic cat</td>
-<td style="text-align: left;">Felis</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">domesticated</td>
 <td style="text-align: right;">12.5</td>
-<td style="text-align: right;">3.2</td>
-<td style="text-align: right;">0.4166667</td>
-<td style="text-align: right;">11.50</td>
-<td style="text-align: right;">0.0256</td>
-<td style="text-align: right;">3.300</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">3300</td>
-<td style="text-align: right;">1.1939225</td>
-<td style="text-align: right;">8.101678</td>
-<td style="text-align: right;">0.5185139</td>
-<td style="text-align: right;">3.518514</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Pilot whale</td>
-<td style="text-align: left;">Globicephalus</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Cetacea</td>
-<td style="text-align: left;">cd</td>
 <td style="text-align: right;">2.7</td>
-<td style="text-align: right;">0.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">21.35</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">800.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">800000</td>
-<td style="text-align: right;">6.6846117</td>
-<td style="text-align: right;">13.592367</td>
-<td style="text-align: right;">2.9030900</td>
-<td style="text-align: right;">5.903090</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">cd</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Gray seal</td>
-<td style="text-align: left;">Haliochoerus</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">6.2</td>
-<td style="text-align: right;">1.5</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">17.80</td>
-<td style="text-align: right;">0.3250</td>
-<td style="text-align: right;">85.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">85000</td>
-<td style="text-align: right;">4.4426513</td>
-<td style="text-align: right;">11.350407</td>
-<td style="text-align: right;">1.9294189</td>
-<td style="text-align: right;">4.929419</td>
+<td style="text-align: right;">11.4</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Thick-tailed opposum</td>
-<td style="text-align: left;">Lutreolina</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Didelphimorphia</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">19.4</td>
-<td style="text-align: right;">6.6</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">4.60</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.370</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">370</td>
-<td style="text-align: right;">-0.9942523</td>
-<td style="text-align: right;">5.913503</td>
-<td style="text-align: right;">-0.4317983</td>
-<td style="text-align: right;">2.568202</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Slow loris</td>
-<td style="text-align: left;">Nyctibeus</td>
+<td style="text-align: right;">5.9</td>
 <td style="text-align: left;">carni</td>
-<td style="text-align: left;">Primates</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">11.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">13.00</td>
-<td style="text-align: right;">0.0125</td>
-<td style="text-align: right;">1.400</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">1400</td>
-<td style="text-align: right;">0.3364722</td>
-<td style="text-align: right;">7.244228</td>
-<td style="text-align: right;">0.1461280</td>
-<td style="text-align: right;">3.146128</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Northern grasshopper mouse</td>
-<td style="text-align: left;">Onychomys</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Rodentia</td>
 <td style="text-align: left;">lc</td>
-<td style="text-align: right;">14.5</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">9.50</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.028</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">-3.5755508</td>
-<td style="text-align: right;">3.332205</td>
-<td style="text-align: right;">-1.5528420</td>
-<td style="text-align: right;">1.447158</td>
 </tr>
 </tbody>
 </table>
@@ -851,7 +695,7 @@ window.Quarto = {
 </div>
 <p><br>
 </p>
-<p>All carnivores. (Don’t worry about the specific syntax yet, we’ll talk about it more below, and give thorough explanations in the tutorial.)</p>
+<p>All carnivores. Don’t worry about the specific syntax yet, we’ll talk more about it shortly.</p>
 <p>An important note: <strong>this code does <em>not</em> change the original <code>msleep</code> dataframe.</strong> This confuses new programmers regularly. Instead, this code creates a <em>completely new</em> dataframe, one with only carnivores.</p>
 <p>Let’s peek back at <code>msleep</code> to confirm that it is unchanged:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -861,214 +705,68 @@ window.Quarto = {
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">genus</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">order</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_rem</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_cycle</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">awake</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">brainwt</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">callout</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt_g</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log10_bodywt</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log10_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Cheetah</td>
-<td style="text-align: left;">Acinonyx</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">12.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">11.9</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">50.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">50000</td>
-<td style="text-align: right;">3.9120230</td>
-<td style="text-align: right;">10.819778</td>
-<td style="text-align: right;">1.6989700</td>
-<td style="text-align: right;">4.698970</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Owl monkey</td>
-<td style="text-align: left;">Aotus</td>
-<td style="text-align: left;">omni</td>
-<td style="text-align: left;">Primates</td>
-<td style="text-align: left;">NA</td>
 <td style="text-align: right;">17.0</td>
-<td style="text-align: right;">1.8</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">7.0</td>
-<td style="text-align: right;">0.01550</td>
-<td style="text-align: right;">0.480</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">480</td>
-<td style="text-align: right;">-0.7339692</td>
-<td style="text-align: right;">6.173786</td>
-<td style="text-align: right;">-0.3187588</td>
-<td style="text-align: right;">2.681241</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Mountain beaver</td>
-<td style="text-align: left;">Aplodontia</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Rodentia</td>
-<td style="text-align: left;">nt</td>
 <td style="text-align: right;">14.4</td>
-<td style="text-align: right;">2.4</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">9.6</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.350</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">1350</td>
-<td style="text-align: right;">0.3001046</td>
-<td style="text-align: right;">7.207860</td>
-<td style="text-align: right;">0.1303338</td>
-<td style="text-align: right;">3.130334</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">nt</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Greater short-tailed shrew</td>
-<td style="text-align: left;">Blarina</td>
-<td style="text-align: left;">omni</td>
-<td style="text-align: left;">Soricomorpha</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">14.9</td>
-<td style="text-align: right;">2.3</td>
-<td style="text-align: right;">0.1333333</td>
-<td style="text-align: right;">9.1</td>
-<td style="text-align: right;">0.00029</td>
-<td style="text-align: right;">0.019</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">-3.9633163</td>
-<td style="text-align: right;">2.944439</td>
-<td style="text-align: right;">-1.7212464</td>
-<td style="text-align: right;">1.278754</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">lc</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Cow</td>
-<td style="text-align: left;">Bos</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Artiodactyla</td>
-<td style="text-align: left;">domesticated</td>
 <td style="text-align: right;">4.0</td>
-<td style="text-align: right;">0.7</td>
-<td style="text-align: right;">0.6666667</td>
-<td style="text-align: right;">20.0</td>
-<td style="text-align: right;">0.42300</td>
-<td style="text-align: right;">600.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">600000</td>
-<td style="text-align: right;">6.3969297</td>
-<td style="text-align: right;">13.304685</td>
-<td style="text-align: right;">2.7781513</td>
-<td style="text-align: right;">5.778151</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Three-toed sloth</td>
-<td style="text-align: left;">Bradypus</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Pilosa</td>
-<td style="text-align: left;">NA</td>
 <td style="text-align: right;">14.4</td>
-<td style="text-align: right;">2.2</td>
-<td style="text-align: right;">0.7666667</td>
-<td style="text-align: right;">9.6</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">3.850</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">3850</td>
-<td style="text-align: right;">1.3480731</td>
-<td style="text-align: right;">8.255828</td>
-<td style="text-align: right;">0.5854607</td>
-<td style="text-align: right;">3.585461</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Northern fur seal</td>
-<td style="text-align: left;">Callorhinus</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">vu</td>
 <td style="text-align: right;">8.7</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">0.3833333</td>
-<td style="text-align: right;">15.3</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">20.490</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">20490</td>
-<td style="text-align: right;">3.0199370</td>
-<td style="text-align: right;">9.927692</td>
-<td style="text-align: right;">1.3115420</td>
-<td style="text-align: right;">4.311542</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Vesper mouse</td>
-<td style="text-align: left;">Calomys</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">Rodentia</td>
-<td style="text-align: left;">NA</td>
 <td style="text-align: right;">7.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">17.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.045</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">-3.1010928</td>
-<td style="text-align: right;">3.806662</td>
-<td style="text-align: right;">-1.3467875</td>
-<td style="text-align: right;">1.653212</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Dog</td>
-<td style="text-align: left;">Canis</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">domesticated</td>
-<td style="text-align: right;">10.1</td>
-<td style="text-align: right;">2.9</td>
-<td style="text-align: right;">0.3333333</td>
-<td style="text-align: right;">13.9</td>
-<td style="text-align: right;">0.07000</td>
-<td style="text-align: right;">14.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">14000</td>
-<td style="text-align: right;">2.6390573</td>
-<td style="text-align: right;">9.546813</td>
-<td style="text-align: right;">1.1461280</td>
-<td style="text-align: right;">4.146128</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Roe deer</td>
-<td style="text-align: left;">Capreolus</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Artiodactyla</td>
-<td style="text-align: left;">lc</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">21.0</td>
-<td style="text-align: right;">0.09820</td>
-<td style="text-align: right;">14.800</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">14800</td>
-<td style="text-align: right;">2.6946272</td>
-<td style="text-align: right;">9.602382</td>
-<td style="text-align: right;">1.1702617</td>
-<td style="text-align: right;">4.170262</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1077,38 +775,39 @@ window.Quarto = {
 <p><br>
 </p>
 <p>All ’vores are accounted for.</p>
-<section id="comparison-operators" class="level3">
-<h3 class="anchored" data-anchor-id="comparison-operators">Comparison Operators</h3>
+</section>
+<section id="comparison-operators" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-operators">Comparison Operators</h2>
 <p>Notice anything funny in the code we just used?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The code above uses two equals signs together: <code>vore == "carni"</code>. Why not just one equals, <code>vore = "carni"</code>?</p>
-<section id="important-detail-single-vs-double" class="level4">
-<h4 class="anchored" data-anchor-id="important-detail-single-vs-double">Important detail: single <code>=</code> vs double <code>==</code></h4>
+<section id="important-detail-single-vs-double" class="level3">
+<h3 class="anchored" data-anchor-id="important-detail-single-vs-double">Important detail: single <code>=</code> vs double <code>==</code></h3>
 <p>Single <code>=</code> and double <code>==</code> do fundamentally different things in R (and most coding languages):</p>
 <ul>
-<li><strong>A single <code>=</code> is a <em>command</em></strong>. It says “make these things equal.” Some examples:
+<li><strong>A single <code>=</code> is a <em>command</em></strong>. It says “make these things equal.”
 <ul>
 <li>Variable assignment: <code>x = 4</code> says “MAKE x equal to 4.” We are setting a variable <code>x</code> to the value 4. (Though we usually do variable assignment with an arrow, <code>x &lt;- 4</code>, it’s also valid to do <code>x = 4</code>).</li>
 <li>Named arguments to functions: when we write <code>mean(numbers, na.rm = TRUE)</code>, the <code>na.rm = TRUE</code> part says “MAKE the na.rm argument equal to TRUE” (recall: this is how we remove missing values (<code>NA</code>s) from a vector before trying to average them).</li>
 </ul></li>
-<li><strong>A double <code>==</code> is a <em>question</em></strong>. It asks, “<em>are</em> these things equal?” Some examples:
+<li><strong>A double <code>==</code> is a <em>question</em></strong>. It asks, “<em>are</em> these things equal?” The answer is yes or no (TRUE or FALSE).
 <ul>
 <li><code>x == 2</code> <em>asks</em> “IS x equal to 2?” The answer will be TRUE or FALSE depending on x’s value.</li>
-<li>If you have a vector, using <code>==</code> will ask the question of <em>every element in the vector</em>.</li>
+<li>If you have a vector, using <code>==</code> will ask the question of <em>every element in the vector</em> and return a vector of TRUEs and FALSEs.</li>
 </ul></li>
 </ul>
-<p>So when we ran:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>R went through every row and noted where the condition was true (<code>vore</code> was equal to “carni”). It then gave us a new dataframe with only these rows.</p>
 <p>Some simple examples demonstrating <code>=</code> and <code>==</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>With a single <code>=</code>, this line <em>makes</em> x equal to 4. There is no output when simply assign a variable a value.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>The first line, with a single <code>=</code>, <em>makes</em> x equal to 4. The second line, with the double <code>==</code>, <em>asks</em> if x is equal to 4. It is, so the output on your screen says <code>TRUE</code>.</p>
+<p>With the double <code>==</code>, <em>asks</em> if x is equal to 4. Since we just set x to be 4, the output on your screen says <code>TRUE</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1117,15 +816,18 @@ window.Quarto = {
 </div>
 </div>
 <p>The first line with the single <code>=</code> says “MAKE the numbers variable equal to the vector (1, 2, 3).” (Again, this is equivalent to <code>numbers &lt;- c(1, 2, 3)</code>). The second line with the double <code>==</code> <em>asks</em>, for each element in the vector, “<em>is</em> this number equal to 2?” The output is a logical vector of the answers: <code>FALSE TRUE FALSE</code>. Only the second number in <code>numbers</code> is equal to 2.</p>
+<p>So earlier, when we ran:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>R went through every row and noted where the condition was true (<code>vore</code> was equal to “carni”). It then gave us a new dataframe with only these rows.</p>
 </section>
-<section id="more-comparison-operators" class="level4">
-<h4 class="anchored" data-anchor-id="more-comparison-operators">More comparison operators</h4>
+<section id="more-comparison-operators" class="level3">
+<h3 class="anchored" data-anchor-id="more-comparison-operators">More comparison operators</h3>
 <p>The double <code>==</code> is one of many ways to ask a question about two things. In this case, <code>==</code> asks “are they equal?”. But this is only one of many ways to <strong>compare</strong> two things. There are many more such “comparison operators”:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 62%">
-<col style="width: 18%">
-<col style="width: 18%">
+<col style="width: 15%">
+<col style="width: 31%">
+<col style="width: 52%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1142,7 +844,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><code>!=</code></td>
-<td>_not _equal to?</td>
+<td><em>not</em> equal to?</td>
 <td><code>4 != 6</code> returns TRUE</td>
 </tr>
 <tr class="odd">
@@ -1176,190 +878,382 @@ window.Quarto = {
 </p>
 <p>Let’s try some of these out. Let’s filter for only the rows with large animals, defined as those with a log body weight greater than 12.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9 × 17
-  name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-2 Asian … Elep… herbi Prob… en                   3.9      NA        NA      20.1
-3 Horse   Equus herbi Peri… domesticated         2.9       0.6       1      21.1
-4 Donkey  Equus herbi Peri… domesticated         3.1       0.4      NA      20.9
-5 Giraffe Gira… herbi Arti… cd                   1.9       0.4      NA      22.1
-6 Pilot … Glob… carni Ceta… cd                   2.7       0.1      NA      21.4
-7 Africa… Loxo… herbi Prob… vu                   3.3      NA        NA      20.7
-8 Brazil… Tapi… herbi Peri… vu                   4.4       1         0.9    19.6
-9 Bottle… Turs… carni Ceta… &lt;NA&gt;                 5.2      NA        NA      18.8
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Asian elephant</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Horse</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">13.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Donkey</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Giraffe</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pilot whale</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brazilian tapir</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>There were 9 such animals. Reading the names confirms that, yes, these are the big ones.</p>
 </section>
 </section>
-<section id="multiple-criteria-use-logical-operators-to-join-them." class="level3">
-<h3 class="anchored" data-anchor-id="multiple-criteria-use-logical-operators-to-join-them.">Multiple criteria? Use logical operators to join them.</h3>
+<section id="multiple-criteria-use-logical-operators-to-join-them." class="level2">
+<h2 class="anchored" data-anchor-id="multiple-criteria-use-logical-operators-to-join-them.">Multiple criteria? Use logical operators to join them.</h2>
 <p>What if you want to extract only the creatures that are both <em>very large</em> and <em>short-sleeping</em> ? Well, for that, we need to do more than one comparison. We stitch these comparisons together with “logical operators”: <code>&amp;</code> (“and”), <code>|</code> (“or”).</p>
-<p>This filter returns the creatures who are large <em>and</em> sleep little.</p>
+<p>This filter returns the creatures who are large AND sleep little.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">&amp;</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 17
-  name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-2 Asian … Elep… herbi Prob… en                   3.9      NA        NA      20.1
-3 Horse   Equus herbi Peri… domesticated         2.9       0.6       1      21.1
-4 Donkey  Equus herbi Peri… domesticated         3.1       0.4      NA      20.9
-5 Giraffe Gira… herbi Arti… cd                   1.9       0.4      NA      22.1
-6 Pilot … Glob… carni Ceta… cd                   2.7       0.1      NA      21.4
-7 Africa… Loxo… herbi Prob… vu                   3.3      NA        NA      20.7
-8 Brazil… Tapi… herbi Peri… vu                   4.4       1         0.9    19.6
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
 </div>
-</div>
-<p>This can be read as “make me a dataframe with the rows from <code>msleep</code> where the log body weight is greater than 12 and the sleep total is less than 5.” We see that there are 8 such creatures, one fewer than the data frame with only the body weight filter (bottle-nosed dolphins sleep, on average, 5.2 hrs).</p>
-<p>This next block of code returns the creatures who are large <em>or</em> sleep little.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">|</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 17
-   name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
- 1 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
- 2 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
- 3 Asian… Elep… herbi Prob… en                   3.9      NA        NA      20.1
- 4 Horse  Equus herbi Peri… domesticated         2.9       0.6       1      21.1
- 5 Donkey Equus herbi Peri… domesticated         3.1       0.4      NA      20.9
- 6 Giraf… Gira… herbi Arti… cd                   1.9       0.4      NA      22.1
- 7 Pilot… Glob… carni Ceta… cd                   2.7       0.1      NA      21.4
- 8 Afric… Loxo… herbi Prob… vu                   3.3      NA        NA      20.7
- 9 Sheep  Ovis  herbi Arti… domesticated         3.8       0.6      NA      20.2
-10 Caspi… Phoca carni Carn… vu                   3.5       0.4      NA      20.5
-11 Brazi… Tapi… herbi Peri… vu                   4.4       1         0.9    19.6
-12 Bottl… Turs… carni Ceta… &lt;NA&gt;                 5.2      NA        NA      18.8
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Asian elephant</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Horse</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">13.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Donkey</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Giraffe</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pilot whale</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brazilian tapir</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>We changed <code>&amp;</code> to <code>|</code> to switch from “and” to “or.” These can get arbitrarily complex, using parentheses to group things.</p>
-<p>Try to intuit what the following code does:</p>
+<p>This can be read as “make me a dataframe with the rows from <code>msleep</code> where the log body weight is greater than 12 and the sleep total is less than 5.” We see that there are 8 such creatures, one fewer than the data frame with only the body weight filter. The bottle-nosed dolphin is a relatively big mammal thatsleeps, on average, 5.2 hrs.</p>
+<p>This next block of code returns the creatures who are large OR sleep little. All we have to do is change <code>&amp;</code> (and) to <code>|</code> (or).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"herbi"</span> <span class="sc">&amp;</span> (sleep_total <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> sleep_total <span class="sc">&gt;</span> <span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 17
-   name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
- 1 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
- 2 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
- 3 Asian… Elep… herbi Prob… en                   3.9      NA        NA      20.1
- 4 Horse  Equus herbi Peri… domesticated         2.9       0.6       1      21.1
- 5 Donkey Equus herbi Peri… domesticated         3.1       0.4      NA      20.9
- 6 Giraf… Gira… herbi Arti… cd                   1.9       0.4      NA      22.1
- 7 Afric… Loxo… herbi Prob… vu                   3.3      NA        NA      20.7
- 8 Sheep  Ovis  herbi Arti… domesticated         3.8       0.6      NA      20.2
- 9 Arcti… Sper… herbi Rode… lc                  16.6      NA        NA       7.4
-10 Golde… Sper… herbi Rode… lc                  15.9       3        NA       8.1
-11 Easte… Tami… herbi Rode… &lt;NA&gt;                15.8      NA        NA       8.2
-12 Brazi… Tapi… herbi Peri… vu                   4.4       1         0.9    19.6
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">|</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asian elephant</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Horse</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">13.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Donkey</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Giraffe</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pilot whale</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sheep</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">10.9</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Caspian seal</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">11.4</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brazilian tapir</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bottle-nosed dolphin</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>This looks for rows where the animal is an herbivore (<code>vore = "herbi"</code>) <em>and</em> it either sleeps very little <em>or</em> a whole lot (<code>(sleep_total &lt; 5 | sleep_total &gt; 15)</code>). There are 12 such animals.</p>
+<p>This filter is much <em>more</em> permissive - we keep all the big ones (no matter how long they sleep) and all the short-sleeping ones (no matter their size).</p>
+<p>This permits animals like the Roe deer, which is not a particularly large mammal (log body weight of only 9.6) but who sleeps only 3 hours a day. We also get the Bottle-nosed dolphin, who is not a short sleeper (5.2 hours/day) but is large (log body weight of 12.5).</p>
+<p>These conditional expressions can get arbitrarily complex, using parentheses to group things. Try to intuit what the following code does:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"herbi"</span> <span class="sc">&amp;</span> (sleep_total <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> sleep_total <span class="sc">&gt;</span> <span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asian elephant</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Horse</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">13.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Donkey</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Giraffe</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sheep</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">10.9</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arctic ground squirrel</td>
+<td style="text-align: right;">16.6</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Golden-mantled ground squirrel</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eastern american chipmunk</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brazilian tapir</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This looks for rows where the animal is an herbivore (<code>vore = "herbi"</code>) <em>and</em> it either sleeps very little <em>or</em> a whole lot (<code>(sleep_total &lt; 5 | sleep_total &gt; 15)</code>). There are 12 such animals, including fun ones like the “Golden-mantled ground squirrel” (a long-sleeping herbivore) and the giraffe (a short-sleeping herbivore).</p>
 <p>When working with nominal categorical variables, the only operator that you’ll be using are <code>==</code> and <code>!=</code>. You can return a union like normal using <code>|</code>,</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">==</span> <span class="st">"Little brown bat"</span> <span class="sc">|</span> name <span class="sc">==</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 17
-  name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 Africa… Loxo… herbi Prob… vu                   3.3        NA        NA    20.7
-2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9         2         0.2   4.1
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">==</span> <span class="st">"Little brown bat"</span> <span class="sc">|</span> name <span class="sc">==</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<p>Translation: Only the brown bat and african elephant.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">!=</span> <span class="st">"Little brown bat"</span> <span class="sc">|</span> name <span class="sc">==</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 82 × 17
-   name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
- 1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9
- 2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
- 3 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
- 4 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
- 5 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
- 6 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
- 7 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
- 8 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  
- 9 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9
-10 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
-# ℹ 72 more rows
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<p>Translation: Everything <em>but</em> the brown bat and the elephant.</p>
-<p>Or you can save some typing (and craft more readable code) by using <code>%in%</code> instead:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Little brown bat"</span>, <span class="st">"African elephant"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 17
-  name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 Africa… Loxo… herbi Prob… vu                   3.3        NA        NA    20.7
-2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9         2         0.2   4.1
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="select" class="level3">
-<h3 class="anchored" data-anchor-id="select"><code>select</code></h3>
-<p>Sometimes you have a bunch of columns that you don’t need for your analysis, so it’s easier to pluck out the ones you actually need to use.</p>
-<p><code>select</code> makes a new dataframe with only certain <em>columns</em> of the original dataset.</p>
-<p>For example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, name, log_bodywt, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>select</code> is a function that expects 1) a dataset, and 2) one or more column names <em>to keep</em>. The code above says, “Please give me a new dataset with only the <code>name</code>, <code>log_bodywt</code>, and <code>sleep_total</code> columns from <code>msleep</code>”.</p>
-<p>Again, this does not change the original <code>msleep</code> dataframe. If you wanted to <em>replace</em> <code>msleep</code> with this new, smaller dataset, you would have to assign it back to <code>msleep</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">select</span>(msleep, name, log_bodywt, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can also use <code>-</code> to say “I <em>don’t</em> want this column.” For example, to get a copy of <code>msleep</code> without the <code>conservation</code> and <code>vore</code> columns, you could do:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, <span class="sc">-</span>conservation, <span class="sc">-</span>vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This is common at the top of analysis files. You take some big dataset, throw out what you don’t need to simplify things, then get to work.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="A trick to remembering select vs filter">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>A trick to remembering select vs filter
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p>One way to remember which is which between <code>filter</code> and <code>select</code> is that <code>filte**r**</code> and <strong>r</strong>ow have an “r” in them, while <code>sele**c**t</code> and <strong>c</strong>olumn both have a “c”. So <code>filte**r**</code> is for <strong>r</strong>ows, <code>sele**c**t</code> is for <strong>c</strong>olumns.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="mutate" class="level3">
-<h3 class="anchored" data-anchor-id="mutate"><code>mutate</code></h3>
-<p>To add a new column, or to alter an existing column, we use <code>mutate</code>.</p>
-<p><code>mutate</code> is a function that takes two arguments: a dataframe, and instructions on what column to make or change.</p>
-<p>For example, let’s add a new column to our <code>msleep</code> dataset, <code>sleep_total_minutes</code>, which is the animal’s total sleep per day in minutes instead of hours:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total_minutes =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
@@ -1376,253 +1270,784 @@ window.Quarto = {
 <th style="text-align: right;" data-quarto-table-cell-role="th">awake</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">brainwt</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">bodywt</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">callout</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt_g</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: left;">Loxodonta</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">Proboscidea</td>
+<td style="text-align: left;">vu</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">20.7</td>
+<td style="text-align: right;">5.71200</td>
+<td style="text-align: right;">6654.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Little brown bat</td>
+<td style="text-align: left;">Myotis</td>
+<td style="text-align: left;">insecti</td>
+<td style="text-align: left;">Chiroptera</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">19.9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">0.00025</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Translation: Only the brown bat and african elephant.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">!=</span> <span class="st">"Little brown bat"</span> <span class="sc">&amp;</span> name <span class="sc">!=</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log10_bodywt</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">log10_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cheetah</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owl monkey</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mountain beaver</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">nt</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greater short-tailed shrew</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Three-toed sloth</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Northern fur seal</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vesper mouse</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Translation: Everything <em>but</em> the brown bat and the elephant.</p>
+<p>Or you can save some typing (and craft more readable code) by using <code>%in%</code> instead, followed by a vector of possible matches:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Little brown bat"</span>, <span class="st">"African elephant"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 11
+  name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+1 Africa… Loxo… herbi Prob… vu                   3.3        NA        NA    20.7
+2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9         2         0.2   4.1
+# ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="select---removing-columns" class="level2">
+<h2 class="anchored" data-anchor-id="select---removing-columns"><code>select</code> - removing columns</h2>
+<p><code>select</code> gets rid of columns. It creates a new dataframe with <em>only</em> the columns you specify, in the order you specify them.</p>
+<p>This is common with real world datasets, which often have a lot more information than you need for your particular analysis. Removing unnecessary columns makes your screen less cluttered and your code clearer.</p>
+<p>Let’s pare down the <code>msleep</code> dataset to just three columns: <code>name</code>, <code>log_bodywt_g</code>, and <code>sleep_total</code>. You can see that the <code>select</code> function takes a dataset as its first argument, then any number of column names as subsequent arguments:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, name, log_bodywt_g, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cheetah</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: right;">12.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owl monkey</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">17.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mountain beaver</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: right;">14.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greater short-tailed shrew</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">14.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: right;">4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Three-toed sloth</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">14.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Northern fur seal</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: right;">8.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vesper mouse</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">7.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The code above says, “Please give me a new dataset with only the <code>name</code>, <code>log_bodywt</code>, and <code>sleep_total</code> columns from <code>msleep</code>”.</p>
+<p><strong>Again, this does not change the original <code>msleep</code> dataframe</strong>. It makes a new one. If you wanted to <em>replace</em> <code>msleep</code> with this new, smaller dataset, you would have to assign it back to <code>msleep</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">select</span>(msleep, name, log_bodywt, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is common. You load a new, complex dataset. You get rid of things you don’t need, overwriting the original dataframe with the reduced version. Don’t be afraid to do this in your work. (But if you end up mangling your dataframe by accident, you can restart R and reset yourself.)</p>
+<section id="inverse-selection---specify-what-to-drop-not-what-to-keep" class="level3">
+<h3 class="anchored" data-anchor-id="inverse-selection---specify-what-to-drop-not-what-to-keep">Inverse selection - specify what to <em>drop</em>, not what to keep</h3>
+<p>You can also use <code>-</code> to say “Everything <em>but</em> this column.” For example, to get a copy of <code>msleep</code> with everything but the <code>conservation</code> and <code>vore</code> columns, you could do:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, <span class="sc">-</span>conservation, <span class="sc">-</span>vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cheetah</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">10.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owl monkey</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">6.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mountain beaver</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">7.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greater short-tailed shrew</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: right;">2.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Three-toed sloth</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">8.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Northern fur seal</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">9.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vesper mouse</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">3.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="A trick to remembering `select` vs `filter`">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A trick to remembering <code>select</code> vs <code>filter</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>filte<span style="color: #DD3333; font-weight: bold; text-decoration: underline">r</span> and <span style="color: #DD3333; font-weight: bold; text-decoration: underline">r</span>ow have an <span style="color: #DD3333; font-weight: bold; text-decoration: underline">r</span> in them, while sele<span style="color: #AA33FF; font-weight: bold; text-decoration: underline">c</span>t and <span style="color: #AA33FF; font-weight: bold; text-decoration: underline">c</span>olumn both have a <span style="color: #AA33FF; font-weight: bold; text-decoration: underline">c</span>. So filter is for rows, select is for columns.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mutate---modifying-or-adding-columns" class="level2">
+<h2 class="anchored" data-anchor-id="mutate---modifying-or-adding-columns"><code>mutate</code> - modifying or adding columns</h2>
+<p>To add a new column, or to alter an existing column, we use <code>mutate</code>.</p>
+<p><code>mutate</code> is a function. It takes two arguments: a dataframe, and instructions on what column to make or change.</p>
+<p>For example, let’s add a new column to our <code>msleep</code> dataset, <code>sleep_total_minutes</code>, which is the animal’s total sleep per day in minutes instead of hours:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total_minutes =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total_minutes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Cheetah</td>
-<td style="text-align: left;">Acinonyx</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">12.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">11.9</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">50.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">50000</td>
-<td style="text-align: right;">3.9120230</td>
-<td style="text-align: right;">10.819778</td>
-<td style="text-align: right;">1.6989700</td>
-<td style="text-align: right;">4.698970</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
 <td style="text-align: right;">726</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Owl monkey</td>
-<td style="text-align: left;">Aotus</td>
-<td style="text-align: left;">omni</td>
-<td style="text-align: left;">Primates</td>
-<td style="text-align: left;">NA</td>
 <td style="text-align: right;">17.0</td>
-<td style="text-align: right;">1.8</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">7.0</td>
-<td style="text-align: right;">0.01550</td>
-<td style="text-align: right;">0.480</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">480</td>
-<td style="text-align: right;">-0.7339692</td>
-<td style="text-align: right;">6.173786</td>
-<td style="text-align: right;">-0.3187588</td>
-<td style="text-align: right;">2.681241</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
 <td style="text-align: right;">1020</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Mountain beaver</td>
-<td style="text-align: left;">Aplodontia</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Rodentia</td>
-<td style="text-align: left;">nt</td>
 <td style="text-align: right;">14.4</td>
-<td style="text-align: right;">2.4</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">9.6</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.350</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">1350</td>
-<td style="text-align: right;">0.3001046</td>
-<td style="text-align: right;">7.207860</td>
-<td style="text-align: right;">0.1303338</td>
-<td style="text-align: right;">3.130334</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">nt</td>
 <td style="text-align: right;">864</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Greater short-tailed shrew</td>
-<td style="text-align: left;">Blarina</td>
-<td style="text-align: left;">omni</td>
-<td style="text-align: left;">Soricomorpha</td>
-<td style="text-align: left;">lc</td>
 <td style="text-align: right;">14.9</td>
-<td style="text-align: right;">2.3</td>
-<td style="text-align: right;">0.1333333</td>
-<td style="text-align: right;">9.1</td>
-<td style="text-align: right;">0.00029</td>
-<td style="text-align: right;">0.019</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">-3.9633163</td>
-<td style="text-align: right;">2.944439</td>
-<td style="text-align: right;">-1.7212464</td>
-<td style="text-align: right;">1.278754</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">lc</td>
 <td style="text-align: right;">894</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Cow</td>
-<td style="text-align: left;">Bos</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Artiodactyla</td>
-<td style="text-align: left;">domesticated</td>
 <td style="text-align: right;">4.0</td>
-<td style="text-align: right;">0.7</td>
-<td style="text-align: right;">0.6666667</td>
-<td style="text-align: right;">20.0</td>
-<td style="text-align: right;">0.42300</td>
-<td style="text-align: right;">600.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">600000</td>
-<td style="text-align: right;">6.3969297</td>
-<td style="text-align: right;">13.304685</td>
-<td style="text-align: right;">2.7781513</td>
-<td style="text-align: right;">5.778151</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
 <td style="text-align: right;">240</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Three-toed sloth</td>
-<td style="text-align: left;">Bradypus</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Pilosa</td>
-<td style="text-align: left;">NA</td>
 <td style="text-align: right;">14.4</td>
-<td style="text-align: right;">2.2</td>
-<td style="text-align: right;">0.7666667</td>
-<td style="text-align: right;">9.6</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">3.850</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">3850</td>
-<td style="text-align: right;">1.3480731</td>
-<td style="text-align: right;">8.255828</td>
-<td style="text-align: right;">0.5854607</td>
-<td style="text-align: right;">3.585461</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">NA</td>
 <td style="text-align: right;">864</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Northern fur seal</td>
-<td style="text-align: left;">Callorhinus</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">vu</td>
 <td style="text-align: right;">8.7</td>
-<td style="text-align: right;">1.4</td>
-<td style="text-align: right;">0.3833333</td>
-<td style="text-align: right;">15.3</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">20.490</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">20490</td>
-<td style="text-align: right;">3.0199370</td>
-<td style="text-align: right;">9.927692</td>
-<td style="text-align: right;">1.3115420</td>
-<td style="text-align: right;">4.311542</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
 <td style="text-align: right;">522</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Vesper mouse</td>
-<td style="text-align: left;">Calomys</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">Rodentia</td>
-<td style="text-align: left;">NA</td>
 <td style="text-align: right;">7.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">17.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0.045</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">-3.1010928</td>
-<td style="text-align: right;">3.806662</td>
-<td style="text-align: right;">-1.3467875</td>
-<td style="text-align: right;">1.653212</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
 <td style="text-align: right;">420</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Dog</td>
-<td style="text-align: left;">Canis</td>
-<td style="text-align: left;">carni</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">domesticated</td>
-<td style="text-align: right;">10.1</td>
-<td style="text-align: right;">2.9</td>
-<td style="text-align: right;">0.3333333</td>
-<td style="text-align: right;">13.9</td>
-<td style="text-align: right;">0.07000</td>
-<td style="text-align: right;">14.000</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">14000</td>
-<td style="text-align: right;">2.6390573</td>
-<td style="text-align: right;">9.546813</td>
-<td style="text-align: right;">1.1461280</td>
-<td style="text-align: right;">4.146128</td>
-<td style="text-align: right;">606</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Roe deer</td>
-<td style="text-align: left;">Capreolus</td>
-<td style="text-align: left;">herbi</td>
-<td style="text-align: left;">Artiodactyla</td>
-<td style="text-align: left;">lc</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">21.0</td>
-<td style="text-align: right;">0.09820</td>
-<td style="text-align: right;">14.800</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">14800</td>
-<td style="text-align: right;">2.6946272</td>
-<td style="text-align: right;">9.602382</td>
-<td style="text-align: right;">1.1702617</td>
-<td style="text-align: right;">4.170262</td>
-<td style="text-align: right;">180</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p><strong>Again, this has not changed <code>msleep</code>!</strong> We made a whole new dataframe. If we wanted to change <code>msleep</code> itself, we would have to assign this new dataframe back to <code>msleep</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span><span class="fu">mutate</span>(msleep, <span class="at">sleep_total_minutes =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This is common practice when you actually want to modify your main dataframe – not just see what a different version might look like.</p>
+<p><br>
+</p>
+<p>Instead of making a whole new column, you could change the meaning of the existing <code>sleep_total</code> to just be in minutes. You can modify a column in-place like so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cheetah</td>
+<td style="text-align: right;">726</td>
+<td style="text-align: right;">10.8</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owl monkey</td>
+<td style="text-align: right;">1020</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mountain beaver</td>
+<td style="text-align: right;">864</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">nt</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greater short-tailed shrew</td>
+<td style="text-align: right;">894</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Three-toed sloth</td>
+<td style="text-align: right;">864</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Northern fur seal</td>
+<td style="text-align: right;">522</td>
+<td style="text-align: right;">9.9</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vesper mouse</td>
+<td style="text-align: right;">420</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p><strong>Again, none of this has changed <code>msleep</code>!</strong> Each line above made a whole new dataframe. If we wanted to change our <code>msleep</code> dataset itself, we would have to assign this new dataframe back to <code>msleep</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">mutate</span>(msleep, <span class="at">sleep_total =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Code like this is common practice. At the start of your analysis, make the columns mean what you need them to mean, remove what you don’t need, then get to work. For example, if you know you want to work in “minutes” of sleep in your research, just change the column in place, as above.</p>
 </section>
-<section id="group_by" class="level3">
-<h3 class="anchored" data-anchor-id="group_by"><code>group_by</code></h3>
-<p>You’ve seen <code>group_by</code> before. It’s a function that takes at least two arguments: a dataframe and a column name. All <code>group_by</code> does is quietly make note of which rows belong to which groups. This does nothing on its own, but many functions like <code>summarize</code> will behave differently on a grouped vs ungrouped data frame. Consider the following two code blocks:</p>
+<section id="arrange---sorting-your-rows" class="level2">
+<h2 class="anchored" data-anchor-id="arrange---sorting-your-rows"><code>arrange</code> - sorting your rows</h2>
+<p><code>arrange</code> sorts your dataframe rows according to a column you specify. Like the others, <code>arrange</code> generates a new dataframe, it doesn’t modify your old one unless you explicitly set it to do so (as above).</p>
+<p><code>arrange</code> is a function expecting two arguments: the dataset, and the column to sort on.</p>
+<p>To sort by name (A-Z):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(penguins, <span class="at">mean_bill_length =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  mean_bill_length
-             &lt;dbl&gt;
-1             44.0</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(penguins, species), <span class="at">mean_bill_length =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   mean_bill_length
-  &lt;fct&gt;                &lt;dbl&gt;
-1 Adelie                38.8
-2 Chinstrap             48.8
-3 Gentoo                47.6</code></pre>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">African giant pouched rat</td>
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">6.9</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">African striped mouse</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arctic fox</td>
+<td style="text-align: right;">12.5</td>
+<td style="text-align: right;">8.1</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arctic ground squirrel</td>
+<td style="text-align: right;">16.6</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Asian elephant</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Baboon</td>
+<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Big brown bat</td>
+<td style="text-align: right;">19.7</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: left;">insecti</td>
+<td style="text-align: left;">lc</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
+<p><br>
+</p>
+<p>To sort by sleep duration (low to high):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Giraffe</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pilot whale</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">cd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Horse</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">13.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Donkey</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">African elephant</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">15.7</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Caspian seal</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">11.4</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">vu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sheep</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">10.9</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>To sort by a column <em>from <strong>high</strong> to <strong>low</strong></em>, we need to wrap our column name in a function, <code>desc()</code> (for “descending”)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, <span class="fu">desc</span>(sleep_total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Little brown bat</td>
+<td style="text-align: right;">19.9</td>
+<td style="text-align: right;">2.3</td>
+<td style="text-align: left;">insecti</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Big brown bat</td>
+<td style="text-align: right;">19.7</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: left;">insecti</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thick-tailed opposum</td>
+<td style="text-align: right;">19.4</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Giant armadillo</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: left;">insecti</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">North American Opossum</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Long-nosed armadillo</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">8.2</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Owl monkey</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arctic ground squirrel</td>
+<td style="text-align: right;">16.6</td>
+<td style="text-align: right;">6.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code>arrange</code> is useful when you are trying to present data (to yourself or others) in a natural order. It’s also useful if you’re trying to find the largest or smallest value (e.g.&nbsp;the shortest-sleeping animal, which is the Giraffe in this dataset).</p>
+</section>
+<section id="group_by---different-calculations-for-different-groups" class="level2">
+<h2 class="anchored" data-anchor-id="group_by---different-calculations-for-different-groups"><code>group_by</code> - different calculations for different groups</h2>
+<p><code>group_by</code> is inherently a helper function. It takes two arguments: a dataframe, and a column to use to define “groups.” It returns a copy of the same full dataframe with only one change: it has quietly made note of which rows belong to which groups. For example, if we group <code>msleep</code> by <code>vore</code> (dietary habits), it will make note of which rows are carnivores, which are omnivores, etc.</p>
+<p>Why bother? <code>group_by</code> does nothing useful on its own, but many downstream functions like <code>summarize</code> use these groups to change how they behave.</p>
+<p>First, notice that <code>group_by</code> returns the whole dataframe, unchanged, but with a special “groups” note:</p>
+<p>Original dataset (not grouped)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="images/msleep.png" class="img-fluid"></p>
+<p><br>
+</p>
+<p>After <code>group_by</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(msleep, vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="images/msleep_grouped.png" class="img-fluid"></p>
+<p>There’s actually a lot more you can do with <code>group_by</code> – e.g., find the longest-sleeping animal of each <code>vore</code> type – but this is beyond our scope for now.</p>
+<section id="how-summarize-changes-when-given-grouped-data" class="level3">
+<h3 class="anchored" data-anchor-id="how-summarize-changes-when-given-grouped-data">How <code>summarize</code> changes when given grouped data</h3>
+<p>Without grouping:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(msleep_limited, <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean_sleep_duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">10.43373</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>This is just the mean sleep duration across all mammals. However, if we group by <code>vore</code> first…</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(msleep, vore), <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean_sleep_duration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">carni</td>
+<td style="text-align: right;">10.378947</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">herbi</td>
+<td style="text-align: right;">9.509375</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">insecti</td>
+<td style="text-align: right;">14.940000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">omni</td>
+<td style="text-align: right;">10.925000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">10.185714</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>…we get the calculation <em>once for each group</em>.</p>
 </section>
 </section>
 <section id="the-almighty-pipe" class="level2">
 <h2 class="anchored" data-anchor-id="the-almighty-pipe">The Almighty “Pipe”</h2>
-<p>When you chain together a bunch of functions in R, it can get messy. Consider:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is SO common to do many data wrangling steps at once. It’s typical that, after you get some data, you need to do some filtering, mutating, etc before you are ready to do your analysis or make your plot.</p>
+<p><strong>The problem?</strong> When you chain together a bunch of functions in R, it can get messy. Consider:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You have to stare at this for a minute to see what it’s doing. As we discussed, nested functions like this (<code>c</code> within <code>mean</code> within <code>sqrt</code>) are evaluated from the inside out. In diagram form, this is what’s happening:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1634,10 +2059,10 @@ window.Quarto = {
 <p>Before we explain further, here’s the punchline: using the pipe, you can rewrite the line of code above as <code>c(1, 2, 3) |&gt; mean() |&gt; sqrt()</code>.</p>
 <p>First, notice how naturally this reads. We make a vector with some numbers, then compute their mean, then take the square root.</p>
 <p><em>Especially</em> in making plots or filtering/cleaning data, you often call a lot of functions in a row on the same dataset. First you filter out some rows, then you mutate to add a column, then maybe you do a group_by and summarize. Doing it all at once is a mess:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The pipe <code>|&gt;</code> operator saves us. Literally all the pipe does is this: whatever is on the <em>left side</em> of the pipe is passed as the first argument to the function on the <em>right side</em>. The right side is always a function call.</p>
 <p>This is why we can rewrite <code>sqrt(mean(c(1, 2, 3)))</code> as <code>c(1, 2, 3) |&gt; mean() |&gt; sqrt()</code>. This code is <em>functionally exactly the same</em>.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1650,26 +2075,26 @@ window.Quarto = {
 <p>Here’s a quick animation to give you the idea if it’s still confusing:</p>
 <div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/mpF4vqvKhmo" width="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s rewrite this gnarly code with pipes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With pipes, it becomes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>) <span class="sc">|&gt;</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt) <span class="sc">|&gt;</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore) <span class="sc">|&gt;</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt) <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Much better. Same result, much easier to read. We start with the <code>msleep</code> data frame, then filter some rows, then mutate to make a new column, then group by something, and finally summarize those groups. The data flows in a natural reading order through a series of transformations.</p>
 <p>The code above is a <em>very</em> common kind of thing we do in data science. We alter a dataset through a series of steps, then end with in a summary table or maybe a plot. The pipe, as you saw above, makes these things far more legible.</p>
 <p>Let’s look at another example:</p>
 <p><em>What proportion of carnivores sleep more than 8 hours per night?</em></p>
 <p>Answering this requires two steps: <code>filter()</code>ing to focus on carnivores and <code>summarize()</code>ing with a proportion that meet a condition (recall that a comparison results in a logical vector of 0s and 1s). It is often a good idea to record the number of observations that go into a summary statistic, which we do here with the special summary function <code>n()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">prop_over_8hrs =</span> <span class="fu">mean</span>(sleep_total <span class="sc">&gt;</span> <span class="dv">8</span>),</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">prop_over_8hrs =</span> <span class="fu">mean</span>(sleep_total <span class="sc">&gt;</span> <span class="dv">8</span>),</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   prop_over_8hrs     n
@@ -1680,12 +2105,10 @@ window.Quarto = {
 <p><em>What year had the greatest total number of christenings?</em></p>
 <p>The original <code>arbuthnot</code> data frame, which captures birth records in 17<sup>th</sup> century London, in fact records the numbers of boys and girls names that appear in church christening records. To find the year with the greatest total number of christenings requires first the creation of a new column with <code>mutate()</code>, then <code>arrange()</code>ing the rows of that data frame, then <code>select()</code>ing just the rows of interest. As one pipeline, that is:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stat20data)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total)) <span class="sc">|&gt;</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total)) <span class="sc">|&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 82 × 2
     year total
@@ -1705,80 +2128,23 @@ window.Quarto = {
 </div>
 <p><em>What is the trend in the total number of christenings over time?</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>This demonstrates that you can pipe a data frame directly into a ggplot - the first argument is a data frame after all! The main thing to note is that when moving into a ggplot, the layers are added with the <code>+</code> operator instead of the pipe, <code>|&gt;</code>.</p>
 </section>
-<section id="groupwise-operations-revisited" class="level2">
-<h2 class="anchored" data-anchor-id="groupwise-operations-revisited">Groupwise Operations Revisited…</h2>
-<p>The last example above demonstrates a very common scenario: you want to perform some calculations on one particular group of observations in your data set. But what if you want to do that same calculation for every group?</p>
-<p>The <code>vore</code> variable has four levels: <code>carni</code>, <code>herbi</code>, <code>insecti</code>, and <code>omni</code>. It would not be too difficult to copy and paste the above pipeline four times and modify each filter function to focus on a different group. But what if there were a dozen different levels?</p>
-<p>This task - performing an operation on all groups of a data set one-by-one - is such a common data science task that nearly every software tool has a good solution. In the tidyverse, the solution is the <code>group_by()</code> function. Let’s see it in action.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore) <span class="sc">|&gt;</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">p_gt_8hrs =</span> <span class="fu">mean</span>(sleep_total <span class="sc">&gt;</span> <span class="dv">8</span>),</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  vore    p_gt_8hrs     n
-  &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;
-1 carni       0.684    19
-2 herbi       0.594    32
-3 insecti     1         5
-4 omni        0.95     20
-5 &lt;NA&gt;        0.714     7</code></pre>
-</div>
-</div>
-<p>Like most tidyverse functions, the first argument to <code>group_by()</code> is a data frame, so it can be slotted directly into the pipeline. The second argument, the one that shows up in the code above, is the name of the variable that you want to use to delineate the groups. This is generally a factor, character, or logical vector.</p>
-<p><code>group_by()</code> is an incredibly powerful function because it changes the behavior of downstream functions. Lets break our pipeline and inspect the data frame that comes out of it.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 83 × 17
-# Groups:   vore [5]
-   name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
- 1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9
- 2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
- 3 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
- 4 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
- 5 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
- 6 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
- 7 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
- 8 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  
- 9 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9
-10 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
-# ℹ 73 more rows
-# ℹ 8 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, callout &lt;lgl&gt;,
-#   bodywt_g &lt;dbl&gt;, log_bodywt &lt;dbl&gt;, log_bodywt_g &lt;dbl&gt;, log10_bodywt &lt;dbl&gt;,
-#   log10_bodywt_g &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<p>This looks . . . exactly like the original data frame.</p>
-<p>Well, not <em>exactly</em> like it: there is now a note at the top that the data frame now has the notion of groups based on <code>vore</code>. In effect, <code>group_by()</code> has taken the generic data frame and turned it into the one in the middle below: the same data frame but with rows now flagged as belonging to one group or another. When we pipe this grouped data frame into <code>summarize()</code>, <code>summarize()</code> collapses that data frame down into a single row for each group and creates a new column for each new summary statistic.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/group-by.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
-</figure>
-</div>
-</section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>There are several ways to subset a data frame but the most important for data analysis is filtering: subsetting the rows according to a condition. In R, that condition is framed in terms of a comparison between a variable and a value (or set of values). Comparisons take many forms and can be combined using logical operators. The result is a logical vector that can be used for filtering or computing summary statistics. You can perform simultaneous analyses on multiple subsets by doing groupwise operations with <code>group_by()</code>.</p>
-<p>As we begin to do analyses that require multiple operations, the pipe operator, <code>|&gt;</code>, can be used to stitch the functions together into a single pipeline.</p>
-<p>If you’re thinking, <span class="emoji" data-emoji="grimacing">😬</span> , yikes there was a <em>lot</em> of coding in these notes, you’re right. Keep reading, you’ll have an opportunity for some practice in the tutorial.</p>
+<p>The <code>dplyr</code> package, which comes along with <code>tidyverse</code>, offers some very useful tools for reshaping our data: <code>arrange</code>, <code>filter</code>, <code>select</code>, <code>summarize</code>, and <code>group_by</code>. The most important for data analysis is probably filtering: we often want to look at a subset of the rows that meet some condition (e.g., only animals over some body size, or only female penguins, etc.). We learned about comparison operators (<code>==</code>, <code>&lt;</code>, etc.), joining multiple comparisons with the logical operators (<code>&amp;</code> <code>|</code>), and how the pipe <code>|&gt;</code> makes our code much easier to follow.</p>
 <p><a href="../../2-summarizing-data/04-data-wrangling/tutorial.html" style="fontsize: 1.5em">Continue on to the tutorial portion of the notes <i class="fa-solid fa-arrow-right-long fa-xl" aria-label="arrow-right-long"></i></a></p>
 
 

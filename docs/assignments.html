@@ -151,10 +151,6 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <span class="menu-text">Office Hours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments.html"> 
-<span class="menu-text">Assignments</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../notes.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
@@ -209,8 +205,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </header>
 
 
-<p>Assignments are hosted on the <a href="../docs/assignments.html">Assignments</a> page and include a list of Labs and a list of Worksheet Packets. These lists build automatically if the assignment files follow a particular naming scheme. Below we discuss how to add assignments to the list. They can be removed by renaming the files or removing them entirely from the repository.</p>
-<p>For further reading on how these lists are made, see the Quarto documentation on <a href="https://quarto.org/docs/websites/website-listings.html">document listings</a>.</p>
+<p>Assignments are linked from the course schedule and submitted through Gradescope. Below we discuss how to add assignment files to the site. To make an assignment visible to students, add it to <code>_schedule.yml</code>; see <a href="../docs/scheduled-docs.html">Scheduling Documents</a> for details.</p>
 <section id="worksheets" class="level2">
 <h2 class="anchored" data-anchor-id="worksheets">Worksheets</h2>
 <p>Worksheets are sets of drill-style problems that provide practice with the concepts and skills of a particular day’s lesson. They are stored within the subdirectory containing all of the materials for that day.</p>
@@ -226,7 +221,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Calculating Chances</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> stat20worksheet-typst</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Upon rendering the site, this assignment should appear on the assignments page. The format of the assignment list is controlled by the <a href="https://github.com/stat20/stat20/blob/main/assets/listings/assignments-ws.ejs#L4">assignments template</a>, which will automatically assign numbers to the worksheets based on their order in the directory.</p></li>
+<li><p>Add the worksheet to <code>_schedule.yml</code> for the appropriate class day. Upon rendering the site, it will appear in the course schedule.</p></li>
 </ol>
 <p>The PDF worksheets use the <code>stat20worksheet</code> custom Typst format. See <a href="docs/custom-formats.qmd">Custom Formats</a> for more information on its use.</p>
 </section>
@@ -249,7 +244,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>title</code> should have the name of topic, usually the same as the title of the notes. This name will be used in creating the worksheet name in the listing. The remaining yaml options will provide a link at the top right of the worksheet webpage that, when clicked, will produce a pop-up of the source of the qmd file. Students can copy and paste this into a blank qmd file in RStudio (and can remove the extra yaml options).</p></li>
 </ol>
-<p>If you have multiple worksheet files on a single day, you can differentiate them by adding a single letter or digit following <code>ws</code> and hyphen. <code>ws.qmd</code>, <code>ws-2.qmd</code>, and <code>ws-b.qmd</code> should all work. See the source for the <a href="https://github.com/stat20/stat20/blob/main/assignments.qmd">assignment page</a> for the rule that determines which files show up in the listing.</p>
+<p>If you have multiple worksheet files on a single day, you can differentiate them by adding a single letter or digit following <code>ws</code> and hyphen. <code>ws.qmd</code>, <code>ws-2.qmd</code>, and <code>ws-b.qmd</code> should all work. Add each file that students should see to <code>_schedule.yml</code>.</p>
 </section>
 </section>
 <section id="labs" class="level2">
