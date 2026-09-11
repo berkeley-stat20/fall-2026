@@ -909,7 +909,13 @@ Show answer
 <h4 class="anchored" data-anchor-id="q-one-more-step---lets-change-the-y-axis">Q: One more step - let’s change the y axis…</h4>
 <p>Populations tend to have a funny distribution, some are extremely large, some are a lot smaller. Instead of plotting the raw population, let’s plot the log (base 10) of the population. This will make the differences between continents more apparent. (For more explanation of why and when we take the log of things, see the “Why do we use the log of body weight? (Optional)” section of today’s <a href="../../2-summarizing-data/04-data-wrangling/notes.html">notes</a>.)</p>
 <p>Copy/paste your pipeline from the previous step. Then, <em>in the right place</em> (this is tricky!), add a new step pipeline step to make a new column called <code>log10_pop</code> that is the log base 10 of the population. Then use <em>that</em> column as your y axis.</p>
-<p>Be sure to: - Use <code>mutate()</code> to create the new column. - Use <code>log10()</code> to calculate the log base 10. - Change the y axis to say “Population - log 10 scale” or similar - <strong>Hint</strong>: Think carefully about <em>where</em> this step should go in the pipe so that the result is meaningful. We want the log of the total continent population, not the sum of the logs of individual country populations, since log10(x + y) is not the same as log10(x) + log10(y)…</p>
+<p>Be sure to:</p>
+<ul>
+<li>Use <code>mutate()</code> to create the new column.</li>
+<li>Use <code>log10()</code> to calculate the log base 10.</li>
+<li>Change the y axis to say “Population - log 10 scale” or similar</li>
+<li><strong>Hint</strong>: Think carefully about <em>where</em> this step should go in the pipe so that the result is meaningful. We want the log of the total continent population, not the sum of the logs of individual country populations, since log10(x + y) is not the same as log10(x) + log10(y)…</li>
+</ul>
 <div class="cell" data-envir="tutorial_2_04" data-autorun="false" data-exercise="2_04_ex_groupby_continent_logplot">
 <div>
 <div id="webr-6" class="exercise-cell">
