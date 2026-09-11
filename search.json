@@ -883,7 +883,7 @@
     "href": "2-summarizing-data/03-a-grammar-of-graphics/notes.html#the-grammar-of-graphics",
     "title": "A Grammar of Graphics",
     "section": "The Grammar of Graphics",
-    "text": "The Grammar of Graphics\nIn 1999, a statistician named Leland Wilkinson published the first edition of what has been the most influential work in data visualization, The Grammar of Graphics1.\nThe title is fitting. Languages (including both English and R) have rules about how words are formed and put together, but the rules are still flexible enough to allow us to express pretty much anything we want. Could we do the same for graphics? When you construct different plots, with all their different shapes and lines and colors and data, is there a shared set of rules that we could use to build all of them? Wilkinson’s book outlines just such a “language” for data visualizations.\n\nNearly every current software tool used to build plots has been informed by this book2. Its influence can be found in Tableau, Plotly, and the Python libraries bokeh, altair, seaborn, and plotnine. The most complete implementation of the grammar is found in an R package called ggplot2 by Hadley Wickham.3\nIn Wickham’s adaptation of the grammar of graphics, a plot can be decomposed into three primary elements:\n\nthe data,\nthe aesthetic mapping of the variables in the data to visual cues, and\nthe geometry used to encode the observations on the plot.\n\nLet’s go through each of these components one-by-one to understand the role that they play in a plot like this, which we’ll refer to as the “penguin plot”.\n\n\n\n\n\n\n\n\n\nThe above plot is an example new type of plot which involves two numerical variables: a scatter plot. The points may also be colored by a third variable, generally a categorical one.\n\nData\nWhat variables are needed to construct the penguin plot above?\nWe see bill_length_mm and bill_depth_mm; those are labeled clearly on the x and y axes. We must also know the species of each of these penguins in order to know which color to label each point. These three columns need to exist in our data frame for the plot to work.\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nspecies\n\n\n\n\n36.3\n19.5\nAdelie\n\n\n51.3\n14.2\nGentoo\n\n\n41.7\n14.7\nGentoo\n\n\n37.8\n18.3\nAdelie\n\n\n47.5\n14.0\nGentoo\n\n\n35.0\n17.9\nAdelie\n\n\n39.7\n18.9\nAdelie\n\n\n50.2\n18.7\nChinstrap\n\n\n\n\n\nBe sure that every variable that you wish to include in your plot is present in your data frame!\nMore fundamentally, be sure the data you’re using is well-suited to the message you aim to convey with your plot. Many plots go wrong right here at the outset, so be sure you’re on firm footing.\n\n\nAesthetics\nThe most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual aspects of your plot.\nThe penguin plot relies upon three visual aspects. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill depth is captured on the y-axis: deeper bills are higher up on the plot, shallower bills are lower down. The third is color: each of the three species has its own color.\n\n\n\n\n\nWe can summarize this encoding, or “aesthetic mapping”, as:\n\nbill_length_mm is mapped to the x-axis\nbill_depth_mm is mapped to the y-axis\nspecies is mapped to color\n\nThese are three of many different techniques for visually encoding variability. Here is a list of the aesthetic attributes that are most commonly used:\n\nx: location along the x-axis\ny: location along the y-axis\ncolor: hue of the mark that represents the observation\nalpha: the level of transparency of the color\nsize: the size of the mark representing the observation\nshape: the shape of the mark representing the observation\nfill: the color of the inside of the representation of an observation\n\n\n\nGeometries\nWith the data set in place and the aesthetic mappings selected, the final choice in making our plot is to decide how to graphically express the observations themselves. For the penguin plot above, each observation is represented by a point, so it is said to use a “point” geometry. That is just one of many options. Other options are listed below.\n\npoint\nbar\nline\nhistogram\ndensity\nviolin\ndotplot\nboxplot\n\nWhen we speak about whether a plot is a scatter plot, a bar chart, a histogram, etc, we are discussing the geometry of a plot. The impact of this choice can be seen in the following two plots.\n\n\n\n\n\n\n\n\n\nBoth plots share the same data (penguins) and the same aesthetic mappings(bill_length to the x-axis and species to the y-axis). Where they differ is the geometry: the plot on the left uses the violin while the one on the right uses the boxplot.\n\n\nExample: Births over Time\nThe following plot displays the total number of births over time recorded in London, England during the 17th century.\n\n\n\n\n\n\n\n\n\nIt was constructed from a data frame with 82 rows, the first six of which are shown below.\n\n\n# A tibble: 6 × 2\n   year total\n  &lt;int&gt; &lt;int&gt;\n1  1629  9901\n2  1630  9315\n3  1631  8524\n4  1632  9584\n5  1633  9997\n6  1634  9855\n\n\nWe can decompose this graphic using the grammar of graphics.\n\ndata: the data frame displayed above\naesthetic mappings: year is mapped to the x-axis, total is mapped to the y-axis\ngeometry: the observations are expressed as a line\n\nThis process makes clear what decisions were made in constructing the plot and suggests ways in which we might consider changing the graphic. What if we changed the geometry so that the observations are expressed as points?\n\n\n\n\n\n\n\n\n\nIs this a better graphic? That depends on the message you aim to convey. The line geometry emphasizes the general trend over time. The point geometry makes clearer the total births in each particular year.\nWhat if you wanted to convey both of those messages? If two geometries are compatible, they can be combined.\n\n\n\n\n\n\n\n\n\nIs this a better graphic? Again, that depends. It makes it possible to see both the trend over time and the individual observations. But this plot is more complicated and therefore articulates each of those individual messages less clearly. Sometimes simplicity and a single message is best.\nHere’s another example of a plot that combines two geometries:\n\n\n\n\n\nHere, a density geometry is overlaid on top of a histogram geometry. It is unclear whether this was a good design decision. What do you think? What is the advantage of a stair-step histogram versus the smooth line of a density curve?",
+    "text": "The Grammar of Graphics\nIn 1999, a statistician named Leland Wilkinson published the first edition of what has been the most influential work in data visualization, The Grammar of Graphics1.\nThe title is fitting. Languages (including both English and R) have rules about how words are formed and put together, but the rules are still flexible enough to allow us to express pretty much anything we want. Could we do the same for graphics? When you construct different plots, with all their different shapes and lines and colors and data, is there a shared set of rules that we could use to build all of them? Wilkinson’s book outlines just such a “language” for data visualizations.\n\nNearly every current software tool used to build plots has been informed by this book2. Its influence can be found in Tableau, Plotly, and the Python libraries bokeh, altair, seaborn, and plotnine. The most complete implementation of the grammar is found in an R package called ggplot2 by Hadley Wickham.3\nIn Wickham’s adaptation of the grammar of graphics, a plot can be decomposed into three primary elements:\n\nthe data,\nthe aesthetic mapping of the variables in the data to visual cues, and\nthe geometry used to encode the observations on the plot.\n\nLet’s go through each of these components one-by-one to understand the role that they play in a plot like this, which we’ll refer to as the “penguin plot”.\n\n\n\n\n\n\n\n\n\nThe above plot is an example new type of plot which involves two numerical variables: a scatter plot. The points may also be colored by a third variable, generally a categorical one.\n\nData\nWhat variables are needed to construct the penguin plot above?\nWe see bill_length_mm and bill_depth_mm; those are labeled clearly on the x and y axes. We must also know the species of each of these penguins in order to know which color to label each point. These three columns need to exist in our data frame for the plot to work.\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nspecies\n\n\n\n\n50.5\n18.4\nChinstrap\n\n\n41.3\n20.3\nAdelie\n\n\n40.3\n18.5\nAdelie\n\n\n46.2\n17.5\nChinstrap\n\n\n43.5\n15.2\nGentoo\n\n\n41.5\n18.5\nAdelie\n\n\n45.8\n18.9\nAdelie\n\n\n50.9\n19.1\nChinstrap\n\n\n\n\n\nBe sure that every variable that you wish to include in your plot is present in your data frame!\nMore fundamentally, be sure the data you’re using is well-suited to the message you aim to convey with your plot. Many plots go wrong right here at the outset, so be sure you’re on firm footing.\n\n\nAesthetics\nThe most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual aspects of your plot.\nThe penguin plot relies upon three visual aspects. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill depth is captured on the y-axis: deeper bills are higher up on the plot, shallower bills are lower down. The third is color: each of the three species has its own color.\n\n\n\n\n\nWe can summarize this encoding, or “aesthetic mapping”, as:\n\nbill_length_mm is mapped to the x-axis\nbill_depth_mm is mapped to the y-axis\nspecies is mapped to color\n\nThese are three of many different techniques for visually encoding variability. Here is a list of the aesthetic attributes that are most commonly used:\n\nx: location along the x-axis\ny: location along the y-axis\ncolor: hue of the mark that represents the observation\nalpha: the level of transparency of the color\nsize: the size of the mark representing the observation\nshape: the shape of the mark representing the observation\nfill: the color of the inside of the representation of an observation\n\n\n\nGeometries\nWith the data set in place and the aesthetic mappings selected, the final choice in making our plot is to decide how to graphically express the observations themselves. For the penguin plot above, each observation is represented by a point, so it is said to use a “point” geometry. That is just one of many options. Other options are listed below.\n\npoint\nbar\nline\nhistogram\ndensity\nviolin\ndotplot\nboxplot\n\nWhen we speak about whether a plot is a scatter plot, a bar chart, a histogram, etc, we are discussing the geometry of a plot. The impact of this choice can be seen in the following two plots.\n\n\n\n\n\n\n\n\n\nBoth plots share the same data (penguins) and the same aesthetic mappings(bill_length to the x-axis and species to the y-axis). Where they differ is the geometry: the plot on the left uses the violin while the one on the right uses the boxplot.\n\n\nExample: Births over Time\nThe following plot displays the total number of births over time recorded in London, England during the 17th century.\n\n\n\n\n\n\n\n\n\nIt was constructed from a data frame with 82 rows, the first six of which are shown below.\n\n\n# A tibble: 6 × 2\n   year total\n  &lt;int&gt; &lt;int&gt;\n1  1629  9901\n2  1630  9315\n3  1631  8524\n4  1632  9584\n5  1633  9997\n6  1634  9855\n\n\nWe can decompose this graphic using the grammar of graphics.\n\ndata: the data frame displayed above\naesthetic mappings: year is mapped to the x-axis, total is mapped to the y-axis\ngeometry: the observations are expressed as a line\n\nThis process makes clear what decisions were made in constructing the plot and suggests ways in which we might consider changing the graphic. What if we changed the geometry so that the observations are expressed as points?\n\n\n\n\n\n\n\n\n\nIs this a better graphic? That depends on the message you aim to convey. The line geometry emphasizes the general trend over time. The point geometry makes clearer the total births in each particular year.\nWhat if you wanted to convey both of those messages? If two geometries are compatible, they can be combined.\n\n\n\n\n\n\n\n\n\nIs this a better graphic? Again, that depends. It makes it possible to see both the trend over time and the individual observations. But this plot is more complicated and therefore articulates each of those individual messages less clearly. Sometimes simplicity and a single message is best.\nHere’s another example of a plot that combines two geometries:\n\n\n\n\n\nHere, a density geometry is overlaid on top of a histogram geometry. It is unclear whether this was a good design decision. What do you think? What is the advantage of a stair-step histogram versus the smooth line of a density curve?",
     "crumbs": [
       "Notes",
       "Summarization",
@@ -1467,6 +1467,160 @@
       "R Tutorials",
       "Summarizing Numerical Data"
     ]
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#what-will-this-line-of-code-return",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#what-will-this-line-of-code-return",
+    "title": "Data Wrangling",
+    "section": "What will this line of code return?",
+    "text": "What will this line of code return?\n\nc(\"smile\", \"frown\", \"smile\") == \"frown\"\n\n\nFALSE  TRUE  FALSE"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#rewrite-this-nested-function-call-using-pipes",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#rewrite-this-nested-function-call-using-pipes",
+    "title": "Data Wrangling",
+    "section": "Rewrite this nested function call using pipes",
+    "text": "Rewrite this nested function call using pipes\n\nexp(mean(c(1, 2, 3, NA), na.rm = TRUE))\n\n\nc(1, 2, 3, NA) |&gt; mean(na.rm = TRUE) |&gt; exp()\nOr even:\n1 |&gt; c(2, 3, NA) |&gt; mean(na.rm = TRUE) |&gt; exp()"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#filtering",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#filtering",
+    "title": "Data Wrangling",
+    "section": "Filtering",
+    "text": "Filtering\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0)\n\nWhich observations will be included in the data frame produced by this code? Or equivalently, which observations will not be included?\nJust write a few English sentences describing what flights will remain in the new dataframe…\n\n\n\n\nOnly those flights who fit all of the following criteria will appear in the resulting data frame:\n\nDeparted at 10pm or later.\nWere operated by United Airlines or American Airlines.\nDeparted on time or early."
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#which-data-frame-will-have-fewer-rows",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#which-data-frame-will-have-fewer-rows",
+    "title": "Data Wrangling",
+    "section": "Which data frame will have fewer rows?",
+    "text": "Which data frame will have fewer rows?\n\n# A\nfilter(flights, origin == \"OAK\")\n\n# B\nflights |&gt;\n  mutate(from_oakland = (origin == \"OAK\")) |&gt;\n  filter(from_oakland)\n\n\nNeither, they’ll have the same number of rows. The second approach just creates a new column along the way."
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#build-a-pipeline",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#build-a-pipeline",
+    "title": "Data Wrangling",
+    "section": "Build a pipeline",
+    "text": "Build a pipeline\nWrite a code pipeline that extracts, from the penguins dataframe, only Adelie penguins with bill lengths between 40 and 45mm.\n\n\n\n\nSolution 1:\n\npenguins |&gt;\n  filter(species == \"Adelie\" & bill_length_mm &gt;= 40 & bill_length_mm &lt;= 45)\n\n\n\nSolution 2:\n\npenguins |&gt;\n  filter(species == \"Adelie\", bill_length_mm &gt;= 40, bill_length_mm &lt;= 45)"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#what-does-this-line-of-code-compute",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#what-does-this-line-of-code-compute",
+    "title": "Data Wrangling",
+    "section": "What does this line of code compute?",
+    "text": "What does this line of code compute?\n\npenguins |&gt;\n  mutate(chonky = body_mass_g &gt; 3500) |&gt;\n  summarize(mean(chonky))\n\nAnswer in an English sentence. Nevermind what actual number it will produce, just explain what that number will mean.\n\nThe proportion of penguins that weigh more than 3500 grams."
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#building-data-pipelines",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#building-data-pipelines",
+    "title": "Data Wrangling",
+    "section": "Building Data Pipelines",
+    "text": "Building Data Pipelines"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#building-data-pipelines-1",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#building-data-pipelines-1",
+    "title": "Data Wrangling",
+    "section": "Building Data Pipelines",
+    "text": "Building Data Pipelines\nConsider the subset of flights here:\n\nfilter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0)\n\n\nHow do we extract the average departure delay for each airline in this subset of flights?\n\nLet’s look at three different ways to answer this question\n\nThis set of slides walks through the three different approaches to stringing together functions in R, identifies the pros and cons of each, and encourages students to use the pipe."
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#nesting",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#nesting",
+    "title": "Data Wrangling",
+    "section": "Nesting",
+    "text": "Nesting\n\nfilter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0)"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#nesting-1",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#nesting-1",
+    "title": "Data Wrangling",
+    "section": "Nesting",
+    "text": "Nesting\n\ngroup_by(filter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0),\n       carrier)"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#nesting-2",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#nesting-2",
+    "title": "Data Wrangling",
+    "section": "Nesting",
+    "text": "Nesting\n\nsummarize(group_by(filter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0),\n       carrier),\n       avg_dep_delay = mean(dep_delay))\n\n# A tibble: 2 × 2\n  carrier avg_dep_delay\n  &lt;chr&gt;           &lt;dbl&gt;\n1 AA              -6.43\n2 UA              -5.88"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#nesting-3",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#nesting-3",
+    "title": "Data Wrangling",
+    "section": "Nesting",
+    "text": "Nesting\n\nsummarize(group_by(filter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0),\n       carrier),\n       avg_dep_delay = mean(dep_delay))"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#nesting-4",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#nesting-4",
+    "title": "Data Wrangling",
+    "section": "Nesting",
+    "text": "Nesting\n\n\n\nsummarize(group_by(filter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0),\n       carrier),\n       avg_dep_delay = mean(dep_delay))\n\n\nCons\n\nMust be read from inside out\nHard to keep track of arguments\n\nPros\n\nAll in one line of code\nOnly refer to one data frame"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#make-intermediate-variables",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#make-intermediate-variables",
+    "title": "Data Wrangling",
+    "section": "Make intermediate variables",
+    "text": "Make intermediate variables\n\n\ndf1 &lt;- filter(\n       flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0)\ndf2 &lt;- group_by(df1, carrier)\nsummarize(df2,\n          avg_dep_delay = mean(dep_delay))\n\n\n\n\n\nCons\n\nHave to repeat data frame names\nCreates unnecessary objects\n\n\nPros\n\nStores intermediate objects\nCan be read top to bottom"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#quick-refresh-the-pipe-operator",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#quick-refresh-the-pipe-operator",
+    "title": "Data Wrangling",
+    "section": "Quick refresh: the pipe operator",
+    "text": "Quick refresh: the pipe operator\n\nsqrt(16)\n\n[1] 4\n\n\nThe pipe operator |&gt; takes whatever is on the left side of the pipe and inserts it as the first argument of the function on the right side.\nSo the above can be rewritten as…\n\n\n16 |&gt; sqrt()\n\n[1] 4"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#pipelines-using-the-pipe-operator",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#pipelines-using-the-pipe-operator",
+    "title": "Data Wrangling",
+    "section": "Pipelines using the pipe operator |>",
+    "text": "Pipelines using the pipe operator |&gt;\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0) |&gt;\n  group_by(carrier) |&gt;\n  summarize(avg_dep_delay = mean(dep_delay))\n\n\nCompare this to the nested approach:\n\nsummarize(group_by(filter(flights,\n       dep_time &gt;= 22,\n       carrier %in% c(\"UA\", \"AA\"),\n       dep_delay &lt;= 0),\n       carrier),\n       avg_dep_delay = mean(dep_delay))"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#pipelines-using-the-pipe-operator-1",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#pipelines-using-the-pipe-operator-1",
+    "title": "Data Wrangling",
+    "section": "Pipelines using the pipe operator |>",
+    "text": "Pipelines using the pipe operator |&gt;\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0) |&gt;\n  group_by(carrier) |&gt;\n  summarize(avg_dep_delay = mean(dep_delay))\n\nNotice how it the code now more naturally follows the diagram (piped-in arguments are annotated with |&gt;)"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#pipelines-using-the-pipe-operator-2",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#pipelines-using-the-pipe-operator-2",
+    "title": "Data Wrangling",
+    "section": "Pipelines using the pipe operator |>",
+    "text": "Pipelines using the pipe operator |&gt;\n\n\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0) |&gt;\n  group_by(carrier) |&gt;\n  summarize(avg_dep_delay = mean(dep_delay))\n\n\nCons\n\nNot too many!\n\nPros\n\nCan be read like an english paragraph\nOnly type the data once\nNo leftovers objects"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#breaking-the-pipe",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#breaking-the-pipe",
+    "title": "Data Wrangling",
+    "section": "Breaking the pipe",
+    "text": "Breaking the pipe\nIt’s good practice to understand the output of each line of code by breaking the pipe. That is, cut off some pipeline steps and see if the output-so-far looks right.\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0) |&gt;\n  group_by(carrier) |&gt;\n  summarize(avg_dep_delay = mean(dep_delay))\n\n\n\n\n\n\ncarrier\navg_dep_delay\n\n\n\n\nAA\n-6.433027\n\n\nUA\n-5.876621"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#first-step-only",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#first-step-only",
+    "title": "Data Wrangling",
+    "section": "First step only",
+    "text": "First step only\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0)\n\n\n\n\n\n\n\ncarrier\ndep_time\ndep_delay\n\n\n\n\nAA\n555\n-5\n\n\nUA\n1039\n-12\n\n\nUA\n1052\n-8\n\n\nAA\n1853\n-6\n\n\nAA\n848\n-12"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#first-two-steps",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#first-two-steps",
+    "title": "Data Wrangling",
+    "section": "First two steps",
+    "text": "First two steps\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0) |&gt;\n  group_by(carrier)\n\n\n\n\n\n\n\ncarrier\ndep_time\ndep_delay\n\n\n\n\nAA\n555\n-5\n\n\nUA\n1039\n-12\n\n\nUA\n1052\n-8\n\n\nAA\n1853\n-6\n\n\nAA\n848\n-12"
+  },
+  {
+    "objectID": "2-summarizing-data/04-data-wrangling/slides.html#full-pipeline",
+    "href": "2-summarizing-data/04-data-wrangling/slides.html#full-pipeline",
+    "title": "Data Wrangling",
+    "section": "Full pipeline",
+    "text": "Full pipeline\n\nflights |&gt;\n  filter(dep_time &gt;= 22,\n         carrier %in% c(\"UA\", \"AA\"),\n         dep_delay &lt;= 0) |&gt;\n  group_by(carrier) |&gt;\n  summarize(avg_dep_delay = mean(dep_delay))\n\n\n\n\n\n\n\ncarrier\navg_dep_delay\n\n\n\n\nAA\n-6.433027\n\n\nUA\n-5.876621"
   },
   {
     "objectID": "2-summarizing-data/04-data-wrangling/tutorial.html",
