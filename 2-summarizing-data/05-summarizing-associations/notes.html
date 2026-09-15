@@ -426,7 +426,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><span class="dropcap">W</span>hich of the following plots do you think depicts the relationship between the high school graduation rate and the poverty rate among the 50 US states?</p>
+<p><span class="dropcap">W</span>hich of the following plots do you think shows the <em>true</em> relationship between the high school graduation rate and the poverty rate among the 50 US states? (One plot has real data, the other is fake).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -441,10 +441,16 @@ window.Quarto = {
 <dl>
 <dt><strong>Association</strong></dt>
 <dd>
-There is an association between two variables if the conditional distribution of one varies as you move across values of the other. In other words, there is association when knowing something about one variable gives you information the other one.
+There is an association between two variables if <strong>knowing one variable tells you something about the other</strong>. For example, knowing that someone is 7 feet tall tells you that their weight is probably 200+ pounds. Weight and height are <em>associated</em>.
 </dd>
 </dl>
-<p>You can detect associations in scatter plots by scanning from left to right along the x-axis and determining whether or not the conditional distribution of the y-variable is changing or not. In the figure to the left below, when you look first to the states with low poverty rates (in the blue box), you find that the conditional distribution of the graduation rate (represented by the blue density curve along the right side of the scatter plot) is high: most of those states have graduation rates between 85% and 90%. When you scan to the right in that scatter plot, and condition on having a high poverty rate (the states in the red box), the conditional distribution shifts downwards. Those states have graduations rates in the low 80%s.</p>
+<p>More technically, two variables are associated if the conditional distribution of one changes as you move across values of the other.</p>
+<p>“Conditional distribution” just means “distribution given some constraint.” For example, the distribution of human weights <em>given</em> that they are over 6 feet tall is a conditional distribution. It will tend to have larger weights than usual, as taller people tend to be heavier.</p>
+<p>You can detect associations in scatter plots by scanning from left to right along the x-axis and determining whether or not the distribution of the y-variable changes as you move.</p>
+<ul>
+<li>In the figure below, when you look first to the states with low poverty rates (in the blue box), you find that the conditional distribution of the graduation rate (represented by the blue density curve along the right side of the scatter plot) is high: most of those states have graduation rates between 85% and 90%.</li>
+<li>When you scan to the right in that scatter plot, effectively conditioning on having a high poverty rate (the states in the red box), the conditional distribution shifts downwards. Those states have graduations rates in the low 80%s.</li>
+</ul>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>These density curves are conditional distributions because we’ve set a condition on the data we’re visualizing. When focusing on the data that’s in the blue box, for example, we’ve in effect set up a filter where Poverty &lt; 9.</p>
@@ -452,32 +458,128 @@ There is an association between two variables if the conditional distribution of
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="720"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The plot on the right, by contrast, exhibits no association between poverty rate and graduation rate. When we compare the low poverty states with the high poverty states, their conditional distributions of Graduation rate are essentially the same.</p>
-<p>So we can use the simple scatter plot to determine whether or not two numerical variables are associated, but sometimes a graphic isn’t enough. In these notes we’ll move from graphical summaries to numerical summaries and construct two different approaches to capturing these associations in numbers: the <strong>correlation coefficient</strong> and the <strong>simple linear model</strong>.</p>
-<p>In general, when considering the structure in a scatter plot, pay attention to the following 3+1 aspects:</p>
+<p>The plot below, by contrast, exhibits no clear association between poverty rate and graduation rate. When we compare the low poverty states with the high poverty states, their conditional distributions of graduation rate are essentially the same (the density curves on the right are closely overlapping).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So we can use the simple scatter plot to determine whether or not two numerical variables are associated, but sometimes a graphic isn’t enough. In these notes we’ll move from graphical summaries to numerical summaries and construct two different-but-related approaches to capturing these associations in numbers: the <strong>correlation coefficient</strong> and the <strong>simple linear model</strong>.</p>
+<p>In general, when considering the structure in a scatter plot, pay attention to the following aspects:</p>
 <ol type="1">
-<li><p>The <strong>strength</strong> of the association: <em>How much does the conditional distribution of y change when you move along the x?</em></p></li>
+<li><p>The <strong>strength</strong> of the association: <em>How much does the distribution of y change when you move along the x?</em></p></li>
 <li><p>The <strong>shape</strong> of the association: <em>Linear? Quadratic? Cubic or beyond?</em></p></li>
-<li><p>The <strong>direction</strong> of the (linear) association: <em>Positive or negative?</em></p></li>
+<li><p>The <strong>direction</strong> of the association (if linear): <em>Positive or negative?</em></p></li>
 <li><p>Possible <strong>outliers</strong> or observations that deviate from the overall pattern.</p></li>
 </ol>
 <section id="the-correlation-coefficient" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-correlation-coefficient">The Correlation Coefficient</h2>
-<p>Let’s set out to engineer our first numerical summary in the same manner that we have previously, by laying out the properties that we’d like our summary to have.</p>
-<p>Please watch the following 12 minute video.</p>
+<p>Roughly speaking, the “correlation coefficient” answers the question: <strong>“how much do these variables <em>move together</em>?”</strong></p>
+<p>For example, as height increases, weight tends to increase (so height and weight have a “positive” correlation). As age increases, eyesight tends to worsen (a “negative” correlation). We represent the strength of this relationship with a number from -1 to 1 (with 0 meaning “no correlation”).</p>
+<p>Look at these examples to build some intuition before we dig in further:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, please watch the following 12 minute video on the math and underlying intuition:</p>
 <p><a href="https://bcourses.berkeley.edu/courses/1557153/external_tools/90481"><img src="images/vid-thumbnail.png" class="img-fluid" width="400"></a></p>
 <dl>
 <dt><strong>Correlation coefficient, <span class="math inline">\(r\)</span></strong></dt>
 <dd>
-The correlation coefficient, <span class="math inline">\(r\)</span>, between two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is <span class="math display">\[r = \frac{1}{n-1}\sum_{i=1}^n \left( \frac{x_i - \bar{x}}{s_x} \right) \left( \frac{y_i - \bar{y}}{s_y} \right)\]</span>
+The correlation coefficient, <span class="math inline">\(r\)</span>, between two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in a sample is <span class="math display">\[r = \frac{1}{n-1}\sum_{i=1}^n \left( \frac{x_i - \bar{x}}{s_x} \right) \left( \frac{y_i - \bar{y}}{s_y} \right)\]</span>
 </dd>
 </dl>
 <p>where: <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\bar{y}\)</span> are the means of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, <span class="math inline">\(S_x\)</span> and <span class="math inline">\(S_y\)</span> are the standard deviations, and <span class="math inline">\(n\)</span> is the number of observations.</p>
+<p>Luckily, you won’t have to calculate this yourself by hand. R has a function to do it for you: <code>cor()</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Help me understand this formula? (Optional)">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Help me understand this formula? (Optional)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let’s break it down in pieces.</p>
+<p><strong>Part 1</strong></p>
+<p><span class="math display">\[\sum_{i=1}^n\]</span></p>
+<p>If you’re not used to summations, what this means is that it’s going to walk through every number from 1 to n (where “n” is how many data points we have) and compute the thing to the right. Then it’s going to add them all up. So <span class="math inline">\(\sum_{i=1}^3{i^2} = 1 + 4 + 9 = 14\)</span></p>
+<p><strong>Part 2</strong></p>
+<p><span class="math display">\[\left( \frac{x_i - \bar{x}}{s_x} \right)\]</span></p>
+<p>Our data looks something like this:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1</td>
+<td>0.34</td>
+</tr>
+<tr class="even">
+<td>-0.24</td>
+<td>1.45</td>
+</tr>
+<tr class="odd">
+<td>1.1</td>
+<td>-0.07</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>The first x value (0.1) is <span class="math inline">\(x_1\)</span>. The next x value is (-0.24) is <span class="math inline">\(x_2\)</span> and so forth. <span class="math inline">\(\bar{x}\)</span> is the mean of ALL the x values, and <span class="math inline">\(S_x\)</span> is the sample <a href="../../2-summarizing-data/02-summarizing-numerical-data/notes.html#variance">standard deviation</a> (roughly, how far from the mean is a typical x value).</p>
+<p>All together, this part of the formula is saying, <strong>“For this x value, how far is it from the mean, in standard deviations?”</strong></p>
+<p>For example, say the mean of all x values is 10, and the standard deviation is 5. An x with a value of 15 is exactly 1 standard deviation above the mean (<span class="math inline">\(\frac{15 - 10}{5} = 1\)</span>), while an x with a value of 0 will be two standard deviations <em>below</em> the mean (<span class="math inline">\(\frac{0 - 10}{5} = -2\)</span>).</p>
+<p>The y part of the forumula follows the same idea: <span class="math inline">\(\left( \frac{y_i - \bar{y}}{s_y} \right)\)</span></p>
+<p><strong>Part 3</strong></p>
+<p><span class="math display">\[\left( \frac{x_i - \bar{x}}{s_x} \right) \left( \frac{y_i - \bar{y}}{s_y} \right)\]</span></p>
+<p>Now we <em>multiply</em> these x and y pieces. For a given point (<span class="math inline">\(x_i\)</span>, <span class="math inline">\(y_i\)</span>), we convert it into standard-deviation-distances from the means, then multiply them.</p>
+<p>Example:</p>
+<ul>
+<li>x mean (<span class="math inline">\(\bar{x}\)</span>) = 10</li>
+<li>x standard deviation (<span class="math inline">\(S_x\)</span>) = 5</li>
+<li>y mean (<span class="math inline">\(\bar{y}\)</span>) = 4</li>
+<li>y standard deviation (<span class="math inline">\(S_y\)</span>) = 2</li>
+</ul>
+<p>For a given point, say, (20, 3), we compute:</p>
+<ul>
+<li>x in standard deviations: <span class="math inline">\(\frac{x_i - \bar{x}}{s_x} = \frac{20 - 10}{5} = 2\)</span></li>
+<li>y in standard deviations: <span class="math inline">\(\frac{y_i - \bar{y}}{s_y} = \frac{3 - 4}{2} = -0.5\)</span></li>
+</ul>
+<p>We now multiply them <code>2 * -0.5</code> to get -1.</p>
+<p><strong>Notice that this number is negative.</strong> In this case, x and y moved in <em>opposite</em> directions. X was above its mean, but y was below. If this tends to be the case across the whole dataset, we’ll have a negative correlation in the end.</p>
+<p><strong>Part 4: Bringing it all together</strong></p>
+<p>We do the math above for every (x, y) pair in our dataset, getting a bunch of numbers, then we essentially <em>average</em> them to get the correlation coefficient, <code>r</code>.</p>
+<p><span class="math display">\[r = \frac{1}{n-1}\sum_{i=1}^n \left( \frac{x_i - \bar{x}}{s_x} \right) \left( \frac{y_i - \bar{y}}{s_y} \right)\]</span></p>
+<p>We add them all up (<span class="math inline">\(\sum_{i=1}^n\)</span>), and divide by (one less than) how many of them there are (<span class="math inline">\(\frac{1}{n-1}\)</span>).*</p>
+<p>That’s it. That’s the correlation coefficient. Hopefully this makes the formula more intuitive for you.</p>
+<p>*<em>Note: We use “n-1” instead of “n” when working with samples (versus entire populations), for reasons that are a little beyond our scope here.</em></p>
+</div>
+</div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Several different statistics have been proposed for measuring association. This is the most common and is more specifically called the Pearson correlation.</p>
@@ -515,10 +617,12 @@ The correlation coefficient, <span class="math inline">\(r\)</span>, between two
 </div>
 </div>
 <p>The value of -0.747 tells us that the linear association between these variables is negative and reasonably strong. This is our first example of a <em>bivariate</em> summary statistic: there are two variables that we put inside the <code>cor()</code> function to compute our statistic.</p>
-<p>Let’s repeat this calculation for the data frame that created the shapeless scatter plot with no association, <code>poverty_shuffled</code>.</p>
+<p>Let’s repeat this calculation for the data frame that created the shapeless scatter plot with no association, <code>shuffled_data</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>poverty_shuffled <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shuffled_data <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">r =</span> <span class="fu">cor</span>(Poverty, Graduates))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
         r
@@ -565,11 +669,12 @@ The closer <span class="math inline">\(r\)</span> is to the extremes (-1 or +1),
 <dl>
 <dt><strong>4. It Only Measures <em>Linear</em> Relationships</strong></dt>
 <dd>
-The correlation coefficient is blind to curved patterns. It only tests how well the data fits a <em>straight line</em>.
+The correlation coefficient is blind to curved patterns. It only tests how well the data fits a <em>straight, sloped line</em>.
 </dd>
 </dl>
 <ul>
-<li><strong>Warning:</strong> A dataset could have a perfect, predictable curved relationship (like a U-shaped parabola), but <span class="math inline">\(r\)</span> might still equal 0.</li>
+<li><strong>Warning</strong> The “sloped” is key here – if all the data fit on a perfectly horizontal line (slope = 0), the correlation is zero! To see why, think back to our definition of “association” in general. In our horizontal-line ase, no matter what the x value is, y is always the same. This is the very definition ofa “no association” situation. The correlation (a measure of association) is zero.</li>
+<li><strong>Warning:</strong> A dataset could have a perfect, predictable curved relationship (like a U-shaped parabola), but <span class="math inline">\(r\)</span> might still equal 0. It fits a curved line well, but not a straight line. Correlation is about straight lines.</li>
 </ul>
 <dl>
 <dt><strong>5. It Has No Units of Measurement</strong></dt>
@@ -578,7 +683,7 @@ Because of how <span class="math inline">\(r\)</span> is mathematically standard
 </dd>
 </dl>
 <ul>
-<li>If you correlate height (in inches) and weight (in pounds), <span class="math inline">\(r\)</span> does not have a unit like “inches-per-pound.” It is just a decimal.</li>
+<li>If you correlate height (in inches) and weight (in pounds), <span class="math inline">\(r\)</span> does not have a unit like “inches-per-pound.” It is just a decimal. All the units dropped out in our math!</li>
 </ul>
 <dl>
 <dt><strong>6. Changing Units Does Not Change <span class="math inline">\(r\)</span></strong></dt>
@@ -588,6 +693,7 @@ Because it has no units, <span class="math inline">\(r\)</span> stays exactly th
 </dl>
 <ul>
 <li>If you scale heights from inches to centimeters, or weights from pounds to kilograms, the correlation coefficient remains identical.</li>
+<li><strong>This is a key advantage of the correlation coefficient!</strong></li>
 </ul>
 <dl>
 <dt><strong>7. Switching <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> Does Not Change <span class="math inline">\(r\)</span></strong></dt>
@@ -598,6 +704,7 @@ Correlation measures the relationship <em>between</em> two variables; it does no
 <p><span class="math display">\[\text{corr}(x,y) = \text{corr}(y,x)\]</span></p>
 <ul>
 <li>The correlation between height (<span class="math inline">\(x\)</span>) and weight (<span class="math inline">\(y\)</span>) is identical to the correlation between weight (<span class="math inline">\(x\)</span>) and height (<span class="math inline">\(y\)</span>).</li>
+<li>Try it out yourself to verify!</li>
 </ul>
 <dl>
 <dt><strong>8. It Is Extremely Sensitive to Outliers</strong></dt>
@@ -615,7 +722,7 @@ This is one of the golden rule of statistics. Just because two variables have a 
 </dd>
 </dl>
 <ul>
-<li>They might both be influenced by a hidden third variable (called a <em>lurking</em> or <em>confounding</em> variable). For example, ice cream sales and sunburns are highly correlated, but buying ice cream does not cause sunburns—hot summer weather causes both.</li>
+<li>They might both be influenced by a hidden third variable (called a <em>lurking</em> or <em>confounding</em> variable). For example, ice cream sales and sunburns are highly correlated, but buying ice cream does not cause sunburns – hot summer weather causes both.</li>
 </ul>
 </section>
 </section>
@@ -640,7 +747,7 @@ An expression for a possible value of the <span class="math inline">\(y\)</span>
 <p><span class="math display">\[\hat{y} = 95 - 0.8 x\]</span></p>
 <section id="the-least-squares-line" class="level3">
 <h3 class="anchored" data-anchor-id="the-least-squares-line">The Least Squares Line</h3>
-<p>If that felt a little shifty to you - drawing a line by hand and then eyeballing its slope and intercept - we can be more precise by using a more precisely-defined type of linear model: the least squares line. This is a method that we’ll study in depth when we get to the unit on prediction, but for now, we’ll use it because it makes calculation very easy. You can find the slope and intercept of the least squares line using statistics that we’re already familiar with the following 5 ingredients: <span class="math inline">\(\bar{x}, \bar{y}, s_x, x_y\)</span>, and <span class="math inline">\(r\)</span>.</p>
+<p>If that felt a little shifty to you - drawing a line by hand and then eyeballing its slope and intercept - we can be more precise by using a more optimized type of linear model: the least squares line. This is a method that we’ll study in depth when we get to the unit on prediction, but for now, we’ll use it because it makes calculation very easy. You can find the slope and intercept of the least squares line using statistics that we’re already familiar with the following 5 ingredients: <span class="math inline">\(\bar{x}, \bar{y}, s_x, x_y\)</span>, and <span class="math inline">\(r\)</span>.</p>
 <dl>
 <dt><strong>Least Squares Slope</strong></dt>
 <dd>
@@ -720,7 +827,7 @@ A fundamental property of ordinary least squares (OLS) regression is that <stron
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288"></p>
 </figure>
 </div>
 </div>
@@ -797,7 +904,7 @@ The difference between the observed value of a data point, <span class="math inl
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>

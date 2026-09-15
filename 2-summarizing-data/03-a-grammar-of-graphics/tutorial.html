@@ -400,7 +400,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </div>
 <p>So, <code>ggplot()</code> is a function that makes the canvas itself. Now we need to draw some things on it.</p>
 <p>However, before we start <em>drawing</em> on the canvas, ggplot needs us to tell it how our data relates to visual aspects of the plot. For example, we want the x axis to represent penguin bill length, right? <code>ggplot</code> wants to know things like that up front, before it even knows what kind of shapes and lines you’ll be drawing.</p>
-<p>We use the <code>aes</code> function for this. It creates an “aesthetic mapping,” which tells ggplot which <em>visual attributes</em> (like x position, or color, or size) should be based on which <em>columns</em> in our dataset. <code>aes</code> creates an object storing this information, which we immediately pass to <code>ggplot</code> alongside the data iself. Run the code below:</p>
+<p>We use the <code>aes</code> function for this. It creates an “aesthetic mapping,” which tells ggplot which <em>visual attributes</em> (like x-axis position, or color, or size) should be based on which <em>columns</em> in our dataset. <code>aes</code> creates an object storing this information, which we immediately pass to <code>ggplot</code> alongside the data iself. Run the code below:</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false">
 <div>
 <div id="webr-4" class="exercise-cell">
@@ -428,7 +428,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDMi
 </script>
 </div>
 </div>
-<p>We have a scatter plot!</p>
+<p>We have a scatter plot! (The “warning” is just telling you that not all data was plotted - which is expected in this case, as some penguins simply did not have bill measurements given, so we can’t plot them).</p>
 <p>The <code>+ geom_point()</code> said, “Draw a point on the canvas for every row in the dataset.” Of course, the points need to know <em>where</em> to be drawn (x and y position), and for that it looks to the aesthetic mappings. Each row will become one point, which finds its <code>x</code> and <code>y</code> positions in the columns it sees in the aesthetic mappings (<code>x = bill_length_mm</code> and <code>y = bill_depth_mm</code>). It doesn’t know these are penguins at all. It’s essentially just drawing circles based on numbers in a table.</p>
 <p>Scatter plots are a popular choice for visualizing two numerical variables. The original penguin plot, though, visualized the relationship between <em>three</em> variables (different species had different colors). To complete our plot, let’s make one more aesthetic mapping: the <code>color</code> attribute of all geometries should be determined by the <code>species</code>.</p>
 <div class="cell" data-layout-align="center" data-envir="tutorial_2_03" data-autorun="false">
@@ -558,7 +558,7 @@ Show solution
 <li>Someone else.</li>
 </ol>
 <p>The process of building understanding from a data set is one that should be driven by curiosity, skepticism, and thoughtfulness. As a data scientist, you’ll find yourself in conversation with your data: asking questions of it, probing it for structure, and seeing how it responds. This thoughtful conversation is called <strong>exploratory data analysis</strong> (or <strong>EDA</strong>).</p>
-<p>During EDA, the aim is to uncover the shape and structure of your data and to uncover unexpected features. It’s an informal iterative process where you are your own audience. In this setting, you should construct graphics that work best for you.</p>
+<p>During EDA, the aim is to explore the shape and structure of your data and to uncover unexpected features. It’s an informal iterative process where you are your own audience. In this setting, you should construct graphics that work best for you.</p>
 <p>At some point, you’ll find yourself confident in the claim that can be supported by your data and the focus changes to communicating that claim as effectively as possible with a graphic. Here, your audience shifts from yourself to someone else: other scientists, customers, co-workers in a different part of your company, or casual readers. You must consider the context in which they’ll be viewing your graphic: what they know, what they expect, what they want.</p>
 <p>In this tutorial we’ll focus on a few ways to hone the message of your visualization.</p>
 <ol class="example" type="1">
@@ -719,7 +719,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfMl8wMyIs
 </script>
 </div>
 </div>
-<p>Within <code>ggplot2</code>, annotations are a flexible way to add the context or comparisons that help guide readers in interpreting your data. You can add text, shapes, lines, points. To learn more, consult the documentation[^annotate].</p>
+<p>Within <code>ggplot2</code>, annotations are a flexible way to add the context or comparisons that help guide readers in interpreting your data. You can add text, shapes, lines, points. To learn more, consult the <a href="https://ggplot2.tidyverse.org/reference/annotate.html">documentation</a>.</p>
 <p>So if the drop after 1642 corresponds to the English Civil War, what about the spike down around 1666? What about 1703? If you’re curious, explore Wikipedia to find out and add those events as annotations to this plot.</p>
 <p>To learn more about how to use annotation layers in ggplot2, see: <a href="https://ggplot2.tidyverse.org/reference/annotate.html" class="uri">https://ggplot2.tidyverse.org/reference/annotate.html</a>.</p>
 </section>

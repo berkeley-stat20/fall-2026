@@ -184,9 +184,9 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <p>Believe it or not, detailed information about flights is public record! The Bureau of Transportation Statistics, a federal agency, collects and hosts this data for public download. The data we are working with this week (and next) consists of all flights that left OAK and SFO during the 2020 calendar year. Here are some interesting points.:</p>
 <ul>
 <li><p>If you flew in 2020 out of either of these airports, you can find out the exact plane you were on and exactly when it departed and landed.</p></li>
-<li><p>2020 saw the larger, global onset of the COVID-19, so many flights were grounded at the start of the pandemic. Might we see evidence of this in the data?</p></li>
+<li><p>2020 saw the larger, global onset of the COVID-19 pandemic, so many flights were grounded at the start of the pandemic. Might we see evidence of this in the data?</p></li>
 </ul>
-<p>We will be answering questions like these (and more) in this lab. The <code>flights</code> data frame is located in the <code>stat20data</code> package. Once you’ve loaded in this package, you can move it to your environment by running the following line of R code:</p>
+<p>We will be answering questions like these (and more) in this lab. The <code>flights</code> data frame is located in the <code>stat20data</code> package. Once you’ve loaded in this package, you can use the dataframe right away, but see it in the top-right panel with your other variables (the “environment” pane), run command <code>data(flights)</code>.</p>
 </section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
@@ -220,7 +220,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<p>What is your guess for the units/format used to record the departure time? Said another way, what would a value of 1517 represent?</p>
+<p>Look at some of the values in the <code>dep_time</code> column. What is your best guess for how these encode times? Said another way, what would a value of 1517 mean?</p>
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
@@ -230,7 +230,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="part-b-2" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-2">Part B</h3>
-<p>Do you see any sign of an effect of the pandemic?</p>
+<p>Do you see any sign of an effect of the COVID-19 pandemic on flight patterns? Describe in a sentence or two.</p>
 </section>
 </section>
 <section id="question-5" class="level2">
@@ -241,7 +241,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="part-b-3" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-3">Part B</h3>
-<p>Using the <code>lims()</code> <code>ggplot</code> layer, set the limits of the x-axis to focus on where most of the data lie.</p>
+<p>Using the <code>lims()</code> <code>ggplot</code> layer, set the limits of the x-axis to focus on where most of the data lie. This also means some data will be (literally) off the chart. There’s some subjective judgment to this (no one “right” answer), but your goal is to allow the viewer to see the shape of the distribution clearly. Write a sentence or two describing what you did and why.</p>
 </section>
 <section id="part-c-1" class="level3">
 <h3 class="anchored" data-anchor-id="part-c-1">Part C</h3>
@@ -261,7 +261,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
-<p>If you flew out of OAK or SFO during the year 2020, what is the tail number of the plane that you were on? Write a <code>dplyr</code> pipeline to answer this question. If you did not fly in this period, find the tail number of the plane that flew JetBlue flight 40 to New York’s JFK Airport from SFO on May 1st.</p>
+<p>Find the tail number of JetBlue flight 40 that traveled from SFO to to New York’s JFK Airport on May 1st. Use a single pipeline to find this flight.</p>
 </section>
 <section id="question-8" class="level2">
 <h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
@@ -276,12 +276,12 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="question-9" class="level2">
 <h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
-<p>The plot below shows a relationship between the number of flights <em>going out of SFO</em> and the average departure delay. It illustrates the hypothesis that more flights on a given day would lead to a more congested airport which would lead to greater delays on average. Each point represents a single day in 2020; there are 366 of them on the plot.</p>
+<p>The plot below shows a relationship between the number of flights <em>going out of SFO</em> and the average departure delay. It would support the hypothesis that more flights on a given day would lead to a more congested airport which would lead to greater delays on average. Each point represents a single day in 2020; there are 366 of them on the plot.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="part-1_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="part-1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -292,7 +292,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="part-b-5" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-5">Part B</h3>
-<p>Describe also any settings that you see, if any, according to the Grammar of Graphics.</p>
+<p>Describe the settings that you see, if any, according to the Grammar of Graphics.</p>
 </section>
 <section id="part-c-2" class="level3">
 <h3 class="anchored" data-anchor-id="part-c-2">Part C</h3>

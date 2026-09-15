@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -420,44 +455,44 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">41.3</td>
-<td style="text-align: right;">20.3</td>
+<td style="text-align: right;">37.5</td>
+<td style="text-align: right;">18.5</td>
 <td style="text-align: left;">Adelie</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">44.4</td>
-<td style="text-align: right;">17.3</td>
+<td style="text-align: right;">37.0</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: left;">Adelie</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">47.6</td>
+<td style="text-align: right;">14.5</td>
 <td style="text-align: left;">Gentoo</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">40.9</td>
-<td style="text-align: right;">16.6</td>
-<td style="text-align: left;">Chinstrap</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">35.9</td>
-<td style="text-align: right;">19.2</td>
-<td style="text-align: left;">Adelie</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">51.5</td>
-<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">16.3</td>
+<td style="text-align: left;">Gentoo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46.7</td>
+<td style="text-align: right;">17.9</td>
 <td style="text-align: left;">Chinstrap</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">38.1</td>
-<td style="text-align: right;">18.6</td>
+<td style="text-align: right;">37.3</td>
+<td style="text-align: right;">17.8</td>
 <td style="text-align: left;">Adelie</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">49.8</td>
-<td style="text-align: right;">15.9</td>
+<td style="text-align: right;">48.7</td>
+<td style="text-align: right;">15.1</td>
 <td style="text-align: left;">Gentoo</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">35.0</td>
-<td style="text-align: right;">17.9</td>
-<td style="text-align: left;">Adelie</td>
+<td style="text-align: right;">43.5</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: left;">Chinstrap</td>
 </tr>
 </tbody>
 </table>
@@ -468,7 +503,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 <section id="aesthetics" class="level3">
 <h3 class="anchored" data-anchor-id="aesthetics">Aesthetics</h3>
-<p>The most impactful decision that you’ll make when constructing a plot using the grammar of graphics is deciding how to encode variables in a data frame into visual aspects of your plot.</p>
+<p>By “aesthetics” we don’t quite mean “making it look good.” We mean <em>deciding how to encode variables</em> in a data frame into <em>visual aspects</em> of your plot.</p>
 <p>The penguin plot relies upon three visual aspects. The first is the location along the x-axis. Penguins with longer bills are placed on the right side of the plot and those with shorter bills are placed on the left. Variation in bill <em>depth</em> is captured on the y-axis: deeper bills are higher up on the plot, shallower bills are lower down. The third is color: each of the three species has its own color.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -516,11 +551,21 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Both plots share the same data (<code>penguins</code>) and the same aesthetic mappings(<code>bill_length</code> to the x-axis and <code>species</code> to the y-axis). Where they differ is the geometry: the plot on the left uses the violin while the one on the right uses the boxplot.</p>
+<p>Compare the code used to make each below. Only the last line, the geometry, is different. (We’ll talk more about code in the tutorial).</p>
+<p>Violin plot:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> species)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Box plot:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> species)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="example-births-over-time" class="level3">
 <h3 class="anchored" data-anchor-id="example-births-over-time">Example: Births over Time</h3>
 <p>The following plot displays the total number of births over time recorded in London, England during the 17<sup>th</sup> century.</p>
 <div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="ot">&lt;-</span> <span class="fu">mutate</span>(arbuthnot, <span class="at">total =</span> boys <span class="sc">+</span> girls)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arbuthnot, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -551,6 +596,8 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </ul>
 <p>This process makes clear what decisions were made in constructing the plot and suggests ways in which we might consider changing the graphic. What if we changed the geometry so that the observations are expressed as points?</p>
 <div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arbuthnot, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -560,8 +607,11 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Is this a better graphic? That depends on the message you aim to convey. The line geometry emphasizes the general trend over time. The point geometry makes clearer the total births in each particular year.</p>
-<p>What if you wanted to convey both of those messages? If two geometries are compatible, they can be combined.</p>
+<p>What if you wanted to convey both of those messages? Well, you can add both geometries to the same plot! Just add <code>+</code> another geometry layer:</p>
 <div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arbuthnot, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

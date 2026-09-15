@@ -172,15 +172,23 @@ STAT 20: Introduction to Probability and Statistics
 <li>The association must be negative.</li>
 <li>The association is weakened by outliers.</li>
 </ol>
-<div class="fragment">
 <div class="answer fragment">
 <ul>
 <li>Part (c) The association must be negative.</li>
 </ul>
+<p>Why is (a) wrong? Consider this plot:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 <div class="warmup-section">
 <p><strong>Simple Linear Model</strong></p>
-</div>
 </div>
 </section>
 <section id="section-1" class="slide level2 warmup-question" data-warmup-group="slm">
@@ -206,17 +214,18 @@ STAT 20: Introduction to Probability and Statistics
 </table>
 <p>Correlation(fat, protein) = 0.8</p>
 <p>Calculate the equation of the least-squares regression line to predict protein in terms of fat.</p>
+<div class="warmup-only">
+
+</div>
 <div class="fragment">
 <div class="answer fragment">
 <ul>
 <li><span class="math inline">\(b_1 = (0.8) \times \frac{70}{65} \approx 0.86\)</span></li>
 <li><span class="math inline">\(b_0 = 662 - (0.86)(668) \approx 87.52\)</span></li>
 <li><span class="math inline">\(\hat{y} = 87.52 + 0.86 x\)</span></li>
+<li>So predicted weekly protein intake is 87.52 grams, plus 0.86 grams for every additional gram of fat intake.</li>
 </ul>
 </div>
-<p><br>
-<br>
-</p>
 </div>
 </section>
 <section id="section-2" class="slide level2 warmup-question" data-warmup-group="slm">
@@ -238,7 +247,7 @@ STAT 20: Introduction to Probability and Statistics
 <section id="take-a-guess" class="slide level2">
 <h2>Take a guess:</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="poll">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="poll">
 <p>Which state has the highest poverty rate? The lowest?</p>
 </div>
 <aside class="notes">
@@ -259,7 +268,7 @@ STAT 20: Introduction to Probability and Statistics
 <section id="marginal-distributions-of-poverty-and-graduation-rate" class="slide level2">
 <h2>Marginal distributions of poverty and graduation rate</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
 <p>This is an equally-useful set of plots to answer the previous question.</p>
 <p>If we want to ask a question that requires a scatter plot (and a linear model) to answer, we need to ask a conditional question.</p>
 <style type="text/css">
@@ -277,12 +286,12 @@ STAT 20: Introduction to Probability and Statistics
 <section id="the-scatter-plot-and-linear-model-answer-conditional-questions-such-as" class="slide level2">
 <h2>The scatter plot and linear model answer “conditional” questions, such as:</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="fragment">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="fragment">
 <ul>
 <li>Which state is most <span style="color: #D33">outperforming</span> the model’s expectations?</li>
 <li>That is, which state has the <span style="color: #D33">highest graduation rate <em>given its poverty rate</em></span>?</li>
 </ul>
-<div id="timer_c6dcb52a9f6aeacc215f49add2ff02b6498c84d4" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_4180610cfc941e785ec34897eb2d6120cb2c7fa3" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -307,7 +316,7 @@ STAT 20: Introduction to Probability and Statistics
 <section id="section-3" class="slide level2">
 <h2></h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><ul>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><ul>
 <li>Which state is most <span style="color: #D33">outperforming</span> the model’s expectations?</li>
 <li>That is, which state has the <span style="color: #D33">highest graduation rate <em>given its poverty rate</em></span>?</li>
 </ul>
@@ -315,7 +324,7 @@ STAT 20: Introduction to Probability and Statistics
 <section id="section-4" class="slide level2">
 <h2></h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><ul>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><ul>
 <li>Which state is most <span style="color: #F3F">underperforming</span> the model’s expectations?</li>
 <li>That is, which state has the <span style="color: #F3F"><em>lowest</em> graduation rate given its poverty rate</span> ?</li>
 </ul>
@@ -323,14 +332,14 @@ STAT 20: Introduction to Probability and Statistics
 <section id="section-5" class="slide level2">
 <h2></h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><ul>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><ul>
 <li>Which state is most <span style="color: #F3F">underperforming</span> the model’s expectations?</li>
-<li>That is, which state has the <span style="color: #F3F"><em>lowest</em> graduation rate given its poverty rate</span> ?</li>
+<li>That is, which state has the <span style="color: #F3F">lowest graduation rate <em>given its poverty rate</em></span> ?</li>
 </ul>
 </section></section>
 <section id="worksheet-summarizing-numerical-associations" class="title-slide slide level1 center">
 <h1>Worksheet: Summarizing Numerical Associations</h1>
-<div id="timer_c6dcb52a9f6aeacc215f49add2ff02b6498c84d4" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_4180610cfc941e785ec34897eb2d6120cb2c7fa3" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -341,7 +350,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_c6dcb52a9f6aeacc215f49add2ff02b6498c84d4" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_4180610cfc941e785ec34897eb2d6120cb2c7fa3" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -352,7 +361,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="lab-flights-ii" class="title-slide slide level1 center">
 <h1>Lab: Flights II</h1>
-<div id="timer_c6dcb52a9f6aeacc215f49add2ff02b6498c84d4" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_4180610cfc941e785ec34897eb2d6120cb2c7fa3" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

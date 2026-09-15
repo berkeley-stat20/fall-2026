@@ -319,7 +319,6 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Understanding conditions better</li>
 <li>Practice problems with <code>dplyr</code> functions: <code>mutate()</code>, <code>filter()</code>,<code>select()</code>, <code>arrange()</code>, and <code>summarize()</code>.</li>
 <li>Practice using the pipe <code>|&gt;</code></li>
 </ul>
@@ -954,6 +953,97 @@ Show answer
 </section>
 <section id="practice-section-msleep" class="level3">
 <h3 class="anchored" data-anchor-id="practice-section-msleep">Practice Section: <code>msleep</code></h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped caption-top table-sm small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">genus</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">vore</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">order</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">conservation</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sleep_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cheetah</td>
+<td style="text-align: left;">Acinonyx</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">50.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owl monkey</td>
+<td style="text-align: left;">Aotus</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">Primates</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">0.480</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mountain beaver</td>
+<td style="text-align: left;">Aplodontia</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">Rodentia</td>
+<td style="text-align: left;">nt</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">1.350</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greater short-tailed shrew</td>
+<td style="text-align: left;">Blarina</td>
+<td style="text-align: left;">omni</td>
+<td style="text-align: left;">Soricomorpha</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: left;">Bos</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">Artiodactyla</td>
+<td style="text-align: left;">domesticated</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">600.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Three-toed sloth</td>
+<td style="text-align: left;">Bradypus</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">Pilosa</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">3.850</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Northern fur seal</td>
+<td style="text-align: left;">Callorhinus</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">Carnivora</td>
+<td style="text-align: left;">vu</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">20.490</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vesper mouse</td>
+<td style="text-align: left;">Calomys</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Rodentia</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">0.045</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="q-getting-a-simpler-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="q-getting-a-simpler-dataset">Q: Getting a simpler dataset</h4>
 <p>From the <code>msleep</code> dataset, write a pipeline that creates a dataframe with only the animals that sleep more than 10 hours. Further, including only the <code>name</code>, <code>vore</code>, and <code>sleep_total</code> columns from the <code>msleep</code> dataset.</p>

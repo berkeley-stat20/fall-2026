@@ -540,6 +540,27 @@ window.Quarto = {
 <li><code>vore</code>: its dietary pattern (herbivore, etc)</li>
 <li><code>conservation</code>: its conservation status (endangered, etc)</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="FYI: the data has been altered from the raw `msleep` to make the notes easier to follow. Click to see how.">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>FYI: the data has been altered from the raw <code>msleep</code> to make the notes easier to follow. Click to see how.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In <code>msleep</code>, the only “weight” column is <code>bodywt</code>, which is in kilograms. It’s easier to work in grams (an log grams), so we make new columns for convenience: <code>bodywt_g</code> and <code>log_bodywt_g</code>. You will learn to understand this code by the end of these notes</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">=</span> msleep <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">bodywt_g =</span> bodywt <span class="sc">*</span> <span class="dv">1000</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">log_bodywt_g =</span> <span class="fu">log</span>(bodywt_g) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
 <p>We can visualize the relationship between “sleep amount” and “body weight” in all 83 species using a scatter plot.</p>
 <p><br>
 </p>
@@ -547,14 +568,14 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The mammals vary from the wee (20-gram) brown bat, slumbering for nearly 20 hours a day, to the massive (7,000-<em>kilogram</em>) African elephant, nodding off for less than five. That is quite a range! Lets drill down to smaller subsets of this data frame to gain a more nuanced sense of what is going on.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Why do we use the _log_ of body weight? (Optional)">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -563,7 +584,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><br>
 </p>
@@ -572,7 +593,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -590,7 +611,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -600,7 +621,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -616,7 +637,7 @@ window.Quarto = {
 <p>One way to start exploring is to “drill down” on a subset of the data. Maybe just carnivores. Maybe just small animals. Maybe just endangered species.</p>
 <p>The <strong><code>filter</code></strong> function is our tool to extract a subset of rows from a dataset. <code>filter</code> is a function that takes at least two arguments: a dataset, and a <em>condition</em> that has to be met for the row to be kept. For example, to get all the carnivores, we could do:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -696,7 +717,7 @@ window.Quarto = {
 <p>All carnivores. Don’t worry about the specific syntax yet, we’ll talk more about it shortly.</p>
 <p>An important note: <strong>this code does <em>not</em> change the original <code>msleep</code> dataframe.</strong> This confuses new programmers regularly. Instead, this code creates a <em>completely new</em> dataframe, one with only carnivores.</p>
 <p>Let’s peek back at <code>msleep</code> to confirm that it is unchanged:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
@@ -772,12 +793,25 @@ window.Quarto = {
 </div>
 <p><br>
 </p>
-<p>All ’vores are accounted for.</p>
+<p>All ’vores are accounted for. Now let’s plot just the carnivores to see if a pattern is clearer:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> log_bodywt_g, <span class="at">y =</span> sleep_total)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Carnivore body weight (log scale) vs sleep duration"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="comparison-operators" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-operators">Comparison Operators</h2>
 <p>Notice anything funny in the code we just used?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The code above uses two equals signs together: <code>vore == "carni"</code>. Why not just one equals, <code>vore = "carni"</code>?</p>
 <section id="important-detail-single-vs-double" class="level3">
 <h3 class="anchored" data-anchor-id="important-detail-single-vs-double">Important detail: single <code>=</code> vs double <code>==</code></h3>
@@ -796,26 +830,26 @@ window.Quarto = {
 </ul>
 <p>Some simple examples demonstrating <code>=</code> and <code>==</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>With a single <code>=</code>, this line <em>makes</em> x equal to 4. There is no output when simply assign a variable a value.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <p>With the double <code>==</code>, <em>asks</em> if x is equal to 4. Since we just set x to be 4, the output on your screen says <code>TRUE</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE</code></pre>
 </div>
 </div>
 <p>The first line with the single <code>=</code> says “MAKE the numbers variable equal to the vector (1, 2, 3).” (Again, this is equivalent to <code>numbers &lt;- c(1, 2, 3)</code>). The second line with the double <code>==</code> <em>asks</em>, for each element in the vector, “<em>is</em> this number equal to 2?” The output is a logical vector of the answers: <code>FALSE TRUE FALSE</code>. Only the second number in <code>numbers</code> is equal to 2.</p>
 <p>So earlier, when we ran:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>R went through every row and noted where the condition was true (<code>vore</code> was equal to “carni”). It then gave us a new dataframe with only these rows.</p>
 </section>
 <section id="more-comparison-operators" class="level3">
@@ -876,7 +910,7 @@ window.Quarto = {
 </p>
 <p>Let’s try some of these out. Let’s filter for only the rows with large animals, defined as those with a log body weight greater than 12.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -959,7 +993,7 @@ window.Quarto = {
 <p>What if you want to extract only the creatures that are both <em>very large</em> and <em>short-sleeping</em> ? Well, for that, we need to do more than one comparison. We stitch these comparisons together with “logical operators”: <code>&amp;</code> (“and”), <code>|</code> (“or”).</p>
 <p>This filter returns the creatures who are large AND sleep little.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">&amp;</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">&amp;</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1037,7 +1071,7 @@ window.Quarto = {
 <p>This can be read as “make me a dataframe with the rows from <code>msleep</code> where the log body weight is greater than 12 and the sleep total is less than 5.” We see that there are 8 such creatures, one fewer than the data frame with only the body weight filter. The bottle-nosed dolphin is a relatively big mammal thatsleeps, on average, 5.2 hrs.</p>
 <p>This next block of code returns the creatures who are large OR sleep little. All we have to do is change <code>&amp;</code> (and) to <code>|</code> (or).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">|</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, log_bodywt_g <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">|</span> sleep_total <span class="sc">&lt;</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1144,7 +1178,7 @@ window.Quarto = {
 <p>This permits animals like the Roe deer, which is not a particularly large mammal (log body weight of only 9.6) but who sleeps only 3 hours a day. We also get the Bottle-nosed dolphin, who is not a short sleeper (5.2 hours/day) but is large (log body weight of 12.5).</p>
 <p>These conditional expressions can get arbitrarily complex, using parentheses to group things. Try to intuit what the following code does:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"herbi"</span> <span class="sc">&amp;</span> (sleep_total <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> sleep_total <span class="sc">&gt;</span> <span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"herbi"</span> <span class="sc">&amp;</span> (sleep_total <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> sleep_total <span class="sc">&gt;</span> <span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1250,7 +1284,7 @@ window.Quarto = {
 <p>This looks for rows where the animal is an herbivore (<code>vore = "herbi"</code>) <em>and</em> it either sleeps very little <em>or</em> a whole lot (<code>(sleep_total &lt; 5 | sleep_total &gt; 15)</code>). There are 12 such animals, including fun ones like the “Golden-mantled ground squirrel” (a long-sleeping herbivore) and the giraffe (a short-sleeping herbivore).</p>
 <p>When working with nominal categorical variables, the only operator that you’ll be using are <code>==</code> and <code>!=</code>. You can return a union like normal using <code>|</code>,</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">==</span> <span class="st">"Little brown bat"</span> <span class="sc">|</span> name <span class="sc">==</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">==</span> <span class="st">"Little brown bat"</span> <span class="sc">|</span> name <span class="sc">==</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1268,6 +1302,8 @@ window.Quarto = {
 <th style="text-align: right;" data-quarto-table-cell-role="th">awake</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">brainwt</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">bodywt</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bodywt_g</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">log_bodywt_g</th>
 </tr>
 </thead>
 <tbody>
@@ -1283,6 +1319,8 @@ window.Quarto = {
 <td style="text-align: right;">20.7</td>
 <td style="text-align: right;">5.71200</td>
 <td style="text-align: right;">6654.00</td>
+<td style="text-align: right;">6654000</td>
+<td style="text-align: right;">15.7</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Little brown bat</td>
@@ -1296,6 +1334,8 @@ window.Quarto = {
 <td style="text-align: right;">4.1</td>
 <td style="text-align: right;">0.00025</td>
 <td style="text-align: right;">0.01</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2.3</td>
 </tr>
 </tbody>
 </table>
@@ -1303,7 +1343,7 @@ window.Quarto = {
 </div>
 <p>Translation: Only the brown bat and african elephant.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">!=</span> <span class="st">"Little brown bat"</span> <span class="sc">&amp;</span> name <span class="sc">!=</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">!=</span> <span class="st">"Little brown bat"</span> <span class="sc">&amp;</span> name <span class="sc">!=</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1381,14 +1421,15 @@ window.Quarto = {
 <p>Translation: Everything <em>but</em> the brown bat and the elephant.</p>
 <p>Or you can save some typing (and craft more readable code) by using <code>%in%</code> instead, followed by a vector of possible matches:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Little brown bat"</span>, <span class="st">"African elephant"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Little brown bat"</span>, <span class="st">"African elephant"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 11
+<pre><code># A tibble: 2 × 13
   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
 1 Africa… Loxo… herbi Prob… vu                   3.3        NA        NA    20.7
 2 Little… Myot… inse… Chir… &lt;NA&gt;                19.9         2         0.2   4.1
-# ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+# ℹ 4 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, bodywt_g &lt;dbl&gt;,
+#   log_bodywt_g &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -1398,7 +1439,7 @@ window.Quarto = {
 <p>This is common with real world datasets, which often have a lot more information than you need for your particular analysis. Removing unnecessary columns makes your screen less cluttered and your code clearer.</p>
 <p>Let’s pare down the <code>msleep</code> dataset to just three columns: <code>name</code>, <code>log_bodywt_g</code>, and <code>sleep_total</code>. You can see that the <code>select</code> function takes a dataset as its first argument, then any number of column names as subsequent arguments:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, name, log_bodywt_g, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, name, log_bodywt_g, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1457,13 +1498,13 @@ window.Quarto = {
 </div>
 <p>The code above says, “Please give me a new dataset with only the <code>name</code>, <code>log_bodywt</code>, and <code>sleep_total</code> columns from <code>msleep</code>”.</p>
 <p><strong>Again, this does not change the original <code>msleep</code> dataframe</strong>. It makes a new one. If you wanted to <em>replace</em> <code>msleep</code> with this new, smaller dataset, you would have to assign it back to <code>msleep</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">select</span>(msleep, name, log_bodywt, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">select</span>(msleep, name, log_bodywt, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is common. You load a new, complex dataset. You get rid of things you don’t need, overwriting the original dataframe with the reduced version. Don’t be afraid to do this in your work. (But if you end up mangling your dataframe by accident, you can restart R and reset yourself.)</p>
 <section id="inverse-selection---specify-what-to-drop-not-what-to-keep" class="level3">
 <h3 class="anchored" data-anchor-id="inverse-selection---specify-what-to-drop-not-what-to-keep">Inverse selection - specify what to <em>drop</em>, not what to keep</h3>
 <p>You can also use <code>-</code> to say “Everything <em>but</em> this column.” For example, to get a copy of <code>msleep</code> with everything but the <code>conservation</code> and <code>vore</code> columns, you could do:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, <span class="sc">-</span>conservation, <span class="sc">-</span>vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(msleep, <span class="sc">-</span>conservation, <span class="sc">-</span>vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1521,7 +1562,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="A trick to remembering `select` vs `filter`">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1530,7 +1571,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>filte<span style="color: #DD3333; font-weight: bold; text-decoration: underline">r</span> and <span style="color: #DD3333; font-weight: bold; text-decoration: underline">r</span>ow have an <span style="color: #DD3333; font-weight: bold; text-decoration: underline">r</span> in them, while sele<span style="color: #AA33FF; font-weight: bold; text-decoration: underline">c</span>t and <span style="color: #AA33FF; font-weight: bold; text-decoration: underline">c</span>olumn both have a <span style="color: #AA33FF; font-weight: bold; text-decoration: underline">c</span>. So filter is for rows, select is for columns.</p>
 </div>
@@ -1544,7 +1585,7 @@ window.Quarto = {
 <p><code>mutate</code> is a function. It takes two arguments: a dataframe, and instructions on what column to make or change.</p>
 <p>For example, let’s add a new column to our <code>msleep</code> dataset, <code>sleep_total_minutes</code>, which is the animal’s total sleep per day in minutes instead of hours:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total_minutes =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total_minutes =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1632,7 +1673,7 @@ window.Quarto = {
 </p>
 <p>Instead of making a whole new column, you could change the meaning of the existing <code>sleep_total</code> to just be in minutes. You can modify a column in-place like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(msleep, <span class="at">sleep_total =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1711,7 +1752,7 @@ window.Quarto = {
 </p>
 <p><strong>Again, none of this has changed <code>msleep</code>!</strong> Each line above made a whole new dataframe. If we wanted to change our <code>msleep</code> dataset itself, we would have to assign this new dataframe back to <code>msleep</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">mutate</span>(msleep, <span class="at">sleep_total =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">mutate</span>(msleep, <span class="at">sleep_total =</span> sleep_total <span class="sc">*</span> <span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Code like this is common practice. At the start of your analysis, make the columns mean what you need them to mean, remove what you don’t need, then get to work. For example, if you know you want to work in “minutes” of sleep in your research, just change the column in place, as above.</p>
 </section>
@@ -1721,7 +1762,7 @@ window.Quarto = {
 <p><code>arrange</code> is a function expecting two arguments: the dataset, and the column to sort on.</p>
 <p>To sort by name (A-Z):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1800,7 +1841,7 @@ window.Quarto = {
 </p>
 <p>To sort by sleep duration (low to high):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1879,7 +1920,7 @@ window.Quarto = {
 </p>
 <p>To sort by a column <em>from <strong>high</strong> to <strong>low</strong></em>, we need to wrap our column name in a function, <code>desc()</code> (for “descending”)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, <span class="fu">desc</span>(sleep_total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(msleep, <span class="fu">desc</span>(sleep_total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1963,14 +2004,14 @@ window.Quarto = {
 <p>First, notice that <code>group_by</code> returns the whole dataframe, unchanged, but with a special “groups” note:</p>
 <p>Original dataset (not grouped)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="images/msleep.png" class="img-fluid"></p>
 <p><br>
 </p>
 <p>After <code>group_by</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(msleep, vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(msleep, vore)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="images/msleep_grouped.png" class="img-fluid"></p>
 <p>There’s actually a lot more you can do with <code>group_by</code> – e.g., find the longest-sleeping animal of each <code>vore</code> type – but this is beyond our scope for now.</p>
@@ -1978,7 +2019,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="how-summarize-changes-when-given-grouped-data">How <code>summarize</code> changes when given grouped data</h3>
 <p>Without grouping:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(msleep_limited, <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(msleep_limited, <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2000,7 +2041,7 @@ window.Quarto = {
 </p>
 <p>This is just the mean sleep duration across all mammals. However, if we group by <code>vore</code> first…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(msleep, vore), <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(msleep, vore), <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2045,7 +2086,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-almighty-pipe">The Almighty “Pipe”</h2>
 <p>It is SO common to do many data wrangling steps at once. It’s typical that, after you get some data, you need to do some filtering, mutating, etc before you are ready to do your analysis or make your plot.</p>
 <p><strong>The problem?</strong> When you chain together a bunch of functions in R, it can get messy. Consider:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You have to stare at this for a minute to see what it’s doing. As we discussed, nested functions like this (<code>c</code> within <code>mean</code> within <code>sqrt</code>) are evaluated from the inside out. In diagram form, this is what’s happening:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2057,10 +2098,10 @@ window.Quarto = {
 <p>Before we explain further, here’s the punchline: using the pipe, you can rewrite the line of code above as <code>c(1, 2, 3) |&gt; mean() |&gt; sqrt()</code>.</p>
 <p>First, notice how naturally this reads. We make a vector with some numbers, then compute their mean, then take the square root.</p>
 <p><em>Especially</em> in making plots or filtering/cleaning data, you often call a lot of functions in a row on the same dataset. First you filter out some rows, then you mutate to add a column, then maybe you do a group_by and summarize. Doing it all at once is a mess:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The pipe <code>|&gt;</code> operator saves us. Literally all the pipe does is this: whatever is on the <em>left side</em> of the pipe is passed as the first argument to the function on the <em>right side</em>. The right side is always a function call.</p>
 <p>This is why we can rewrite <code>sqrt(mean(c(1, 2, 3)))</code> as <code>c(1, 2, 3) |&gt; mean() |&gt; sqrt()</code>. This code is <em>functionally exactly the same</em>.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -2073,26 +2114,26 @@ window.Quarto = {
 <p>Here’s a quick animation to give you the idea if it’s still confusing:</p>
 <div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/mpF4vqvKhmo" width="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s rewrite this gnarly code with pipes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(msleep, log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>), </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt), </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With pipes, it becomes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>) <span class="sc">|&gt;</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt) <span class="sc">|&gt;</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore) <span class="sc">|&gt;</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(log_bodywt <span class="sc">&gt;</span> <span class="dv">12</span>) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt) <span class="sc">|&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore) <span class="sc">|&gt;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Much better. Same result, much easier to read. We start with the <code>msleep</code> data frame, then filter some rows, then mutate to make a new column, then group by something, and finally summarize those groups. The data flows in a natural reading order through a series of transformations.</p>
 <p>The code above is a <em>very</em> common kind of thing we do in data science. We alter a dataset through a series of steps, then end with in a summary table or maybe a plot. The pipe, as you saw above, makes these things far more legible.</p>
 <p>Let’s look at another example:</p>
 <p><em>What proportion of carnivores sleep more than 8 hours per night?</em></p>
 <p>Answering this requires two steps: <code>filter()</code>ing to focus on carnivores and <code>summarize()</code>ing with a proportion that meet a condition (recall that a comparison results in a logical vector of 0s and 1s). It is often a good idea to record the number of observations that go into a summary statistic, which we do here with the special summary function <code>n()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">prop_over_8hrs =</span> <span class="fu">mean</span>(sleep_total <span class="sc">&gt;</span> <span class="dv">8</span>),</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">prop_over_8hrs =</span> <span class="fu">mean</span>(sleep_total <span class="sc">&gt;</span> <span class="dv">8</span>),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   prop_over_8hrs     n
@@ -2103,10 +2144,10 @@ window.Quarto = {
 <p><em>What year had the greatest total number of christenings?</em></p>
 <p>The original <code>arbuthnot</code> data frame, which captures birth records in 17<sup>th</sup> century London, in fact records the numbers of boys and girls names that appear in church christening records. To find the year with the greatest total number of christenings requires first the creation of a new column with <code>mutate()</code>, then <code>arrange()</code>ing the rows of that data frame, then <code>select()</code>ing just the rows of interest. As one pipeline, that is:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total)) <span class="sc">|&gt;</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total)) <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(year, total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 82 × 2
     year total
@@ -2126,14 +2167,14 @@ window.Quarto = {
 </div>
 <p><em>What is the trend in the total number of christenings over time?</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total)) <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
