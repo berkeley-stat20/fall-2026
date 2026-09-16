@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-622351ee27de49606688a6be5edc44f7.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-5bbcf22c39b8cd48f49df444249bfe36.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -654,7 +654,7 @@ STAT 20: Introduction to Probability and Statistics
 <section id="worksheet-taxonomy-of-data" class="slide level2">
 <h2>Worksheet: <em>Taxonomy of Data</em></h2>
 <p>If you finish early, start looking at the lab (on the website)</p>
-<div id="timer_8a73cddc5137c506d0e77a9166ff86b4878c81e3" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_69dc6c4f64771321eb044298c6ca62b72c019f04" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1181,7 +1181,36 @@ STAT 20: Introduction to Probability and Statistics
           label.className = 'warmup-question-label';
           label.textContent = 'Warmup Question ' + warmupNumber;
           slide.prepend(label);
+
+          var content = document.createElement('div');
+          content.className = 'warmup-question-content';
+          Array.from(slide.children).forEach(function(child) {
+            if (child !== label) content.appendChild(child);
+          });
+          slide.appendChild(content);
         });
+
+        function fitWarmupSlides() {
+          var maxHeight = Reveal.getConfig().height - 10;
+
+          document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+            var content = slide.querySelector('.warmup-question-content');
+            var scale = 1;
+            content.style.fontSize = scale + 'em';
+
+            while (slide.scrollHeight > maxHeight && scale > 0.7) {
+              scale -= 0.02;
+              content.style.fontSize = scale + 'em';
+            }
+          });
+        }
+
+        requestAnimationFrame(function() {
+          fitWarmupSlides();
+          Reveal.layout();
+        });
+
+        window.addEventListener('resize', fitWarmupSlides);
       });
       Reveal.addEventListener('slidechanged', (event) => {
         if (event.indexh === 0) {

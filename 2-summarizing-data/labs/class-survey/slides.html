@@ -32,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-622351ee27de49606688a6be5edc44f7.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-5bbcf22c39b8cd48f49df444249bfe36.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -162,7 +162,7 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section id="part-1-understanding-the-context-of-the-data" class="title-slide slide level1 center">
 <h1>Part 1: Understanding the Context of the Data</h1>
-<div id="timer_776c8b97e21824b15c59144501a1a82c1d08b1c9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_7bb4cdcc16e2e120a6359d272f429ead357dc7aa" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -173,7 +173,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="part-2-computing-on-the-data" class="title-slide slide level1 center">
 <h1>Part 2: Computing on the Data</h1>
-<div id="timer_776c8b97e21824b15c59144501a1a82c1d08b1c9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_7bb4cdcc16e2e120a6359d272f429ead357dc7aa" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -593,7 +593,36 @@ STAT 20: Introduction to Probability and Statistics
           label.className = 'warmup-question-label';
           label.textContent = 'Warmup Question ' + warmupNumber;
           slide.prepend(label);
+
+          var content = document.createElement('div');
+          content.className = 'warmup-question-content';
+          Array.from(slide.children).forEach(function(child) {
+            if (child !== label) content.appendChild(child);
+          });
+          slide.appendChild(content);
         });
+
+        function fitWarmupSlides() {
+          var maxHeight = Reveal.getConfig().height - 10;
+
+          document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+            var content = slide.querySelector('.warmup-question-content');
+            var scale = 1;
+            content.style.fontSize = scale + 'em';
+
+            while (slide.scrollHeight > maxHeight && scale > 0.7) {
+              scale -= 0.02;
+              content.style.fontSize = scale + 'em';
+            }
+          });
+        }
+
+        requestAnimationFrame(function() {
+          fitWarmupSlides();
+          Reveal.layout();
+        });
+
+        window.addEventListener('resize', fitWarmupSlides);
       });
       Reveal.addEventListener('slidechanged', (event) => {
         if (event.indexh === 0) {

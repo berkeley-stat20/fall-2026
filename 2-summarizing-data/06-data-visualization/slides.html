@@ -98,7 +98,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-622351ee27de49606688a6be5edc44f7.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-5bbcf22c39b8cd48f49df444249bfe36.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -395,7 +395,7 @@ STAT 20: Introduction to Probability and Statistics
 <p>Question: In terms of the way they are constructed …</p>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="1440" class="r-stretch"><p>What do these plots have in common? How do they differ?</p>
-<div id="timer_7cb6a6b994749744777148b3941e9b7f48bae918" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_83d1a29a8a32a0f00e91cbe595a58132af2139b8" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -430,7 +430,7 @@ STAT 20: Introduction to Probability and Statistics
 <h2></h2>
 <p>Question: What do these plots have in common? How do they differ?</p>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div id="timer_7cb6a6b994749744777148b3941e9b7f48bae918" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><div id="timer_83d1a29a8a32a0f00e91cbe595a58132af2139b8" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -464,7 +464,7 @@ STAT 20: Introduction to Probability and Statistics
 <h2></h2>
 <p>Question: What are the aesthetic mappings and geometries used here?</p>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><div id="timer_7cb6a6b994749744777148b3941e9b7f48bae918" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><div id="timer_83d1a29a8a32a0f00e91cbe595a58132af2139b8" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1018,7 +1018,36 @@ STAT 20: Introduction to Probability and Statistics
           label.className = 'warmup-question-label';
           label.textContent = 'Warmup Question ' + warmupNumber;
           slide.prepend(label);
+
+          var content = document.createElement('div');
+          content.className = 'warmup-question-content';
+          Array.from(slide.children).forEach(function(child) {
+            if (child !== label) content.appendChild(child);
+          });
+          slide.appendChild(content);
         });
+
+        function fitWarmupSlides() {
+          var maxHeight = Reveal.getConfig().height - 10;
+
+          document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+            var content = slide.querySelector('.warmup-question-content');
+            var scale = 1;
+            content.style.fontSize = scale + 'em';
+
+            while (slide.scrollHeight > maxHeight && scale > 0.7) {
+              scale -= 0.02;
+              content.style.fontSize = scale + 'em';
+            }
+          });
+        }
+
+        requestAnimationFrame(function() {
+          fitWarmupSlides();
+          Reveal.layout();
+        });
+
+        window.addEventListener('resize', fitWarmupSlides);
       });
       Reveal.addEventListener('slidechanged', (event) => {
         if (event.indexh === 0) {

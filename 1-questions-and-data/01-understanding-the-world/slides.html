@@ -34,7 +34,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-622351ee27de49606688a6be5edc44f7.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-5bbcf22c39b8cd48f49df444249bfe36.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -181,7 +181,7 @@ STAT 20: Introduction to Probability and Statistics
 <li><p>In groups of 3, take turns introducing yourselves to one another by providing the info listed on the worksheet (your name, hometown, etc).</p></li>
 <li><p>Each person should finish with a worksheet filled-in with info on their groupmates. <em>Make sure you save this for later this week!</em></p></li>
 </ul>
-<div id="timer_7457987a104f8aebb3cd73cfa35d1f95dccd9c4b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
+<div id="timer_3d021fbf0a5f7cd7503e5182a1452380057aa914" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="top: 0;right: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -216,7 +216,7 @@ STAT 20: Introduction to Probability and Statistics
 </ul>
 </div>
 </div></div>
-<div id="timer_7457987a104f8aebb3cd73cfa35d1f95dccd9c4b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_3d021fbf0a5f7cd7503e5182a1452380057aa914" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -439,7 +439,7 @@ Based on reading the news and the price of Uber’s stock today, I predict that 
 <ul>
 <li>Flip over your worksheet and answer the questions!</li>
 </ul>
-<div id="timer_8aa1957c55c89832684b0fd5b9f1b04a22ee6dd2" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_3d021fbf0a5f7cd7503e5182a1452380057aa914" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -450,7 +450,7 @@ Based on reading the news and the price of Uber’s stock today, I predict that 
 
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_8aa1957c55c89832684b0fd5b9f1b04a22ee6dd2" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_3d021fbf0a5f7cd7503e5182a1452380057aa914" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -669,7 +669,7 @@ when you leave class!</p>
 <li class="fragment">Again, this is to help you, not judge you or filter you out.</li>
 <li class="fragment">You can turn it in and leave when you’re done.</li>
 </ol>
-<div id="timer_8aa1957c55c89832684b0fd5b9f1b04a22ee6dd2" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_3d021fbf0a5f7cd7503e5182a1452380057aa914" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -1089,7 +1089,36 @@ when you leave class!</p>
           label.className = 'warmup-question-label';
           label.textContent = 'Warmup Question ' + warmupNumber;
           slide.prepend(label);
+
+          var content = document.createElement('div');
+          content.className = 'warmup-question-content';
+          Array.from(slide.children).forEach(function(child) {
+            if (child !== label) content.appendChild(child);
+          });
+          slide.appendChild(content);
         });
+
+        function fitWarmupSlides() {
+          var maxHeight = Reveal.getConfig().height - 10;
+
+          document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+            var content = slide.querySelector('.warmup-question-content');
+            var scale = 1;
+            content.style.fontSize = scale + 'em';
+
+            while (slide.scrollHeight > maxHeight && scale > 0.7) {
+              scale -= 0.02;
+              content.style.fontSize = scale + 'em';
+            }
+          });
+        }
+
+        requestAnimationFrame(function() {
+          fitWarmupSlides();
+          Reveal.layout();
+        });
+
+        window.addEventListener('resize', fitWarmupSlides);
       });
       Reveal.addEventListener('slidechanged', (event) => {
         if (event.indexh === 0) {

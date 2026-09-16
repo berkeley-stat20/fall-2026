@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-622351ee27de49606688a6be5edc44f7.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-5bbcf22c39b8cd48f49df444249bfe36.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
 
   <script type="text/javascript">
@@ -165,7 +165,7 @@ STAT 20: Introduction to Probability and Statistics
 <h2>Overfitting or not?</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a25f8ac0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_efb808cf" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -192,7 +192,7 @@ STAT 20: Introduction to Probability and Statistics
 <h2>How are <span class="math inline">\(RSS\)</span> and <span class="math inline">\(R^2\)</span> related?</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a87f06b1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_4a977695" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -222,7 +222,7 @@ STAT 20: Introduction to Probability and Statistics
 ::: {.cell-output-display}
 
 ```{=html}
-<div class="countdown" id="timer_9937682c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_4d4d44d1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -249,7 +249,7 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <h2>Where is overfitting worse?</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_529b5946" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_141a936b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -278,7 +278,7 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <h1>Break</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_cb3f2539" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_fe62963c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -290,7 +290,7 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <h1>Worksheet: <em>Overfitting</em></h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_86f98ccd" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_7d2f677f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">40</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -747,7 +747,36 @@ Fit the training data well, but testing data not as well. (Can choose option "po
           label.className = 'warmup-question-label';
           label.textContent = 'Warmup Question ' + warmupNumber;
           slide.prepend(label);
+
+          var content = document.createElement('div');
+          content.className = 'warmup-question-content';
+          Array.from(slide.children).forEach(function(child) {
+            if (child !== label) content.appendChild(child);
+          });
+          slide.appendChild(content);
         });
+
+        function fitWarmupSlides() {
+          var maxHeight = Reveal.getConfig().height - 10;
+
+          document.querySelectorAll('.reveal .slides section.warmup-question').forEach(function(slide) {
+            var content = slide.querySelector('.warmup-question-content');
+            var scale = 1;
+            content.style.fontSize = scale + 'em';
+
+            while (slide.scrollHeight > maxHeight && scale > 0.7) {
+              scale -= 0.02;
+              content.style.fontSize = scale + 'em';
+            }
+          });
+        }
+
+        requestAnimationFrame(function() {
+          fitWarmupSlides();
+          Reveal.layout();
+        });
+
+        window.addEventListener('resize', fitWarmupSlides);
       });
       Reveal.addEventListener('slidechanged', (event) => {
         if (event.indexh === 0) {
