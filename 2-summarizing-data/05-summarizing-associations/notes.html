@@ -381,9 +381,6 @@ window.Quarto = {
   <li><a href="#the-simple-linear-model" id="toc-the-simple-linear-model" class="nav-link" data-scroll-target="#the-simple-linear-model">The Simple Linear Model</a>
   <ul class="collapse">
   <li><a href="#the-least-squares-line" id="toc-the-least-squares-line" class="nav-link" data-scroll-target="#the-least-squares-line">The Least Squares Line</a></li>
-  <li><a href="#deconstructing-the-slope-formula" id="toc-deconstructing-the-slope-formula" class="nav-link" data-scroll-target="#deconstructing-the-slope-formula">Deconstructing the Slope Formula</a></li>
-  <li><a href="#deconstructing-the-intercept-formula" id="toc-deconstructing-the-intercept-formula" class="nav-link" data-scroll-target="#deconstructing-the-intercept-formula">Deconstructing the Intercept Formula</a></li>
-  <li><a href="#backing-up-to-x-0" id="toc-backing-up-to-x-0" class="nav-link" data-scroll-target="#backing-up-to-x-0">2. Backing Up to <span class="math inline">\(x = 0\)</span></a></li>
   <li><a href="#example-contd-poverty-and-graduation-rate" id="toc-example-contd-poverty-and-graduation-rate" class="nav-link" data-scroll-target="#example-contd-poverty-and-graduation-rate">Example (cont’d): Poverty and Graduation rate</a></li>
   <li><a href="#residuals" id="toc-residuals" class="nav-link" data-scroll-target="#residuals">Residuals</a></li>
   </ul></li>
@@ -427,7 +424,19 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li>Scatter plots to visualize the relationship between 2 numerical variables</li>
+<li>Correlation coefficient to measure the strength and direction of a linear relationship
+<ul>
+<li>Formula of the correlation coefficient</li>
+<li>Properties of the correlation coefficient</li>
+</ul></li>
+<li>The Simple linear model
+<ul>
+<li>The least squares line</li>
+<li>Formulas to obtain the slope and intercept coefficients</li>
+<li>Using a linear model to obtain predictions</li>
+<li>Calculating residuals to assess predictions</li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -764,21 +773,29 @@ We always start with the slope: <span class="math display">\[ b_1 = r \frac{s_y}
 Having obtained the slope, we obtain the intercept: <span class="math display">\[ b_0 = \bar{y} - b_1 \bar{x}\]</span>
 </dd>
 </dl>
-</section>
-<section id="deconstructing-the-slope-formula" class="level3">
-<h3 class="anchored" data-anchor-id="deconstructing-the-slope-formula">Deconstructing the Slope Formula</h3>
-<p>While algebra defines slope as “rise over run” (<span class="math inline">\(\frac{\Delta y}{\Delta x}\)</span>), the statistical formula connects the algebra of a line to the variability and correlation present in real data.</p>
-<p><span class="math display">\[b_1 = r \times \frac{s_y}{s_x}\]</span></p>
-<p>We can break this formula down into two primary components:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Help me understand this formula? (Optional)">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Help me understand this formula? (Optional)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Part 1</strong></p>
+<p>We can break the slope formula down into two primary components:</p>
 <dl>
-<dt><strong>1. The Scale Factor (<span class="math inline">\(\frac{s_y}{s_x}\)</span>)</strong></dt>
+<dt><strong>1.1) The Scale Factor (<span class="math inline">\(\frac{s_y}{s_x}\)</span>)</strong></dt>
 <dd>
 Sample data comes with physical units of measurement (e.g., height in inches vs.&nbsp;weight in pounds). The ratio of the sample standard deviations, <span class="math inline">\(\frac{s_y}{s_x}\)</span>, acts as a <strong>unit converter</strong> or <strong>scale factor</strong>.
 </dd>
 </dl>
 <p>It answers the question: <em>If <span class="math inline">\(x\)</span> changes by 1 standard deviation, how many standard deviations does <span class="math inline">\(y\)</span> naturally spread?</em> It translates the scale of the predictor variable into the scale of the response variable.</p>
 <dl>
-<dt><strong>2. The Correlation (<span class="math inline">\(r\)</span>)</strong></dt>
+<dt><strong>1.2) The Correlation (<span class="math inline">\(r\)</span>)</strong></dt>
 <dd>
 The correlation coefficient <span class="math inline">\(r\)</span> ranges from <span class="math inline">\(-1\)</span> to <span class="math inline">\(+1\)</span> and supplies two crucial pieces of information:
 </dd>
@@ -802,29 +819,32 @@ The correlation coefficient <span class="math inline">\(r\)</span> ranges from <
 <p>For every <strong>1 standard deviation</strong> increase in <span class="math inline">\(x\)</span>, we predict <span class="math inline">\(y\)</span> to change by <strong><span class="math inline">\(r\)</span> standard deviations</strong>.</p>
 </div>
 </div>
-</section>
-<section id="deconstructing-the-intercept-formula" class="level3">
-<h3 class="anchored" data-anchor-id="deconstructing-the-intercept-formula">Deconstructing the Intercept Formula</h3>
-<p>In simple linear regression, the formula for the estimated <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b_0\)</span> is:</p>
+<p><strong>Part 2</strong></p>
+<p>The formula for the <span class="math inline">\(y\)</span>-intercept <span class="math inline">\(b_0\)</span> is:</p>
 <p><span class="math display">\[b_0 = \bar{y} - b_1 \bar{x}\]</span></p>
-<p>In basic algebra, the intercept is often defined simply as “the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span>.” In statistics, however, it helps to view the formula as a <strong>baseline adjustment from the center of the data</strong>.</p>
+<p>It helps to view this formula as a **baseline adjustment from the center of the data.</p>
 <dl>
-<dt><strong>1. The Regression Line’s Anchor Point: <span class="math inline">\((\bar{x}, \bar{y})\)</span></strong></dt>
+<dt><strong>2.1) The Regression Line’s Anchor Point: <span class="math inline">\((\bar{x}, \bar{y})\)</span></strong></dt>
 <dd>
 A fundamental property of ordinary least squares (OLS) regression is that <strong>the regression line always passes through the point of averages</strong>, <span class="math inline">\((\bar{x}, \bar{y})\)</span>.
 </dd>
 </dl>
 <p>This means that if a data point has an average value for <span class="math inline">\(x\)</span>, our best baseline prediction for <span class="math inline">\(y\)</span> is simply the overall mean, <span class="math inline">\(\bar{y}\)</span>.</p>
-</section>
-<section id="backing-up-to-x-0" class="level3">
-<h3 class="anchored" data-anchor-id="backing-up-to-x-0">2. Backing Up to <span class="math inline">\(x = 0\)</span></h3>
-<p>To find the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span>, we start at our anchor point <span class="math inline">\((\bar{x}, \bar{y})\)</span> and step backward along the <span class="math inline">\(x\)</span>-axis until we reach <span class="math inline">\(x = 0\)</span>:</p>
+<dl>
+<dt><strong>2.2) Backing Up to <span class="math inline">\(x = 0\)</span></strong></dt>
+<dd>
+To find the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span>, we start at our anchor point <span class="math inline">\((\bar{x}, \bar{y})\)</span> and step backward along the <span class="math inline">\(x\)</span>-axis until we reach <span class="math inline">\(x = 0\)</span>:
+</dd>
+</dl>
 <ul>
 <li>The distance from <span class="math inline">\(\bar{x}\)</span> back to <span class="math inline">\(0\)</span> is <span class="math inline">\(\bar{x}\)</span> units.</li>
 <li>Because the line has a slope of <span class="math inline">\(b_1\)</span>, every 1-unit step in <span class="math inline">\(x\)</span> changes <span class="math inline">\(y\)</span> by <span class="math inline">\(b_1\)</span>.</li>
 <li>Stepping backward by <span class="math inline">\(\bar{x}\)</span> units changes <span class="math inline">\(y\)</span> by <span class="math inline">\(b_1 \bar{x}\)</span>.</li>
 </ul>
 <p>Subtracting <span class="math inline">\(b_1 \bar{x}\)</span> from <span class="math inline">\(\bar{y}\)</span> adjusts our average baseline to account for how far the average <span class="math inline">\(\bar{x}\)</span> is from zero.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="example-contd-poverty-and-graduation-rate" class="level3">
 <h3 class="anchored" data-anchor-id="example-contd-poverty-and-graduation-rate">Example (cont’d): Poverty and Graduation rate</h3>
