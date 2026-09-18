@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0fe803c49cd26dab0e878e1187946e7f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f5113b2bb58749cb89450347f6f752b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -231,6 +231,14 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <section id="how-it-works" class="level3">
 <h3 class="anchored" data-anchor-id="how-it-works">How it works</h3>
 <p>The scheduled documents feature is enabled by a Quarto extension called <code>scheduled-docs</code>. You can read its documentation at <a href="https://github.com/qmd-lab/scheduled-docs" class="uri">https://github.com/qmd-lab/scheduled-docs</a> and inspect the installed files in this repository in the <code>_extensions/qmd-lab/scheduled-docs</code> subdirectory.</p>
+</section>
+<section id="quiz-solution-videos" class="level3">
+<h3 class="anchored" data-anchor-id="quiz-solution-videos">Quiz solution videos</h3>
+<p>To show a solution-video link after a quiz, add <code>solution-video</code> to that quiz’s <code>quiz-info</code> entry. The schedule will display a video-camera icon followed by <strong>Solution video</strong>. Omit the field until the video should be visible.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quiz-info</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">quiz</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">timeslot-window</span><span class="kw">:</span><span class="at"> Sep 8-11</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">solution-video</span><span class="kw">:</span><span class="at"> https://example.com/quiz-1-solution</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

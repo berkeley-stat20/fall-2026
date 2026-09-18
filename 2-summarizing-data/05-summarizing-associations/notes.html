@@ -446,7 +446,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="595"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="595"></p>
 </figure>
 </div>
 </div>
@@ -473,7 +473,7 @@ There is an association between two variables if <strong>knowing one variable te
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -483,7 +483,7 @@ There is an association between two variables if <strong>knowing one variable te
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -505,7 +505,7 @@ There is an association between two variables if <strong>knowing one variable te
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -688,7 +688,7 @@ The correlation coefficient is blind to curved patterns. It only tests how well 
 </dd>
 </dl>
 <ul>
-<li><strong>Warning</strong> The “sloped” is key here – if all the data fit on a perfectly horizontal line (slope = 0), the correlation is zero! To see why, think back to our definition of “association” in general. In our horizontal-line ase, no matter what the x value is, y is always the same. This is the very definition ofa “no association” situation. The correlation (a measure of association) is zero.</li>
+<li><strong>Warning</strong> The “sloped” is key here – if all the data fit on a perfectly horizontal line (slope = 0), the correlation is zero! To see why, think back to our definition of “association” in general. For a horizontal-line, no matter what the x value is, y is always the same. This is the very definition of “no association.” The correlation (a measure of association) is zero.</li>
 <li><strong>Warning:</strong> A dataset could have a perfect, predictable curved relationship (like a U-shaped parabola), but <span class="math inline">\(r\)</span> might still equal 0. It fits a curved line well, but not a straight line. Correlation is about straight lines.</li>
 </ul>
 <dl>
@@ -733,12 +733,57 @@ A single unusual data point that sits far away from the rest of the group can dr
 <dl>
 <dt><strong>9. Correlation <span class="math inline">\(\neq\)</span> Causation</strong></dt>
 <dd>
-This is one of the golden rule of statistics. Just because two variables have a high <span class="math inline">\(r\)</span> value does not mean that changing <span class="math inline">\(x\)</span> <em>causes</em> <span class="math inline">\(y\)</span> to change, or viceversa.
+This is one of the golden rule of statistics. Just because two variables have a high <span class="math inline">\(r\)</span> value does not mean that changing <span class="math inline">\(x\)</span> <em>causes</em> <span class="math inline">\(y\)</span> to change, nor vice-versa. It <em>might</em> be causal, but you can get a high <span class="math inline">\(r\)</span> without causality:
 </dd>
 </dl>
 <ul>
 <li>They might both be influenced by a hidden third variable (called a <em>lurking</em> or <em>confounding</em> variable). For example, ice cream sales and sunburns are highly correlated, but buying ice cream does not cause sunburns – hot summer weather causes both.</li>
+<li>It’s also true that a low correlation (e.g.&nbsp;<span class="math inline">\(r = 0\)</span>) does not rule out a causal relationship! For example, think about the relationship between “the temperature outside” and “how much people complain about the temperature outside.” Clearly these have a causal relationship - people complain when it’s very hot or very cold… but not when it’s mild. So there’s a U-shaped relationship between “temperature” and “complaining about temperature.” That’s a curve, not a straight line, so <span class="math inline">\(r\)</span> might be very small even though temperature <em>obviously</em> causes complaints about temperature.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Proof in code (Optional)">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Proof in code (Optional)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here’s some data that has a perfect U-shaped relationship, but a correlation of almost zero. Don’t worry if you don’t follow all of the code (but it might inspire you to try it!) - just note the correlation coefficient is close to zero, but there’s obviously a causal relationship here.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">777</span>)  <span class="co"># So we always get the same random points</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>npoints <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ideal_temp <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">=</span> <span class="fu">seq</span>(ideal_temp <span class="sc">-</span> <span class="dv">40</span>, ideal_temp <span class="sc">+</span> <span class="dv">40</span>, <span class="at">length.out =</span> npoints)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>complaints <span class="ot">=</span> <span class="dv">5</span> <span class="sc">+</span> ((temperature<span class="sc">-</span>ideal_temp)<span class="sc">/</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(npoints, <span class="at">sd =</span> <span class="fl">0.75</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="fu">cor</span>(temperature, complaints) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(temperature, complaints) <span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> temperature, <span class="at">y =</span> complaints, <span class="at">color =</span> temperature)) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature (°F)"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"Complaints about Temperature"</span>) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Extreme temperatures cause complaints"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Correlation ="</span>, r)) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_gradient2</span>(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">low =</span> <span class="st">"blue"</span>, <span class="at">mid =</span> <span class="st">"gray"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">midpoint =</span> ideal_temp) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(ideal_temp <span class="sc">-</span> <span class="dv">40</span>, ideal_temp <span class="sc">+</span> <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="the-simple-linear-model" class="level2 page-columns page-full">
@@ -774,7 +819,7 @@ Having obtained the slope, we obtain the intercept: <span class="math display">\
 </dd>
 </dl>
 <div class="callout callout-style-default callout-note callout-titled" title="Help me understand this formula? (Optional)">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -783,7 +828,7 @@ Having obtained the slope, we obtain the intercept: <span class="math display">\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Part 1</strong></p>
 <p>We can break the slope formula down into two primary components:</p>
@@ -853,7 +898,7 @@ To find the value of <span class="math inline">\(y\)</span> when <span class="ma
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288"></p>
 </figure>
 </div>
 </div>
@@ -861,7 +906,7 @@ To find the value of <span class="math inline">\(y\)</span> when <span class="ma
 <p>That works remarkably well!</p>
 <p>We can use R to find the least squares line using the all-mighty function <code>lm()</code>, which stands for <em>linear model</em>. Among other things, this function gives you the least squares slope and intercept.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Graduates <span class="sc">~</span> Poverty, <span class="at">data =</span> poverty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Graduates <span class="sc">~</span> Poverty, <span class="at">data =</span> poverty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -899,9 +944,9 @@ The difference between the observed value of a data point, <span class="math inl
 <p><span class="math inline">\(\hat{y}_i\)</span> is said “y hat sub i” and is also called the “fitted value”.</p>
 </div></div><p>Let’s calculate the residual for California. Here is that row in the data set.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>poverty <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"California"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(State, Graduates, Poverty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>poverty <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"California"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(State, Graduates, Poverty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   State      Graduates Poverty
@@ -911,15 +956,15 @@ The difference between the observed value of a data point, <span class="math inl
 </div>
 <p>This shows us that for California, <span class="math inline">\(y = 81.1\)</span>, so the next step is to find where the line passes through California’s x-value, <span class="math inline">\(x = 12.8\)</span>. There are several ways to do that calculation, including using R like a calculator and simply plugging that value into the equation for the line show above.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> <span class="fl">96.2022</span> <span class="sc">-</span> <span class="fl">0.8979</span> <span class="sc">*</span> <span class="fl">12.8</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_hat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> <span class="fl">96.2022</span> <span class="sc">-</span> <span class="fl">0.8979</span> <span class="sc">*</span> <span class="fl">12.8</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y_hat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 84.70908</code></pre>
 </div>
 </div>
 <p>With that in hand, we can calculate California’s residual.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fl">81.1</span> <span class="sc">-</span> y_hat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fl">81.1</span> <span class="sc">-</span> y_hat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -3.60908</code></pre>
 </div>
@@ -930,7 +975,7 @@ The difference between the observed value of a data point, <span class="math inl
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
