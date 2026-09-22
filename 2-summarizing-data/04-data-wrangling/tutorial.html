@@ -360,7 +360,7 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Indl
 <h2 class="anchored" data-anchor-id="side-quest-how-conditions-actually-work">Side quest: How conditions actually work</h2>
 <p>First, let’s look back at this code one more time</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"carni"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>vore == "carni"</code> part asks (<code>==</code>), for each row, is the <code>vore</code> column equal to the text <code>carni</code>? We have 83 animals in our dataset, so the <code>vore == "carni"</code> bit will become a vector of 83 TRUE and FALSE answers. Literally. <code>filter</code> uses these TRUE and FALSE values to decide which rows to keep.</p>
+<p>The <code>vore == "carni"</code> part asks (<code>==</code>), for each row, is the <code>vore</code> column equal to the text <code>carni</code>? We have 83 animals in our dataset, so the <code>vore == "carni"</code> part will become a vector of 83 TRUE and FALSE answers. Literally. <code>filter</code> uses these TRUE and FALSE values to decide which rows to keep.</p>
 <p>To demonstrate, consider the code below, which seems insane but totally works (remember, <code>T</code> and <code>F</code> are valid shorthand for <code>TRUE</code> and <code>FALSE</code>)</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, <span class="fu">c</span>(T, F, F, F, F, F, T, F, T, F,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                 F, F, F, F, F, F, F, T, F, F,</span>
@@ -498,8 +498,8 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Indl
 </table>
 </div>
 </div>
-<p>The first value in the vector is TRUE. So we keep the first row (the Cheetah). The second values is FALSE, so we don’t keep that one (Owl Monkey). And so forth. We are left with just the carnivores, though we had to hand-specifiy which rows those were. Obviously this approach is very tedious, prohibitively so for larger datasets, so we use expressions like <code>vore == "carni"</code> instead.</p>
-<p>This little side question was just to show you what these expressions are doing: <code>vore == "carni"</code> produces a vector of TRUE and FALSE values, indicating to <code>filter</code> which rows to keep.</p>
+<p>Same result. The first value in the vector is TRUE. So we keep the first row (the Cheetah). The second value is FALSE, so we don’t keep that one (Owl Monkey). And so forth. We are left with just the carnivores, though we had to hand-specify which rows to keep. Obviously this approach is very tedious, prohibitively so for larger datasets, so we use expressions like <code>vore == "carni"</code> instead.</p>
+<p>This little “side quest” was just to show you what these expressions are doing: <code>vore == "carni"</code> produces a vector of TRUE and FALSE values, indicating to <code>filter</code> which rows to keep.</p>
 <p>A simpler example to illustrate:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>minidata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
@@ -772,7 +772,7 @@ Show answer
 5 Oceania      24</code></pre>
 </div>
 </div>
-<p>Hmm… it says we have 624 countries in Africa? These numberare all too high. What’s going on?</p>
+<p>Hmm… it says we have 624 countries in Africa? These numbers are all too high. What’s going on?</p>
 <p>Based on what you know about the dataset (specifically - what does one row represent?), add a pipeline step that will fix this issue and generate correct numbers.</p>
 <div class="cell" data-envir="tutorial_2_04" data-autorun="false" data-exercise="2_04_ex_groupby_continent">
 <div>
@@ -789,7 +789,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzJfMDQi
 Show answer
 </summary>
 <div class="answer-box" data-markdown="1">
-<p>The problem is that we have multiple rows for each country, one for each year. We just saw that we have all 142 countries ever year, so we can fix this by filtering to just one year (e.g., 2007).</p>
+<p>The problem is that we have multiple rows for each country, one for each year. We just saw that we have all 142 countries every year, so we can fix this by filtering to just one year (e.g., 2007).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">|&gt;</span></span>
@@ -812,7 +812,7 @@ Show answer
 <h4 class="anchored" data-anchor-id="q-lets-keep-going-with-this-pipeline.-take-your-solution-from-the-previous-step-and">Q: Let’s keep going with this pipeline. Take your solution from the previous step, and:</h4>
 <ul>
 <li>Pipe it to <code>ggplot()</code> to make a bar plot of the number of countries in each continent.</li>
-<li>Have all bars be different, solid colors.</li>
+<li>Have all bars be different, <strong>solid</strong> colors.</li>
 <li>Add a title</li>
 <li>Remove the x and y axis labels (just set them to an empty string, <code>""</code>)</li>
 </ul>
@@ -854,7 +854,7 @@ Show answer
 </section>
 <section id="q-what-was-the-total-population-of-each-continent-in-each-year" class="level4">
 <h4 class="anchored" data-anchor-id="q-what-was-the-total-population-of-each-continent-in-each-year">Q: What was the total <em>population</em> of each <em>continent</em> in each <em>year</em>?</h4>
-<p>Think about this for a minute. What do we want to group by? What do we want to summarize? We actually want one row per continent, per year. So we need to group by TWO things.</p>
+<p>Think about this for a minute. What do we want to group by? What do we want to summarize? We need the total for each continent <em>in each year</em>. So we need to group by TWO things.</p>
 <p><code>group_by()</code> can take multiple things to group on, like so:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">|&gt;</span></span>
@@ -919,7 +919,7 @@ Show answer
 <section id="q-one-more-step---lets-change-the-y-axis" class="level4">
 <h4 class="anchored" data-anchor-id="q-one-more-step---lets-change-the-y-axis">Q: One more step - let’s change the y axis…</h4>
 <p>Populations tend to have a funny distribution, some are extremely large, some are a lot smaller. Instead of plotting the raw population, let’s plot the log (base 10) of the population. This will make the differences between continents more apparent. (For more explanation of why and when we take the log of things, see the “Why do we use the log of body weight? (Optional)” section of today’s <a href="../../2-summarizing-data/04-data-wrangling/notes.html">notes</a>.)</p>
-<p>Copy/paste your pipeline from the previous step. Then, <em>in the right place</em> (this is tricky!), add a new step pipeline step to make a new column called <code>log10_pop</code> that is the log base 10 of the population. Then use <em>that</em> column as your y axis.</p>
+<p>Copy/paste your pipeline from the previous step. Then, <em>in the right place</em> (this is tricky!), add a new pipeline step to make a new column called <code>log10_pop</code> that is the log base 10 of the population. Then use <em>that</em> column as your y axis.</p>
 <p>Be sure to:</p>
 <ul>
 <li>Use <code>mutate()</code> to create the new column.</li>
@@ -1058,7 +1058,7 @@ Show answer
 </div>
 <section id="q-getting-a-simpler-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="q-getting-a-simpler-dataset">Q: Getting a simpler dataset</h4>
-<p>From the <code>msleep</code> dataset, write a pipeline that creates a dataframe with only the animals that sleep more than 10 hours. Further, including only the <code>name</code>, <code>vore</code>, and <code>sleep_total</code> columns from the <code>msleep</code> dataset.</p>
+<p>From the <code>msleep</code> dataset, write a pipeline that creates a dataframe with only the animals that sleep more than 10 hours. Further, your output should contain only the columns <code>name</code>, <code>vore</code>, and <code>sleep_total</code>.</p>
 <div class="cell" data-envir="tutorial_2_04" data-autorun="false" data-exercise="2_04_ex_msleep_select">
 <div>
 <div id="webr-7" class="exercise-cell">

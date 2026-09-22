@@ -459,7 +459,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Datasets aren’t always ready to make the plot you need. For many reasons.</p>
-<p>Sometimes they need fixing or adjusting before you can even start. A measurement is in inches but you need it in centimeters. Some rows were duplicated by accident. There’s a bunch of columns you don’t need because they aren’t relevant to this task and are cluttering your screen. These “data cleaning” tasks are major step in your work. Not just when data is dirty or broken, but when it’s not yet what <strong>you</strong> need.</p>
+<p>Sometimes they need fixing or adjusting before you can even start. A measurement is in inches but you need it in centimeters. Some rows were duplicated by accident. There’s a bunch of columns you don’t need because they aren’t relevant to this task and are cluttering your screen. These “data cleaning” tasks are a major step in your work. Not just when data is dirty or broken, but when it’s not yet what <strong>you</strong> need.</p>
 <p>Even then, you often still need to transform again to make some particular plot or table. Maybe you want to make a scatterplot, but only of Adelie penguins. Maybe you have some data on student quiz scores over a semester, and you want to only see everyone’s highest and lowest scores, not all the scores. These things aren’t straightforward to do with our tools so far.</p>
 <p>The <code>dplyr</code> package, which comes along with <code>tidyverse</code>, offers many reshaping tools to serve this purpose. We’ll talk about its core functions (like <code>filter</code> and <code>mutate</code>), but also how to tell them what you want (using things like “comparison operators”). Along the way, we’ll begin using a new, very important piece of syntax: the pipe operator <code>|&gt;</code>.</p>
 <p>This is <strong>data wrangling</strong>.</p>
@@ -467,7 +467,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="sleeping-like-a-baby-orangutan">Sleeping like a baby (orangutan)</h2>
 <p>How much do different kinds of animals sleep? Why? Today’s dataset, <code>msleep</code>, has some very interesting answers.</p>
 <p>Researchers Van Savage and Geoffrey West studied the fitness value of sleep, in particular why some mammals seem to need more or less of it. They were especially interested in body size and metabolic rate (roughly how active vs lazy they are). They measured a truly wide range of mammals and published their data, which we’ll consider today.</p>
-<p>Take a look at the first ten rows of their data below. It’s in a dataframe already available to you: <code>msleep</code> (<strong>m</strong>ammalian sleep).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Take a look at the first few rows of their data below. It’s in a dataframe already available to you: <code>msleep</code> (<strong>m</strong>ammalian sleep).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small">
@@ -537,6 +537,20 @@ window.Quarto = {
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -564,7 +578,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In <code>msleep</code>, the only “weight” column is <code>bodywt</code>, which is in kilograms. It’s easier to work in grams (an log grams), so we make new columns for convenience: <code>bodywt_g</code> and <code>log_bodywt_g</code>. You will learn to understand this code by the end of these notes</p>
+<p>In <code>msleep</code>, the only “weight” column is <code>bodywt</code>, which is in kilograms. It’s easier to work in grams (and log grams), so we make new columns for convenience: <code>bodywt_g</code> and <code>log_bodywt_g</code>. You will learn to understand this code by the end of these notes</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">=</span> msleep <span class="sc">|&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">bodywt_g =</span> bodywt <span class="sc">*</span> <span class="dv">1000</span>,</span>
@@ -585,7 +599,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The mammals vary from the wee (20-gram) brown bat, slumbering for nearly 20 hours a day, to the massive (7,000-<em>kilogram</em>) African elephant, nodding off for less than five. That is quite a range! Lets drill down to smaller subsets of this data frame to gain a more nuanced sense of what is going on.</p>
+<p>The mammals vary from the wee (10-gram) brown bat, slumbering for nearly 20 hours a day, to the massive (7,000-<em>kilogram</em>) African elephant, nodding off for less than five. That is quite a range! Let’s drill down to smaller subsets of this data frame to gain a more nuanced sense of what is going on.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Why do we use the _log_ of body weight? (Optional)">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -611,14 +625,14 @@ window.Quarto = {
 </div>
 </div>
 <p>See a problem?</p>
-<p>Mammals are a diverse bunch. They have an <em>enormous</em> range of body sizes; tiny mice weighing 10 grams, and elephants weighing 7,000,000 grams. Most mammals are quite small, much closer to the 10-gram end of our range, so we end up with a useless plot that has mostly dots stacked up the y-axis.</p>
-<p>In the plot above, mammal body sizes appear to be wildly asymmetrically distributed (most are closer to 10 than 1000000 grams). But it’s actually a pretty even distribution by <em>order of magnitude</em>. Roughly <span class="math inline">\(10^1\)</span> to <span class="math inline">\(10^7\)</span> (six orders apart, in base 10). Sleep durations don’t have this feature. They are roughly evenly distributed in the 2-20 range. As a result, the sleep durations fit just fine on a standard plot (they’re nicely spread out on the y-axis), but body weights do not (all the points look glued to the left side of the plot).</p>
-<p>Taking the log fixes this problem. <strong>At their core, logarithms the very question, “what <em>order of magnitude</em> is this number?”</strong></p>
+<p>Mammals are a diverse bunch. They have an <em>enormous</em> range of body sizes; tiny shrews weighing 5 grams, and elephants weighing 7,000,000 grams. Most mammals are quite small, much closer to the 5-gram end of our range, so we end up with a useless plot that has mostly dots stacked up the y-axis.</p>
+<p>In the plot above, mammal body sizes appear to be wildly asymmetrically distributed (strong right-skew). But it’s actually a pretty even distribution by <em>order of magnitude</em>. Roughly <span class="math inline">\(10^1\)</span> to <span class="math inline">\(10^7\)</span> (six orders apart, in base 10). Sleep durations don’t have this feature. They are roughly evenly distributed in the 2-20 range. As a result, the sleep durations fit just fine on a standard plot (they’re nicely spread out on the y-axis), but body weights do not (all the points look glued to the left side of the plot).</p>
+<p>Taking the log fixes this problem. <strong>At their core, logarithms answer the very question, “what <em>order of magnitude</em> is this number?”</strong></p>
 <ul>
 <li>After <span class="math inline">\(log_{10}\)</span>, the numbers 1, 10, 100, and 1000 become their magnitudes: 0, 1, 2, and 3.</li>
 <li>After <span class="math inline">\(log_e\)</span>, the numbers 1, <span class="math inline">\(e\)</span>, <span class="math inline">\(e^2\)</span>, and <span class="math inline">\(e^3\)</span> become their magnitudes: 0, 1, 2, and 3.</li>
 </ul>
-<p>Once you log the body weights, you see that they’re pretty evenly spread out across those orders of magnitude. On the logged plot, 10 and 100 grams (<span class="math inline">\(10^1\)</span> and <span class="math inline">\(10^2\)</span>) look exactly as far apart as 100 and 1000 grams (<span class="math inline">\(10^2\)</span> and <span class="math inline">\(10^3\)</span>). And there are similar numbers of mammals in those bands. With this transformation,we can comfortably see 10-gram, 1000-gram, and 1-million-gram animals all on the same plot. Look at the natural log plot again:</p>
+<p>Once you log the body weights, you see that they’re pretty evenly spread out across those orders of magnitude. On the logged plot, 10 and 100 grams (<span class="math inline">\(10^1\)</span> and <span class="math inline">\(10^2\)</span>) look exactly as far apart as 100 and 1000 grams (<span class="math inline">\(10^2\)</span> and <span class="math inline">\(10^3\)</span>). And there are similar numbers of mammals in those bands. With this transformation, we can comfortably see 10-gram, 1000-gram, and 1-million-gram animals all on the same plot. Look at the natural log plot again:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -720,6 +734,20 @@ window.Quarto = {
 <td style="text-align: left;">carni</td>
 <td style="text-align: left;">lc</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Slow loris</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: right;">7.2</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Northern grasshopper mouse</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">lc</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -799,6 +827,20 @@ window.Quarto = {
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -844,14 +886,14 @@ window.Quarto = {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>With a single <code>=</code>, this line <em>makes</em> x equal to 4. There is no output when simply assign a variable a value.</p>
+<p>With a single <code>=</code>, this line <em>makes</em> x equal to 4. There is no output printed, as we are simply assigning a variable a value.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>With the double <code>==</code>, <em>asks</em> if x is equal to 4. Since we just set x to be 4, the output on your screen says <code>TRUE</code>.</p>
+<p>With the double <code>==</code>, this line <em>asks</em> if x is equal to 4. Since we just set x to be 4, the output on your screen says <code>TRUE</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -992,6 +1034,13 @@ window.Quarto = {
 <td style="text-align: right;">12.2</td>
 <td style="text-align: left;">herbi</td>
 <td style="text-align: left;">vu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bottle-nosed dolphin</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1187,7 +1236,7 @@ window.Quarto = {
 </div>
 </div>
 <p>This filter is much <em>more</em> permissive - we keep all the big ones (no matter how long they sleep) and all the short-sleeping ones (no matter their size).</p>
-<p>This permits animals like the Roe deer, which is not a particularly large mammal (log body weight of only 9.6) but who sleeps only 3 hours a day. We also get the Bottle-nosed dolphin, who is not a short sleeper (5.2 hours/day) but is large (log body weight of 12.5).</p>
+<p>This permits animals like the Roe deer, which is not a particularly large mammal (log body weight of only 9.6) but who sleeps only 3 hours a day. We also get the Bottle-nosed dolphin, who is not a short sleeper (5.2 hours/day) but is large (log body weight of 12.1).</p>
 <p>These conditional expressions can get arbitrarily complex, using parentheses to group things. Try to intuit what the following code does:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, vore <span class="sc">==</span> <span class="st">"herbi"</span> <span class="sc">&amp;</span> (sleep_total <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">|</span> sleep_total <span class="sc">&gt;</span> <span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1293,8 +1342,8 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>This looks for rows where the animal is an herbivore (<code>vore = "herbi"</code>) <em>and</em> it either sleeps very little <em>or</em> a whole lot (<code>(sleep_total &lt; 5 | sleep_total &gt; 15)</code>). There are 12 such animals, including fun ones like the “Golden-mantled ground squirrel” (a long-sleeping herbivore) and the giraffe (a short-sleeping herbivore).</p>
-<p>When working with nominal categorical variables, the only operator that you’ll be using are <code>==</code> and <code>!=</code>. You can return a union like normal using <code>|</code>,</p>
+<p>This looks for rows where the animal is an herbivore (<code>vore == "herbi"</code>) <em>and</em> it either sleeps very little <em>or</em> a whole lot (<code>(sleep_total &lt; 5 | sleep_total &gt; 15)</code>). There are 12 such animals, including fun ones like the “Golden-mantled ground squirrel” (a long-sleeping herbivore) and the giraffe (a short-sleeping herbivore).</p>
+<p>When working with nominal categorical variables, the only operators that you’ll be using are <code>==</code> and <code>!=</code>. You can return a union like normal using <code>|</code>,</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">==</span> <span class="st">"Little brown bat"</span> <span class="sc">|</span> name <span class="sc">==</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1353,7 +1402,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Translation: Only the brown bat and african elephant.</p>
+<p>Translation: Only the brown bat and African elephant.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(msleep, name <span class="sc">!=</span> <span class="st">"Little brown bat"</span> <span class="sc">&amp;</span> name <span class="sc">!=</span> <span class="st">"African elephant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1425,6 +1474,20 @@ window.Quarto = {
 <td style="text-align: right;">3.8</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
 </tr>
 </tbody>
 </table>
@@ -1504,11 +1567,21 @@ window.Quarto = {
 <td style="text-align: right;">3.8</td>
 <td style="text-align: right;">7.0</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: right;">10.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: right;">3.0</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>The code above says, “Please give me a new dataset with only the <code>name</code>, <code>log_bodywt</code>, and <code>sleep_total</code> columns from <code>msleep</code>”.</p>
+<p>The code above says, “Please give me a new dataset with only the <code>name</code>, <code>log_bodywt_g</code>, and <code>sleep_total</code> columns from <code>msleep</code>”.</p>
 <p><strong>Again, this does not change the original <code>msleep</code> dataframe</strong>. It makes a new one. If you wanted to <em>replace</em> <code>msleep</code> with this new, smaller dataset, you would have to assign it back to <code>msleep</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="ot">&lt;-</span> <span class="fu">select</span>(msleep, name, log_bodywt, sleep_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is common. You load a new, complex dataset. You get rid of things you don’t need, overwriting the original dataframe with the reduced version. Don’t be afraid to do this in your work. (But if you end up mangling your dataframe by accident, you can restart R and reset yourself.)</p>
@@ -1568,6 +1641,16 @@ window.Quarto = {
 <td style="text-align: left;">Vesper mouse</td>
 <td style="text-align: right;">7.0</td>
 <td style="text-align: right;">3.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">9.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
 </tr>
 </tbody>
 </table>
@@ -1677,6 +1760,22 @@ window.Quarto = {
 <td style="text-align: left;">NA</td>
 <td style="text-align: right;">420</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
+<td style="text-align: right;">606</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+<td style="text-align: right;">180</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1755,6 +1854,20 @@ window.Quarto = {
 <td style="text-align: right;">3.8</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dog</td>
+<td style="text-align: right;">606</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Roe deer</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
 </tr>
 </tbody>
 </table>
@@ -1845,6 +1958,20 @@ window.Quarto = {
 <td style="text-align: left;">insecti</td>
 <td style="text-align: left;">lc</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Bottle-nosed dolphin</td>
+<td style="text-align: right;">5.2</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brazilian tapir</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">vu</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1921,6 +2048,20 @@ window.Quarto = {
 <td style="text-align: left;">Sheep</td>
 <td style="text-align: right;">3.8</td>
 <td style="text-align: right;">10.9</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">domesticated</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asian elephant</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">14.8</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">en</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cow</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">13.3</td>
 <td style="text-align: left;">herbi</td>
 <td style="text-align: left;">domesticated</td>
 </tr>
@@ -2003,6 +2144,20 @@ window.Quarto = {
 <td style="text-align: left;">herbi</td>
 <td style="text-align: left;">lc</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Golden-mantled ground squirrel</td>
+<td style="text-align: right;">15.9</td>
+<td style="text-align: right;">5.3</td>
+<td style="text-align: left;">herbi</td>
+<td style="text-align: left;">lc</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tiger</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: left;">carni</td>
+<td style="text-align: left;">en</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2031,7 +2186,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="how-summarize-changes-when-given-grouped-data">How <code>summarize</code> changes when given grouped data</h3>
 <p>Without grouping:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(msleep_limited, <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(msleep, <span class="at">mean_sleep_duration =</span> <span class="fu">mean</span>(sleep_total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2115,13 +2270,13 @@ window.Quarto = {
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   vore), </span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The pipe <code>|&gt;</code> operator saves us. Literally all the pipe does is this: whatever is on the <em>left side</em> of the pipe is passed as the first argument to the function on the <em>right side</em>. The right side is always a function call.</p>
-<p>This is why we can rewrite <code>sqrt(mean(c(1, 2, 3)))</code> as <code>c(1, 2, 3) |&gt; mean() |&gt; sqrt()</code>. This code is <em>functionally exactly the same</em>.</p>
+<p>With the pipe, we can rewrite <code>sqrt(mean(c(1, 2, 3)))</code> as <code>c(1, 2, 3) |&gt; mean() |&gt; sqrt()</code>. This code is <em>functionally exactly the same</em>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/f_sqrt_mean_c123_pipes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
 </figure>
 </div>
-<p>Let’s walk through the code itself, left to right, First, we see <code>c(1, 2, 3) |&gt; mean()</code>. The stuff to the left of the pipe, <code>c(1, 2, 3)</code>, is moved into the function on the right (<code>mean</code>). The result is that it runs <code>mean(c(1, 2, 3))</code>.</p>
+<p>Let’s walk through the code itself, left to right. First, we see <code>c(1, 2, 3) |&gt; mean()</code>. The stuff to the left of the pipe, <code>c(1, 2, 3)</code>, is moved into the function on the right (<code>mean</code>). The result is that it runs <code>mean(c(1, 2, 3))</code>.</p>
 <p>Then there’s another pipe. So what’s now on the left, <code>mean(c(1, 2, 3))</code>, is moved into the function on the right, <code>sqrt</code>, to give us <code>sqrt(mean(c(1, 2, 3)))</code>.</p>
 <p>Here’s a quick animation to give you the idea if it’s still confusing:</p>
 <div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/mpF4vqvKhmo" width="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
@@ -2136,11 +2291,11 @@ window.Quarto = {
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sleep_per_weight =</span> sleep_total <span class="sc">/</span> log_bodywt) <span class="sc">|&gt;</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vore) <span class="sc">|&gt;</span></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_sleep =</span> <span class="fu">mean</span>(sleep_per_weight))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Much better. Same result, much easier to read. We start with the <code>msleep</code> data frame, then filter some rows, then mutate to make a new column, then group by something, and finally summarize those groups. The data flows in a natural reading order through a series of transformations.</p>
-<p>The code above is a <em>very</em> common kind of thing we do in data science. We alter a dataset through a series of steps, then end with in a summary table or maybe a plot. The pipe, as you saw above, makes these things far more legible.</p>
+<p><strong>SO</strong> much better to read. Same result. We start with the <code>msleep</code> data frame, then filter some rows, then mutate to make a new column, then group by something, and finally summarize those groups. The data flows in a natural reading order through a series of transformations.</p>
+<p>The code above is a <em>very</em> common kind of thing we do in data science. We alter a dataset through a series of steps, then end with a summary table or maybe a plot. The pipe, as you saw above, makes these things far more legible.</p>
 <p>Let’s look at another example:</p>
-<p><em>What proportion of carnivores sleep more than 8 hours per night?</em></p>
-<p>Answering this requires two steps: <code>filter()</code>ing to focus on carnivores and <code>summarize()</code>ing with a proportion that meet a condition (recall that a comparison results in a logical vector of 0s and 1s). It is often a good idea to record the number of observations that go into a summary statistic, which we do here with the special summary function <code>n()</code>.</p>
+<p><em>What proportion of carnivores sleep more than 8 hours daily?</em></p>
+<p>Answering this requires two steps: <code>filter()</code>ing to focus on carnivores and <code>summarize()</code>ing to compute the proportion that meet a condition (recall that a comparison results in a logical vector of 0s and 1s). It is often a good idea to record the number of observations that go into a summary statistic, which we do here with the special summary function <code>n()</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
@@ -2154,7 +2309,7 @@ window.Quarto = {
 </div>
 </div>
 <p><em>What year had the greatest total number of christenings?</em></p>
-<p>The original <code>arbuthnot</code> data frame, which captures birth records in 17<sup>th</sup> century London, in fact records the numbers of boys and girls names that appear in church christening records. To find the year with the greatest total number of christenings requires first the creation of a new column with <code>mutate()</code>, then <code>arrange()</code>ing the rows of that data frame, then <code>select()</code>ing just the rows of interest. As one pipeline, that is:</p>
+<p>The original <code>arbuthnot</code> data frame, which captures birth records in 17<sup>th</sup> century London, in fact records the numbers of boys’ and girls’ names that appear in church christening records. To find the year with the greatest total number of christenings requires first the creation of a new column with <code>mutate()</code>, then <code>arrange()</code>ing the rows of that data frame, then (to not clutter our screen) <code>select()</code>ing just the columns of interest. As one pipeline, that is:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>arbuthnot <span class="sc">|&gt;</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">total =</span> boys <span class="sc">+</span> girls) <span class="sc">|&gt;</span></span>
