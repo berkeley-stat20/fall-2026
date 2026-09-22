@@ -278,7 +278,10 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li><code>sample()</code> for drawing from a box (vector)</li>
+<li><code>1:6</code> is shorthand for <code>c(1,2,3,4,5,6)</code>, <code>5:7</code> is shorthand for <code>c(5,6,7)</code>, and so forth</li>
+<li><code>seq()</code> can generate rbitrary sequences with spacing (e.g.&nbsp;<code>seq(from = 1, by = 2, to = 9)</code> gives <code>1, 3, 5, 7, 9</code>)</li>
+<li><code>set.seed()</code> for reproducible results. It ensures that your code will always generate the same random numbers, no matter how many times it is run.</li>
 </ul>
 </div>
 </div>
@@ -394,41 +397,41 @@ eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJjb2RlLWZvbGQiOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZp
 <section id="building-sequences-less-tediously" class="level3">
 <h3 class="anchored" data-anchor-id="building-sequences-less-tediously">Building sequences less tediously</h3>
 <p>Above, we created the vector <code>die</code> using <code>die &lt;- c(1, 2, 3, 4, 5, 6)</code>, which is fine, but this method would be tedious if we wanted to simulate a 20-sided die, for instance.</p>
-<p>For creating simple lists of integers-in-a-row (like 1 through 6), just use <code>1:6</code>. You can use any start and end integers and they’ll be filled in. Here’s two examples to give you the idea.</p>
-<div class="cell" data-envir="tutorial_3_01" data-autorun="true" data-exercise="3_01_ex_6">
+<p>For creating simple lists of integers-in-a-row (like 1 through 6), just use <code>1:6</code>. You can use any start and end integers and they’ll be filled in. Here’s a few examples to give you the idea.</p>
+<div class="cell" data-envir="tutorial_3_01" data-autorun="false" data-exercise="3_01_ex_6">
 <div>
 <div id="webr-7" class="exercise-cell">
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNvZGUtZm9sZCI6ZmFsc2UsImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfM18wMSIsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiM18wMV9leF82In0sImNvZGUiOiIxOjYifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJjb2RlLWZvbGQiOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzNfMDEiLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6IjNfMDFfZXhfNiJ9LCJjb2RlIjoiMTo2In0=
 </script>
 </div>
 </div>
-<div class="cell" data-envir="tutorial_3_01" data-autorun="true" data-exercise="3_01_ex_7">
+<div class="cell" data-envir="tutorial_3_01" data-autorun="false" data-exercise="3_01_ex_7">
 <div>
 <div id="webr-8" class="exercise-cell">
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNvZGUtZm9sZCI6ZmFsc2UsImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfM18wMSIsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiM18wMV9leF83In0sImNvZGUiOiIxOjIwIn0=
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJjb2RlLWZvbGQiOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzNfMDEiLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6IjNfMDFfZXhfNyJ9LCJjb2RlIjoiMToyMCJ9
 </script>
 </div>
 </div>
-<div class="cell" data-envir="tutorial_3_01" data-autorun="true" data-exercise="3_01_ex_8">
+<div class="cell" data-envir="tutorial_3_01" data-autorun="false" data-exercise="3_01_ex_8">
 <div>
 <div id="webr-9" class="exercise-cell">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNvZGUtZm9sZCI6ZmFsc2UsImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfM18wMSIsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiM18wMV9leF84In0sImNvZGUiOiIzOjUifQ==
+eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJjb2RlLWZvbGQiOmZhbHNlLCJlZGl0Ijp0cnVlLCJlbnZpciI6InR1dG9yaWFsXzNfMDEiLCJldmFsIjp0cnVlLCJleGVyY2lzZSI6IjNfMDFfZXhfOCJ9LCJjb2RlIjoiMzo1In0=
 </script>
 </div>
 </div>
 </section>
 <section id="beyond-integers-in-a-row-using-seq" class="level3">
 <h3 class="anchored" data-anchor-id="beyond-integers-in-a-row-using-seq">Beyond integers-in-a-row, using <code>seq</code></h3>
-<p>The function <code>seq</code> allows us to create any sequence we like, of any length, with any spacing. Before we explain the code, just look at the lines below and their output. Try to infer how it works:</p>
+<p>The function <code>seq</code> allows us to create any sequence we like, of any length, with any spacing. Before we explain the code, try running the cells below and examine their output. Try to infer how it works:</p>
 <div class="cell" data-envir="tutorial_3_01" data-autorun="true" data-exercise="3_01_ex_9">
 <div>
 <div id="webr-10" class="exercise-cell">
