@@ -394,6 +394,11 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <section id="part-b-7" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-7">Part B</h3>
 <p>Create a visualization using <code>ggplot2</code> and answer your question with at least one sentence.</p>
+<div class="dataframe-render-warning" style="background-color: #f8d7da; color: #58151c; border: 1px solid #f1aeb5; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+<p><strong>WARNING:</strong> Does your rendered pdf have 30+ pages? (And do you want to get credit?)</p>
+<p>If your final pdf is really long, you are probably <em>printing an entire dataframe</em> in one of your code cells. For example, a line that just says <code>flights</code> will print <em>the entire flights dataframe</em> (over 100,000 rows!). You don’t realize this, because RStudio is smart enough to hide most of the rows from your screen while you’re working. But when you <em>render</em>, it will obediently print <em>every single row</em> of the dataframe, giving you an unwieldy output.</p>
+<p>To fix this, anytime you have a line that is just displaying a dataframe (e.g.&nbsp;just <code>flights</code>), change it to only show the first few rows by using either the <code>head</code> function, e.g.&nbsp;<code>head(flights)</code> or the tidyverse equivalent <code>slice_sample(flights, n = 10)</code>.</p>
+</div>
 </section>
 <section id="last-question-dont-forget-to-answer-this" class="level3">
 <h3 class="anchored" data-anchor-id="last-question-dont-forget-to-answer-this">Last Question (don’t forget to answer this!)</h3>
