@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-f5113b2bb58749cb89450347f6f752b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -418,7 +418,16 @@ window.Quarto = {
 <li>We have roughly 80 people in the classroom. What is the chancethat at least two people share a birthday? (Just the month and day, e.g.&nbsp;February 22).</li>
 <li>How many people would you need in the room before the chance that two people have the same birthday is more than 50%?</li>
 </ul>
-<p>Let’s think about it. Say we had only two days in which people could be born, maybe called “Oneday” (1) and “Twoday” (2). If we had one person, there would be two ways in which we could have a birthday. If we had two people, say their names were PP and MJ, then there would be 4 ways in which they could have birthdays: PP could be born on either Oneday or Twoday, and in each of those cases, MJ could be born on either of those days (so you could have the following assignments of days and people: PP-1, MJ-1 / PP-1, MJ-2 / PP-2, MJ-1 / PP-2, MJ-2 ). If you add another person, maybe JG, you now have 8 possible assignments of birthdays to people (<span class="math inline">\(2^3\)</span>), since each of the 3 people could be born on any of the two days. Another way to think about this is that we have a box with 2 tickets marked “Oneday” and “Twoday”, and we sample 3 times <strong>with</strong> replacement from this box, so we have 8 possible samples of size 3 (PP-1, MJ-1, JG-1 / PP-1, MJ-1, JG-2 / PP-1, MJ -2, JG -1 and so on).</p>
+<details>
+<summary>
+Explanation of the math, assuming 2 possible days (instead of 365)
+</summary>
+Let’s think about it. Say we had only two days in which people could be born, maybe called “Oneday” (1) and “Twoday” (2). If we had one person, there would be two ways in which we could have a birthday. If we had two people, say their names were PP and MJ, then there would be 4 ways in which they could have birthdays: PP could be born on either Oneday or Twoday, and in each of those cases, MJ could be born on either of those days (so you could have the following assignments of days and people: PP-1, MJ-1 / PP-1, MJ-2 / PP-2, MJ-1 / PP-2, MJ-2 ). If you add another person, maybe JG, you now have 8 possible assignments of birthdays to people (<span class="math inline">\(2^3\)</span>), since each of the 3 people could be born on any of the two days. Another way to think about this is that we have a box with 2 tickets marked “Oneday” and “Twoday”, and we sample 3 times <strong>with</strong> replacement from this box, so we have 8 possible samples of size 3 (PP-1, MJ-1, JG-1 / PP-1, MJ-1, JG-2 / PP-1, MJ -2, JG -1 and so on).
+</details>
+<details>
+<summary>
+Explanation of the math with 365 days
+</summary>
 <p>Now, this was easy to enumerate since we had only two possible days that people could be born, but it is the same idea with 365 days (let’s ignore leap years and twins etc, so anyone could be born on <em>any</em> of 365 days of the year, and we will assume that a person is equally likely to be born on any of the 365 days). So with one person, there are 365 possible birthdays. If we have two people, there are <span class="math inline">\(365^2\)</span> possible ways they could have birthdays. With 2 people, it is easy to see how many days they could share a birthday, but let’s say we have <span class="math inline">\(k\)</span> people. Now it is more complicated:</p>
 <ul>
 <li>First, let’s note that there are <span class="math inline">\(365^k\)</span> possible assignments (or <span class="math inline">\(365^k\)</span> possible samples when drawing <span class="math inline">\(k\)</span> times with replacement from a box with 365 tickets).</li>
@@ -430,6 +439,7 @@ window.Quarto = {
 P(\text{no match}) = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdots \frac{365 - k + 1}{365},
 \]</span></p>
 <p>Then, by the complement rule (<span class="math inline">\(P(A) = 1-P(A^C)\)</span>) the probability of <em>at least one</em> match is <span class="math inline">\(P(\text{at least one match}) = 1 - P(\text{no match})\)</span>.</p>
+</details>
 <p>In the steps below, we will use <code>R</code> to compute this probability for every <span class="math inline">\(k\)</span> from 1 to 100, and then create a plot which will allow you to easily see the answer the questions “What’s the chance of two people in a room of size <span class="math inline">\(k\)</span> sharing a birthday?” and “How many people do you need for the chances to be above 50%?”.</p>
 <section id="part-a-3" class="level3">
 <h3 class="anchored" data-anchor-id="part-a-3">part a</h3>
