@@ -443,11 +443,11 @@ P(\text{no match}) = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365}
 <p>In the steps below, we will use <code>R</code> to compute this probability for every <span class="math inline">\(k\)</span> from 1 to 100, and then create a plot which will allow you to easily see the answer the questions “What’s the chance of two people in a room of size <span class="math inline">\(k\)</span> sharing a birthday?” and “How many people do you need for the chances to be above 50%?”.</p>
 <section id="part-a-3" class="level3">
 <h3 class="anchored" data-anchor-id="part-a-3">part a</h3>
-<p>Create a <code>data.frame</code> called <code>birthdays</code> with a single column named <code>person</code> containing the integers 1 through 100.</p>
+<p>Create a <code>data.frame</code> called <code>birthdays</code> with a single column named <code>k</code> containing the integers 1 through 100.</p>
 </section>
 <section id="part-b-3" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-3">part b</h3>
-<p>Using <code>mutate()</code>, create a new column called <code>prob</code> in this data frame, where the entry for person <span class="math inline">\(k\)</span> is the probability that they don’t share a birthday with any of the people numbered <span class="math inline">\(1, 2, \ldots, k-1\)</span>. Remember, the <span class="math inline">\(k^{\text{th}}\)</span> person has <span class="math inline">\(365-(k-1)\)</span> possible birthdays, out of 365, if their birthday is different from the other <span class="math inline">\(k-1\)</span> people.</p>
+<p>Using <code>mutate()</code>, create a new column called <code>prob</code> in this data frame, where the entry for person <span class="math inline">\(k\)</span> is the probability that they don’t share a birthday with any of the people numbered <span class="math inline">\(1, 2, \ldots, k-1\)</span>. Remember, the <span class="math inline">\(k^{\text{th}}\)</span> person has <span class="math inline">\(365-(k-1)\)</span> possible birthdays, out of <span class="math inline">\(365\)</span>, if their birthday is different from the other <span class="math inline">\(k-1\)</span> people. For example, the first person (<code>k=1</code>) has <span class="math inline">\(365\)</span> birthdays to choose from, so the value of <code>prob</code> for this row is <span class="math inline">\(\dfrac{365}{365} = 1\)</span>. Now, the second has only <span class="math inline">\(364\)</span> days to choose from, so the value of <code>prob</code> for <code>k=2</code> should be <span class="math inline">\(\dfrac{364}{365}\)</span> and so on.</p>
 </section>
 <section id="part-c-3" class="level3">
 <h3 class="anchored" data-anchor-id="part-c-3">part c</h3>
