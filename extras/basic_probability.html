@@ -32,19 +32,17 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:site_name" content="Stat 20">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Robust MathJax v3 Configuration Script -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true
-    },
-    options: {
-      processHtmlClass: 'tex2jax_process'
-    }
-  };
-</script>
+ <!-- MathJax Configuration Block (Must load BEFORE the script) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+
+
 <script id="MathJax-script" async src="https://jsdelivr.net"></script>
 </head>
 
