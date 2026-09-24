@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MathJax Working Example</title>
+  
+  <!-- MathJax Configuration Block (Must load BEFORE the script) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <!-- Complete, Stable MathJax CDN Link -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<html xmlns="http://w3.org" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<title>Binomial Distribution - Extra Practice – Stat 20 (Fall 2026)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em;
+  vertical-align: middle;
+}
+</style>
+
+<link href="../assets/stat20-hex.png" rel="icon" type="image/png">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<meta property="og:title" content="Binomial Distribution - Extra Practice – Stat 20 (Fall 2026)">
+<meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
+<meta property="og:site_name" content="Stat 20">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Robust MathJax Engine Configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cloudflare.com"></script>
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+        <div class="navbar-brand-container mx-auto">
+          <a href="../index.html" class="navbar-brand navbar-brand-logo">
+            <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content" style="height: 40px;">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <li class="nav-item"><a class="nav-link" href="../syllabus.html"><span class="menu-text">Syllabus</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../office-hours.html"><span class="menu-text">Office Hours</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../notes.html"><span class="menu-text">Notes</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../tutorials.html"><span class="menu-text">Tutorials</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../extras.html"><span class="menu-text">Extras</span></a></li>  
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Binomial Probability Distributions - Extra Practice</h1>
+</div>
+</header>
+
+<style>
+details.answer {
+  margin-bottom: 2.5rem;
+}
+details.answer .answer-box {
+  background-color: #fff8d9;
+  border: 1px solid #eadf9c;
+  border-radius: 8px;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1rem;
+}
+.text-success { color: #198754; font-weight: bold; }
+.text-danger { color: #dc3545; font-weight: bold; }
+</style>
+
+<section id="problem-context" class="level2">
+<p>
+  A popular streaming platform reports that <strong>0.35</strong> of subscribers who watch a documentary's introductory trailer add the full movie to their watchlist. A random sample of <strong>40</strong> subscribers who watched the trailer is selected. Let $X$ represent the number of subscribers who add the documentary to their watchlist.
+</p>
+<hr>
+</section>
+
+<section id="practice-questions" class="level2">
+
+  <!-- Part 1 -->
+  <div class="card my-3">
+    <div class="card-header bg-light"><strong>Part 1</strong></div>
+    <div class="card-body">
+      <p>What is the exact probability distribution of $X$?</p>
+      <ul class="task-list" style="list-style: none; padding-left: 0;">
+        <li><input type="checkbox" disabled=""> $X \sim \text{Hypergeometric}(m = 40, n = 26, k = 14)$</li>
+        <li><input type="checkbox" disabled=""> $X \sim \text{Binomial}(n = 40, p = 0.35)$</li>
+        <li><input type="checkbox" disabled=""> $X \sim \text{Poisson}(\lambda = 14)$</li>
+        <li><input type="checkbox" disabled=""> $X \sim \text{Geometric}(p = 0.35)$</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Part 2 -->
+  <div class="card my-3">
+    <div class="card-header bg-light"><strong>Part 2</strong></div>
+    <div class="card-body">
+      <p>Which expression correctly computes the probability that exactly 12 subscribers add the documentary to their watchlist ($P(X = 12)$)?</p>
+      <ul class="task-list" style="list-style: none; padding-left: 0;">
+        <li><input type="checkbox" disabled=""> $\binom{40}{12} (0.35)^{28} (0.65)^{12}$</li>
+        <li><input type="checkbox" disabled=""> $(0.35)^{12} (0.65)^{28}$</li>
+        <li><input type="checkbox" disabled=""> $\binom{40}{12} (0.35)^{12} (0.65)^{28}$</li>
+        <li><input type="checkbox" disabled=""> $\binom{40}{12} (0.35)^{12} (0.35)^{28}$</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Solution Panel -->
+  <details class="answer">
+    <summary>Show Solution</summary>
+    <div class="answer-box">
+      <h5>Solution & Explanations</h5>
+      
+      <h6>Part 1</h6>
+      <p>The situation fits a <strong>Binomial Distribution</strong> because it satisfies the four core requirements:</p>
+      <ul>
+        <li><strong>B</strong>inary: Each subscriber either adds the movie ("success") or does not ("failure").</li>
+        <li><strong>I</strong>ndependent: One subscriber's choice does not change another subscriber's probability.</li>
+        <li><strong>N</strong>umber of trials is fixed ($n = 40$).</li>
+        <li><strong>S</strong>uccess probability remains constant ($p = 0.35$).</li>
+      </ul>
+      <p>Thus, the correct shorthand notation is: <strong>$X \sim \text{Binomial}(n = 40, p = 0.35)$</strong></p>
+
+      <h6>Part 2</h6>
+      <p>To find the probability of exactly $k$ successes, use the binomial probability mass function (PMF) formula:</p>
+      <p>$$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$$</p>
+      <p>Substituting our known problem parameters:</p>
+      <ul>
+        <li>Total trials ($n$) = $40$</li>
+        <li>Target successes ($k$) = $12$</li>
+        <li>Probability of success ($p$) = $0.35$</li>
+        <li>Probability of failure ($1 - p$) = $1 - 0.35 = 0.65$</li>
+      </ul>
+      <p>Placing these directly into the formula gives us the unsimplified expression:</p>
+      <p>$$\binom{40}{12} (0.35)^{12} (0.65)^{28}$$</p>
+    </div>
+  </details>
+
+</section>
+
+</main>
+</div>
+
+<script>
+  document.querySelectorAll('details').forEach((el) => {
+    el.addEventListener('toggle', () => {
+      if (el.open && window.MathJax) {
+        window.MathJax.typesetPromise([el]);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
