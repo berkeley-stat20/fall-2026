@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MathJax Working Example</title>
+  
+  <!-- MathJax Configuration Block (Must load BEFORE the script) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <!-- Complete, Stable MathJax CDN Link -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+<html xmlns="http://w3.org" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<title>Probability - Extra Practice – Stat 20 (Fall 2026)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com */ 
+  vertical-align: middle;
+}
+</style>
+
+<link href="../assets/stat20-hex.png" rel="icon" type="image/png">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<meta property="og:title" content="Probability with Independent Box Draws - Extra Practice – Stat 20 (Fall 2026)">
+<meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
+<meta property="og:site_name" content="Stat 20">
+<meta name="twitter:card" content="summary_large_image">
+
+ <!-- MathJax Configuration Block (Must load BEFORE the script) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+
+
+<script id="MathJax-script" async src="https://jsdelivr.net"></script>
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+        <div class="navbar-brand-container mx-auto">
+          <a href="../index.html" class="navbar-brand navbar-brand-logo">
+            <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content" style="height: 40px;">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <li class="nav-item"><a class="nav-link" href="../syllabus.html"><span class="menu-text">Syllabus</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../office-hours.html"><span class="menu-text">Office Hours</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../notes.html"><span class="menu-text">Notes</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../tutorials.html"><span class="menu-text">Tutorials</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../extras.html"><span class="menu-text">Extras</span></a></li>  
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Probability with Independent Box Draws - Extra Practice</h1>
+</div>
+</header>
+
+<style>
+details.answer {
+  margin-bottom: 2.5rem;
+}
+details.answer .answer-box {
+  background-color: #fff8d9;
+  border: 1px solid #eadf9c;
+  border-radius: 8px;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1rem;
+}
+.box-card {
+  background-color: #f8f9fa; 
+  padding: 15px; 
+  border: 1px solid #dee2e6;
+  border-radius: 5px; 
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+</style>
+
+<section id="problem-context" class="level2">
+<h2 class="anchored" data-anchor-id="problem-context">Problem Context: Tickets in Boxes</h2>
+<p>One ticket will be drawn at random from each of the two boxes shown below:</p>
+
+<div class="columns">
+  <div class="column" style="width: 48%; margin-right: 4%;">
+    <div class="box-card">
+      <h3>Box A</h3>
+      <p style="font-size: 1.25rem;"><code>1, 2, 2, 3, 5</code></p>
+    </div>
+  </div>
+  <div class="column" style="width: 48%;">
+    <div class="box-card">
+      <h3>Box B</h3>
+      <p style="font-size: 1.25rem;"><code>2, 4, 4, 6</code></p>
+    </div>
+  </div>
+</div>
+
+<p>Find the probability for each of the following independent events. <em>(Note: Probabilities are rounded to two decimal places where necessary).</em></p>
+<hr>
+</section>
+
+<section id="practice-questions" class="level2 tex2jax_process">
+<h2 class="anchored" data-anchor-id="practice-questions">Practice Questions</h2>
+
+<!-- PART A -->
+<section id="part-a" class="level3">
+<h3>Part A: Both numbers are even</h3>
+<p>Find the probability that both drawn tickets have even numbers.</p>
+<ul class="task-list">
+  <li><input type="checkbox" disabled=""> 0.60</li>
+  <li><input type="checkbox" disabled=""> 0.40</li>
+  <li><input type="checkbox" disabled=""> 0.25</li>
+  <li><input type="checkbox" disabled=""> 0.15</li>
+</ul>
+
+<details class="answer">
+  <summary>Show Solution</summary>
+  <div class="answer-box">
+    <p><strong>Correct Answer: 0.40</strong></p>
+    <ol type="1">
+      <li>Count the total outcomes and even numbers in each box:
+        <ul>
+          <li><strong>Box A</strong> has 5 total numbers: <code>1, 2, 2, 3, 5</code>. The even numbers are two twos.<br>
+          $$P(\text{Even from A}) = \frac{2}{5} = 0.40$$</li>
+          <li><strong>Box B</strong> has 4 total numbers: <code>2, 4, 4, 6</code>. All 4 numbers are even.<br>
+          $$P(\text{Even from B}) = \frac{4}{4} = 1.00$$</li>
+        </ul>
+      </li>
+      <li>Since the draws are independent, multiply their probabilities:<br>
+      $$P(\text{Both Even}) = P(\text{Even from A}) \times P(\text{Even from B}) = 0.40 \times 1.00 = 0.40$$</li>
+    </ol>
+  </div>
+</details>
+</section>
+
+<!-- PART B -->
+<section id="part-b" class="level3">
+<h3>Part B: The sum of the numbers is exactly 6</h3>
+<p>Find the probability that the sum of the two drawn numbers equals 6.</p>
+<ul class="task-list">
+  <li><input type="checkbox" disabled=""> 0.35</li>
+  <li><input type="checkbox" disabled=""> 0.15</li>
+  <li><input type="checkbox" disabled=""> 0.25</li>
+  <li><input type="checkbox" disabled=""> 0.50</li>
+</ul>
+
+<details class="answer">
+  <summary>Show Solution</summary>
+  <div class="answer-box">
+    <p><strong>Correct Answer: 0.25</strong></p>
+    <ol type="1">
+      <li>The total size of the sample space is $5 \times 4 = 20$.</li>
+      <li>Identify all valid pairs $(A, B)$ from Box A $\times$ Box B that sum to exactly 6:
+        <ul>
+          <li>If $A = 2$ (first '2'), $B$ must be $4$ (two choices) $\rightarrow$ 2 pairs.</li>
+          <li>If $A = 2$ (second '2'), $B$ must be $4$ (two choices) $\rightarrow$ 2 pairs.</li>
+          <li>No other elements in Box A can pair with Box B to sum to exactly 6.</li>
+        </ul>
+      </li>
+      <li>Calculate the probability:<br>
+      $$P(\text{Sum} = 6) = \frac{4}{20} = 0.25$$</li>
+    </ol>
+  </div>
+</details>
+</section>
+
+<!-- PART C -->
+<section id="part-c" class="level3">
+<h3>Part C: The number from Box A is strictly greater than Box B</h3>
+<p>Find the probability that the number drawn from Box A is larger than the number drawn from Box B.</p>
+<ul class="task-list">
+  <li><input type="checkbox" disabled=""> 0.05</li>
+  <li><input type="checkbox" disabled=""> 0.10</li>
+  <li><input type="checkbox" disabled=""> 0.20</li>
+  <li><input type="checkbox" disabled=""> 0.00</li>
+</ul>
+
+<details class="answer">
+  <summary>Show Solution</summary>
+  <div class="answer-box">
+    <p><strong>Correct Answer: 0.05</strong></p>
+    <ol type="1">
+      <li>Check each item in Box A against items in Box B to see where $A > B$:
+        <ul>
+          <li>Box A elements: <code>1, 2, 2, 3, 5</code></li>
+          <li>Box B elements: <code>2, 4, 4, 6</code></li>
+        </ul>
+      </li>
+      <li>Out of 20 total combinations, only the pair $(A=5, B=2)$ satisfies the requirement ($5 > 2$).</li>
+      <li>Calculate probability:<br>
+      $$P(A > B) = \frac{1}{20} = 0.05$$</li>
+    </ol>
+  </div>
+</details>
+</section>
+
+<!-- PART D -->
+<section id="part-d" class="level3">
+<h3>Part D: At least one of the numbers is a 2</h3>
+<p>Find the probability that at least one of the drawn tickets shows the number 2.</p>
+<ul class="task-list">
+  <li><input type="checkbox" disabled=""> 0.65</li>
+  <li><input type="checkbox" disabled=""> 0.40</li>
+  <li><input type="checkbox" disabled=""> 0.70</li>
+  <li><input type="checkbox" disabled=""> 0.55</li>
+</ul>
+
+<details class="answer">
+  <summary>Show Solution</summary>
+  <div class="answer-box">
+    <p><strong>Correct Answer: 0.55</strong></p>
+    <ol type="1">
+      <li>Use the complement rule: $P(\text{At least one 2}) = 1 - P(\text{No 2s drawn})$.</li>
+      <li>Calculate the probability of picking a non-2 from each box:
+        <ul>
+          <li>Box A non-2 probability: $\frac{3}{5}$ (elements 1, 3, 5)</li>
+          <li>Box B non-2 probability: $\frac{3}{4}$ (elements 4, 4, 6)</li>
+        </ul>
+      </li>
+      <li>Multiply the independent probabilities of drawing no twos:<br>
+      $$P(\text{No 2s}) = \frac{3}{5} \times \frac{3}{4} = \frac{9}{20} = 0.45$$</li>
+      <li>Subtract from 1 to find the final probability:<br>
+      $$P(\text{At least one 2}) = 1 - 0.45 = 0.55$$</li>
+    </ol>
+  </div>
+</details>
+</section>
+
+</section>
+
+</main>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MathJax Working Example</title>
+  
+  <!-- MathJax Configuration Block (Must load BEFORE the script) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <!-- Complete, Stable MathJax CDN Link -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<html xmlns="http://w3.org" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<title>Binomial vs. Hypergeometric Distributions - Extra Practice – Stat 20 (Fall 2026)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em;
+  vertical-align: middle;
+}
+</style>
+
+<link href="../assets/stat20-hex.png" rel="icon" type="image/png">
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<meta property="og:title" content="Binomial vs. Hypergeometric Distributions - Extra Practice – Stat 20 (Fall 2026)">
+<meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
+<meta property="og:site_name" content="Stat 20">
+<meta name="twitter:card" content="summary_large_image">
+
+ <!-- MathJax Configuration Block (Must load BEFORE the script) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+
+
+<script id="MathJax-script" async src="https://cloudflare.com"></script>
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+        <div class="navbar-brand-container mx-auto">
+          <a href="../index.html" class="navbar-brand navbar-brand-logo">
+            <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content" style="height: 40px;">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <li class="nav-item"><a class="nav-link" href="../syllabus.html"><span class="menu-text">Syllabus</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../office-hours.html"><span class="menu-text">Office Hours</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../notes.html"><span class="menu-text">Notes</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../tutorials.html"><span class="menu-text">Tutorials</span></a></li>  
+            <li class="nav-item"><a class="nav-link" href="../extras.html"><span class="menu-text">Extras</span></a></li>  
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Binomial vs. Hypergeometric Distributions - Extra Practice</h1>
+</div>
+</header>
+
+<style>
+details.answer {
+  margin-bottom: 2.5rem;
+}
+details.answer .answer-box {
+  background-color: #fff8d9;
+  border: 1px solid #eadf9c;
+  border-radius: 8px;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1rem;
+}
+.text-success { color: #198754; font-weight: bold; }
+.text-danger { color: #dc3545; font-weight: bold; }
+</style>
+
+<section id="problem-context" class="level2">
+<p>
+  Welcome! This module tests your intuition regarding two fundamental counting distributions: the <strong>Binomial distribution</strong> and the <strong>Hypergeometric distribution</strong>. 
+  The core distinction relies on your sampling method: are you sampling <em>with replacement</em> (independent trials) or <em>without replacement</em> (dependent trials)?
+</p>
+<hr>
+</section>
+
+<section id="practice-questions" class="level2">
+
+  <!-- Part 1: Conceptual Foundations -->
+  <div class="card my-3">
+    <div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">Question 1: The Core Distinguishing Assumption</div>
+    <div class="card-body">
+      <p>
+        Suppose a basket contains $15$ gold tokens and $35$ silver tokens. You are instructed to select exactly 8 tokens from the basket, one by one. 
+        Under which of the following scenarios is the total count of selected gold tokens modeled perfectly by a <strong>Binomial distribution</strong>?
+      </p>
+      
+      <ul class="task-list" style="list-style: none; padding-left: 0;">
+        <li><input type="checkbox" disabled=""> You draw 8 tokens simultaneously in one quick handful.</li>
+        <li><input type="checkbox" disabled=""> You draw a token, record its color, put it back into the basket, shake the basket thoroughly, and repeat this process until you have 8 observations.</li>
+        <li><input type="checkbox" disabled=""> You draw a token, give it to a classmate sitting next to you, and repeat this process until you have 8 observations.</li>
+        <li><input type="checkbox" disabled=""> None of the above setups can be modeled by a Binomial distribution because the overall population size is small ($50$ total tokens).</li>
+      </ul>
+    </div>
+  </div>
+
+  <details class="answer">
+    <summary>Show Solution</summary>
+    <div class="answer-box">
+      <p><strong>Correct Answer: Option 2 (Sampling with replacement)</strong></p>
+      <p>
+        For a random variable to follow a Binomial distribution, it must satisfy the <strong>BINS</strong> criteria:
+      </p>
+      <ul>
+        <li><strong>B</strong>inary: Each trial results in a success (gold) or failure (silver).</li>
+        <li><strong>I</strong>ndependent: The outcome of one trial must not affect the next.</li>
+        <li><strong>N</strong>umber of trials is fixed ($n = 8$).</li>
+        <li><strong>S</strong>uccess probability remains constant ($p = \frac{15}{50} = 0.30$).</li>
+      </ul>
+      <p>
+        Placing the token back into the basket (<strong>sampling with replacement</strong>) ensures that the probability of drawing a gold token remains exactly $0.30$ for every single draw. 
+        If you keep the tokens out (without replacement), the trials become dependent, which shifts the problem into a <strong>Hypergeometric</strong> framework.
+      </p>
+    </div>
+  </details>
+
+  <!-- Part 2: Mathematical Formulations -->
+  <div class="card my-3">
+    <div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">Question 2: Probability Algebra Formulation</div>
+    <div class="card-body">
+      <p>
+        Let's change the scenario. You now draw $5$ tokens from the same basket ($15$ gold, $35$ silver) <strong>without replacement</strong>. 
+        Which mathematical expression evaluates to the exact probability of drawing <strong>exactly 2 gold tokens</strong>?
+      </p>
+      
+      <ul class="task-list" style="list-style: none; padding-left: 0;">
+        <li><input type="checkbox" disabled=""> $\binom{5}{2} (0.30)^2 (0.70)^3$</li>
+        <li><input type="checkbox" disabled=""> $\frac{\binom{15}{2} + \binom{35}{3}}{\binom{50}{5}}$</li>
+        <li><input type="checkbox" disabled=""> $\frac{\binom{15}{2} \binom{35}{3}}{\binom{50}{5}}$</li>
+        <li><input type="checkbox" disabled=""> $\binom{15}{2} \left(\frac{15}{50}\right)^2 \left(\frac{35}{50}\right)^3$</li>
+      </ul>
+    </div>
+  </div>
+
+  <details class="answer">
+    <summary>Show Solution</summary>
+    <div class="answer-box">
+      <p><strong>Correct Answer: Option 3 (Hypergeometric mass formula)</strong></p>
+      <p>
+        Because we are sampling <strong>without replacement</strong>, we must track combinations using the Hypergeometric distribution PMF:
+        $$\frac{\binom{\text{Successes Available}}{\text{Successes Wanted}} \times \binom{\text{Failures Available}}{\text{Failures Wanted}}}{\binom{\text{Total Population}}{\text{Total Sample Size}}}$$
+      </p>
+      <p>Mapping our variables directly:</p>
+      <ul>
+        <li>Successes available: $15$ gold tokens. We want to choose exactly $2 \implies \binom{15}{2}$.</li>
+        <li>Failures available: $35$ silver tokens. Since total sample size is 5, we must choose exactly $5 - 2 = 3$ silver tokens $\implies \binom{35}{3}$.</li>
+        <li>Total sample pool: $50$ tokens. We draw a total of $5 \implies \binom{50}{5}$.</li>
+      </ul>
+      <p>Multiplying the success/failure paths over the total sample space gives us: $\frac{\binom{15}{2}\binom{35}{3}}{\binom{50}{5}}$.</p>
+    </div>
+  </details>
+
+  <!-- Part 3: R Syntax Computations -->
+  <div class="card my-3">
+    <div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">Question 3: Computing the Problem in R</div>
+    <div class="card-body">
+      <p>
+        Imagine you want to calculate the probability of getting <strong>at most 3 gold tokens</strong> when sampling $10$ tokens <strong>without replacement</strong> from the basket ($15$ gold, $35$ silver). 
+        What is the cleanest built-in syntax command to execute this in R?
+      </p>
+      
+      <ul class="task-list" style="list-style: none; padding-left: 0;">
+        <li><input type="checkbox" disabled=""> <code>pbinom(3, size = 10, prob = 0.30)</code></li>
+        <li><input type="checkbox" disabled=""> <code>dhyper(3, m = 15, n = 35, k = 10)</code></li>
