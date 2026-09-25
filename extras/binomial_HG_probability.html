@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input23737c22e2e1e7fa – Stat 20 (Fall 2026)</title>
+<title>Binomial vs.&nbsp;Hypergeometric Distributions - Extra Practice – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="/fall-2026/site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="/fall-2026/site_libs/quarto-nav/headroom.min.js"></script>
-<script src="/fall-2026/site_libs/clipboard/clipboard.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="/fall-2026/site_libs/quarto-search/fuse.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="/fall-2026/">
-<link href="/fall-2026/./assets/stat20-hex.png" rel="icon" type="image/png">
-<script src="/fall-2026/site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="/fall-2026/site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="/fall-2026/site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="/fall-2026/site_libs/quarto-html/popper.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-html/anchor.min.js"></script>
-<link href="/fall-2026/site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="/fall-2026/site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="/fall-2026/site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="/fall-2026/site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="/fall-2026/site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/stat20-hex.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,16 +78,43 @@ gtag('js', new Date());
 gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Stat 20 (Fall 2026)">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Binomial vs.&nbsp;Hypergeometric Distributions - Extra Practice – Stat 20 (Fall 2026)">
 <meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
-<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
+<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/extras/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
-<meta property="og:image:height" content="1000">
-<meta property="og:image:width" content="866">
-<meta name="twitter:title" content="Stat 20 (Fall 2026)">
+<meta name="twitter:title" content="Binomial vs.&nbsp;Hypergeometric Distributions - Extra Practice – Stat 20 (Fall 2026)">
 <meta name="twitter:description" content="Introduction to Probability and Statistics at UC Berkeley">
-<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/fall-2026/assets/corgi.png">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/extras/assets/stat20-hex.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -98,9 +125,9 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="/fall-2026/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/fall-2026/assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content">
-    <img src="/fall-2026/assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content">
+    <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -110,23 +137,23 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/office-hours.html"> 
+    <a class="nav-link" href="../office-hours.html"> 
 <span class="menu-text">Office Hours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/notes.html"> 
+    <a class="nav-link" href="../notes.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/tutorials.html"> 
+    <a class="nav-link" href="../tutorials.html"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/extras.html"> 
+    <a class="nav-link" href="../extras.html"> 
 <span class="menu-text">Extras</span></a>
   </li>  
 </ul>
@@ -135,7 +162,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
-    <a href="/fall-2026/#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
+    <a href="../#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -151,17 +178,166 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Binomial vs.&nbsp;Hypergeometric Distributions - Extra Practice</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="this-page-hasnt-yet-been-published" class="level1" style="text-align: center;">
-<h1 style="text-align: center;">This page hasn’t yet been published</h1>
-<p>Please try back after the release date.</p>
-<p><img src="/fall-2026/assets/corgi.png" class="img-fluid"></p>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<style>
+.answer-box {
+  background-color: #fff8d9;
+  border: 1px solid #eadf9c;
+  border-radius: 8px;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1rem;
+}
+.text-success { color: #198754; font-weight: bold; }
+.text-danger { color: #dc3545; font-weight: bold; }
+</style>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Welcome! This module tests your intuition regarding two fundamental counting distributions: the <strong>Binomial distribution</strong> and the <strong>Hypergeometric distribution</strong>. The core distinction relies on your sampling method: are you sampling <em>with replacement</em> (independent trials) or <em>without replacement</em> (dependent trials)?</p>
+<hr>
+</section>
+<section id="practice-questions" class="level2">
+<h2 class="anchored" data-anchor-id="practice-questions">Practice Questions</h2>
+<div class="card my-3">
+<div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">
+<p>Question 1: The Core Distinguishing Assumption</p>
+</div>
+<div class="card-body">
+<p>Suppose a basket contains 15 gold tokens and 35 silver tokens. You are instructed to select exactly 8 tokens from the basket, one by one. Under which of the following scenarios is the total count of selected gold tokens modeled perfectly by a <strong>Binomial distribution</strong>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">You draw 8 tokens simultaneously in one quick handful.</label></li>
+<li><label><input type="checkbox">You draw a token, record its color, put it back into the basket, shake the basket thoroughly, and repeat this process until you have 8 observations.</label></li>
+<li><label><input type="checkbox">You draw a token, give it to a classmate sitting next to you, and repeat this process until you have 8 observations.</label></li>
+<li><label><input type="checkbox">None of the above setups can be modeled by a Binomial distribution because the overall population size is small (50 total tokens).</label></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="answer-box">
+<p><strong>Correct Answer: Option 2 (Sampling with replacement)</strong></p>
+<p>For a random variable to follow a Binomial distribution, it must satisfy the <strong>BINS</strong> criteria:</p>
+<ul>
+<li><strong>B</strong>inary: Each trial results in a success (gold) or failure (silver).</li>
+<li><strong>I</strong>ndependent: The outcome of one trial must not affect the next.</li>
+<li><strong>N</strong>umber of trials is fixed (n = 8).</li>
+<li><strong>S</strong>uccess probability remains constant ((p = = 0.30)).</li>
+</ul>
+<p>Placing the token back into the basket (<strong>sampling with replacement</strong>) ensures that the probability of drawing a gold token remains exactly 0.30 for every single draw. If you keep the tokens out (without replacement), the trials become dependent, which shifts the problem into a <strong>Hypergeometric</strong> framework.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card my-3">
+<div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">
+<p>Question 2: Probability Algebra Formulation</p>
+</div>
+<div class="card-body">
+<p>Let’s change the scenario. You now draw 5 tokens from the same basket (15 gold, 35 silver) <strong>without replacement</strong>. Which mathematical expression evaluates to the exact probability of drawing <strong>exactly 2 gold tokens</strong>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(\binom{5}{2} (0.30)^2 (0.70)^3\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(\frac{\binom{15}{2} + \binom{35}{3}}{\binom{50}{5}}\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(\frac{\binom{15}{2} \binom{35}{3}}{\binom{50}{5}}\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(\binom{15}{2} \left(\frac{15}{50}\right)^2 \left(\frac{35}{50}\right)^3\)</span></label></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="answer-box">
+<p><strong>Correct Answer: Option 3 (Hypergeometric mass formula)</strong></p>
+<p>Because we are sampling <strong>without replacement</strong>, we must track combinations using the Hypergeometric distribution PMF:</p>
+<p><span class="math display">\[\frac{\binom{\text{Successes Available}}{\text{Successes Wanted}} \times \binom{\text{Failures Available}}{\text{Failures Wanted}}}{\binom{\text{Total Population}}{\text{Total Sample Size}}}\]</span></p>
+<p>Mapping our variables directly:</p>
+<ul>
+<li><strong>Successes available:</strong> 15 gold tokens. We want to choose exactly (2 ).</li>
+<li><strong>Failures available:</strong> 35 silver tokens. Since total sample size is 5, we must choose exactly 5 - 2 = 3 silver tokens <span class="math inline">\(\implies \binom{35}{3}\)</span>.</li>
+<li><strong>Total sample pool:</strong> 50 tokens. We draw a total of <span class="math inline">\(5 \implies \binom{50}{5}\)</span>.</li>
+</ul>
+<p>Multiplying the success/failure paths over the total sample space gives us: <span class="math inline">\(\frac{\binom{15}{2}\binom{35}{3}}{\binom{50}{5}}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card my-3">
+<div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">
+<p>Question 3: Computing the Problem in R</p>
+</div>
+<div class="card-body">
+<p>Imagine you want to calculate the probability of getting <strong>at most 3 gold tokens</strong> when sampling 10 tokens <strong>without replacement</strong> from the basket (15 gold, 35 silver). What is the cleanest built-in syntax command to execute this in R?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>pbinom(3, size = 10, prob = 0.30)</code></label></li>
+<li><label><input type="checkbox"><code>dhyper(3, m = 15, n = 35, k = 10)</code></label></li>
+<li><label><input type="checkbox"><code>phyper(3, m = 15, n = 35, k = 10)</code></label></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="answer-box">
+<p><strong>Correct Answer: <code>phyper(3, m = 15, n = 35, k = 10)</code></strong></p>
+<p>To find the probability of a cumulative threshold (<strong>at most 3</strong>), we use a cumulative distribution function (CDF) starting with <strong>p</strong>, not a probability mass function (<strong>d</strong>). Because this is sampling without replacement, we use the hypergeometric function family (<code>*hyper</code>):</p>
+<ul>
+<li><code>q = 3</code> (the number of successes we want to calculate up to)</li>
+<li><code>m = 15</code> (number of success tokens in the basket)</li>
+<li><code>n = 35</code> (number of failure tokens in the basket)</li>
+<li><code>k = 10</code> (total number of trials/draws)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -577,7 +753,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/license.html">
+    <a class="nav-link" href="../license.html">
 <p>License</p>
 </a>
   </li>  

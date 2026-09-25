@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input23737c22e2e1e7fa – Stat 20 (Fall 2026)</title>
+<title>Parameters, Sampling, and Selection Bias – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="/fall-2026/site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="/fall-2026/site_libs/quarto-nav/headroom.min.js"></script>
-<script src="/fall-2026/site_libs/clipboard/clipboard.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="/fall-2026/site_libs/quarto-search/fuse.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="/fall-2026/">
-<link href="/fall-2026/./assets/stat20-hex.png" rel="icon" type="image/png">
-<script src="/fall-2026/site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="/fall-2026/site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="/fall-2026/site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="/fall-2026/site_libs/quarto-html/popper.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="/fall-2026/site_libs/quarto-html/anchor.min.js"></script>
-<link href="/fall-2026/site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="/fall-2026/site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="/fall-2026/site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="/fall-2026/site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="/fall-2026/site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/stat20-hex.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-605a4f604797e7218a783bf84a7fcfae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,16 +78,43 @@ gtag('js', new Date());
 gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Stat 20 (Fall 2026)">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Parameters, Sampling, and Selection Bias – Stat 20 (Fall 2026)">
 <meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
-<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
+<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/extras/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
-<meta property="og:image:height" content="1000">
-<meta property="og:image:width" content="866">
-<meta name="twitter:title" content="Stat 20 (Fall 2026)">
+<meta name="twitter:title" content="Parameters, Sampling, and Selection Bias – Stat 20 (Fall 2026)">
 <meta name="twitter:description" content="Introduction to Probability and Statistics at UC Berkeley">
-<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/fall-2026/assets/corgi.png">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/extras/assets/stat20-hex.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -98,9 +125,9 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="/fall-2026/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/fall-2026/assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content">
-    <img src="/fall-2026/assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content">
+    <img src="../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -110,23 +137,23 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/office-hours.html"> 
+    <a class="nav-link" href="../office-hours.html"> 
 <span class="menu-text">Office Hours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/notes.html"> 
+    <a class="nav-link" href="../notes.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/tutorials.html"> 
+    <a class="nav-link" href="../tutorials.html"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/extras.html"> 
+    <a class="nav-link" href="../extras.html"> 
 <span class="menu-text">Extras</span></a>
   </li>  
 </ul>
@@ -135,7 +162,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
-    <a href="/fall-2026/#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
+    <a href="../#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -151,15 +178,220 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Parameters, Sampling, and Selection Bias</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="this-page-hasnt-yet-been-published" class="level1" style="text-align: center;">
-<h1 style="text-align: center;">This page hasn’t yet been published</h1>
-<p>Please try back after the release date.</p>
-<p><img src="/fall-2026/assets/corgi.png" class="img-fluid"></p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.answer-box {
+  background-color: #fff8d9;
+  border: 1px solid #eadf9c;
+  border-radius: 8px;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1rem;
+}
+</style>
+<section id="problem-context" class="level2">
+<h2 class="anchored" data-anchor-id="problem-context">Problem Context</h2>
+<p>Below is a preview showing a sample of <strong>8</strong> rows from the <code>spotify</code> dataset. The <code>spotify</code> dataset contains comprehensive audio metrics for all <strong>12,500</strong> tracks released on global weekly charts between 2021 and 2025, and is arranged alphabetically by track title. We want to estimate the average <strong>danceability</strong> score of songs released on the global charts from 2021 to 2025, but we are limited to analyzing a sample of 8 rows at a time.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Track ID</th>
+<th>Title</th>
+<th>Genre</th>
+<th>BPM</th>
+<th>Danceability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>About Damn Time</td>
+<td>Pop</td>
+<td>109</td>
+<td>0.84</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>As It Was</td>
+<td>Indie Pop</td>
+<td>174</td>
+<td>0.52</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Bad Habits</td>
+<td>Dance Pop</td>
+<td>126</td>
+<td>0.81</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Blinding Lights</td>
+<td>Synthwave</td>
+<td>171</td>
+<td>0.51</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Cold Heart</td>
+<td>Remix</td>
+<td>116</td>
+<td>0.80</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Flowers</td>
+<td>Pop</td>
+<td>118</td>
+<td>0.71</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Heat Waves</td>
+<td>Indie Rock</td>
+<td>81</td>
+<td>0.76</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Stay</td>
+<td>Synth-Pop</td>
+<td>170</td>
+<td>0.59</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="practice-questions" class="level2">
+<h2 class="anchored" data-anchor-id="practice-questions">Practice Questions</h2>
+<div class="card my-3">
+<section id="part-1-population-parameter" class="level5 card-body">
+<h5 class="anchored" data-anchor-id="part-1-population-parameter">Part 1: Population Parameter</h5>
+<p>Choose the answer that correctly completes the following sentence: <strong>The population parameter we want to estimate is…</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">the mean danceability score among the 8 previewed tracks</label></li>
+<li><label><input type="checkbox">the mean danceability score among all 12,500 tracks</label></li>
+<li><label><input type="checkbox">the mean BPM among all 12,500 tracks</label></li>
+<li><label><input type="checkbox">the proportion of tracks belonging to the ‘Pop’ genre</label></li>
+</ul>
+</section>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="answer-box">
+<p><strong>Correct Answer: The mean danceability score among all 12,500 tracks</strong></p>
+<p>A <strong>population parameter</strong> is a numerical value that describes a characteristic of the entire group of interest ((N = 12,500)). Because our stated objective is to investigate the average <em>danceability</em> across the complete catalog, the parameter represents the true mean score of all 12,500 items.</p>
+<ul>
+<li>The average score among the 8 previewed items is a <em>sample statistic</em> <span class="math inline">\(\bar{x}\)</span></li>
+<li>BPM and Genre represent different variables from the one under investigation.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="card my-3">
+<section id="part-2-sample-size-notation" class="level5 card-body">
+<h5 class="anchored" data-anchor-id="part-2-sample-size-notation">Part 2: Sample Size Notation</h5>
+<p>Choose the statement that correctly represents the sample size notation for our investigation:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">(n = 8)</label></li>
+<li><label><input type="checkbox">(n = 12,500)</label></li>
+<li><label><input type="checkbox">(N = 8)</label></li>
+<li><label><input type="checkbox">(N = 12,500)</label></li>
+</ul>
+</section>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="answer-box">
+<p><strong>Correct Answer: (n = 8)</strong></p>
+<p>By standard statistical convention:</p>
+<ul>
+<li>Lowercase (n) signifies the <strong>sample size</strong>, which is the number of observations gathered and analyzed ((n = 8)).</li>
+<li>Uppercase (N) signifies the <strong>population size</strong>, which represents the size of the entire collection ((N = 12,500)).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="card my-3">
+<section id="part-3-identifying-selection-bias" class="level5 card-body">
+<h5 class="anchored" data-anchor-id="part-3-identifying-selection-bias">Part 3: Identifying Selection Bias</h5>
+<p>Which of the following sampling strategies from the <code>spotify</code> dataset suffer from <strong>selection bias</strong>? <strong>Select all that apply.</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Selecting the first eight rows of the dataset (pictured in the preview above).</label></li>
+<li><label><input type="checkbox">Utilizing the command <code>slice_sample(spotify, n = 8, replace = FALSE)</code>.</label></li>
+<li><label><input type="checkbox">Utilizing the command <code>spotify %&gt;% filter(genre == "Pop") %&gt;% slice_sample(n = 8, replace = FALSE)</code>.</label></li>
+<li><label><input type="checkbox">Utilizing the command <code>spotify %&gt;% filter(bpm &gt; 120) %&gt;% slice_sample(n = 8, replace = FALSE)</code>.</label></li>
+</ul>
+</section>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="answer-box">
+<p><strong>Correct Statements:</strong></p>
+<ul>
+<li>Selecting the first eight rows of the dataset (pictured in the preview above).</li>
+<li><code>spotify %&gt;% filter(genre == "Pop") %&gt;% slice_sample(n = 8, replace = FALSE)</code></li>
+<li><code>spotify %&gt;% filter(bpm &gt; 120) %&gt;% slice_sample(n = 8, replace = FALSE)</code></li>
+</ul>
+<hr>
+<p><strong>Explanation:</strong><br>
+The dataset is sorted alphabetically by track title. Selecting the first 8 rows means you only look at songs starting with “A” or “B”, which creates selection bias if song titles correlate with release timing or artist naming trends. Filtering by specific criteria like <code>genre == "Pop"</code> or <code>bpm &gt; 120</code> explicitly cuts out parts of the population pool, making the sample unrepresentative of the overall 12,500 charts. Only an unfiltered <code>slice_sample</code> functions as a true Simple Random Sample (SRS).</p>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -577,7 +809,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="/fall-2026/license.html">
+    <a class="nav-link" href="../license.html">
 <p>License</p>
 </a>
   </li>  
