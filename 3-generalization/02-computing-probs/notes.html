@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -479,146 +444,17 @@ window.Quarto = {
 <p>Recall that De Méré wanted to bet on at least one six in four rolls of a fair die, and also at least one double six in twenty-four rolls of a pair of dice.</p>
 <p>In earlier notes, you have seen the result of simulating these two games to estimate the probability of De Méré winning his bet. The simulation used the idea of thinking of the probability of an event as the <strong>long-run relative frequency</strong>, or the proportion of times we observe that <em>particular</em> event (that is, we observe the <em>outcomes</em> in that event) if we repeat the action that can result in the event over and over again. Let’s do that again - that is, we estimate the probabilities using the long-run proportions. We will simulate playing the game over and over again and count the number of times we see at least one six in four rolls, and similarly for the second game. (De Méré did this by betting many times, and noticed that the number of times he won wasn’t matching the probability he had computed. Long-run relative frequency in real life!)</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># you have seen this function before, what does it do?</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">#### de Mere - first game</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># defining the vector (1,2,3,4,5,6) and assigning it to the variable</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># called "die"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># defining the number of times we will simulate one round of the game</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and assigning it to the variable "num_simulations"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>num_simulations <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we want to print the number of simulations, we will use a useful</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># function called "cat()" which stands for concatenate (put together)</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># and print. By default, the pieces are joined with a space in between</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># them. For example, cat("a", "b", "c") will print "a b c".</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Number of simulations for game 1 with 4 rolls of a die ="</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  num_simulations</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Number of simulations for game 1 with 4 rolls of a die = 1000</code></pre>
+<pre><code>Number of simulations for game 1 (4 rolls of a die): 10000</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we make use another new and IMPORTANT function, which we'll teach</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># soon in the course, called "replicate()". This function is used to do</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># something many times and keep all of the results. In this case,</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># want to simulate De Mere's game 1000 times and see how often we win.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>die_4 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_simulations, <span class="fu">sample</span>(die, <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The first argument to 'replicate()' is how many times to do something.</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case, it's 1000 times (num_simulations is 1000).</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The second argument is the thing to do. To simulate the dice game once,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># we run 'sample(die, 4, replace = TRUE)', which gives us back a</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of the 4 numbers rolled. When with 'replicate',</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># we end up with 1000 such vectors in "die_4". It's stored as</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># a "matrix" with 1000 columns and 4 rows.</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># We transpose (flip) the matrix so we now have 1000 *rows* and 4 *columns*,</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># then convert it to a true dataframe with 'data.frame()'</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>die_4_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(die_4))</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we give our columns and rows names.</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(die_4_df) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"roll"</span>, <span class="at">sep =</span> <span class="st">"_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(die_4_df) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"simulation"</span>, <span class="at">sep =</span> <span class="st">"_"</span>, <span class="dv">1</span><span class="sc">:</span>num_simulations)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's figure out the proportion of times we roll at least one six.</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you read the code below? What is the type of the column</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># "at_least_one_six"?</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>prop_wins_game_1 <span class="ot">&lt;-</span> die_4_df <span class="sc">|&gt;</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">at_least_one_six =</span> (</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      roll_1 <span class="sc">==</span> <span class="dv">6</span> <span class="sc">|</span> roll_2 <span class="sc">==</span> <span class="dv">6</span> <span class="sc">|</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      roll_3 <span class="sc">==</span> <span class="dv">6</span> <span class="sc">|</span> roll_4 <span class="sc">==</span> <span class="dv">6</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop_wins_game_1 =</span> <span class="fu">mean</span>(at_least_one_six))</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we print the proportion</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># The tidyverse function pull() pulls the last column out of the data</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># frame that was created using summarise.</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"The chance of at least one six in 4 rolls of a die is about"</span>,</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">" "</span>,</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(prop_wins_game_1)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>The chance of at least one six in 4 rolls of a die is about 0.514</code></pre>
+<pre><code>The chance of at least one six in 4 rolls of a die is about 0.5156</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">######## de mere second game</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>num_simulations <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to print the number of simulations</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Number of simulations for game 2 with 24 rolls"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"of a pair of dice ="</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  num_simulations</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Number of simulations for game 2 with 24 rolls of a pair of dice = 1000</code></pre>
+<pre><code>Number of simulations for game 2 (24 rolls of a pair of dice): 10000</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The function "rep()" is a very useful function. rep(first_arg,n)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># takes the first argument and repeats it n times. Now see if you can</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># figure out what the vector pair_dice will be.</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>pair_dice <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="fu">rep</span>(<span class="dv">4</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">5</span>,<span class="dv">4</span>), <span class="fu">rep</span>(<span class="dv">6</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="dv">7</span>,<span class="dv">6</span>), </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rep</span>(<span class="dv">8</span>,<span class="dv">5</span>), <span class="fu">rep</span>(<span class="dv">9</span>,<span class="dv">4</span>), <span class="fu">rep</span>(<span class="dv">10</span>,<span class="dv">3</span>), <span class="fu">rep</span>(<span class="dv">11</span>,<span class="dv">2</span>), <span class="dv">12</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>dice_24 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  num_simulations,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(pair_dice, <span class="dv">24</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>dice_24_df <span class="ot">&lt;-</span>  <span class="fu">data.frame</span>(<span class="fu">t</span>(dice_24)) </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dice_24_df) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"roll"</span>, <span class="at">sep =</span> <span class="st">"_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(dice_24_df) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"simulation"</span>, <span class="at">sep =</span> <span class="st">"_"</span>, <span class="dv">1</span><span class="sc">:</span>num_simulations)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Below we have used a shortcut to do the exact same thing as we did</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># before, so that we don't have to write out roll_1 == 12 etc</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># twenty-four times!! So we ask R to check ALL the 24 columns using</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># "everything()" and if any of them are 12 (that is what</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co"># "~ . == 12" is checking), then mark TRUE in the column</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># "at_least_one_boxcars" (Boxcars is a term for a double six. You</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># don't need to remember this code.)</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>prop_wins_game_2 <span class="ot">&lt;-</span> dice_24_df <span class="sc">|&gt;</span> </span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">at_least_one_boxcars =</span> <span class="fu">if_any</span>(<span class="fu">everything</span>(), <span class="sc">~</span> . <span class="sc">==</span> <span class="dv">12</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop_wins_game_2 =</span> <span class="fu">mean</span>(at_least_one_boxcars))</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The chance of at least one double six in 24 rolls of a "</span>,</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pair of dice is about"</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">" "</span>,</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(prop_wins_game_2)</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>The chance of at least one double six in 24 rolls of a pair of dice is about 0.487</code></pre>
+<pre><code>The chance of at least one double-six in 24 rolls of a pair of dice is about 0.4923</code></pre>
 </div>
 </div>
 <p>Now the question is how do we figure out this probability without simulations?</p>
