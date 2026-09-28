@@ -133,8 +133,6 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../../site_libs/countdown-0.4.0/countdown.js"></script>
 <meta property="og:title" content="Probability Distributions – Stat 20 (Fall 2026)">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/3-generalization/03-probability-dsns/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
@@ -158,120 +156,36 @@ STAT 20: Introduction to Probability and Statistics
 </div>
 
 </section>
-<section class="slide level2">
-
-<!--
-# Probability Refresher
-
-
-::: {.cell}
-::: {.cell-output-display}
-
-```{=html}
-<div class="countdown" id="timer_2109c885" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">25</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-```
-
-:::
-:::
-
-
-:::{.incremental}
-- Let $X$ be the number of heads in three tosses of a fair coin.
-
-- What about if $X$ is the number of heads in 3 tosses of a biased coin, where the chance of heads is $\frac{2}{3}$?
-
-- Now suppose we toss a fair coin until the first time it lands heads, and let $X$ be the number of tosses. What is the pmf of $X$? Is it binomial?
-
-- Finally, let's consider a deck of cards, and we are interested in the number of hearts dealt in a hand of five. Call this number $X$. What is the pmf of $X$?
-:::
-
-:::{.notes}
-Write out outcome space of 3 coin flips of a fair coin and use this to define rv X = number of heads. Write out the pmf and cdf, and draw the cdf. Show why $X$ is binomial and what are $n$ ad $p$
-
-Show what happens if coin is unfair. How the probabilities change.
-
-Demo dbinom and pbinom and connection to pmf and cdf.
-
-:::
-
-## $f(x)$ and $F(x)$
-
-
-:::{.incremental}
-
-- $f(x)$ is the probability mass function of $X$. What does that mean? What is the connection to the distribution table? The probability histogram?
-
-- $F(x)$ is the cumulative distribution function. 
-
-- What is the connection between $f$ and $F$?
-
-:::
-
-:::{.notes}
-Draw an example on the board. Maybe box of tickets { 0, 0, 0 , 1, 1, 2, 2, 2} draw one ticket, and let $X$ be the value of the ticket.
-:::
-
--->
-</section>
 <section>
-<section id="concept-questions" class="title-slide slide level1 center">
-<h1>Concept Questions</h1>
-
-</section>
-<section id="section" class="slide level2 scrollable">
-<h2></h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_02d67fa5" data-update-every="1" tabindex="0" style="top:0;right:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<p>Consider the following box of tickets. Match each plot to its accurate description as given on PollEv.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/box-slides-cq-feb-22-2023.png" class="quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
+<section id="warmup" class="title-slide slide level1 center">
+<h1>Warmup <div id="timer_30098c4e15e4416d63e7b83fbd89763d85ac21b1" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div></h1>
+<div class="warmup-only">
+<p>For the following set of questions, you’ll be presented with a scenario and then asked to identify whether the scenario describes a</p>
+<ol type="1">
+<li><p><strong>Binomial</strong> distribution (if so, what are <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?)</p></li>
+<li><p><strong>Hypergeometric</strong> distribution (if so , what are <span class="math inline">\(N\)</span>, <span class="math inline">\(G\)</span>, and <span class="math inline">\(n\)</span>?)</p></li>
+<li><p><em>Neither</em> of these (why)?</p></li>
+</ol>
 </div>
 </section>
-<section id="binomial-hypergeometric-or-neither" class="slide level2">
+<section id="binomial-hypergeometric-or-neither" class="slide level2 warmup-question">
 <h2>Binomial, hypergeometric, or neither?</h2>
-<p>For the following set of questions, you’ll be presented with a scenario and then asked to identify whether it follows one of the three probability distribution options above.</p>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_e1721883" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<p>Does the quantity described below have a probability distribution that is binomial (if so, what are <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?), hypergeometric (if so , what are <span class="math inline">\(N\)</span>, <span class="math inline">\(G\)</span>, and <span class="math inline">\(n\)</span>?), or neither (why)?</p>
 <p><br>
 </p>
 <p>Roll a fair ten-sided die 20 times. We count the number of times we roll a multiple of 3.</p>
 <p><br>
 </p>
-<div class="poll">
-<p>Binomial, hypergeometric, or neither?</p>
+<div class="answer fragment">
+<p>Binomial with <span class="math inline">\(n = 20\)</span> and <span class="math inline">\(p = \dfrac{3}{10}\)</span></p>
 </div>
 <aside class="notes">
-<p>Binomial(20, 3/10). The pollev will have 4 choices, and then figuring out the parameters can be a classroom discussion. The fourth choice is “Need more info”</p>
+<p>Should probably spend a bit of time explaining this.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -284,22 +198,16 @@ Draw an example on the board. Maybe box of tickets { 0, 0, 0 , 1, 1, 2, 2, 2} dr
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_0828e7a8" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<p>Does the quantity described below have a probability distribution that is binomial (if so, what are <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?), hypergeometric (if so , what are <span class="math inline">\(N\)</span>, <span class="math inline">\(G\)</span>, and <span class="math inline">\(n\)</span>?), or neither (why)?</p>
+<section id="binomial-hypergeometric-or-neither-1" class="slide level2 warmup-question">
+<h2>Binomial, hypergeometric, or neither?</h2>
 <p><br>
 </p>
-<p>YouGov surveyed 1,500 adult US citizens last December and counted the number of respondents who had read at least one book in 2023. The population of the US is about 335 million.</p>
-<div class="poll">
-<p>Binomial, hypergeometric, or neither?</p>
+<p>YouGov surveyed 1,500 adult US citizens in December 2023, and counted the number of respondents who had read at least one book that year. The population of the US is about 335 million.</p>
+<p><br>
+</p>
+<div class="answer fragment">
+<p>Hypergeometric(<span class="math inline">\(N = 335\)</span> mill, <span class="math inline">\(n = 1500\)</span>, <span class="math inline">\(G\)</span>).</p>
+<p><span class="math inline">\(G\)</span> is the number of people in the US who have read at least one book.</p>
 </div>
 <aside class="notes">
 <p>Hypergeometric(<span class="math inline">\(N = 335\)</span> mill, <span class="math inline">\(n = 1500\)</span>, G), where G is not known, being the number of people who have read at least one book . Can remark that we could use the binomial to model this rather than HG, and that we will discuss sample surveys in this unit. Disturbingly, only 54% of respondents had read at least one book. Here is the link: <a href="https://today.yougov.com/entertainment/articles/48239-54-percent-of-americans-read-a-book-this-year" class="uri">https://today.yougov.com/entertainment/articles/48239-54-percent-of-americans-read-a-book-this-year</a></p>
@@ -315,27 +223,28 @@ Draw an example on the board. Maybe box of tickets { 0, 0, 0 , 1, 1, 2, 2, 2} dr
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_b43915fe" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<p>Are we describing a probability distribution below that is binomial? Or is it hypergeometric? Or do neither apply?</p>
+<section id="binomial-hypergeometric-or-neither-2" class="slide level2 warmup-question">
+<h2>Binomial, hypergeometric, or neither?</h2>
 <p><br>
 </p>
 <p>A six-sided die is tossed twice, and we check if the sum of the spots is 8 or not.</p>
 <p><br>
 </p>
-<div class="poll">
-<p>Binomial, hypergeometric, or neither?</p>
+<div class="answer fragment">
+<ul>
+<li>Binomial, with <span class="math inline">\(n = 1, p = \dfrac{5}{36}\)</span></li>
+<li>Or Bernoulli with <span class="math inline">\(p =\dfrac{5}{36}\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="binomial-hypergeometric-or-neither-3" class="slide level2 warmup-question">
+<h2>Binomial, hypergeometric, or neither?</h2>
+<p>A bag that has 6 pieces of fruit: 2 mangoes, 3 apples, and 1 orange. I reach into the bag and draw out one fruit at a time, selecting each fruit at random (so all the fruit left in the bag are equally likely on each draw). I put the fruit away after I take it out (and don’t put it back into the bag). I count the number of draws until and including the first time I draw a apple.</p>
+<div class="answer fragment">
+<p>Neither.</p>
 </div>
 <aside class="notes">
-<p>Binomial, with <span class="math inline">\(n = 1, p = 5/36\)</span> or Bernoulli with <span class="math inline">\(p = 5/36\)</span>.</p>
+<p>Neither. It would be good for them if you were to write out all the probabilities, and explicitly point out that they are using the multiplication rule and a conditional probability.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -348,100 +257,38 @@ Draw an example on the board. Maybe box of tickets { 0, 0, 0 , 1, 1, 2, 2, 2} dr
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-4" class="slide level2">
-<h2></h2>
-<div class="cell">
+<section id="match-the-histogram-to-its-description" class="slide level2 warmup-question">
+<h2>Match the histogram to its description</h2>
+<p>Consider the following box of tickets. Match each of the following (lettered) plot to its accurate description as given on page 2 your warm up sheet:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/box-slides-cq-feb-22-2023.png" class="quarto-figure quarto-figure-center" width="500"></p>
+</figure>
+</div>
+<div class="slides-only">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="countdown" id="timer_bb39319e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
 </div>
 </div>
 </div>
-<p>Are we describing a probability distribution below that is binomial? Or is it hypergeometric? Or do neither apply?<br>
-</p>
-<p>A bag that has 6 pieces of fruit: 2 mangoes, 3 apples, and 1 orange. I reach into the bag and draw out one fruit at a time, selecting each fruit at random (so all the fruit left in the bag are equally likely on each draw). I put the fruit away after I take it out (and don’t put it back into the bag). I count the number of draws until and including the first time I draw a apple.</p>
-<div class="poll">
-<p>Binomial, hypergeometric, or neither?</p>
 </div>
-<aside class="notes">
-<p>Neither. It would be useful at this point to write out what is going on, and point out that they are using the multiplication rule and a conditional probability.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!--
-## 
-
-
-::: {.cell}
-::: {.cell-output-display}
-
-```{=html}
-<div class="countdown" id="timer_cd5e60f8" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<div class="warmup-only">
+<p>Match the description number below to the letter of the plot on the slide:</p>
+<ol type="1">
+<li><p>The probability histogram for the value of a ticket drawn at random from the box</p></li>
+<li><p>An empirical histogram for which the data were generated by drawing <strong>10</strong> tickets from the box with replacement</p></li>
+<li><p>An empirical histogram for which the data were generated by drawing <strong>100</strong> tickets from the box with replacement</p></li>
+<li><p>An empirical histogram generated by <strong>20</strong> draws from a different box.</p></li>
+</ol>
 </div>
-```
-
-:::
-:::
-
-
-You have $10$ people with a cold and you have a remedy with a $20\%$ chance of success. What is the chance that your remedy will cure at least *one* sufferer? (Let $X$ be the number of people cured among the 10. We are looking for the probability that $X \ge 1$)
-
-
-:::{.poll}
-What is the chance that at least one person is cured?
-:::
-
-:::{.notes}
-$P(X \ge 1) = 1 - P(X < 1) = 1 - P(X = 0) = 1 - (1-p)^{10}$, where $p = 0.2$, because $X \sim Bin(10, p)$. $1-p = 0.8 \: \& \: 1-0.8^{10} = 0.8926$
-:::
-
-
-
-## 
-
-
-::: {.cell}
-::: {.cell-output-display}
-
-```{=html}
-<div class="countdown" id="timer_460a36a9" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-```
-
-:::
-:::
-
-
-Roll a pair of fair six-sided dice and let $X = 1$ if the dice land showing the same number of spots, and $0$ otherwise. For example, if both dice land $2$, then $X = 1$, but if one lands $2$ and the other lands $3$, then $X = 0$. 
-
-:::{.poll}
-What is $P(X=1)$? 
-:::
-
-
-
-:::{.notes}
-The chance that $X = 1$ can be broken up into six mutually exclusive situations, that the dice both show one spot, or both show two spots, etc. Each of these has probability $1/36$ so the total probability by the addition rule is $6/36 = 1/6$
-:::
-
--->
 </section></section>
 <section id="worksheet-probability-distributions" class="title-slide slide level1 center">
 <h1>Worksheet: Probability Distributions</h1>
-<div id="timer_b8ffc1e0369f444a56c9920bc1aa486fb7c879d9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_30098c4e15e4416d63e7b83fbd89763d85ac21b1" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -452,7 +299,7 @@ The chance that $X = 1$ can be broken up into six mutually exclusive situations,
 
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_b8ffc1e0369f444a56c9920bc1aa486fb7c879d9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_30098c4e15e4416d63e7b83fbd89763d85ac21b1" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -463,7 +310,7 @@ The chance that $X = 1$ can be broken up into six mutually exclusive situations,
 
 <section id="lab-6" class="title-slide slide level1 center">
 <h1>Lab 6</h1>
-<div id="timer_b8ffc1e0369f444a56c9920bc1aa486fb7c879d9" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_30098c4e15e4416d63e7b83fbd89763d85ac21b1" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

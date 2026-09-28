@@ -369,7 +369,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#basic-rule-of-counting" id="toc-basic-rule-of-counting" class="nav-link" data-scroll-target="#basic-rule-of-counting">Basic rule of counting</a>
   <ul class="collapse">
-  <li><a href="#counting-the-number-of-ways-to-select-a-subset" id="toc-counting-the-number-of-ways-to-select-a-subset" class="nav-link" data-scroll-target="#counting-the-number-of-ways-to-select-a-subset">Counting the number of ways to select a subset</a></li>
+  <li><a href="#counting-the-number-of-ways-to-select-a-subset-of-outcomes" id="toc-counting-the-number-of-ways-to-select-a-subset-of-outcomes" class="nav-link" data-scroll-target="#counting-the-number-of-ways-to-select-a-subset-of-outcomes">Counting the number of ways to select a subset of outcomes</a></li>
   </ul></li>
   <li><a href="#special-distributions" id="toc-special-distributions" class="nav-link" data-scroll-target="#special-distributions">Special distributions</a>
   <ul class="collapse">
@@ -406,25 +406,13 @@ window.Quarto = {
 </header>
 
 
-<div class="page-overview callout callout-style-default callout-warning callout-titled" title="This page covers...">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>This page covers…
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li>definition of a probability distribution</li>
+<li>visual representations of a known probability distribution</li>
+<li>visual representations of an unknown probability distribution (empirical histogram)</li>
+<li>definition of a Binomial distribution and a Hypergeometric distribution :::</li>
 </ul>
-</div>
-</div>
-</div>
-<p><span class="dropcap">S</span>o far we have seen examples of outcome spaces, and descriptions of how we might compute probabilities, along with tabular representations of the probabilities. In this set of notes, we are going to talk about how to visualize probabilities using tables and histograms, as well as how to visualize simulations of outcomes from actions such as tossing coins or rolling dice.</p>
+<p><span class="dropcap">S</span>o far we have seen examples of outcome spaces, and descriptions of how we might compute probabilities, along with explicitly writing out the probabilities. In this set of notes, we are going to see how to <em>visualize</em> probabilities using tables and histograms, as well as how to visualize simulations of outcomes from actions such as tossing coins or rolling dice.</p>
 <section id="probability-distributions-and-histograms" class="level2">
 <h2 class="anchored" data-anchor-id="probability-distributions-and-histograms">Probability distributions and histograms</h2>
 <section id="probability-distributions" class="level3">
@@ -463,11 +451,11 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>What we have described in the table above is a <strong>probability distribution</strong>. We have shown how the total probability of one or 100% is <em>distributed</em> among all the possible outcomes. Since the ticket <span class="math inline">\(\fbox{2}\)</span> is twice as likely as any of the other outcomes, it gets twice as much of the probability.</p>
+<p>What we have described in the table above is a <strong>probability distribution</strong>. We have shown how the total probability of 1 (100%) is <em>distributed</em> among all the possible outcomes. Since the ticket <span class="math inline">\(\fbox{2}\)</span> is twice as likely as any of the other outcomes, it gets twice as much of the probability.</p>
 </section>
 <section id="probability-histograms" class="level3">
 <h3 class="anchored" data-anchor-id="probability-histograms">Probability histograms</h3>
-<p>A table is nice, but a visual representation would be even better.</p>
+<p>A table is nice, but maybe a visual representation would be even better.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -477,7 +465,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>We have represented the distribution in the form of a histogram, with the areas of the bars representing probabilities. Notice that this histogram is different from the ones we have seen before, since we didn’t collect any data. We just defined the probabilities based on the outcomes, and then drew bars with the heights being the probabilities. This type of <em>theoretical</em> histogram is called a <strong><em>probability histogram</em></strong>.</p>
+<p>We have represented the <em>distribution</em> in the form of a <strong>histogram</strong>, with the areas of the bars representing probabilities. Notice that this histogram is different from the ones we have seen before, since we didn’t collect any data. We just defined the probabilities based on the outcomes, and then drew bars with the heights being the probabilities. This type of <em>theoretical</em> histogram is called a <strong><em>probability histogram</em></strong>. Note that the heights add up to 1 (or 100%), and the width of each bar is 1, making the <em>area</em> of each bar the probability of seeing the value at the center.</p>
 </section>
 <section id="empirical-histograms" class="level3">
 <h3 class="anchored" data-anchor-id="empirical-histograms">Empirical histograms</h3>
@@ -527,14 +515,37 @@ window.Quarto = {
 </table>
 </div>
 </center>
-<p>What we have seen here is how when we draw at random, we get a sample that resembles the population, that is, a <em>representative sample</em>, but it isn’t <em>exactly</em> the true probabilities. If we increase our sample, however, say to 500, we will get something that more closely aligns with the truth.</p>
+<p>What we have seen here is how when we draw at random, we get a sample that resembles the population, that is, a <em>representative sample</em>, but it isn’t <em>exactly</em> the true probabilities. If we increase our sample, however, say to 500, we will get something that more closely aligns with the truth (Just like we did with the proportion of heads when we toss a coin over and over again in the last chapter.)</p>
 </section>
 <section id="examples" class="level3">
 <h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<section id="tossing-a-coin" class="level4">
+<h4 class="anchored" data-anchor-id="tossing-a-coin">Tossing a coin</h4>
+<p>Let’s think about the probabilities when we toss a coin. If we toss a <em>fair</em> coin once, we have two equally likely outcomes that are possible, “Heads” and “Tails”. In order to plot a histogram that visualizes the probability of the coin landing <strong>heads</strong>, we need to record each toss that lands heads as <span class="math inline">\(1\)</span> and each toss that lands tails as <span class="math inline">\(0\)</span>. This is like drawing a ticket from a box that has two tickets marked <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.</p>
+<p>What if the coin is <em><strong>not</strong></em> fair, and the chance of landing heads is <span class="math inline">\(\dfrac{2}{3}\)</span> or even <span class="math inline">\(\dfrac{3}{4}\)</span>! In these cases, the histogram’s bar over <span class="math inline">\(1\)</span> has to reflect this probability. Since the area of the bar is the probability, if the width was <span class="math inline">\(1\)</span>, the height of the bar over <span class="math inline">\(1\)</span> would be <span class="math inline">\(3/4\)</span>. Here are three probability histograms, one for a fair coin, and the other two for <em>biased</em> coins.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/prob-hist-coin-toss.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
+<p>Suppose we wanted to represent tossing a <strong>biased</strong> coin by drawing tickets from a box. What box would we use?</p>
+<p>For example, if the probability of the coin landing heads is <span class="math inline">\(\dfrac{3}{4}\)</span>, and we wanted to represent this by drawing from a box of tickets marked <span class="math inline">\(\fbox{0}\)</span> or <span class="math inline">\(\fbox{1}\)</span>, then we would need <em>three</em> tickets marked <span class="math inline">\(\fbox{1}\)</span>, and one ticket marked <span class="math inline">\(\fbox{0}\)</span>.</p>
+<p>What about if the probability of the coin landing heads was <span class="math inline">\(\dfrac{2}{3}\)</span>? What tickets would the corresponding box contain?</p>
+<p>What about if the probability of the coin landing heads was <span class="math inline">\(0.3\)</span>?</p>
+<details>
+<summary>
+Check your answer
+</summary>
+<ol type="1">
+<li><p>If the probability of heads is <span class="math inline">\(2/3\)</span>, then we need the probability of drawing a <span class="math inline">\(\fbox{1}\)</span> to be <span class="math inline">\(2/3\)</span>, so we would need two tickets marked <span class="math inline">\(\fbox{1}\)</span> and one marked <span class="math inline">\(\fbox{0}\)</span>.</p></li>
+<li><p>If the probability of the coin landing heads is <span class="math inline">\(0.3\)</span>, then we need <em>three</em> out of <strong>ten</strong> tickets in the box to be marked <span class="math inline">\(\fbox{1}\)</span> and the other seven to be <span class="math inline">\(\fbox{0}\)</span>.</p></li>
+</ol>
+</details>
+</section>
 <section id="rolling-a-pair-of-dice-and-summing-the-spots" class="level4">
 <h4 class="anchored" data-anchor-id="rolling-a-pair-of-dice-and-summing-the-spots">Rolling a pair of dice and summing the spots</h4>
 <p>The outcomes are already numbers, so we don’t need to represent them differently. We know that there are <span class="math inline">\(36\)</span> total possible equally likely outcomes when we roll a pair of dice, but when we add the spots, we have only 11 possible outcomes, which are <strong>not</strong> equally likely (the chance of seeing a <span class="math inline">\(2\)</span> is <span class="math inline">\(1/36\)</span>, but <span class="math inline">\(P(6)=5/36\)</span>).</p>
-<p>The probability histogram will have the possible outcomes listed on the x-axis, and bars of width <span class="math inline">\(1\)</span> over each possible outcome. The height of these bars will be the probability, so that the areas of the bars represent the probability of the value under the bar. The height, which is the probability, is written on the top of each bar.</p>
+<p>Again, the probability histogram will have the <strong>possible outcomes listed on the x-axis</strong>, and bars of width <span class="math inline">\(1\)</span> over each possible outcome. The height of these bars will be the probability, so that the <em>areas</em> of the bars represent the probability of the value under the bar. The height, which is the probability, is written on the top of each bar.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/prob-hist-sum-dice.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
@@ -636,7 +647,7 @@ Check your answer
 </figure>
 </div>
 </details>
-<p>We are going to introduce some special distributions. We have seen most of these distributions, but will introduce some names and definitions. Before we do this, let’s recall how to count the number of outcomes for various experiments such as tossing coins or drawing tickets from a box (both with and without replacement).</p>
+<p>We are going to introduce some special distributions. We have seen most of these distributions, but will introduce some names and definitions. Before we do this, let’s recall how to count the number of outcomes for various experiments such as tossing coins or drawing tickets from a box (both <em>with</em> and <em>without</em> replacement).</p>
 </section>
 </section>
 </section>
@@ -648,7 +659,9 @@ Check your answer
 <p><img src="images/geni-clothes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
 </figure>
 </div>
-<p>This example seems trivial, but it illustrates the basic principle of counting: we get the total number of possible outcomes of an action that has multiple steps, by multiplying together the number of outcomes for each step. All the counting that follows in our notes applies this rule. For example, let’s suppose we are drawing tickets from a box which has tickets marked with the letters <span class="math inline">\(\fbox{C}\)</span>, <span class="math inline">\(\fbox{R}\)</span>, <span class="math inline">\(\fbox{A}\)</span>, <span class="math inline">\(\fbox{T}\)</span>, <span class="math inline">\(\fbox{E}\)</span>, and say we draw <strong>three</strong> letters <em>with</em> replacement (that means that we put each drawn ticket back, so the box is the same for each draw). How many possible sequences of three letters can we get? Using the counting rule,since we have <span class="math inline">\(5\)</span> choices for the first letter, <span class="math inline">\(5\)</span> for the second, and <span class="math inline">\(5\)</span> for the third, we will have a total of <span class="math inline">\(5\times 5 \times 5 = 125\)</span> possible words, allowing for repeated letters (that means that <span class="math inline">\(CCC\)</span> is a possible outcome).</p>
+<p>This example seems trivial, but it illustrates the basic principle of counting: we get the total number of possible outcomes of an action that has multiple steps, by multiplying together the number of outcomes for each step. This is called the fundamental rule of counting, and you can check it for yourself by drawing a tree with the possible outcomes as shown for Geni above.</p>
+<p>All the counting that follows in our notes applies this rule.</p>
+<p>For example, let’s suppose we are drawing tickets from a box which has tickets marked with the letters <span class="math inline">\(\fbox{C}\)</span>, <span class="math inline">\(\fbox{R}\)</span>, <span class="math inline">\(\fbox{A}\)</span>, <span class="math inline">\(\fbox{T}\)</span>, <span class="math inline">\(\fbox{E}\)</span>, and say we draw <strong>three</strong> letters <em>with</em> replacement (that means that we put each drawn ticket back, so the box is the same for each draw). How many possible sequences of three letters can we get? Using the counting rule,since we have <span class="math inline">\(5\)</span> choices for the first letter, <span class="math inline">\(5\)</span> for the second, and <span class="math inline">\(5\)</span> for the third, we will have a total of <span class="math inline">\(5\times 5 \times 5 = 125\)</span> possible words, allowing for repeated letters (that means that <span class="math inline">\(CCC\)</span> is a possible outcome).</p>
 <p>How many possible words are there if we draw <strong>without</strong> replacement? That is, we <em>don’t</em> put the drawn ticket back?</p>
 <details>
 <summary>
@@ -657,13 +670,28 @@ Check your answer
 <p>We have <span class="math inline">\(5\)</span> choices for the first letter, <span class="math inline">\(4\)</span> for the second, and <span class="math inline">\(3\)</span> for the third, leading to <span class="math inline">\(5 \times 4 \times 3 = 60\)</span> possible outcomes or words. Note that here we count the word <span class="math inline">\(CRA\)</span> as <em>different</em> from the word <span class="math inline">\(CAR\)</span>. That is, the order in which we draw the letters matters.</p>
 <p>We usually write the quantity <span class="math inline">\(5 \times 4 \times 3\)</span> as <span class="math inline">\(\displaystyle \frac{5!}{2!}\)</span> where <span class="math inline">\(n! = n\times(n-1)\times(n-2)\times \ldots \times 3 \times 2 \times 1\)</span></p>
 </details>
-<section id="counting-the-number-of-ways-to-select-a-subset" class="level3">
-<h3 class="anchored" data-anchor-id="counting-the-number-of-ways-to-select-a-subset">Counting the number of ways to select a subset</h3>
-<p>What if, in this example of selecting <span class="math inline">\(3\)</span> letters without replacement from <span class="math inline">\(\fbox{C}\)</span>, <span class="math inline">\(\fbox{R}\)</span>, <span class="math inline">\(\fbox{A}\)</span>, <span class="math inline">\(\fbox{T}\)</span>, <span class="math inline">\(\fbox{E}\)</span>, the order does <em>not</em> matter - we don’t count the order in which the letters , just <em>which</em> letters were selected, that is, only the letters themselves matter. For example, the words <span class="math inline">\(CRA,\,CAR,\,ARC,\,ACR,\,RAC,\,RCA\)</span> all count as the <em>same</em> word, so we will count all <span class="math inline">\(6\)</span> words as the <em>same subset</em> of letters. We have to take the number that we got from earlier and divide it by the number of words that can be made from <span class="math inline">\(3\)</span> letters (number of rearrangements), which is <span class="math inline">\(3 \times 2\times 1\)</span>. This gives us the number of ways that we can <strong><em>choose</em></strong> <span class="math inline">\(3\)</span> letters out of <span class="math inline">\(5\)</span>, which is <span class="math display">\[
+<section id="counting-the-number-of-ways-to-select-a-subset-of-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="counting-the-number-of-ways-to-select-a-subset-of-outcomes">Counting the number of ways to select a subset of outcomes</h3>
+<p>Selecting a <em>subset</em> means that we only care about <em>which</em> tickets we get, not the order in which we get them. For example, while playing standard five card poker, all that matters is <em>which</em> cards you have in your hand, not in what order you got them.</p>
+<p>What if, in this example of selecting <span class="math inline">\(3\)</span> letters <em>without</em> replacement from <span class="math inline">\(\fbox{C}\)</span>, <span class="math inline">\(\fbox{R}\)</span>, <span class="math inline">\(\fbox{A}\)</span>, <span class="math inline">\(\fbox{T}\)</span>, <span class="math inline">\(\fbox{E}\)</span>, the order does <em>not</em> matter - we don’t count the order in which the letters , just <em>which</em> letters were selected, that is, only the letters themselves matter. For example, the words <span class="math inline">\(CRA,\,CAR,\,ARC,\,ACR,\,RAC,\,RCA\)</span> all count as the <em>same</em> word, so we will count all <span class="math inline">\(6\)</span> words as the <em>same subset</em> of letters. We have to take the number that we got from earlier and divide it by the number of words that can be made from <span class="math inline">\(3\)</span> letters (number of rearrangements), which is <span class="math inline">\(3 \times 2\times 1\)</span>. This gives us the number of ways that we can <strong><em>choose</em></strong> <span class="math inline">\(3\)</span> letters out of <span class="math inline">\(5\)</span>, which is <span class="math display">\[
 \frac{\left(5!/2!\right)}{3!} = \frac{5!}{2!\; 3!},
 \]</span></p>
-<p>and is called the number of <strong><em>combinations</em></strong> of <span class="math inline">\(5\)</span> things taken <span class="math inline">\(3\)</span> at a time.</p>
-<p>To recap: when we draw <span class="math inline">\(k\)</span> items from <span class="math inline">\(n\)</span> items <em>without</em> replacement, we have two cases: either we care in what order we draw the <span class="math inline">\(k\)</span> items and the different arrangements of the <em>same</em> set of <span class="math inline">\(k\)</span> items have to be counted separately. The number of such arrangements is called the <em>permutations</em> of <span class="math inline">\(n\)</span> things taken <span class="math inline">\(k\)</span> at a time. In the example above, we have <span class="math inline">\(5 \times 4\times 3 = 60\)</span> ways of choosing <span class="math inline">\(3\)</span> things out of <span class="math inline">\(5\)</span> when we count every sequence as different.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>OPTIONAL: Permutations and Combinations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In this note, we see how to compute the number of ways we can draw tickets from a box when we are sampling without replacement. We will use these numbers later, but you do not need to know how to derive them. Please read this only if you are interested in how we get these numbers.</p>
+<p>The number we computed above is called the number of <strong><em>combinations</em></strong> of <span class="math inline">\(5\)</span> things taken <span class="math inline">\(3\)</span> at a time.</p>
+<p>To recap: when we draw <span class="math inline">\(k\)</span> items from <span class="math inline">\(n\)</span> items <em>without</em> replacement, we have <strong>two</strong> cases: either we care in what order we draw the <span class="math inline">\(k\)</span> items (so the different arrangements of the <em>same</em> set of <span class="math inline">\(k\)</span> items have to be counted separately), or we don’t, and we count all possible orders of drawing as one.</p>
+<p>In the first case, the number of such arrangements is called the <em>permutations</em> of <span class="math inline">\(n\)</span> things taken <span class="math inline">\(k\)</span> at a time. In the example above, we have <span class="math inline">\(5 \times 4\times 3 = 60\)</span> ways of choosing <span class="math inline">\(3\)</span> things out of <span class="math inline">\(5\)</span> when we count every sequence as different.</p>
 <div class="def">
 <dl>
 <dt><strong>Permutations</strong></dt>
@@ -691,23 +719,27 @@ Check your answer
 </summary>
 <p>When we deal cards, order does not matter, so this number is <span class="math inline">\(\displaystyle \binom{52}{5} = \frac{52!}{(52-5)!5!} = 2,598,960\)</span>.</p>
 </details>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="special-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="special-distributions">Special distributions</h2>
-<p>There are some important <em>special</em> distributions that every student of probability must know. Here are a few, and we will learn some more later in the course. We have already seen most of these distributions. All we are doing now is identifying their names. First, we need a vocabulary term:</p>
+<p>There are some important <em>special</em> distributions that every student of probability must know. Here are a few, and we will learn some more later in the course. These should all be familiar as we have seen them before, but we are now giving them their t. All we are doing now is identifying their names. First, we need a vocabulary term:</p>
 <div class="def">
 <dl>
 <dt><strong>Parameter of a probability distribution</strong></dt>
 <dd>
-A constant(s) number associated with the distribution. If you know the parameters of a probability distribution, then you can compute the probabilities of all the possible outcomes.
+This is some constant(s) number associated with the distribution. If you know the <em>parameters</em> of a probability distribution, then you can compute the probabilities of all the possible outcomes.
 </dd>
 </dl>
 </div>
-<p>Each of the distributions we will cover below has a parameter(s) associated with it.</p>
+<p>Each of the distributions we list below has a parameter(s) associated with it.</p>
 <section id="discrete-uniform-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="discrete-uniform-distribution">Discrete uniform distribution</h3>
-<p>This is the probability distribution over the numbers <span class="math inline">\(1, 2, 3 \ldots, n\)</span>. We have seen it for dice above. This probability distribution is called the <em>discrete uniform probability distribution</em>, since each possible outcome has the same probability, that is, <span class="math inline">\(1/n\)</span>. We call <span class="math inline">\(n\)</span> the <em>parameter</em> of the discrete uniform distribution.</p>
+<p>This is one of the <em>simplest</em> probability distributions. We say that this distribution is <em>over the numbers</em> <span class="math inline">\(1, 2, 3 \ldots, n\)</span> and assigns the <strong>same</strong> probability (<span class="math inline">\(\dfrac{1}{n}\)</span>) to each of the numbers. We have seen it for the experiment of rolling a fair six-sided die, or for drawing a ticket from a box with <span class="math inline">\(n\)</span> tickets labeled <span class="math inline">\(\fbox{1}, \fbox{2}, \fbox{3}, \ldots\)</span> etc.</p>
+<p>This probability distribution is called the <em>discrete uniform probability distribution</em>, since each possible outcome has the same probability of <span class="math inline">\(1/n\)</span>. Here <span class="math inline">\(n\)</span> is the <em>parameter</em> of the discrete uniform distribution.</p>
 </section>
 <section id="bernoulli-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="bernoulli-distribution">Bernoulli distribution</h3>
@@ -735,41 +767,76 @@ Check your answer
 </div>
 <p>Note that the outcomes <span class="math inline">\(HHT, HTH, THH\)</span> all have the same probability, as do the outcomes <span class="math inline">\(TTH, THT, HTT\)</span>, since the probability only depends on how many heads and how many tails we see in three tosses, not the order in which we see them. We get the probability of 2 heads in 3 tosses by adding the probabilities of all three outcomes <span class="math inline">\(HHT, HTH, THH\)</span>, since they are mutually exclusive. (In three tosses, we can see exactly <em>one</em> of the possible 8 sequences listed above.)</p>
 </details>
-<p>More generally, suppose that we have <span class="math inline">\(n\)</span> <em>independent</em> trials, where each trial can either result in a “success” (like drawing a ticket marked <span class="math inline">\(\fbox{1}\)</span>) with probability <span class="math inline">\(p\)</span>; or a “failure” (like drawing <span class="math inline">\(\fbox{0}\)</span>) with probability <span class="math inline">\(1-p\)</span>. In the case of the Bernoulli distribution, <span class="math inline">\(n = 1\)</span>.</p>
+<p>More generally, suppose that we have <span class="math inline">\(n\)</span> <em>independent</em> trials, where each trial can either result in a “success” (like drawing a ticket marked <span class="math inline">\(\fbox{1}\)</span>) with probability <span class="math inline">\(p\)</span>; or a “failure” (like drawing <span class="math inline">\(\fbox{0}\)</span>) with probability <span class="math inline">\(1-p\)</span>.</p>
+<!--In the case of the Bernoulli distribution, $n = 1$. -->
+<p>The <strong>probability of <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials</strong> is given by the following formula: <span class="math display">\[
+\binom{n}{k} \times p^k \times (1-p)^{n-k}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>OPTIONAL: Deriving the Binomial formula
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>The multiplication rule for independent events tells us how to compute the probability of a sequence that consisted of the first <span class="math inline">\(k\)</span> trials being successes and the rest of the <span class="math inline">\(n-k\)</span> trials being failures. The probability of this <em>particular</em> sequence of <span class="math inline">\(k\)</span> successes followed by <span class="math inline">\(n-k\)</span> failures is (by multiplying their probabilities) given by: <span class="math display">\[
 p^k \times (1-p)^{n-k}
 \]</span> Now this is the probability of <em>one</em> particular sequence: <span class="math inline">\(SSS\ldots SSFF \ldots FFF\)</span>, but as we saw in the example above, only the <em>number</em> of successes and failures matter, not the particular order. So <em>every</em> sequence of <span class="math inline">\(n\)</span> trials in which we have <span class="math inline">\(k\)</span> successes and <span class="math inline">\(n-k\)</span> failures has the same probability.</p>
 <p>How many such sequences are there? We can count them using our rules above. We have <span class="math inline">\(n\)</span> spots in the sequence, of which <span class="math inline">\(k\)</span> have to be successes. The number of such sequences of length <span class="math inline">\(n\)</span> consisting of <span class="math inline">\(k\)</span> <span class="math inline">\(S\)</span>’s and <span class="math inline">\(n-k\)</span> <span class="math inline">\(F\)</span>’s) is given by <span class="math inline">\(\displaystyle \binom{n}{k}\)</span>. Each such sequence has probability <span class="math inline">\(\displaystyle p^k \times (1-p)^{n-k}\)</span>. Adding up all these <span class="math inline">\(\displaystyle \binom{n}{k}\)</span> probabilities (of each such sequence) gives us the formula for the <strong>probability of <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials</strong>: <span class="math display">\[
 \binom{n}{k} \times p^k \times (1-p)^{n-k}
 \]</span></p>
+</div>
+</div>
+</div>
 <p>The probability distribution described by the above formula is called the <strong>binomial distribution</strong>. It is named after <span class="math inline">\(\displaystyle \binom{n}{k}\)</span>, which is called the <em>binomial coefficient.</em> The binomial distribution has <em>two</em> parameters: the number of trials <span class="math inline">\(n\)</span> and the probability of success on each trial, <span class="math inline">\(p\)</span>.</p>
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
-<p>Toss a weighted coin, where <span class="math inline">\(P(\text{heads}) = .7\)</span> five times. What is the probability that you see exactly four heads across these five tosses?</p>
+<p>Toss a weighted coin five times, where <span class="math inline">\(P(\text{heads}) = 0.7\)</span>. What is the probability that you see <em>exactly</em> <strong>four</strong> heads across these five tosses?</p>
 <details>
 <summary>
 Check your answer
 </summary>
-<p>Across five trials, we need to see four heads and one tails. Since each toss is independent, one possible way to obtain what we are looking for is <span class="math inline">\(HHHHT\)</span>. This is given by</p>
-<p><span class="math display">\[
+<!--Across five trials, we need to see four heads and one tails. Since each toss is independent, one possible way to obtain what we are looking for is $HHHHT$. This is given by
+
+$$
 (.7)^4 \times (.3)^1
-\]</span></p>
-<p>However, we need to consider all the possible orderings of tosses that involve four heads and one tail. This is given by the binomial coefficient <span class="math inline">\(\binom{5}{4}\)</span>. Our final probability is therefore:</p>
-<span class="math display">\[
-\binom{5}{4} (.7)^4 \times (.3)^1 \approx 0.36
+$$
+ 
+However, we need to consider all the possible orderings of tosses that involve four heads and one tail. This is given by the binomial coefficient $\binom{5}{4}$. Our final probability is therefore:
+-->
+Using the Binomial formula from above, <span class="math inline">\(n = 5\)</span>. We define <span class="math inline">\(k = 4\)</span> to be the number of successes whose probability we want to compute. Plugging these values into the Binomial formula gives, using <span class="math inline">\(p = 0.7\)</span> and <span class="math inline">\(1-p = 0.3\)</span>, we get the probability of exactly 4 heads in 5 tosses to be: <span class="math display">\[
+\binom{5}{4} (0.7)^4 \times (0.3)^1 \approx 0.36
 \]</span>
 </details>
 </section>
 </section>
 <section id="hypergeometric-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="hypergeometric-distribution">Hypergeometric distribution</h3>
-<p>In the binomial scenario described above, we had <span class="math inline">\(n\)</span> <strong>independent</strong> trials, where each trial resulted in a success or a failure. This is like sampling <strong>with</strong> replacement from a box of <span class="math inline">\(0\)</span>’s and <span class="math inline">\(1\)</span>’s. Now consider the situation when we have a box with <span class="math inline">\(N\)</span> tickets marked with either <span class="math inline">\(\fbox{0}\)</span> or <span class="math inline">\(\fbox{1}\)</span>.</p>
-<p>As usual, the ticket marked <span class="math inline">\(\fbox{1}\)</span> represents a success. Say the box has <span class="math inline">\(G\)</span> tickets marked <span class="math inline">\(\fbox{1}\)</span> (and therefore <span class="math inline">\(N-G\)</span> tickets marked <span class="math inline">\(\fbox{0}\)</span> representing failures). Suppose we draw a <em>simple random sample</em> of size <span class="math inline">\(n\)</span> from this box. A simple random sample is a sample drawn without replacement, and on each draw, every ticket is equally likely to be selected from among the remaining tickets. Then, the probability of drawing a ticket marked <span class="math inline">\(\fbox{1}\)</span> <em>changes</em> from draw to draw.</p>
-<p>What is the probability that we will have <em>exactly</em> <span class="math inline">\(k\)</span> successes among these <span class="math inline">\(n\)</span> draws? The probability distribution that gives us this answer is given by</p>
-<p><span class="math display">\[
+<p>In the binomial scenario described above, we had <span class="math inline">\(n\)</span> <strong>independent</strong> trials, where each trial resulted in a success or a failure. This is like drawing <span class="math inline">\(n\)</span> times <strong>with</strong> replacement from a box of tickets marked <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>.</p>
+<p>Now consider the situation when we have a box with <span class="math inline">\(N\)</span> tickets marked with either <span class="math inline">\(\fbox{0}\)</span> or <span class="math inline">\(\fbox{1}\)</span>, and we draw <span class="math inline">\(n\)</span> times from this box <em><strong>without</strong></em> replacement.</p>
+<p>As usual, the ticket marked <span class="math inline">\(\fbox{1}\)</span> represents a success. Say the box has <span class="math inline">\(G\)</span> tickets marked <span class="math inline">\(\fbox{1}\)</span> (and therefore <span class="math inline">\(N-G\)</span> tickets marked <span class="math inline">\(\fbox{0}\)</span> representing failures). Suppose we draw a <span class="math inline">\(n\)</span> times from this box. The <span class="math inline">\(n\)</span> tickets we have drawn (so we must have <span class="math inline">\(n \le N\)</span>) form a “sample” which is called a <em>“simple random sample”</em>. A simple random sample is just the result of a bunch of draws without replacement such that on each draw, every ticket is <em><strong>equally likely</strong></em> to be selected from among the <em>remaining</em> tickets. Thus, the probability of drawing a ticket marked <span class="math inline">\(\fbox{1}\)</span> <em>changes</em> from draw to draw.</p>
+<p>What is the probability that we will have <em>exactly</em> <span class="math inline">\(k\)</span> successes among these <span class="math inline">\(n\)</span> draws? The formula for this probability is: <span class="math display">\[
 \frac{\binom{G}{k}\times \binom{N-G}{n-k}}{\binom{N}{n}}
 \]</span></p>
-<p>and is called the <strong>hypergeometric distribution</strong>. It has <em>three</em> parameters, <span class="math inline">\(n\)</span>, <span class="math inline">\(N\)</span> and <span class="math inline">\(G\)</span>. This is a wacky formula, so let’s explain it piece by piece, starting with the numerator and then moving to the denominator!</p>
+<p>The distribution of the probabilities defined by this formula is called the <strong>Hypergeometric distribution</strong>. It has <em>three</em> parameters, <span class="math inline">\(n\)</span>, <span class="math inline">\(N\)</span> and <span class="math inline">\(G\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>OPTIONAL: Deriving the Hypergeometric formula
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is a wacky formula, so let’s explain it piece by piece, starting with the numerator and then moving to the denominator!</p>
 <section id="numerator" class="level4">
 <h4 class="anchored" data-anchor-id="numerator">Numerator</h4>
 <p>We count the <em>number of samples drawn without replacement that have <span class="math inline">\(k\)</span> tickets marked <span class="math inline">\(\fbox{1}\)</span>.</em> Since there are <span class="math inline">\(G\)</span> tickets marked <span class="math inline">\(\fbox{1}\)</span> in the box, and <span class="math inline">\(\displaystyle \binom{G}{k}\)</span> ways to choose exactly <span class="math inline">\(k\)</span> of them. Similarly, there are <span class="math inline">\(N-G\)</span> tickets marked <span class="math inline">\(\fbox{0}\)</span> in the box, and <span class="math inline">\(\displaystyle \binom{N-G}{n-k}\)</span> ways to choose exactly <span class="math inline">\(n-k\)</span> of them. The total number of ways to have <span class="math inline">\(k\)</span> <span class="math inline">\(\fbox{1}\)</span>s and <span class="math inline">\(n-k\)</span> <span class="math inline">\(\fbox{0}\)</span>s is therefore (by multiplication):</p>
@@ -781,10 +848,13 @@ Check your answer
 <h4 class="anchored" data-anchor-id="denominator">Denominator</h4>
 <p>We count the <em>total number of simple random samples of size <span class="math inline">\(n\)</span> that can be drawn from a pool of <span class="math inline">\(N\)</span> observations</em>. This is given by <span class="math inline">\(\displaystyle \binom{N}{n}\)</span>.</p>
 </section>
+</div>
+</div>
+</div>
 <section id="example-1" class="level4">
 <h4 class="anchored" data-anchor-id="example-1">Example</h4>
-<p>Say we have a box of <span class="math inline">\(10\)</span> tickets consisting of <span class="math inline">\(4\)</span> tickets marked <span class="math inline">\(\fbox{0}\)</span> and <span class="math inline">\(6\)</span> tickets marked <span class="math inline">\(\fbox{1}\)</span>, and draw a simple random sample of size <span class="math inline">\(3\)</span> from this box.</p>
-<p>What is the probability that <em>two</em> of the tickets drawn are marked <span class="math inline">\(\fbox{1}\)</span>?</p>
+<p>Say we have a box of <span class="math inline">\(10\)</span> tickets consisting of <span class="math inline">\(4\)</span> tickets marked <span class="math inline">\(\fbox{0}\)</span> and <span class="math inline">\(6\)</span> tickets marked <span class="math inline">\(\fbox{1}\)</span>, and draw three times from this box without replacement.</p>
+<p>What is the probability that <em>exactly two</em> of the tickets drawn are marked <span class="math inline">\(\fbox{1}\)</span>?</p>
 <details>
 <summary>
 Check your answer
@@ -805,27 +875,29 @@ Check your answer
 <h3 class="anchored" data-anchor-id="binomial-vs-hypergeometric-distributions">Binomial vs Hypergeometric distributions</h3>
 <p>Both these distributions deal with:</p>
 <ul>
-<li><p>a <em>fixed</em> number of trials, or instances of the random experiment;</p></li>
-<li><p>outcomes that are deemed either successes or failures.</p></li>
+<li><p>A <strong>fixed</strong> number of trials, or instances of the random experiment;</p></li>
+<li><p><strong>Two</strong> kinds of outcomes, one of which is defined to be a <em>“success”</em>, and the other is defined to be a <em>“failure”</em>.</p></li>
 </ul>
-<p>The difference is that for a binomial random variable, the probability of a success stays the <em>same</em> for each trial, and for a hypergeometric random variable, the probability <em>changes</em> with each trial.</p>
-<p><a href="../../3-generalization/03-probability-dsns/tutorial.html" style="fontsize: 1.5em">Continue on to the tutorial portion of the notes <i class="fa-solid fa-arrow-right-long fa-xl" aria-label="arrow-right-long"></i></a></p>
+<p>The difference is that for a binomial distribution, we model drawing <strong>n times with</strong> replacement from a box with all its tickets marked <span class="math inline">\(\fbox{0}\)</span> or <span class="math inline">\(\fbox{1}\)</span> and counting the number <span class="math inline">\(\fbox{1}\)</span>’s we drew.</p>
+<p>For a hypergeometric distribution, we also draw <strong>n times</strong> from a box with tickets marked <span class="math inline">\(\fbox{0}\)</span> or <span class="math inline">\(\fbox{1}\)</span> and counting the number <span class="math inline">\(\fbox{1}\)</span>’s we drew, but we draw <em><strong>without</strong></em> replacement.</p>
+<p>This means that for a binomial distribution, the probability of a success stays the <em>same</em> for each trial, while for a hypergeometric distribution, the probability of a success changes for each trial.</p>
+<!--[Continue on to the tutorial portion of the notes  ](tutorial.qmd){style="fontsize: 1.5em"}-->
 </section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <ul>
-<li>Defined probability distributions</li>
-<li>Stated the basic counting principle and introduced permutations and combinations</li>
+<li>We defined probability <em>distributions</em></li>
+<li>Visualized probability distributions using a special kind of plot called a probability histogram</li>
+<li>Stated the fundamental rule of counting</li>
 <li>Defined some famous named distributions (Bernoulli, discrete uniform, binomial, hypergeometric)</li>
-<li>Visualized probability distributions using probability histograms</li>
 <li>Looked at the relationship between empirical histograms and probability histograms.</li>
-<li>In the tutorial we will:
-<ul>
-<li>Introduce functions <code>rep()</code>, <code>replicate()</code>, <code>geom_col()</code></li>
-<li>Simulate random experiments such as die rolls and coin tosses to visualize the distributions.</li>
-</ul></li>
 </ul>
+<!--
+- In the tutorial we will:
+  - Introduce functions `rep()`, `replicate()`, `geom_col()`
+  - Simulate random experiments such as die rolls and coin tosses to visualize the distributions.
+-->
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../3-generalization/03-probability-dsns/tutorial.html" class="tutorial-nav-next">Continue on to the tutorial ⮕</a></p>
 </div>
