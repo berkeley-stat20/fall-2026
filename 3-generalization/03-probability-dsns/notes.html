@@ -324,6 +324,12 @@ window.Quarto = {
  <span class="menu-text">Random Variables</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../3-generalization/05-ev-se/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Expected Value and Variance</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -691,6 +697,9 @@ Check your answer
 <p>What if, in this example of selecting <span class="math inline">\(3\)</span> letters <em>without</em> replacement from <span class="math inline">\(\fbox{C}\)</span>, <span class="math inline">\(\fbox{R}\)</span>, <span class="math inline">\(\fbox{A}\)</span>, <span class="math inline">\(\fbox{T}\)</span>, <span class="math inline">\(\fbox{E}\)</span>, the order does <em>not</em> matter - we don’t count the <em>order</em> in which the letters are selected, just <em>which</em> letters were selected, that is, only the letters themselves matter. For example, the words <span class="math inline">\(CRA,\,CAR,\,ARC,\,ACR,\,RAC,\,RCA\)</span> all count as the <em>same</em> word, so we will count all <span class="math inline">\(6\)</span> words as the <em>same subset</em> of letters. We have to take the number that we got from earlier and divide it by the number of words that can be made from <span class="math inline">\(3\)</span> letters (number of rearrangements), which is <span class="math inline">\(3 \times 2\times 1\)</span>. This gives us the number of ways that we can <strong><em>choose</em></strong> <span class="math inline">\(3\)</span> letters out of <span class="math inline">\(5\)</span>, which is <span class="math display">\[
 \frac{\left(5!/2!\right)}{3!} = \frac{5!}{2!\; 3!},
 \]</span></p>
+<p>In general, the number of ways we can choose a <strong>subset</strong> of <span class="math inline">\(k\)</span> things out of <span class="math inline">\(n\)</span> possible things (when we only care about <em>which things</em> is chosen, not their <em>order</em>) is given by <span class="math display">\[
+\binom{n}{k} = \frac{n!}{k!\times (n-k)!}
+\]</span> and is read as “<em>n choose k</em>”.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -809,7 +818,10 @@ p^k \times (1-p)^{n-k}
 </div>
 </div>
 </div>
-<p>The probability distribution described by the above formula is called the <strong>binomial distribution</strong>. It is named after <span class="math inline">\(\displaystyle \binom{n}{k}\)</span>, which is called the <em>binomial coefficient.</em> The binomial distribution has <em>two</em> parameters: the number of trials <span class="math inline">\(n\)</span> and the probability of success on each trial, <span class="math inline">\(p\)</span>.</p>
+<p>The probability distribution described by the above formula is called the <strong>binomial distribution</strong>. It is named after <span class="math inline">\(\displaystyle \binom{n}{k}\)</span>, which is called the <em>binomial coefficient</em> and is defined by: <span class="math display">\[
+\binom{n}{k} = \frac{n!}{k!\times (n-k)!}
+\]</span></p>
+<p>The binomial distribution has <em>two</em> parameters: the number of trials <span class="math inline">\(n\)</span> and the probability of success on each trial, <span class="math inline">\(p\)</span>.</p>
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
 <p>Toss a weighted coin five times, where <span class="math inline">\(P(\text{heads}) = 0.7\)</span>. What is the probability that you see <em>exactly</em> <strong>four</strong> heads across these five tosses?</p>
