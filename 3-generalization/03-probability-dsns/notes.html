@@ -500,7 +500,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>On the x-axis of this histogram, we have the ticket values; on the y-axis, we have the proportion of times that this ticket was selected out of the 50 with-replacement draws we took. We can see that the sample proportions looks similar to the values given by the probability distribution, but there are some differences. For example, we appear to have drawn more <span class="math inline">\(3\)</span>s and fewer <span class="math inline">\(4\)</span>s than what was to be expected. It turns out that the counts and proportions of the drawn tickets are:</p>
+<p>On the x-axis of this histogram, we have the ticket values; on the y-axis, we have the proportion of times that this ticket was selected out of the 50 with-replacement draws we took. We can see that the sample proportions look similar to the values given by the probability distribution, but there are some differences. For example, we appear to have drawn more <span class="math inline">\(3\)</span>s and fewer <span class="math inline">\(4\)</span>s than what was to be expected. It turns out that the counts and proportions of the drawn tickets are:</p>
 <center>
 <div style="width:300px">
 <table class="caption-top table">
@@ -689,8 +689,21 @@ Check your answer
 Check your answer
 </summary>
 <p>We have <span class="math inline">\(5\)</span> choices for the first letter, <span class="math inline">\(4\)</span> for the second, and <span class="math inline">\(3\)</span> for the third, leading to <span class="math inline">\(5 \times 4 \times 3 = 60\)</span> possible outcomes or words. Note that here we count the word <span class="math inline">\(CRA\)</span> as <em>different</em> from the word <span class="math inline">\(CAR\)</span>. That is, the order in which we draw the letters matters.</p>
-<p>We usually write the quantity <span class="math inline">\(5 \times 4 \times 3\)</span> as <span class="math inline">\(\displaystyle \frac{5!}{2!}\)</span> where <span class="math inline">\(n! = n\times(n-1)\times(n-2)\times \ldots \times 3 \times 2 \times 1\)</span></p>
+We usually write the quantity <span class="math inline">\(5 \times 4 \times 3\)</span> as <span class="math inline">\(\displaystyle \frac{5!}{2!}\)</span>.
 </details>
+<section id="talking-about-factorials" class="level4">
+<h4 class="anchored" data-anchor-id="talking-about-factorials">Talking about factorials</h4>
+<p>Let’s briefly digress to admire the quantity we have just encountered. We won’t test you on this (you just need to know how to compute a factorial for not very large <span class="math inline">\(n\)</span>), but these numbers can get <em>mind-bendingly</em> large.</p>
+<p><span class="math inline">\(n! = n\times(n-1)\times(n-2)\times \ldots \times 3 \times 2 \times 1\)</span>. We read <span class="math inline">\(n!\)</span> as <em>“n-factorial”</em>, and <strong>define</strong> <span class="math inline">\(0\)</span>-factorial to be 1 (<span class="math inline">\(0!=1\)</span>). <span class="math inline">\(n!\)</span> is a quantity that is denoted with a very <em>apt</em> symbol, actually. One of surprise! And perhaps this is because it blows up very quickly. You can try it out in <code>R</code> by using the function <code>factorial()</code>. For small numbers, there is no surprise: <span class="math inline">\(1! = 1,\, 2! = 2,\, 3! = 6,\, 4! = 24, \, 5! = 120\)</span>. But <span class="math inline">\(6!=720\)</span> gets close to <span class="math inline">\(1,000\)</span>, and <span class="math inline">\(7!\)</span> is over <span class="math inline">\(5,000\)</span>!! We begin to see why using an exclamation point might be well-deserved. Factorials appear in mathematics in many situations, and especially in counting. How big would you guess <span class="math inline">\(20!\)</span> to be? What about <span class="math inline">\(100!\)</span>?</p>
+<details>
+<summary>
+Check your answer
+</summary>
+<p><code>factorial(20) = 2.432902e+18</code>, which is scientific notation for about <span class="math inline">\(2,432,902,000,000,000,000\)</span>, or roughly <span class="math inline">\(2.43\)</span> quintillion (<span class="math inline">\(2.43\)</span> billion billion). The “<code>e+18</code>” stands for <span class="math inline">\(10^{18}\)</span>.</p>
+<p>If you think about it, <span class="math inline">\(100\)</span> isn’t such a big number. But what about <span class="math inline">\(100!\)</span>?</p>
+<p><code>factorial(100) = 9.332622e+157</code>. Just to put this number in perspective, the number of <em>atoms</em> in the observable universe is estimated to be between <span class="math inline">\(10^{78}\)</span> to <span class="math inline">\(10^{82}\)</span>.</p>
+</details>
+</section>
 <section id="counting-the-number-of-ways-to-select-a-subset-of-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="counting-the-number-of-ways-to-select-a-subset-of-outcomes">Counting the number of ways to select a subset of outcomes</h3>
 <p>Selecting a <em>subset</em> means that we only care about <em>which</em> tickets we get, not the order in which we get them. For example, while playing standard five card poker, all that matters is <em>which</em> cards you have in your hand, not in what order you got them.</p>
@@ -715,12 +728,12 @@ Check your answer
 <p>In this note, we see how to compute the number of ways we can draw tickets from a box when we are sampling without replacement. We will use these numbers later, but you do not need to know how to derive them. Please read this only if you are interested in how we get these numbers.</p>
 <p>The number we computed above is called the number of <strong><em>combinations</em></strong> of <span class="math inline">\(5\)</span> things taken <span class="math inline">\(3\)</span> at a time.</p>
 <p>To recap: when we draw <span class="math inline">\(k\)</span> items from <span class="math inline">\(n\)</span> items <em>without</em> replacement, we have <strong>two</strong> cases: either we care in what order we draw the <span class="math inline">\(k\)</span> items (so the different arrangements of the <em>same</em> set of <span class="math inline">\(k\)</span> items have to be counted separately), or we don’t, and we count all possible orders of drawing as one.</p>
-<p>In the first case, the number of such arrangements is called the <em>permutations</em> of <span class="math inline">\(n\)</span> things taken <span class="math inline">\(k\)</span> at a time. In the example above, we have <span class="math inline">\(5 \times 4\times 3 = 60\)</span> ways of <strong>arranging</strong> <span class="math inline">\(3\)</span> things out of <span class="math inline">\(5\)</span> when we count every sequence as different.</p>
+<p>In the first case, the number of such arrangements is called the <strong><em>permutations</em></strong> of <span class="math inline">\(n\)</span> things taken <span class="math inline">\(k\)</span> at a time. In the example above, we have <span class="math inline">\(5 \times 4\times 3 = 60\)</span> ways of <strong>arranging</strong> <span class="math inline">\(3\)</span> things out of <span class="math inline">\(5\)</span> when we count every sequence as different.</p>
 <div class="def">
 <dl>
 <dt><strong>Permutations</strong></dt>
 <dd>
-The number of possible arrangements or sequences of <span class="math inline">\(n\)</span> things taken <span class="math inline">\(k\)</span> at a time which is given by (the ordering matters): <span class="math display">\[
+The number of possible <strong>arrangements or sequences</strong> of <span class="math inline">\(n\)</span> things taken <span class="math inline">\(k\)</span> at a time which is given by (the ordering matters): <span class="math display">\[
 \frac{n!}{(n-k)!}
 \]</span>
 </dd>
@@ -755,14 +768,14 @@ Check your answer
 <dl>
 <dt><strong>Parameter of a probability distribution</strong></dt>
 <dd>
-This is some constant(s) number associated with the distribution. If you know the <em>parameters</em> of a probability distribution, then you can compute the probabilities of all the possible outcomes.
+This is some constant(s) number associated with the distribution. If you know the <em>parameter(s)</em> of a probability distribution, then you can compute the probabilities of all the possible outcomes.
 </dd>
 </dl>
 </div>
 <p>Each of the distributions we list below has a parameter(s) associated with it.</p>
 <section id="discrete-uniform-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="discrete-uniform-distribution">Discrete uniform distribution</h3>
-<p>This is one of the <em>simplest</em> probability distributions. We say that this distribution is <em>over the numbers</em> <span class="math inline">\(1, 2, 3 \ldots, n\)</span> and assigns the <strong>same</strong> probability (<span class="math inline">\(\dfrac{1}{n}\)</span>) to each of the numbers. We have seen it for the experiment of rolling a fair six-sided die, or for drawing a ticket from a box with <span class="math inline">\(n\)</span> tickets labeled <span class="math inline">\(\fbox{1}, \fbox{2}, \fbox{3}, \ldots\)</span> etc.</p>
+<p>This is one of the <em>simplest</em> probability distributions. We say that this distribution is <em>over the numbers</em> <span class="math inline">\(1, 2, 3 \ldots, n\)</span> and assigns the <strong>same</strong> probability (<span class="math inline">\(\dfrac{1}{n}\)</span>) to each of the numbers. We have seen it for the experiment of rolling a fair six-sided die in previous chapters, or for drawing a ticket from a box with <span class="math inline">\(n\)</span> tickets labeled <span class="math inline">\(\fbox{1}, \fbox{2}, \fbox{3}, \ldots\)</span> etc.</p>
 <p>This probability distribution is called the <em>discrete uniform probability distribution</em>, since each possible outcome has the same probability of <span class="math inline">\(1/n\)</span>. Here <span class="math inline">\(n\)</span> is the <em>parameter</em> of the discrete uniform distribution.</p>
 </section>
 <section id="bernoulli-distribution" class="level3">
@@ -779,7 +792,7 @@ This is some constant(s) number associated with the distribution. If you know th
 <section id="binomial-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="binomial-distribution">Binomial Distribution</h3>
 <p>The binomial distribution, which describes the <em>total</em> number of successes in a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials, is one of the most important probability distributions. For example, consider the outcomes from tossing a coin <span class="math inline">\(n\)</span> times and counting the total number of heads across all <span class="math inline">\(n\)</span> tosses, where the probability of heads on each toss is <span class="math inline">\(p\)</span>. Each toss is one Bernoulli trial, where a success would be the coin landing heads.</p>
-<p>That is, the binomial distribution describes the probabilities of the <em>total</em> number of heads in <span class="math inline">\(n\)</span> tosses. We saw what this distribution looks like in the case where <span class="math inline">\(n = 3\)</span> for <em>three</em> tosses of a fair coin.</p>
+<p>That is, the binomial distribution describes the probabilities of the <em>total</em> number of heads in <span class="math inline">\(n\)</span> tosses. We saw what this distribution looked like in the case where <span class="math inline">\(n = 3\)</span> for <em>three</em> tosses of a fair coin.</p>
 <p>What would the probability distribution and histogram for the number of heads in three tosses of a biased coin look like, where <span class="math inline">\(P(H) = 2/3\)</span>? Make sure you know how the probabilities are computed. For example, <span class="math inline">\(P(HHH) = (2/3)^3 = 8/27\)</span>.</p>
 <details>
 <summary>
