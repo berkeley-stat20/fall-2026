@@ -80,6 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-9ef178474a4e0b18ed782031fea2d495.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -400,12 +402,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#random-variables" id="toc-random-variables" class="nav-link active" data-scroll-target="#random-variables">Random variables</a></li>
-  <li><a href="#examples-of-random-variables" id="toc-examples-of-random-variables" class="nav-link" data-scroll-target="#examples-of-random-variables">Examples of random variables</a>
+  <li><a href="#types-of-random-variables-and-examples" id="toc-types-of-random-variables-and-examples" class="nav-link" data-scroll-target="#types-of-random-variables-and-examples">Types of random variables and examples</a>
   <ul class="collapse">
-  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><em>Discrete</em> random variables</a></li>
-  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"><em>Continuous</em> random variables</a></li>
+  <li><a href="#examples-of-discrete-random-variables" id="toc-examples-of-discrete-random-variables" class="nav-link" data-scroll-target="#examples-of-discrete-random-variables">Examples of <em>discrete</em> random variables</a></li>
+  <li><a href="#examples-of-continuous-random-variables" id="toc-examples-of-continuous-random-variables" class="nav-link" data-scroll-target="#examples-of-continuous-random-variables">Examples of <em>continuous</em> random variables</a></li>
   </ul></li>
-  <li><a href="#example-making-bets-on-red-in-roulette" id="toc-example-making-bets-on-red-in-roulette" class="nav-link" data-scroll-target="#example-making-bets-on-red-in-roulette">Example: Making bets on red in Roulette</a></li>
+  <li><a href="#example-making-bets-on-red-in-roulette" id="toc-example-making-bets-on-red-in-roulette" class="nav-link" data-scroll-target="#example-making-bets-on-red-in-roulette">Example: Making bets on red in roulette</a></li>
   <li><a href="#the-probability-distribution-of-a-discrete-random-variable-x" id="toc-the-probability-distribution-of-a-discrete-random-variable-x" class="nav-link" data-scroll-target="#the-probability-distribution-of-a-discrete-random-variable-x">The probability distribution of a discrete random variable <span class="math inline">\(X\)</span></a>
   <ul class="collapse">
   <li><a href="#the-probability-mass-function-or-pmf-of-a-discrete-random-variable" id="toc-the-probability-mass-function-or-pmf-of-a-discrete-random-variable" class="nav-link" data-scroll-target="#the-probability-mass-function-or-pmf-of-a-discrete-random-variable">The probability mass function or pmf of a discrete random variable</a></li>
@@ -464,12 +466,12 @@ window.Quarto = {
 <li>probability mass functions</li>
 <li>cumulative distribution functions</li>
 <li>some special discrete random variables</li>
-<li>the differences between the binomial and the hypergeometric distributions.</li>
+<li>the differences between the binomial and the hypergeometric distributions</li>
 </ul>
 </div>
 </div>
 </div>
-<p><span class="dropcap">I</span>n the last chapter, we saw that if we want to simulate tossing a fair coin <span class="math inline">\(10\)</span> times, and compute the proportion of times that the coin lands heads, we could use the function <code>sample()</code> to sample from <code>(0, 1)</code>, where the outcome “Heads” is represented by the number <code>1</code> and the outcome “Tails” is represented by the number <code>0</code>. Our code might look like:</p>
+<p><span class="dropcap">I</span>n a previous tutorial, we saw that if we want to simulate tossing a fair coin <span class="math inline">\(10\)</span> times, and compute the proportion of times that the coin lands heads, we could use the function <code>sample()</code> to sample from <code>(0, 1)</code>, where the outcome “Heads” is represented by the number <code>1</code> and the outcome “Tails” is represented by the number <code>0</code>. Our code might look like:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tosses_10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tosses_10</span>
@@ -482,23 +484,43 @@ window.Quarto = {
 <pre><code>[1] 0.4</code></pre>
 </div>
 </div>
-<p>We used the same idea - of assigning numbers to outcomes when we looked at the probability distribution of the number of heads in three tosses, and when we defined the Bernoulli, binomial, and hypergeometric distributions.</p>
+<p>We used the same idea, of assigning numbers to outcomes when we looked at the probability distribution of the number of heads in three tosses, and when we defined the Bernoulli, binomial, and hypergeometric distributions. Once we assign numbers to non-numeric outcomes, we can then do mathematical operations on these numbers, for example, we could analyze them, compute proportions, and so on, that we could not do otherwise.</p>
+<p>We will need this <em>incredibly important and useful</em> notion of representing abstract or non-numeric outcomes and data as <em>numbers</em> - we call them <strong><em>Random Variables</em></strong>: “random” because the numbers have associated probabilities (because the outcomes they represent have probabilities), and “variables” because they take different values.</p>
+<p>Random variables simplify notation, and allow us to analyze all types of data. They are absolutely <em>central</em> to statistics, and as budding statisticians, eager to get on to the good stuff like <em>statistical inference</em>, you need to understand what they are and how to use them.</p>
 <section id="random-variables" class="level2">
 <h2 class="anchored" data-anchor-id="random-variables">Random variables</h2>
-<p>In each of the above scenarios, we had an outcome space <span class="math inline">\(\Omega\)</span>, and then defined a <strong>function</strong> that assigned a real number to each possible outcome in <span class="math inline">\(\Omega\)</span>. In our simulation above, if <span class="math inline">\(\Omega\)</span> is the set of outcomes <span class="math inline">\(\{\text{``Heads'', ``Tails''}\}\)</span>, we assigned the outcome <span class="math inline">\(\text{``Heads''}\)</span> to the real number <span class="math inline">\(1\)</span>, and the outcome <span class="math inline">\(\text{``Tails''}\)</span> to the real number <span class="math inline">\(0\)</span>. By sampling over and over again from <code>(0,1)</code>, we got a sequence of <span class="math inline">\(0\)</span>’s and <span class="math inline">\(1\)</span>’s that was <em>randomly generated</em> by our sampling. Once we had numbers (instead of sequences of heads and tails), we were able to do operations using these numbers, such as compute the proportion of times we sampled <span class="math inline">\(1\)</span>, or represent the probabilities as a histogram. Moving from non-numeric outcomes in an outcome space <span class="math inline">\(\Omega\)</span> to numbers on the real line is enormously useful.</p>
+<p>When we tossed a coin three times and counted the number of heads, we defined an outcome space <span class="math inline">\(\Omega\)</span>, and then defined a <strong>function</strong> that mapped the each of the outcomes in the set <span class="math inline">\(\Omega\)</span> to a real number. That is, we know that <span class="math inline">\(\Omega\)</span> is the set <span class="math inline">\(\{HHH, TTT, HHT, HTH, THH, TTH, THT, HTT\}\)</span>, we mapped the outcome <span class="math inline">\(HHH\)</span> to the real number <span class="math inline">\(3\)</span>, the outcome <span class="math inline">\(TTT\)</span> to the real number <span class="math inline">\(0\)</span>, each of the outcomes <span class="math inline">\(HHT, HTH, THH\)</span> to the number <span class="math inline">\(2\)</span>, and each of the outcomes <span class="math inline">\(TTH, THT, HTT\)</span> to the number <span class="math inline">\(1\)</span>. So each of the 8 outcomes is assigned to either <span class="math inline">\(0, 1, 2\)</span>, or <span class="math inline">\(3\)</span>. In this way, we used numbers instead of sequences of heads and tails.</p>
+<p>In the <strong>simulation</strong> above, sampling over and over again from <code>(0,1)</code>, we got a sequence of <span class="math inline">\(0\)</span>’s and <span class="math inline">\(1\)</span>’s that was <em>randomly generated</em> by our sampling. Once we had numbers (instead of sequences of heads and tails), we were able to do operations using these numbers, such as compute the proportion of times we sampled <span class="math inline">\(1\)</span>, or represent the probabilities as a histogram. Moving from non-numeric outcomes in an outcome space <span class="math inline">\(\Omega\)</span> to numbers on the real line is <em>enormously</em> useful.</p>
 <p>In mathematical notation:</p>
 <p><span class="math display">\[ X : \Omega \rightarrow \mathbb{R}\]</span></p>
-<p><span class="math inline">\(X\)</span> is called a <strong><em>random variable</em></strong>: <em>variable</em>, because it takes different values on the real line, and <em>random</em>, because it inherits the randomness from the generating process (in this case, the process is tossing a coin).</p>
+<p><span class="math inline">\(X\)</span> is called a <strong><em>random variable</em></strong>. <!--*variable*, because it takes different values on the real line, and *random*, because it inherits the randomness from the generating process (in this case, the process is tossing a coin).
+--></p>
 <div class="def">
 <dl>
 <dt><strong>Random variable</strong></dt>
 <dd>
-A random variable is a function that associates real numbers with outcomes from a random experiment where <span class="math inline">\(\Omega\)</span> is the associated outcome space.
+A random variable is a <em><strong>function</strong></em> that associates <strong><em>real numbers</em></strong> with outcomes from a random experiment whose outcome space is <span class="math inline">\(\Omega\)</span>.
 </dd>
 </dl>
 </div>
-<p>The values on the real line that are determined by <span class="math inline">\(X\)</span> have probabilities coming from the probability distribution on <span class="math inline">\(\Omega\)</span>. The <em>range</em> of the random variable <span class="math inline">\(X\)</span> is the set of all the possible values that <span class="math inline">\(X\)</span> can take. We usually denote random variables by <span class="math inline">\(X, Y, \ldots\)</span> or capital letters towards the end of the alphabet. We write statements about the values <span class="math inline">\(X\)</span> takes, such as <span class="math inline">\(X = 1\)</span> or <span class="math inline">\(X = 0\)</span>. Note that <span class="math inline">\(X = 1\)</span> is an <em>event</em> in <span class="math inline">\(\Omega\)</span> consisting of all the outcomes that are mapped to the number <span class="math inline">\(1\)</span> on the real line. The probability of such events is written as <span class="math inline">\(P(X = x)\)</span>, where <span class="math inline">\(x\)</span> is a real number.</p>
-<p>Note that we are just formalizing the association of outcomes in <span class="math inline">\(\Omega\)</span> with numbers - an association we have seen before, while defining probability distributions. Earlier we defined probability distributions as how the total probability of <span class="math inline">\(1\)</span> or <span class="math inline">\(100\)</span>% was distributed among all possible outcomes of the random experiment. Now we can extend this definition to the associated real numbers as defined by <span class="math inline">\(X\)</span>.</p>
+<ul>
+<li>The values on the real line that are determined by <span class="math inline">\(X\)</span> have probabilities coming from the probabilities of the outcomes in <span class="math inline">\(\Omega\)</span>.</li>
+<li>The <strong><em>range</em></strong> of the random variable <span class="math inline">\(X\)</span> is the set of <em>all</em> the possible values that <span class="math inline">\(X\)</span> can take.</li>
+<li>By tradition, we usually denote random variables by <span class="math inline">\(X, Y, \ldots\)</span>, letters towards the <em>end</em> of the alphabet, and then we can write statements about the <em>values</em> the random variable <span class="math inline">\(X\)</span> takes, such as <span class="math inline">\(X = 1\)</span> or <span class="math inline">\(X = 0\)</span>.</li>
+</ul>
+<p>For example, suppose we draw two penguins from our penguin data set (so we pick two rows from the data frame), and count the number of Gentoo penguins in our sample, calling this number <span class="math inline">\(X\)</span>. Then <span class="math inline">\(X\)</span> could be 0, 1, or 2, depending on how many Gentoo penguins we draw. If we draw <em>without</em> replacement, what is the probability that <span class="math inline">\(X = 2\)</span>?</p>
+<details>
+<summary>
+Check your answer
+</summary>
+<p>Note that for <span class="math inline">\(X = 2\)</span>, <em>both</em> draws have to be Gentoo, so the first draw has to be a Gentoo penguin, as well as the second. There are 344 penguins, of which 124 are Gentoo.</p>
+<p>The probability that the first penguin drawn is Gentoo is <span class="math inline">\(\dfrac{124}{344}\)</span> and the probability that the second is also Gentoo is a <strong>conditional</strong> probability = <span class="math inline">\(P\)</span>(2nd penguin Gentoo | first is Gentoo) $ = <span class="math inline">\(. So the probability that *both* penguins are Gentoo is, using the multiplication rule,\)</span>$ % $$ (The wiggly equal to sign (<span class="math inline">\(\approx\)</span>) means “approximately equal to”.)</p>
+</details>
+<ul>
+<li><p><span class="math inline">\(\{X = x\}\)</span> is an <em>event</em> in <span class="math inline">\(\Omega\)</span> consisting of all the outcomes that are mapped to the number <span class="math inline">\(x\)</span> on the real line. The probability of such events is written as <span class="math inline">\(P(X = x)\)</span>. For example, if we roll a pair of dice, and let <span class="math inline">\(X\)</span> denote the sum of the spots, then the event <span class="math inline">\(\{X = 4\}\)</span> consists of the outcomes {(<i class="fa-solid fa-dice-one" aria-label="dice-one"></i>,<i class="fa-solid fa-dice-three" aria-label="dice-three"></i>), (<i class="fa-solid fa-dice-three" aria-label="dice-three"></i>,<i class="fa-solid fa-dice-one" aria-label="dice-one"></i>), (<i class="fa-solid fa-dice-two" aria-label="dice-two"></i>, <i class="fa-solid fa-dice-two" aria-label="dice-two"></i> )}.</p></li>
+<li><p>What we are doing is creating a mathematical notation that formalizes the association of <em>outcomes</em> in <span class="math inline">\(\Omega\)</span> with <em>numbers</em>. We have associated outcomes with numbers before, in the previous chapters discussing probability, and in the worksheets. We are just explicitly defining what we did.</p></li>
+<li><p>Earlier we defined probability distributions as describing how the total probability of <span class="math inline">\(1\)</span> or <span class="math inline">\(100\)</span>% was distributed among all possible outcomes in <span class="math inline">\(\Omega\)</span>. Now we can extend this definition to the associated real numbers using <span class="math inline">\(X\)</span>, and so we get a probability distribution on the range of <span class="math inline">\(X\)</span>.</p></li>
+</ul>
 <div class="def">
 <dl>
 <dt><strong>Probability distribution of a random variable <span class="math inline">\(X\)</span></strong></dt>
@@ -518,26 +540,27 @@ The set of possible values of <span class="math inline">\(X\)</span>, along with
 <dl>
 <dt><strong>Discrete and continuous random variables</strong></dt>
 <dd>
-Discrete random variables are restricted to take <em>particular</em> values in an interval, they cannot take just any value, as opposed to continuous random variables which can take any value in some specified interval.
+A discrete random variable takes values in a <strong>finite</strong> or <strong><em>countably</em> infinite</strong> list of numbers, such as <span class="math inline">\(\{0, 1\}\)</span> or <span class="math inline">\(\{1, 2, 3\}\)</span> or <span class="math inline">\(\{1, \dfrac{1}{2}, \dfrac{1}{4}, \dfrac{1}{8}, \dfrac{1}{16}, \ldots\}\)</span> or the non-negative integers <span class="math inline">\(\{0, 1, 2, 3, \ldots\}\)</span>.
 </dd>
 </dl>
+<p>Continuous random variables can take <em>any</em> value in some specified <strong>interval</strong>, where the interval might be the entire real line.</p>
 </div>
 </section>
-<section id="examples-of-random-variables" class="level2">
-<h2 class="anchored" data-anchor-id="examples-of-random-variables">Examples of random variables</h2>
-<section id="discrete-random-variables" class="level3">
-<h3 class="anchored" data-anchor-id="discrete-random-variables"><em>Discrete</em> random variables</h3>
+<section id="types-of-random-variables-and-examples" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-random-variables-and-examples">Types of random variables and examples</h2>
+<section id="examples-of-discrete-random-variables" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-discrete-random-variables">Examples of <em>discrete</em> random variables</h3>
 <ul>
-<li>The number of heads in <span class="math inline">\(3\)</span> tosses of a fair coin: The assignment is similar to the outcomes from a single toss, except now we have the possible outcome from tossing a coin three times. For example, the outcome <span class="math inline">\(HHH\)</span> is assigned the number 3, the outcomes <span class="math inline">\(HHT, HTH, THH\)</span> are all assigned the number 2 etc. Note that even though we <em>should</em> write <span class="math inline">\(X(HHH) = 3\)</span>, we don’t. The practice is to ignore the outcome space and just write <span class="math inline">\(X = 3\)</span>.</li>
+<li>The number of heads in <span class="math inline">\(3\)</span> tosses of a fair coin. For example, the outcome <span class="math inline">\(HHH\)</span> is assigned the number 3, the outcomes <span class="math inline">\(HHT, HTH, THH\)</span> are all assigned the number 2 etc. <br> Strictly speaking, we <em>should</em> write <span class="math inline">\(X(HHH) = 3\)</span>, but we don’t. The <em>practice</em> is to ignore the outcome space and just write <span class="math inline">\(X = 3\)</span>. Eventually we don’t talk about <span class="math inline">\(\Omega\)</span> at all, and <em>only</em> consider the values of <span class="math inline">\(X\)</span> in <span class="math inline">\(\mathbb{R}\)</span> (the real numbers).</li>
 <li>The number of tosses until the coin lands heads for the first time: If <span class="math inline">\(X\)</span> is the random variable representing the number of tosses until a coin lands heads, the smallest value <span class="math inline">\(X\)</span> can take is 1 (you need at least 1 toss), and there is no upper bound, since in theory, one could keep tossing the coin forever and it could land tails every single time.</li>
 <li>The number of people that arrive at an ATM in a day</li>
-<li>The number of people in the United States who will have read at least one book in 2024</li>
+<li>The number of people in the United States who read at least one book in 2024</li>
 <li>The number of typos in the Stat 20 notes</li>
 </ul>
 </section>
-<section id="continuous-random-variables" class="level3">
-<h3 class="anchored" data-anchor-id="continuous-random-variables"><em>Continuous</em> random variables</h3>
-<p>In all of the following, we do not restrict the value taken by the random variable.</p>
+<section id="examples-of-continuous-random-variables" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-continuous-random-variables">Examples of <em>continuous</em> random variables</h3>
+<p>In all of the following, we do <strong>not</strong> restrict the values taken by the random variable, and the values can be anything in some interval.</p>
 <ul>
 <li>Time between consecutive people arriving at an ATM</li>
 <li>Price of a stock</li>
@@ -548,23 +571,62 @@ Discrete random variables are restricted to take <em>particular</em> values in a
 </section>
 </section>
 <section id="example-making-bets-on-red-in-roulette" class="level2">
-<h2 class="anchored" data-anchor-id="example-making-bets-on-red-in-roulette">Example: Making bets on red in Roulette</h2>
+<h2 class="anchored" data-anchor-id="example-making-bets-on-red-in-roulette">Example: Making bets on red in roulette</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/roulette-us.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
 </figure>
 </div>
-<p>Recall that American roulette wheels have <span class="math inline">\(38\)</span> numbered slots, numbered from <span class="math inline">\(1\)</span> to <span class="math inline">\(36\)</span>, of which <span class="math inline">\(18\)</span> are colored red, and <span class="math inline">\(18\)</span> black. There are two green slots numbered <span class="math inline">\(0\)</span> and a <span class="math inline">\(00\)</span>. As the wheel spins, a ball is sent spinning in the opposite direction. When the wheel slows the ball will land in one of the numbered slots. Players can make various bets on where the ball lands, such as betting on whether the ball will land in a red slot or a black slot. If a player bets one dollar on red, and the ball lands on red, then they win a dollar, in addition to getting their stake of one dollar back. If the ball does not land on red, then they lose their dollar to the casino. Suppose a player bets six times on six consecutive spins, betting on red each time. Their <em>net gain</em> can be defined as the amount they won minus the amount they lost. Is net gain a random variable? What are its possible values (think about their net gain if they win all 6 times, or win 5 times and lose once etc.)?</p>
+<p>Recall that American roulette wheels have 38 numbered slots: 36 are numbered 1 through 36 (18 red and 18 black) and two green slots are numbered 0 and 00. As the wheel spins, a ball is sent spinning in the opposite direction. When the wheel slows the ball will land in one of the numbered slots.</p>
+<p>Players can make various bets on where the ball lands, such as betting on whether the ball will land in a red slot or a black slot. If a player bets one dollar on red, and the ball lands on red, then they win a dollar, in addition to getting their stake of one dollar back, so they <strong>gain</strong> one dollar.</p>
+<p>If the ball does not land on red, then they lose their dollar to the casino. Suppose a player bets one dollar on red on each of six consecutive spins. Their <em>net gain</em> can be defined as the amount they won minus the amount they lost. Is net gain a random variable? What are its possible values (think about their net gain if they win all 6 times, or win 5 times and lose once etc.)?</p>
 <details>
 <summary>
 Check your answer
 </summary>
-<p>Yes, net gain <em>is</em> a random variable, and its possible values are: <span class="math inline">\(-6, -4, -2, 0, 2, 4, 6\)</span>. (Why?)</p>
+<p>Yes, net gain <em>is</em> a random variable, because its value is a <em>number</em> determined by the outcome of a random experiment (the six spins of the wheel). The possible values of net gain are: <span class="math inline">\(-6, -4, -2, 0, 2, 4, 6\)</span>.</p>
+<p>Why is this? Why are they all even? Trading one loss for one win raises net gain by <span class="math inline">\(2\)</span> dollars: they avoid <em>losing</em> <span class="math inline">\(1\)</span> dollar and <em>gain</em> <span class="math inline">\(1\)</span> dollar instead. If they win <span class="math inline">\(W\)</span> times, they lose <span class="math inline">\(6 - W\)</span> times, so net gain is <span class="math inline">\(W - (6 - W) = 2W - 6\)</span>. The possible values of <span class="math inline">\(W\)</span> are <span class="math inline">\(0, 1, 2, \ldots, 6\)</span> (<span class="math inline">\(W=0\)</span> corresponds to winning <em>none</em> of the spins, <span class="math inline">\(W=6\)</span> corresponds to winning all of them), and the associated values of net gain <span class="math inline">\(=2W - 6\)</span> are given by <span class="math inline">\(-6, -4, \ldots, 6\)</span>, as summarized in the table below:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Wins</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Losses</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Net gain</td>
+<td>−6</td>
+<td>−4</td>
+<td>−2</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
 </details>
 </section>
 <section id="the-probability-distribution-of-a-discrete-random-variable-x" class="level2">
 <h2 class="anchored" data-anchor-id="the-probability-distribution-of-a-discrete-random-variable-x">The probability distribution of a discrete random variable <span class="math inline">\(X\)</span></h2>
-<p>The list of probabilities associated with each of its values is called the <em>probability distribution</em> of the random variable <span class="math inline">\(X\)</span>. We can list the values and corresponding probability in a table. This table is called the <em>distribution table</em> of the random variable. For example, let <span class="math inline">\(X\)</span> be the number of heads in <span class="math inline">\(3\)</span> tosses of a fair coin. The probability distribution table for <span class="math inline">\(X\)</span> is shown below. The first column should have the possible values that <span class="math inline">\(X\)</span> can take, denoted by <span class="math inline">\(x\)</span>, and the second column should have <span class="math inline">\(P(X = x)\)</span>. Make sure that the probabilities add up to 1! <span class="math inline">\(\displaystyle \sum_x P(X = x) = 1\)</span>.</p>
+<p>Recall that the probability distribution of <span class="math inline">\(X\)</span> lists each possible value of <span class="math inline">\(X\)</span> with its probability. We can list the values and corresponding probability in a table. This table is called the <em>distribution table</em> of the random variable. For example, let <span class="math inline">\(X\)</span> be the number of heads in <span class="math inline">\(3\)</span> tosses of a fair coin. The probability distribution table for <span class="math inline">\(X\)</span> is shown below. The first column should have the possible values that <span class="math inline">\(X\)</span> can take, denoted by <span class="math inline">\(x\)</span>, and the second column should have <span class="math inline">\(P(X = x)\)</span>. Make sure that the probabilities add up to 1! <span class="math inline">\(\displaystyle \sum_x P(X = x) = 1\)</span>.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -605,7 +667,8 @@ The <strong>pmf</strong> of a discrete random variable <span class="math inline"
 <p><span class="math display">\[
 f(x) = \begin{cases}
           \frac{1}{8}, \; x = 0, 3 \\
-          \frac{3}{8}, \; x = 1, 2
+          \frac{3}{8}, \; x = 1, 2 \\
+          0, \; \text{otherwise}
   \end{cases}
 \]</span></p>
 <p>We see here that <span class="math inline">\(f(x) &gt; 0\)</span> for only <span class="math inline">\(4\)</span> real numbers, and is <span class="math inline">\(0\)</span> otherwise. We can think of the total probability mass as <span class="math inline">\(1\)</span>, and <span class="math inline">\(f(x)\)</span> describes how this mass of <span class="math inline">\(1\)</span> is distributed among the real numbers. It is often easier and more compact to define the probability distribution of <span class="math inline">\(X\)</span> using <span class="math inline">\(f\)</span> rather than the table.</p>
@@ -625,13 +688,13 @@ f(x) = \begin{cases}
 <summary>
 Check your answer
 </summary>
-<p>No.&nbsp;<span class="math inline">\(X\)</span> takes discrete values: <span class="math inline">\(2, 3, 4, \ldots, 12\)</span>, but these are <strong>not</strong> equally likely.</p>
+<p>No.&nbsp;<span class="math inline">\(X\)</span> takes discrete values: <span class="math inline">\(2, 3, 4, \ldots, 12\)</span>, but we knokw that these are <strong>not</strong> equally likely. Recall that, for example, <span class="math inline">\(P(X = 2) = \dfrac{1}{36}\)</span> but <span class="math inline">\(P(X = 7) = \dfrac{6}{36}\)</span></p>
 </details>
 </section>
 </section>
 <section id="the-bernoulli-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="the-bernoulli-distribution">The Bernoulli Distribution</h3>
-<p>Recall that the Bernoulli distribution describes the probabilities associated with random binary outcomes that we designate as <em>success</em> and <em>failure</em>, where <span class="math inline">\(p\)</span> is the probability of a <em>success</em>. We can define <span class="math inline">\(X\)</span> be a random variable that takes the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>, then <span class="math inline">\(X\)</span> is called a <em>Bernoulli</em> random variable, and it indicates whether the outcome of the random experiment or <em>trial</em> was a success or not. We say that <span class="math inline">\(X\)</span> is Bernoulli with parameter <span class="math inline">\(p\)</span>, and write <span class="math inline">\(X \sim\)</span> Bernoulli<span class="math inline">\((p)\)</span>. Below are the same probability histograms that we have seen in the last chapter, but now they describe the probability mass function of <span class="math inline">\(X\)</span>.</p>
+<p>Recall that the Bernoulli distribution describes the probabilities associated with random binary outcomes that we designate as <em>success</em> and <em>failure</em>, where <span class="math inline">\(p\)</span> is the probability of a <em>success</em>. We can define <span class="math inline">\(X\)</span> to be a random variable that takes the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span>, and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>. <span class="math inline">\(X\)</span> is called a <em>Bernoulli</em> random variable, and it indicates whether the outcome of the random experiment or <em>trial</em> was a success or not. We say that <span class="math inline">\(X\)</span> is Bernoulli with parameter <span class="math inline">\(p\)</span>, and write <span class="math inline">\(X \sim\)</span> Bernoulli<span class="math inline">\((p)\)</span>. Below are the same probability histograms that we have seen in the last chapter, but now they describe the probability mass function of <span class="math inline">\(X\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/bernoulli.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
@@ -640,23 +703,24 @@ Check your answer
 </section>
 <section id="the-binomial-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="the-binomial-distribution">The Binomial Distribution</h3>
-<p>Recall that the binomial distribution describes the probabilities of the total number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials. We let <span class="math inline">\(X\)</span> be this total number of successes (think tossing a coin <span class="math inline">\(n\)</span> times, and counting the number of heads). Then we say that <span class="math inline">\(X\)</span> has the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, and write <span class="math inline">\(X \sim Bin(n,p)\)</span>, where <span class="math inline">\(X\)</span> takes the values in <span class="math inline">\(\{0, 1, 2, \ldots, n\}\)</span>, and <span class="math display">\[P(X = k ) = \binom{n}{k} p^k (1-p)^{n-k}. \]</span> Recall that the <em>binomial coefficient</em> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(\displaystyle \binom{n}{k} = \frac{n!}{k!(n-k)!}.\)</span></p>
-<section id="example-proportion-of-likely-voters-in-california-that-preferred-adam-schiff-in-2024" class="level4">
-<h4 class="anchored" data-anchor-id="example-proportion-of-likely-voters-in-california-that-preferred-adam-schiff-in-2024">Example: Proportion of likely voters in California that preferred Adam Schiff in 2024</h4>
+<p>Recall that the binomial distribution describes the probabilities of the total number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials. We let <span class="math inline">\(X\)</span> be this total number of successes (think tossing a coin <span class="math inline">\(n\)</span> times, and counting the number of heads). Then we say that <span class="math inline">\(X\)</span> has the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, and write <span class="math inline">\(X \sim Bin(n,p)\)</span>, where <span class="math inline">\(X\)</span> takes values in <span class="math inline">\(\{0, 1, 2, \ldots, n\}\)</span>, and <span class="math display">\[P(X = k ) = \binom{n}{k} p^k (1-p)^{n-k}. \]</span> Recall that the <em>binomial coefficient</em> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(\displaystyle \binom{n}{k} = \frac{n!}{k!(n-k)!}.\)</span></p>
+<section id="example-how-many-likely-voters-in-california-that-preferred-adam-schiff-in-2024" class="level4">
+<h4 class="anchored" data-anchor-id="example-how-many-likely-voters-in-california-that-preferred-adam-schiff-in-2024">Example: How many likely voters in California that preferred Adam Schiff in 2024</h4>
 <p>In 2024, California elected Adam Schiff to the United States Senate by a wide margin over Republican candidate Steve Garvey. Schiff had a more difficult race in the primaries. The top four candidates in the California Senate race had their final debate on February 20, 2024, before the primary elections were held in March. In the California Elections and Policy Poll, conducted on January 21-29, 2024 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, Adam Schiff was the favorite candidate in the California Senate primary election, preferred by <span class="math inline">\(25\%\)</span> of likely voters (he eventually received <span class="math inline">\(31.6\%\)</span> of the votes). The primary elections in California decide the top two candidates (regardless of political affiliation) who will compete in the general election.</p>
 <!--Based on the December 2022 report "State of the COVID-19 Pandemic"[^covid], about 35% of Americans reported having at least one positive COVID test. Suppose we survey 10 California residents, sampling them *with* replacement from a database of voters, what is the probability that more than $3$ of the individuals in our sample would have had at least one positive COVID test?-->
-<p>Suppose we had surveyed <span class="math inline">\(10\)</span> California residents sampling them <em>with</em> replacement from a database of voters, what is the probability that more than <span class="math inline">\(2\)</span> of the individuals in our sample would have preferred Adam Schiff over the other candidates for CA Senator?</p>
+<p>Suppose we had surveyed <span class="math inline">\(10\)</span> likely voters in California, sampling them <em>with</em> replacement from a database of voters, what is the probability that more than <span class="math inline">\(2\)</span> of the individuals in our sample would have preferred Adam Schiff over the other candidates for CA Senator?</p>
 <p>In this example, since we are counting the number of voters in our sample that prefer Adam Schiff, such a voter would count as a “success”, because a success is whatever outcome we are counting (regardless of whom we may prefer). We can now set up our random variable <span class="math inline">\(X\)</span>:</p>
 <p>Let <span class="math inline">\(X\)</span> be the number of voters in our sample of ten voters who like Adam Schiff best among all the Senatorial candidates in California.</p>
-<p>Then <span class="math inline">\(X \sim Bin(10, p = 0.25)\)</span>. (Why are these the parameters?) Using the complement rule,</p>
+<p>Then <span class="math inline">\(X \sim Bin(10, p = 0.25)\)</span>. (Why are these the parameters?) Using the complement rule, and the addition rule (for mutually exclusive events), we get:</p>
 <p><span class="math inline">\(P(X &gt; 2) = 1 - P(X \le 2) = 1 - \left(P(X = 0) + P(X = 1) + P(X = 2)\right)\)</span>.</p>
-<p>Note that since these events are mutually exclusive, we can use the addition rule. This gives us:</p>
+<p>This gives us:</p>
 <p><span class="math display">\[
 \begin{aligned}
 P(X &gt; 2) &amp;= 1 - \left(\binom{10}{0}(0.25)^0 (0.75)^{10} + \binom{10}{1}(0.25)^1 (0.75)^9 + \binom{10}{2}(0.25)^2 (0.75)^8 \right)\\
 &amp; \approx 0.474\\
 \end{aligned}
-\]</span> (The symbol <span class="math inline">\(\approx\)</span> denotes <em>approximately equal</em>.) <!--In this chapter, we will have two "Ideas in Code" sections, with the first one introducing the functions in R that we can use for computing the probabilities associated with special distributions. Before we talk about those, we will consider two more special distributions. 
+\]</span></p>
+<!--In this chapter, we will have two "Ideas in Code" sections, with the first one introducing the functions in R that we can use for computing the probabilities associated with special distributions. Before we talk about those, we will consider two more special distributions. 
 
 In `R` we can use a special function to compute the binomial probabilities $f(k) = P(X=k)$. It is called `dbinom(x, size, prob)` and takes as input the $k$ that we want (`x`), the number of trials $n$ (`size`), and $p$ (`prob`). In this example, `x` are the values of interest, or 0, 1, 2; `size` is the parameter $n$, which is 10, and `prob` is the probability of a success.
 
@@ -679,14 +743,13 @@ In `R` we can use a special function to compute the binomial probabilities $f(k)
 :::
 :::
 
---></p>
+-->
 <p>As stated earlier, we can define <em>events</em> by the <em>values</em> taken by random variables. For example, let <span class="math inline">\(X \sim Bin(10,0.4)\)</span>. In words <span class="math inline">\(X\)</span> counts the number of successes in 10 trials. Given this <span class="math inline">\(X\)</span>, what are the following events in words?</p>
 <ul>
 <li><span class="math inline">\(X = 5\)</span></li>
 <li><span class="math inline">\(X \le 5\)</span></li>
 <li><span class="math inline">\(3 \le X \le 8\)</span></li>
 </ul>
-<p>What are these events in words?</p>
 <details>
 <summary>
 Check your answer
@@ -745,18 +808,20 @@ dbinom(x = 3, size = 10, prob = 0.4) + dbinom(x = 4, size = 10, prob = 0.4) +
 :::
 
 
-
-</details> -->
-</details></section>
+-->
+</details>
+</section>
 </section>
 <section id="the-hypergeometric-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="the-hypergeometric-distribution">The Hypergeometric Distribution</h3>
-<p>In the example above, we sampled <span class="math inline">\(10\)</span> California residents <em>with</em> replacement from a database of voters. Usually we always sample <em>without</em> replacement, so in a situation such as in the example, where we are define a random variable <span class="math inline">\(X\)</span> to be the number of successes in a <em>simple random sample</em> of <span class="math inline">\(n\)</span> draws from a population of size <span class="math inline">\(N\)</span>, then <span class="math inline">\(X\)</span> will have the <em>hypergeometric</em> distribution with parameters <span class="math inline">\(\left(N, G, n\right)\)</span> where <span class="math inline">\(G\)</span> is the total number of successes in our population. We write this as <span class="math inline">\(X \sim HG(N, G, n)\)</span>. If we let <span class="math inline">\(X\)</span> be the number of successes in <span class="math inline">\(n\)</span> draws, then we have that <span class="math display">\[ P(X = k) = \frac{\binom{G}{k} \times \binom{N-G}{n-k}}{\binom{N}{n}} \]</span> where <span class="math inline">\(N\)</span> is the size of the population, <span class="math inline">\(G\)</span> is the total number of successes in the population, and <span class="math inline">\(n\)</span> is the sample size (so <span class="math inline">\(k\)</span> can take the values <span class="math inline">\(0, 1, \ldots, n\)</span> or <span class="math inline">\(0, 1, \ldots, G\)</span>, if the number of successes in the population is smaller than the sample size.)</p>
+<p>In the example above, we sampled <span class="math inline">\(10\)</span> California residents <em>with</em> replacement from a database of voters. Usually we sample <em>without</em> replacement, so in a situation such as in the example, where we are define a random variable <span class="math inline">\(X\)</span> to be the number of successes in a <em>simple random sample</em> of <span class="math inline">\(n\)</span> draws from a population of size <span class="math inline">\(N\)</span>, then <span class="math inline">\(X\)</span> will have the <em>hypergeometric</em> distribution with parameters <span class="math inline">\(\left(N, G, n\right)\)</span> where <span class="math inline">\(G\)</span> is the total number of successes in our population. We write this as <span class="math inline">\(X \sim HG(N, G, n)\)</span>. If we let <span class="math inline">\(X\)</span> be the number of successes in <span class="math inline">\(n\)</span> draws, then we have that <span class="math display">\[ P(X = k) = \frac{\binom{G}{k} \times \binom{N-G}{n-k}}{\binom{N}{n}} \]</span> where <span class="math inline">\(N\)</span> is the size of the population, <span class="math inline">\(G\)</span> is the total number of successes in the population, and <span class="math inline">\(n\)</span> is the sample size (so <span class="math inline">\(k\)</span> can take the values <span class="math inline">\(0, 1, \ldots, n\)</span> or <span class="math inline">\(0, 1, \ldots, G\)</span>, <em>if</em> the number of successes in the population is smaller than the sample size).</p>
+<p>Of course, if the sample size <span class="math inline">\(n\)</span> is more than the total number of non-successes in the population, then <span class="math inline">\(k\)</span> <em>has</em> to be bigger than <span class="math inline">\(0\)</span>. For example, <span class="math inline">\(N=20, G = 12, n = 10\)</span>. There are only <span class="math inline">\(8\)</span> non-successes, so at least <span class="math inline">\(2\)</span> of the <span class="math inline">\(10\)</span> draws must be successes.)</p>
 <section id="example-gender-discrimination-at-a-large-supermarket" class="level4">
 <h4 class="anchored" data-anchor-id="example-gender-discrimination-at-a-large-supermarket">Example: Gender discrimination at a large supermarket?</h4>
-<p>A large supermarket chain in Florida (with 1,000 employees) occasionally selects employees to receive management training. A group of women there claimed that female employees were passed over for this training in favor of their male colleagues. The company denied this claim. (A similar complaint of gender bias was made about promotions and pay for the 1.6 million women who work or who have worked for Wal-Mart. The Supreme Court heard the case in 2011 and ruled in favor of Wal-Mart, in that it rejected the effort to sue Wal-Mart.)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> If we set this up as a probability problem, we might ask the question of how many women have been selected for executive training in the last 10 years. In order to do the math, we can simplify the problem. Suppose <em>no</em> women had ever been selected in 10 years of annually selecting one employee for training. Further, suppose that the number of men and women were equal, and suppose the company claims that it draws employees at random for the training, from the 1,000 eligible employees. If <span class="math inline">\(X\)</span> is the number of women that have been picked for training in the past 10 years, what is <span class="math inline">\(P(X = 0)\)</span>?</p>
-<p>Note that we are picking a sample of size 10 <em>without</em> replacement and counting the number of <em>women</em> in our sample and therefore, a “success” will be selecting a woman. Modeling <span class="math inline">\(X\)</span> as a hypergeometric random variable, we have that <span class="math inline">\(N = 1,000\)</span>, there are 1,000 employees, and since half are women, we have <span class="math inline">\(G = N-G = 500\)</span>. We want to compute the probability that out of the <span class="math inline">\(10\)</span> employees that were selected at random from the <span class="math inline">\(1,000\)</span> employees, none are women. This gives us, using the formula above:</p>
-<p><span class="math display">\[P(X = 0) = \frac{\binom{500}{0} \times \binom{500}{10}}{\binom{1000}{10}} \approx 0.0009\]</span> We will see later how to compute this probability in R.</p>
+<p>A supermarket chain in Florida (with about 1,000 employees eligible for training) occasionally selects employees to receive management training. A group of women there claimed that female employees were passed over for this training in favor of their male colleagues. The company denied this claim. (A similar complaint of gender bias was made about promotions and pay for the 1.6 million women who work or who have worked for Wal-Mart. The Supreme Court heard the case in 2011 and ruled that the case could not proceed as a class action.)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> If we set this up as a probability problem, we might ask the question of how many women have been selected for management training in the last 10 years. In order to do the math, we can simplify the problem. Suppose <em>no</em> women had ever been selected in 10 years of annually selecting one employee for training. Further, suppose that the number of men and women were equal, and suppose the company claims that it draws employees at random for the training, from the 1,000 eligible employees. If <span class="math inline">\(X\)</span> is the number of women that have been picked for training in the past 10 years, what is <span class="math inline">\(P(X = 0)\)</span>?</p>
+<p>Note that we are picking a sample of size 10 <em>without</em> replacement and counting the number of <em>women</em> in our sample and therefore, a “success” will be selecting a woman. Modeling <span class="math inline">\(X\)</span> as a hypergeometric random variable, we have that <span class="math inline">\(N = 1,000\)</span>, there are 1,000 employees, and since half are women, we have <span class="math inline">\(G = 500\)</span> women and <span class="math inline">\(N - G = 500\)</span> men.</p>
+<p>We want to compute the probability that out of the <span class="math inline">\(10\)</span> employees that were selected at random from the <span class="math inline">\(1,000\)</span> employees, none are women. This gives us, using the formula above:</p>
+<p><span class="math display">\[P(X = 0) = \frac{\binom{500}{0} \times \binom{500}{10}}{\binom{1000}{10}}\approx 0.00093\]</span> We will see later how to compute this probability in R.</p>
 <!--The function that we can use in `R` to compute hypergeometric probabilities is called `dhyper(x, m, n, k)`, where `x` is the number of successes in the sample that we are counting (what we call $k$), `m` is $G$ or the number of successes in the population, and $n$ is $N-G$. $k$ is the sample size.
 
 
@@ -801,19 +866,19 @@ choose(500, 0)*choose(500, 10)/choose(1000, 10)
 </section>
 <section id="the-poisson-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="the-poisson-distribution">The Poisson Distribution</h3>
-<p>There are three very important distributions that we see over and over again in many situations. One of them is the <em>binomial</em> distribution, which we have discussed above. The reason this distribution is so ubiquitous is that we use it for <em>classifying</em> things into binary outcomes and <em>counting</em> the number of “successes”. The second important discrete distribution is used to model many different things - from the number of people arriving at an ATM in a given period of time, to the frequency with which officers in the Prussian army were accidentally kicked to death by their horses<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This distribution is called the <em>Poisson</em> distribution after a French mathematician, Siméon-Denis Poisson, who developed the theory in the nineteenth century.Interestingly, he was not the <em>first</em> French mathematician to develop this theory. That honor belonged to the seventeenth century mathematician who was a contemporary (and friend) of Isaac Newton, Abraham de Moivre.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> (The third important distribution is called the Normal distribution, also first discovered by de Moivre, which we will introduce later in the course.)</p>
-<p>The Poisson distribution appears in situations when we have a very large number of trials in which we are checking the occurrence or not of a particular event which has a very low probability. That is, we have a very large number <span class="math inline">\(n\)</span> of Bernoulli trials, which have a very small <span class="math inline">\(p\)</span> or probability of success, such that the product <span class="math inline">\(np\)</span> is not too small or large. We call the number of successes <span class="math inline">\(X\)</span>, and it counts the occurrence of events whose counts tend to be small. Note that <span class="math inline">\(X \sim Bin(n, p)\)</span>, and <span class="math display">\[P(X = 0) = \binom{n}{0}\times p^0\times (1-p)^n = (1-p)^n.\]</span> For large <span class="math inline">\(n\)</span>, it turns out that <span class="math inline">\((1-p)^n \approx e^{-\lambda}\)</span>, where <span class="math inline">\(\lambda = np\)</span>. We won’t derive the distribution here, but we will use the Poisson distribution for random variables that count the number of occurrences of events in a given period of time in when the events result from a very large number of independent trials. The independence of the trials means that the probability of success does not change over time.</p>
+<p>There are three very important distributions that we see over and over again in many situations. One of them is the <em>binomial</em> distribution, which we have discussed above. The reason this distribution is so ubiquitous is that we use it for <em>classifying</em> things into binary outcomes and <em>counting</em> the number of “successes”. The second important discrete distribution is used to model many different things: from the number of people arriving at an ATM in a given period of time, to the frequency with which soldiers in the Prussian army were accidentally kicked to death by their horses<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This distribution is called the <em>Poisson</em> distribution after a French mathematician, Siméon-Denis Poisson, who developed the theory in the nineteenth century.Interestingly, he was not the <em>first</em> French mathematician to develop this theory. That honor belonged to the mathematician who was a contemporary (and friend) of Isaac Newton, Abraham de Moivre.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> (The third important distribution is called the Normal distribution, also first discovered by de Moivre, which we will introduce later in the course.)</p>
+<p>The Poisson distribution appears in situations when we have a very large number of trials in which we are checking the occurrence or not of a particular event which has a very low probability. That is, we have a very large number <span class="math inline">\(n\)</span> of Bernoulli trials, which have a very small <span class="math inline">\(p\)</span> or probability of success, such that the product <span class="math inline">\(np\)</span> is not too small or large. We call the number of successes <span class="math inline">\(X\)</span>, and it counts the occurrence of events whose counts tend to be small. Note that <span class="math inline">\(X \sim Bin(n, p)\)</span>, and <span class="math display">\[P(X = 0) = \binom{n}{0}\times p^0\times (1-p)^n = (1-p)^n.\]</span> For large <span class="math inline">\(n\)</span>, it turns out that <span class="math inline">\((1-p)^n \approx e^{-\lambda}\)</span>, where <span class="math inline">\(\lambda = np\)</span>. We won’t derive the distribution here, but we will use the Poisson distribution for random variables that count the number of occurrences of events in a given period of time in when the events result from a very large number of independent trials. The independence of the trials means one trial does not affect another. We also assume that the probability of success does not change over time.</p>
 <div class="def">
 <dl>
 <dt><strong>Poisson distribution</strong></dt>
 <dd>
-We say that such a random variable <span class="math inline">\(X\)</span> has the Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>, and write it as <span class="math inline">\(X \sim Poisson(\lambda)\)</span>, if <span class="math display">\[ P(X = k) = e^{-\lambda} \frac{\lambda^k}{k!},\]</span> where <span class="math inline">\(k = 0, 1, 2, \ldots\)</span>. That is, the possible values of <span class="math inline">\(X\)</span> are non-negative integers, and since <span class="math inline">\(k!\)</span> grows much faster than <span class="math inline">\(\lambda^k\)</span>, the probability that <span class="math inline">\(X\)</span> takes large values is very small. The parameter <span class="math inline">\(\lambda\)</span> is called the <em>rate</em> of the distribution, and represents how many “successes” we expect in the given time unit.
+We say that such a random variable <span class="math inline">\(X\)</span> has the Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>, and write it as <span class="math inline">\(X \sim Poisson(\lambda)\)</span>, if <span class="math display">\[ P(X = k) = e^{-\lambda} \frac{\lambda^k}{k!},\]</span> where <span class="math inline">\(k = 0, 1, 2, \ldots\)</span>. That is, the possible values of <span class="math inline">\(X\)</span> are non-negative integers, and since <span class="math inline">\(k!\)</span> grows much faster than <span class="math inline">\(\lambda^k\)</span>, the probability that <span class="math inline">\(X\)</span> takes large values is very small. The parameter <span class="math inline">\(\lambda\)</span> is called the <em>rate</em> of the distribution, and represents the <strong>average number of successes per time unit</strong>.
 </dd>
 </dl>
 </div>
 <section id="example-the-number-of-soldiers-kicked-to-death-by-their-horses-each-year-in-each-corps-in-the-prussian-army" class="level4">
 <h4 class="anchored" data-anchor-id="example-the-number-of-soldiers-kicked-to-death-by-their-horses-each-year-in-each-corps-in-the-prussian-army">Example: The number of soldiers kicked to death by their horses each year in each corps in the Prussian army</h4>
-<p>This example was made famous by Ladislaus Bortkiewicz in 1898 when he discussed how a Poisson distribution fit the data he obtained from 14 corps in the Prussian cavalry over a period of 20 years. Let’s look at the empirical histogram of the data. Note that death by horse-kicks was quite rare with less than 1 death per corps per year, over the 280 observations. Bortkiewicz recorded the number of deaths per corps per year, and the majority of years had no deaths in any of the corps. Here is the empirical histogram of the data.</p>
+<p>This example was made famous by Ladislaus Bortkiewicz in 1898 when he discussed how a Poisson distribution fit the data he obtained from 14 corps in the Prussian cavalry over a period of 20 years. Let’s look at the empirical histogram of the data. Note that death by horse-kicks was quite rare with less than 1 death per corps per year (0.7 deaths per corps per year), over the 280 observations. Bortkiewicz recorded the number of deaths per corps per year, and just over half of the 280 observations (14 corps recorded over 20 years) had no deaths. Here is the empirical histogram of the data.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -823,13 +888,13 @@ We say that such a random variable <span class="math inline">\(X\)</span> has th
 </div>
 </div>
 </div>
-<p>This is the shape we want when we look at the distribution of a Poisson random variable, where a very low number of events has a much higher probability than larger numbers, so we have a <em>right</em>-skewed distribution.</p>
+<p>This is the shape we expect when we look at the distribution of a Poisson random variable, where a very low number of events has a much higher probability than larger numbers, so we have a <em>right</em>-skewed distribution.</p>
 </section>
 </section>
 </section>
 <section id="binomial-vs-hypergeometric-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="binomial-vs-hypergeometric-distributions">Binomial vs Hypergeometric distributions</h2>
-<p>Both the binomial and the hypergeometric distributions deal with counting the number of successes in a <em>fixed</em> number of trials with binary outcomes. The difference is that for a binomial random variable, the probability of a success stays the <em>same</em> for each trial, and for a hypergeometric random variable, the probability <em>changes</em> with each trial. If we use a box of tickets to describe these random variables, both distributions can be modeled by sampling from boxes with each ticket marked with <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, but for the binomial distribution, we sample <span class="math inline">\(n\)</span> times <em>with</em> replacement and count the number of successes by summing the draws; and for the hypergeometric distribution, we sample <span class="math inline">\(n\)</span> times <em>without</em> replacement, and count the number of successes by summing the draws.</p>
+<p>Both the binomial and the hypergeometric distributions deal with counting the number of successes in a <em>fixed</em> number of trials with binary outcomes. The difference is that for a binomial random variable, the probability of a success stays the <em>same</em> for each trial, and for a hypergeometric random variable, the trials are not independent. The probability of a success on a trial depends on what was drawn before. If we use a box of tickets to describe these random variables, both distributions can be modeled by sampling from boxes with each ticket marked with <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, but for the binomial distribution, we sample <span class="math inline">\(n\)</span> times <em>with</em> replacement and count the number of successes by summing the draws; and for the hypergeometric distribution, we sample <span class="math inline">\(n\)</span> times <em>without</em> replacement, and count the number of successes by summing the draws.</p>
 <p>Note that when the sample size is small relative to the population size, there is not much difference between the probabilities if we use a binomial distribution vs using a hypergeometric distribution. Let’s look at the gender discrimination example again, and pretend that we are sampling <em>with</em> replacement. Now we can use the binomial distribution to compute the chance of never picking a woman. Let <span class="math inline">\(X\)</span> be defined as before, as the number of women selected in <span class="math inline">\(10\)</span> trials.</p>
 <p><span class="math display">\[
 P(X = 0) = \binom{10}{0}\times\left(\frac{1}{2}\right)^0\times\left(\frac{1}{2}\right)^{10} = 0.0009765625 \approx 0.00098
@@ -856,7 +921,7 @@ dbinom(0, 10, 0.5)
 
 --></p>
 <p>Recall that the probability using the hypergeometric distribution was <code>0.0009331878</code>. You can see that the values are very close to each other. This is an illustration of the fact that we can use a binomial random variable to approximate a hypergeometric random variable if the sample size <span class="math inline">\(n\)</span> is very small compared to the population size <span class="math inline">\(N\)</span>.</p>
-<p>Now we will define another important quantity related to random variables. This quantity called the <em>cumulative distribution function</em> is another way to describe the probability distribution of the random variable.</p>
+<p>Now we will define another important quantity related to random variables. This quantity, called the <em>cumulative distribution function</em>, is another way to describe the probability distribution of the random variable.</p>
 </section>
 <section id="the-cumulative-distribution-function-fx" class="level2">
 <h2 class="anchored" data-anchor-id="the-cumulative-distribution-function-fx">The cumulative distribution function <span class="math inline">\(F(x)\)</span></h2>
@@ -868,14 +933,17 @@ The cumulative distribution function of a random variable <span class="math inli
 </dd>
 </dl>
 </div>
-<p>We usually abbreviate this function to <strong>cdf</strong>. It is a very important function since it also describes the probability distribution of <span class="math inline">\(X\)</span>. In order to compute <span class="math inline">\(F(x)\)</span> for any real number <span class="math inline">\(x\)</span>, we just add up all the probability so far: <span class="math display">\[
+<p>The cdf is a very important function since it also describes the probability distribution of <span class="math inline">\(X\)</span>. In order to compute <span class="math inline">\(F(x)\)</span> for any real number <span class="math inline">\(x\)</span>, we just add up all the probability so far: <span class="math display">\[
 F(x) = \sum_{y \le x} f(y)
 \]</span></p>
 <p>For example, if <span class="math inline">\(X\)</span> is the number of heads in <span class="math inline">\(3\)</span> tosses of a fair coin, recall that:</p>
-<p><span class="math display">\[ f(x) = \begin{cases}
+<p><span class="math display">\[
+f(x) = \begin{cases}
   \displaystyle \frac{1}{8}, \; x = 0, 3 \\
-  \displaystyle \frac{3}{8}, \; x = 1, 2
-  \end{cases} \]</span></p>
+  \displaystyle \frac{3}{8}, \; x = 1, 2 \\
+          0, \; \text{otherwise}
+  \end{cases}
+\]</span></p>
 <p>In this case, <span class="math inline">\(F(x) = P(X\le x) = 0\)</span> for all <span class="math inline">\(x &lt; 0\)</span> since the first positive probability is at <span class="math inline">\(0\)</span>. Then, <span class="math inline">\(F(0) = P(X \le 0) = 1/8\)</span> after which it stays at <span class="math inline">\(1/8\)</span> until <span class="math inline">\(x = 1\)</span>. Look at the graph below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -886,7 +954,12 @@ F(x) = \sum_{y \le x} f(y)
 <section id="example-writing-down-the-cdf-of-a-bernoulli-random-variable" class="level4">
 <h4 class="anchored" data-anchor-id="example-writing-down-the-cdf-of-a-bernoulli-random-variable">Example: Writing down the cdf of a Bernoulli random variable</h4>
 <p>Suppose $X $ Bernoulli<span class="math inline">\((0.5)\)</span>. Then we know that <span class="math inline">\(P(X = 0) = P(X=1) = 0.5\)</span>. The cdf of <span class="math inline">\(X\)</span>, <span class="math inline">\(F(x)\)</span> gives us the total probability so far up to and including <span class="math inline">\(x\)</span>. For example, if <span class="math inline">\(x = -3\)</span>, <span class="math inline">\(F(x) =0\)</span> since the first time there is any positive probability for <span class="math inline">\(X\)</span> is at <span class="math inline">\(0\)</span>. At <span class="math inline">\(x = 0\)</span>, <span class="math inline">\(F(x) = 0.5\)</span>, and it stays there until it gets to <span class="math inline">\(x =1\)</span>, when it “accumulates” another <span class="math inline">\(0.5\)</span> of probability. Here is the figure:</p>
-<p><img src="images/cdf-bernoulli.png" class="img-fluid quarto-figure quarto-figure-center" width="700"> Notice where the function is open and closed (<span class="math inline">\(\circ\)</span> vs <span class="math inline">\(\bullet\)</span>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cdf-bernoulli.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
+</figure>
+</div>
+<p>Notice where the function is open and closed (<span class="math inline">\(\circ\)</span> vs <span class="math inline">\(\bullet\)</span>).</p>
 </section>
 <section id="exercise-drawing-the-graph-of-the-cdf" class="level4">
 <h4 class="anchored" data-anchor-id="exercise-drawing-the-graph-of-the-cdf">Exercise: Drawing the graph of the cdf</h4>
@@ -936,10 +1009,10 @@ Check your answer
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <ul>
 <li>In these notes, we defined random variables, and described discrete and continuous random variables.</li>
-<li>For any random variable, there is an associated probability distribution, and this is described by the probability mass function or pmf <span class="math inline">\(f(x)\)</span>.</li>
-<li>We also defined a function that, for a random variable <span class="math inline">\(X\)</span>, and any real number <span class="math inline">\(x\)</span>, describes all the probability that is to the left of <span class="math inline">\(x\)</span>. This function is called the cumulative distribution function (cdf) of <span class="math inline">\(X\)</span> and is denoted <span class="math inline">\(F(x)\)</span>.</li>
-<li>We looked at some special distributions (discrete uniform, Bernoulli, binomial, hypergeometric, and Poisson)</li>
-<li>(Tutorial) We defined functions in R that can compute the pmf and cdf for the named distributions (except for discrete uniform since it doesn’t need a special function as we can just use <code>sample()</code>). <!--- Finally, we looked at connections between random variables and boxes with tickets, and saw how to simulate some empirical distributions.--></li>
+<li>For any discrete random variable, there is an associated probability distribution, and this is described by the probability mass function or pmf <span class="math inline">\(f(x)\)</span>.</li>
+<li>We also defined a function that, for a random variable <span class="math inline">\(X\)</span>, and any real number <span class="math inline">\(x\)</span>, describes all the probability that is to at <span class="math inline">\(x\)</span> or to its left. This function is called the cumulative distribution function (cdf) of <span class="math inline">\(X\)</span> and is denoted <span class="math inline">\(F(x)\)</span>.</li>
+<li>We looked at some special discrete distributions (discrete uniform, Bernoulli, binomial, hypergeometric, and Poisson)</li>
+<li>(Tutorial) We used functions in R that can compute the pmf and cdf for the named distributions (except for discrete uniform since it doesn’t need a special function as we can just use <code>sample()</code>). <!--- Finally, we looked at connections between random variables and boxes with tickets, and saw how to simulate some empirical distributions.--></li>
 </ul>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../3-generalization/04-random-variables/tutorial.html" class="tutorial-nav-next">Continue on to the tutorial ⮕</a></p>
