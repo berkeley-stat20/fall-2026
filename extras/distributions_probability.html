@@ -162,7 +162,7 @@ window.Quarto = {
     <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
-    <a href="../#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
+    <a href="https://stat20-grades.wetchler.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation" target="_blank"><i class="bi bi-calculator-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -171,6 +171,9 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <div id="quarto-announcement" data-announcement-id="0e448cb404be6a7dd8a500cd096574bd" class="alert alert-info hidden"><i class="bi bi-calculator-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>New:</strong> Check your current grade calculation anytime with the calculator icon in the top right, or <a href="https://stat20-grades.wetchler.com/" target="_blank" rel="noopener">open it here</a>.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -293,6 +296,69 @@ window.Quarto = {
 </section>
 
 </main> <!-- /main -->
+<!--
+  Temporary promo for the new grade calculator navbar link.
+  Adds a pulsing underglow to the calculator icon and keeps the site announcement
+  visible until PROMO_END, after which both hide themselves automatically.
+  To remove for good: delete this file, its include-after-body entry, and the
+  announcement block in _quarto.yml.
+-->
+<style>
+  /* Pulsing glow under the calculator icon. Berkeley blue reads on both the
+     white student navbar and the yellow staff navbar. */
+  .grade-calc-new {
+    position: relative;
+  }
+  .grade-calc-new::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 26px;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #3B7EA1;
+    filter: blur(4px);
+    pointer-events: none;
+    animation: grade-calc-glow 1.8s ease-in-out infinite;
+  }
+  @keyframes grade-calc-glow {
+    0%, 100% { opacity: 0.25; transform: translateX(-50%) scaleX(0.8); }
+    50%      { opacity: 0.9;  transform: translateX(-50%) scaleX(1.15); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .grade-calc-new::after { animation: none; opacity: 0.6; }
+  }
+</style>
+<script>
+  (function () {
+    var PROMO_END = new Date("2026-10-12T00:00:00-07:00");
+    var CLICKED_KEY = "stat20-grade-calc-clicked";
+
+    if (new Date() >= PROMO_END) {
+      document.querySelectorAll("#quarto-announcement").forEach(function (el) {
+        el.remove();
+      });
+      return;
+    }
+
+    var clicked = false;
+    try { clicked = localStorage.getItem(CLICKED_KEY) === "1"; } catch (e) {}
+    if (clicked) return;
+
+    document.querySelectorAll('a[href^="https://stat20-grades.wetchler.com"]').forEach(function (link) {
+      if (!link.querySelector(".bi-calculator-fill")) return;
+      link.classList.add("grade-calc-new");
+      link.addEventListener("click", function () {
+        try { localStorage.setItem(CLICKED_KEY, "1"); } catch (e) {}
+        document.querySelectorAll(".grade-calc-new").forEach(function (el) {
+          el.classList.remove("grade-calc-new");
+        });
+      });
+    });
+  })();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

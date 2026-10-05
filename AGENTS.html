@@ -80,11 +80,13 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 
 
 <meta property="og:title" content="Stat 20 (Fall 2026)">
+<meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="866">
 <meta name="twitter:title" content="Stat 20 (Fall 2026)">
+<meta name="twitter:description" content="Introduction to Probability and Statistics at UC Berkeley">
 <meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/assets/stat20-hex.png">
 <meta name="twitter:image-height" content="1000">
 <meta name="twitter:image-width" content="866">
@@ -135,7 +137,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
     <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
-    <a href="./#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
+    <a href="https://stat20-grades.wetchler.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation" target="_blank"><i class="bi bi-calculator-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -144,6 +146,9 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <div id="quarto-announcement" data-announcement-id="0e448cb404be6a7dd8a500cd096574bd" class="alert alert-info hidden"><i class="bi bi-calculator-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>New:</strong> Check your current grade calculation anytime with the calculator icon in the top right, or <a href="https://stat20-grades.wetchler.com/" target="_blank" rel="noopener">open it here</a>.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -158,12 +163,43 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 
 <section id="agents.md" class="level1">
 <h1>AGENTS.md</h1>
-<section id="working-conventions" class="level2">
-<h2 class="anchored" data-anchor-id="working-conventions">Working conventions</h2>
+<p>Course website and materials for Stat 20 (UC Berkeley), built with Quarto.</p>
+<section id="layout" class="level2">
+<h2 class="anchored" data-anchor-id="layout">Layout</h2>
 <ul>
-<li>It is fine to run <code>quarto render</code> as needed to verify changes.</li>
-<li>But prefer invoking <code>quarto render</code> directly rather than wrapping multiple renders in shell loops or compound shell commands. That is, don’t do “files=(1-questions-and-data/labs/unvotes/lab_rubric.qmd 2-summarizing-data/labs/class-survey/lab_rubric.qmd 2-summarizing-data/labs/flights/lab_rubric.qmd); for f in $files;” and then just run quarto render of those files in the loop. And anytime you chain a <code>quarto render</code> command to another command with &amp;&amp; just do the render first and then run the rest.</li>
-<li>Treat generated PDFs as build artifacts: do not edit them directly. Make changes to the source <code>.qmd</code> files and regenerate the PDFs with Quarto.</li>
+<li><code>_quarto.yml</code>: site-wide config (navbar, announcement banner, theme, includes).</li>
+<li><code>1-questions-and-data/</code> … <code>5-prediction/</code>: course units (notes, labs, slides, etc.).</li>
+<li><code>_schedule.yml</code>: drives the schedule and what’s published, via the scheduled-docs extension (generates <code>scheduled-docs_files/</code>).</li>
+<li><code>assets/</code>: styles (<code>styles.scss</code>), images, and <code>includes/</code> (shared snippets and HTML injected into pages).</li>
+<li><code>docs/</code>: documentation for course staff (shown on the staff site only).</li>
+</ul>
+</section>
+<section id="profiles-and-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="profiles-and-outputs">Profiles and outputs</h2>
+<ul>
+<li>Student site (default profile): renders to <code>_site/</code>.</li>
+<li>Staff site (<code>--profile staff-site</code>, see <code>_quarto-staff-site.yml</code>): renders to <code>_staff-site/</code> and shows drafts.</li>
+<li>Solutions (<code>--profile staff-site,solutions</code>).</li>
+<li><code>_site/</code> and <code>_staff-site/</code> are local previews only (gitignored). The live sites are built and published by GitHub Actions in <code>.github/workflows/</code> on push to <code>main</code> and on a schedule.</li>
+</ul>
+</section>
+<section id="rendering" class="level2">
+<h2 class="anchored" data-anchor-id="rendering">Rendering</h2>
+<ul>
+<li>After every change, rerender whatever it affects so the local previews stay current, for <strong>both</strong> the student and staff profiles:
+<ul>
+<li><code>quarto render path/to/file.qmd</code></li>
+<li><code>quarto render path/to/file.qmd --profile staff-site</code></li>
+</ul></li>
+<li>Site-wide changes (<code>_quarto.yml</code>, <code>assets/styles.scss</code>, <code>assets/includes/</code>) affect every page. At minimum rerender the homepage (<code>index.qmd</code>) under both profiles; ask before doing a full-site render.</li>
+<li>Invoke <code>quarto render</code> directly. Don’t wrap multiple renders in shell loops or compound commands, and don’t chain a render with <code>&amp;&amp;</code>: run the render first, then run anything else separately.</li>
+</ul>
+</section>
+<section id="gotchas" class="level2">
+<h2 class="anchored" data-anchor-id="gotchas">Gotchas</h2>
+<ul>
+<li><code>.gitignore</code> ignores <code>*.html</code> (render by-products). Hand-written HTML needs an exception; <code>assets/includes/*.html</code> already has one.</li>
+<li>Treat generated PDFs as build artifacts: don’t edit them directly. Change the source <code>.qmd</code> and regenerate with Quarto.</li>
 </ul>
 
 
@@ -171,6 +207,69 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </section>
 
 </main> <!-- /main -->
+<!--
+  Temporary promo for the new grade calculator navbar link.
+  Adds a pulsing underglow to the calculator icon and keeps the site announcement
+  visible until PROMO_END, after which both hide themselves automatically.
+  To remove for good: delete this file, its include-after-body entry, and the
+  announcement block in _quarto.yml.
+-->
+<style>
+  /* Pulsing glow under the calculator icon. Berkeley blue reads on both the
+     white student navbar and the yellow staff navbar. */
+  .grade-calc-new {
+    position: relative;
+  }
+  .grade-calc-new::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 26px;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #3B7EA1;
+    filter: blur(4px);
+    pointer-events: none;
+    animation: grade-calc-glow 1.8s ease-in-out infinite;
+  }
+  @keyframes grade-calc-glow {
+    0%, 100% { opacity: 0.25; transform: translateX(-50%) scaleX(0.8); }
+    50%      { opacity: 0.9;  transform: translateX(-50%) scaleX(1.15); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .grade-calc-new::after { animation: none; opacity: 0.6; }
+  }
+</style>
+<script>
+  (function () {
+    var PROMO_END = new Date("2026-10-12T00:00:00-07:00");
+    var CLICKED_KEY = "stat20-grade-calc-clicked";
+
+    if (new Date() >= PROMO_END) {
+      document.querySelectorAll("#quarto-announcement").forEach(function (el) {
+        el.remove();
+      });
+      return;
+    }
+
+    var clicked = false;
+    try { clicked = localStorage.getItem(CLICKED_KEY) === "1"; } catch (e) {}
+    if (clicked) return;
+
+    document.querySelectorAll('a[href^="https://stat20-grades.wetchler.com"]').forEach(function (link) {
+      if (!link.querySelector(".bi-calculator-fill")) return;
+      link.classList.add("grade-calc-new");
+      link.addEventListener("click", function () {
+        try { localStorage.setItem(CLICKED_KEY, "1"); } catch (e) {}
+        document.querySelectorAll(".grade-calc-new").forEach(function (el) {
+          el.classList.remove("grade-calc-new");
+        });
+      });
+    });
+  })();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

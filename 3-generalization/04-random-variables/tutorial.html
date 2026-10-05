@@ -203,7 +203,7 @@ window.Quarto = {
     <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
     <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
     <a href="https://stat20.datahub.berkeley.edu/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
-    <a href="../../#" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation"><i class="bi bi-calculator-fill"></i></a>
+    <a href="https://stat20-grades.wetchler.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation" target="_blank"><i class="bi bi-calculator-fill"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -222,6 +222,9 @@ window.Quarto = {
         </a>
     </div>
   </nav>
+  <div id="quarto-announcement" data-announcement-id="0e448cb404be6a7dd8a500cd096574bd" class="alert alert-info hidden"><i class="bi bi-calculator-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>New:</strong> Check your current grade calculation anytime with the calculator icon in the top right, or <a href="https://stat20-grades.wetchler.com/" target="_blank" rel="noopener">open it here</a>.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -475,12 +478,12 @@ eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJvdXRwdXQiOmZhbHNlfSwiY29kZSI6Indl
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># represents number of successes in 3 trials (like number of heads in 3 tosses)</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 1 2 2</code></pre>
+<pre><code>[1] 2 1 2 0 1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to generate a sequence of 10 tosses of a fair coin, for example:</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 0 1 0 1 1 1 0</code></pre>
+<pre><code> [1] 1 0 1 1 1 0 0 1 1 0</code></pre>
 </div>
 </div>
 </section>
@@ -608,7 +611,7 @@ Check your answer
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># represents number of successes in 3 draws</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rhyper</span>(<span class="at">nn =</span> <span class="dv">5</span>, <span class="at">m =</span> <span class="dv">6</span>, <span class="at">n =</span> <span class="dv">4</span>, <span class="at">k =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 2 2 2 1</code></pre>
+<pre><code>[1] 2 2 2 1 2</code></pre>
 </div>
 </div>
 </section>
@@ -674,7 +677,7 @@ Check your answer
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># represents a random count from the Poisson(1) distribution</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">lambda =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 1 0 4 4</code></pre>
+<pre><code>[1] 1 0 1 2 1</code></pre>
 </div>
 </div>
 <!--## Connections between discrete random variables and draws from a box of tickets
