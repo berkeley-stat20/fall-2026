@@ -78,6 +78,35 @@ gtag('js', new Date());
 gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="basic probability – Stat 20 (Fall 2026)">
 <meta property="og:description" content="Introduction to Probability and Statistics at UC Berkeley">
@@ -237,10 +266,10 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <ol type="1">
 <li>Count the total outcomes and even numbers in each box:
 <ul>
-<li><strong>Box A</strong> has 5 total numbers: <code>1, 2, 2, 3, 5</code>. The even numbers are two twos. [P() = = 0.40]</li>
-<li><strong>Box B</strong> has 4 total numbers: <code>2, 4, 4, 6</code>. All 4 numbers are even. [P() = = 1.00]</li>
+<li><strong>Box A</strong> has 5 total numbers: <code>1, 2, 2, 3, 5</code>. The even numbers are two twos. <span class="math inline">\(P(\text{Even from A}) = \frac{2}{5} = 0.40\)</span></li>
+<li><strong>Box B</strong> has 4 total numbers: <code>2, 4, 4, 6</code>. All 4 numbers are even. <span class="math inline">\(P(\text{Even from B}) = \frac{4}{4} = 1.00\)</span></li>
 </ul></li>
-<li>Since the draws are independent, multiply their probabilities: [P() = P() P() = 0.40 = 0.40]</li>
+<li>Since the draws are independent, multiply their probabilities: <span class="math inline">\(P(\text{Both Even}) = P(\text{Even from A}) \times P(\text{Even from B}) = 0.40 \times 1.00 = 0.40\)</span></li>
 </ol>
 </div>
 </div>
@@ -270,14 +299,9 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div class="callout-body-container callout-body">
 <p><strong>Correct Answer: 0.25</strong></p>
 <ol type="1">
-<li>The total size of the sample space is (5 = 20).</li>
-<li>Identify all valid pairs ((A, B)) from Box A () Box B that sum to exactly 6:
-<ul>
-<li>If A = 2 (first ‘2’), B must be 4 (two choices) → 2 pairs.</li>
-<li>If A = 2 (second ‘2’), B must be 4 (two choices) → 2 pairs.</li>
-<li>No other elements in Box A can pair with Box B to sum to exactly 6.</li>
-</ul></li>
-<li>Calculate the probability: [P( = 6) = = 0.25]</li>
+<li>To get a sum of 6 we can either have (2,4) or (1,6).</li>
+<li>The chance to get (2,4) is <span class="math inline">\((2/5)*(2/4)=4/20\)</span> and the chance to get (1,6) is <span class="math inline">\((1/5)*(1/4)=1/20\)</span> by independence of draws from each box.</li>
+<li>Since these events are mutually exclusive the probabilities of getting (2,4) or (1,6) is $4/20+ 1/20 = 0.25.</li>
 </ol>
 </div>
 </div>
@@ -305,15 +329,15 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Correct Answer: 0.05</strong></p>
+<p><strong>Correct Answer: 0.20</strong></p>
 <ol type="1">
 <li>Check each item in Box A against items in Box B to see where (A &gt; B):
 <ul>
 <li>Box A elements: <code>1, 2, 2, 3, 5</code></li>
 <li>Box B elements: <code>2, 4, 4, 6</code></li>
 </ul></li>
-<li>Out of 20 total combinations, only the pair ((A=5, B=2)) satisfies the requirement ((5 &gt; 2)).</li>
-<li>Calculate probability: [P(A &gt; B) = = 0.05]</li>
+<li>Out of 20 total combinations, only the pairs (3,2),(5,2),(5,4),(5,4) satisfy the requirement.</li>
+<li>Calculate probability: <span class="math inline">\(P(A &gt; B) = \frac{4}{20} = 0.20\)</span></li>
 </ol>
 </div>
 </div>
@@ -342,15 +366,15 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Correct Answer: 0.55</strong></p>
-<p>Using the complement rule is the easiest way to solve “at least one” problems: [P() = 1 - P()]</p>
+<p>Using the complement rule is the easiest way to solve “at least one” problems: <span class="math inline">\(P(\text{At least one 2}) = 1 - P(\text{No 2s drawn})\)</span></p>
 <ol type="1">
 <li>Find the probability of NOT drawing a 2 from each box:
 <ul>
-<li><strong>Box A</strong> has 5 numbers, and 3 are NOT a 2 (<code>1, 3, 5</code>): [P() = ]</li>
-<li><strong>Box B</strong> has 4 numbers, and 3 are NOT a 2 (<code>4, 4, 6</code>): [P() = ]</li>
+<li><strong>Box A</strong> has 5 numbers, and 3 are NOT a 2 (<code>1, 3, 5</code>): <span class="math inline">\(P(\text{No 2 from A}) = \frac{3}{5}\)</span></li>
+<li><strong>Box B</strong> has 4 numbers, and 3 are NOT a 2 (<code>4, 4, 6</code>): <span class="math inline">\(P(\text{No 2 from B}) = \frac{3}{4}\)</span></li>
 </ul></li>
-<li>Multiply the probabilities to find the chance that neither box rolls a 2: [P() = = = 0.45]</li>
-<li>Subtract from 1 to find the remaining probability: [P() = 1 - 0.45 = 0.55]</li>
+<li>Multiply the probabilities to find the chance that neither box rolls a 2: <span class="math inline">\(P(\text{No 2s drawn}) = \frac{3}{5} \times \frac{3}{4} = \frac{9}{20} = 0.45\)</span></li>
+<li>Subtract from 1 to find the remaining probability: <span class="math inline">\(P(\text{At least one 2}) = 1 - 0.45 = 0.55\)</span></li>
 </ol>
 </div>
 </div>

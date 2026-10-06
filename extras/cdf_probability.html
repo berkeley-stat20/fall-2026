@@ -220,20 +220,22 @@ details.answer .answer-box {
 <div class="card mx-auto my-4 shadow-sm" style="max-width: 480px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px;">
 <section id="cdf-of-variable-x" class="level6 font-weight-bold text-secondary mb-3 card-body text-center p-4" style="font-weight: 600;">
 <h6 class="font-weight-bold text-secondary mb-3 anchored" style="font-weight: 600;" data-anchor-id="cdf-of-variable-x">CDF of variable X</h6>
-<div style="position: relative; height: 240px; border-left: 2px solid #666; border-bottom: 2px solid #666; width: 85%; margin: 0 auto; background: #ffffff;">
-<div style="position: absolute; bottom: 0%; left: -35px; font-size: 0.8rem;">
+<!-- Added margin-left: 45px and adjusted width to 80% to safely accommodate Y-axis text labels -->
+<div style="position: relative; height: 240px; border-left: 2px solid #666; border-bottom: 2px solid #666; width: 80%; margin: 0 auto 0 45px; background: #ffffff;">
+<!-- Y-Axis Gridlines / Markers: Vertically centered using translateY(50%) and right-aligned -->
+<div style="position: absolute; bottom: 0%; left: -42px; font-size: 0.8rem; transform: translateY(65%); text-align: right; width: 35px;">
 <p>0.00</p>
 </div>
-<div style="position: absolute; bottom: 20%; left: -35px; font-size: 0.8rem; color:#888;">
+<div style="position: absolute; bottom: 20%; left: -42px; font-size: 0.8rem; color:#888; transform: translateY(65%); text-align: right; width: 35px;">
 <p>0.20</p>
 </div>
-<div style="position: absolute; bottom: 45%; left: -35px; font-size: 0.8rem; color:#888;">
+<div style="position: absolute; bottom: 45%; left: -42px; font-size: 0.8rem; color:#888; transform: translateY(65%); text-align: right; width: 35px;">
 <p>0.45</p>
 </div>
-<div style="position: absolute; bottom: 75%; left: -35px; font-size: 0.8rem; color:#888;">
+<div style="position: absolute; bottom: 75%; left: -42px; font-size: 0.8rem; color:#888; transform: translateY(65%); text-align: right; width: 35px;">
 <p>0.75</p>
 </div>
-<div style="position: absolute; bottom:100%; left: -35px; font-size: 0.8rem;">
+<div style="position: absolute; bottom: 100%; left: -42px; font-size: 0.8rem; transform: translateY(65%); text-align: right; width: 35px;">
 <p>1.00</p>
 </div>
 <div style="position: absolute; width:100%; bottom:20%; border-top:1px dashed #eee;">
@@ -287,24 +289,25 @@ details.answer .answer-box {
 <div style="position: absolute; bottom: 100%; left: 85%; width: 15%; border-bottom: 3px solid #0056b3;">
 
 </div>
-<div style="position: absolute; bottom: -25px; left: 0%; font-size: 0.8rem;">
+<!-- X-Axis Labels: Pushed further down by altering 'bottom' from -25px to -32px -->
+<div style="position: absolute; bottom: -37px; left: 0%; font-size: 0.8rem; transform: translateX(-50%);">
 <p>0</p>
 </div>
-<div style="position: absolute; bottom: -25px; left: 20%; font-size: 0.8rem;">
+<div style="position: absolute; bottom: -37px; left: 20%; font-size: 0.8rem; transform: translateX(-50%);">
 <p>1.0</p>
 </div>
-<div style="position: absolute; bottom: -25px; left: 45%; font-size: 0.8rem;">
+<div style="position: absolute; bottom: -37px; left: 45%; font-size: 0.8rem; transform: translateX(-50%);">
 <p>2.5</p>
 </div>
-<div style="position: absolute; bottom: -25px; left: 60%; font-size: 0.8rem;">
+<div style="position: absolute; bottom: -37px; left: 60%; font-size: 0.8rem; transform: translateX(-50%);">
 <p>3.0</p>
 </div>
-<div style="position: absolute; bottom: -25px; left: 85%; font-size: 0.8rem;">
+<div style="position: absolute; bottom: -37px; left: 85%; font-size: 0.8rem; transform: translateX(-50%);">
 <p>5.0</p>
 </div>
 </div>
-<div class="mt-4 text-muted" style="font-size: 0.85rem; font-weight: bold; margin-top: 1.5rem !important;">
-<p>Value (x)</p>
+<div class="mt-4 text-muted" style="font-size: 0.85rem; font-weight: bold; margin-top: 1.5rem !important; padding-left: 45px;">
+<p>Value (X)</p>
 </div>
 </section>
 </div>
@@ -314,7 +317,7 @@ details.answer .answer-box {
 <li><label><input type="checkbox"><span class="math inline">\(P(X \le 2) = P(X = 1)\)</span></label></li>
 <li><label><input type="checkbox"><span class="math inline">\(X\)</span> is a discrete variable that takes exactly 4 distinct values</label></li>
 <li><label><input type="checkbox">The probability of observing an outcome strictly greater than 3.0 is 0.25</label></li>
-<li><label><input type="checkbox">All values in the support of <span class="math inline">\(X\)</span> are integer numbers</label></li>
+<li><label><input type="checkbox">All the values of <span class="math inline">\(X\)</span> are integer numbers</label></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -340,10 +343,10 @@ details.answer .answer-box {
 <h5 class="anchored" data-anchor-id="step-by-step-breakdown">Step-by-Step Breakdown</h5>
 <p>By evaluating the heights of the step discontinuities (jumps) in the graph of the Cumulative Distribution Function <span class="math inline">\(F(x)\)</span>, we can recover the individual Probability Mass Function (PMF) points:</p>
 <ul>
-<li><strong>At <span class="math inline">\(x = 1.0\)</span>:</strong> Jump from 0.00 to 0.20 implies <span class="math inline">\(P(X = 1.0) = 0.20\)</span></li>
-<li><strong>At <span class="math inline">\(x = 2.5\)</span>:</strong> Jump from 0.20 to 0.45 implies <span class="math inline">\(P(X = 2.5) = 0.45 - 0.20 = 0.25\)</span></li>
-<li><strong>At <span class="math inline">\(x = 3.0\)</span>:</strong> Jump from 0.45 to 0.75 implies <span class="math inline">\(P(X = 3.0) = 0.75 - 0.45 = 0.30\)</span></li>
-<li><strong>At <span class="math inline">\(x = 5.0\)</span>:</strong> Jump from 0.75 to 1.00 implies <span class="math inline">\(P(X = 5.0) = 1.00 - 0.75 = 0.25\)</span></li>
+<li><strong>At</strong> <span class="math inline">\(x = 1.0\)</span>: Jump from 0.00 to 0.20 implies <span class="math inline">\(P(X = 1.0) = 0.20\)</span></li>
+<li><strong>At</strong> <span class="math inline">\(x = 2.5\)</span>: Jump from 0.20 to 0.45 implies <span class="math inline">\(P(X = 2.5) = 0.45 - 0.20 = 0.25\)</span></li>
+<li><strong>At</strong> <span class="math inline">\(x = 3.0\)</span>: Jump from 0.45 to 0.75 implies <span class="math inline">\(P(X = 3.0) = 0.75 - 0.45 = 0.30\)</span></li>
+<li><strong>At</strong> <span class="math inline">\(x = 5.0\)</span>: Jump from 0.75 to 1.00 implies <span class="math inline">\(P(X = 5.0) = 1.00 - 0.75 = 0.25\)</span></li>
 </ul>
 <p><strong>Why statement 2 is TRUE:</strong><br>
 Since there are no choices between <span class="math inline">\(x = 1.0\)</span> and <span class="math inline">\(x = 2.5\)</span>, the cumulative probability anywhere inside that interval is constant. Thus, <span class="math inline">\(P(X \le 2) = F(2) = 0.20\)</span>, which perfectly matches <span class="math inline">\(P(X = 1) = 0.20\)</span>.</p>
