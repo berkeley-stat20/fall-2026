@@ -474,14 +474,18 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li>Continuous random variables, their density functions, and CDFs</li>
+<li>Special continuous distributions</li>
+<li>Independent and identically distributed (IID) random variables</li>
+<li>Sums and averages of IID random variables</li>
+<li>The Central Limit Theorem</li>
 </ul>
 </div>
 </div>
 </div>
-<p><span class="dropcap">I</span>magine that a regular patron of a bar has hit the bottle rather hard one evening. When the bar closes for the night, they come out to weave their way home. Home is very near, in fact, just straight down the road. If our inebriate walks straight in the direction of their home, they can be there very soon. The only problem is - they can’t walk straight. Every minute, they move in a random direction: backwards or forwards with equal probability. Where will they be after <span class="math inline">\(n\)</span> minutes? This is the famous “drunkard’s walk” problem<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p><span class="dropcap">I</span>magine that a regular patron of a bar has hit the bottle rather hard one evening. When the bar closes for the night, they come out to weave their way home. Home is very near, in fact, just straight down the road. If our inebriate walks straight in the direction of their home, they can be there very soon. The only problem is that they <em>can’t</em> walk straight. Every minute, they move in a random direction: backwards or forwards with equal probability. Where will they be after <span class="math inline">\(n\)</span> minutes? This is the famous “drunkard’s walk” problem<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <p><img src="images/drunkard-walk-drawing.png" class="img-fluid" data-fig-aligned="center" width="500"></p>
-<p>Each time step (say, each minute), they go backwards or forwards with equal probability, so it is as if they are walking on the real line, and each minute they go either forward <span class="math inline">\((+1)\)</span> or backwards <span class="math inline">\((+1)\)</span>, each with probability <span class="math inline">\(\displaystyle \frac{1}{2}\)</span>. Where will our tipsy traveler be after <span class="math inline">\(n\)</span> steps?</p>
+<p>Each time step (say, each minute), they go backwards or forwards with equal probability, so it is as if they are walking on the real line, and each minute they go either forward <span class="math inline">\((+1)\)</span> or backwards <span class="math inline">\((-1)\)</span>, each with probability <span class="math inline">\(\displaystyle \frac{1}{2}\)</span>. Where will our tipsy traveler be after <span class="math inline">\(n\)</span> steps? You can imagine that this problem isn’t that easy…</p>
 <p>Here is a plot of a simulation of our itinerant inebriate’s path for <span class="math inline">\(n = 30\)</span>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -492,28 +496,37 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Note that the graph is spread out to show the number of steps taken, but the walker is just walking up and down the <span class="math inline">\(y\)</span>-axis, since they can only go backwards and forwards. This kind of walk is called a <em>simple random walk</em>. Random walks have applications in many fields including physics and finance.They are used to model photons escaping from the center of the sun (though photons can scatter in <em>any</em> direction), a molecule in a liquid, the price of a stock etc.</p>
-<p>What we have shown here is one possible path our random walker might take and where they might land up after <span class="math inline">\(n = 30\)</span> minutes. We have plotted this by defining a modified Bernoulli random variable <span class="math inline">\(X\)</span> that takes the values <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> with an equal probability of <span class="math inline">\(\displaystyle \frac{1}{2}\)</span>. Then we sample <span class="math inline">\(30\)</span> times from this vector with replacement. Notice here that we use an argument in <code>sample()</code> that we haven’t used before, <code>prob</code>. This defines the <em>weights</em> used for sampling. In this case they are the same, but they might be different. We will discuss this further in the “Ideas in Code” section. Note that the expected value of our Bernoulli random variable <span class="math inline">\(X\)</span> is <span class="math inline">\(0\)</span>. What is its variance and SD?</p>
+<p>Here, the graph is spread out to show the number of steps taken, but the walker is just walking up and down the <span class="math inline">\(y\)</span>-axis, since they can only go backwards and forwards. This kind of walk is called a <em>simple random walk</em>. Random walks have applications in many fields including physics and finance.They are used to model photons escaping from the center of the sun (though photons can scatter in <em>any</em> direction), a molecule in a liquid, the price of a stock etc.</p>
+<p>What we have shown here is <em>one</em> possible path our random walker might take and where they might land up after <span class="math inline">\(n = 30\)</span> minutes. <!--We have plotted this by defining a modified Bernoulli random variable $X$ that takes the values $-1$ and $1$ with an equal probability of $\displaystyle \frac{1}{2}$. Then we sample $30$ times from this vector with replacement. here that we use an argument in `sample()` that we haven't used before, `prob`. This defines the probabilities used for sampling. In this case they are the same, but they might be different. 
+--></p>
+<p><strong>Exercise</strong> If we define a random variable <span class="math inline">\(X\)</span> that is <em>equally likely</em> to be <span class="math inline">\(-1\)</span> or <span class="math inline">\(1\)</span>, we know that its expected value is <span class="math inline">\(0\)</span>. What is its variance and SD?</p>
 <details>
 <summary>
 Check your answer
 </summary>
-<span class="math display">\[
+<p><span class="math display">\[
 X = \begin{cases}
     -1, \; \text{ with prob } 0.5\\
     1, \; \text{ with prob } 0.5\\
 \end{cases}
-\]</span> <span class="math display">\[
+\]</span></p>
+<span class="math display">\[
 E(X) = (-1) \times 0.5 + 1 \times 0.5 = 0.
 \]</span> <span class="math display">\[
 Var(X) = E(X^2) - E(X)^2 = 1 - 0 = 1 = SD(X).
 \]</span>
 </details>
-<p>In the code below we are defining a vector with the values taken by <span class="math inline">\(X\)</span>, a vector of probabilities for these values, and the distance traveled by the walker in <span class="math inline">\(n\)</span> steps:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># defining the values taken by X</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>px <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="co"># defining the probabilities of these values</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">sample</span>(x, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">prob =</span> px, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For example,in the path shown in the figure above, the first <span class="math inline">\(5\)</span> steps taken (<span class="math inline">\(-1\)</span> represents backwards and <span class="math inline">\(+1\)</span> forward): <span class="math inline">\(1, -1, -1, 1, -1, -1\)</span>. The position at each step is the sum of all the steps thus far, so this sequence becomes <span class="math inline">\(1, 0, -1, 0, -1, -2\)</span>. Notice that the end position after <span class="math inline">\(30\)</span> steps is <span class="math inline">\(4\)</span>. One might ask - what is the <em>probability</em> that the position is <span class="math inline">\(4\)</span> after <span class="math inline">\(30\)</span> steps? How would we compute this probability? This seems very difficult, so let’s look at the empirical distribution of the position after <span class="math inline">\(n = 30\)</span> steps (we simulate many many such paths and look at the value of sum of the <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span> steps at the end).</p>
+<!-- 
+In the code below we are defining a vector with the values taken by $X$, a vector of probabilities for these values, and the distance traveled by the walker in $n$ steps:
+
+```r
+x <- c(-1,1) # defining the values taken by X
+px <- c(1/2,1/2) # defining the probabilities of these values
+sum(sample(x, size = 30, prob = px, replace = TRUE))
+```
+-->
+<p>For example,in the path shown in the figure above, the first <span class="math inline">\(5\)</span> steps taken (<span class="math inline">\(-1\)</span> represents backwards and <span class="math inline">\(+1\)</span> forward): <span class="math inline">\(1, -1, -1, 1, -1, -1\)</span>. The position at each step is the <em>sum of all the steps thus far</em>, so this sequence becomes <span class="math inline">\(1, 0, -1, 0, -1, -2\)</span>. This represents the drunk dude taking one step forward, and then stepping back, then going back further and stepping forward etc.</p>
+<p>Notice that the <strong>end</strong> position after <span class="math inline">\(30\)</span> steps is <span class="math inline">\(4\)</span> (the height along the <span class="math inline">\(y\)</span>-axis. One might ask - what is the <em>probability</em> that the position is <span class="math inline">\(4\)</span> after <span class="math inline">\(30\)</span> steps? How would we compute this probability? This seems very difficult to answer, so let’s look at the <em>empirical</em> distribution of the position after <span class="math inline">\(n = 30\)</span> steps (we simulate many many such paths and look at the value of sum of the <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span> steps at the end).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -597,12 +610,12 @@ Check your answer
 </div>
 <p>Now we will repeat this process (of drawing <span class="math inline">\(25\)</span> tickets with replacement and summing the draws) <span class="math inline">\(10\)</span> times (note how <code>replicate()</code> is used) :</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or you could use box &lt;- c(rep(0, 2), rep(1, 3), 2, rep(3,2), rep(4, 2))</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">expr =</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="at">x =</span> box, <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or you could use box &lt;- c(rep(0, 2), rep(1, 3), 2, rep(3,2), rep(4, 2))</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">expr =</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="at">x =</span> box, <span class="at">size =</span> <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 56 50 64 51 49 41 64 44 45 51</code></pre>
 </div>
@@ -860,7 +873,7 @@ X \sim \textrm{N}(\mu, \sigma^2)
 <li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Random_walk" class="uri">https://en.wikipedia.org/wiki/Random_walk</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>The box model was introduced by Freedman, Pisani, and Purves in their textbook <a href="https://wwnorton.com/books/9780393929720"><em>Statistics</em></a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Another instance where Abraham De Moivre was the first person to discover a distribution, but it was named after someone else. You can read about De Moivre at <a href="https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/" class="uri">https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>For a normally distributed random variable, <span class="math inline">\(f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\)</span>. Read more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Normal_distribution" class="uri">https://en.wikipedia.org/wiki/Normal_distribution</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>For a normally distributed random variable, <span class="math inline">\(f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\)</span>. Read more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Normal_distribution" class="uri">https://en.wikipedia.org/wiki/Normal_distribution</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
