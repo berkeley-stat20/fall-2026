@@ -489,10 +489,13 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><span class="dropcap">I</span>magine that a regular patron of a bar has hit the bottle rather hard one evening. When the bar closes for the night, they come out to weave their way home. Home is very near, in fact, just straight down the road. If our inebriate walks straight in the direction of their home, they can be there very soon. The only problem is that they <em>can’t</em> walk straight. Every minute, they move in a random direction: backwards or forwards with equal probability. Where will they be after <span class="math inline">\(n\)</span> minutes? This is the famous “drunkard’s walk” problem<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p><img src="images/drunkard-walk-drawing.png" class="img-fluid" data-fig-aligned="center" width="500"></p>
-<p>Each time step (say, each minute), they go backwards or forwards with equal probability, so it is as if they are walking on the real line, and each minute they go either forward <span class="math inline">\((+1)\)</span> or backwards <span class="math inline">\((-1)\)</span>, each with probability <span class="math inline">\(\displaystyle \frac{1}{2}\)</span>. Where will our tipsy traveler be after <span class="math inline">\(n\)</span> steps? You can imagine that this problem isn’t that easy…</p>
-<p>Here is a plot of a simulation of our itinerant inebriate’s path for <span class="math inline">\(n = 30\)</span>:</p>
+<p><span class="dropcap">I</span>magine that a regular patron of a bar has hit the bottle rather hard one evening. When the bar closes for the night, they come out to make their way home. Home is very near, in fact, just straight down the road. If our tipsy traveler walks straight in the direction of their home, they can be there very soon. The only problem is that they <em>can’t</em> walk straight. Every minute, they move in a random direction: backwards or forwards with equal probability. Where will they be after <span class="math inline">\(n\)</span> minutes? This is the famous “drunkard’s walk” problem<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/drunkard-walk-drawing.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<p>Each time step (say, each minute), they go backwards or forwards with equal probability, so it is as if they are walking on the real line, and each minute they go either forward <span class="math inline">\((+1)\)</span> or backwards <span class="math inline">\((-1)\)</span>, each with probability <span class="math inline">\(\displaystyle \frac{1}{2}\)</span>. Where will our random walker be after <span class="math inline">\(n\)</span> steps? You can imagine that this problem isn’t that easy, but let’s simulate <em>one</em> possible path that our walker might take in <span class="math inline">\(30\)</span> steps (<span class="math inline">\(n = 30\)</span>):</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -505,7 +508,7 @@ window.Quarto = {
 <p>Here, the graph is spread out to show the number of steps taken, but the walker is just walking up and down the <span class="math inline">\(y\)</span>-axis, since they can only go backwards and forwards. This kind of walk is called a <em>simple random walk</em>. Random walks have applications in many fields including physics and finance.They are used to model photons escaping from the center of the sun (though photons can scatter in <em>any</em> direction), a molecule in a liquid, the price of a stock etc.</p>
 <p>What we have shown here is <em>one</em> possible path our random walker might take and where they might land up after <span class="math inline">\(n = 30\)</span> minutes. <!--We have plotted this by defining a modified Bernoulli random variable $X$ that takes the values $-1$ and $1$ with an equal probability of $\displaystyle \frac{1}{2}$. Then we sample $30$ times from this vector with replacement. here that we use an argument in `sample()` that we haven't used before, `prob`. This defines the probabilities used for sampling. In this case they are the same, but they might be different. 
 --></p>
-<p><strong>Exercise</strong> If we define a random variable <span class="math inline">\(X\)</span> that is <em>equally likely</em> to be <span class="math inline">\(-1\)</span> or <span class="math inline">\(1\)</span>, we know that its expected value is <span class="math inline">\(0\)</span>. What is its variance and SD?</p>
+<p><strong>Exercise:</strong> If we define a random variable <span class="math inline">\(X\)</span> that is <em>equally likely</em> to be <span class="math inline">\(-1\)</span> or <span class="math inline">\(1\)</span>, we know that its expected value is <span class="math inline">\(0\)</span>. What is its variance and SD?</p>
 <details>
 <summary>
 Check your answer
@@ -522,17 +525,8 @@ E(X) = (-1) \times 0.5 + 1 \times 0.5 = 0.
 Var(X) = E(X^2) - E(X)^2 = 1 - 0 = 1 = SD(X).
 \]</span>
 </details>
-<!-- 
-In the code below we are defining a vector with the values taken by $X$, a vector of probabilities for these values, and the distance traveled by the walker in $n$ steps:
-
-```r
-x <- c(-1,1) # defining the values taken by X
-px <- c(1/2,1/2) # defining the probabilities of these values
-sum(sample(x, size = 30, prob = px, replace = TRUE))
-```
--->
-<p>For example,in the path shown in the figure above, the first <span class="math inline">\(5\)</span> steps taken (<span class="math inline">\(-1\)</span> represents backwards and <span class="math inline">\(+1\)</span> forward): <span class="math inline">\(1, -1, -1, 1, -1, -1\)</span>. The position at each step is the <em>sum of all the steps thus far</em>, so this sequence becomes <span class="math inline">\(1, 0, -1, 0, -1, -2\)</span>. This represents the drunk dude taking one step forward, and then stepping back, then going back further and stepping forward etc.</p>
-<p>Notice that the <strong>end</strong> position after <span class="math inline">\(30\)</span> steps is <span class="math inline">\(4\)</span> (the height along the <span class="math inline">\(y\)</span>-axis. One might ask - what is the <em>probability</em> that the position is <span class="math inline">\(4\)</span> after <span class="math inline">\(30\)</span> steps? How would we compute this probability? This seems very difficult to answer, so let’s look at the <em>empirical</em> distribution of the position after <span class="math inline">\(n = 30\)</span> steps (we simulate many many such paths and look at the value of sum of the <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span> steps at the end).</p>
+<p>For example,in the path shown in the figure above, the first <span class="math inline">\(5\)</span> steps taken (<span class="math inline">\(-1\)</span> represents backwards and <span class="math inline">\(+1\)</span> forward): <span class="math inline">\(1, -1, -1, 1, -1\)</span>. The <em>position</em> at each step is the <em>sum of all the steps thus far</em>, so the sequence of positions after each of these steps is <span class="math inline">\(1, 0, -1, 0, -1\)</span>. This represents the walker taking one step forward, and then stepping back, then going back further and stepping forward etc.</p>
+<p>Notice that the <strong>end</strong> position after <span class="math inline">\(30\)</span> steps is <span class="math inline">\(4\)</span> (the height along the <span class="math inline">\(y\)</span>-axis). One might ask - what is the <em>probability</em> that the position is <span class="math inline">\(4\)</span> after <span class="math inline">\(30\)</span> steps? How would we compute this probability? This seems <em>very</em> difficult to answer, so let’s look at the <em>empirical</em> distribution of the position after <span class="math inline">\(n = 30\)</span> steps (we simulate many many such paths and look at the value of sum of the <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span> steps at the end).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -542,14 +536,14 @@ sum(sample(x, size = 30, prob = px, replace = TRUE))
 </div>
 </div>
 </div>
-<p>Well, that’s a nice shape! This is an example of the fundamental result mentioned in the subtitle of this chapter. Now, before we can compute the expected value of the walker’s position after <span class="math inline">\(n\)</span> steps or the associated probabilities, we need to learn about very special sets of random variables.</p>
+<p>Well, now! That’s a nice shape! This is an example of the fundamental result mentioned in the subtitle of this chapter. Now, before we can compute the expected value of the walker’s position after <span class="math inline">\(n\)</span> steps or the associated probabilities, we need to learn about very special types of random variables.</p>
 <section id="independent-and-identically-distributed-random-variables" class="level2">
 <h2 class="anchored" data-anchor-id="independent-and-identically-distributed-random-variables">Independent and identically distributed random variables</h2>
 <div class="def">
 <dl>
 <dt><strong>IID random variables</strong></dt>
 <dd>
-If we have <span class="math inline">\(n\)</span> independent random variables <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> such that they all have the same pmf <span class="math inline">\(f(x)\)</span> and the same cdf <span class="math inline">\(F(x)\)</span>, we call the random variables <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> independent and identically distributed random variables. We usually use the abbreviation i.i.d or iid for ``independent and identically distributed’’.
+If we have <span class="math inline">\(n\)</span> independent random variables <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> such that they all have the same pmf <span class="math inline">\(f(x)\)</span> and the same cdf <span class="math inline">\(F(x)\)</span>, we call the random variables <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> independent and identically distributed random variables. We usually use the abbreviation i.i.d or iid for “independent and identically distributed”.
 </dd>
 </dl>
 </div>
@@ -558,7 +552,11 @@ If we have <span class="math inline">\(n\)</span> independent random variables <
 <section id="example-drawing-tickets-with-replacement" class="level3">
 <h3 class="anchored" data-anchor-id="example-drawing-tickets-with-replacement">Example: Drawing tickets with replacement</h3>
 <p>Consider the box shown below:</p>
-<p><img src="images/box-1.png" class="img-fluid" data-fig-aligned="center" width="400"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/box-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
 <p>Say I draw <span class="math inline">\(25\)</span> tickets with replacement from this box, and let <span class="math inline">\(X_k\)</span> be the value of the <span class="math inline">\(k\)</span>th ticket. Then each of the <span class="math inline">\(X_k\)</span> has the same distribution, and they are independent since we draw the tickets with replacement. Therefore <span class="math inline">\(X_1, X_2, \ldots, X_{25}\)</span> are iid random variables, and they <em>each</em> have a distribution defined by the following pmf: <span class="math display">\[
 f(x) = \begin{cases}
       0.2, \; x = 0, 3, 4 \\
@@ -577,19 +575,31 @@ f(x) = \begin{cases}
 <section id="rolling-a-pair-of-dice-and-summing-the-spots" class="level3">
 <h3 class="anchored" data-anchor-id="rolling-a-pair-of-dice-and-summing-the-spots">Rolling a pair of dice and summing the spots</h3>
 <p>Suppose we want to represent the rolling of a pair of dice and summing the spots using a box with appropriately marked tickets. Our box could be:</p>
-<p><img src="images/die.jpeg" class="img-fluid" data-fig-aligned="center" width="200"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/die.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
 <p>Let <span class="math inline">\(X_1\)</span> represent drawing a ticket at random from this box. Then <span class="math inline">\(X_1\)</span> has the discrete uniform distribution. To represent the sum of spots of a pair of dice, we would draw <em>twice</em> with replacement from this box, calling the result of the first draw <span class="math inline">\(X_1\)</span> and the second <span class="math inline">\(X_2\)</span>. Notice that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent, since we drew with replacement, and have the same probability distribution, so are <em>identically distributed</em>. That is, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are i.i.d. random variables, and we want to know about the sum of these. We can define <span class="math inline">\(S = X_1+X_2\)</span> and use the box to simulate the distribution of <span class="math inline">\(S\)</span>.</p>
 </section>
 <section id="spinning-a-vegas-roulette-wheel-and-betting-on-red" class="level3">
 <h3 class="anchored" data-anchor-id="spinning-a-vegas-roulette-wheel-and-betting-on-red">Spinning a Vegas roulette wheel and betting on red</h3>
-<p><img src="images/roulette-us.jpg" class="img-fluid" data-fig-aligned="center" width="200"></p>
-<p>We know that an American roulette wheel has <span class="math inline">\(18\)</span> red pockets, <span class="math inline">\(18\)</span> black pockets and <span class="math inline">\(2\)</span> green pockets. So if we spin it, the chance of winning if we bet on red is <span class="math inline">\(18/38\)</span>. Suppose we bet a dollar on red, then if the ball lands in a red pocket, we get our dollar back and another dollar. If it lands on black, we lose the dollar we bet. We are usually interested in our “net gain” if we play over and over again, that is, our total winnings (or losses) after <span class="math inline">\(n\)</span> spins. We can use a box of tickets to model the net gain in <span class="math inline">\(n\)</span> spins by letting the box represent the possible result of <em>one</em> spin, and then drawing <span class="math inline">\(n\)</span> times at random from this box. What would the box to represent the result of one spin of a roulette wheel look like?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/roulette-us.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<p>We know that an American roulette wheel has <span class="math inline">\(18\)</span> red pockets, <span class="math inline">\(18\)</span> black pockets and <span class="math inline">\(2\)</span> green pockets. So if we spin it, the chance of winning if we bet on red is <span class="math inline">\(18/38\)</span>. Suppose we bet a dollar on red, then if the ball lands in a red pocket, we get our dollar back and <strong>win</strong> another dollar. If it lands on black or green, we <strong>lose</strong> the dollar we bet. We are usually interested in our “net gain” if we play over and over again, that is, our total winnings (or losses) after <span class="math inline">\(n\)</span> spins. We can use a box of tickets to model the net gain in <span class="math inline">\(n\)</span> spins by letting the box represent the possible result of <em>one</em> spin, and then drawing <span class="math inline">\(n\)</span> times at random from this box. What would the box to represent the result of one spin of a roulette wheel look like?</p>
 <details>
 <summary>
 Check your answer
 </summary>
 <p>The box would have <span class="math inline">\(38\)</span> tickets. <span class="math inline">\(18\)</span> tickets would be marked with <span class="math inline">\(+1\)</span> and <span class="math inline">\(20\)</span> tickets would be marked with <span class="math inline">\(-1\)</span>. This would represent the result of one spin. Suppose we want to see what the net gain would be from playing <span class="math inline">\(100\)</span> times, we would draw <span class="math inline">\(100\)</span> times with replacement from this box, and sum the draws.</p>
-<p><img src="images/roulette-bet.jpeg" class="img-fluid" data-fig-aligned="center" width="300"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/roulette-bet.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+</figure>
+</div>
 <p>How would you simulate this process (of spinning the wheel <span class="math inline">\(n\)</span> times) in R?</p>
 </details>
 <p>We can generalize the ideas in the roulette example to any set up where we have iid discrete random variables. We need to think about <em>three</em> things:</p>
@@ -606,7 +616,11 @@ Check your answer
 <section id="sums" class="level3">
 <h3 class="anchored" data-anchor-id="sums">Sums</h3>
 <p>Suppose we make <span class="math inline">\(n\)</span> draws at random with replacement from the box in the example, reproduced here:</p>
-<p><img src="images/box-1.png" class="img-fluid" data-fig-aligned="center" width="300"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/box-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+</figure>
+</div>
 <p>Suppose we sum the drawn tickets. We denote the <em>sum</em> of <span class="math inline">\(n\)</span> random variables by <span class="math inline">\(S_n\)</span>. Note that <span class="math inline">\(S_n = X_1 + X_2 + \ldots + X_{n}\)</span> is also a random variable.</p>
 <p>Let’s simulate this by letting <span class="math inline">\(n=25\)</span> and sampling <span class="math inline">\(25\)</span> tickets with replacement, summing them, and then repeating this process. Note that the smallest sum we can get is <span class="math inline">\(S_n = 0\)</span> and the largest is <span class="math inline">\(100\)</span>. (Why?)</p>
 <div class="cell">
@@ -648,7 +662,7 @@ Var(S_{25}) &amp;= Var(X_1 + X_2 + \ldots +X_{25})\\
 E(S_n) &amp;= n \times E(X_1) \\
 Var(S_n) &amp;= n \times Var(X_1)\\
 \end{aligned}
-\]</span> This does not hold for <span class="math inline">\(SD(S_n)\)</span>, though. For the SD, we have the following ``law’’ for the standard deviation of the sum.</p>
+\]</span> This does not hold for <span class="math inline">\(SD(S_n)\)</span>, though. For the SD, we have the following “law” for the standard deviation of the sum.</p>
 <div class="def">
 <dl>
 <dt><strong>Square root law for sums of iid random variables</strong></dt>
@@ -666,7 +680,7 @@ SD(S_n) = \sqrt{n} \times SD(X_1)
 <p>Back to our inebriated random walker who is trying to walk home. Recall that at each time step, the walker moves forward or backward with equal probability. After <span class="math inline">\(n\)</span> steps, their position can be written as <span class="math display">\[
 S_n = X_1 + X_2 + \ldots X_n
 \]</span> where <span class="math inline">\(X_k = +1\)</span> or <span class="math inline">\(-1\)</span> with probability <span class="math inline">\(0.5\)</span> each. <span class="math inline">\(E(X_k) = 0\)</span> and <span class="math inline">\(Var(X_k) = 1\)</span>, so we get that: <span class="math display">\[
-E(S_n) = 0, \; Var(S_n) = n, \text{ and } SD(n) = \sqrt{n}.
+E(S_n) = 0, \; Var(S_n) = n, \text{ and } SD(S_n) = \sqrt{n}.
 \]</span></p>
 </section>
 <section id="averages" class="level3">
@@ -720,16 +734,6 @@ Since <span class="math inline">\(S_n\)</span> and <span class="math inline">\(\
 </div>
 </div>
 </div>
-<!--:::{.content-visible when-format="pdf"}
-
-::: {.cell}
-::: {.cell-output-display}
-![](notes_files/figure-html/unnamed-chunk-9-1.png){width=960}
-:::
-:::
-
-:::
--->
 <p>What do we notice in these figures? First, we see the bell-shape again! Note that the black line is the expected value. We see that the center of the distribution for the sample sum grows as the sample size increases (look at the x-axis), but this does not happen for the distribution of the sample mean. You can also see that the spread of the data for the sample sum is much greater when n = 100, but this does not happen for the distribution of the sample mean. Now, the <span class="math inline">\(y\)</span> axis has neither counts nor proportion, but it has <em>density</em>. This makes the histogram have a total area of one, similar to a probability histogram. Now we can think of this histogram, called a <em>density</em> histogram as an <em>approximation</em> of the probability histogram.</p>
 <div class="def">
 <dl>
@@ -763,7 +767,6 @@ This is a function <span class="math inline">\(f(x)\)</span> that satisfies two 
 </ol></li>
 </ul>
 </div>
-<p>If <span class="math inline">\(X\)</span> is a continuous random variable, we don’t talk about <span class="math inline">\(P(X = x\)</span>), that is, the probability that <span class="math inline">\(X\)</span> takes a particular value. Rather, we ask what is the probability that <span class="math inline">\(X\)</span> lies in an interval around <span class="math inline">\(x\)</span>. Since there are infinitely many outcomes in any interval on the real line, no single outcome can have positive probability, so <span class="math inline">\(P(X=x) =0\)</span> for any particular <span class="math inline">\(x\)</span> in the interval where <span class="math inline">\(X\)</span> is defined. To find the probability that <span class="math inline">\(X\)</span> lies in an interval <span class="math inline">\((a,b)\)</span>, we integrate <span class="math inline">\(f(x)\)</span> over the interval <span class="math inline">\((a,b)\)</span>. That is, we find the area under the curve <span class="math inline">\(f(x)\)</span> over the interval <span class="math inline">\((a, b)\)</span>.</p>
 <div class="def">
 <dl>
 <dt><strong>The probability that a continuous random variable lies in an interval</strong></dt>
@@ -774,7 +777,22 @@ P(a &lt; X &lt; b) = P(X \text{ is in the interval }(a,b)) =  \int_{a}^b f(x) dx
 </dd>
 </dl>
 </div>
-<p>Note that because a single point will not add any area, we have that: <span class="math display">\[
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Continuous random variables differ from discrete random variables in one very important way: If <span class="math inline">\(X\)</span> is a continuous random variable, we don’t talk about <span class="math inline">\(P(X = x)\)</span>, that is, the probability that <span class="math inline">\(X\)</span> takes a particular value.</p>
+<p>Rather, we ask what is the probability that <span class="math inline">\(X\)</span> lies in an <em>interval</em> around <span class="math inline">\(x\)</span>. This is because, for continuous random variables, the probabilities are <strong>areas</strong> under the curve of the probability density function. That is to say: to find the probability that <span class="math inline">\(X\)</span> lies in an interval <span class="math inline">\((a,b)\)</span>, we <strong>integrate</strong> <span class="math inline">\(f(x)\)</span> over the interval <span class="math inline">\((a,b)\)</span>. Recall from calculus that this is the same thing as <strong><em>finding the area under the curve <span class="math inline">\(f(x)\)</span> over the interval <span class="math inline">\((a, b)\)</span></em></strong>.</p>
+<p>Therefore, a <em>single point has no area</em>, that is <span class="math inline">\(P(X=x) =0\)</span>, for any particular <span class="math inline">\(x\)</span> in the interval where <span class="math inline">\(X\)</span> is defined. We can also phrase this as “no single real number has positive probability”.</p>
+</div>
+</div>
+<p>Since a single point will <em>not</em> add any area, we have that: <span class="math display">\[
 P(a &lt; X &lt; b) = P(a \le X &lt; b) = P(a &lt; X \le b) = P(a \le X \le b)
 \]</span></p>
 <p>Just as we did for discrete random variables, we define the <em>cumulative</em> distribution function for a continuous distribution.</p>
@@ -801,7 +819,11 @@ F(x) = P(X \le x) = \int_{-\infty}^x f(t) dt
 <h4 class="anchored" data-anchor-id="the-uniform01-distribution">The Uniform(0,1) distribution</h4>
 <p>Let <span class="math inline">\(X\)</span> be a random variable that takes values in the interval <span class="math inline">\((0,1)\)</span> with probability density function <span class="math inline">\(f(x) = 1\)</span> for <span class="math inline">\(x\)</span> in <span class="math inline">\((0,1)\)</span> and <span class="math inline">\(f(x) = 0\)</span> outside of this interval.</p>
 <p>Because <span class="math inline">\(f(x)\)</span> is flat, all intervals of the same length will have the <em>same area</em>, so the distribution defined by <span class="math inline">\(f\)</span> is called the <em>Uniform</em><span class="math inline">\((0,1)\)</span> distribution. If a random variable <span class="math inline">\(X\)</span> has this distribution, we denote this by <span class="math inline">\(X \sim U(0,1)\)</span>. The probability that <span class="math inline">\(X\)</span> is in any interval <span class="math inline">\((a, b)\)</span> which is a sub-interval of <span class="math inline">\((0,1)\)</span> is given by the area of the rectangle formed by the interval and <span class="math inline">\(y=f(x)\)</span>, and so is just the width of the interval.</p>
-<p><img src="images/unif-1.png" class="img-fluid" data-fig-aligned="center" width="600"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/unif-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
 <p>If you know that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Unif(a, b)\)</span> distribution, you should try to use geometry to figure out probabilities as this is usually easier than integrating.</p>
 <section id="example-cdf-for-the-uniform-01-distribution" class="level5">
 <h5 class="anchored" data-anchor-id="example-cdf-for-the-uniform-01-distribution">Example: cdf for the Uniform (0,1) distribution</h5>
@@ -823,7 +845,7 @@ F(0.3) = P(X \le 0.3) = \int_{-\infty}^{0.3} f(t) dt =  \int_0^{0.3} 1 dt = 0.3
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
 </figure>
 </div>
 </div>
