@@ -160,7 +160,7 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section>
 <section id="warmup" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_79fbd542ae7826321d0beeeb0592a9fe5e503966" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h1>Warmup <div id="timer_e76180eb6deec6f9cc8471417c34139c4e447191" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -186,7 +186,7 @@ STAT 20: Introduction to Probability and Statistics
 <ol type="1">
 <li>False (expected value is a <em>constant</em>)</li>
 <li>True</li>
-<li>True (value of random sum, <em>on average</em>, is 30, give or take one SD)</li>
+<li>True (value of random sum, <em>on average</em>, is 300, give or take one SD)</li>
 <li>False</li>
 </ol>
 </div>
@@ -216,22 +216,21 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section id="section" class="slide level2 smaller">
 <h2></h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_197d9f4d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<p>We have two random variables: <span class="math inline">\(X \sim\)</span> Binomial(<span class="math inline">\(10, 0.2\)</span>) and <span class="math inline">\(Y\)</span> is the random variable that is the value of one ticket drawn at random from a box with tickets <span class="math inline">\(\fbox{0}\, \fbox{2}\, \fbox{3} \,\fbox{4}  \,\fbox{6}\)</span>.</p>
+<p>We have two random variables: <span class="math inline">\(X \sim\)</span> Binomial(<span class="math inline">\(10, 0.2\)</span>) and let <span class="math inline">\(Y\)</span> be the value of one ticket drawn at random from a box with tickets <span class="math inline">\(\fbox{0}\, \fbox{2}\, \fbox{3} \,\fbox{4}  \,\fbox{6}\)</span>.</p>
 <p>We take the sum of 100 iid random variables for each of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, called <span class="math inline">\(SX_{100}\)</span> and <span class="math inline">\(SY_{100}\)</span>. The empirical distributions of <span class="math inline">\(SX_{100}\)</span> and <span class="math inline">\(SY_{100}\)</span> are plotted below.</p>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1920"><div class="poll">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1920"><div class="poll">
 <p>Which distribution belongs to which random variable?</p>
 </div>
+<div id="timer_e76180eb6deec6f9cc8471417c34139c4e447191" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+  <div class="countdown-controls">
+    <button class="countdown-bump-down">−</button>
+    <button class="countdown-bump-up">+</button>
+ </div>
+ <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+ </div>
 <aside class="notes">
-<p>They need to remember that the expected value of S_x will be 200, and for S_y 300.</p>
+<p>A is <span class="math inline">\(SY_{100}\)</span> and B is <span class="math inline">\(SX_{100}\)</span>. They need to remember that the expected value of <span class="math inline">\(SX_{100}\)</span> is <span class="math inline">\(100 \times 2 = 200\)</span> and of <span class="math inline">\(SY_{100}\)</span> is <span class="math inline">\(100 \times 3 = 300\)</span>. The spreads agree too: <span class="math inline">\(SD(SX_{100}) = 10\sqrt{1.6} \approx 12.6\)</span> and <span class="math inline">\(SD(SY_{100}) = 10 \times 2 = 20\)</span>, so B is narrower than A.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -248,13 +247,13 @@ STAT 20: Introduction to Probability and Statistics
 <h2></h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_83dcbaee" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_9b2ad3bc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
-<p>A die will be rolled <span class="math inline">\(n\)</span> times and the object is to guess the total number of spots in <span class="math inline">\(n\)</span> rolls, and you choose <span class="math inline">\(n\)</span> to be either 50 or 100. There is a one-dollar penalty for each spot that the guess is off. For instance, if you guess 200, and the total is 215, then you lose 15 dollars. Which do you prefer? 50 throws, or 100?*</p>
+<p>A die will be rolled <span class="math inline">\(n\)</span> times and the object is to guess the total number of spots in <span class="math inline">\(n\)</span> rolls, and you choose <span class="math inline">\(n\)</span> to be either 50 or 100. There is a one-dollar penalty for each spot that the guess is off. For instance, if you guess 200, and the total is 215, then you lose 15 dollars. Which do you prefer?*</p>
 <div class="poll">
 <p>Which do you prefer? <span class="math inline">\(n = 50\)</span> rolls, or <span class="math inline">\(n = 100\)</span> rolls?</p>
 </div>
@@ -275,7 +274,7 @@ STAT 20: Introduction to Probability and Statistics
 </section></section>
 <section id="worksheet-normal-approximation" class="title-slide slide level1 center">
 <h1>Worksheet: Normal Approximation</h1>
-<div id="timer_79fbd542ae7826321d0beeeb0592a9fe5e503966" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_e76180eb6deec6f9cc8471417c34139c4e447191" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -286,7 +285,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_79fbd542ae7826321d0beeeb0592a9fe5e503966" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_e76180eb6deec6f9cc8471417c34139c4e447191" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -297,7 +296,7 @@ STAT 20: Introduction to Probability and Statistics
 
 <section id="lab-7-elections" class="title-slide slide level1 center">
 <h1>Lab 7: Elections</h1>
-<div id="timer_79fbd542ae7826321d0beeeb0592a9fe5e503966" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_e76180eb6deec6f9cc8471417c34139c4e447191" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

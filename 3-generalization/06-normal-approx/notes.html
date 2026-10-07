@@ -505,7 +505,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Here, the graph is spread out to show the number of steps taken, but the walker is just walking up and down the <span class="math inline">\(y\)</span>-axis, since they can only go backwards and forwards. This kind of walk is called a <em>simple random walk</em>. Random walks have applications in many fields including physics and finance.They are used to model photons escaping from the center of the sun (though photons can scatter in <em>any</em> direction), a molecule in a liquid, the price of a stock etc.</p>
+<p>Here, the graph is spread out to show the number of steps taken, but the walker is just walking up and down the <span class="math inline">\(y\)</span>-axis, since they can only go backwards and forwards. This kind of walk is called a <em>simple random walk</em>. Random walks have applications in many fields including physics and finance. They are used to model photons escaping from the center of the sun (though photons can scatter in <em>any</em> direction), a molecule in a liquid, the price of a stock, and so on.</p>
 <p>What we have shown here is <em>one</em> possible path our random walker might take and where they might land up after <span class="math inline">\(n = 30\)</span> minutes. <!--We have plotted this by defining a modified Bernoulli random variable $X$ that takes the values $-1$ and $1$ with an equal probability of $\displaystyle \frac{1}{2}$. Then we sample $30$ times from this vector with replacement. here that we use an argument in `sample()` that we haven't used before, `prob`. This defines the probabilities used for sampling. In this case they are the same, but they might be different. 
 --></p>
 <p><strong>Exercise:</strong> If we define a random variable <span class="math inline">\(X\)</span> that is <em>equally likely</em> to be <span class="math inline">\(-1\)</span> or <span class="math inline">\(1\)</span>, we know that its expected value is <span class="math inline">\(0\)</span>. What is its variance and SD?</p>
@@ -522,11 +522,11 @@ X = \begin{cases}
 <span class="math display">\[
 E(X) = (-1) \times 0.5 + 1 \times 0.5 = 0.
 \]</span> <span class="math display">\[
-Var(X) = E(X^2) - E(X)^2 = 1 - 0 = 1 = SD(X).
+Var(X) = E(X^2) - \left(E(X)\right)^2 = 1 - 0 = 1, \text{ so } SD(X) = \sqrt{Var(X)} = \sqrt{1} = 1.
 \]</span>
 </details>
-<p>For example,in the path shown in the figure above, the first <span class="math inline">\(5\)</span> steps taken (<span class="math inline">\(-1\)</span> represents backwards and <span class="math inline">\(+1\)</span> forward): <span class="math inline">\(1, -1, -1, 1, -1\)</span>. The <em>position</em> at each step is the <em>sum of all the steps thus far</em>, so the sequence of positions after each of these steps is <span class="math inline">\(1, 0, -1, 0, -1\)</span>. This represents the walker taking one step forward, and then stepping back, then going back further and stepping forward etc.</p>
-<p>Notice that the <strong>end</strong> position after <span class="math inline">\(30\)</span> steps is <span class="math inline">\(4\)</span> (the height along the <span class="math inline">\(y\)</span>-axis). One might ask - what is the <em>probability</em> that the position is <span class="math inline">\(4\)</span> after <span class="math inline">\(30\)</span> steps? How would we compute this probability? This seems <em>very</em> difficult to answer, so let’s look at the <em>empirical</em> distribution of the position after <span class="math inline">\(n = 30\)</span> steps (we simulate many many such paths and look at the value of sum of the <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span> steps at the end).</p>
+<p>For example, in the path shown in the figure above, the first <span class="math inline">\(5\)</span> steps taken (<span class="math inline">\(-1\)</span> represents backwards and <span class="math inline">\(+1\)</span> forward): <span class="math inline">\(1, -1, -1, 1, -1\)</span>. The <em>position</em> at each step is the <em>sum of all the steps thus far</em>, so the sequence of positions after each of these steps is <span class="math inline">\(1, 0, -1, 0, -1\)</span>. This represents the walker taking one step forward, and then stepping back, then going back further and stepping forward etc.</p>
+<p>Notice that the <strong>end</strong> position after <span class="math inline">\(30\)</span> steps is <span class="math inline">\(4\)</span> (the height along the <span class="math inline">\(y\)</span>-axis). One might wonder about the <em>probability</em> that the position is <span class="math inline">\(4\)</span> after <span class="math inline">\(30\)</span> steps? How would we compute this probability? This seems <em>very</em> difficult to answer, so let’s look at the <em>empirical</em> distribution of the position after <span class="math inline">\(n = 30\)</span> steps (we simulate many many such paths and look at the value of sum of the <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span> steps at the end).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -570,8 +570,8 @@ f(x) = \begin{cases}
 </section>
 <section id="the-box-modelfppbox" class="level2">
 <h2 class="anchored" data-anchor-id="the-box-modelfppbox">The Box Model<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
-<p>We have seen that we can always represent a discrete random variable using tickets in a box. We define the tickets so that a ticket drawn at random from the box will have the same probability distribution as the random variable. Then it becomes very easy to define <span class="math inline">\(n\)</span> random variables that are independent, and identically distributed (as in the example above), where each random variable is a draw with replacement from the same box. Representing the random variable using a box of tickets also makes it easy to set up a simulation, since we can just define a vector representing the box, and use the function <code>sample()</code> setting the argument <code>replace = TRUE</code>. In this way, we can represent a chance <em>process</em> in which some action that defines a random variable is repeated over and over again, as a box of tickets from which we draw tickets with replacement over and over again.</p>
-<p>We could do this for any of the examples that we have seen - die rolls, coin tosses, spins of a roulette wheel etc. Once we represent the random variable using a box of tickets, then it is easy to compute the expected value of the random variable - it is just the average of the tickets in the box, and the variance of the random variable is the variance of the tickets in the box. Note that we compute the <em>population</em> variance, so we divide by <span class="math inline">\(n\)</span> not <span class="math inline">\(n-1\)</span>, since the box represents the population, from which we draw a sample. Let’s revisit some examples:</p>
+<p>We have seen that we can always represent a discrete random variable using tickets in a box. We define the tickets so that a ticket drawn at random from the box will have the same probability distribution as the random variable. Then it becomes very easy to define <span class="math inline">\(n\)</span> random variables that are independent and identically distributed (as in the example above), where each random variable is a draw with replacement from the same box. Representing the random variable using a box of tickets also makes it easy to set up a simulation, since we can just define a vector representing the box, and use the function <code>sample()</code> setting the argument <code>replace = TRUE</code>. In this way, we can represent a chance <em>process</em> in which some action that defines a random variable is repeated over and over again, as a box of tickets from which we draw tickets with replacement over and over again.</p>
+<p>We could do this for any of the examples that we have seen - die rolls, coin tosses, spins of a roulette wheel etc. Once we represent the random variable using a box of tickets, then it is easy to compute the expected value of the random variable - it is just the average of the tickets in the box, and the variance of the random variable is the variance of the tickets in the box. Note that we compute the <em>population</em> variance, so we divide by the number of tickets in the box, since the box represents the population, from which we draw a sample. Let’s revisit some examples:</p>
 <section id="rolling-a-pair-of-dice-and-summing-the-spots" class="level3">
 <h3 class="anchored" data-anchor-id="rolling-a-pair-of-dice-and-summing-the-spots">Rolling a pair of dice and summing the spots</h3>
 <p>Suppose we want to represent the rolling of a pair of dice and summing the spots using a box with appropriately marked tickets. Our box could be:</p>
@@ -580,7 +580,7 @@ f(x) = \begin{cases}
 <p><img src="images/die.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
 </figure>
 </div>
-<p>Let <span class="math inline">\(X_1\)</span> represent drawing a ticket at random from this box. Then <span class="math inline">\(X_1\)</span> has the discrete uniform distribution. To represent the sum of spots of a pair of dice, we would draw <em>twice</em> with replacement from this box, calling the result of the first draw <span class="math inline">\(X_1\)</span> and the second <span class="math inline">\(X_2\)</span>. Notice that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent, since we drew with replacement, and have the same probability distribution, so are <em>identically distributed</em>. That is, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are i.i.d. random variables, and we want to know about the sum of these. We can define <span class="math inline">\(S = X_1+X_2\)</span> and use the box to simulate the distribution of <span class="math inline">\(S\)</span>.</p>
+<p>Let <span class="math inline">\(X_1\)</span> be the value of a ticket drawn at random from this box. Then <span class="math inline">\(X_1\)</span> has the discrete uniform distribution. To represent the sum of spots of a pair of dice, we would draw <em>twice</em> with replacement from this box, calling the result of the first draw <span class="math inline">\(X_1\)</span> and the second <span class="math inline">\(X_2\)</span>. Notice that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent, since we drew with replacement, and have the same probability distribution, so are <em>identically distributed</em>. That is, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are i.i.d. random variables, and we want to know about the sum of these. We can define <span class="math inline">\(S = X_1+X_2\)</span> and use the box to simulate the distribution of <span class="math inline">\(S\)</span>.</p>
 </section>
 <section id="spinning-a-vegas-roulette-wheel-and-betting-on-red" class="level3">
 <h3 class="anchored" data-anchor-id="spinning-a-vegas-roulette-wheel-and-betting-on-red">Spinning a Vegas roulette wheel and betting on red</h3>
@@ -589,7 +589,7 @@ f(x) = \begin{cases}
 <p><img src="images/roulette-us.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
 </figure>
 </div>
-<p>We know that an American roulette wheel has <span class="math inline">\(18\)</span> red pockets, <span class="math inline">\(18\)</span> black pockets and <span class="math inline">\(2\)</span> green pockets. So if we spin it, the chance of winning if we bet on red is <span class="math inline">\(18/38\)</span>. Suppose we bet a dollar on red, then if the ball lands in a red pocket, we get our dollar back and <strong>win</strong> another dollar. If it lands on black or green, we <strong>lose</strong> the dollar we bet. We are usually interested in our “net gain” if we play over and over again, that is, our total winnings (or losses) after <span class="math inline">\(n\)</span> spins. We can use a box of tickets to model the net gain in <span class="math inline">\(n\)</span> spins by letting the box represent the possible result of <em>one</em> spin, and then drawing <span class="math inline">\(n\)</span> times at random from this box. What would the box to represent the result of one spin of a roulette wheel look like?</p>
+<p>We know that the American roulette wheels (used in Las Vegas) have <span class="math inline">\(18\)</span> red pockets, <span class="math inline">\(18\)</span> black pockets and <span class="math inline">\(2\)</span> green pockets. So if we spin it, the chance of winning if we bet on red is <span class="math inline">\(18/38\)</span>. Suppose we bet a dollar on red, then if the ball lands in a red pocket, we get our dollar back and <strong>win</strong> another dollar. If it lands on black or green, we <strong>lose</strong> the dollar we bet. We are usually interested in our “net gain” if we play over and over again, that is, our total winnings (or losses) after <span class="math inline">\(n\)</span> spins. We can use a box of tickets to model the net gain in <span class="math inline">\(n\)</span> spins by letting the box represent the possible result of <em>one</em> spin, and then drawing <span class="math inline">\(n\)</span> times at random from this box. What would the box to represent the result of one spin of a roulette wheel look like?</p>
 <details>
 <summary>
 Check your answer
@@ -602,7 +602,7 @@ Check your answer
 </div>
 <p>How would you simulate this process (of spinning the wheel <span class="math inline">\(n\)</span> times) in R?</p>
 </details>
-<p>We can generalize the ideas in the roulette example to any set up where we have iid discrete random variables. We need to think about <em>three</em> things:</p>
+<p>We can generalize the ideas in the roulette example to any setup where we have iid discrete random variables. We need to think about <em>three</em> things:</p>
 <ol type="1">
 <li><p>What are the values of the tickets in the box?</p></li>
 <li><p>How many tickets of each value?</p></li>
@@ -628,7 +628,7 @@ Check your answer
 <pre><code>[1] "The sum of 25 draws is 56"</code></pre>
 </div>
 </div>
-<p>Now we will repeat this process (of drawing <span class="math inline">\(25\)</span> tickets with replacement and summing the draws) <span class="math inline">\(10\)</span> times (note how <code>replicate()</code> is used) :</p>
+<p>Now we will repeat this process (of drawing <span class="math inline">\(25\)</span> tickets with replacement and summing the draws) <span class="math inline">\(10\)</span> times (note how <code>replicate()</code> is used):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
@@ -673,12 +673,12 @@ SD(S_n) = \sqrt{n} \times SD(X_1)
 </dd>
 </dl>
 </div>
-<p>Since all the <span class="math inline">\(X_k\)</span> have the same distribution, we can use <span class="math inline">\(X_1\)</span> to compute the mean and SD of the sum. This law says that if the sample size increases as <span class="math inline">\(n\)</span>, the expected value scales as the <em>number</em> of random variables, but the standard deviation of the sum increases more slowly, scaling as <span class="math inline">\(\sqrt{n}\)</span>. In other words, if you increase the number of random variables you are summing, the spread of your sum about its expected value increases, but not as fast as the expectation of the sum.</p>
+<p>Since all the <span class="math inline">\(X_k\)</span> have the same distribution, we can use <span class="math inline">\(X_1\)</span> to compute the mean and SD of the sum. This law says that as the number of draws <span class="math inline">\(n\)</span> increases, the expected value scales as the <em>number</em> of random variables, but the standard deviation of the sum increases more slowly, scaling as <span class="math inline">\(\sqrt{n}\)</span>. In other words, if you increase the number of random variables you are summing, the spread of your sum about its expected value increases, but not as fast as the expectation of the sum.</p>
 </section>
 <section id="example-the-drunkards-walk" class="level3">
 <h3 class="anchored" data-anchor-id="example-the-drunkards-walk">Example: The drunkard’s walk</h3>
 <p>Back to our inebriated random walker who is trying to walk home. Recall that at each time step, the walker moves forward or backward with equal probability. After <span class="math inline">\(n\)</span> steps, their position can be written as <span class="math display">\[
-S_n = X_1 + X_2 + \ldots X_n
+S_n = X_1 + X_2 + \ldots + X_n
 \]</span> where <span class="math inline">\(X_k = +1\)</span> or <span class="math inline">\(-1\)</span> with probability <span class="math inline">\(0.5\)</span> each. <span class="math inline">\(E(X_k) = 0\)</span> and <span class="math inline">\(Var(X_k) = 1\)</span>, so we get that: <span class="math display">\[
 E(S_n) = 0, \; Var(S_n) = n, \text{ and } SD(S_n) = \sqrt{n}.
 \]</span></p>
@@ -734,12 +734,43 @@ Since <span class="math inline">\(S_n\)</span> and <span class="math inline">\(\
 </div>
 </div>
 </div>
-<p>What do we notice in these figures? First, we see the bell-shape again! Note that the black line is the expected value. We see that the center of the distribution for the sample sum grows as the sample size increases (look at the x-axis), but this does not happen for the distribution of the sample mean. You can also see that the spread of the data for the sample sum is much greater when n = 100, but this does not happen for the distribution of the sample mean. Now, the <span class="math inline">\(y\)</span> axis has neither counts nor proportion, but it has <em>density</em>. This makes the histogram have a total area of one, similar to a probability histogram. Now we can think of this histogram, called a <em>density</em> histogram as an <em>approximation</em> of the probability histogram.</p>
+<p>What do we notice in these figures? First, we see the bell-shape again! Note that the black line is the expected value. We see that the center of the distribution for the sample sum grows as the sample size increases (look at the x-axis), but this does not happen for the distribution of the sample mean. You can also see that the spread of the sample sum is much greater when <span class="math inline">\(n = 100\)</span> (about twice as wide), while the spread of the sample <em>mean</em> gets <em>smaller</em> (about half as wide). This is the square root law in action: <span class="math inline">\(SE(S_n)\)</span> grows like <span class="math inline">\(\sqrt{n}\)</span>, while <span class="math inline">\(SE(\overline{X})\)</span> shrinks like <span class="math inline">\(1/\sqrt{n}\)</span>. Using <span class="math inline">\(SD(X_1) = \sqrt{2.09} \approx 1.45\)</span>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><span class="math inline">\(n = 25\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n = 100\)</span></th>
+<th style="text-align: center;">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(SE(S_n) = \sqrt{n} \times SD(X_1)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\approx 7.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\approx 14.5\)</span></td>
+<td style="text-align: center;">doubles</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(SE(\overline{X}) = \dfrac{SD(X_1)}{\sqrt{n}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\approx 0.29\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\approx 0.145\)</span></td>
+<td style="text-align: center;">halves</td>
+</tr>
+</tbody>
+</table>
+<p>Now, the <span class="math inline">\(y\)</span> axis has neither counts nor proportion, but it has <em>density</em>. This makes the histogram have a total area of one, similar to a probability histogram. Now we can think of this histogram, called a <em>density</em> histogram as an <em>approximation</em> of the probability histogram.</p>
 <div class="def">
 <dl>
 <dt><strong>Density histograms</strong></dt>
 <dd>
-These are histograms for which the total area of all the bars add up to <span class="math inline">\(1\)</span>. The vertical axis is called <em>density</em> and the units are such that the height of each bar times its width gives the <em>proportion</em> of the values that fall in the corresponding interval of the histogram.
+These are histograms for which the total area of all the bars adds up to <span class="math inline">\(1\)</span>. The vertical axis is called <em>density</em> and the units are such that the height of each bar times its width gives the <em>proportion</em> of the values that fall in the corresponding interval of the histogram.
 </dd>
 </dl>
 </div>
@@ -813,7 +844,7 @@ F(x) = P(X \le x) = \int_{-\infty}^x f(t) dt
 </section>
 <section id="special-continuous-distributions" class="level3">
 <h3 class="anchored" data-anchor-id="special-continuous-distributions">Special continuous distributions</h3>
-<p>Just as in the case of discrete distributions, we have many special named continuous distributions. We are going to mention two of them here. The first is a very easy distribution to think about with a rectangular geometry that is easy to think about: the uniform distribution. The second distribution we mention here has a shape that has already shown up in examples in these notes - its probability density function has a bell-shape. This is the Normal distribution and it is the most ubiquitous distribution in statistics and its bell shaped density curve is used in <em>many</em> disciplines.</p>
+<p>Just as in the case of discrete distributions, we have many special named continuous distributions. We are going to mention two of them here. The first is a very easy distribution to think about because of its rectangular geometry: the uniform distribution. The second distribution we mention here has a shape that has already shown up in examples in these notes - its probability density function has a bell-shape. This is the Normal distribution and it is the most ubiquitous distribution in statistics and its bell-shaped density curve is used in <em>many</em> disciplines.</p>
 <p>Let’s consider the uniform distribution first.</p>
 <section id="the-uniform01-distribution" class="level4">
 <h4 class="anchored" data-anchor-id="the-uniform01-distribution">The Uniform(0,1) distribution</h4>
@@ -824,7 +855,7 @@ F(x) = P(X \le x) = \int_{-\infty}^x f(t) dt
 <p><img src="images/unif-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
 </figure>
 </div>
-<p>If you know that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Unif(a, b)\)</span> distribution, you should try to use geometry to figure out probabilities as this is usually easier than integrating.</p>
+<p>If you know that <span class="math inline">\(X\)</span> has a <span class="math inline">\(Unif(0, 1)\)</span> distribution, you should try to use geometry to figure out probabilities as this is usually easier than integrating.</p>
 <section id="example-cdf-for-the-uniform-01-distribution" class="level5">
 <h5 class="anchored" data-anchor-id="example-cdf-for-the-uniform-01-distribution">Example: cdf for the Uniform (0,1) distribution</h5>
 <p>Let <span class="math inline">\(X \sim U(0,1)\)</span>. What is <span class="math inline">\(F(0.3)\)</span>?</p>
@@ -850,17 +881,17 @@ F(0.3) = P(X \le 0.3) = \int_{-\infty}^{0.3} f(t) dt =  \int_0^{0.3} 1 dt = 0.3
 </div>
 </div>
 </div>
-<p>If a random variable <span class="math inline">\(X\)</span> follows a normal distribution, we write</p>
+<p>If a random variable <span class="math inline">\(X\)</span> follows a Normal distribution, we write</p>
 <p><span class="math display">\[
 X \sim \textrm{N}(\mu, \sigma^2)
 \]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is the mean of the distribution and <span class="math inline">\(\sigma\)</span> is its standard deviation. (The particular normal distribution shown above is the <em>standard normal distribution</em>, where <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1)\)</span>. The curve is completely defined by these two numbers and they are called the <em>parameters</em> of the distribution. Every normal curve can be matched up to the standard normal by transforming the <span class="math inline">\(x\)</span> to <em>standard units</em> which means shifting the curve so it is centered at <span class="math inline">\(0\)</span> (subtracting <span class="math inline">\(\mu\)</span>) and scaling the curve so the standard deviation is <span class="math inline">\(1\)</span> (dividing by <span class="math inline">\(\sigma\)</span>).</p>
-<p>We can calculate the probability of any event related to <span class="math inline">\(X\)</span> by finding the area under the curve corresponding to that event. That includes the probability that <span class="math inline">\(X\)</span> falls within a particular interval. In the table below, we record the probabilities of three such intervals.</p>
+<p>where <span class="math inline">\(\mu\)</span> is the mean of the distribution and <span class="math inline">\(\sigma\)</span> is its standard deviation. (The particular Normal distribution shown above is the <em>standard Normal distribution</em>, where <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1)\)</span>. The curve is completely defined by these two numbers and they are called the <em>parameters</em> of the distribution. Every Normal curve can be matched up to the standard Normal by transforming the <span class="math inline">\(x\)</span> to <em>standard units</em> which means shifting the curve so it is centered at <span class="math inline">\(0\)</span> (subtracting <span class="math inline">\(\mu\)</span>) and scaling the curve so the standard deviation is <span class="math inline">\(1\)</span> (dividing by <span class="math inline">\(\sigma\)</span>).</p>
+<p>We can calculate the probability of any event related to <span class="math inline">\(X\)</span> by finding the area under the curve corresponding to that event. That includes the probability that <span class="math inline">\(X\)</span> falls within a particular interval. In the table below, we record the probabilities of three such intervals. These probabilities are called the <strong>empirical rule (68-95-99.7 percent rule)</strong>.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Interval</th>
-<th>Area under the normal curve</th>
+<th>Area under the standard Normal curve</th>
 </tr>
 </thead>
 <tbody>
@@ -878,15 +909,15 @@ X \sim \textrm{N}(\mu, \sigma^2)
 </tr>
 </tbody>
 </table>
-<p>So <em>if</em> we know a particular distribution is similar in shape to the normal distribution, we’re able to calculate the probabilities that the random variable falls within a particular interval.</p>
+<p>So <em>if</em> we know a particular distribution is similar in shape to the Normal distribution, we’re able to calculate the probabilities that the random variable falls within a particular interval.</p>
 </section>
 </section>
 </section>
 <section id="the-central-limit-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="the-central-limit-theorem">The Central Limit Theorem</h2>
-<p>The normal curve is enormously useful because many data distributions are similar to the normal curve, so we can use the areas under the normal curve to approximate the areas of the data distributions to figure out proportions. The reason so many data distributions approximately follow a normal distribution is because of one of the most fundamental results in statistics called the Central Limit Theorem. This astounding result says that <strong>sums (and averages) of independent and identically distributed random variables will follow an approximately normal distribution (after transforming them to standard units) as the sample size grows large</strong>. If we restate this in terms of our box model, this theorem says that, for large enough <span class="math inline">\(n\)</span>, if we draw <span class="math inline">\(n\)</span> times from a box of tickets with replacement, then the probability distribution of the sum and the average of the draws (standardized) will be approximately normal, <em>regardless</em> of the distribution of the tickets in the box. This means that the tickets in the box can be anything, but as long as we draw enough times, the sum will have an approximately bell-shaped distribution.</p>
+<p>The Normal curve is enormously useful because many data distributions are similar to the Normal curve, so we can use the areas under the Normal curve to approximate the areas of the data distributions to figure out proportions. The reason so many data distributions approximately follow a Normal distribution is because of one of the most fundamental results in statistics called the Central Limit Theorem. This astounding result says that <strong>sums (and averages) of independent and identically distributed random variables will follow an approximately Normal distribution (after transforming them to standard units) as the sample size grows large</strong>. If we restate this in terms of our box model, this theorem says that, for large enough <span class="math inline">\(n\)</span>, if we draw <span class="math inline">\(n\)</span> times from a box of tickets with replacement, then the probability distribution of the sum and the average of the draws (standardized) will be approximately Normal, <em>regardless</em> of the distribution of the tickets in the box. This means that the tickets in the box can be anything, but as long as we draw enough times, the sum will have an approximately bell-shaped distribution.</p>
 <p>Since many useful statistics can be written as the sum or mean of iid random variables, this is a very important and useful theorem, and we will use it extensively for inference in the next unit.</p>
-<p>Recall our hammered homeseeker from the beginning of this chapter, and the bell-shaped distribution of their position after half an hour. Since their position can be written as a sum of all their steps (which were <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span>), the Central Limit Theorem applies to the probability distribution of the sum, and that is why the distribution is bell-shaped. Using the normal approximation and the empirical rule, we can say that with probability about <span class="math inline">\(32\%\)</span>, our tipsy friend will be <em>farther</em> than one standard deviation from the starting point, which was the bar. Recall that one standard deviation for <span class="math inline">\(n=30\)</span> is <span class="math inline">\(\sqrt{n} \approx 5.5\)</span> steps. So he may be close to his home (with about <span class="math inline">\(16\%\)</span> probability) or totally in the other direction (also with about <span class="math inline">\(16\%\)</span> probability).</p>
+<p>Recall our random walker from the beginning of this chapter, and the bell-shaped distribution of their position after half an hour. Since their position can be written as a sum of all their steps (which were <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span>), the Central Limit Theorem applies to the probability distribution of the sum, and that is why the distribution is bell-shaped. Using the Normal approximation and the empirical rule, we can say that with probability about a third, our walker will be <em>farther</em> than one standard deviation from the starting point, which was the bar. Recall that one standard deviation for <span class="math inline">\(n=30\)</span> is <span class="math inline">\(\sqrt{n} \approx 5.5\)</span> steps. So they may be close to their home (with about <span class="math inline">\(1/6\)</span> probability) or totally in the other direction (also with about <span class="math inline">\(1/6\)</span> probability).</p>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../3-generalization/06-normal-approx/tutorial.html" class="tutorial-nav-next">Continue on to the tutorial ⮕</a></p>
 </div>
@@ -900,7 +931,7 @@ X \sim \textrm{N}(\mu, \sigma^2)
 <ol>
 <li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Random_walk" class="uri">https://en.wikipedia.org/wiki/Random_walk</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>The box model was introduced by Freedman, Pisani, and Purves in their textbook <a href="https://wwnorton.com/books/9780393929720"><em>Statistics</em></a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Another instance where Abraham De Moivre was the first person to discover a distribution, but it was named after someone else. You can read about De Moivre at <a href="https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/" class="uri">https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Another instance where Abraham de Moivre was the first person to discover a distribution, but it was named after someone else. You can read about de Moivre at <a href="https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/" class="uri">https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>For a normally distributed random variable, <span class="math inline">\(f(x) = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\)</span>. Read more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Normal_distribution" class="uri">https://en.wikipedia.org/wiki/Normal_distribution</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->

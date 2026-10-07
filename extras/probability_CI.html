@@ -364,8 +364,8 @@ window.Quarto = {
 <ul class="task-list">
 <li><label><input type="checkbox">Selecting the first eight rows of the dataset (pictured in the preview above).</label></li>
 <li><label><input type="checkbox">Utilizing the command <code>slice_sample(spotify, n = 8, replace = FALSE)</code>.</label></li>
-<li><label><input type="checkbox">Utilizing the command <code>spotify %&gt;% filter(genre == "Pop") %&gt;% slice_sample(n = 8, replace = FALSE)</code>.</label></li>
-<li><label><input type="checkbox">Utilizing the command <code>spotify %&gt;% filter(bpm &gt; 120) %&gt;% slice_sample(n = 8, replace = FALSE)</code>.</label></li>
+<li><label><input type="checkbox">Utilizing the command <code>spotify |&gt; filter(genre == "Pop") |&gt; slice_sample(n = 8, replace = FALSE)</code>.</label></li>
+<li><label><input type="checkbox">Utilizing the command <code>spotify |&gt; filter(bpm &gt; 120) |&gt; slice_sample(n = 8, replace = FALSE)</code>.</label></li>
 </ul>
 </section>
 </div>
@@ -385,8 +385,8 @@ window.Quarto = {
 <p><strong>Correct Statements:</strong></p>
 <ul>
 <li>Selecting the first eight rows of the dataset (pictured in the preview above).</li>
-<li><code>spotify %&gt;% filter(genre == "Pop") %&gt;% slice_sample(n = 8, replace = FALSE)</code></li>
-<li><code>spotify %&gt;% filter(bpm &gt; 120) %&gt;% slice_sample(n = 8, replace = FALSE)</code></li>
+<li><code>spotify |&gt; filter(genre == "Pop") |&gt; slice_sample(n = 8, replace = FALSE)</code></li>
+<li><code>spotify |&gt; filter(bpm &gt; 120) |&gt; slice_sample(n = 8, replace = FALSE)</code></li>
 </ul>
 <hr>
 <p><strong>Explanation:</strong><br>
