@@ -151,7 +151,7 @@ window.Quarto = {
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/extras/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
 <meta name="twitter:title" content="Extra Practice with R in Probability – Stat 20 (Fall 2026)">
-<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/extras/probability_R_commands_files/figure-html/unnamed-chunk-16-1.png">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/extras/probability_R_commands_files/figure-html/unnamed-chunk-14-1.png">
 <meta name="twitter:image-height" content="960">
 <meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,12 +246,6 @@ window.Quarto = {
 <section id="part-a-no-one-fails-stat-20" class="level3">
 <h3 class="anchored" data-anchor-id="part-a-no-one-fails-stat-20">Part A: No one fails Stat 20</h3>
 <p>Suppose <span class="math inline">\(X \sim \text{Poisson}(6)\)</span>, where <span class="math inline">\(X\)</span> represents the number of students who earn an A+ in Stat 20, and <span class="math inline">\(Y \sim \text{Poisson}(5)\)</span> represents the number of students who earn an F in Stat 20. We can assume that these two quantities are independent, since the class is not curved. What is the probability that <em>no one</em> fails Stat 20?</p>
-<ul class="task-list">
-<li><label><input type="checkbox">0.0025</label></li>
-<li><label><input type="checkbox">0.0067</label></li>
-<li><label><input type="checkbox">0.1822</label></li>
-<li><label><input type="checkbox">0.2231</label></li>
-</ul>
 <div class="cell" data-envir="stat20_sims" data-autorun="false">
 <div>
 <div id="webr-1" class="exercise-cell">
@@ -276,7 +270,9 @@ Show answer
 </summary>
 <div class="answer-box" data-markdown="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Explanation:</strong> 1. Identify the parameter for the number of failures: <span class="math inline">\(Y \sim \text{Poisson}(\lambda = 5)\)</span>. 2. Set up the mathematical expression for no failures: <span class="math inline">\(P(Y = 0) = \frac{e^{-5} \cdot 5^0}{0!} = e^{-5}\)</span>. 3. Compute the value in R using the probability mass function <code>dpois()</code>.</p>
+<p><strong>Explanation:</strong> 1. Identify the parameter for the number of failures: <span class="math inline">\(Y \sim \text{Poisson}(\lambda = 5)\)</span>.<br>
+2. Compute the value in R using the probability mass function <code>dpois()</code>.<br>
+3. Alternatively, set up the mathematical expression for no failures: <span class="math inline">\(P(Y = 0) = \frac{e^{-5} \cdot 5^0}{0!} = e^{-5}\)</span>.</p>
 </div>
 </details>
 <hr>
@@ -284,12 +280,6 @@ Show answer
 <section id="part-b-at-least-10-students-earn-an-a" class="level3">
 <h3 class="anchored" data-anchor-id="part-b-at-least-10-students-earn-an-a">Part B: At least 10 students earn an A+</h3>
 <p>Using the same context where <span class="math inline">\(X \sim \text{Poisson}(6)\)</span> is the number of students who earn an A+ in Stat 20, what is the probability that <em>at least</em> 10 students earn an A+?</p>
-<ul class="task-list">
-<li><label><input type="checkbox">0.0839</label></li>
-<li><label><input type="checkbox">0.1528</label></li>
-<li><label><input type="checkbox">0.0413</label></li>
-<li><label><input type="checkbox">0.9161</label></li>
-</ul>
 <div>
 <div id="webr-2" class="exercise-cell">
 
@@ -317,20 +307,19 @@ Show answer
 <pre><code>[1] 0.08392402</code></pre>
 </div>
 </div>
-<p><strong>Explanation:</strong> 1. Use the complement rule to express “at least 10”: <span class="math inline">\(P(X \ge 10) = 1 - P(X \le 9) = 1 - \sum_{k=0}^{9} \frac{e^{-6} \cdot 6^k}{k!}\)</span>. 2. We use <code>ppois()</code> with <code>lower.tail = FALSE</code> and set <code>q = 9</code> to calculate <span class="math inline">\(P(X &gt; 9)\)</span>, which evaluates precisely to <span class="math inline">\(P(X \ge 10)\)</span>.</p>
+<p><strong>Explanation:</strong></p>
+<ol type="1">
+<li>We use <code>ppois()</code> with <code>lower.tail = FALSE</code> and set <code>q = 9</code> to calculate <span class="math inline">\(P(X &gt; 9)\)</span>, which evaluates precisely to <span class="math inline">\(P(X \ge 10)\)</span>.<br>
+</li>
+<li>Alternatively: Use the complement rule to express “at least 10”: <span class="math inline">\(P(X \ge 10) = 1 - P(X \le 9) = 1 - \sum_{k=0}^{9} \frac{e^{-6} \cdot 6^k}{k!}\)</span>.</li>
+</ol>
 </div>
 </details>
 <hr>
 </section>
 <section id="part-c-roulette-wheel-successes" class="level3">
 <h3 class="anchored" data-anchor-id="part-c-roulette-wheel-successes">Part C: Roulette Wheel Successes</h3>
-<p>Suppose you are playing roulette in Las Vegas and you bet on red each time (an American roulette wheel has 18 red, 18 black, and 2 green slots). You play 50 times and bet on red every single time. Let <span class="math inline">\(X\)</span> be the number of times you win in 50 plays. What is the distribution of <span class="math inline">\(X\)</span> and the probability that you win at least 12 times?</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><span class="math inline">\(\text{Binomial}(50, 18/38)\)</span>; 0.9998</label></li>
-<li><label><input type="checkbox"><span class="math inline">\(\text{Hypergeometric}(18, 20, 50)\)</span>; 0.9542</label></li>
-<li><label><input type="checkbox"><span class="math inline">\(\text{Binomial}(50, 18/36)\)</span>; 0.8841</label></li>
-<li><label><input type="checkbox"><span class="math inline">\(\text{Poisson}(23.68)\)</span>; 0.9998</label></li>
-</ul>
+<p>Suppose you are playing roulette in Las Vegas and you bet on red each time (an American roulette wheel has 18 red, 18 black, and 2 green slots). You play 50 times and bet on red every single time. Let <span class="math inline">\(X\)</span> be the number of times you win in 50 plays. Find the probability that you win at least 12 times?</p>
 <div class="cell" data-envir="roulette_sims" data-autorun="false">
 <div>
 <div id="webr-3" class="exercise-cell">
@@ -360,7 +349,7 @@ Show answer
 <pre><code>[1] 0.9998088</code></pre>
 </div>
 </div>
-<p><strong>Explanation:</strong> 1. <strong>Distribution and Parameters</strong>: Each play is an independent trial with a constant probability of success <span class="math inline">\(p = \frac{18}{18 + 18 + 2} = \frac{18}{38}\)</span>. With <span class="math inline">\(n = 50\)</span> trials, <span class="math inline">\(X \sim \text{Binomial}\left(n = 50, p = \frac{18}{38}\right)\)</span>. 2. <strong>Probability of at least 12 wins</strong>: We find <span class="math inline">\(P(X \ge 12) = 1 - P(X \le 11)\)</span>. 3. In R, we evaluate this upper tail with <code>lower.tail = FALSE</code> starting above 11.</p>
+<p><strong>Explanation:</strong> 1. <strong>Distribution and Parameters</strong>: Each play is an independent trial with a constant probability of success <span class="math inline">\(p = \frac{18}{18 + 18 + 2} = \frac{18}{38}\)</span>. With <span class="math inline">\(n = 50\)</span> trials, <span class="math inline">\(X \sim \text{Binomial}\left(n = 50, p = \frac{18}{38}\right)\)</span>. 2. <strong>Probability of at least 12 wins</strong>: In R, we evaluate this upper tail with <code>lower.tail = FALSE</code> starting above 11.</p>
 </div>
 </details>
 <hr>
@@ -368,18 +357,6 @@ Show answer
 <section id="part-d-hypergeometric-error-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="part-d-hypergeometric-error-analysis">Part D: Hypergeometric Error Analysis</h3>
 <p>An analyst tried to use the <em>Hypergeometric</em> distribution to simulate drawing spades (<span class="math inline">\(\spadesuit\)</span>) from a standard 52-card deck with the following line of code, but received an error and the code would not run. Run the code below to see the behavior, and determine what caused the error.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rhyper</span>(<span class="at">m =</span> <span class="dv">13</span>, <span class="at">n =</span> <span class="dv">39</span>, <span class="at">k =</span> <span class="dv">60</span>, <span class="at">nn =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">The parameter <code>nn</code> must be greater than 1.</label></li>
-<li><label><input type="checkbox">The sample size <code>k</code> is larger than the total population size <code>m + n</code>.</label></li>
-<li><label><input type="checkbox">The value of <code>n</code> should represent the total deck size (52).</label></li>
-<li><label><input type="checkbox">The argument names are mismatched for <code>rhyper</code>.</label></li>
-</ul>
 <div class="cell" data-envir="card_errors" data-autorun="false">
 <div>
 <div id="webr-4" class="exercise-cell">
@@ -396,7 +373,7 @@ Show answer
 </summary>
 <div class="answer-box" data-markdown="1">
 <p><strong>Correct Answer: The sample size k is larger than the total population size m + n.</strong></p>
-<p>In R’s <code>rhyper(nn, m, n, k)</code> function: * <code>m</code> is the number of successes in the population (13 spades). * <code>n</code> is the number of failures (39 non-spades).</p>
+<p>In R’s <code>rhyper(nn, m, n, k)</code> function: * <code>m</code> is the number of successes in the population (13 spades). * <code>n</code> is the number of failures in the population (39 non-spades).</p>
 <p>The total population size is <span class="math inline">\(m + n = 13 + 39 = 52\)</span> cards. Because the Hypergeometric distribution models sampling <strong>without replacement</strong>, you cannot draw a sample size of <span class="math inline">\(k = 60\)</span> from a deck of only 52 cards. R throws an error because <span class="math inline">\(k &gt; m + n\)</span> is physically impossible.</p>
 </div>
 </details>
@@ -405,18 +382,6 @@ Show answer
 <section id="part-e-validating-the-rhyper-syntax" class="level3">
 <h3 class="anchored" data-anchor-id="part-e-validating-the-rhyper-syntax">Part E: Validating the rhyper Syntax</h3>
 <p>To fix the previous mistake, the simulation was altered to count the number of spades (<span class="math inline">\(\spadesuit\)</span>) in a 5-card hand drawn from a standard deck using the code block below. This code runs without error, but is it correct?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rhyper</span>(<span class="at">m =</span> <span class="dv">13</span>, <span class="at">n =</span> <span class="dv">52</span>, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">nn =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">Yes, it correctly models drawing 5 cards from a 52-card deck.</label></li>
-<li><label><input type="checkbox">No, <code>m</code> should be set to 4 because there are 4 suits.</label></li>
-<li><label><input type="checkbox">No, <code>n</code> must represent failures <span class="math inline">\(52 - 13= 39\)</span> rather than the total population size.</label></li>
-<li><label><input type="checkbox">No, <code>nn</code> must match the sample size <code>k</code>.</label></li>
-</ul>
 <div class="cell" data-envir="card_errors" data-autorun="false">
 <div>
 <div id="webr-5" class="exercise-cell">
@@ -433,13 +398,13 @@ Show answer
 </summary>
 <div class="answer-box" data-markdown="1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rhyper</span>(<span class="at">nn =</span> <span class="dv">1</span>, <span class="at">m =</span> <span class="dv">13</span>, <span class="at">n =</span> <span class="dv">39</span>, <span class="at">k =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rhyper</span>(<span class="at">nn =</span> <span class="dv">1</span>, <span class="at">m =</span> <span class="dv">13</span>, <span class="at">n =</span> <span class="dv">39</span>, <span class="at">k =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 0</code></pre>
 </div>
 </div>
-<p><strong>Explanation:</strong> The code runs because a sample size of (k = 5) is smaller than the population size specified in the arguments ((13 + 52 = 65)). However, it is conceptually <strong>incorrect</strong>.</p>
-<p>In R, <code>n</code> represents the number of <em>failures</em> in the population, not the <em>total</em> population. By setting <code>n = 52</code>, the code models a deck containing 13 spades and 52 non-spades (a 65-card deck). To correctly simulate a standard 52-card deck, <code>n</code> should be set to <code>39</code> <span class="math inline">\((52 - 13\)</span>).</p>
+<p><strong>Explanation:</strong> The code runs because a sample size of k = 5 is smaller than the population size specified in the arguments (13 + 52 = 65). However, it is conceptually <strong>incorrect</strong>.</p>
+<p>In R, <code>n</code> represents the number of <em>failures</em> in the population, not the <em>total</em> population. By setting <code>n = 52</code>, the code models a deck containing 13 spades and 52 non-spades (a 65-card deck). To correctly simulate a standard 52-card deck, <code>n</code> should be set to <code>39</code> (52 - 13).</p>
 </div>
 </details>
 <hr>
@@ -447,12 +412,6 @@ Show answer
 <section id="part-f-coin-tossing-simulation" class="level3">
 <h3 class="anchored" data-anchor-id="part-f-coin-tossing-simulation">Part F: Coin Tossing Simulation</h3>
 <p>Let <span class="math inline">\(X\)</span> be the number of heads in 10 tosses of a fair coin. What is the distribution of <span class="math inline">\(X\)</span>? Write code to simulate 100 values from this distribution and plot its empirical histogram.</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><span class="math inline">\(X \sim \text{Geometric}(0.5)\)</span>; Use <code>rgeom()</code></label></li>
-<li><label><input type="checkbox"><span class="math inline">\(X \sim \text{Binomial}(10, 0.5)\)</span>; Use <code>rbinom()</code></label></li>
-<li><label><input type="checkbox"><span class="math inline">\(X \sim \text{Poisson}(5)\)</span>; Use <code>rpois()</code></label></li>
-<li><label><input type="checkbox"><span class="math inline">\(X \sim \text{Uniform}(0, 10)\)</span>; Use <code>runif()</code></label></li>
-</ul>
 <div class="cell" data-envir="coin_sims" data-autorun="false">
 <div>
 <div id="webr-6" class="exercise-cell">
@@ -469,18 +428,18 @@ Show answer
 </summary>
 <div class="answer-box" data-markdown="1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>heads<span class="ot">&lt;-</span><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="fu">sum</span>(<span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">size=</span><span class="dv">1</span>,<span class="at">prob=</span><span class="fl">0.5</span>)))</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(heads) <span class="sc">|&gt;</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(heads) <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> heads, <span class="at">y =</span> prop)) <span class="sc">+</span>  <span class="co"># Removed factor() here</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>heads<span class="ot">&lt;-</span><span class="fu">replicate</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="fu">sum</span>(<span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">size=</span><span class="dv">1</span>,<span class="at">prob=</span><span class="fl">0.5</span>)))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(heads) <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(heads) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> heads, <span class="at">y =</span> prop)) <span class="sc">+</span>  <span class="co"># Removed factor() here</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="probability_R_commands_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="probability_R_commands_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
