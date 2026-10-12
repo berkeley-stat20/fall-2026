@@ -215,23 +215,17 @@ window.Quarto = {
 </style>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Welcome! This module tests your intuition regarding two fundamental counting distributions: the <strong>Binomial distribution</strong> and the <strong>Hypergeometric distribution</strong>. The core distinction relies on your sampling method: are you sampling <em>with replacement</em> (independent trials) or <em>without replacement</em> (dependent trials)?</p>
+<p>Welcome! This module tests your intuition regarding two fundamental counting distributions: the <strong>Binomial distribution</strong> and the <strong>Hypergeometric distribution</strong>.</p>
 <hr>
 </section>
 <section id="practice-questions" class="level2">
 <h2 class="anchored" data-anchor-id="practice-questions">Practice Questions</h2>
 <div class="card my-3">
 <div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">
-<p>Question 1: The Core Distinguishing Assumption</p>
+<p>Question 1: Binomial versus Hypergeometric</p>
 </div>
 <div class="card-body">
-<p>Suppose a basket contains 15 gold tokens and 35 silver tokens. You are instructed to select exactly 8 tokens from the basket, one by one. Under which of the following scenarios is the total count of selected gold tokens modeled perfectly by a <strong>Binomial distribution</strong>?</p>
-<ul class="task-list">
-<li><label><input type="checkbox">You draw 8 tokens simultaneously in one quick handful.</label></li>
-<li><label><input type="checkbox">You draw a token, record its color, put it back into the basket, shake the basket thoroughly, and repeat this process until you have 8 observations.</label></li>
-<li><label><input type="checkbox">You draw a token, give it to a classmate sitting next to you, and repeat this process until you have 8 observations.</label></li>
-<li><label><input type="checkbox">None of the above setups can be modeled by a Binomial distribution because the overall population size is small (50 total tokens).</label></li>
-</ul>
+<p>Make up a probability question involving draws from a basket contains 15 gold tokens and 35 silver tokens so that the answer involves the binomial formula and give the answer. Next change the probability question so that the answer involves the hypergeometric formula and give the answer.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -247,31 +241,20 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="answer-box">
-<p><strong>Correct Answer: Option 2 (Sampling with replacement)</strong></p>
-<p>For a random variable to follow a Binomial distribution, it must satisfy the <strong>BINS</strong> criteria:</p>
-<ul>
-<li><strong>B</strong>inary: Each trial results in a success (gold) or failure (silver).</li>
-<li><strong>I</strong>ndependent: The outcome of one trial must not affect the next.</li>
-<li><strong>N</strong>umber of trials is fixed (n = 8).</li>
-<li><strong>S</strong>uccess probability remains constant ((p = = 0.30)).</li>
-</ul>
-<p>Placing the token back into the basket (<strong>sampling with replacement</strong>) ensures that the probability of drawing a gold token remains exactly 0.30 for every single draw. If you keep the tokens out (without replacement), the trials become dependent, which shifts the problem into a <strong>Hypergeometric</strong> framework.</p>
+<p>**Correct Answer:<br>
+Binomial: Find the probability that 8 draws with replacement from the basket result in 3 gold tolkens. Answ: <span class="math inline">\(\binom{8}{3}(.3)^3(.7)^5\)</span><br>
+Hypergeometric: Find the probability that 8 draws without replacement from the basket result in 3 gold tolkens. Answ: <span class="math inline">\(\frac{\binom{15}{3}\binom{35}{5}}{\binom{50}{8}}\)</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="card my-3">
 <div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">
-<p>Question 2: Probability Algebra Formulation</p>
+<p>Question 2: Computing the Problem in R</p>
 </div>
 <div class="card-body">
-<p>Let’s change the scenario. You now draw 5 tokens from the same basket (15 gold, 35 silver) <strong>without replacement</strong>. Which mathematical expression evaluates to the exact probability of drawing <strong>exactly 2 gold tokens</strong>?</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><span class="math inline">\(\binom{5}{2} (0.30)^2 (0.70)^3\)</span></label></li>
-<li><label><input type="checkbox"><span class="math inline">\(\frac{\binom{15}{2} + \binom{35}{3}}{\binom{50}{5}}\)</span></label></li>
-<li><label><input type="checkbox"><span class="math inline">\(\frac{\binom{15}{2} \binom{35}{3}}{\binom{50}{5}}\)</span></label></li>
-<li><label><input type="checkbox"><span class="math inline">\(\binom{15}{2} \left(\frac{15}{50}\right)^2 \left(\frac{35}{50}\right)^3\)</span></label></li>
-</ul>
+<p>Imagine you want to calculate the probability of getting <strong>at most 3 gold tokens</strong> when sampling 10 tokens <strong>without replacement</strong> from the basket (15 gold, 35 silver). What is the cleanest built-in syntax command to execute this in R?</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -284,46 +267,6 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="answer-box">
-<p><strong>Correct Answer: Option 3 (Hypergeometric mass formula)</strong></p>
-<p>Because we are sampling <strong>without replacement</strong>, we must track combinations using the Hypergeometric distribution PMF:</p>
-<p><span class="math display">\[\frac{\binom{\text{Successes Available}}{\text{Successes Wanted}} \times \binom{\text{Failures Available}}{\text{Failures Wanted}}}{\binom{\text{Total Population}}{\text{Total Sample Size}}}\]</span></p>
-<p>Mapping our variables directly:</p>
-<ul>
-<li><strong>Successes available:</strong> 15 gold tokens. We want to choose exactly (2 ).</li>
-<li><strong>Failures available:</strong> 35 silver tokens. Since total sample size is 5, we must choose exactly 5 - 2 = 3 silver tokens <span class="math inline">\(\implies \binom{35}{3}\)</span>.</li>
-<li><strong>Total sample pool:</strong> 50 tokens. We draw a total of <span class="math inline">\(5 \implies \binom{50}{5}\)</span>.</li>
-</ul>
-<p>Multiplying the success/failure paths over the total sample space gives us: <span class="math inline">\(\frac{\binom{15}{2}\binom{35}{3}}{\binom{50}{5}}\)</span>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="card my-3">
-<div class="card-header" style="font-weight: bold; background-color: #f1f3f5;">
-<p>Question 3: Computing the Problem in R</p>
-</div>
-<div class="card-body">
-<p>Imagine you want to calculate the probability of getting <strong>at most 3 gold tokens</strong> when sampling 10 tokens <strong>without replacement</strong> from the basket (15 gold, 35 silver). What is the cleanest built-in syntax command to execute this in R?</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><code>pbinom(3, size = 10, prob = 0.30)</code></label></li>
-<li><label><input type="checkbox"><code>dhyper(3, m = 15, n = 35, k = 10)</code></label></li>
-<li><label><input type="checkbox"><code>phyper(3, m = 15, n = 35, k = 10)</code></label></li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="answer-box">
 <p><strong>Correct Answer: <code>phyper(3, m = 15, n = 35, k = 10)</code></strong></p>
@@ -340,7 +283,6 @@ window.Quarto = {
 </div>
 
 
-</div>
 </section>
 
 </main> <!-- /main -->
