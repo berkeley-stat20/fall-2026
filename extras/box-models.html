@@ -216,53 +216,483 @@ details.answer .answer-box {
   margin-top: 0.6rem;
   padding: 0.85rem 1rem;
 }
+.dice-box-wrap {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.dice-box {
+  display: inline-block;
+  text-align: left;
+  border: 1px solid #5c4527;
+  padding: 6px;
+  background-color: #e8d5b5;
+}
+
+.dice-row > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 4px 0;
+}
+
+.dice-row:last-child > p {
+  margin-bottom: 0;
+}
+
+.dice-ticket {
+  background-color: #fffdf7;
+  color: #5c4527;
+  border-radius: 2px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid currentColor;
+  padding: 1px 4px;
+  line-height: 1.25;
+}
+
+.dice-ticket .dice {
+  display: flex;
+  gap: 2px;
+}
+
+.die {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.dice-pair {
+  white-space: nowrap;
+}
+
+.dice-pair .die {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.2em;
+  margin: 0 1px;
+}
+
+.die-face {
+  stroke: #222;
+  stroke-width: 1.5;
+  fill: var(--die-face);
+}
+
+.die-pips {
+  fill: var(--die-pip);
+}
+
+.die-white {
+  --die-face: #fff;
+  --die-pip: #222;
+}
+
+.die-black {
+  --die-face: #222;
+  --die-pip: #fff;
+}
+
+.dice-ticket.group-start {
+  margin-left: 4px;
+}
+/* Box models drawn with \boxed{} and \fbox{}: tickets are cream, and a box
+   that contains tickets is cardboard tan. */
+mjx-menclose > mjx-box {
+  color: #5c4527;
+  background-color: #fffdf7;
+  border-radius: 2px;
+}
+
+mjx-menclose > mjx-box:has(mjx-menclose) {
+  background-color: #e8d5b5;
+  border-radius: 0;
+}
+/* Compact tables with gridlines (ticket counts in Q1, comparison grid in Q4) */
+.compare-grid table,
+.compact-table table {
+  width: auto;
+  margin: 0.75rem auto;
+}
+
+/* Pandoc gives long-source tables percentage column widths; let columns fit their contents */
+.compare-grid col,
+.compact-table col {
+  width: auto !important;
+}
+
+.compare-grid th,
+.compare-grid td,
+.compact-table th,
+.compact-table td {
+  border: 1px solid #c9b48a;
+  padding: 0.3rem 0.9rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.compact-table th,
+.compact-table td {
+  padding: 0.3rem 0.5rem;
+}
+
+/* Q4 comparison grid: "greater than" cells get a very muted green background */
+.compare-grid td:has(.gt) {
+  background-color: #ecf1dc;
+}
+/* Tickets from a second box (Q4's box B): inverted colors */
+mjx-menclose.tkt-b > mjx-box {
+  color: #fffdf7;
+  background-color: #5c4527;
+  /* !important beats MathJax's inline "border: ... solid", which uses the text color */
+  border-color: #5c4527 !important;
+}
+/* "Expand all solutions" button at the bottom of the page */
+.expand-all-wrap {
+  margin-top: 4rem;
+  text-align: center;
+}
 </style>
+<svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+  <symbol id="die-1" viewbox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" class="die-face"></rect><g class="die-pips"><circle cx="12" cy="12" r="2.2"></circle></g></symbol>
+  <symbol id="die-2" viewbox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" class="die-face"></rect><g class="die-pips"><circle cx="6.5" cy="6.5" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></g></symbol>
+  <symbol id="die-3" viewbox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" class="die-face"></rect><g class="die-pips"><circle cx="6.5" cy="6.5" r="2.2"></circle><circle cx="12" cy="12" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></g></symbol>
+  <symbol id="die-4" viewbox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" class="die-face"></rect><g class="die-pips"><circle cx="6.5" cy="6.5" r="2.2"></circle><circle cx="17.5" cy="6.5" r="2.2"></circle><circle cx="6.5" cy="17.5" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></g></symbol>
+  <symbol id="die-5" viewbox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" class="die-face"></rect><g class="die-pips"><circle cx="6.5" cy="6.5" r="2.2"></circle><circle cx="17.5" cy="6.5" r="2.2"></circle><circle cx="12" cy="12" r="2.2"></circle><circle cx="6.5" cy="17.5" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></g></symbol>
+  <symbol id="die-6" viewbox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="4" class="die-face"></rect><g class="die-pips"><circle cx="6.5" cy="6.5" r="2.2"></circle><circle cx="6.5" cy="12" r="2.2"></circle><circle cx="6.5" cy="17.5" r="2.2"></circle><circle cx="17.5" cy="6.5" r="2.2"></circle><circle cx="17.5" cy="12" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></g></symbol>
+</svg>
 <section id="question-1" class="level4">
 <h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
-<p>In the notes, one of the examples is about dice, and sets up a box model for the process of rolling a pair of fair six sided dice and summing the spots. In the notes we make 2 draws at random with replacement from the following box, and sum the draws:</p>
+<p>In the <a href="../3-generalization/06-normal-approx/notes.html">Normal Approximation notes</a>, one of the examples is about dice, and sets up a box model for the process of rolling a pair of fair six-sided dice and summing the spots. In the notes we make 2 draws at random <em>with replacement</em> from the following box, and sum the draws:</p>
 <p><span class="math display">\[
 \boxed{ \fbox{1}\; \fbox{2} \;\fbox{3} \;\fbox{4}\;  \fbox{5} \; \fbox{6}}
 \]</span></p>
-<p>Why not make one draw from the following box instead? (The tickets are the possible sums when we roll a pair of six sided dice.)</p>
+<p>We might get a sum as low as 2 (1 both times), as high as 12 (6 both times), or any number in between. So… why not just make one draw from the box below? Seems easier?</p>
 <p><span class="math display">\[
-\boxed{ \fbox{2}\; \fbox{3}\; \fbox{4} \; \fbox{5} \; \fbox{6} \; \fbox{7} \; \fbox{8} \; \fbox{9}  \fbox{10}\;  \fbox{11}  \;\fbox{12}}
+\boxed{ \fbox{2}\; \fbox{3}\; \fbox{4} \; \fbox{5} \; \fbox{6} \; \fbox{7} \; \fbox{8} \; \fbox{9} \; \fbox{10}\;  \fbox{11}  \;\fbox{12}}
 \]</span></p>
-<p>If we did indeed want to model the result of two die rolls with a box from which we would only draw once, what would the box be? (List all the tickets in the box, which numbers, and how many of each.)</p>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>Because the sums are not equally likely, but the tickets in this box are.</strong> This box has 11 tickets, so one draw gives each sum the same chance: <span class="math inline">\(1/11\)</span>.</p>
+<p>But with real dice, some sums are much more common than others. There’s only one way to roll a 2 (<span class="dice-pair"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span>), but there are six ways to roll a 7 (<span class="dice-pair"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span>, <span class="dice-pair"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span>, <span class="dice-pair"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span>, <span class="dice-pair"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span>, <span class="dice-pair"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span>, <span class="dice-pair"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span>). Out of the 36 equally likely ways the two dice can land:</p>
+<ul>
+<li><span class="math inline">\(P(\text{sum} = 2) = 1/36\)</span></li>
+<li><span class="math inline">\(P(\text{sum} = 7) = 6/36 = 1/6\)</span></li>
+</ul>
+<p>So this box would make a 2 way too likely and a 7 not likely enough. Just listing the possible outcomes isn’t enough if the outcomes aren’t actually equally likely.</p>
+</div>
+</details>
+<p>If we did indeed want to model the sum of two die rolls with a box from which we would only draw <em>once</em>, what would the box be? (List all the tickets in the box, which numbers, and how many of each.)</p>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>Use 36 tickets</strong>: one for each of the 36 equally likely ways two dice can land, labeled with that roll’s sum.</p>
+<p>Here’s the box, with matching tickets grouped together so they’re easy to count:</p>
+<p><span class="math display">\[
+\boxed{\begin{array}{l}
+\fbox{2}\;\,\fbox{3}\,\fbox{3}\;\,\fbox{4}\,\fbox{4}\,\fbox{4}\;\,\fbox{5}\,\fbox{5}\,\fbox{5}\,\fbox{5} \\
+\fbox{6}\,\fbox{6}\,\fbox{6}\,\fbox{6}\,\fbox{6}\;\,\fbox{7}\,\fbox{7}\,\fbox{7}\,\fbox{7}\,\fbox{7}\,\fbox{7} \\
+\fbox{8}\,\fbox{8}\,\fbox{8}\,\fbox{8}\,\fbox{8}\;\,\fbox{9}\,\fbox{9}\,\fbox{9}\,\fbox{9} \\
+\fbox{10}\,\fbox{10}\,\fbox{10}\;\,\fbox{11}\,\fbox{11}\;\,\fbox{12}
+\end{array}}
+\]</span></p>
+<div class="compact-table">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ticket</th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{2}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{3}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{4}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{5}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{6}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{7}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{8}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{9}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{10}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{11}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\fbox{12}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Count</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br>
+</p>
+<p>But… <strong>where did this come from?</strong> Why two 3’s, and six 7’s?</p>
+<p>Each ticket stands for one unique way that two dice can land. To make this more intuitive, here’s the same box again, but now each ticket also shows one <em>unique roll of two dice</em> that makes that sum:</p>
+<div class="dice-box-wrap">
+<div class="dice-box">
+<div class="dice-row">
+<p><span class="dice-ticket"><span class="num">2</span><span class="dice"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">3</span><span class="dice"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span></span> <span class="dice-ticket"><span class="num">3</span><span class="dice"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">4</span><span class="dice"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span></span> <span class="dice-ticket"><span class="num">4</span><span class="dice"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span></span> <span class="dice-ticket"><span class="num">4</span><span class="dice"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">5</span><span class="dice"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span></span> <span class="dice-ticket"><span class="num">5</span><span class="dice"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span></span> <span class="dice-ticket"><span class="num">5</span><span class="dice"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span></span> <span class="dice-ticket"><span class="num">5</span><span class="dice"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span></span></p>
+</div>
+<div class="dice-row">
+<p><span class="dice-ticket"><span class="num">6</span><span class="dice"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span></span> <span class="dice-ticket"><span class="num">6</span><span class="dice"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span></span> <span class="dice-ticket"><span class="num">6</span><span class="dice"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span></span> <span class="dice-ticket"><span class="num">6</span><span class="dice"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span></span> <span class="dice-ticket"><span class="num">6</span><span class="dice"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">7</span><span class="dice"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span></span> <span class="dice-ticket"><span class="num">7</span><span class="dice"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span></span> <span class="dice-ticket"><span class="num">7</span><span class="dice"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span></span> <span class="dice-ticket"><span class="num">7</span><span class="dice"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span></span> <span class="dice-ticket"><span class="num">7</span><span class="dice"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span></span> <span class="dice-ticket"><span class="num">7</span><span class="dice"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span></span></p>
+</div>
+<div class="dice-row">
+<p><span class="dice-ticket"><span class="num">8</span><span class="dice"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span></span> <span class="dice-ticket"><span class="num">8</span><span class="dice"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span></span> <span class="dice-ticket"><span class="num">8</span><span class="dice"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span></span> <span class="dice-ticket"><span class="num">8</span><span class="dice"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span></span> <span class="dice-ticket"><span class="num">8</span><span class="dice"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">9</span><span class="dice"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span></span> <span class="dice-ticket"><span class="num">9</span><span class="dice"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span></span> <span class="dice-ticket"><span class="num">9</span><span class="dice"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span></span> <span class="dice-ticket"><span class="num">9</span><span class="dice"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span></span></p>
+</div>
+<div class="dice-row">
+<p><span class="dice-ticket"><span class="num">10</span><span class="dice"><svg class="die die-white"><use href="#die-4"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span></span> <span class="dice-ticket"><span class="num">10</span><span class="dice"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span></span> <span class="dice-ticket"><span class="num">10</span><span class="dice"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-4"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">11</span><span class="dice"><svg class="die die-white"><use href="#die-5"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span></span> <span class="dice-ticket"><span class="num">11</span><span class="dice"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-5"></use></svg></span></span> <span class="dice-ticket group-start"><span class="num">12</span><span class="dice"><svg class="die die-white"><use href="#die-6"></use></svg><svg class="die die-black"><use href="#die-6"></use></svg></span></span></p>
+</div>
+</div>
+</div>
+<p>From this, it’s easy to see that there are three ways to roll a 4: <span class="dice-pair"><svg class="die die-white"><use href="#die-1"></use></svg><svg class="die die-black"><use href="#die-3"></use></svg></span>, <span class="dice-pair"><svg class="die die-white"><use href="#die-2"></use></svg><svg class="die die-black"><use href="#die-2"></use></svg></span>, and <span class="dice-pair"><svg class="die die-white"><use href="#die-3"></use></svg><svg class="die die-black"><use href="#die-1"></use></svg></span>. So the first box got three <span class="math inline">\(\fbox{4}\)</span> tickets. There are six ways to roll a 7, so it gets six <span class="math inline">\(\fbox{7}\)</span> tickets. And so forth.</p>
+<p>There are exactly 36 tickets in the box, one for each unique way the dice can land. Each is equally likely to happen in a real roll of two dice. <em>Now</em> each possible total has the appropriate probability. For example, 6 of the 36 tickets are <span class="math inline">\(\fbox{7}\)</span>, so <span class="math inline">\(P(\text{draw a } 7) = 6/36\)</span>, just like with real dice.</p>
+</div>
+</details>
 </section>
 <section id="question-2" class="level4">
 <h4 class="anchored" data-anchor-id="question-2">Question 2</h4>
 <p>If we are setting up a box for modeling the number of heads in three tosses of a fair coin, would either of the boxes below work? If not, why not?</p>
 <ol type="a">
-<li><span class="math inline">\(\boxed{\fbox{0}\; \fbox{1}}\)</span>: Draw three times at random with replacement, and sum the draws.</li>
+<li><span class="math inline">\(\boxed{\fbox{0}\; \fbox{1}}\)</span>: Draw three times at random <em>with replacement</em>, and sum the draws.</li>
+</ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>Yes, this works.</strong> Each draw stands for one toss: <span class="math inline">\(\fbox{1}\)</span> means heads and <span class="math inline">\(\fbox{0}\)</span> means tails.</p>
+<ul>
+<li>The coin is fair (the box has one of each ticket) so each draw has a 50% chance of being heads (<span class="math inline">\(\fbox{1}\)</span>).</li>
+<li>Because we draw with replacement, the box is the same every time. Same as a coin: one toss doesn’t affect the next.</li>
+<li>Summing all the 0s and 1s effectively just counts the 1s, so the sum of the three draws <em>is</em> the number of “heads.” (For example, if we draw 0, then 1, then 1, we can add 0 + 1 + 1 = 2, which is exactly how many 1s we got.)</li>
+</ul>
+</div>
+</details>
+<ol start="2" type="a">
 <li><span class="math inline">\(\boxed{\fbox{0} \;\fbox{1}\; \fbox{2} \;\fbox{3}}\)</span>: Draw once, the result is the number of heads.</li>
 </ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>No.</strong> This box lists every possible number of heads, but it gives them all the same chance (<span class="math inline">\(1/4\)</span> each). That’s the same mistake as the 11-ticket box in Question 1.</p>
+<p>Three tosses can come out 8 equally likely ways (HHH, HHT, HTH, THH, HTT, THT, TTH, TTT). Count the heads in each:</p>
+<ul>
+<li>0 heads: TTT, so <span class="math inline">\(1/8\)</span></li>
+<li>1 head: HTT, THT, TTH, so <span class="math inline">\(3/8\)</span></li>
+<li>2 heads: HHT, HTH, THH, so <span class="math inline">\(3/8\)</span></li>
+<li>3 heads: HHH, so <span class="math inline">\(1/8\)</span></li>
+</ul>
+<p>So getting exactly 1 head is three times as likely as getting 0 heads. A one-draw box that works would have 8 tickets: <span class="math inline">\(\fbox{0}\;\fbox{1}\;\fbox{1}\;\fbox{1}\;\fbox{2}\;\fbox{2}\;\fbox{2}\;\fbox{3}\)</span>.</p>
+</div>
+</details>
 </section>
 <section id="question-3" class="level4">
 <h4 class="anchored" data-anchor-id="question-3">Question 3</h4>
-<p>A standard deck of cards has 52 cards, consisting of 4 “suits” (hearts , diamonds , spades <span class="math inline">\(\spadesuit\)</span>, and clubs <span class="math inline">\(\clubsuit\)</span>). Each suit has 13 cards (Ace, King, Queen, Jack, 2, 3, 4, 5, 6, 7, 8, 9, and 10). Half of the cards are red (hearts and diamonds) and half of the cards are black (spades and clubs). I would like to shuffle the cards, draw <strong>five</strong> cards with replacement, and count the number of <strong>hearts</strong> in these five cards. What would be the box model for this set up?</p>
+<p>A standard deck of cards has 52 cards, consisting of 4 “suits” (hearts <span style="color: red;">♥︎</span>, diamonds <span style="color: red;">♦︎</span>, spades <span class="math inline">\(\spadesuit\)</span>, and clubs <span class="math inline">\(\clubsuit\)</span>). Each suit has 13 cards (Ace, King, Queen, Jack, 2, 3, 4, 5, 6, 7, 8, 9, and 10). Half of the cards are red (hearts and diamonds) and half of the cards are black (spades and clubs). I would like to shuffle the cards, draw <strong>five</strong> cards with replacement, and count the number of <strong>hearts</strong> in these five cards. What would be the box model for this setup?</p>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>Box: <span class="math inline">\(\boxed{\fbox{0}\;\fbox{0}\;\fbox{0}\;\fbox{1}}\)</span>. Draw 5 times at random with replacement, and sum the draws.</strong></p>
+<p>We only care about one thing for each card: is it a heart or not? So we label hearts <span class="math inline">\(\fbox{1}\)</span> and everything else <span class="math inline">\(\fbox{0}\)</span>. (The card’s color and rank don’t matter here, so we can ignore them.)</p>
+<ul>
+<li>13 of the 52 cards are hearts, so the chance of drawing a heart is <span class="math inline">\(13/52 = 1/4\)</span>. A box with one <span class="math inline">\(\fbox{1}\)</span> and three <span class="math inline">\(\fbox{0}\)</span>’s gives that same <span class="math inline">\(1/4\)</span> chance. (A box with 13 <span class="math inline">\(\fbox{1}\)</span>’s and 39 <span class="math inline">\(\fbox{0}\)</span>’s would also work, since it has the same proportions.)</li>
+<li>We put each card back before the next draw, so we draw from the box <em>with replacement</em>.</li>
+<li>Just like the coin in Question 2, the sum of the 0s and 1s is the number of hearts.</li>
+</ul>
+</div>
+</details>
 </section>
 <section id="question-4" class="level4">
 <h4 class="anchored" data-anchor-id="question-4">Question 4</h4>
 <p>One ticket will be drawn at random from each of the two boxes below:</p>
 <p><span class="math inline">\(A: \boxed{\fbox{1}\; \fbox{2} \;\fbox{3}}\)</span></p>
-<p><span class="math inline">\(B: \boxed{ \fbox{1} \;\fbox{2} \;\fbox{3} \;\fbox{4}}\)</span></p>
+<p><span class="math inline">\(B: \boxed{ \class{tkt-b}{\fbox{1}} \;\class{tkt-b}{\fbox{2}} \;\class{tkt-b}{\fbox{3}} \;\class{tkt-b}{\fbox{4}}}\)</span></p>
 <ol type="a">
-<li><p>What is the chance the number drawn from <span class="math inline">\(A\)</span> is greater than the one drawn from <span class="math inline">\(B\)</span>?</p></li>
-<li><p>What is the chance that the number drawn from <span class="math inline">\(A\)</span> is equal to the one drawn from <span class="math inline">\(B\)</span>?</p></li>
-<li><p>What is the chance the number drawn from <span class="math inline">\(A\)</span> is smaller than the one drawn from <span class="math inline">\(B\)</span>?</p></li>
+<li>What is the chance the number drawn from <span class="math inline">\(A\)</span> is greater than the one drawn from <span class="math inline">\(B\)</span>?</li>
 </ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong><span class="math inline">\(3/12 = 1/4\)</span>.</strong></p>
+<p>There are <span class="math inline">\(3 \times 4 = 12\)</span> possible pairs of draws, and they’re all equally likely. A grid makes them easy to count. Each row is a ticket from <span class="math inline">\(A\)</span>, each column is a (dark) ticket from <span class="math inline">\(B\)</span>, and each cell compares them:</p>
+<div class="compare-grid">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;"><span class="math inline">\(\class{tkt-b}{\fbox{1}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\class{tkt-b}{\fbox{2}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\class{tkt-b}{\fbox{3}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\class{tkt-b}{\fbox{4}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\fbox{1}\)</span></td>
+<td style="text-align: center;">1 = 1</td>
+<td style="text-align: center;">1 &lt; 2</td>
+<td style="text-align: center;">1 &lt; 3</td>
+<td style="text-align: center;">1 &lt; 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\fbox{2}\)</span></td>
+<td style="text-align: center;">2 <span class="gt">&gt;</span> 1</td>
+<td style="text-align: center;">2 = 2</td>
+<td style="text-align: center;">2 &lt; 3</td>
+<td style="text-align: center;">2 &lt; 4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\fbox{3}\)</span></td>
+<td style="text-align: center;">3 <span class="gt">&gt;</span> 1</td>
+<td style="text-align: center;">3 <span class="gt">&gt;</span> 2</td>
+<td style="text-align: center;">3 = 3</td>
+<td style="text-align: center;">3 &lt; 4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="math inline">\(A\)</span> is greater than <span class="math inline">\(B\)</span> in 3 of the 12 cells: <span class="math inline">\(\fbox{2}\,\class{tkt-b}{\fbox{1}}\)</span>, <span class="math inline">\(\fbox{3}\,\class{tkt-b}{\fbox{1}}\)</span>, and <span class="math inline">\(\fbox{3}\,\class{tkt-b}{\fbox{2}}\)</span>. So the chance is <span class="math inline">\(3/12 = 1/4\)</span>.</p>
+</div>
+</details>
+<ol start="2" type="a">
+<li>What is the chance that the number drawn from <span class="math inline">\(A\)</span> is equal to the one drawn from <span class="math inline">\(B\)</span>?</li>
+</ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong><span class="math inline">\(3/12 = 1/4\)</span>.</strong> Using the same grid from part A’s solution (click above to expand), the numbers match in 3 of the 12 cells: <span class="math inline">\(\fbox{1}\,\class{tkt-b}{\fbox{1}}\)</span>, <span class="math inline">\(\fbox{2}\,\class{tkt-b}{\fbox{2}}\)</span>, and <span class="math inline">\(\fbox{3}\,\class{tkt-b}{\fbox{3}}\)</span>.</p>
+</div>
+</details>
+<ol start="3" type="a">
+<li>What is the chance the number drawn from <span class="math inline">\(A\)</span> is smaller than the one drawn from <span class="math inline">\(B\)</span>?</li>
+</ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong><span class="math inline">\(6/12 = 1/2\)</span>.</strong> You can count the 6 “&lt;” cells in the grid from part A’s solution. Or, faster: use the complement rule! In every pair drawn, A’s ticket must be either greater, equal, or smaller than B’s. You’ve already computed the first two (each was <span class="math inline">\(1/4\)</span>), and the total probability must add up to 1, so… <span class="math inline">\(1 - (1/4 + 1/4) = 1/2\)</span>.</p>
+<p>Intuitively, it makes sense that <span class="math inline">\(A\)</span> is more likely to be smaller than the other way around: box <span class="math inline">\(B\)</span> has a 4, and <span class="math inline">\(A\)</span> can never beat that.</p>
+</div>
+</details>
 </section>
 <section id="question-5" class="level4">
 <h4 class="anchored" data-anchor-id="question-5">Question 5</h4>
-<p>I want to estimate the proportion of people in Berkeley who speak at least two languages. I stand at the corner of University and Shattuck and ask each person who goes by how many languages they speak, and keep a count of how many speak at least two. Can I set this up as a box model? If so, how? If not, why not?</p>
+<p>I want to estimate the proportion of people in the city of Berkeley who speak at least two languages. I stand at the corner of University and Shattuck and ask each person who goes by how many languages they speak, and keep a count of how many speak at least two. Can I set this up as a box model? If so, how? If not, why not?</p>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>Not really.</strong></p>
+<p>We can write down the box we’d <em>want</em>, but this way of collecting data doesn’t draw from it at random.</p>
+<p>The box we’d want has one ticket per person who lives in the city of Berkeley: <span class="math inline">\(\fbox{1}\)</span> if they speak at least two languages and <span class="math inline">\(\fbox{0}\)</span> if not. We’d draw a bunch of tickets at random, and the proportion of <span class="math inline">\(\fbox{1}\)</span>’s we drew would estimate the proportion for the whole city.</p>
+<p>The problem is that a box model only fits if <em>every ticket has the same chance of being drawn</em>. Standing on one street corner doesn’t do that:</p>
+<ul>
+<li><strong>Who walks by isn’t random.</strong> That corner is downtown, right next to campus, so you’ll meet lots of students and people who work downtown. Non-student residents who live in other parts of the city, or rarely come downtown, have almost no chance of being “drawn.”</li>
+<li><strong>Some people who walk by don’t live in Berkeley.</strong> Commuters, visitors, and tourists end up in your count even though they aren’t tickets in the box.</li>
+<li><strong>Some people won’t stop to answer.</strong></li>
+</ul>
+<p>So we’d get <em>a</em> proportion, but we can’t expect it be a good estimate the proportion for the whole city.</p>
+</div>
+</details>
 </section>
 <section id="question-6" class="level4">
 <h4 class="anchored" data-anchor-id="question-6">Question 6</h4>
-<p>In this increasingly genAI reliant world of ours, one happy casualty is the “Homework help” company Chegg. It was an unashamedly unethical venture that made its money by facilitating cheating. In 2021, it had about 7.8 million subscribers (as of 2021). Suppose Chegg surveyed all its subscribers asking if they had ever cheated on an assignment using Chegg (trying to show that they did not), and suppose it got back 1.5 million responses of which 87% of the respondents say that they had never used Chegg to cheat on an assignment.</p>
+<p>In this increasingly gen-AI-reliant world of ours, one happy casualty is the “Homework help” company Chegg. Its business model was, for all practical purposes, selling cheating. In 2021, it had about 7.8 million subscribers. Suppose Chegg surveyed all its subscribers asking if they had ever cheated on an assignment using Chegg (the company is trying to show that they don’t enable cheating). Suppose it got back 1.5 million responses of which 87% of the respondents said that they had never used Chegg to cheat on an assignment.</p>
 <ol type="a">
 <li>Could this survey be set up as a box model? If so, what tickets would go in the box and how many would we draw? If not, why not?</li>
+</ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>Not really. Like Question 5, we can describe the box, but the 1.5 million responses weren’t drawn from it at random.</strong></p>
+<p>The box we’d want has 7.8 million tickets, one per subscriber: <span class="math inline">\(\fbox{1}\)</span> if they never cheated using Chegg and <span class="math inline">\(\fbox{0}\)</span> if they did. We’d draw 1.5 million tickets at random and look at the proportion of <span class="math inline">\(\fbox{1}\)</span>’s.</p>
+<p>But nobody drew those 1.5 million at random. Chegg asked <em>everyone</em>, and the subscribers <strong>chose for themselves</strong> whether to answer. Honest people are probably more likely to respond in the first place.</p>
+<p>There’s a second problem: even the people who do answer might not tell the truth. Chegg itself is asking whether you used Chegg to cheat. Would they really admit it? So the answers people give may not match the true “ticket” for that person.</p>
+</div>
+</details>
+<ol start="2" type="a">
 <li>Would this sample of 1.5 million be a representative sample of high school and college students?</li>
 </ol>
+<details class="answer">
+<summary>
+Show answer
+</summary>
+<div class="answer-box" data-markdown="1">
+<p><strong>No.</strong> There are two main reasons:</p>
+<ol type="1">
+<li><strong>Wrong group.</strong> Chegg <em>subscribers</em> were be surveyed, which may not be only high school and college students. Some subscribers might be in graduate programs, law school, or not enrolled in school at all. Even among subscribers that <em>are</em> high school or college students, the kind of students who pay for a “homework help” service are probably different in many ways from the general student population. Most of the world’s high school and college students never subscribed, so they had no chance to be in the sample.</li>
+<li><strong>Nonresponse.</strong> Same as the previous question – the 1.5 million out of 7.8 million who <em>chose</em> to respond may be very different from those who didn’t.</li>
+</ol>
+<p><strong>A huge sample doesn’t fix anything.</strong> 1.5 million responses sounds really impressive, but if the sampling method itself is wrong, a bigger sample just gives you a more precise estimate of the wrong thing.</p>
+</div>
+</details>
+<div class="expand-all-wrap">
+<button type="button" class="btn btn-outline-secondary btn-sm" id="toggle-all-answers">
+Expand all solutions
+</button>
+</div>
+<script>
+(function () {
+  const button = document.getElementById("toggle-all-answers");
+  const answers = Array.from(document.querySelectorAll("details.answer"));
+  const allOpen = () => answers.every((d) => d.open);
+  const updateLabel = () => {
+    button.textContent = allOpen() ? "Collapse all solutions" : "Expand all solutions";
+  };
+  button.addEventListener("click", () => {
+    const open = !allOpen();
+    answers.forEach((d) => { d.open = open; });
+    updateLabel();
+  });
+  answers.forEach((d) => d.addEventListener("toggle", updateLabel));
+})();
+</script>
 
 
 </section>
