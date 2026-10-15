@@ -308,6 +308,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZW52aXIiOiJl
   border-radius: 0.5rem;
   padding: 0.85rem 1rem;
   margin-block: 1rem;
+  overflow-x: auto;
 }
 
 .expected-output > :last-child,
@@ -344,6 +345,14 @@ details.answer:not([open]) > summary:hover {
 
 details.answer .answer-box {
   padding: 0.1rem 1rem 0.85rem;
+  /* On phones, a long equation scrolls sideways inside the box instead of
+     running off the screen */
+  overflow-x: auto;
+}
+
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 details.answer .answer-box > :last-child {
