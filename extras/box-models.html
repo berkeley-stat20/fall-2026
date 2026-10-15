@@ -205,16 +205,56 @@ window.Quarto = {
 
 
 <style>
+/* The <details> element is the box: closed, it shows just the "Show answer"
+   label; open, the same box grows to hold the answer. */
 details.answer {
+  width: fit-content;
   margin-bottom: 2.5rem;
-}
-
-details.answer .answer-box {
   background-color: #fff8d9;
   border: 1px solid #eadf9c;
   border-radius: 8px;
-  margin-top: 0.6rem;
-  padding: 0.85rem 1rem;
+}
+
+details.answer[open] {
+  width: auto;
+}
+
+details.answer > summary {
+  padding: 0.2rem 0.75rem;
+  color: #6b5a14;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+details.answer:not([open]) > summary:hover {
+  background-color: #fbefb8;
+  border-radius: 8px;
+}
+
+details.answer .answer-box {
+  padding: 0.1rem 1rem 0.85rem;
+}
+
+details.answer .answer-box > :last-child {
+  margin-bottom: 0;
+}
+
+.expand-all-wrap {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.expand-all-wrap button {
+  background-color: #fff8d9;
+  border: 1px solid #eadf9c;
+  border-radius: 8px;
+  padding: 0.4rem 1.1rem;
+  color: #6b5a14;
+  font-weight: 600;
+}
+
+.expand-all-wrap button:hover {
+  background-color: #fbefb8;
 }
 .dice-box-wrap {
   text-align: center;
@@ -692,6 +732,17 @@ Expand all solutions
   });
   answers.forEach((d) => d.addEventListener("toggle", updateLabel));
 })();
+</script>
+<div class="expand-all-wrap">
+  <button type="button" id="toggle-all-answers">Expand all solutions</button>
+</div>
+<script>
+  document.getElementById("toggle-all-answers").addEventListener("click", function () {
+    const answers = document.querySelectorAll("details.answer");
+    const open = Array.from(answers).some((d) => !d.open);
+    answers.forEach((d) => (d.open = open));
+    this.textContent = open ? "Collapse all solutions" : "Expand all solutions";
+  });
 </script>
 
 
