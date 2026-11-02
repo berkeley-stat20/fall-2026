@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Defining Causality – Stat 20 (Fall 2026)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/stat20-hex.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-60a8534db64e77a2858fec8cec3eca89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
+</script>
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="../../site_libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="../../site_libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/stat20/stat20notes/sidebar.css">
+<meta property="og:title" content="Defining Causality – Stat 20 (Fall 2026)">
+<meta property="og:description" content="Conditional counterfactuals and average treatment effects">
+<meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/5-causation/01-defining-causality/images/causal.png">
+<meta property="og:site_name" content="Stat 20">
+<meta property="og:image:height" content="298">
+<meta property="og:image:width" content="452">
+<meta name="twitter:title" content="Defining Causality – Stat 20 (Fall 2026)">
+<meta name="twitter:description" content="Conditional counterfactuals and average treatment effects">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/5-causation/01-defining-causality/images/causal.png">
+<meta name="twitter:image-height" content="298">
+<meta name="twitter:image-width" content="452">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo light-content">
+    <img src="../../assets/stat20-hex-small.png" alt="Stat 20 logo" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../office-hours.html"> 
+<span class="menu-text">Office Hours</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tutorials.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../extras.html"> 
+<span class="menu-text">Extras</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://edstem.org/us/courses/101622/discussion" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Ed Discussion Forum" target="_blank"><i class="bi bi-chat-fill"></i></a>
+    <a href="https://www.gradescope.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope" target="_blank"><i class="bi bi-bar-chart-fill"></i></a>
+    <a href="https://stat20.datahub.berkeley.edu/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="RStudio" target="_blank"><i class="bi bi-r-circle-fill"></i></a>
+    <a href="https://stat20-grades.wetchler.com/" rel="noopener" title="" class="quarto-navigation-tool px-1" aria-label="See my grade calculation" target="_blank"><i class="bi bi-calculator-fill"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <div id="quarto-announcement" data-announcement-id="0e448cb404be6a7dd8a500cd096574bd" class="alert alert-info hidden"><i class="bi bi-calculator-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>New:</strong> Check your current grade calculation anytime with the calculator icon in the top right, or <a href="https://stat20-grades.wetchler.com/" target="_blank" rel="noopener">open it here</a>.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro-a-spider-web-of-causes" id="toc-intro-a-spider-web-of-causes" class="nav-link active" data-scroll-target="#intro-a-spider-web-of-causes">Intro: a spider web of causes</a></li>
+  <li><a href="#causation-in-statistics-the-conditional-counterfactual" id="toc-causation-in-statistics-the-conditional-counterfactual" class="nav-link" data-scroll-target="#causation-in-statistics-the-conditional-counterfactual">Causation in Statistics: The Conditional Counterfactual</a>
+  <ul class="collapse">
+  <li><a href="#causation-between-variables" id="toc-causation-between-variables" class="nav-link" data-scroll-target="#causation-between-variables">Causation between variables</a></li>
+  </ul></li>
+  <li><a href="#the-language-of-causation-potential-outcomes-and-treatment-effect" id="toc-the-language-of-causation-potential-outcomes-and-treatment-effect" class="nav-link" data-scroll-target="#the-language-of-causation-potential-outcomes-and-treatment-effect">The language of causation: Potential Outcomes and Treatment Effect</a></li>
+  <li><a href="#a-new-type-of-impossible-task" id="toc-a-new-type-of-impossible-task" class="nav-link" data-scroll-target="#a-new-type-of-impossible-task">A new type of impossible task</a></li>
+  <li><a href="#from-individual-level-claims-to-population-level-claims" id="toc-from-individual-level-claims-to-population-level-claims" class="nav-link" data-scroll-target="#from-individual-level-claims-to-population-level-claims">From individual-level claims to population-level claims</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides-fill"></i>Slides</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Defining Causality</h1>
+<p class="subtitle lead">Conditional counterfactuals and average treatment effects</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="page-overview callout callout-style-default callout-warning callout-titled" title="This page covers...">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>This page covers…
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>TODO</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Alternate intro: do you think smoking causes cancer? Why? Don't we need an experiment to infer causation? -->
+<section id="intro-a-spider-web-of-causes" class="level3">
+<h3 class="anchored" data-anchor-id="intro-a-spider-web-of-causes">Intro: a spider web of causes</h3>
+<p><span class="dropbcap">W</span>hat does it mean to say that “A causes B”?</p>
+<p>We speak of causes and effects all the time, even though the language we use varies widely. “I took an aspirin and my headache got better” implies that taking the aspirin is what caused your headache to get better. “She was able to find a good job because she graduated from Berkeley” is more direct: graduating from Berkeley was the cause of her being able to find a good job.</p>
+<p>Identifying a causal statement is one thing, but we’re still left the conundrum: what definition can we use to be precise about the meaning of a causal statement?</p>
+<details>
+<summary>
+You don’t believe that’s a big deal, right?
+</summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
+<p>Try yourself.</p>
+<p>Try to create a definition of causation that is not just a tautology, i.e.&nbsp;that does not just go back on itself and try to define causation by using causation.</p>
+<p>Alas! Our human intuition for causation is not enough, unfortunately!</p>
+</div>
+</details>
+<p>Let’s see what your intuition tells you about what is a cause and what is not a cause. Which causes do you identify in the following scenario?</p>
+<blockquote class="blockquote">
+<p>Suppose there is Stat 20 class today. The <strong>Reader printed</strong> the warmup sheets, which are in the box. The <strong>Tutor is handing out</strong> the sheets now, to the people who come in on time. If <strong>you were late</strong>, you wouldn’t get a sheet, except, you would still go to the professor and <strong>ask for one</strong>. The professor always gives in…</p>
+<p>Now, imagine you are in class and have a warmup sheet in your hands.</p>
+<p>What caused you to have the warmup sheet in your hands?</p>
+<p>A. The Reader printing the sheets.<br>
+B. The Tutor handing out the sheets.<br>
+C. You coming to class.<br>
+D. You being late.<br>
+E. You asking for a sheet.</p>
+</blockquote>
+<p>As you ponder where to draw the line to determine which of these events are the cause of you holding the sheet, you are working out your own internal definition of causation. Keep your answers in mind: we will discuss this example in class. For now, though, let’s introduce the most widely used definitions of cause and effect.</p>
+</section>
+<section id="causation-in-statistics-the-conditional-counterfactual" class="level2">
+<h2 class="anchored" data-anchor-id="causation-in-statistics-the-conditional-counterfactual">Causation in Statistics: The Conditional Counterfactual</h2>
+<p>One of the earliest articulations of what it means to be a cause, in the way we use it in Statstics, can be found in the writing of Thucydides, the ancient Greek historian. It comes at the end of a passage where he describes a village called Orobiae, which experienced an earthquake followed by a tsunami.</p>
+<blockquote class="blockquote">
+<p>About the same time that these earthquakes were so common, the sea at Orobiae, in Euboea, retiring from the then line of coast, returned in a huge wave and invaded part of the town, and retreated leaving some of it still under water; so that what was once land is now sea…</p>
+<p>The cause, in my opinion of this phenomenon must be sought in the earthquake. At the point where its shock has been the most violent, the sea is driven back, and suddenly recoiling with redoubled force, causes the inundation.</p>
+<p>Without the earthquake, I do not see how such an accident could happen.</p>
+</blockquote>
+<p>In the final line, Thucydides makes a leap: he imagines a world where the earthquake didn’t happen, and can’t imagine the tsunami happening. This, for him, is what makes the earthquake the cause of the tsunami. This form of reasoning about causation was summarized centuries later by the Scottish philosopher David Hume, who characterized a cause as a scenario in which “If the first object had not been, the second never had existed.”</p>
+<p>Both of these thoughts rely upon imagining a world that was different from the one that was observed, a notion in logic called <strong>a counterfactual</strong>.</p>
+<p>Keep in mind that Analytical Philosophy and Theoretical Physics have to say goodbye here. They don’t quite follow our path, at least not fully. They have generally different approaches to causation. (In fact some philosophers think causation is not a coherent concept at all, which the author of this notes also agrees with…)</p>
+<p>But the following is the core of how Statistics and the Social Sciences think about causation.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>Def. Counterfactual</strong></p>
+<p>A hypothetical alternative universe where a certain event, that happened in our actual universe, didn’t happen. (Or vice versa).</p>
+</div>
+<p>This notion is the core component of the most widely used definition of a cause: the <strong>conditional counterfactual definition</strong>.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>Def. Causation</strong></p>
+<p>We say “A causes B” if, in a world where A didn’t happen, B wouldn’t happen either.</p>
+</div>
+<p>Using this definition of causation, let’s revisit two examples from above.</p>
+<ol type="1">
+<li><p>Consider the claim, “I took an aspirin and my headache got better”.</p>
+<p>Using the conditional counterfactual definition, what would you need to know to determine if the aspirin caused the headache to improve?</p></li>
+</ol>
+<details>
+<summary>
+Check your answer
+</summary>
+<p>You would need to know that, if they hadn’t taken an aspirin, their headache wouldn’t have gotten better.</p>
+</details>
+<ol start="2" type="1">
+<li><p>Consider the claim, “She was able to find a good job because she graduated from Berkeley”.</p>
+<p>Using the conditional counterfactual definition, what would you need to know to determine if graduating from Berkeley caused her to find a good job?</p></li>
+</ol>
+<details>
+<summary>
+Check your answer
+</summary>
+<p>You would need to know that, if she hadn’t graduated from Berkeley, she wouldn’t have been able to find a good job.</p>
+</details>
+<p>These scenarios are way way too simplistic, however. Good for understanding the general idea, but bad for most applications. For example, they do not cover the situation where a variable (e.g.&nbsp;amount of time studied) only increases your chances of observing a value of another variable (e.g.&nbsp;final score in the class).</p>
+<p>So let’s come to a better definition of causation for the Social Sciences</p>
+<section id="causation-between-variables" class="level3">
+<h3 class="anchored" data-anchor-id="causation-between-variables">Causation between variables</h3>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>Def. Causation between two variables</strong></p>
+<p>We say that random variable <span class="math inline">\(X\)</span> (<strong><em>treatment</em></strong> or <strong><em>explanatory variable</em></strong>) causes random variable <span class="math inline">\(Y\)</span> (<strong><em>response variable</em></strong>) if, in a counterfactual universe where the value of <span class="math inline">\(X\)</span> is different, then the probability distribution of <span class="math inline">\(Y\)</span> is different.</p>
+</div>
+<section id="e.g.-aspirin-again" class="level4">
+<h4 class="anchored" data-anchor-id="e.g.-aspirin-again">E.g. Aspirin again</h4>
+<ul>
+<li><span class="math inline">\(X\)</span> = they take the aspirin or not (discrete, binary, 1 or 0)</li>
+<li><span class="math inline">\(Y\)</span> = how long until the headache goes away (continuous)</li>
+</ul>
+<p>In a world where I take the aspirin, <span class="math inline">\(X = 1\)</span>, I expect the headache to go away in 43 minutes <span class="math inline">\(E(Y) = 43\)</span> minutes</p>
+<p>In a world where I don’t take the aspirin, <span class="math inline">\(X = 0\)</span>, I expect the headache to go away in 318 minutes <span class="math inline">\(E(Y) = 318\)</span> minutes</p>
+<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you took the aspirin and didn’t (the expectation went down), therefore <span class="math inline">\(X\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+</section>
+<section id="e.g.-studying-for-stat-20" class="level4">
+<h4 class="anchored" data-anchor-id="e.g.-studying-for-stat-20">E.g. Studying for Stat 20</h4>
+<ul>
+<li><span class="math inline">\(X =\)</span> amount of time studied per day (continuous)</li>
+<li><span class="math inline">\(Y =\)</span> letter grade at the end of the semester (categorical ordinal)</li>
+</ul>
+<p>In a world where I study <span class="math inline">\(X = 23\)</span> minutes per day, I have a 35% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.35\)</span>.</p>
+<p>In a different world, where I study <span class="math inline">\(X = 38\)</span> minutes per day, I have a 52% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.52\)</span>.</p>
+<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you studied for 23 vs.&nbsp;38 minutes per day (the probability of “A” or higher went up), therefore <span class="math inline">\(X\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+<p>Let’s introduce some more language then.</p>
+</section>
+</section>
+</section>
+<section id="the-language-of-causation-potential-outcomes-and-treatment-effect" class="level2">
+<h2 class="anchored" data-anchor-id="the-language-of-causation-potential-outcomes-and-treatment-effect">The language of causation: Potential Outcomes and Treatment Effect</h2>
+<p><strong>Def. Potential Outcomes</strong></p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p>Given a response variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(X\)</span>, for simplicity taking just two values <span class="math inline">\(X=0\)</span> (control) and <span class="math inline">\(X=1\)</span> (treatment). Define:</p>
+<ul>
+<li><span class="math inline">\(Y(X=0)\)</span> or <span class="math inline">\(Y_c\)</span>. The potential outcome in control conditions.</li>
+<li><span class="math inline">\(Y(X=1)\)</span> or <span class="math inline">\(Y_t\)</span>. The potential outcome in treatment conditions.</li>
+</ul>
+</div>
+<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control (<span class="math inline">\(X=0\)</span>), there would be an imaginary unobserved evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except for having a different value of the treatment variable <span class="math inline">\(X=1\)</span>, and vice versa.</p>
+<section id="e.g." class="level4">
+<h4 class="anchored" data-anchor-id="e.g.">E.g.</h4>
+<ul>
+<li><span class="math inline">\(Y_c\)</span> = Amount of water I drank after I, the author of these notes, got home at 3:15pm on 11/02/2026, took off my shoes in the hallway and sneezed, walked up the stairs, poured 246 g of water <strong>in a plastic cup</strong>.</li>
+<li><span class="math inline">\(Y_t\)</span> = Amount of water I drank after I, the author of these notes, got home at 3:15pm on 11/02/2026, took off my shoes in the hallway and sneezed, walked up the stairs, poured 246 g of water <strong>in a glass</strong>.</li>
+<li><span class="math inline">\(X\)</span> = type of container you poured the water in. (Glass or plastic cup)</li>
+</ul>
+<p>Now we’re ready to finally define the effect of taking the treatment.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>Def. Treatment Effect</strong></p>
+<p>Given a response variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(X\)</span>, for simplicity taking just two values <span class="math inline">\(X=0\)</span> (control) and <span class="math inline">\(X=1\)</span> (treatment), We define the treatment effect as:</p>
+<p><span class="math display">\[
+\mbox{Treatment Effect} \equiv \delta \equiv Y(X=1) - Y(X=0) \equiv Y_t - Y_c
+\]</span></p>
+</div>
+<p>Okay, no big surprises so far. The effect of taking the treatment is the difference between what would happen if you took the treatment and what would happen if you took the control.</p>
+<p>Wait a minute…</p>
+</section>
+</section>
+<section id="a-new-type-of-impossible-task" class="level2">
+<h2 class="anchored" data-anchor-id="a-new-type-of-impossible-task">A new type of impossible task</h2>
+<p>A shiver goes down our spines. How are we gonna do that?</p>
+<p>The conditional counterfactual definition of causation is sound in an abstract sense, but it is challenging when you start to think through what sort of data you could collect as evidence of causation. In the second example, we have data on the fact that she found a good job (the response variable) and that she went to Berkeley (the explanatory variable), but the counterfactual - that remains purely theoretical.</p>
+<p>Poor us! This is a God-like power that is even mightier than the power to see the entire population that we were desperate to achieve in the generalization unit!</p>
+<p>In an idealized world, to demonstrate that graduating from Cal was the cause of getting a good job, you would have to observe this data frame<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-hover table-striped caption-top table-sm small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Student Name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Went to Cal</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salary ($)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Evelyn Fix</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: right;">150000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Evelyn Fix</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: right;">112000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>In this idealized data frame, the two rows are both observations of the same person, making the decision to go to Cal at texactly the same time and situation of their lives, so they have the same values of every possible other variable: work experience, GPA, letters of recommendation, health, etc. The only difference is one of them went to Cal and the other (from the counterfactual world) did not. Because they differed on their response variable (salary after graduation), this would mean that going to Cal caused Evelyn to get a higher-paying job.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-hover table-striped caption-top table-sm small">
+<caption>Potential Outcomes for Evelyn Fix</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Student Name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salary if went to Cal (\(Y_t\))</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salary if didn't go to Cal (\(Y_c\))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Evelyn Fix</td>
+<td style="text-align: right;">150000</td>
+<td style="text-align: right;">112000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The “challenge” is that we only ever get to observe one of the two rows above. Said another way, there are two <em>potential outcomes</em> for this scenario. One was observed (the job outcome after going to Cal) and the other was not (the job outcome without going to Cal).</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-hover table-striped caption-top table-sm small">
+<caption>The sad reality</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Student Name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salary if went to Cal (\(Y_t\))</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Salary if didn't go to Cal (\(Y_c\))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Evelyn Fix</td>
+<td style="text-align: right;">150000</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>If you’ve ever used a GPS navigation app, you’re already accustomed to thinking in terms of potential outcomes. Here is the guidance Google Maps provides to travel from Pimentel Hall at Cal to downtown Oakland by car.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/the-route-not-taken.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+</figure>
+</div>
+<p>Each one of the three paths is a potential route I could take and each of those times are the app’s predictions for what the potential outcomes will be. Importantly, though, these are just predictions, not data. To collect data, I have to select one of these routes to drive, then I could record data on the time it took me. If I choose the blue path and it ends up taking me 16 minutes, I’ll never know for sure that it was my choice of the blue route that led to this apparently short drive time. To know that, I’d have to rewind the clock and, in a different world, decide to take one of the gray routes and observe a drive time that is more than 16 minutes.</p>
+<p>While our definition of causation prevents us from ever making completely airtight conclusions about cause and effect in scenarios like these, over the years scientists and statisticians have crafted many clever strategies for working around these constraints to build compelling causal claims.</p>
+</section>
+<section id="from-individual-level-claims-to-population-level-claims" class="level2">
+<h2 class="anchored" data-anchor-id="from-individual-level-claims-to-population-level-claims">From individual-level claims to population-level claims</h2>
+<p>Our radical inability to observe both counterfactuals (both potential outcomes) and the natural randomness in each datapoint (after all maybe Evelyn got the higher paying job in treatment completely by luck) pushes us to slightly change our target.</p>
+<p>It can be easier to make a claim about the typical causal effect among a <em>population</em> of individuals.</p>
+<ol type="1">
+<li>Going to Cal would make Evelyn get a higher-paying job. (Individual predictive causal claim)</li>
+<li>Going to Cal would increase Evelyn’s salary expectation for her job. (Individual generalization causal claim)</li>
+<li>Going to Cal would increase people’s salary expectation for their job. (Population-level generalization causal claim)</li>
+</ol>
+<p>The first is a strong statement about a single individual, Evelyn and their future observed salary. It’s an individual causal prediction. The second is still individual but it’s generalized to Evelyn’s salary variable distribution. It’s an individual causal generalization. The third is a much more general statement that creates expectations for a “generic” individual in a population, in the hopes that it can be helpful advice for everyone in that population. It’s a population-level causal generalization.</p>
+<p>Population-level causation is the focus of many sciences, which aim to make general claims about the causal mechanisms of the world. The goal is to estimate the average treatment effect.</p>
+<p><span class="math display">\[
+\mbox{Average Treatment Effect} \equiv \tau \equiv E(Y_t - Y_c) \equiv \mu_{Y_t - Y_c}
+\]</span></p>
+<p>You will have recognized the notorious population/distribution mean <span class="math inline">\(E()\)</span>. Yes: on top of the new challenges with counterfactuals, we will still be facing the traditional enemy from generalization, to be fought with the traditional methods: confidence intervals, hypothesis testing, and the like.</p>
+<dl>
+<dt><strong>Average Treatment Effect</strong></dt>
+<dd>
+A population parameter that captures the effect of being administered a particular treatment, averaged over each group. Most often estimated by a difference in sample means or a difference in sample proportions.
+</dd>
+</dl>
+<p>In statement two above, a natural estimate for the average treatment effect would be the difference between the proportion of Cal graduates who got a good job and the proportion of non-Cal graduates who got a good job. That can be visualized in a simple example of three students who graduated from Cal and three who did not. The difference in the proportion with a good job is <span class="math inline">\(2/3 - 1/3 = 1/3\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-hover table-striped caption-top table-sm small">
+<caption>The sad reality</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Student Name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salary if went to Cal (\(Y_t\))</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salary if didn't go to Cal (\(Y_c\))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Evelyn Fix</td>
+<td style="text-align: right;">150000</td>
+<td style="text-align: right;">115000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nikhil Kote</td>
+<td style="text-align: right;">135000</td>
+<td style="text-align: right;">101000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yiwen Lin</td>
+<td style="text-align: right;">105500</td>
+<td style="text-align: right;">100000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout="[-1,5,1,3,-1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 9.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
+<div class="cell-output-display">
+<div id="avacxmagld" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#avacxmagld table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#avacxmagld thead, #avacxmagld tbody, #avacxmagld tfoot, #avacxmagld tr, #avacxmagld td, #avacxmagld th {
+  border-style: none;
+}
+
+#avacxmagld p {
+  margin: 0;
+  padding: 0;
+}
+
+#avacxmagld .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#avacxmagld .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#avacxmagld .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#avacxmagld .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#avacxmagld .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#avacxmagld .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avacxmagld .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#avacxmagld .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#avacxmagld .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#avacxmagld .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#avacxmagld .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#avacxmagld .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#avacxmagld .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#avacxmagld .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#avacxmagld .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#avacxmagld .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#avacxmagld .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#avacxmagld .gt_row {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#avacxmagld .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avacxmagld .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#avacxmagld .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#avacxmagld .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#avacxmagld .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avacxmagld .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#avacxmagld .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#avacxmagld .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avacxmagld .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avacxmagld .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#avacxmagld .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avacxmagld .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#avacxmagld .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avacxmagld .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#avacxmagld .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avacxmagld .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#avacxmagld .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avacxmagld .gt_left {
+  text-align: left;
+}
+
+#avacxmagld .gt_center {
+  text-align: center;
+}
+
+#avacxmagld .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#avacxmagld .gt_font_normal {
+  font-weight: normal;
+}
+
+#avacxmagld .gt_font_bold {
+  font-weight: bold;
+}
+
+#avacxmagld .gt_font_italic {
+  font-style: italic;
+}
+
+#avacxmagld .gt_super {
+  font-size: 65%;
+}
+
+#avacxmagld .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#avacxmagld .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#avacxmagld .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#avacxmagld .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#avacxmagld .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#avacxmagld .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#avacxmagld .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#avacxmagld .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#avacxmagld div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Name" class="gt_col_heading gt_columns_bottom_border gt_left" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">Name</th>
+<th id="Cal-Grad" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">Cal Grad</th>
+<th id="Good-Job" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">Good Job</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Name" style="text-align: left; background-color: #FAFAD2;">Evelyn</td>
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #FAFAD2;">TRUE</td>
+<td class="gt_row gt_center" headers="Good Job" style="text-align: left; background-color: #FAFAD2;">TRUE</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Name" style="text-align: left; background-color: #FAFAD2;">Grace</td>
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #FAFAD2;">TRUE</td>
+<td class="gt_row gt_center" headers="Good Job" style="text-align: left; background-color: #FAFAD2;">FALSE</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Name" style="text-align: left; background-color: #FAFAD2;">Juan</td>
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #FAFAD2;">TRUE</td>
+<td class="gt_row gt_center" headers="Good Job" style="text-align: left; background-color: #FAFAD2;">TRUE</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Name" style="text-align: left; background-color: #E0FFFF;">Alex</td>
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #E0FFFF;">FALSE</td>
+<td class="gt_row gt_center" headers="Good Job" style="text-align: left; background-color: #E0FFFF;">FALSE</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Name" style="text-align: left; background-color: #E0FFFF;">Monica</td>
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #E0FFFF;">FALSE</td>
+<td class="gt_row gt_center" headers="Good Job" style="text-align: left; background-color: #E0FFFF;">FALSE</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Name" style="text-align: left; background-color: #E0FFFF;">Sriya</td>
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #E0FFFF;">FALSE</td>
+<td class="gt_row gt_center" headers="Good Job" style="text-align: left; background-color: #E0FFFF;">TRUE</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 9.1%;justify-content: flex-start;">
+<p><i class="fa-solid fa-arrow-right fa-2x" aria-label="arrow-right"></i></p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 27.3%;justify-content: center;">
+<div class="cell-output-display">
+<div id="daleofoimv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#daleofoimv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#daleofoimv thead, #daleofoimv tbody, #daleofoimv tfoot, #daleofoimv tr, #daleofoimv td, #daleofoimv th {
+  border-style: none;
+}
+
+#daleofoimv p {
+  margin: 0;
+  padding: 0;
+}
+
+#daleofoimv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#daleofoimv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#daleofoimv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#daleofoimv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#daleofoimv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#daleofoimv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#daleofoimv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#daleofoimv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#daleofoimv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#daleofoimv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#daleofoimv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#daleofoimv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#daleofoimv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#daleofoimv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#daleofoimv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#daleofoimv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#daleofoimv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#daleofoimv .gt_row {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#daleofoimv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#daleofoimv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#daleofoimv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#daleofoimv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#daleofoimv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#daleofoimv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#daleofoimv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#daleofoimv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#daleofoimv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#daleofoimv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#daleofoimv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#daleofoimv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#daleofoimv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#daleofoimv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#daleofoimv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#daleofoimv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#daleofoimv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#daleofoimv .gt_left {
+  text-align: left;
+}
+
+#daleofoimv .gt_center {
+  text-align: center;
+}
+
+#daleofoimv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#daleofoimv .gt_font_normal {
+  font-weight: normal;
+}
+
+#daleofoimv .gt_font_bold {
+  font-weight: bold;
+}
+
+#daleofoimv .gt_font_italic {
+  font-style: italic;
+}
+
+#daleofoimv .gt_super {
+  font-size: 65%;
+}
+
+#daleofoimv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#daleofoimv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#daleofoimv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#daleofoimv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#daleofoimv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#daleofoimv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#daleofoimv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#daleofoimv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#daleofoimv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Cal-Grad" class="gt_col_heading gt_columns_bottom_border gt_center" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">Cal Grad</th>
+<th id="P(Good-Job)" class="gt_col_heading gt_columns_bottom_border gt_right" style="text-align: left;" data-quarto-table-cell-role="th" scope="col">P(Good Job)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #FAFAD2;">TRUE</td>
+<td class="gt_row gt_right" headers="P(Good Job)" style="text-align: left; background-color: #FAFAD2;">0.67</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Cal Grad" style="text-align: left; background-color: #E0FFFF;">FALSE</td>
+<td class="gt_row gt_right" headers="P(Good Job)" style="text-align: left; background-color: #E0FFFF;">0.33</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 9.1%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+<p>It is easier to come up with plausible-seeming estimates of average treatment effects than individual treatment effects because we see subjects under both treatment and control conditions. But to decide if estimates like the one we’ve just given are reliable we need to think about how the data for the two groups was generated and whether they serve as good approximations to each other’s counterfactuals.</p>
+<p>This question will be the focus of the rest of the causality unit.</p>
+<!-- ## Correlation and Causation: the history of Smoking and Cancer -->
+</section>
+<section id="summary" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>We set the stage for reasoning about causation by defining cause and effect in terms of a conditional counterfactual. We say “A causes B” if, in a world where A didn’t happen, B no longer happens. This definition is problematic because we can’t simultaneously observe the same subjects under A and not-A. However, there is more hope to say something meaningful about average treatment treatment effects, which can also be defined using counterfactuals.</p>
+<p>In the remainder of the causality unit, we will discuss strategies for estimating average treatment effects using carefully-designed comparisons that leverage knowledge about how the data was produced. <!--While we are never able to actually observe all of the data necessary to prove a 
+causal claim absolutely, there are many methods that have been devised to 
+approximate the counterfactual. Chief among these is the randomized control trial (RCT). RCTs are able to isolate the effect of interest by creating a carefully selected control group and then assigning subjects to groups at random. When the number of replicates is large enough, we can be confident that our control group on average serves as a close counterfactual to our treatment group.--></p>
+<p><br>
+</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""></span></div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/frost.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Illustration by Mayaan Hayal<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></figcaption>
+</figure>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>An a historical aside, <a href="https://en.wikipedia.org/wiki/Evelyn_Fix">Evelyn Fix</a> is the name of a past professor of statistics at UC Berkeley and the co-inventor of the k-nearest neighbors algorithm.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>A drawing from “The Book of Why” depicting the notion of potential outcomes described in Robert Frost’s poem <a href="https://www.poetryfoundation.org/poems/44272/the-road-not-taken">The Road Not Taken</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/stat20\.berkeley\.edu\/fall-2026");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../license.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -329,8 +329,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../4-causation/02-experiments/tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Randomized Experiments</span></a>
+  <a href="../../4-prediction/01-method-of-least-squares/tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Method of Least Squares</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evaluating and Improving Predictions</span></a>
   </div>
 </li>
       </ul>
@@ -453,16 +459,16 @@ window.Quarto = {
 # Groups:   replicate [2]
    replicate bill_length_mm
        &lt;int&gt;          &lt;dbl&gt;
- 1         1           40.5
- 2         1           41  
- 3         1           59.6
- 4         1           43.5
- 5         1           38.8
- 6         1           47.6
- 7         1           38.1
- 8         1           45.2
- 9         1           42.8
-10         1           36  
+ 1         1           47.2
+ 2         1           35.1
+ 3         1           37.3
+ 4         1           49.8
+ 5         1           44.4
+ 6         1           49.8
+ 7         1           40.7
+ 8         1           36.2
+ 9         1           44.5
+10         1           36.7
 # ℹ 674 more rows</code></pre>
 </div>
 </div>
@@ -485,8 +491,8 @@ window.Quarto = {
 # A tibble: 2 × 2
   replicate  stat
       &lt;int&gt; &lt;dbl&gt;
-1         1  43.8
-2         2  44.9</code></pre>
+1         1  43.4
+2         2  44.0</code></pre>
 </div>
 </div>
 <p>Observe:</p>
@@ -557,12 +563,12 @@ window.Quarto = {
 # Groups:   replicate [2]
   replicate term              estimate
       &lt;int&gt; &lt;chr&gt;                &lt;dbl&gt;
-1         1 intercept           -940. 
-2         1 sexmale              489. 
-3         1 flipper_length_mm     23.0
-4         2 intercept            144. 
-5         2 sexmale              546. 
-6         2 flipper_length_mm     17.2</code></pre>
+1         1 intercept           -850. 
+2         1 sexmale              511. 
+3         1 flipper_length_mm     22.6
+4         2 intercept           1288. 
+5         2 sexmale              608. 
+6         2 flipper_length_mm     11.0</code></pre>
 </div>
 </div>
 <p>Observe:</p>

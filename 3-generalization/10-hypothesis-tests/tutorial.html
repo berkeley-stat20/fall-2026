@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../4-causation/02-experiments/tutorial.html" rel="next">
+<link href="../../4-prediction/01-method-of-least-squares/tutorial.html" rel="next">
 <link href="../../3-generalization/09-bootstrapping/tutorial.html" rel="prev">
 <link href="../../assets/stat20-hex.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -329,8 +329,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../4-causation/02-experiments/tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Randomized Experiments</span></a>
+  <a href="../../4-prediction/01-method-of-least-squares/tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Method of Least Squares</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evaluating and Improving Predictions</span></a>
   </div>
 </li>
       </ul>
@@ -478,18 +484,18 @@ Explanatory: sex (factor)
 Explanatory: sex (factor)
 Null Hypothesis: in...
 # A tibble: 500 × 2
-   replicate    stat
-       &lt;int&gt;   &lt;dbl&gt;
- 1         1 -107.  
- 2         2    4.93
- 3         3 -145.  
- 4         4   74.3 
- 5         5   34.4 
- 6         6  112.  
- 7         7  -50.9 
- 8         8 -145.  
- 9         9  -30.8 
-10        10  -84.9 
+   replicate   stat
+       &lt;int&gt;  &lt;dbl&gt;
+ 1         1  71.0 
+ 2         2   5.53
+ 3         3 -10.7 
+ 4         4  14.2 
+ 5         5  27.2 
+ 6         6 -47.9 
+ 7         7 -44.0 
+ 8         8  87.5 
+ 9         9 132.  
+10        10  -2.28
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -553,17 +559,17 @@ Null Hypothesis: in...
 Explanatory: sex (factor)
 Null Hypothesis: in...
 # A tibble: 9 × 2
-  replicate    stat
-      &lt;int&gt;   &lt;dbl&gt;
-1         1 -154.  
-2         2   69.5 
-3         3    8.24
-4         4   20.2 
-5         5 -100.  
-6         6   23.9 
-7         7   73.7 
-8         8    4.03
-9         9 -176.  </code></pre>
+  replicate   stat
+      &lt;int&gt;  &lt;dbl&gt;
+1         1  -11.6
+2         2   53.6
+3         3   73.1
+4         4  -46.1
+5         5  -72.6
+6         6 -108. 
+7         7  -53.6
+8         8   17.8
+9         9  122. </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>null <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize</span>() <span class="sc">+</span></span>
@@ -1022,8 +1028,8 @@ window._ojs.runtime.interpretFromScriptTags();
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../4-causation/02-experiments/tutorial.html" class="pagination-link" aria-label="Randomized Experiments">
-        <span class="nav-page-text">Randomized Experiments</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../4-prediction/01-method-of-least-squares/tutorial.html" class="pagination-link" aria-label="The Method of Least Squares">
+        <span class="nav-page-text">The Method of Least Squares</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
