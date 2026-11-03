@@ -2267,10 +2267,10 @@ Not so fast. What are the units of measurements of the MSE?
 <p>Plugging this expression into the first equation gives us</p>
 <p><span class="math display">\[ \widehat{\mbox{MSE}} = \frac1{n} \sum_{i = 1}^n \left[Y_i - \left(b_{0} + b_1 X_{1,i} + b_2 X_{2,i} + \ldots +b_q X_{q,i}  \right)\right]^2\]</span></p>
 <p>So how can we use this definition to decide precisely which intercept <span class="math inline">\(b_0\)</span> and slopes <span class="math inline">\(b_1, b_2, \ldots, b_q\)</span> to use? Please watch the following 19 minute video, “The Method of Least Squares”, to find out. The video is available in the media gallery on bcourses. Keep in mind that the video uses RSS instead of MSE. But RSS is just MSE multiplied by the sample size <span class="math inline">\(n\)</span>, so absolutely nothing changes.</p>
-<p><a href="https://bcourses.berkeley.edu/courses/1551619/external_tools/90481"><img src="images/method-of-least-squares-thumbnail.png" class="img-fluid" width="400"></a></p>
+<p><a href="https://bcourses.berkeley.edu/courses/1557153/external_tools/90481"><img src="images/method-of-least-squares-thumbnail.png" class="img-fluid" width="400"></a></p>
 <section id="iterative-numerical-methods" class="level4">
 <h4 class="anchored" data-anchor-id="iterative-numerical-methods">Iterative Numerical Methods</h4>
-<p>As we saw in the video, the problem of least squares can be defined as one of <strong>optimization.</strong></p>
+<p>As we saw in the video, the problem of least squares can be defined as one of <strong>optimization</strong>.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Ordinary Least Squares</strong></p>
 <p>Find the <span class="math inline">\(b_0,\ldots, b_q\)</span> that make the following quantity <span class="math display">\[\widehat{\mbox{MSE}} (b_0,b_1, \ldots, b_q) = \frac1{n} \sum_{i = 1}^n \left[Y_i - \left(b_{0} + b_1 X_{1,i} + \ldots +b_q X_{q,i}  \right)\right]^2\]</span></p>
