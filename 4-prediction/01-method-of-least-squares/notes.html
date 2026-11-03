@@ -400,7 +400,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Causation</span></a>
+ <span class="menu-text">Prediction</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -411,7 +411,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">Prediction</span></a>
+ <span class="menu-text">Causality</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -2164,7 +2164,7 @@ If he tells you he’s from Rome, what’s your guess? And what’s your chance 
 <p>City of origin and Political affiliation are <strong>strongly associated</strong> (categorical) variables. It’s low-risk and low-cost to know their city of origin (<span class="math inline">\(X\)</span>). We can use that variable to make a better guess at their high-risk hidden target variable, political affiliation (<span class="math inline">\(Y\)</span>).</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Features</strong></p>
-<p>The variables (indicated by <span class="math inline">\(X_1, X_2, \ldots X_q \equiv \mathbf{X}\)</span> etc.) that are known and available for us to make the prediction about the unknown target variable (<span class="math inline">\(Y\)</span>). Also called the <em>independent variables</em> or the <em>predictor variables</em>.</p>
+<p>The variables (indicated by <span class="math inline">\(X_1, X_2, \ldots X_q \equiv \mathbf{X}\)</span> etc.) that are known and available for us to make the prediction about the unknown target variable (<span class="math inline">\(Y\)</span>). Also called the <em>explanatory variable</em>, <em>independent variables</em> or the <em>predictor variables</em>.</p>
 </div>
 <section id="an-apology-about-notation" class="level3">
 <h3 class="anchored" data-anchor-id="an-apology-about-notation">An apology about notation</h3>
@@ -2256,7 +2256,7 @@ How well is your model doing? Come up with a measure of perfermonce
 </div>
 <details>
 <summary>
-Not so fast. What are the units of measurements of the MSE?
+Not so fast. What are the units of measurement of the MSE?
 </summary>
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>You should always think like a physicist. Always.</p>
@@ -2280,7 +2280,7 @@ Not so fast. What are the units of measurements of the MSE?
 <p>so that finally <span class="math display">\[\hat{Y}_{OLS}(\mathbf{X}) \equiv \hat{b}_{0,OLS} + \hat{b}_{1,OLS} X_1 + \hat{b}_{2,OLS} X_2 + \ldots +\hat{b}_{q,OLS} X_q \]</span></p>
 </div>
 <p>Although a direct way to find these values involves taking the partial derivatives of the third equation with respect to each coefficient <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, …, <span class="math inline">\(b_q\)</span>, setting the resulting equation equal to <span class="math inline">\(0\)</span>, and solving for the coefficient, you could think about using a different, perhaps more intuitive method.</p>
-<p>Consider picking a starting value for each of <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>, plugging these into the third equation, and seeing what comes out. Then, try to pick another set of numbers that makes the result of the <span class="math inline">\(MSE\)</span> equation smaller. Provided that you have a concerted method to pick the next set of numbers, you can repeat this process over and over until you find the set of numbers which yields the smallest value for <span class="math inline">\(MSE\)</span>. This process can be described as an <em>iterative numerical</em> (as opposed to an <em>exact</em>, or <em>analytical</em>, or <em>closed-form</em>) method to find the values of the coefficients <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>.</p>
+<p>Consider picking a starting value for each of <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>, plugging these into the third equation, and seeing what comes out. Then, try to pick another set of numbers that makes the result of the MSE equation smaller. Provided that you have a concerted method to pick the next set of numbers, you can repeat this process over and over until you find the set of numbers which yields the smallest value for MSE. This process can be described as an <em>iterative numerical</em> (as opposed to an <em>exact</em>, or <em>analytical</em>, or <em>closed-form</em>) method to find the values of the coefficients <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>.</p>
 <p>There are many iterative algorithms that accomplish the same task, some better than others. Two examples:</p>
 <ul>
 <li><strong>Nelder-Mead</strong>: an older and more general (and generally not as reliable!) algorithm. This is the one we showed you in the video.</li>
@@ -2292,7 +2292,8 @@ Not so fast. What are the units of measurements of the MSE?
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
-<p>Prediction is the task of guessing the value of a <strong>target</strong> variable (<span class="math inline">\(Y\)</span>) for an unseen observation using its values of other variables that are known, <span class="math inline">\(X_j\)</span>, the <strong>features</strong>, leveraging their hopefully strong <strong>association</strong> with the target. The nature of <span class="math inline">\(Y\)</span> determines the nature of the task (and the method to solve it): regression concerns the prediction of numerical target variables, classification concerns the prediction of categorical target variables. One such regression model is the least squares linear model, which uses the line that minimizes the residual sum of squares. Finding the value of the coefficients is a task that can be solved directly using calculus (in simple settings like this one) and also with optimization algorithms (in more general settings). We gave an example of using such an algorithm, demonstrating how to write a function in R in the process.</p>
+<p>Prediction is the task of guessing the value of a <strong>target</strong> variable (<span class="math inline">\(Y\)</span>) for an unseen observation using its values of other variables that are known, <span class="math inline">\(X_j\)</span>, the <strong>features</strong>, leveraging their hopefully strong <strong>association</strong> with the target. The type of variable <span class="math inline">\(Y\)</span> is determines the nature of the task (and the method to solve it): <strong>regression</strong> concerns the prediction of numerical target variables, <strong>classification</strong> concerns the prediction of categorical target variables.</p>
+<p>One such regression model is the least squares linear model, which uses the line that minimizes the mean squared error. Finding the value of the coefficients is a task that can be solved directly using calculus (in simple settings like this one), and also with iterative optimization algorithms (in more general settings).</p>
 <section id="the-fundamental-difference-between-generalization-and-prediction" class="level2">
 <h2 class="anchored" data-anchor-id="the-fundamental-difference-between-generalization-and-prediction">The fundamental difference between generalization and prediction</h2>
 <p>In both cases we are using old data to make guesses about new data.</p>

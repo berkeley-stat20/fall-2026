@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../4-causation/03-matching/notes.qmd" rel="next">
+<link href="../../4-prediction/05-logistic-regression/notes.html" rel="next">
 <link href="../../4-prediction/01-method-of-least-squares/notes.html" rel="prev">
 <link href="../../assets/stat20-hex.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -435,7 +435,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Causation</span></a>
+ <span class="menu-text">Prediction</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -446,7 +446,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">Prediction</span></a>
+ <span class="menu-text">Causality</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -581,9 +581,10 @@ Why am I saying that this is more meaningful?
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: R-squared (<span class="math inline">\(R^2\)</span>)</strong></p>
 <p>A sample statistic that measures the proportion of the total variability in the <span class="math inline">\(Y\)</span>-variable (MSE from the baseline model) that goes away by using our model involving the <span class="math inline">\(X\)</span> variables (MSE from the regression model).</p>
-<p><span class="math display">\[R^2 (\mbox{your model}) \equiv \frac{\mbox{decrease in MSE}}{\mbox{old MSE}} =
+<p><span class="math display">\[
+R^2 (\mbox{your model}) \equiv \frac{\mbox{decrease in MSE}}{\mbox{old MSE}} =
 \frac{\widehat{\mbox{MSE}}_{\mbox{baseline}}-\widehat{\mbox{MSE}}_{\mbox{your model}}}{\widehat{\mbox{MSE}}_{\mbox{baseline}}} =\\
-=1 - \frac{\widehat{\mbox{MSE}}_{\mbox{your model}}}{\widehat{\mbox{MSE}}_{\mbox{baseline}}}
+= 1 - \frac{\widehat{\mbox{MSE}}_{\mbox{your model}}}{\widehat{\mbox{MSE}}_{\mbox{baseline}}}
 \]</span></p>
 <p>so <span class="math display">\[
 R^2 (\mbox{OLS}) \equiv 1 - \frac{\widehat{\mbox{MSE}}(\hat{Y}_{OLS})}{\widehat{\mbox{MSE}}(\bar{Y})}
@@ -1878,8 +1879,8 @@ How would you solve the problem? (Hint: it’s exactly the same trick again)
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../4-causation/03-matching/notes.qmd" class="pagination-link" aria-label="">
-        <span class="nav-page-text"></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../4-prediction/05-logistic-regression/notes.html" class="pagination-link" aria-label="Logistic Regression">
+        <span class="nav-page-text">Logistic Regression</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

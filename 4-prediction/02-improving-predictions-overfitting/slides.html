@@ -31,72 +31,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #24292e;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #24292e; } /* Normal */
-    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
-    code span.an { color: #6a737d; } /* Annotation */
-    code span.at { color: #d73a49; } /* Attribute */
-    code span.bn { color: #005cc5; } /* BaseN */
-    code span.bu { color: #d73a49; } /* BuiltIn */
-    code span.cf { color: #d73a49; } /* ControlFlow */
-    code span.ch { color: #032f62; } /* Char */
-    code span.cn { color: #005cc5; } /* Constant */
-    code span.co { color: #6a737d; } /* Comment */
-    code span.cv { color: #6a737d; } /* CommentVar */
-    code span.do { color: #6a737d; } /* Documentation */
-    code span.dt { color: #d73a49; } /* DataType */
-    code span.dv { color: #005cc5; } /* DecVal */
-    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
-    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
-    code span.fl { color: #005cc5; } /* Float */
-    code span.fu { color: #6f42c1; } /* Function */
-    code span.im { color: #032f62; } /* Import */
-    code span.in { color: #6a737d; } /* Information */
-    code span.kw { color: #d73a49; } /* Keyword */
-    code span.op { color: #24292e; } /* Operator */
-    code span.ot { color: #6f42c1; } /* Other */
-    code span.pp { color: #d73a49; } /* Preprocessor */
-    code span.re { color: #6a737d; } /* RegionMarker */
-    code span.sc { color: #005cc5; } /* SpecialChar */
-    code span.ss { color: #032f62; } /* SpecialString */
-    code span.st { color: #032f62; } /* String */
-    code span.va { color: #e36209; } /* Variable */
-    code span.vs { color: #032f62; } /* VerbatimString */
-    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-5bbcf22c39b8cd48f49df444249bfe36.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WP7F4QKDC8"></script>
@@ -224,8 +158,9 @@ STAT 20: Introduction to Probability and Statistics
 </div>
 
 </section>
+<section>
 <section id="warmup" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_73e1289d9c2311dc6ab3d077864c1c0016120ed2" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h1>Warmup <div id="timer_8a13dd02f02f10e3c7d76618ddded7676f78b449" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -253,38 +188,45 @@ Careful!! This is a **Causality** question. "What would happen if I were to set 
 
 -->
 </section>
-
-<section>
-<section id="warmup-1" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_73e1289d9c2311dc6ab3d077864c1c0016120ed2" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div></h1>
-
-</section>
-<section id="which-of-the-following-models-is-most-impressive-to-you" class="slide level2 warmup-question">
-<h2>Which of the following models is most impressive to you?</h2>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
-<p>I’d say B is definitely the best but what’s after that?</p>
+<section id="how-are-mse-rmse-and-r2-related" class="slide level2 warmup-question">
+<h2>How are MSE, RMSE, and <span class="math inline">\(R^2\)</span> related?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_e987f83e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+<div class="answer fragment">
+<p>As MSE increases, RMSE also does, and <span class="math inline">\(R^2\)</span> should decrease. And vice versa.</p>
 </div>
 </section>
-<section id="eyeball-the-sample-rmse-and-then-mse-of-the-models." class="slide level2 warmup-question">
-<h2>Eyeball the sample RMSE and then MSE of the models.</h2>
+<section id="which-of-the-following-models-looks-most-impressive-to-you" class="slide level2 warmup-question">
+<h2>Which of the following models looks most impressive to you?</h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
+<p>I’d say B is definitely the best but what’s after that?</p>
+</div>
+</section></section>
+<section>
+<section id="concept-questions" class="title-slide slide level1 center">
+<h1>Concept questions</h1>
+
+</section>
+<section id="eyeball-the-sample-rmse-and-then-mse-of-the-models." class="slide level2">
+<h2>Eyeball the sample RMSE and then MSE of the models.</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
 <p><span class="math display">\[\widehat{\mbox{RMSE}}_A \approx 2 \Rightarrow \widehat{\mbox{MSE}}_A \approx 4, \; \widehat{\mbox{RMSE}}_B \approx 1 \Rightarrow \widehat{\mbox{MSE}}_B \approx 1, \; \widehat{\mbox{RMSE}}_C \approx 2 \Rightarrow \widehat{\mbox{MSE}}_C \approx 4 \\
 \widehat{\mbox{RMSE}}_D \approx 5 \Rightarrow \widehat{\mbox{MSE}}_D \approx 25, \; \widehat{\mbox{RMSE}}_E \approx 3 \Rightarrow \widehat{\mbox{MSE}}_E \approx 9, \; \widehat{\mbox{RMSE}}_F \approx 7 \Rightarrow \widehat{\mbox{MSE}}_F \approx 49
 \]</span></p>
 </div>
 </section>
-<section id="eyeball-the-variance-of-the-samples-i.e.-the-mse-of-the-baseline-models." class="slide level2 warmup-question">
+<section id="eyeball-the-variance-of-the-samples-i.e.-the-mse-of-the-baseline-models." class="slide level2">
 <h2>Eyeball the variance of the samples (i.e.&nbsp;the MSE of the baseline models).</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
 <p><span class="math display">\[\widehat{\mbox{MSE}}_{\mbox{baseline}, A} \approx 2^2=4, \;  \widehat{\mbox{MSE}}_{\mbox{baseline}, B} \approx 3^2=9, \; \widehat{\mbox{MSE}}_{\mbox{baseline}, C} \approx 2^2 = 4 \\
 \widehat{\mbox{MSE}}_{\mbox{baseline}, D} \approx 5^2=25, \; \widehat{\mbox{MSE}}_{\mbox{baseline}, E} \approx 7^2=49, \;  \widehat{\mbox{MSE}}_{\mbox{baseline}, F} \approx 7^2=49
 \]</span></p>
@@ -293,117 +235,13 @@ Careful!! This is a **Causality** question. "What would happen if I were to set 
 <section id="and-finally-the-r2-are" class="slide level2">
 <h2>And finally the <span class="math inline">\(R^2\)</span> are?</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
 <p><span class="math display">\[R^2_{A} \approx 0, \;  R^2_{ B} \approx \frac{8}{9} \approx 0.9, \; R^2_{ C} \approx 0 \\
 R^2_{D} \approx 0, \; R^2_{ E} \approx \frac{40}{49} \approx 0.8, \;  R^2_{ F} \approx 0
 \]</span></p>
 <p>The models in A, C, D, F just don’t really do much better than baseline at all…</p>
 <p>A and D because the function is bad. A curved function would do better. D and F just seem to have no interesting structure at all in them, it’s just bad data…</p>
 </div>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 5
-  name    hours cuteness food_eaten is_indoor_cat
-  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;lgl&gt;        
-1 castiel    12      9          175 TRUE         
-2 frank      18     10          200 TRUE         
-3 luna       19      9.5        215 FALSE        
-4 luca       10      8          218 FALSE        </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> hours <span class="sc">~</span> cuteness <span class="sc">+</span> food_eaten <span class="sc">+</span> is_indoor_cat, </span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> cats)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>      (Intercept)          cuteness        food_eaten is_indoor_catTRUE 
-    -3.800000e+01      6.000000e+00      2.455729e-16     -4.000000e+00 </code></pre>
-</div>
-</div>
-<div class="poll">
-<p>How many hours does the model predict Frank will sleep each day? <strong>Write out the linear equation of the model from the model output to help you</strong>. <em>Hint: as an example, you can read <code>5e+01</code> as <span class="math inline">\(5* 10^1\)</span></em>.</p>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_01f3785e" data-update-every="1" tabindex="0" style="top:0;right:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<div class="poll">
-<p>Using “time being pet”, which <code>lm</code> formula is most appropriate to predict hunger, based on the below visualization?</p>
-</div>
-
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_8fcd3d51" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</section>
-<section id="overfitting-or-not" class="slide level2">
-<h2>Overfitting or not?</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_fb34ce05" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<div class="poll">
-<p>Which scenarios (open <code>pollev.com</code>) are examples of overfitting (either in real life or in statistics)?</p>
-</div>
-<aside class="notes">
-<p>Sometimes, it’s helpful to draw out data frames for each scenario. What are the response variable, important predictors, and erroneous predictors which might lead to overfitting? The options which involve overfitting are the “high degree polynomial”, sneaker and study method scenarios.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="how-are-mse-and-r2-related" class="slide level2">
-<h2>How are MSE and <span class="math inline">\(R^2\)</span> related?</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_1dd9acca" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-<div class="poll">
-<p>Choose the correct option from the items at <a href="https://pollev.com">pollev.com</a>.</p>
-</div>
-<aside class="notes">
-<p>As we increase MSE, <span class="math inline">\(R^2\)</span> should decrease. As we decrease MSE, <span class="math inline">\(R^2\)</span> should increase.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!--
 
 ## Overfit models
@@ -412,7 +250,7 @@ R^2_{D} \approx 0, \; R^2_{ E} \approx \frac{40}{49} \approx 0.8, \;  R^2_{ F} \
 ::: {.cell-output-display}
 
 ```{=html}
-<div class="countdown" id="timer_acee42a7" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_bb938474" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -435,40 +273,58 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 
 -->
 </section>
-<section id="where-is-overfitting-worse" class="slide level2">
-<h2>Where is overfitting worse?</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_748c8143" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="poll">
-<p>Suppose I overfit my model to the training data. In which scenario (for which training data) would I expect the test set performance to be significantly worse? Assume that the testing sets A and B look like their corresponding training sets.</p>
+<p>Using “time being pet”, which <code>lm</code> formula is most appropriate to predict hunger, based on the below visualization?</p>
 </div>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
-<p>If you overfit the data to training set A, you will likely have a complex curve (maybe a polynomial). This curve will fit poorly a testing set that looks similar to A. If you overfit to B, since the data has low variance you will have a positively sloping line. The testing set performance will be very similar to the training set performance (it will not be markedly worse).</p>
-<p>Answer: Training set A</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<section id="activity-learning-latin" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>In Latin</p>
+<p>‘Dog’ is <em>canis</em> ([ˈka.nɪs])</p>
+<p>(write this down)</p>
+</section>
+<section id="activity-learning-latin-1" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>In Latin</p>
+<p>‘House’ is <em>domus</em> ([ˈdɔ.mʊs])</p>
+<p>(write this down)</p>
+</section>
+<section id="activity-learning-latin-2" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>In Latin</p>
+<p>‘Girl’ is <em>puella</em> ([puˈɛl.la])</p>
+<p>(write this down)</p>
+</section>
+<section id="activity-learning-latin-3" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>Do you know Latin now? Let’s test you</p>
+</section>
+<section id="activity-learning-latin-4" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>Do you know Latin now? Let’s test you</p>
+<p>What’s Latin for ‘dog’? What’s Latin for ‘house’? What’s Latin for ‘girl’?</p>
+</section>
+<section id="activity-learning-latin-5" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>Do you know Latin now? Let’s test you</p>
+<p>Wow! 3/3?? Perfect! You clearly know Latin now!</p>
+</section>
+<section id="activity-learning-latin-6" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>What’s Latin for ‘trumpet’?</p>
+</section>
+<section id="activity-learning-latin-7" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+<p>You overfitted! You just learned the training set by heart because you have a complex brain (complex model) and you had a 100% score on the training set. But the moment I tested you on new data (test set) you showed how you didn’t really grasp the pattern of the Latin language at all.</p>
 </section></section>
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_213076a4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f7714e8c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -476,11 +332,11 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 </div>
 </section>
 
-<section id="worksheet-evaluating-and-improving-predictions" class="title-slide slide level1 center">
-<h1>Worksheet: <em>Evaluating and Improving Predictions</em></h1>
+<section id="worksheet-evaluating-improving-predictions-and-overfitting" class="title-slide slide level1 center">
+<h1>Worksheet: <em>Evaluating, Improving predictions, and Overfitting</em></h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_86612990" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f46b4a39" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">40</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -492,7 +348,7 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <h1>Lab</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c6e75459" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_c421a64e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">45</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
