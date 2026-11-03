@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Evaluating and Improving Predictions – Stat 20 (Fall 2026)</title>
+<title>Improving Predictions and Overfitting – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-64d279b36a5b40585f578297fd35ea36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b81c8e9dae0bee9bb29964b9eaf9c917.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -149,12 +149,12 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Evaluating and Improving Predictions – Stat 20 (Fall 2026)">
-<meta property="og:description" content="\(R^2\), Adding Predictors, Transformations, and Polynomials">
+<meta property="og:title" content="Improving Predictions and Overfitting – Stat 20 (Fall 2026)">
+<meta property="og:description" content="\(R^2\), Adding complexity, Overfitting.">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/4-prediction/02-improving-predictions-overfitting/assets/stat20-hex.png">
 <meta property="og:site_name" content="Stat 20">
-<meta name="twitter:title" content="Evaluating and Improving Predictions – Stat 20 (Fall 2026)">
-<meta name="twitter:description" content="\(R^2\), Adding Predictors, Transformations, and Polynomials">
+<meta name="twitter:title" content="Improving Predictions and Overfitting – Stat 20 (Fall 2026)">
+<meta name="twitter:description" content="\(R^2\), Adding complexity, Overfitting.">
 <meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/4-prediction/02-improving-predictions-overfitting/tutorial_files/figure-html/unnamed-chunk-3-1.png">
 <meta name="twitter:image-height" content="960">
 <meta name="twitter:image-width" content="1344">
@@ -219,7 +219,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html">Evaluating and Improving Predictions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html">Improving Predictions and Overfitting</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -336,7 +336,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Evaluating and Improving Predictions</span></a>
+ <span class="menu-text">Improving Predictions and Overfitting</span></a>
   </div>
 </li>
       </ul>
@@ -352,10 +352,10 @@ window.Quarto = {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html">Evaluating and Improving Predictions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials.html">R Tutorials</a></li><li class="breadcrumb-item"><a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html">Improving Predictions and Overfitting</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Evaluating and Improving Predictions</h1>
-<p class="subtitle lead"><span class="math inline">\(R^2\)</span>, Adding Predictors, Transformations, and Polynomials</p>
+<h1 class="title">Improving Predictions and Overfitting</h1>
+<p class="subtitle lead"><span class="math inline">\(R^2\)</span>, Adding complexity, Overfitting.</p>
 </div>
 
 
@@ -399,10 +399,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="the-ideas-in-code" class="level2">
-<h2 class="anchored" data-anchor-id="the-ideas-in-code">The Ideas in Code</h2>
-<section id="inspect-model-output-with-the-broom-library" class="level3">
-<h3 class="anchored" data-anchor-id="inspect-model-output-with-the-broom-library">Inspect model output with the <code>broom</code> library</h3>
+<section id="the-ideas-in-code" class="level1 page-columns page-full">
+<h1>The Ideas in Code</h1>
+<section id="inspect-model-output-with-the-broom-library" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-model-output-with-the-broom-library">Inspect model output with the <code>broom</code> library</h2>
 <p>Consider the code we ran earlier to fit a linear model which can predict graduation rate using the poverty rate.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Graduates <span class="sc">~</span> Poverty, <span class="at">data =</span> poverty)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -432,46 +432,46 @@ window.Quarto = {
 </div>
 <p>Here’s the <span class="math inline">\(R^2\)</span> we got earlier!</p>
 </section>
-<section id="fitting-polynomials-in-r-with-poly" class="level3">
-<h3 class="anchored" data-anchor-id="fitting-polynomials-in-r-with-poly">Fitting polynomials in R with <code>poly()</code></h3>
+<section id="fitting-polynomials-in-r-with-poly" class="level2">
+<h2 class="anchored" data-anchor-id="fitting-polynomials-in-r-with-poly">Fitting polynomials in R with <code>poly()</code></h2>
 <p>In R, we can fit polynomials using the <code>poly()</code> function. Here is the code that was used to fit the polynomial earlier in the notes.</p>
-<p>You do not need to worry about the meaning behind the <code>raw = TRUE</code> argument. The simulated data frame mentioned earlier is called <code>df</code>, and has two variables in it: <code>predictor</code> and <code>response</code>.</p>
+<p>You do not need to worry about the meaning behind the <code>raw = TRUE</code> argument. The simulated data frame mentioned earlier is called <code>df</code>, and has two variables in it: <code>feature</code> and <code>target</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictor =</span> x, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">response =</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feature =</span> x, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">target =</span> y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> response <span class="sc">~</span> <span class="fu">poly</span>(<span class="at">x =</span> predictor, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> target <span class="sc">~</span> <span class="fu">poly</span>(<span class="at">x =</span> feature, </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">degree =</span> <span class="dv">3</span>, </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">raw =</span> <span class="cn">TRUE</span>), <span class="at">data =</span> df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = response ~ poly(x = predictor, degree = 3, raw = TRUE), 
+lm(formula = target ~ poly(x = feature, degree = 3, raw = TRUE), 
     data = df)
 
 Coefficients:
-                                 (Intercept)  
-                                     -20.086  
-poly(x = predictor, degree = 3, raw = TRUE)1  
-                                      34.669  
-poly(x = predictor, degree = 3, raw = TRUE)2  
-                                     -16.352  
-poly(x = predictor, degree = 3, raw = TRUE)3  
-                                       2.042  </code></pre>
+                               (Intercept)  
+                                   -20.086  
+poly(x = feature, degree = 3, raw = TRUE)1  
+                                    34.669  
+poly(x = feature, degree = 3, raw = TRUE)2  
+                                   -16.352  
+poly(x = feature, degree = 3, raw = TRUE)3  
+                                     2.042  </code></pre>
 </div>
 </div>
 </section>
-<section id="making-predictions-on-a-new-observation-with-predict" class="level3">
-<h3 class="anchored" data-anchor-id="making-predictions-on-a-new-observation-with-predict">Making predictions on a new observation with <code>predict()</code></h3>
+<section id="making-predictions-on-a-new-observation-with-predict" class="level2">
+<h2 class="anchored" data-anchor-id="making-predictions-on-a-new-observation-with-predict">Making predictions on a new observation with <code>predict()</code></h2>
 <p>We have spending a lot of time talking about how to fit a model meant for predicting, but have not actually done any predicting! The <code>predict()</code> function can help us do this. It takes in two main arguments:</p>
 <ul>
 <li><code>object</code>: This is the linear model object which contains the coefficients <span class="math inline">\(b_0\)</span>, …, <span class="math inline">\(b_q\)</span>. In the graduate and poverty example, this object was <code>m1</code>. We had <code>m1</code> through <code>m4</code> in the ZAGAT example.</li>
-<li><code>newdata</code>: This is a <em>data frame</em> containing the new observation(s). This data frame must at least contain each of the predictor variables used in the column, with a value of these variables for each observation.</li>
+<li><code>newdata</code>: This is a <em>data frame</em> containing the new observation(s). This data frame must at least contain each of the features used in the column, with a value of these variables for each observation.</li>
 </ul>
-<section id="example-zagat-food-rating" class="level4">
-<h4 class="anchored" data-anchor-id="example-zagat-food-rating">Example: ZAGAT food rating</h4>
+<section id="example-zagat-food-rating" class="level3">
+<h3 class="anchored" data-anchor-id="example-zagat-food-rating">Example: ZAGAT food rating</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 168 × 6
@@ -493,7 +493,7 @@ poly(x = predictor, degree = 3, raw = TRUE)3
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> food <span class="sc">+</span> geo, <span class="at">data =</span> zagat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Here, we will use <code>m2</code> from the ZAGAT example. This model used <span class="math inline">\(food\)</span> and <span class="math inline">\(geo\)</span> in an attempt to predict price at a restaurant.</p>
+<p>Here, we will use <code>m2</code> from the ZAGAT example. This model used <code>food</code> and <code>geo</code> in an attempt to predict price at a restaurant.</p>
 <p>First, let’s make a new data frame with a couple of new, made-up observations.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>restaurants <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -512,10 +512,9 @@ poly(x = predictor, degree = 3, raw = TRUE)3
 <p>We are predicted to have to pay roughly <span class="math inline">\(\$56\)</span> at the first restaurant and roughly <span class="math inline">\(\$31\)</span> at the second.</p>
 </section>
 </section>
-</section>
-<section id="overfitting-training-and-testing" class="level2">
+<section id="overfitting-training-and-testing" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="overfitting-training-and-testing">Overfitting, training and testing</h2>
-<p>Let’s shift the subject to mathematics to biology, and illustrate the training and testing approaching to evaluating predictions for the exam scores from a biology class with 200 students using as a predictor the number of hours that they have studied. Let’s visualize these data first.</p>
+<p>Let’s shift the subject to biology, and illustrate the training and testing approaching to evaluating predictions for the exam scores from a biology class with 200 students using as a feature the number of hours that they have studied. Let’s visualize these data first.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -643,7 +642,7 @@ biology_test <- biology |>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_slr) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_slr) <span class="sc">|&gt;</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
@@ -651,7 +650,7 @@ biology_test <- biology |>
       &lt;dbl&gt;
 1     0.693</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_poly) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_poly) <span class="sc">|&gt;</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
@@ -662,7 +661,7 @@ biology_test <- biology |>
 </div>
 <p>Just as we might have guessed from looking at the model fits, the polynomial model has a better <span class="math inline">\(R^2\)</span> value when evaluated on the training set.</p>
 </section>
-<section id="step-3-evaluate-the-model-on-the-testing-set." class="level3">
+<section id="step-3-evaluate-the-model-on-the-testing-set." class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="step-3-evaluate-the-model-on-the-testing-set.">Step 3: Evaluate the model on the testing set.</h3>
 <p>The real test of predictive power between the two models comes now, when we will make exam score predictions using the <em>testing</em> set: data which the model was not used to fit and hasn’t seen.</p>
 <p>We will still be using the <code>predict()</code> function for this purpose. Now, we can just plug <code>biology_test</code> into the <code>newdata</code> argument!</p>
@@ -670,48 +669,39 @@ biology_test <- biology |>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>score_pred_linear <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_slr, <span class="at">newdata =</span> biology_test)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>score_pred_poly <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_poly, <span class="at">newdata =</span> biology_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Once these predictions <span class="math inline">\(\hat{y}_i\)</span> are made, we then can use <code>dplyr</code> code to:</p>
+<p>Once these predictions <span class="math inline">\(\hat{Y}_i\)</span> are made, we then can use <code>dplyr</code> code to:</p>
 <ul>
 <li>mutate on the predictions to our testing data</li>
 <li>set up the <span class="math inline">\(R^2\)</span> formula and calculate<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. In the code below, we are using the formula</li>
 </ul>
-<p><span class="math display">\[R^2 = 1-\frac{\text{RSS}}{\text{TSS}} = 1-\frac{\sum_{i=1}^n(y_i-\hat{y_i})^2}{\sum_{i=1}^n(y_i-\bar{y})^2}\]</span></p>
+<p><span class="math display">\[R^2_\mbox{model} = 1-\frac{\widehat{\mbox{MSE}}_\mbox{model}}{\widehat{\mbox{MSE}}_\mbox{baseline}} = 1-\frac{\sum_{i=1}^n(Y_i-\hat{Y_i})^2}{\sum_{i=1}^n(Y_i-\bar{Y})^2}\]</span></p>
 <ul>
-<li>We can also calculate <span class="math inline">\(\text{MSE}\)</span> and <span class="math inline">\(\text{RMSE}\)</span> as <span class="math inline">\(\frac{1}{n}\text{RSS}\)</span> and <span class="math inline">\(\sqrt{\frac{1}{n}\text{RSS}}\)</span>, respectively.</li>
+<li>We can also calculate <span class="math inline">\(\widehat{\mbox{RMSE}}_\mbox{model}\)</span>, of course.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>biology_test <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>biology_test <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">score_pred_linear =</span> score_pred_linear,</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">score_pred_poly =</span> score_pred_poly,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_sq_linear =</span> (score <span class="sc">-</span> score_pred_linear)<span class="sc">^</span><span class="dv">2</span>, <span class="co"># compute the residuals for linear model</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_sq_poly =</span> (score <span class="sc">-</span> score_pred_poly)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co"># compute the residuals for poly model</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">TSS =</span> <span class="fu">sum</span>((score <span class="sc">-</span> <span class="fu">mean</span>(score))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># compute TSS</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">RSS_linear =</span> <span class="fu">sum</span>(resid_sq_linear),  <span class="co"># compute RSS for the linear model</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">RSS_poly =</span> <span class="fu">sum</span>(resid_sq_poly),      <span class="co"># compute RSS for the polynomial model</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rsq_linear =</span> <span class="dv">1</span> <span class="sc">-</span> RSS_linear<span class="sc">/</span>TSS, <span class="co"># compute Rsq, MSE, RMSE for each model</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">Rsq_poly =</span> <span class="dv">1</span> <span class="sc">-</span> RSS_poly<span class="sc">/</span>TSS,</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">MSE_linear =</span> RSS_linear<span class="sc">/</span>n,</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">MSE_poly =</span> RSS_poly<span class="sc">/</span>n,</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_linear =</span> <span class="fu">sqrt</span>(MSE_linear),</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_poly =</span> <span class="fu">sqrt</span>(MSE_poly)) <span class="sc">|&gt;</span></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Rsq_linear, Rsq_poly, MSE_linear, MSE_poly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_linear =</span> score <span class="sc">-</span> score_pred_linear, <span class="co"># compute the residuals for linear model</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_poly =</span> score <span class="sc">-</span> score_pred_poly) <span class="sc">|&gt;</span> <span class="co"># compute the residuals for poly model</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">MSE_baseline =</span> <span class="fu">mean</span>((score <span class="sc">-</span> <span class="fu">mean</span>(score))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># compute total variation or baseline MSE</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_linear =</span> <span class="fu">mean</span>(resid_linear<span class="sc">^</span><span class="dv">2</span>),  <span class="co"># compute RSS for the linear model</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_poly =</span> <span class="fu">sum</span>(resid_poly<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">|&gt;</span>      <span class="co"># compute RSS for the polynomial model</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rsq_linear =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_linear<span class="sc">/</span>MSE_baseline, <span class="co"># compute Rsq, MSE, RMSE for each model</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">Rsq_poly =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_poly<span class="sc">/</span>MSE_baseline,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_linear =</span> <span class="fu">sqrt</span>(MSE_linear),</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_poly =</span> <span class="fu">sqrt</span>(MSE_poly)) <span class="sc">|&gt;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Rsq_linear, Rsq_poly, MSE_linear, MSE_poly, RMSE_linear, RMSE_poly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 4
-  Rsq_linear Rsq_poly MSE_linear MSE_poly
-       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
-1      0.664    0.629       26.6     29.3</code></pre>
+<pre><code># A tibble: 1 × 6
+  Rsq_linear Rsq_poly MSE_linear MSE_poly RMSE_linear RMSE_poly
+       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1      0.664    -17.5       26.6    1467.        5.16      38.3</code></pre>
 </div>
 </div>
-<p>Voila! The linear model’s test set <span class="math inline">\(R^2\)</span> is better than the polynomial model’s test <span class="math inline">\(R^2\)</span>! We also see the <span class="math inline">\(\text{MSE}\)</span> for the linear model is lower than that for the polynomial model.</p>
+<p>Voila! The linear model’s test set <span class="math inline">\(R^2\)</span> is better than the polynomial model’s test <span class="math inline">\(R^2\)</span>! We also see the <span class="math inline">\(\widehat{\mbox{MSE}}\)</span> for the linear model is lower than that for the polynomial model.</p>
 <p>So which is the better predictive model: Model 1 or Model 2? In terms of training, Model 2 came out of top, but Model 1 won out in testing.</p>
 <p>Again, while training <span class="math inline">\(R^2\)</span> can tell us how well a predictive model explains the structure in the data set upon which it was trained, it is deceptive to use as a metric of true predictive accuracy. The task of prediction is fundamentally one applied to unseen data, so testing <span class="math inline">\(R^2\)</span> is the appropriate metric. Model 1, the simpler model, is the better predictive model. After all, the data we are using looks much better modeled by a line than a five degree polynomial.</p>
-</section>
-</section>
-<section id="summary" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This lecture is about overfitting: what happens when your model takes the particular data set it was built on too seriously. The more complex a model is, the more prone to overfitting it is. Polynomial models are able to create very complex functions thus high-degree polynomial models can easily overfit. Fitting a model and evaluating it on the same data set can be problematic; if the model is overfitted the evaluation metric (e.g.&nbsp;<span class="math inline">\(R^2\)</span>) might be very good, but the model might be lousy on predictions on new data.</p>
-<p>A better way to approach predictive modeling is to fit the model to a training set then evaluate it with a separate testing set.</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""></span></div></div>
 
 
@@ -730,12 +720,14 @@ eyJjb250ZW50cyI6W119
 W10=
 </script>
 </section>
+</section>
+</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Because <span class="math inline">\(\hat{y}_i\)</span> involve information from the training data and <span class="math inline">\(y_i\)</span> and <span class="math inline">\(\bar{y}\)</span> come from the testing data, the decomposition of the sum of squares does not work. So, we cannot interpret testing <span class="math inline">\(R^2\)</span> as we would training <span class="math inline">\(R^2\)</span>, and you may have a testing <span class="math inline">\(R^2\)</span> less than 0. However, higher <span class="math inline">\(R^2\)</span> values still signal that the model has good predictive power.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Because <span class="math inline">\(\hat{Y}_i\)</span> involve information from the training data and <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(\bar{Y}\)</span> come from the testing data, the decomposition of the sum of squares does not work. So, we cannot interpret testing <span class="math inline">\(R^2\)</span> as we would training <span class="math inline">\(R^2\)</span>, and you may have a testing <span class="math inline">\(R^2\)</span> less than 0. However, higher <span class="math inline">\(R^2\)</span> values still signal that the model has good predictive power.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script type="ojs-module-contents">

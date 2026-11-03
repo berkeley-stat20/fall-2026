@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-64d279b36a5b40585f578297fd35ea36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b81c8e9dae0bee9bb29964b9eaf9c917.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -336,7 +336,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Evaluating and Improving Predictions</span></a>
+ <span class="menu-text">Improving Predictions and Overfitting</span></a>
   </div>
 </li>
       </ul>
@@ -486,16 +486,16 @@ Null Hypothesis: in...
 # A tibble: 500 × 2
    replicate   stat
        &lt;int&gt;  &lt;dbl&gt;
- 1         1  48.8 
- 2         2  31.4 
- 3         3  17.5 
- 4         4 -54.5 
- 5         5  43.4 
- 6         6 -71.7 
- 7         7  76.7 
- 8         8 -77.1 
- 9         9   7.94
-10        10 -12.5 
+ 1         1 -29.0 
+ 2         2 -53.9 
+ 3         3 146.  
+ 4         4 -49.1 
+ 5         5 -24.2 
+ 6         6 -76.5 
+ 7         7 -56.3 
+ 8         8   1.93
+ 9         9 -20.3 
+10        10 142.  
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -561,15 +561,15 @@ Null Hypothesis: in...
 # A tibble: 9 × 2
   replicate   stat
       &lt;int&gt;  &lt;dbl&gt;
-1         1  109. 
-2         2 -102. 
-3         3  -28.7
-4         4  -81.9
-5         5  -50.6
-6         6  117. 
-7         7   53.3
-8         8  -86.1
-9         9   59.3</code></pre>
+1         1  -54.5
+2         2  -44.6
+3         3   88.4
+4         4  -16.7
+5         5   39.5
+6         6  -50.0
+7         7  -26.9
+8         8 -118. 
+9         9  -78.0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>null <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize</span>() <span class="sc">+</span></span>

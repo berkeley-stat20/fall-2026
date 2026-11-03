@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-60a8534db64e77a2858fec8cec3eca89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f7d53fbfeca47580150879ef1fa5e7d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -1591,6 +1591,7 @@ What’s the chance that I’m wrong about it?
 </summary>
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>Okay, this is where I wanted to focus your attention, to be honest. Even with perfect knowledge of the population, even with an infinite sample size, we would have a gigantic error rate of <span class="math inline">\(\approx 43.3\%\)</span>. Imagine if that was the rate at which a self-driving car makes a wrong turn. Completely unacceptable.</p>
+<p>This is called <strong>irreducible error</strong>.</p>
 </div>
 </details>
 <p>This suggests two things:</p>
@@ -2201,7 +2202,7 @@ Go check the first summary table a few paragraphs above…
 <p><strong>def: Trivial or Baseline Regression Model</strong></p>
 <p><span class="math display">\[ \hat{Y}_{\mbox{baseline}}(\mathbf{X}) \equiv \bar{Y} \]</span></p>
 </div>
-<p>This is so anticlimactic. As you see, this model doesn’t depend on the features (<span class="math inline">\(X\)</span>) at all! It’s the absolutely most banale, basic, trivial, unimaginative, and yet at least data-driven way you could have made a prediction about <span class="math inline">\(Y\)</span>. Just take a sample and use its mean to guess the future.</p>
+<p>This is so anticlimactic. As you see, this model doesn’t depend on the features (<span class="math inline">\(X\)</span>) at all! It’s the absolutely most banale, basic, trivial, unimaginative, and yet still data-driven method, that you could have come up with to make a prediction about <span class="math inline">\(Y\)</span>: just take a sample and use its mean to guess the future.</p>
 <details>
 <summary>
 How well is your model doing? Come up with a measure of perfermonce
@@ -2209,18 +2210,21 @@ How well is your model doing? Come up with a measure of perfermonce
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>Well, we can’t really ask the model to give an exactly correct prediction because this is a continuous variable!</p>
 <p>But maybe we can measure <em>how off</em> we can <em>expect</em> our prediction to be? Something like…</p>
-<p><span class="math display">\[\mbox{error} = E(Y-\bar{Y})\]</span>?</p>
+<p><span class="math inline">\(\mbox{error}_\mbox{baseline} = E(Y-\bar{Y})\)</span>?</p>
 <p>Wait no, that’s … <span class="math inline">\(E(Y-\bar{Y})=E(Y)-E(\bar{Y})=E(Y)-E(Y)=0\)</span>, whoops…</p>
 <p>Maybe let’s square it inside?</p>
-<p><span class="math display">\[\mbox{error} = \mbox{MSE} \equiv E((Y-\bar{Y})^2)\]</span>?</p>
+<p><span class="math inline">\(\mbox{error}_\mbox{baseline} = \mbox{MSE}_\mbox{baseline} \equiv E((Y-\bar{Y})^2)\)</span></p>
 <p>But…</p>
-<p><span class="math display">\[E((Y-\bar{Y})^2) = E(Y^2) - 2 E(Y \cdot \bar{Y}) + E(\bar{Y}^2) =\\
-= Var(Y)+E(Y)^2 - 2 \cdot E(Y) \cdot E(\bar{Y}) + Var(\bar{Y})+ E(\bar{Y})^2=\\
-= Var(Y)+E(Y)^2 - 2 \cdot E(Y)^2 + \frac1{n} Var(Y)+ E(Y)^2 =\\
-= \left(1+\frac1{n}\right) \cdot Var(Y)
+<p><span class="math display">\[
+\begin{aligned}
+E((Y-\bar{Y})^2) &amp;= E(Y^2) - 2 E(Y \cdot \bar{Y}) + E(\bar{Y}^2) =\\
+&amp;= Var(Y)+E(Y)^2 - 2 \cdot E(Y) \cdot E(\bar{Y}) + Var(\bar{Y})+ E(\bar{Y})^2=\\
+&amp;= Var(Y)+E(Y)^2 - 2 \cdot E(Y)^2 + \frac1{n} Var(Y)+ E(Y)^2 =\\
+&amp;= \left(1+\frac1{n}\right) \cdot Var(Y)
+\end{aligned}
 \]</span></p>
-<p>Grand lesson! Even if <span class="math inline">\(n\)</span> is infinite, there will be some uncertainty left in your prediction! Randomness is king.</p>
-<p>This is called the (population) mean squared error btw.</p>
+<p>What a lesson! Even if <span class="math inline">\(n\)</span> is infinite, there will be some uncertainty left in your prediction! Randomness is king.</p>
+<p>This is called the (population) mean squared error, btw; and the fact that it doesn’t go to <span class="math inline">\(0\)</span> even with an infinite sample is called <strong>irreducible error</strong>.</p>
 </div>
 </details>
 </section>
