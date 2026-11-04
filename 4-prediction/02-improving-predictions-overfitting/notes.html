@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-60a8534db64e77a2858fec8cec3eca89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f7d53fbfeca47580150879ef1fa5e7d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -592,7 +592,7 @@ R^2 (\mbox{OLS}) \equiv 1 - \frac{\widehat{\mbox{MSE}}(\hat{Y}_{OLS})}{\widehat{
 = 1-\frac{\sum_{i=1}^n (Y_i - \hat{Y}_{i,OLS})^2}{\sum_{i=1}^n (Y_i - \bar{Y})^2}
 \]</span></p>
 </div>
-<p>For a linear model, the sample mean error (<span class="math inline">\(\widehat{\mbox{MSE}}(\hat{Y}_{OLS})\)</span>) can only be smaller than the sample mean error of the baseline model (<span class="math inline">\(\widehat{\mbox{MSE}}(\bar{Y})\)</span>), because the linear model had access to all the information of the baseline model did, plus the values of the <span class="math inline">\(X\)</span> variables, the linear model is larger, it includes the baseline model inside of it, so it just can’t do worse than the baseline!</p>
+<p>For a linear model, the sample mean error (<span class="math inline">\(\widehat{\mbox{MSE}}(\hat{Y}_{OLS})\)</span>) can only be smaller than the sample mean error of the baseline model (<span class="math inline">\(\widehat{\mbox{MSE}}(\bar{Y})\)</span>), because the linear model had access to all the information that the baseline model did, plus the values of the <span class="math inline">\(X\)</span> variables. The linear model is larger, it includes the baseline model inside of it, so it just can’t do worse than the baseline!</p>
 <p>Therefore <span class="math inline">\(R^2\)</span> has the following properties (more in general than just for the linear model):</p>
 <ol type="1">
 <li><span class="math inline">\(R^2 \leq 1\)</span>. The best-case scenario is when your model has perfect MSE (<span class="math inline">\(=0\)</span>).</li>
@@ -781,7 +781,7 @@ Before reading these notes, take a listen to Act 3 of an episode of the podcast 
 <p>We see that the blue line is prepared to predict the exam scores okay for these students–even though the model was not fited using them! The red model, however, does poorly. It is so beholden to the old sample, the first group of students, that it doesn’t know how to manage when the students are even slightly different. In statistics, we say that the red model was <strong>overfitting</strong>.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Overfitting</strong></p>
-<p>When a predictive algorithm makes <strong>very bad predictions on a fresh new sample</strong> of data points from a population, while having a <strong>deceptively amazingly good performance on the old sample</strong>, from the same population, that we used to fit it.</p>
+<p>When a predictive algorithm makes <strong>bad predictions on a fresh new sample</strong> of data points from a population, while having a <strong>deceptively amazingly good performance on the old sample</strong>, from the same population, that we used to fit it.</p>
 <p><span class="math display">\[
 \mbox{"good predictions"} \rightarrow \widehat{\mbox{MSE}}(\hat{Y}\mbox{, old sample}) \ll \widehat{\mbox{MSE}}(\hat{Y} \mbox{, new sample}) \leftarrow \mbox{"bad predictions"}
 \]</span></p>
@@ -1432,18 +1432,18 @@ Using the plot above, which polynomial degree would you use in the real world?
 How would you solve the problem? (Hint: it’s exactly the same trick again)
 </summary>
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
-<p>Create not just one but <strong>two different test sets</strong>! Use the first to pick the best model (tuning) and then the second finally to evaluate it and report the number.</p>
+<p>Create not just one but <strong>two different test sets</strong>! Use the first to pick the best model (<em>validation set</em>, <em>tuning</em>) and then the second finally to evaluate it and report the number.</p>
 </div>
 </details>
-<p>This suggest the following improved extremely frequently used workflow.</p>
+<p>This suggest the following, improved, and extremely frequently used workflow.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Model training + tuning + testing workflow</strong></p>
 <ol type="1">
-<li>Split the data into one training, and <em>two testing sets</em>;</li>
-<li>Fit <em>many models</em> to the training set (training);</li>
-<li>Evaluate the models using the first testing set;</li>
-<li>Pick the model with the best performance on the first testing set (<em>tuning</em>);</li>
-<li>Evaluate the best model on the second test set (testing).</li>
+<li>Split the data into one training, one <em>validation</em>, and one <em>test</em> set.;</li>
+<li>Fit <em>many models</em> to the training set (<em>training</em>);</li>
+<li>Evaluate the models using the validation set;</li>
+<li>Pick the model with the best performance on the validation set (<em>tuning</em>);</li>
+<li>Evaluate the best model on the final test set (<em>testing</em>).</li>
 </ol>
 </div>
 <section id="more-on-splitting-the-data" class="level3">
@@ -1457,7 +1457,7 @@ How would you solve the problem? (Hint: it’s exactly the same trick again)
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>We measure the goodness of our predictions with MSE (and RMSE), but also with <span class="math inline">\(R^2\)</span>, which is nice because it compares the performance of the model with the one of a baseline model (the simple average). We used <span class="math inline">\(R^2\)</span> to follow the amazing improvements achieved by <strong>adding more features</strong> to the model, or making the prediction formula <strong>more complex</strong>, with logarithms or polynomial terms.</p>
-<p>But we improved too much at some point, without noticing it, because we were using the same sample to optimize and to evaluate the model. This is <strong>overfitting</strong>. We fixed overfitting by splitting the sample into <strong>training and test sets</strong>, and only using the test set to evaluate the model, while the training set is only used to optimize the model.</p>
+<p>But we improved too much at some point, without noticing it, because we were using the same sample to optimize and to evaluate the model. This is <strong>overfitting</strong>. We controlled overfitting by splitting the sample into <strong>training and test sets</strong>, and only using the test set to evaluate the model, while the training set is only used to optimize the coefficients of the model.</p>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../4-prediction/02-improving-predictions-overfitting/tutorial.html" class="tutorial-nav-next">Continue on to the tutorial ⮕</a></p>
 </div>

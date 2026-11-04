@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-60a8534db64e77a2858fec8cec3eca89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f7d53fbfeca47580150879ef1fa5e7d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -113,13 +113,13 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/stat20/stat20notes/sidebar.css">
 <meta property="og:title" content="Intro to Prediction – Stat 20 (Fall 2026)">
-<meta property="og:description" content="What is prediction and Ordinary Least Squares">
+<meta property="og:description" content="What is Prediction and Ordinary Least Squares">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/4-prediction/01-method-of-least-squares/images/prediction.png">
 <meta property="og:site_name" content="Stat 20">
 <meta property="og:image:height" content="422">
 <meta property="og:image:width" content="626">
 <meta name="twitter:title" content="Intro to Prediction – Stat 20 (Fall 2026)">
-<meta name="twitter:description" content="What is prediction and Ordinary Least Squares">
+<meta name="twitter:description" content="What is Prediction and Ordinary Least Squares">
 <meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/4-prediction/01-method-of-least-squares/images/prediction.png">
 <meta name="twitter:image-height" content="422">
 <meta name="twitter:image-width" content="626">
@@ -458,7 +458,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Intro to Prediction</h1>
-<p class="subtitle lead">What is prediction and Ordinary Least Squares</p>
+<p class="subtitle lead">What is Prediction and Ordinary Least Squares</p>
 </div>
 
 
@@ -527,7 +527,7 @@ Figure&nbsp;1: What your classroom should look like.
 </figure>
 </div>
 <p><strong>E.g. Making friends on campus.</strong></p>
-<p>The year is 1247. Like always, university is about power and making connections. You’re a student from a modest family, and want to make friends with… well, rich students. There is bloody, fierce political divide on campus, though, and you want to be careful. Two parties, the Guelphs and the Ghibellines, are at each others’ throats.</p>
+<p>The year is 1247. Like always, university is about power and making connections. You’re a student from a modest family, and want to make friends with… well, rich students. There is bloody, fierce political divide on campus, though, and you want to be careful. Two parties, the Guelphs (supporting the Pope and the autonomy of the city states) and the Ghibellines (supporting the Emperor and the creation of a centralized state), are at each other’s throats.</p>
 <p>A student, in his brown gown, walks down the path from the chapel and crosses your path. Do you want to approach him?</p>
 <p>Luckily, you got data! (Showing below only the first 10 observations)</p>
 <div class="cell">
@@ -2169,17 +2169,17 @@ If he tells you he’s from Rome, what’s your guess? And what’s your chance 
 </div>
 <section id="an-apology-about-notation" class="level3">
 <h3 class="anchored" data-anchor-id="an-apology-about-notation">An apology about notation</h3>
-<p>I am sorry. Unfortunately we’ll need to change our notation. In the past we only used <span class="math inline">\(X_4\)</span> to mean the fourth draw from a certain distribution/population, the fourth element in our sample. However, now by that we might <em>also</em> mean the fourth recorded feature in our datasetet, e.g.&nbsp;<span class="math inline">\(X_1 =\)</span> “Name”, <span class="math inline">\(X_2 =\)</span> “Height”, <span class="math inline">\(X_3 =\)</span> “Sex”, <span class="math inline">\(X_4 =\)</span> “number of children”, etc…</p>
+<p>I am sorry. Unfortunately we’ll need to change our notation. In the past we only used <span class="math inline">\(X_4\)</span> to mean the fourth draw from a certain distribution/population, the fourth element in our sample. However, now by that we might <em>also</em> mean the fourth recorded feature in our dataset, e.g.&nbsp;<span class="math inline">\(X_1 =\)</span> “Name”, <span class="math inline">\(X_2 =\)</span> “Height”, <span class="math inline">\(X_3 =\)</span> “Sex”, <span class="math inline">\(X_4 =\)</span> “number of children”, etc…</p>
 <p>We’ll use <span class="math inline">\(\mathbf{X}\)</span> to mean the set of all the features <span class="math inline">\(X_1, X_2, \ldots X_q\)</span>, and <span class="math inline">\(X_j\)</span> for one of those features.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Predictive Algorithm (model)</strong></p>
-<p>A statistical procedure learned on old data (sample) that uses multiple available variables (features, or explanatory variables) to predict the value of an unknown target variable. This <strong>prediction</strong> or <strong>predictor</strong> is denoted by</p>
+<p>A statistical procedure learned on old data (sample) that uses available variables (features, or explanatory variables) to predict the value of an unknown target variable. This <strong>prediction</strong> or <strong>predictor</strong> is denoted by</p>
 <p><span class="math display">\[\hat{Y}(\mathbf{X}) \mbox{ or } \hat{Y}(X_1,X_2,\ldots , X_q) \mbox{ or just } \hat{Y}\]</span></p>
 </div>
-<p>This scary expression is just saying that your prediction depends on the <span class="math inline">\(X\)</span> variables.</p>
+<p>This expression is just saying that your prediction depends on the <span class="math inline">\(X\)</span> variables.</p>
 <p>Notice the “hat” symbol. Again, it indicates that this quantity depends on the old sample <span class="math inline">\((X_{1,1}, \ldots, X_{q,1}, Y_1), (X_{1,2}, \ldots, X_{q,2}, Y_2), \ldots, (X_{1,n}, \ldots, X_{q,n}, Y_n)\)</span> (Ouch, this looks ugly). It was <strong>learned</strong> or <strong>fitted</strong> on the old sample, and now, it’s trying to make a prediction about a new generic data point <span class="math inline">\((X_1, \ldots, X_q, Y)\)</span>.</p>
 <p>This is often referred to as the “model”. This usage might generate confusion in the reader with the related but distinct concept of “(parametric) model”, i.e.&nbsp;the assumptions we make about the distribution of a random variable.</p>
-<p>The past two decades have been a golden age for predictive algorithms, with hundreds of new types being invented that can address regression tasks or classifications tasks or often both. To take a deep dive into this diverse landscape, take a course in <strong>Statistical</strong> or <strong>Machine Learning</strong>. For the purpose of this course, we’ll just take a dip and focus on two algorithms: Least Squares Linear Model for Regression and a Logistic Regression for Classification.</p>
+<p>The past two decades have been a golden age for predictive algorithms, with hundreds of new types being invented that can address regression or classification tasks, or often both. To take a deep dive into this diverse landscape, take a course in <strong>Statistical</strong> or <strong>Machine Learning</strong>. For the purpose of this course, we’ll just take a dip and focus on two algorithms: Least Squares Linear Model for Regression and a Logistic Regression for Classification.</p>
 <!-- Add tree diagram that mimics taxonomy of data but then shows the different model classes. -->
 <!-- Add tradeoff between interpretability and accuracy diagram inspired by ISLR ch1. -->
 </section>
@@ -2252,7 +2252,7 @@ E((Y-\bar{Y})^2) &amp;= E(Y^2) - 2 E(Y \cdot \bar{Y}) + E(\bar{Y}^2) =\\
 <p><span class="math display">\[\hat{e}_i \equiv Y_i - \hat{Y}(\mathbf{X}_i) \]</span></p>
 <p>This is a random variable, of course. It measures how off your prediction was on one of the sample points.</p>
 </div>
-<p>The Ordinary Least Squares linear model (OLS) is so-called because it defines a line that has a particular mathematical property: it is the line that has the lowest sample mean squared residuals of all possible lines.</p>
+<p>The Ordinary Least Squares linear model (OLS) is so-called because it defines a “line” (only if we have just 1 feature; it will be a plane, or a <span class="math inline">\(q\)</span>-dimensional linear space otherwise), that has a particular mathematical property: it has the lowest sample mean squared residuals of all possible lines.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Sample Mean Squared (Prediction) Error (MSE)</strong></p>
 <p>For a sample with <span class="math inline">\(i=1,\ldots, n\)</span> observations of <span class="math inline">\(j = 1, \ldots, q\)</span> features <span class="math inline">\(X_{j,i}\)</span>, a target variable <span class="math inline">\(Y_i\)</span>, predictions of its value <span class="math inline">\(\hat{Y}_i (\mathbf{X}_{i})\)</span>, the sample MSE is</p>
@@ -2296,7 +2296,7 @@ Not so fast. What are the units of measurement of the MSE?
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
-<p>Prediction is the task of guessing the value of a <strong>target</strong> variable (<span class="math inline">\(Y\)</span>) for an unseen observation using its values of other variables that are known, <span class="math inline">\(X_j\)</span>, the <strong>features</strong>, leveraging their hopefully strong <strong>association</strong> with the target. The type of variable <span class="math inline">\(Y\)</span> is determines the nature of the task (and the method to solve it): <strong>regression</strong> concerns the prediction of numerical target variables, <strong>classification</strong> concerns the prediction of categorical target variables.</p>
+<p>Prediction is the task of guessing the value of a <strong>target</strong> variable (<span class="math inline">\(Y\)</span>) for an unseen observation using its values of other variables that are known, <span class="math inline">\(X_j\)</span>, the <strong>features</strong>, leveraging their hopefully strong <strong>association</strong> with the target. The type of the variable <span class="math inline">\(Y\)</span> determines the nature of the task (and the method to solve it): <strong>regression</strong> predicts numerical target variables, <strong>classification</strong> predicts categorical target variables.</p>
 <p>One such regression model is the least squares linear model, which uses the line that minimizes the mean squared error. Finding the value of the coefficients is a task that can be solved directly using calculus (in simple settings like this one), and also with iterative optimization algorithms (in more general settings).</p>
 <section id="the-fundamental-difference-between-generalization-and-prediction" class="level2">
 <h2 class="anchored" data-anchor-id="the-fundamental-difference-between-generalization-and-prediction">The fundamental difference between generalization and prediction</h2>
@@ -2304,7 +2304,7 @@ Not so fast. What are the units of measurement of the MSE?
 <p>However:</p>
 <ul>
 <li><p>In <strong>generalization</strong>, we are guessing unknown and <strong>unobservable</strong> quantities (distribution/population parameters). You will <strong>never</strong> be able to check directly how close you got to the true <span class="math inline">\(\mu\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(\sigma\)</span>, etc…</p></li>
-<li><p>In <strong>prediction</strong>, we are guessing presently unknown, but, in the future, in principle <strong>observable</strong> and knowable quantities (random variables). For example, you can ask the person if they are Guelph or a Ghibelline (good luck with that!).</p></li>
+<li><p>In <strong>prediction</strong>, we are guessing presently unknown, but, in the future, in principle <strong>observable</strong> and knowable quantities (random variables). For example, you can ask the person if they are a Guelph or a Ghibelline (good luck with that!).</p></li>
 </ul>
 <p>This difference has massive consequences and that’s why Statistical Inference (i.e.&nbsp;generalization) and Machine Learning (i.e.&nbsp;prediction) are, in practice, regarded as two completely separate subjects.</p>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
