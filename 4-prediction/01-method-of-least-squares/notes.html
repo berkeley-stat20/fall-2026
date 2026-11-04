@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f7d53fbfeca47580150879ef1fa5e7d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-60a8534db64e77a2858fec8cec3eca89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/stat20notes-1.0.0/stat20notes.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -529,7 +529,7 @@ Figure&nbsp;1: What your classroom should look like.
 <p><strong>E.g. Making friends on campus.</strong></p>
 <p>The year is 1247. Like always, university is about power and making connections. You’re a student from a modest family, and want to make friends with… well, rich students. There is bloody, fierce political divide on campus, though, and you want to be careful. Two parties, the Guelphs and the Ghibellines, are at each others’ throats.</p>
 <p>A student, in his brown gown, walks down the path from the chapel and crosses your path. Do you want to approach him?</p>
-<p>Luckily, you got data!</p>
+<p>Luckily, you got data! (Showing below only the first 10 observations)</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="yryqnbezce" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2283,8 +2283,8 @@ Not so fast. What are the units of measurement of the MSE?
 <p><span class="math display">\[\hat{b}_{0,OLS},\hat{b}_{1,OLS}, \ldots \hat{b}_{q,OLS}  \]</span></p>
 <p>so that finally <span class="math display">\[\hat{Y}_{OLS}(\mathbf{X}) \equiv \hat{b}_{0,OLS} + \hat{b}_{1,OLS} X_1 + \hat{b}_{2,OLS} X_2 + \ldots +\hat{b}_{q,OLS} X_q \]</span></p>
 </div>
-<p>Although a direct way to find these values involves taking the partial derivatives of the third equation with respect to each coefficient <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, …, <span class="math inline">\(b_q\)</span>, setting the resulting equation equal to <span class="math inline">\(0\)</span>, and solving for the coefficient, you could think about using a different, perhaps more intuitive method.</p>
-<p>Consider picking a starting value for each of <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>, plugging these into the third equation, and seeing what comes out. Then, try to pick another set of numbers that makes the result of the MSE equation smaller. Provided that you have a concerted method to pick the next set of numbers, you can repeat this process over and over until you find the set of numbers which yields the smallest value for MSE. This process can be described as an <em>iterative numerical</em> (as opposed to an <em>exact</em>, or <em>analytical</em>, or <em>closed-form</em>) method to find the values of the coefficients <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>.</p>
+<p>Although a direct way to find these values involves taking the partial derivatives of the formula for the MSE at the top with respect to each coefficient <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, …, <span class="math inline">\(b_q\)</span>, setting the results equal to <span class="math inline">\(0\)</span>, and solving for the coefficients, you could think about using a different, perhaps more intuitive method.</p>
+<p>Consider picking a starting value for each of <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>, plugging these into the MSE formula, and seeing what comes out. Then, try to pick another set of numbers that makes the result of the MSE formula smaller. Provided that you have a “smart” method to pick the next set of numbers, you can repeat this process over and over until you find the set of numbers which yields the smallest value for the MSE. This process can be described as an <em>iterative numerical</em> (as opposed to an <em>exact</em>, or <em>analytical</em>, or <em>closed-form</em>) method to find the values of the coefficients <span class="math inline">\(b_0\)</span> through <span class="math inline">\(b_q\)</span>.</p>
 <p>There are many iterative algorithms that accomplish the same task, some better than others. Two examples:</p>
 <ul>
 <li><strong>Nelder-Mead</strong>: an older and more general (and generally not as reliable!) algorithm. This is the one we showed you in the video.</li>
