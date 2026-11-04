@@ -462,6 +462,21 @@ poly(x = feature, degree = 3, raw = TRUE)3
                                      2.042  </code></pre>
 </div>
 </div>
+<p>N.B. A polynomial of degree 2 is a more general concept than simply the square of a variable.</p>
+<p>If you just want the square, then you can use the following syntax:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> target <span class="sc">~</span> <span class="fu">I</span>(feature<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = target ~ I(feature^2), data = df)
+
+Coefficients:
+ (Intercept)  I(feature^2)  
+     -9.6064        0.2626  </code></pre>
+</div>
+</div>
+<p>Don’t forget the function <code>I()</code>. If you don’t include that, the <code>^2</code> will be ignored!</p>
 </section>
 <section id="making-predictions-on-a-new-observation-with-predict" class="level2">
 <h2 class="anchored" data-anchor-id="making-predictions-on-a-new-observation-with-predict">Making predictions on a new observation with <code>predict()</code></h2>
@@ -491,19 +506,19 @@ poly(x = feature, degree = 3, raw = TRUE)3
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> food <span class="sc">+</span> geo, <span class="at">data =</span> zagat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> food <span class="sc">+</span> geo, <span class="at">data =</span> zagat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here, we will use <code>m2</code> from the ZAGAT example. This model used <code>food</code> and <code>geo</code> in an attempt to predict price at a restaurant.</p>
 <p>First, let’s make a new data frame with a couple of new, made-up observations.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>restaurants <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">food =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">17</span>),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">"east"</span>, <span class="st">"west"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>restaurants <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">food =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">17</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">"east"</span>, <span class="st">"west"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>One of these restaurants is located in east Manhattan and has a food score of 25/30, while the other one is in west Manhattan and has a food score of 17/30.</p>
 <p>Now, we can use this data frame alongside our <code>m2</code> model object to make predictions for the prices.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> m2, <span class="at">newdata =</span> restaurants)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> m2, <span class="at">newdata =</span> restaurants)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1        2 
 55.89738 31.44043 </code></pre>
@@ -519,7 +534,7 @@ poly(x = feature, degree = 3, raw = TRUE)3
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="tutorial_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -537,19 +552,19 @@ poly(x = feature, degree = 3, raw = TRUE)3
 <li><p>One other thing we’ll want to make sure to do is <em>set our seed</em>, so that our collaborators, or anyone else who wants to analyze our work, get the same split that we do.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>shuffled_biology <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(biology, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="at">replace =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="at">n =</span> <span class="fu">nrow</span>(biology))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>shuffled_biology <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(biology, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">replace =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="at">n =</span> <span class="fu">nrow</span>(biology))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Now that we have things mixed up, we can take the first 80 percent of our rows as training rows and the next 20 percent as testing rows. To do this, we’ll first make a vector containing position 1 all the way up to the row where we’ve reached 80 percent of the rows in the <code>biology</code> data frame. We can use our old friend, <strong><code>seq()</code></strong>, to help!</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>train_rows <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="at">to =</span> <span class="fu">nrow</span>(shuffled_biology)<span class="sc">*</span> <span class="fl">0.8</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="at">by =</span> <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>train_rows <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">to =</span> <span class="fu">nrow</span>(shuffled_biology)<span class="sc">*</span> <span class="fl">0.8</span>, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="at">by =</span> <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><p>Now, we can use a function in <code>dplyr</code> called <strong><code>slice()</code></strong> to get our training and testing frame from our <code>shuffled_biology</code> data frame.</p></li>
@@ -557,8 +572,8 @@ poly(x = feature, degree = 3, raw = TRUE)3
 <li><p>A very useful piece of syntax: if we write <code>-train_rows</code>, <code>slice()</code> will know to focus all of the position numbers that <em>weren’t</em> in the <code>train_rows</code> vector.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>biology_train <span class="ot">&lt;-</span> <span class="fu">slice</span>(shuffled_biology, train_rows)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>biology_test <span class="ot">&lt;-</span> <span class="fu">slice</span>(shuffled_biology, <span class="sc">-</span>train_rows)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>biology_train <span class="ot">&lt;-</span> <span class="fu">slice</span>(shuffled_biology, train_rows)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>biology_test <span class="ot">&lt;-</span> <span class="fu">slice</span>(shuffled_biology, <span class="sc">-</span>train_rows)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!--
 
@@ -634,24 +649,24 @@ biology_test <- biology |>
 <h3 class="anchored" data-anchor-id="step-2-fit-the-model-to-the-training-set">Step 2: Fit the model to the training set</h3>
 <p>Now, we’ll fit two models on the training data. We will be using <code>lm()</code>, and for both models, the <code>data</code> argument is given by <code>biology_train</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lm_slr <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> hours, <span class="at">data =</span> biology_train)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>lm_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> <span class="fu">poly</span>(hours, <span class="at">degree =</span> <span class="dv">20</span>, <span class="at">raw =</span> T),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> biology_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lm_slr <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> hours, <span class="at">data =</span> biology_train)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>lm_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> <span class="fu">poly</span>(hours, <span class="at">degree =</span> <span class="dv">20</span>, <span class="at">raw =</span> T),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> biology_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can evaluate the <span class="math inline">\(R^2\)</span>’s for both models’ performance on the training data just like before with <code>glance()</code>. Which model do you expect to have a better <em>training</em> set <span class="math inline">\(R^2\)</span> value?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_slr) <span class="sc">|&gt;</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_slr) <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   r.squared
       &lt;dbl&gt;
 1     0.693</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_poly) <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_poly) <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(r.squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   r.squared
@@ -666,32 +681,32 @@ biology_test <- biology |>
 <p>The real test of predictive power between the two models comes now, when we will make exam score predictions using the <em>testing</em> set: data which the model was not used to fit and hasn’t seen.</p>
 <p>We will still be using the <code>predict()</code> function for this purpose. Now, we can just plug <code>biology_test</code> into the <code>newdata</code> argument!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>score_pred_linear <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_slr, <span class="at">newdata =</span> biology_test)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>score_pred_poly <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_poly, <span class="at">newdata =</span> biology_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>score_pred_linear <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_slr, <span class="at">newdata =</span> biology_test)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>score_pred_poly <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_poly, <span class="at">newdata =</span> biology_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Once these predictions <span class="math inline">\(\hat{Y}_i\)</span> are made, we then can use <code>dplyr</code> code to:</p>
 <ul>
 <li>mutate on the predictions to our testing data</li>
 <li>set up the <span class="math inline">\(R^2\)</span> formula and calculate<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. In the code below, we are using the formula</li>
 </ul>
-<p><span class="math display">\[R^2_\mbox{model} = 1-\frac{\widehat{\mbox{MSE}}_\mbox{model}}{\widehat{\mbox{MSE}}_\mbox{baseline}} = 1-\frac{\sum_{i=1}^n(Y_i-\hat{Y_i})^2}{\sum_{i=1}^n(Y_i-\bar{Y})^2}\]</span></p>
+<p><span class="math display">\[R^2_\mbox{model} = 1-\frac{\mbox{MSE}_\mbox{model}}{\mbox{MSE}_\mbox{baseline}} = 1-\frac{\sum_{i=1}^n(Y_i-\hat{Y_i})^2}{\sum_{i=1}^n(Y_i-\bar{Y})^2}\]</span></p>
 <ul>
-<li>We can also calculate <span class="math inline">\(\widehat{\mbox{RMSE}}_\mbox{model}\)</span>, of course.</li>
+<li>We can also calculate <span class="math inline">\(\mbox{RMSE}_\mbox{model}\)</span>, of course.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>biology_test <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">score_pred_linear =</span> score_pred_linear,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">score_pred_poly =</span> score_pred_poly,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_linear =</span> score <span class="sc">-</span> score_pred_linear, <span class="co"># compute the residuals for linear model</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_poly =</span> score <span class="sc">-</span> score_pred_poly) <span class="sc">|&gt;</span> <span class="co"># compute the residuals for poly model</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">MSE_baseline =</span> <span class="fu">mean</span>((score <span class="sc">-</span> <span class="fu">mean</span>(score))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># compute total variation or baseline MSE</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_linear =</span> <span class="fu">mean</span>(resid_linear<span class="sc">^</span><span class="dv">2</span>),  <span class="co"># compute RSS for the linear model</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_poly =</span> <span class="fu">sum</span>(resid_poly<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">|&gt;</span>      <span class="co"># compute RSS for the polynomial model</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rsq_linear =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_linear<span class="sc">/</span>MSE_baseline, <span class="co"># compute Rsq, MSE, RMSE for each model</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">Rsq_poly =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_poly<span class="sc">/</span>MSE_baseline,</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_linear =</span> <span class="fu">sqrt</span>(MSE_linear),</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_poly =</span> <span class="fu">sqrt</span>(MSE_poly)) <span class="sc">|&gt;</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Rsq_linear, Rsq_poly, MSE_linear, MSE_poly, RMSE_linear, RMSE_poly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>biology_test <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">score_pred_linear =</span> score_pred_linear,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">score_pred_poly =</span> score_pred_poly,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_linear =</span> score <span class="sc">-</span> score_pred_linear, <span class="co"># compute the residuals for linear model</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_poly =</span> score <span class="sc">-</span> score_pred_poly) <span class="sc">|&gt;</span> <span class="co"># compute the residuals for poly model</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">MSE_baseline =</span> <span class="fu">mean</span>((score <span class="sc">-</span> <span class="fu">mean</span>(score))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># compute total variation or baseline MSE</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_linear =</span> <span class="fu">mean</span>(resid_linear<span class="sc">^</span><span class="dv">2</span>),  <span class="co"># compute RSS for the linear model</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_poly =</span> <span class="fu">sum</span>(resid_poly<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">|&gt;</span>      <span class="co"># compute RSS for the polynomial model</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rsq_linear =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_linear<span class="sc">/</span>MSE_baseline, <span class="co"># compute Rsq, MSE, RMSE for each model</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">Rsq_poly =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_poly<span class="sc">/</span>MSE_baseline,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_linear =</span> <span class="fu">sqrt</span>(MSE_linear),</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_poly =</span> <span class="fu">sqrt</span>(MSE_poly)) <span class="sc">|&gt;</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Rsq_linear, Rsq_poly, MSE_linear, MSE_poly, RMSE_linear, RMSE_poly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 6
   Rsq_linear Rsq_poly MSE_linear MSE_poly RMSE_linear RMSE_poly
@@ -699,7 +714,7 @@ biology_test <- biology |>
 1      0.664    -17.5       26.6    1467.        5.16      38.3</code></pre>
 </div>
 </div>
-<p>Voila! The linear model’s test set <span class="math inline">\(R^2\)</span> is better than the polynomial model’s test <span class="math inline">\(R^2\)</span>! We also see the <span class="math inline">\(\widehat{\mbox{MSE}}\)</span> for the linear model is lower than that for the polynomial model.</p>
+<p>Voila! The linear model’s test set <span class="math inline">\(R^2\)</span> is better than the polynomial model’s test <span class="math inline">\(R^2\)</span>! We also see the <span class="math inline">\(\mbox{MSE}\)</span> for the linear model is lower than that for the polynomial model.</p>
 <p>So which is the better predictive model: Model 1 or Model 2? In terms of training, Model 2 came out of top, but Model 1 won out in testing.</p>
 <p>Again, while training <span class="math inline">\(R^2\)</span> can tell us how well a predictive model explains the structure in the data set upon which it was trained, it is deceptive to use as a metric of true predictive accuracy. The task of prediction is fundamentally one applied to unseen data, so testing <span class="math inline">\(R^2\)</span> is the appropriate metric. Model 1, the simpler model, is the better predictive model. After all, the data we are using looks much better modeled by a line than a five degree polynomial.</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""></span></div></div>

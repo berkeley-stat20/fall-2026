@@ -226,7 +226,7 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section>
 <section id="warmup" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_de382d1de259bd433eccec59e884bbdd51925102" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h1>Warmup <div id="timer_083db346d198f9c55c47fd22d228580205d85712" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -245,22 +245,13 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 -->
 </div>
 </section>
-<section id="secenario-a" class="slide level2 warmup-question">
-<h2>Secenario A</h2>
+<section id="scenario-a" class="slide level2 warmup-question">
+<h2>Scenario A</h2>
 <ul>
-<li>Amazon sets the price for a specific book, dependent on the book’s weight and whether it is hardback or paperback.</li>
+<li>Amazon sets the price for a specific book to optimize the sales, dependent on the book’s weight and whether it is hardback or paperback.</li>
 </ul>
 <div class="answer fragment">
 <p>Careful!! This is a <strong>Causality</strong> question. “What would happen if I were to set the price of the book at some value <span class="math inline">\(x\)</span>?”</p>
-</div>
-</section>
-<section id="secenario-b" class="slide level2 warmup-question">
-<h2>Secenario B</h2>
-<ul>
-<li>Abebooks guesses the time it’ll take to sell a specific book, based on the price it can freely set, the book’s weight and whether it is hardback or paperback.</li>
-</ul>
-<div class="answer fragment">
-<p>Careful again! This is a <strong>Causal Prediction</strong> question. As a prediction problem, it’s a <strong>regression</strong> because time should be modeled as a continuous variable. But it’s also causal because again your’re wondering “What would happen if I were to set the price of the book at some value <span class="math inline">\(x\)</span>?”</p>
 </div>
 </section>
 <section id="secenario-c" class="slide level2 warmup-question">
@@ -284,10 +275,10 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 <section id="secenario-e" class="slide level2 warmup-question">
 <h2>Secenario E</h2>
 <ul>
-<li>A marine biologist is trying to guess the nose-to-tail length of the typical manatee in the waters off the coast of Florida, broken down by sex and age groups.</li>
+<li>A marine biologist is trying to determine the nose-to-tail length of the typical manatee in the waters off the coast of Florida, broken down by sex and age groups.</li>
 </ul>
 <div class="answer fragment">
-<p>You fell for it again! This is not a <strong>Prediction</strong> task. It’s a <strong>Generalization</strong> task, because they’re estimating various population parameters (conditional means). These are <strong>hidden</strong>, <strong>non observable</strong> quantities.</p>
+<p>You fell for it again! This is not a <strong>Prediction</strong> task. It’s a <strong>Generalization</strong> task, because they’re estimating various population parameters. These are <strong>hidden</strong>, <strong>non observable</strong> quantities.</p>
 </div>
 </section>
 <section id="secenario-f" class="slide level2 warmup-question">
@@ -296,7 +287,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 <li>The Weather Channel predicts tomorrow’s temperature based on historical data, tomorrow’s expected weather conditions and yesterday’s temperature.</li>
 </ul>
 <div class="answer fragment">
-<p>This is a <strong>Prediction</strong> task. It’s a <strong>Regression</strong> task, because temperature is modeled as a continuous variable. Careful, the historical data isn’t a feature, it’s either the sample used to fit the model or some other miscellaneous info that will help with writinf down the model.</p>
+<p>This is a <strong>Prediction</strong> task. It’s a <strong>Regression</strong> task, because temperature is modeled as a continuous variable.</p>
 </div>
 </section>
 <section id="secenario-g" class="slide level2 warmup-question">
@@ -305,7 +296,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 <li>The UCB Admissions office has to predict whether a student will accept its admission offer or not based on the student’s high school and their intended major.</li>
 </ul>
 <div class="answer fragment">
-<p>This is a <strong>Prediction</strong> task. It’s a <strong>Classification</strong> task, because whether the car is real should be modeled as a binary (Bernoulli) variable.</p>
+<p>This is a <strong>Prediction</strong> task. It’s a <strong>Classification</strong> task, because whether the student accepts the offer is should be modeled as a binary (Bernoulli) variable.</p>
 </div>
 </section>
 <section id="secenario-h" class="slide level2 warmup-question">
@@ -317,7 +308,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 
 </div>
 <div class="answer fragment">
-<p>Careful! This is a <strong>Prediction</strong> task. Althout this thing was written 2200 years ago, we are still “predicting” the value of an <strong>unseen random variable</strong> (the missing letter). It’s a <strong>Classification</strong> task, because a letter from the Coptic alphabet is a nominal categorical variable.</p>
+<p>This is a <strong>Prediction</strong> task! Althout this thing was written 2200 years ago, we are still “predicting” the value of an <strong>unseen random variable</strong> (the missing letter). It’s a <strong>Classification</strong> task, because a letter from the Coptic alphabet is a nominal categorical variable.</p>
 </div>
 </section>
 <section id="which-is-better" class="slide level2 warmup-question">
@@ -333,7 +324,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 </div>
 </section>
 <section id="cq-1.---calculate-the-sample-mse-of-the-model." class="slide level2">
-<h2>CQ 1. - Calculate the sample MSE of the model. <div id="timer_de382d1de259bd433eccec59e884bbdd51925102" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h2>CQ 1. - Calculate the sample MSE of the model. <div id="timer_083db346d198f9c55c47fd22d228580205d85712" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -345,23 +336,23 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="sjbhkubuqm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sjbhkubuqm table {
+<div id="uexcewdjok" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uexcewdjok table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sjbhkubuqm thead, #sjbhkubuqm tbody, #sjbhkubuqm tfoot, #sjbhkubuqm tr, #sjbhkubuqm td, #sjbhkubuqm th {
+#uexcewdjok thead, #uexcewdjok tbody, #uexcewdjok tfoot, #uexcewdjok tr, #uexcewdjok td, #uexcewdjok th {
   border-style: none;
 }
 
-#sjbhkubuqm p {
+#uexcewdjok p {
   margin: 0;
   padding: 0;
 }
 
-#sjbhkubuqm .gt_table {
+#uexcewdjok .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -387,12 +378,12 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-left-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_caption {
+#uexcewdjok .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sjbhkubuqm .gt_title {
+#uexcewdjok .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -404,7 +395,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-bottom-width: 0;
 }
 
-#sjbhkubuqm .gt_subtitle {
+#uexcewdjok .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -416,7 +407,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-top-width: 0;
 }
 
-#sjbhkubuqm .gt_heading {
+#uexcewdjok .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -428,13 +419,13 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-right-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_bottom_border {
+#uexcewdjok .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_col_headings {
+#uexcewdjok .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -449,7 +440,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-right-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_col_heading {
+#uexcewdjok .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -469,7 +460,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   overflow-x: hidden;
 }
 
-#sjbhkubuqm .gt_column_spanner_outer {
+#uexcewdjok .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -481,15 +472,15 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   padding-right: 4px;
 }
 
-#sjbhkubuqm .gt_column_spanner_outer:first-child {
+#uexcewdjok .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sjbhkubuqm .gt_column_spanner_outer:last-child {
+#uexcewdjok .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sjbhkubuqm .gt_column_spanner {
+#uexcewdjok .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -501,11 +492,11 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   width: 100%;
 }
 
-#sjbhkubuqm .gt_spanner_row {
+#uexcewdjok .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sjbhkubuqm .gt_group_heading {
+#uexcewdjok .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -531,7 +522,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   text-align: left;
 }
 
-#sjbhkubuqm .gt_empty_group_heading {
+#uexcewdjok .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -546,15 +537,15 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   vertical-align: middle;
 }
 
-#sjbhkubuqm .gt_from_md > :first-child {
+#uexcewdjok .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sjbhkubuqm .gt_from_md > :last-child {
+#uexcewdjok .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sjbhkubuqm .gt_row {
+#uexcewdjok .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -573,7 +564,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   overflow-x: hidden;
 }
 
-#sjbhkubuqm .gt_stub {
+#uexcewdjok .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -586,7 +577,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   padding-right: 5px;
 }
 
-#sjbhkubuqm .gt_stub_row_group {
+#uexcewdjok .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -600,15 +591,15 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   vertical-align: top;
 }
 
-#sjbhkubuqm .gt_row_group_first td {
+#uexcewdjok .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sjbhkubuqm .gt_row_group_first th {
+#uexcewdjok .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sjbhkubuqm .gt_summary_row {
+#uexcewdjok .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -618,16 +609,16 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   padding-right: 5px;
 }
 
-#sjbhkubuqm .gt_first_summary_row {
+#uexcewdjok .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_first_summary_row.thick {
+#uexcewdjok .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sjbhkubuqm .gt_last_summary_row {
+#uexcewdjok .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -637,7 +628,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-bottom-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_grand_summary_row {
+#uexcewdjok .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -647,7 +638,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   padding-right: 5px;
 }
 
-#sjbhkubuqm .gt_first_grand_summary_row {
+#uexcewdjok .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -657,7 +648,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-top-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_last_grand_summary_row_top {
+#uexcewdjok .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -667,11 +658,11 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-bottom-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_striped {
+#uexcewdjok .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sjbhkubuqm .gt_table_body {
+#uexcewdjok .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -680,7 +671,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-bottom-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_footnotes {
+#uexcewdjok .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -694,7 +685,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-right-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_footnote {
+#uexcewdjok .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -703,7 +694,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   padding-right: 5px;
 }
 
-#sjbhkubuqm .gt_sourcenotes {
+#uexcewdjok .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -717,7 +708,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   border-right-color: #D3D3D3;
 }
 
-#sjbhkubuqm .gt_sourcenote {
+#uexcewdjok .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -725,72 +716,72 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
   padding-right: 5px;
 }
 
-#sjbhkubuqm .gt_left {
+#uexcewdjok .gt_left {
   text-align: left;
 }
 
-#sjbhkubuqm .gt_center {
+#uexcewdjok .gt_center {
   text-align: center;
 }
 
-#sjbhkubuqm .gt_right {
+#uexcewdjok .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sjbhkubuqm .gt_font_normal {
+#uexcewdjok .gt_font_normal {
   font-weight: normal;
 }
 
-#sjbhkubuqm .gt_font_bold {
+#uexcewdjok .gt_font_bold {
   font-weight: bold;
 }
 
-#sjbhkubuqm .gt_font_italic {
+#uexcewdjok .gt_font_italic {
   font-style: italic;
 }
 
-#sjbhkubuqm .gt_super {
+#uexcewdjok .gt_super {
   font-size: 65%;
 }
 
-#sjbhkubuqm .gt_footnote_marks {
+#uexcewdjok .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sjbhkubuqm .gt_asterisk {
+#uexcewdjok .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sjbhkubuqm .gt_indent_1 {
+#uexcewdjok .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sjbhkubuqm .gt_indent_2 {
+#uexcewdjok .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sjbhkubuqm .gt_indent_3 {
+#uexcewdjok .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sjbhkubuqm .gt_indent_4 {
+#uexcewdjok .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sjbhkubuqm .gt_indent_5 {
+#uexcewdjok .gt_indent_5 {
   text-indent: 25px;
 }
 
-#sjbhkubuqm .katex-display {
+#uexcewdjok .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#sjbhkubuqm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uexcewdjok div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -832,7 +823,7 @@ C. The risk of facial clefts is equal for babies born to mothers who take folic 
 <section id="concept-question-2." class="slide level2">
 <h2>Concept Question 2.</h2>
 <ul>
-<li>Which of these two features <span class="math inline">\(X_j\)</span> will yield the better prediction $ $, based on the sample we collected and plotted below?</li>
+<li>Which of these two features <span class="math inline">\(X_j\)</span> will yield the better prediction <span class="math inline">\(\hat{Y}\)</span>, based on the sample we collected and plotted below?</li>
 </ul>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"><div class="answer fragment">
@@ -863,7 +854,7 @@ Think of a potential response and predictor, and about whether this is a  regres
 ::: {.cell-output-display}
 
 ```{=html}
-<div class="countdown" id="timer_99862e81" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_a08eed5c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -891,7 +882,7 @@ Think of a potential response and predictor, and about whether this is a  regres
 ::: {.cell-output-display}
 
 ```{=html}
-<div class="countdown" id="timer_1be03c5a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_62e05181" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -972,7 +963,7 @@ Response is either the decision of a single student or the total number of stude
 </section></section>
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
-<div id="timer_de382d1de259bd433eccec59e884bbdd51925102" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_083db346d198f9c55c47fd22d228580205d85712" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -983,7 +974,7 @@ Response is either the decision of a single student or the total number of stude
 
 <section id="worksheet-method-of-least-squares" class="title-slide slide level1 center">
 <h1>Worksheet: Method of Least Squares</h1>
-<div id="timer_de382d1de259bd433eccec59e884bbdd51925102" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_083db346d198f9c55c47fd22d228580205d85712" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

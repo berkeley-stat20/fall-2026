@@ -512,13 +512,13 @@ window.Quarto = {
 </header>
 
 
-<div class="page-overview callout callout-style-default callout-warning callout-titled" title="After reading, you should be able to explain the following...">
+<div class="page-overview callout callout-style-default callout-warning callout-titled" title="Micro cheat-sheet. After reading, you will have heard about...">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>After reading, you should be able to explain the following…
+<span class="screen-reader-only">Warning</span>Micro cheat-sheet. After reading, you will have heard about…
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -559,7 +559,7 @@ window.Quarto = {
 <p>And in fact we’ll add a slightly more meaningful quantity derived from the MSE: the RMSE.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Sample Root Mean Squared (Prediction) Error (RMSE)</strong></p>
-<p><span class="math display">\[ \widehat{\mbox{RMSE}} \equiv \sqrt{\widehat{\mbox{MSE}}} \]</span></p>
+<p><span class="math display">\[ \mbox{RMSE} \equiv \sqrt{\mbox{MSE}} \]</span></p>
 </div>
 <details>
 <summary>
@@ -583,16 +583,16 @@ Why am I saying that this is more meaningful?
 <p>A sample statistic that measures the proportion of the total variability in the <span class="math inline">\(Y\)</span>-variable (which is the same as the MSE from the baseline model) that goes away by using our model involving the <span class="math inline">\(X\)</span> variables (MSE from the regression model).</p>
 <p><span class="math display">\[
 \begin{aligned}
-R^2 (\mbox{your model}) &amp;\equiv \frac{\mbox{decrease in MSE}}{\mbox{old MSE}} =\frac{\widehat{\mbox{MSE}}_{\mbox{baseline}}-\widehat{\mbox{MSE}}_{\mbox{your model}}}{\widehat{\mbox{MSE}}_{\mbox{baseline}}} =\\
-&amp;= 1 - \frac{\widehat{\mbox{MSE}}_{\mbox{your model}}}{\widehat{\mbox{MSE}}_{\mbox{baseline}}}
+R^2 (\mbox{your model}) &amp;\equiv \frac{\mbox{decrease in MSE}}{\mbox{old MSE}} =\frac{\mbox{MSE}_{\mbox{baseline}}-\mbox{MSE}_{\mbox{your model}}}{\mbox{MSE}_{\mbox{baseline}}} =\\
+&amp;= 1 - \frac{\mbox{MSE}_{\mbox{your model}}}{\mbox{MSE}_{\mbox{baseline}}}
 \end{aligned}
 \]</span></p>
 <p>so <span class="math display">\[
-R^2 (\mbox{OLS}) \equiv 1 - \frac{\widehat{\mbox{MSE}}(\hat{Y}_{OLS})}{\widehat{\mbox{MSE}}(\bar{Y})}
+R^2 (\mbox{OLS}) \equiv 1 - \frac{\mbox{MSE}(\hat{Y}_{OLS})}{\mbox{MSE}(\bar{Y})}
 = 1-\frac{\sum_{i=1}^n (Y_i - \hat{Y}_{i,OLS})^2}{\sum_{i=1}^n (Y_i - \bar{Y})^2}
 \]</span></p>
 </div>
-<p>For a linear model, the sample mean error (<span class="math inline">\(\widehat{\mbox{MSE}}(\hat{Y}_{OLS})\)</span>) can only be smaller than the sample mean error of the baseline model (<span class="math inline">\(\widehat{\mbox{MSE}}(\bar{Y})\)</span>), because the linear model had access to all the information that the baseline model did, plus the values of the <span class="math inline">\(X\)</span> variables. The linear model is larger, it includes the baseline model inside of it, so it just can’t do worse than the baseline!</p>
+<p>For a linear model, the sample mean error (<span class="math inline">\(\mbox{MSE}(\hat{Y}_{OLS})\)</span>) can only be smaller than the sample mean error of the baseline model (<span class="math inline">\(\mbox{MSE}(\bar{Y})\)</span>), because the linear model had access to all the information that the baseline model did, plus the values of the <span class="math inline">\(X\)</span> variables. The linear model is larger, it includes the baseline model inside of it, so it just can’t do worse than the baseline!</p>
 <p>Therefore <span class="math inline">\(R^2\)</span> has the following properties (more in general than just for the linear model):</p>
 <ol type="1">
 <li><span class="math inline">\(R^2 \leq 1\)</span>. The best-case scenario is when your model has perfect MSE (<span class="math inline">\(=0\)</span>).</li>
@@ -783,7 +783,7 @@ Before reading these notes, take a listen to Act 3 of an episode of the podcast 
 <p><strong>def: Overfitting</strong></p>
 <p>When a predictive algorithm makes <strong>bad predictions on a fresh new sample</strong> of data points from a population, while having a <strong>deceptively amazingly good performance on the old sample</strong>, from the same population, that we used to fit it.</p>
 <p><span class="math display">\[
-\mbox{"good predictions"} \rightarrow \widehat{\mbox{MSE}}(\hat{Y}\mbox{, old sample}) \ll \widehat{\mbox{MSE}}(\hat{Y} \mbox{, new sample}) \leftarrow \mbox{"bad predictions"}
+\mbox{"good predictions"} \rightarrow \mbox{MSE}(\hat{Y}\mbox{, old sample}) \ll \mbox{MSE}(\hat{Y} \mbox{, new sample}) \leftarrow \mbox{"bad predictions"}
 \]</span></p>
 </div>
 <p>So who’s right? The old sample or the new sample?</p>

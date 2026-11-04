@@ -475,13 +475,13 @@ window.Quarto = {
 </header>
 
 
-<div class="page-overview callout callout-style-default callout-warning callout-titled" title="After reading, you should be able to explain the following...">
+<div class="page-overview callout callout-style-default callout-warning callout-titled" title="Micro cheat-sheet. After reading, you will have heard about...">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>After reading, you should be able to explain the following…
+<span class="screen-reader-only">Warning</span>Micro cheat-sheet. After reading, you will have heard about…
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -490,17 +490,16 @@ window.Quarto = {
 <ul>
 <li>What prediction is.</li>
 <li>Leveraging generalization to make predictions.</li>
-<li>Target variable.</li>
+<li>Target variable (<span class="math inline">\(Y\)</span>).</li>
 <li>Perfect generalization still leads to imperfect predictions.</li>
 <li>Leveraging association to improve predictions.</li>
-<li>Feature variables.</li>
+<li>Feature variables (<span class="math inline">\(X_j\)</span>).</li>
 <li>Predictive algorithm.</li>
 <li>Baseline regression.</li>
-<li>Population mean squared prediction error.</li>
 <li>Linear regression.</li>
 <li>Residuals.</li>
-<li>Sample mean squared prediction error.</li>
-<li>Ordinary Least Squares regression.</li>
+<li>Sample mean squared prediction error (MSE).</li>
+<li>Ordinary Least Squares regression (OLS).</li>
 <li>Iterative numerical algorithms.</li>
 </ul>
 </div>
@@ -2256,8 +2255,9 @@ E((Y-\bar{Y})^2) &amp;= E(Y^2) - 2 E(Y \cdot \bar{Y}) + E(\bar{Y}^2) =\\
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Sample Mean Squared (Prediction) Error (MSE)</strong></p>
 <p>For a sample with <span class="math inline">\(i=1,\ldots, n\)</span> observations of <span class="math inline">\(j = 1, \ldots, q\)</span> features <span class="math inline">\(X_{j,i}\)</span>, a target variable <span class="math inline">\(Y_i\)</span>, predictions of its value <span class="math inline">\(\hat{Y}_i (\mathbf{X}_{i})\)</span>, the sample MSE is</p>
-<p><span class="math display">\[ \widehat{\mbox{MSE}} \equiv \frac1{n} \sum_{i = 1}^n \left(Y_i - \hat{Y}(\mathbf{X}_i) \right)^2 = \frac1{n} \sum_{i = 1}^n \left( \hat{e}_i \right)^2\]</span></p>
+<p><span class="math display">\[ \mbox{MSE} \equiv \frac1{n} \sum_{i = 1}^n \left(Y_i - \hat{Y}(\mathbf{X}_i) \right)^2 = \frac1{n} \sum_{i = 1}^n \left( \hat{e}_i \right)^2\]</span></p>
 </div>
+<p>This MSE is a sample statistic, of course, and in principle should have a hat on top of it to distinguish it from its population counterpart but we’ll ignore it to keep the notation lighter.</p>
 <details>
 <summary>
 Not so fast. What are the units of measurement of the MSE?
@@ -2269,7 +2269,7 @@ Not so fast. What are the units of measurement of the MSE?
 </details>
 <p>For the case of a linear model: <span class="math display">\[ \hat{Y} (\mathbf{X}_i) = b_{0} + b_1 X_{1,i} + b_2 X_{2,i} + \ldots + b_q X_{q,i} \]</span></p>
 <p>Plugging this expression into the first equation gives us</p>
-<p><span class="math display">\[ \widehat{\mbox{MSE}} = \frac1{n} \sum_{i = 1}^n \left[Y_i - \left(b_{0} + b_1 X_{1,i} + b_2 X_{2,i} + \ldots +b_q X_{q,i}  \right)\right]^2\]</span></p>
+<p><span class="math display">\[ \mbox{MSE} = \frac1{n} \sum_{i = 1}^n \left[Y_i - \left(b_{0} + b_1 X_{1,i} + b_2 X_{2,i} + \ldots +b_q X_{q,i}  \right)\right]^2\]</span></p>
 <p>So how can we use this definition to decide precisely which intercept <span class="math inline">\(b_0\)</span> and slopes <span class="math inline">\(b_1, b_2, \ldots, b_q\)</span> to use? Please watch the following 19 minute video, “The Method of Least Squares”, to find out. The video is available in the media gallery on bcourses. Keep in mind that the video uses RSS instead of MSE. But RSS is just MSE multiplied by the sample size <span class="math inline">\(n\)</span>, so absolutely nothing changes.</p>
 <p><a href="https://bcourses.berkeley.edu/courses/1557153/external_tools/90481"><img src="images/method-of-least-squares-thumbnail.png" class="img-fluid" width="400"></a></p>
 <section id="iterative-numerical-methods" class="level4">
@@ -2277,7 +2277,7 @@ Not so fast. What are the units of measurement of the MSE?
 <p>As we saw in the video, the problem of least squares can be defined as one of <strong>optimization</strong>.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Ordinary Least Squares</strong></p>
-<p>Find the <span class="math inline">\(b_0,\ldots, b_q\)</span> that make the following quantity <span class="math display">\[\widehat{\mbox{MSE}} (b_0,b_1, \ldots, b_q) = \frac1{n} \sum_{i = 1}^n \left[Y_i - \left(b_{0} + b_1 X_{1,i} + \ldots +b_q X_{q,i}  \right)\right]^2\]</span></p>
+<p>Find the <span class="math inline">\(b_0,\ldots, b_q\)</span> that make the following quantity <span class="math display">\[\mbox{MSE} (b_0,b_1, \ldots, b_q) = \frac1{n} \sum_{i = 1}^n \left[Y_i - \left(b_{0} + b_1 X_{1,i} + \ldots +b_q X_{q,i}  \right)\right]^2\]</span></p>
 <p>the smallest possible.</p>
 <p>The learned optimal solutions will be indicated by</p>
 <p><span class="math display">\[\hat{b}_{0,OLS},\hat{b}_{1,OLS}, \ldots \hat{b}_{q,OLS}  \]</span></p>
