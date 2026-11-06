@@ -417,7 +417,7 @@ window.Quarto = {
 <section id="calculating-textmcr" class="level4">
 <h4 class="anchored" data-anchor-id="calculating-textmcr">Calculating <span class="math inline">\(\text{MCR}\)</span></h4>
 <p>Let’s take a look at the predictions that this model makes back into the data set that it was trained on. When using the <code>predict()</code> function on logistic regression models, there are several different types of predictions that it can return, so be sure to use the additional argument <code>type</code> and supply it with <code>"response"</code>. This will return <span class="math inline">\(\hat{p}_i\)</span> (probability of <code>1</code>) for each observation.</p>
-<p>We can then move from values of <span class="math inline">\(\hat{p}_i\)</span> to values of <span class="math inline">\(\hat{y}_i\)</span>. In general, our rule will be to check and see whether each value of <span class="math inline">\(\hat{p}_i\)</span> is greater than .5. If so, we will assign the value of <code>1</code>; otherwise, we will assign it <code>0</code>. This sounds similar to creating a logical variable, but assigning something different than <code>TRUE</code> and <code>FALSE</code> to each observation in the dataset. We will use a function called <strong><code>ifelse()</code></strong>, therefore, which will allow us to assign we want (<code>1</code> and <code>0</code>).</p>
+<p>We can then move from values of <span class="math inline">\(\hat{p}_i\)</span> to values of <span class="math inline">\(\hat{Y}_i\)</span>. In general, our rule will be to check and see whether each value of <span class="math inline">\(\hat{p}_i\)</span> is greater than .5. If so, we will assign the value of <code>1</code>; otherwise, we will assign it <code>0</code>. This sounds similar to creating a logical variable, but assigning something different than <code>TRUE</code> and <code>FALSE</code> to each observation in the dataset. We will use a function called <strong><code>ifelse()</code></strong>, therefore, which will allow us to assign we want (<code>1</code> and <code>0</code>).</p>
 <p>The following block of code completes both of these two steps and saves the results back into the <code>email</code> data frame.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> email <span class="sc">|&gt;</span></span>
@@ -465,13 +465,6 @@ window.Quarto = {
 <section id="training-and-testing-sets" class="level4">
 <h4 class="anchored" data-anchor-id="training-and-testing-sets">Training and testing sets</h4>
 <p>One final note: this <span class="math inline">\(\text{MCR}\)</span> was calculated over <em>all of the data</em>. The best way to evaluate the performance of the model is to split the data into training and testing sets, fit the model on the training set and evaluate it on the testing set. We can calculate both training and testing versions of <span class="math inline">\(\text{MCR}\)</span> and compare them to see if the model is doing well on e-mails it hasn’t yet seen.</p>
-</section>
-</section>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>In these notes we introduced the concept of classification using a logistic regression model. Logistic regression uses the logistic function to transform predictions into a probability that the response is 1. These probabilities can be used to classify y as 0 or 1 by checked to see if they exceed a threshold (often .5).</p>
-<p>We then went through the process of fitting logistic regression to help us classify spam e-mails, and evaluated our results using the misclassification rate.</p>
 
 
 <script type="ojs-module-contents">
@@ -488,6 +481,8 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

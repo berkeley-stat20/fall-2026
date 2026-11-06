@@ -160,33 +160,14 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section>
 <section id="warmup" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_1c9e6018a92223b8cd605ecd18298bc8ebe159aa" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h1>Warmup <div id="timer_ef504b6d215c1717e40767c265ecf5e35c31e69b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
  </div>
  <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
  </div></h1>
-<!--
-:::{.warmup-only}
-For each of the following scenarios identify:
 
--  the target variable $Y$ and its type
--  (time permitting, the features $X_j$, their types, and how many they are ($q$))
--  whether it's a regression or a classification task
-
-
-:::
-
-## Secenario A {.warmup-question} 
-
-- Amazon sets the price for a specific book, dependent on the book's weight and whether it is hardback or paperback.
-
-:::answer
-Careful!! This is a **Causality** question. "What would happen if I were to set the price of the book at some value $x$?"
-:::
-
--->
 </section>
 <section id="how-are-mse-rmse-and-r2-related" class="slide level2 warmup-question">
 <h2>How are MSE, RMSE, and <span class="math inline">\(R^2\)</span> related?</h2>
@@ -210,36 +191,179 @@ Careful!! This is a **Causality** question. "What would happen if I were to set 
 <h2>Eyeball the sample RMSE and then MSE of the models.</h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
-<p><span class="math display">\[\mbox{RMSE}_A \approx 2 \Rightarrow \mbox{MSE}_A \approx 4, \; \mbox{RMSE}_B \approx 1 \Rightarrow \mbox{MSE}_B \approx 1, \; \mbox{RMSE}_C \approx 2 \Rightarrow \mbox{MSE}_C \approx 4 \\
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">MSE</th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">MSE</th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;">RMSE</th>
+<th style="text-align: right;">MSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 2 \mbox{ m}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\approx 4 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">B</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1 \mbox{ m}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">C</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 2 \mbox{ m}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\approx 4 \mbox{ m}^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 5 \mbox{ m}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\approx 25 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">E</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 3 \mbox{ m}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\approx 9 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 7 \mbox{ m}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\approx 49 \mbox{ m}^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<!--$$\mbox{RMSE}_A \approx 2 kg \Rightarrow \mbox{MSE}_A \approx 4 kg^2, \; \mbox{RMSE}_B \approx 1 kg \Rightarrow \mbox{MSE}_B \approx 1 kg^2, \; \mbox{RMSE}_C \approx 2 kg^ \Rightarrow \mbox{MSE}_C \approx 4 kg^2 \\
 \mbox{RMSE}_D \approx 5 \Rightarrow \mbox{MSE}_D \approx 25, \; \mbox{RMSE}_E \approx 3 \Rightarrow \mbox{MSE}_E \approx 9, \; \mbox{RMSE}_F \approx 7 \Rightarrow \mbox{MSE}_F \approx 49
-\]</span></p>
+-->
 </div>
 </section>
-<section id="eyeball-the-variance-of-the-samples-i.e.-the-mse-of-the-baseline-models." class="slide level2">
-<h2>Eyeball the variance of the samples (i.e.&nbsp;the MSE of the baseline models).</h2>
+<section id="eyeball-the-y-variances-of-the-samples-i.e.-the-mse-of-the-baseline-models." class="slide level2">
+<h2>Eyeball the <span class="math inline">\(Y\)</span>-variances of the samples (i.e.&nbsp;the MSE of the baseline models).</h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
-<p><span class="math display">\[\mbox{MSE}_{\mbox{baseline}, A} \approx 2^2=4, \;  \mbox{MSE}_{\mbox{baseline}, B} \approx 3^2=9, \; \mbox{MSE}_{\mbox{baseline}, C} \approx 2^2 = 4 \\
-\mbox{MSE}_{\mbox{baseline}, D} \approx 5^2=25, \; \mbox{MSE}_{\mbox{baseline}, E} \approx 7^2=49, \;  \mbox{MSE}_{\mbox{baseline}, F} \approx 7^2=49
-\]</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;"><span class="math inline">\(\mbox{MSE}_\mbox{baseline}\)</span></th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;"><span class="math inline">\(\mbox{MSE}_\mbox{baseline}\)</span></th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;"><span class="math inline">\(\mbox{MSE}_\mbox{baseline}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 2^2=4 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">B</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 3^2=9 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">C</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 2^2 = 4 \mbox{ m}^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 5^2=25 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">E</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 7^2=49 \mbox{ m}^2\)</span></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 7^2=49 \mbox{ m}^2\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="and-finally-the-r2-are" class="slide level2">
 <h2>And finally the <span class="math inline">\(R^2\)</span> are?</h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
-<p><span class="math display">\[R^2_{A} \approx 0, \;  R^2_{ B} \approx \frac{8}{9} \approx 0.9, \; R^2_{ C} \approx 0 \\
-R^2_{D} \approx 0, \; R^2_{ E} \approx \frac{40}{49} \approx 0.8, \;  R^2_{ F} \approx 0
-\]</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: right;"><span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1- \frac{4}{4} = 0\)</span></td>
+<td style="text-align: center;">B</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1-\frac{1}{9} \approx 0.9\)</span></td>
+<td style="text-align: center;">C</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1- \frac{4}{4} = 0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1- \frac{25}{25} = 0\)</span></td>
+<td style="text-align: center;">E</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1- \frac{9}{49} \approx 0.8\)</span></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: right;"><span class="math inline">\(\approx 1- \frac{49}{49} = 0\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>The models in A, C, D, F just don’t really do much better than baseline at all…</p>
-<p>A and D because the function is bad. A curved function would do better. D and F just seem to have no interesting structure at all in them, it’s just bad data…</p>
+<p>A and D because the function is bad. Choose a nonlinear function next time! C and F just seem to have no interesting structure at all in them, it’s just useless data…</p>
+</div>
+</section>
+<section id="did-you-notice" class="slide level2">
+<h2>Did you notice?</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
+<p><span class="math inline">\(\mbox{RMSE}_C \approx  2 \mbox{ m} &lt;  3 \mbox{ m} \approx  \mbox{RMSE}_E\)</span> but… <span class="math inline">\(R^2_C \approx  0  \ll 0.8  \approx R^2_E\)</span></p>
+</div>
+</section>
+<section id="did-you-notice-1" class="slide level2">
+<h2>Did you notice?</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="answer fragment">
+<p><span class="math inline">\(\mbox{RMSE}_C \approx  2 \mbox{ m} &lt;  3 \mbox{ m} \approx  \mbox{RMSE}_E\)</span> but… <span class="math inline">\(R^2_C \approx  0  \ll 0.8  \approx R^2_E\)</span></p>
+<ul>
+<li>The model in C makes smaller errors than E in absolute terms.</li>
+<li>But the model in E improves much more over the baseline!</li>
+<li>The model in C is almost useless.</li>
+</ul>
 </div>
 </section>
 <section id="the-moral-of-the-story" class="slide level2">
 <h2>The Moral of the Story</h2>
 <ul>
-<li><p>MSE/RMSE measure how good your predictions are in <strong>absolute</strong> terms. Maybe your data was completely uninformative but you’ll still be penalized. Life isn’t fair. Also, they have units of measurement.</p></li>
-<li><p><span class="math inline">\(R^2\)</span> measures how good your predictions are <strong>relative to the baseline model</strong>. It will forgive you a little if your data has a lot of variation. It’s a proportion, so it has no units.</p></li>
+<li>MSE/RMSE measure how good your predictions are <u>in absolute terms</u>. <em>They have units of measurement</em>.
+<ul>
+<li><em>MSE</em> behaves better as a mathematical object and is <u>important theoretically</u>.</li>
+<li><em>RMSE</em> behaves worse because of the square root, but is <u>more intuitive</u> to a human. (It has the <em>same units</em> as the <span class="math inline">\(Y\)</span> variable)</li>
+</ul></li>
+<li><span class="math inline">\(R^2\)</span> measures how good your predictions are <u>relative to the baseline</u> (or the variance of the <span class="math inline">\(Y\)</span> variable). How <u>impressive</u> your model is. It will forgive you a little if your data has a lot of variation. It’s a proportion, so it has <em>no units</em>.</li>
 </ul>
 <!--
 
@@ -249,7 +373,7 @@ R^2_{D} \approx 0, \; R^2_{ E} \approx \frac{40}{49} \approx 0.8, \;  R^2_{ F} \
 ::: {.cell-output-display}
 
 ```{=html}
-<div class="countdown" id="timer_b99a6846" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_08107f0c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -275,62 +399,66 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <section id="concept-question" class="slide level2">
 <h2>Concept question</h2>
 <ul>
-<li>Using “time_being_pet”, which <code>lm</code> formula is most appropriate to predict hunger, based on the below visualization?</li>
+<li>Using <code>time_being_pet</code>, which <code>lm</code> formula is most appropriate to predict hunger, based on the below visualization?</li>
 </ul>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="answer fragment">
-<p><code>formula = hunger ~ I(time_being_pet^2)</code></p>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"><div class="answer fragment">
+<p><code>formula = hunger ~ I(time_being_pet^2)</code>. Careful! <code>poly(time_being_pet, degree = 2, raw = TRUE)</code> wouldn’t be equivalent. Why?</p>
 </div>
 </section>
 <section id="activity-learning-latin" class="slide level2">
+<h2>Activity: Learning Latin!</h2>
+</section>
+<section id="activity-learning-latin-1" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>In Latin</p>
 <p>‘Dog’ is <em>canis</em> ([ˈka.nɪs])</p>
 <p>(write this down)</p>
 </section>
-<section id="activity-learning-latin-1" class="slide level2">
+<section id="activity-learning-latin-2" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>In Latin</p>
 <p>‘House’ is <em>domus</em> ([ˈdɔ.mʊs])</p>
 <p>(write this down)</p>
 </section>
-<section id="activity-learning-latin-2" class="slide level2">
+<section id="activity-learning-latin-3" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>In Latin</p>
 <p>‘Girl’ is <em>puella</em> ([puˈɛl.la])</p>
 <p>(write this down)</p>
 </section>
-<section id="activity-learning-latin-3" class="slide level2">
+<section id="activity-learning-latin-4" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>Do you know Latin now? Let’s test you</p>
 </section>
-<section id="activity-learning-latin-4" class="slide level2">
+<section id="activity-learning-latin-5" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>Do you know Latin now? Let’s test you</p>
 <p>What’s Latin for ‘dog’?</p>
 <p>What’s Latin for ‘house’?</p>
 <p>What’s Latin for ‘girl’?</p>
 </section>
-<section id="activity-learning-latin-5" class="slide level2">
+<section id="activity-learning-latin-6" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>Do you know Latin now? Let’s test you</p>
 <p>Wow! 3/3??</p>
 <p>Perfect! You clearly know Latin now!</p>
 </section>
-<section id="activity-learning-latin-6" class="slide level2">
+<section id="activity-learning-latin-7" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
 <p>What’s Latin for ‘trumpet’?</p>
 </section>
-<section id="activity-learning-latin-7" class="slide level2">
+<section id="activity-learning-latin-8" class="slide level2">
 <h2>Activity: Learning Latin!</h2>
-<p>You overfitted! You just learned the training set by heart because you have a complex brain (complex model) and you had a 100% score on the training set.</p>
-<p>But the moment I tested you on new data (test set) you showed how you didn’t really grasp the pattern of the Latin language at all.</p>
+<p>You <em>overfitted</em>!</p>
+<p>You just learned the training set by heart because you have a <u>complex brain</u> ( = complex model) and you had a <u>100% score on the training set</u>.</p>
+<p>But when I tested you on new data you got <u>0% on the test set</u>.</p>
 </section></section>
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1b5ad17e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_33f09d59" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -342,7 +470,7 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <h1>Worksheet: <em>Evaluating, Improving predictions, and Overfitting</em></h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_44c98798" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_d5cf61a5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">40</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -354,7 +482,7 @@ Fit the training data well, but testing data not as well. (Can choose option "po
 <h1>Lab</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_dbdc244d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_9bd34e78" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">45</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
