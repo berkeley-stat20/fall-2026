@@ -707,7 +707,7 @@ biology_test <- biology |>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">resid_poly =</span> score <span class="sc">-</span> score_pred_poly) <span class="sc">|&gt;</span> <span class="co"># compute the residuals for poly model</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">MSE_baseline =</span> <span class="fu">mean</span>((score <span class="sc">-</span> <span class="fu">mean</span>(score))<span class="sc">^</span><span class="dv">2</span>), <span class="co"># compute total variation or baseline MSE</span></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_linear =</span> <span class="fu">mean</span>(resid_linear<span class="sc">^</span><span class="dv">2</span>),  <span class="co"># compute RSS for the linear model</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_poly =</span> <span class="fu">sum</span>(resid_poly<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">|&gt;</span>      <span class="co"># compute RSS for the polynomial model</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">MSE_poly =</span> <span class="fu">mean</span>(resid_poly<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">|&gt;</span>      <span class="co"># compute RSS for the polynomial model</span></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Rsq_linear =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_linear<span class="sc">/</span>MSE_baseline, <span class="co"># compute Rsq, MSE, RMSE for each model</span></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">Rsq_poly =</span> <span class="dv">1</span> <span class="sc">-</span> MSE_poly<span class="sc">/</span>MSE_baseline,</span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">RMSE_linear =</span> <span class="fu">sqrt</span>(MSE_linear),</span>
@@ -717,7 +717,7 @@ biology_test <- biology |>
 <pre><code># A tibble: 1 × 6
   Rsq_linear Rsq_poly MSE_linear MSE_poly RMSE_linear RMSE_poly
        &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-1      0.664    -17.5       26.6    1467.        5.16      38.3</code></pre>
+1      0.664    0.629       26.6     29.3        5.16      5.42</code></pre>
 </div>
 </div>
 <p>Voila! The linear model’s test set <span class="math inline">\(R^2\)</span> is better than the polynomial model’s test <span class="math inline">\(R^2\)</span>! We also see the <span class="math inline">\(\mbox{MSE}\)</span> for the linear model is lower than that for the polynomial model.</p>

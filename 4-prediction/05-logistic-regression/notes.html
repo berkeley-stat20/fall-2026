@@ -634,7 +634,7 @@ The last time you checked your email inbox, you observed the results of yet anot
 <p>This is a strange looking scatter plot - the dots can only take <span class="math inline">\(y\)</span> values of 0 or 1 - but it does capture the overall trend observed in the density plots, that spam messages are longer. Since we have a scatter plot, we could fit a simple linear regression model using the method of least squares (in gold).</p>
 <p><span class="math display">\[ \hat{Y} = b_0 + b_1 X \]</span></p>
 <p>While this is doable, it leaves us with a few sppoky questions. The value of <span class="math inline">\(\hat{Y}\)</span> can be anywhere on the real number line.</p>
-<p>What does it mean if we predict that the value of <span class="math inline">\(Y=\)</span> spam is .71? <span class="math inline">\(Y\)</span> can only be 0 or 1 …</p>
+<p>What does it mean if we predict that the value of <span class="math inline">\(Y\)</span> is .71? I thought <span class="math inline">\(Y\)</span> could only be 0 or 1 …</p>
 <p>One approach to resolving this is to <em>treat our equation not as a value of <span class="math inline">\(Y\)</span>, but as an estimate of the <em>probability</em>, <span class="math inline">\(p\)</span>, that <span class="math inline">\(Y = 1\)</span> if I know the value of the feature X.</em> We can rewrite the model as:</p>
 <p><span class="math display">\[p(X) = b_0 + b_1 X\]</span></p>
 <p>Then fit it</p>
@@ -652,22 +652,22 @@ The last time you checked your email inbox, you observed the results of yet anot
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Linear Probability Model</strong> (you don’t need to remember this)</p>
 <p>If you have an <span class="math inline">\(n\)</span>-sized sample of a binary target variable (<span class="math inline">\(Y_i = 0,1\)</span>) and several features <span class="math inline">\(X_{1,i}, \ldots, X_{q,i}\)</span>.</p>
-<p>Step 1 <span class="math display">\[ h(\mathbf{X}) \equiv  b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_q X_q \]</span></p>
+<p>Step 1 (model definition) <span class="math display">\[ h(\mathbf{X}) \equiv  b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_q X_q \]</span></p>
 <p>which defines the helper function <span class="math inline">\(h()\)</span> as the linear model.</p>
-<p>Step 2</p>
+<p>Step 2 (model fitting)</p>
 <p>Fit it as usual, based on minimizing the MSE on the data, to obtain the OLS coefficients.</p>
 <p><span class="math display">\[ \hat{b}_{0, OLS }, \hat{b}_{1, OLS }, \ldots, \hat{b}_{q, OLS }  \]</span></p>
-<p>and <span class="math display">\[\hat{h}(\mathbf{X}) =\hat{b}_{0, OLS } + \hat{b}_{1, OLS } X_1, \ldots, \hat{b}_{q, OLS } X_q \]</span>.</p>
-<p>Step 3</p>
+<p>and <span class="math display">\[\hat{h}(\mathbf{X}) =\hat{b}_{0, OLS } + \hat{b}_{1, OLS } X_1 + \ldots + \hat{b}_{q, OLS } X_q \]</span></p>
+<p>Step 3 (probability derivation)</p>
 <p><span class="math display">\[
 \hat{p}(\mathbf{X}) \equiv \hat{P}(Y=1|\mathbf{X}) \equiv  \begin{cases}
 0 &amp; \text{if} \; \hat{h} (\mathbf{X}) &lt;0  \\
 \hat{h} (\mathbf{X}) &amp; \text{if} \; 0 \leq \hat{h} (\mathbf{X}) \leq 1   \\
-1 &amp; \text{if} \; \hat{h} (\mathbf{X}) &gt; 0
+1 &amp; \text{if} \; \hat{h} (\mathbf{X}) &gt; 1
 \end{cases}
 \]</span></p>
 <p>which limits the actual estimated probability between 0 and 1.</p>
-<p>Step 4 <span class="math display">\[
+<p>Step 4 (final prediction rule) <span class="math display">\[
 \hat{Y} (\mathbf{X}) \equiv \begin{cases}
 0 &amp; \text{if} \; \hat{p} (\mathbf{X}) &lt; 0.5   \\
 1 &amp; \text{if} \; \hat{p} (\mathbf{X}) \geq 0.5
@@ -677,11 +677,11 @@ The last time you checked your email inbox, you observed the results of yet anot
 </div>
 <p>where you have certainly recognized the estimated conditional probability <span class="math inline">\(\hat{P}(Y=1|\mathbf{X})\)</span>: the estimated probability that <span class="math inline">\(Y\)</span> is equal to 1, knowing the value of the <span class="math inline">\(\mathbf{X}= X_1, X_2, \dots , X_q\)</span>.</p>
 <p>The problem with this model is that it just behaves badly when we fit it on the data: it’s sensitive to outliers and has other unpleasant mathematical properties. Though the author of these notes finds it really pretty!</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2880"></p>
 </figure>
 </div>
 </div>
@@ -689,17 +689,17 @@ The last time you checked your email inbox, you observed the results of yet anot
 </section>
 <section id="getting-gentler-the-logistic-model." class="level3">
 <h3 class="anchored" data-anchor-id="getting-gentler-the-logistic-model.">Getting gentler: the logistic model.</h3>
-<p>Ok, so, basically we have two problems</p>
+<p>Ok, so, basically we have two problems:</p>
 <ol type="1">
-<li>we got a bit too … blunt(?) when clipping off the below 0 and above 1 values of the probability.</li>
+<li>we got a bit too … blunt(?) when clipping off the values of the probability below 0 and above 1.</li>
 <li>optimizing <span class="math inline">\(\mbox{MSE}\)</span> when fitting <span class="math inline">\(h(\mathbf{X})\)</span> is just a bad idea, because it makes it sensitive to outliers</li>
 </ol>
 <section id="the-logistic-function" class="level4">
 <h4 class="anchored" data-anchor-id="the-logistic-function">The Logistic function</h4>
 <p>Let’s start with the first problem.</p>
-<p>Instead of just setting <span class="math inline">\(p(\mathbf{X})\)</span> abruptly to 0 and 1, we can use a smooth, gentle function that makes the probability limited between 0 and 1. Sucha function is called a <em>sigmoid</em>. The most commonly used sigmoid function is called the <strong>logistic function</strong>:</p>
+<p>Instead of just setting <span class="math inline">\(p(\mathbf{X})\)</span> abruptly to 0 and 1, we can use a smooth, gentle function that makes the probability bounded between 0 and 1. Such a function is called a <em>sigmoid</em>. The most commonly used sigmoid function is called the <strong>Logistic Function</strong>:</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: Logistic function</strong></p>
+<p><strong>def: Logistic Function</strong></p>
 <p><span class="math display">\[ f_{\sigma}(t) \equiv \frac{1}{1 + {\rm e}^{-t}}\]</span></p>
 </div>
 <p>We can fix this by <em>changing the mathematical form of the model used to predict the response. Instead of it being a line, we can use an alternative function that prevents predictions greater than 1 and less than zero.</em></p>
@@ -750,7 +750,7 @@ The last time you checked your email inbox, you observed the results of yet anot
 </table>
 <p>This is awesome because we can just stick the linear function <span class="math inline">\(h(\mathbf{X})\)</span> inside of the sigmoid and obtain a number between 0 and 1, that we can interpret as a probability!</p>
 <p>We could declare victory, go home, and have a feast, but… there’s bad news.</p>
-<p>We still have the second problem.</p>
+<p>We still have the second problem: outliers.</p>
 </section>
 <section id="good-bye-to-least-squares" class="level4">
 <h4 class="anchored" data-anchor-id="good-bye-to-least-squares">Good-bye to Least Squares</h4>
@@ -761,14 +761,14 @@ The last time you checked your email inbox, you observed the results of yet anot
 p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_q X_q  \right)}}
 \]</span></p>
 <p>Look at it! How pretty! Tucked cozily up inside that exponent.</p>
-<p>But the closeness of the estimation will be measured by a different function than the MSE. You don’t have to remember it. <code>R</code> will do the optimization for you, but I will include it here for completeness.</p>
+<p>But the closeness of the estimation to the data will be measured by a different function than the MSE. You don’t have to remember it. <code>R</code> will do the optimization for you, but I will include it here for completeness.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: Sample Cross Entropy</strong> (you don’t need to remember this)</p>
-<p>For a certain model estimating probability <span class="math inline">\(p(\mathbf{X})\)</span> for binary data <span class="math inline">\(Y_i\)</span>, the cross entropy of the model measures how far the model estimate is from the data, and is defined mathematically by</p>
-<p><span class="math display">\[ H \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i {\rm log} \left(p(\mathbf{X})\right) + \left(1-Y_i\right) {\rm log} \left(1-p(\mathbf{X})\right)  \right] \]</span></p>
+<p><strong>def: Sample Cross-entropy</strong> (you don’t need to remember this)</p>
+<p>For a certain model determining probability <span class="math inline">\(p(\mathbf{X})\)</span> for binary data <span class="math inline">\(Y_i\)</span>, the cross-entropy of the model measures how far the model probability distribution is from the data, and is defined mathematically by</p>
+<p><span class="math display">\[ H \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i \cdot {\rm log} \left(p(\mathbf{X}_i)\right) + \left(1-Y_i\right) \cdot {\rm log} \left(1-p(\mathbf{X}_i)\right)  \right] \]</span></p>
 </div>
-<p>This function is not as nice as the MSE, unfortunately. We can’t solve its minimization through calculus like the Ordinary Least Squares Method. We will be forced to use numerical methods to optimize it.</p>
-<p>This feels like loss (let me know if you get the pun).</p>
+<p>This function is not as nice as the MSE, unfortunately. We can’t solve its minimization through calculus like the Ordinary Least Squares method. We will be forced to use numerical methods to optimize it.</p>
+<p>This might feel like a loss (let me know if you get the pun), but it’s a win!</p>
 </section>
 </section>
 <section id="putting-it-all-together" class="level3">
@@ -776,22 +776,22 @@ p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Logistic Regression</strong></p>
 <p>If you have an <span class="math inline">\(n\)</span>-sized sample of a binary target variable (<span class="math inline">\(Y_i = 0,1\)</span>) and several features <span class="math inline">\(X_{1,i}, \ldots, X_{q,i}\)</span>.</p>
-<p>Step 1 <span class="math display">\[ P(Y=1|\mathbf{X}) = p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_q X_q  \right)}} \]</span></p>
+<p>Step 1 (model definition) <span class="math display">\[ P(Y=1|\mathbf{X}) = p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + \ldots + b_q X_q  \right)}} \]</span></p>
 <p>which defines the <em>logistic probability model</em> as a function of the features. The <span class="math inline">\(b_0, b_1, \ldots, b_q\)</span> are called the <em>coefficients</em> or <em>weights</em> of the model.</p>
-<p>Step 2 <span class="math display">\[
-H (b_0, b_1, \ldots, b_q) \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i {\rm log} \left(p(\mathbf{X}_i)\right) + \left(1-Y_i\right) {\rm log} \left(1-p(\mathbf{X}_i)\right)  \right]
+<p>Step 2 (choice of optimization function) <span class="math display">\[
+H (b_0, b_1, \ldots, b_q) \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i \cdot {\rm log} \left(p(\mathbf{X}_i)\right) + \left(1-Y_i\right) \cdot {\rm log} \left(1-p(\mathbf{X}_i)\right)  \right]
 \]</span></p>
-<p>which defines the <em>cross-entropy function</em> for the logistic model. When the entropy is close to 0 the estimate of the probability is very good.</p>
-<p>Step 3</p>
+<p>which defines the <em>cross-entropy function</em> for the logistic model. When the cross-entropy is close to 0 the estimate of the probability is very good.</p>
+<p>Step 3 (model fitting)</p>
 <p>Now we can use some numerical algorithm (like Gradient Descent or Nelder-Mead) to minimize <span class="math inline">\(H\)</span> and find the optimal coefficients</p>
 <p><span class="math display">\[
 \hat{b}_{0, LR }, \hat{b}_{1, LR }, \ldots, \hat{b}_{q, LR }
 \]</span></p>
 <p>and then plug them in and get the <em>estimated probability</em></p>
 <p><span class="math display">\[
-\hat{p}(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( \hat{b}_{0,LR} + \hat{b}_{1,LR} X_1 + \hat{b}_{2,LR} X_2 + \ldots + \hat{b}_{q,LR} X_q  \right)}}
+\hat{p}(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( \hat{b}_{0,LR} + \hat{b}_{1,LR} X_1 + \ldots + \hat{b}_{q,LR} X_q  \right)}}
 \]</span></p>
-<p>Step 4</p>
+<p>Step 4 (final prediction rule)</p>
 <p><span class="math display">\[
 \hat{Y} (\mathbf{X}) \equiv \begin{cases}
 0 &amp; \text{if} \; \hat{p} (\mathbf{X}) &lt; 0.5   \\
@@ -800,12 +800,21 @@ H (b_0, b_1, \ldots, b_q) \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i {\rm log} \l
 \]</span></p>
 <p>which makes the final prediction about <span class="math inline">\(Y\)</span> just as we saw before.</p>
 </div>
-<p>We can visualize the approach that logistic regression takes by sketching the predictions as a green s-shaped curve on top of our scatter plot.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/log-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
+<p><img src="notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2880"></p>
 </figure>
 </div>
+</div>
+</div>
+<!--
+We can visualize the approach that logistic regression takes by sketching the predictions as a green s-shaped curve on top of our scatter plot.
+    
+![](images/log-2.png){width="450" fig-align="center"}
+
+-->
 </section>
 </section>
 <section id="evaluating-our-predictions-for-classification" class="level2">
@@ -844,14 +853,14 @@ H (b_0, b_1, \ldots, b_q) \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i {\rm log} \l
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Misclassification Rate (MCR)</strong></p>
 <p>This is an estimate of the probability of just being wrong (one way or the other)</p>
-<p><span class="math display">\[\mbox{MCR} = \hat{P}(\hat{Y} \neq Y) =  \frac{\mbox{FP} + \mbox{FN}}{n}\]</span></p>
+<p><span class="math display">\[\mbox{MCR} \equiv \hat{P}(\hat{Y} \neq Y) \equiv  \frac{\mbox{FP} + \mbox{FN}}{n}\]</span></p>
 <p>where <span class="math inline">\(n= \mbox{FP} + \mbox{TP} + \mbox{TN} + \mbox{FN}\)</span> is the total sample size.</p>
 </div>
-<p>If you want to avoiding mixing together the two types of error you can instead use these two extremeley popular queantities: Precision and Recall.</p>
+<p>If you want to avoiding mixing together the two types of error you can instead use these two extremeley popular quantities: Precision and Recall.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Precision</strong></p>
 <p>This is an estimate of the probability that your positive predictions are correct</p>
-<p><span class="math display">\[\mbox{Precision} = \hat{P}(Y=1 | \hat{Y} =1 ) =  \frac{\mbox{TP}}{\mbox{TP} + \mbox{FP}}\]</span></p>
+<p><span class="math display">\[\mbox{Precision} \equiv \hat{P}(Y=1 | \hat{Y} =1 ) \equiv \frac{\mbox{TP}}{\mbox{TP} + \mbox{FP}}\]</span></p>
 </div>
 <p>I.e. the percentage of times you’re correct when you say “it’s spam!” is your Precision.</p>
 <details>
@@ -867,7 +876,7 @@ What’s the cheat to make your Precision = 1?
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Recall</strong></p>
 <p>This is an estimate of the probability that the positive samples were correctly predicted by your model</p>
-<p><span class="math display">\[\mbox{Recall} = \hat{P}(\hat{Y}=1 | Y =1 ) =  \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}}\]</span></p>
+<p><span class="math display">\[\mbox{Recall} \equiv \hat{P}(\hat{Y}=1 | Y =1 ) \equiv  \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}}\]</span></p>
 </div>
 <p>I.e. the percentage of times you say “it’s spam!” when a sample is actually spam is your Recall.</p>
 <details>
@@ -880,12 +889,53 @@ What’s the cheat to make your Recall = 1?
 <p>What’s the trade-off?</p>
 </div>
 </details>
-<p>Because of these two cheats, we can never only use precision or only use Recall to evaluate a model but we have to use both at the same time, just like in th eGeneralization unit we used <em>significance level</em> and <em>power</em> together to evaluate our tests, and <em>confidence level</em> together with <em>precision</em> (interval width) to evaluate our confidence intervals.</p>
+<p>Because of these two cheats, we can never only use Precision or only use Recall to evaluate a model but we have to use both at the same time, just like in the Generalization unit we used <em>significance level</em> and <em>power</em> together to evaluate our <em>hypothesis tests</em>, and <em>confidence level</em> together with <em>precision</em> (interval width) to evaluate our <em>confidence intervals</em>.</p>
+<details>
+<summary>
+Try this exercise!
+</summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
+<p>Imagine we’re trying to build a method (<span class="math inline">\(\hat{Y}\)</span>) to predict if someone has Covid.</p>
+<p>Imagine you have a test sample with <span class="math inline">\(n=200\)</span> observations. You know that <span class="math inline">\(25\)</span> of the sample are people who truly have Covid. Your method classified <span class="math inline">\(20\)</span> of these as positive to Covid, while it classified <span class="math inline">\(166\)</span> of the healthy people as negative to Covid.</p>
+<p>What are MCR, Precision, and Recall?</p>
+<p>Let’s figure it out slowly.</p>
+<p>The total sample size is gonna be broken down this way: <span class="math inline">\(200= \mbox{FP} + \mbox{TP} + \mbox{TN} + \mbox{FN}\)</span>. We know that <span class="math inline">\(25= \mbox{FN} + \mbox{TP}\)</span>, and <span class="math inline">\(20= \mbox{TP}\)</span>. This implies that <span class="math inline">\(\mbox{FN} = 25- \mbox{TP} = 20\)</span> and <span class="math inline">\(\mbox{FP} + \mbox{TN} = 200 -25 = 175\)</span>. Also, we’re told that <span class="math inline">\(166= \mbox{TN}\)</span>. This gives us the last piece of info: <span class="math inline">\(\mbox{FP} = 175- \mbox{TN} = 175-166 = 9\)</span>.</p>
+<p>So, the confusion matrix is:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><span class="math inline">\(Y = 0\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(Y = 1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\hat{Y} = 0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mbox{TN} =166\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mbox{FN} = 5\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\hat{Y} = 1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mbox{FP} = 9\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mbox{TP} = 20\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>So</p>
+<p><span class="math inline">\(\mbox{MCR} = \frac{\mbox{FP} + \mbox{FN}}{n} = \frac{9 + 5}{200} = \frac{14}{200} = 0.07\)</span>,</p>
+<p>and</p>
+<p><span class="math inline">\(\mbox{Precision} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FP}} = \frac{20}{20 + 9} = \frac{20}{29} \approx 0.690\)</span>,</p>
+<p><span class="math inline">\(\mbox{Recall} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}} = \frac{20}{20 + 5} = \frac{20}{25} = 0.8\)</span>.</p>
+<p>So, your method has a 7% misclassification rate, 69% Precision and 80% Recall.</p>
+<p>Are you happy with it? Do you think you’re more worried about False Positives or False Negatives?</p>
+</div>
+</details>
 <section id="workflow-and-overfitting" class="level3">
 <h3 class="anchored" data-anchor-id="workflow-and-overfitting">Workflow and Overfitting</h3>
 <p>Nothing to see here. It’s all the same as before.</p>
-<p>Just like in a linear Regression context, we can fit a suite of different models on the <em>training set</em> and evaluate their performance on the <em>testing set</em>. Now, our model type of choice is logistic regression and our evaluation metric is <span class="math inline">\(\mbox{MCR}\)</span> or Precision and Recall, etc.</p>
-<p>Overfitting works the same way. Evaluation will look awesome on the training sample but bad on the test sample.</p>
+<p>Just like in a linear Regression context, we can fit a bunch of different models on the <em>training set</em> and evaluate their performance on the <em>testing set</em>. The difference is that, now, our model type of choice is logistic regression, our training optimization metric is the cross-entropy and our evaluation metric is <span class="math inline">\(\mbox{MCR}\)</span>, or Precision and Recall, etc. (Notice that in Linear Regression we used the same metric both for optimization and evaluation: <span class="math inline">\(\mbox{MSE}\)</span>).</p>
+<p>Overfitting works the same way. Evaluation will look awesome on the training sample, but bad on the test sample.</p>
 </section>
 </section>
 <section id="summary" class="level2">
