@@ -2,494 +2,494 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/tutorials.html</loc>
-    <lastmod>2026-11-11T07:32:02.747Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.056Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/office-hours.html</loc>
-    <lastmod>2026-11-11T07:32:02.747Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.056Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/license.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.055Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/glossary-fns.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.055Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/types-of-claims.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.055Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/reading-cdfs.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/mutually-exclusive-vs-independent.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/ev-var-sd.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/data-wrangling.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/data-types-data-frames.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/coding-basics.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.052Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/assets/final-exam-slide.html</loc>
-    <lastmod>2026-11-11T07:32:02.739Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.046Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/5-causation/labs/taste-test/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.525Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.789Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/5-causation/04-time/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.516Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.776Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/labs/cancer/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.488Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.743Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/labs/baseball/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.470Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.723Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/03-overfitting/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.382Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.615Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/03-overfitting/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.382Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.615Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/02-improving-predictions-overfitting/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.380Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.613Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/01-method-of-least-squares/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.370Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.601Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/01-method-of-least-squares/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.370Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.601Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.358Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.588Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/prob-foundations/lab.html</loc>
-    <lastmod>2026-11-11T07:32:02.358Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.588Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/peoples-park/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.353Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.582Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/peoples-park/lab-2.html</loc>
-    <lastmod>2026-11-11T07:32:02.351Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.579Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/elections/learning-objectives.html</loc>
-    <lastmod>2026-11-11T07:32:02.339Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.565Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/12-wrong-by-design/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.329Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.554Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/11-hypothesis-tests-2/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.315Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.538Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/10-hypothesis-tests/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.314Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.535Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/10-hypothesis-tests/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.313Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.535Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/09-bootstrapping/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.306Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.526Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/08-confidence-intervals/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.293Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.511Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/07-from-samps-to-pops/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.291Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.508Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/06-normal-approx/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.272Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.486Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/06-normal-approx/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.272Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.486Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/05-ev-se/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.269Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.483Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/04-random-variables/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.265Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.479Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/03-probability-dsns/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.262Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.475Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/03-probability-dsns/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.262Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.474Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/02-computing-probs/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.256Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.468Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/01-prob-foundations/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.236Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.445Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/01-prob-foundations/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.236Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.445Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/labs/flights/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.217Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.422Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/labs/flights/part-1.html</loc>
-    <lastmod>2026-11-11T07:32:02.217Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.422Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/labs/class-survey/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.209Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.412Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/06-multiple-linear-regression/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.168Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.364Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/06-data-visualization/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.164Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.359Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/05-summarizing-associations/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.156Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.350Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/05-summarizing-associations/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.156Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.350Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-data-wrangling/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.150Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.343Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/03-a-grammar-of-graphics/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.137Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.327Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/03-a-grammar-of-graphics/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.136Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.327Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/02-summarizing-numerical-data/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.106Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.291Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/01-summarizing-categorical-data/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.097Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.279Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/01-summarizing-categorical-data/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.096Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.279Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/labs/unvotes/part-2.html</loc>
-    <lastmod>2026-11-11T07:32:02.055Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.232Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/02-taxonomy-of-data/tutorial-part-ex.html</loc>
-    <lastmod>2026-11-11T07:32:02.031Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.203Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/02-taxonomy-of-data/tutorial-part-2.html</loc>
-    <lastmod>2026-11-11T07:32:02.031Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.203Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/02-taxonomy-of-data/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.031Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.203Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/01-understanding-the-world/slides.html</loc>
-    <lastmod>2026-11-11T07:32:01.988Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.153Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/01-understanding-the-world/notes.html</loc>
-    <lastmod>2026-11-11T07:32:01.988Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.153Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/02-taxonomy-of-data/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.031Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.203Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/02-taxonomy-of-data/tutorial-part-3.html</loc>
-    <lastmod>2026-11-11T07:32:02.031Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.203Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/02-taxonomy-of-data/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.031Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.203Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/1-questions-and-data/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.055Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.232Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/01-summarizing-categorical-data/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.097Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.279Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/02-summarizing-numerical-data/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.106Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.291Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/02-summarizing-numerical-data/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.106Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.291Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/03-a-grammar-of-graphics/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.136Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.327Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-data-wrangling/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.150Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.343Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/04-data-wrangling/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.150Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.343Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/05-summarizing-associations/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.156Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.350Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/06-data-visualization/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.164Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.359Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/06-data-visualization/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.164Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.359Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/06-multiple-linear-regression/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.168Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.364Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/labs/class-survey/part-2.html</loc>
-    <lastmod>2026-11-11T07:32:02.209Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.412Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/labs/flights/part-2.html</loc>
-    <lastmod>2026-11-11T07:32:02.217Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.422Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/2-summarizing-data/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.217Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.422Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/01-prob-foundations/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.236Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.445Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/02-computing-probs/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.256Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.468Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/02-computing-probs/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.257Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.468Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/03-probability-dsns/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.262Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.474Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/04-random-variables/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.265Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.479Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/04-random-variables/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.265Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.479Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/05-ev-se/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.269Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.483Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/06-normal-approx/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.272Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.486Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/07-from-samps-to-pops/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.291Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.508Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/08-confidence-intervals/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.293Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.511Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/09-bootstrapping/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.306Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.526Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/09-bootstrapping/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.306Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.526Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/10-hypothesis-tests/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.313Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.535Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/11-hypothesis-tests-2/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.315Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.538Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/12-wrong-by-design/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.329Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.554Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/elections/lab.html</loc>
-    <lastmod>2026-11-11T07:32:02.339Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.565Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/elections/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.339Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.565Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/peoples-park/lab.html</loc>
-    <lastmod>2026-11-11T07:32:02.351Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.579Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/peoples-park/part-2.html</loc>
-    <lastmod>2026-11-11T07:32:02.351Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.580Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/prob-distributions/lab.html</loc>
-    <lastmod>2026-11-11T07:32:02.355Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.584Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/3-generalization/labs/review-lab/lab.html</loc>
-    <lastmod>2026-11-11T07:32:02.358Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.588Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/01-method-of-least-squares/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.370Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.601Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/02-improving-predictions-overfitting/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.380Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.613Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/02-improving-predictions-overfitting/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.380Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.614Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/03-overfitting/slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.382Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.615Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/05-logistic-regression/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.400Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.640Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/05-logistic-regression/tutorial.html</loc>
-    <lastmod>2026-11-11T07:32:02.400Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.640Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/labs/baseball/lab.html</loc>
-    <lastmod>2026-11-11T07:32:02.470Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.723Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/4-prediction/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.488Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.743Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/5-causation/01-defining-causality/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.507Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.765Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/5-causation/04-time/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.516Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.776Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/5-causation/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.525Z</lastmod>
+    <lastmod>2026-11-11T09:52:25.789Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/assets/quiz-slides.html</loc>
-    <lastmod>2026-11-11T07:32:02.739Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.046Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/box-models.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.052Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/coding-probability.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/data-visualization.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/distributions-parameters-probabilities.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/intro-prob.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/numerical-associations.html</loc>
-    <lastmod>2026-11-11T07:32:02.745Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.054Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/extras/summarization_code.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.055Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/glossary-defs.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.055Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/index.html</loc>
-    <lastmod>2026-11-11T07:32:02.746Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.055Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/notes.html</loc>
-    <lastmod>2026-11-11T07:32:02.747Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.056Z</lastmod>
   </url>
   <url>
     <loc>https://stat20.berkeley.edu/fall-2026/syllabus.html</loc>
-    <lastmod>2026-11-11T07:32:02.747Z</lastmod>
+    <lastmod>2026-11-11T09:52:26.056Z</lastmod>
   </url>
 </urlset>
