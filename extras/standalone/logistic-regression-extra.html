@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logistic Regression Playground</title>
+<style>
+:root {
+  --bg: #f7f7f5; --card: #ffffff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e2e2e0;
+  --code-bg: #f3f3f1; --out-bg: #fbfbfa;
+  --female: #8e44ad; --male: #e3a400; --male-text: #9a6f00; --curve: #333;
+  --good: #1a9b3c; --bad: #d62828; --TP: var(--good); --TN: var(--good); --FP: var(--bad); --FN: var(--bad); --gray: #c4c4c4;
+  --thr: #0a74c2; --btn: #0a74c2; --accent: #2457c5;
+  --grid: #ebebeb; --panel: #ebebeb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161618; --card: #1f1f22; --ink: #ececee; --muted: #a0a0a8; --line: #333338;
+    --code-bg: #26262a; --out-bg: #1b1b1e; --good: #3fc463; --bad: #ff5a5a; --TP: var(--good); --TN: var(--good); --FP: var(--bad); --FN: var(--bad); --gray: #55555c;
+    --thr: #4fb6f2; --btn: #1d8fd6; --accent: #7aa2ff; --grid: #2c2c31; --panel: #232327; --female: #c08ae0; --male: #f5c518; --male-text: #f5c518; --curve: #ddd;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161618; --card: #1f1f22; --ink: #ececee; --muted: #a0a0a8; --line: #333338;
+  --code-bg: #26262a; --out-bg: #1b1b1e; --good: #3fc463; --bad: #ff5a5a; --TP: var(--good); --TN: var(--good); --FP: var(--bad); --FN: var(--bad); --gray: #55555c;
+  --thr: #4fb6f2; --btn: #1d8fd6; --accent: #7aa2ff; --grid: #2c2c31; --panel: #232327; --female: #c08ae0; --male: #f5c518; --male-text: #f5c518; --curve: #ddd;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 1.6rem; margin: 0 0 16px; }
+.sub { color: var(--muted); margin: 0 0 20px; }
+h2 { font-size: 1rem; margin: 0 0 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.row { display: grid; gap: 16px; margin-bottom: 16px; }
+.row.top { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+.row.bottom { grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr); }
+@media (max-width: 860px) {
+  .row.top, .row.bottom { grid-template-columns: minmax(0, 1fr); }
+}
+pre { margin: 0; overflow-x: auto; font: 13.5px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+pre.code { background: var(--code-bg); padding: 12px; border-radius: 6px; }
+pre.out { background: var(--out-bg); border: 1px solid var(--line); padding: 12px; border-radius: 6px; margin-top: 8px; color: var(--muted); }
+pre + pre.code { margin-top: 12px; }
+.kw { color: #a626a4; } .str { color: #50a14f; } .num { color: #c18401; } .com { color: #8a8a8a; font-style: italic; } .fn { color: #4078f2; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .kw { color: #d699e0; } :root:not([data-theme="light"]) .str { color: #98c379; } :root:not([data-theme="light"]) .num { color: #e5c07b; } :root:not([data-theme="light"]) .fn { color: #7fb0ff; } }
+.formula { font-family: "Times New Roman", Georgia, serif; font-size: 1.25rem; line-height: 2; }
+.formula .var { font-family: ui-monospace, Menlo, monospace; font-size: .95rem; }
+.formula .step { color: var(--muted); font-family: inherit; font-size: .85rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: block; margin-top: 10px; line-height: 1.4; }
+.frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 4px; }
+.frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 4px; line-height: 1.3; }
+.frac > span:last-child { line-height: 1.3; padding: 0 4px; }
+.rule { margin-top: 6px; }
+.thr-val { color: var(--thr); font-weight: 600; }
+.plothead { display: flex; justify-content: flex-start; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.plothead h2 { margin: 0; }
+button {
+  font: inherit; font-size: 1.15rem; padding: 12px 24px; border-radius: 10px; cursor: pointer;
+  border: 2px solid var(--btn); background: var(--btn); color: #fff; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(10, 116, 194, .3);
+}
+button:hover { filter: brightness(1.08); }
+button.active { background: var(--card); color: var(--btn); box-shadow: none; }
+svg { width: 100%; height: auto; display: block; touch-action: none; user-select: none; }
+.axis text { fill: var(--muted); font-size: 12px; }
+.axis-title { fill: var(--ink); font-size: 13px; }
+.plot-sub { fill: var(--muted); font-size: 13.5px; font-style: italic; }
+.plot-title { fill: var(--ink); font-size: 17px; font-weight: 700; }
+.legend { display: flex; gap: 16px; font-size: .9rem; color: var(--muted); margin-top: 6px; flex-wrap: wrap; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.legend .f::before { background: var(--female); } .legend .m::before { background: var(--male); }
+.legend .ok::before, .legend .no::before { display: none; }
+.legend .c::before { width: 18px; height: 0; border-radius: 0; border-top: 2.5px solid var(--curve); vertical-align: 4px; }
+.curve-label { fill: var(--curve); font-size: 14px; font-weight: 600; font-style: italic; }
+#plotwrap { position: relative; }
+#tip { display: none; position: absolute; pointer-events: none; z-index: 5; background: var(--card); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.15); padding: 10px 12px; font-size: .88rem; line-height: 1.55; white-space: nowrap; }
+#tip .tt-h { font-weight: 600; margin-bottom: 4px; }
+#tip .tt-f { font-family: "Times New Roman", Georgia, serif; font-size: 1rem; }
+#tip b.m { color: var(--male-text); } #tip b.f { color: var(--female); }
+#tip .tt-sep { border-top: 1px solid var(--line); margin: 6px 0; }
+#tip .tt-res { font-weight: 700; }
+.pt { cursor: default; }
+.legend .k b { font-weight: 700; } .legend .k::before { display: none; }
+.handle { cursor: ns-resize; }
+.handle:focus { outline: none; }
+.handle:focus circle { stroke: var(--accent); stroke-width: 3; }
+#eval { display: none; }
+.on #eval { display: block; }
+.on #info { display: none; }
+#info ol { margin: 0; padding-left: 1.3em; }
+#info li { margin-bottom: 12px; }
+#info .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: 0; }
+#info .btnref { color: var(--btn); font-weight: 700; white-space: nowrap; }
+.thr-label.thr-hint { font-size: 12px; font-weight: 500; font-style: italic; }
+.thr-label { fill: var(--thr); font-size: 13px; font-weight: 700; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
+.readout { font-size: .95rem; margin-bottom: 14px; }
+.readout .big { font-weight: 600; color: var(--thr); }
+td.cell:hover, td.cell.hl { background: var(--panel); }
+table.cm { border-collapse: collapse; width: 100%; margin-bottom: 16px; font-size: .9rem; }
+table.cm th, table.cm td { border: 1px solid var(--line); padding: 8px; text-align: center; }
+table.cm th { font-weight: 600; color: var(--muted); }
+td.cell { cursor: default; }
+td.cell { vertical-align: top; color: var(--c); }
+td.cell b { display: block; font-size: 1.5rem; line-height: 1.2; }
+td.cell .nm { display: block; font-weight: 700; font-size: .85rem; }
+td.cell small { display: block; font-size: .76rem; line-height: 1.3; margin-top: 2px; }
+td.cell.hl { box-shadow: inset 0 0 0 2px var(--c); }
+td.cell small { color: var(--muted); }
+.metrics { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: .95rem; }
+.metrics .v { text-align: right; font-variant-numeric: tabular-nums; }
+.metrics .v small { color: var(--muted); }
+.credit { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 24px; }
+.hint { font-size: .8rem; color: var(--muted); margin-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Logistic Regression Playground</h1>
+
+  <div class="row bottom" id="bottom">
+    <section class="card">
+      <div class="plothead">
+        <button id="toggle" type="button" aria-pressed="false">Set decision threshold</button>
+      </div>
+      <div id="plotwrap"><svg id="plot" viewBox="0 0 760 490" aria-label="Penguins plotted at 0 (female) or 1 (male) against body mass, with the fitted logistic curve"></svg><div id="tip" role="tooltip"></div></div>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <aside class="card" id="panel">
+     <div id="info">
+      <h2>How to use this tool</h2>
+      <ol>
+        <li>Each dot is one penguin: <span class="sw" style="background: var(--male)"></span> male at 1, <span class="sw" style="background: var(--female)"></span> female at 0. The black curve is the model's predicted probability that a penguin is male, given its weight.</li>
+        <li><b>Hover over a penguin</b> to see how the model calculates its probability of being male.</li>
+        <li><b>Scroll down</b> to read the R code that fit the model and the formula it uses to make predictions.</li>
+        <li>Then click <span class="btnref">Set decision threshold</span> to turn probabilities into male/female predictions. Drag the threshold up and down and watch how the confusion matrix and error rates change.</li>
+      </ol>
+     </div>
+     <div id="eval">
+      <h2>Model evaluation</h2>
+      <div class="readout">
+        <span class="big">threshold = <span id="tVal">0.50</span></span>
+        <div id="massRule"></div>
+      </div>
+
+
+      <h2>Confusion matrix</h2>
+      <table class="cm">
+        <tr><th></th><th><i>Y</i> = 0<br><small>female</small></th><th><i>Y</i> = 1<br><small>male</small></th></tr>
+        <tr><th><i>Ŷ</i> = 0<br><small>pred. female</small></th>
+          <td class="cell" data-k="TN" style="--c: var(--TN)"><b id="cTN"></b><span class="nm">TN: true negative</span><small>predicted female, actually female</small></td>
+          <td class="cell" data-k="FN" style="--c: var(--FN)"><b id="cFN"></b><span class="nm">FN: false negative</span><small>predicted female, actually male</small></td></tr>
+        <tr><th><i>Ŷ</i> = 1<br><small>pred. male</small></th>
+          <td class="cell" data-k="FP" style="--c: var(--FP)"><b id="cFP"></b><span class="nm">FP: false positive</span><small>predicted male, actually female</small></td>
+          <td class="cell" data-k="TP" style="--c: var(--TP)"><b id="cTP"></b><span class="nm">TP: true positive</span><small>predicted male, actually male</small></td></tr>
+      </table>
+
+      <h2>Metrics</h2>
+      <div class="metrics">
+        <span>MCR = (FP + FN) / <i>n</i></span><span class="v" id="mMCR"></span>
+        <span>Precision = TP / (TP + FP)</span><span class="v" id="mPrec"></span>
+        <span>Recall = TP / (TP + FN)</span><span class="v" id="mRec"></span>
+      </div>
+      <p class="hint">Drag the blue threshold line or its handle. Arrow keys on the handle move it by 0.01 (Shift: 0.1). Hover a cell to highlight those penguins, or hover a penguin to see its calculation.</p>
+     </div>
+    </aside>
+  </div>
+  <div class="row top">
+    <section class="card">
+      <h2>Code and output</h2>
+<pre class="code"><span class="com"># female = 0, male = 1, so the model predicts P(male)</span>
+model1 = <span class="fn">glm</span>(sex ~ body_mass_g, data = penguins, family = <span class="str">"binomial"</span>)
+model1</pre>
+<pre class="out">Call:  glm(formula = sex ~ body_mass_g, family = "binomial", data = penguins)
+
+Coefficients:
+(Intercept)  body_mass_g
+   -5.16254      0.00124
+
+Degrees of Freedom: 332 Total (i.e. Null);  331 Residual
+Null Deviance:	    461.6
+Residual Deviance: 396.6 	AIC: 400.6</pre>
+<pre class="code">penguins = penguins |&gt;
+    <span class="fn">mutate</span>(p_male = <span class="fn">predict</span>(model1, type = <span class="str">"response"</span>))</pre>
+    </section>
+
+    <section class="card">
+      <h2>How the model predicts</h2>
+      <div class="formula">
+        <span class="step">1. Linear component</span>
+        <i>z</i> = −5.16 + 0.00124 × <span class="var">body_mass_g</span>
+        <span class="step">2. Send it through the sigmoid to get a probability</span>
+        <i>P</i>(male) =
+        <span class="frac"><span>1</span><span>1 + <i>e</i><sup>−<i>z</i></sup></span></span>
+        <span class="step">3. Turn the probability into a prediction</span>
+        <div class="rule">Predict male if <i>P</i>(male) &gt; <span class="thr-val" id="ruleT">0.5</span></div>
+        <span class="step">Example: a 4000 g penguin has <i>z</i> = −5.16 + 0.00124 × 4000 = −0.20, so <i>P</i>(male) = 1 / (1 + <i>e</i><sup>0.20</sup>) = 0.45. Predict female.</span>
+      </div>
+    </section>
+  </div>
+  <footer class="credit">Stat 20 | Designed in Fall 2026 by Everett Wetchler and Claude</footer>
+</main>
+
+<script>
+(() => {
+  const B0 = -5.16254164403389, B1 = 0.00123981920481;
+  const RAW = [[3750,1],[3800,0],[3250,0],[3450,0],[3650,1],[3625,0],[4675,1],[3200,0],[3800,1],[4400,1],[3700,0],[3450,0],[4500,1],[3325,0],[4200,1],[3400,0],[3600,1],[3800,0],[3950,1],[3800,1],[3800,0],[3550,1],[3200,0],[3150,0],[3950,1],[3250,0],[3900,1],[3300,0],[3900,1],[3325,0],[4150,1],[3950,1],[3550,0],[3300,0],[4650,1],[3150,0],[3900,1],[3100,0],[4400,1],[3000,0],[4600,1],[3425,1],[3450,0],[4150,1],[3500,0],[4300,1],[3450,0],[4050,1],[2900,0],[3700,1],[3550,0],[3800,1],[2850,0],[3750,1],[3150,0],[4400,1],[3600,0],[4050,1],[2850,0],[3950,1],[3350,0],[4100,1],[3050,0],[4450,1],[3600,0],[3900,1],[3550,0],[4150,1],[3700,0],[4250,1],[3700,0],[3900,1],[3550,0],[4000,1],[3200,0],[4700,1],[3800,0],[4200,1],[3350,0],[3550,1],[3800,1],[3500,0],[3950,1],[3600,0],[3550,0],[4300,1],[3400,0],[4450,1],[3300,0],[4300,1],[3700,0],[4350,1],[2900,0],[4100,1],[3725,0],[4725,1],[3075,0],[4250,1],[2925,0],[3550,1],[3750,0],[3900,1],[3175,0],[4775,1],[3825,0],[4600,1],[3200,0],[4275,1],[3900,0],[4075,1],[2900,0],[3775,1],[3350,0],[3325,1],[3150,0],[3500,1],[3450,0],[3875,1],[3050,0],[4000,1],[3275,0],[4300,1],[3050,0],[4000,1],[3325,0],[3500,1],[3500,0],[4475,1],[3425,0],[3900,1],[3175,0],[3975,1],[3400,0],[4250,1],[3400,0],[3475,1],[3050,0],[3725,1],[3000,0],[3650,1],[4250,1],[3475,0],[3450,0],[3750,1],[3700,0],[4000,1],[4500,0],[5700,1],[4450,0],[5700,1],[5400,1],[4550,0],[4800,0],[5200,1],[4400,0],[5150,1],[4650,0],[5550,1],[4650,0],[5850,1],[4200,0],[5850,1],[4150,0],[6300,1],[4800,0],[5350,1],[5700,1],[5000,0],[4400,0],[5050,1],[5000,0],[5100,1],[5650,1],[4600,0],[5550,1],[5250,1],[4700,0],[5050,0],[6050,1],[5150,0],[5400,1],[4950,0],[5250,1],[4350,0],[5350,1],[3950,0],[5700,1],[4300,0],[4750,1],[5550,1],[4900,0],[4200,0],[5400,1],[5100,0],[5300,1],[4850,0],[5300,1],[4400,0],[5000,1],[4900,0],[5050,1],[4300,0],[5000,1],[4450,0],[5550,1],[4200,0],[5300,1],[4400,0],[5650,1],[4700,0],[5700,1],[5800,1],[4700,0],[5550,1],[4750,0],[5000,1],[5100,1],[5200,0],[4700,0],[5800,1],[4600,0],[6000,1],[4750,0],[5950,1],[4625,0],[5450,1],[4725,0],[5350,1],[4750,0],[5600,1],[4600,0],[5300,1],[4875,0],[5550,1],[4950,0],[5400,1],[4750,0],[5650,1],[4850,0],[5200,1],[4925,1],[4875,0],[4625,0],[5250,1],[4850,0],[5600,1],[4975,0],[5500,1],[5500,1],[4700,0],[5500,1],[4575,0],[5500,1],[5000,0],[5950,1],[4650,0],[5500,1],[4375,0],[5850,1],[6000,1],[4925,0],[4850,0],[5750,1],[5200,0],[5400,1],[3500,0],[3900,1],[3650,1],[3525,0],[3725,1],[3950,0],[3250,0],[3750,1],[4150,0],[3700,1],[3800,0],[3775,1],[3700,0],[4050,1],[3575,0],[4050,1],[3300,1],[3700,0],[3450,0],[4400,1],[3600,0],[3400,1],[2900,0],[3800,1],[3300,0],[4150,1],[3400,0],[3800,1],[3700,0],[4550,1],[3200,0],[4300,1],[3350,0],[4100,1],[3600,1],[3900,0],[3850,0],[4800,1],[2700,0],[4500,1],[3950,1],[3650,0],[3550,1],[3500,0],[3675,0],[4450,1],[3400,0],[4300,1],[3250,1],[3675,0],[3325,0],[3950,1],[3600,0],[4050,1],[3350,0],[3450,1],[3250,0],[4050,1],[3800,1],[3525,0],[3950,1],[3650,0],[3650,0],[4000,1],[3400,0],[3775,1],[4100,1],[3775,0]]; // [body_mass_g, is_male]
+  const sig = z => 1 / (1 + Math.exp(-z));
+  const pts = RAW.map(([m, y]) => ({ m, y, z: B0 + B1 * m, p: sig(B0 + B1 * m) }));
+  const N = pts.length;
+
+  const W = 760, H = 490, M = { l: 92, r: 46, t: 66, b: 52 };
+  const X0 = 2600, X1 = 6400, Y0 = -0.12, Y1 = 1.12;
+  const sx = m => M.l + (m - X0) / (X1 - X0) * (W - M.l - M.r);
+  const sy = v => M.t + (Y1 - v) / (Y1 - Y0) * (H - M.t - M.b);
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs = {}, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  };
+  const $ = id => document.getElementById(id);
+
+  const svg = $("plot");
+  el("rect", { x: M.l, y: M.t, width: W - M.l - M.r, height: H - M.t - M.b, fill: "var(--panel)", opacity: 0.45 }, svg);
+  const axis = el("g", { class: "axis" }, svg);
+  for (let m = 3000; m <= 6000; m += 500) {
+    el("line", { x1: sx(m), x2: sx(m), y1: M.t, y2: H - M.b, stroke: "var(--grid)", "stroke-width": 1.2 }, axis);
+    el("text", { x: sx(m), y: H - M.b + 18, "text-anchor": "middle" }, axis).textContent = m;
+  }
+  for (let v = 0; v <= 1.0001; v += 0.25) {
+    el("line", { x1: M.l, x2: W - M.r, y1: sy(v), y2: sy(v), stroke: "var(--grid)", "stroke-width": 1.2 }, axis);
+    const lab = v === 1 ? "male  1.00" : v === 0 ? "female  0.00" : v.toFixed(2);
+    el("text", { x: M.l - 8, y: sy(v) + 4, "text-anchor": "end" }, axis).textContent = lab;
+  }
+  el("text", { x: (M.l + W - M.r) / 2, y: 26, "text-anchor": "middle", class: "plot-title" }, svg).textContent = "Predicting penguin sex from body mass";
+  el("text", { x: (M.l + W - M.r) / 2, y: 48, "text-anchor": "middle", class: "plot-sub" }, svg).textContent = "Try hovering over individual points (penguins)!";
+  el("text", { x: (M.l + W - M.r) / 2, y: H - 10, "text-anchor": "middle", class: "axis-title" }, svg).textContent = "body_mass_g";
+  const yc = (M.t + H - M.b) / 2;
+  el("text", { x: 16, y: yc, "text-anchor": "middle", class: "axis-title", transform: `rotate(-90 16 ${yc})` }, svg).textContent = "sex";
+
+  // fitted curve
+  let dpath = "";
+  for (let m = X0; m <= X1; m += 20) dpath += (m === X0 ? "M" : "L") + sx(m).toFixed(1) + "," + sy(sig(B0 + B1 * m)).toFixed(1);
+  el("path", { d: dpath, fill: "none", stroke: "var(--curve)", "stroke-width": 2.5 }, svg);
+  const cl = el("text", { x: sx(5050), y: sy(sig(B0 + B1 * 5050)) - 12, class: "curve-label", "text-anchor": "end" }, svg);
+  cl.textContent = "Model: p(male) based on weight";
+
+  // cutoff guide (where the threshold meets the curve)
+  const guide = el("g", { display: "none", "pointer-events": "none" }, svg);
+  const gline = el("line", { y1: M.t, y2: H - M.b, stroke: "var(--thr)", "stroke-width": 1.2, "stroke-dasharray": "2 4", opacity: 0.8 }, guide);
+  const gdot = el("circle", { r: 4.5, fill: "var(--thr)" }, guide);
+
+  // marks
+  const marks = el("g", {}, svg);
+  const CHECK = "M-5,0.5 L-1.6,4 L5,-4.2";
+  const XMARK = "M-4,-4 L4,4 M4,-4 L-4,4";
+  const pos = d => `translate(${sx(d.m)},${sy(d.y)})`;
+  pts.forEach(d => {
+    d.g = el("g", { transform: pos(d), class: "pt" }, marks);
+    d.dot = el("circle", { r: 4.2, fill: d.y ? "var(--male)" : "var(--female)", "fill-opacity": 0.3 }, d.g);
+    d.glyph = el("path", { fill: "none", "stroke-width": 2.2, "stroke-linecap": "round", "stroke-linejoin": "round", display: "none" }, d.g);
+    el("circle", { r: 6, fill: "transparent" }, d.g);
+  });
+
+  // threshold line + handles
+  const thrG = el("g", { display: "none" }, svg);
+  const hit = el("line", { x1: M.l, x2: W - M.r + 26, stroke: "transparent", "stroke-width": 14, class: "handle" }, thrG);
+  const tline = el("line", { x1: M.l, x2: W - M.r, stroke: "var(--thr)", "stroke-width": 2.5, "stroke-dasharray": "8 6", "pointer-events": "none" }, thrG);
+  const tlabel = el("text", { x: W - M.r - 6, "text-anchor": "end", class: "thr-label", "pointer-events": "none" }, thrG);
+  const thint = el("text", { x: W - M.r - 6, "text-anchor": "end", class: "thr-label thr-hint", "pointer-events": "none" }, thrG);
+  thint.textContent = "(click and drag this up and down)";
+  const handles = [W - M.r + 15].map(x => {
+    const h = el("g", { class: "handle", tabindex: 0, role: "slider", "aria-label": "Decision threshold", "aria-valuemin": 0, "aria-valuemax": 1 }, thrG);
+    el("circle", { cx: x, cy: 0, r: 12, fill: "var(--thr)" }, h);
+    el("path", { d: `M${x - 4.5},-3 l4.5,-4.5 l4.5,4.5 M${x - 4.5},3 l4.5,4.5 l4.5,-4.5`, stroke: "#fff", "stroke-width": 2, fill: "none", "stroke-linecap": "round", "stroke-linejoin": "round" }, h);
+    return h;
+  });
+
+  let on = false, t = 0.5, hl = null, hover = null;
+  const cat = d => (d.p > t ? (d.y ? "TP" : "FP") : (d.y ? "FN" : "TN"));
+  const fmtPct = (a, b) => b === 0 ? `undefined <small>(0/0)</small>` : `${(100 * a / b).toFixed(1)}% <small>(${a}/${b})</small>`;
+  const NAMES = { TP: "true positive", TN: "true negative", FP: "false positive", FN: "false negative" };
+
+  function render() {
+    const c = { TP: 0, TN: 0, FP: 0, FN: 0 };
+    pts.forEach(d => {
+      const k = cat(d); c[k]++;
+      const big = d === hover || (hl && k === hl);
+      if (!on) {
+        d.dot.setAttribute("display", ""); d.glyph.setAttribute("display", "none");
+        d.dot.setAttribute("fill-opacity", d === hover ? 0.95 : 0.3);
+        d.g.setAttribute("transform", pos(d) + ` scale(${big ? 1.5 : 1})`);
+        return;
+      }
+      const ok = k === "TP" || k === "TN";
+      const dim = hl && k !== hl;
+      d.dot.setAttribute("display", "none");
+      d.glyph.setAttribute("display", "");
+      d.glyph.setAttribute("d", ok ? CHECK : XMARK);
+      d.glyph.setAttribute("stroke", dim ? "var(--gray)" : `var(--${k})`);
+      d.glyph.setAttribute("stroke-opacity", dim ? 0.35 : big ? 0.95 : 0.45);
+      d.g.setAttribute("transform", pos(d) + ` scale(${big ? 1.6 : 1})`);
+      if (big && hl) marks.appendChild(d.g);
+    });
+    const y = sy(t);
+    [hit, tline].forEach(l => { l.setAttribute("y1", y); l.setAttribute("y2", y); });
+    tlabel.setAttribute("y", y - 8); tlabel.textContent = `threshold = ${t.toFixed(2)}`;
+    thint.setAttribute("y", y + 18);
+    handles.forEach(h => { h.setAttribute("transform", `translate(0,${y})`); h.setAttribute("aria-valuenow", t.toFixed(2)); });
+
+    for (const k in c) $("c" + k).textContent = c[k];
+    $("tVal").textContent = t.toFixed(2);
+    $("ruleT").textContent = on ? t.toFixed(2) : "0.5";
+    let rule, cut = null;
+    if (t <= 0) rule = "Every penguin is predicted male.";
+    else if (t >= 1) rule = "Every penguin is predicted female.";
+    else {
+      cut = (Math.log(t / (1 - t)) - B0) / B1;
+      rule = `Same as predicting male when body mass &gt; ${Math.round(cut)} g`;
+    }
+    const showGuide = on && cut !== null && cut > X0 && cut < X1;
+    guide.setAttribute("display", showGuide ? "" : "none");
+    if (showGuide) { gline.setAttribute("x1", sx(cut)); gline.setAttribute("x2", sx(cut)); gdot.setAttribute("cx", sx(cut)); gdot.setAttribute("cy", y); }
+    $("massRule").innerHTML = rule;
+    $("mMCR").innerHTML = fmtPct(c.FP + c.FN, N);
+    $("mPrec").innerHTML = fmtPct(c.TP, c.TP + c.FP);
+    $("mRec").innerHTML = fmtPct(c.TP, c.TP + c.FN);
+    document.querySelectorAll("[data-k]").forEach(e => e.classList.toggle("hl", e.dataset.k === hl));
+    if (hover) fillTip(hover);
+  }
+
+  // hover box for a single penguin
+  const tip = $("tip"), wrap = $("plotwrap");
+  function fillTip(d) {
+    const sex = d.y ? "male" : "female";
+    let html = `<div class="tt-h">${d.m} g penguin, actually <b class="${d.y ? "m" : "f"}">${sex}</b></div>
+      <div class="tt-f"><i>z</i> = −5.16 + 0.00124 × ${d.m} = ${d.z.toFixed(2)}</div>
+      <div class="tt-f"><i>P</i>(male) = 1 / (1 + <i>e</i><sup>${d.z >= 0 ? "−" : ""}${Math.abs(d.z).toFixed(2)}</sup>) = <b>${d.p.toFixed(3)}</b></div>`;
+    if (on) {
+      const k = cat(d), ok = k === "TP" || k === "TN", pm = d.p > t;
+      html += `<div class="tt-sep"></div>
+        <div>${d.p.toFixed(3)} ${pm ? "&gt;" : "≤"} <span class="thr-val">${t.toFixed(2)}</span> threshold → predict <b>${pm ? "male" : "female"}</b></div>
+        <div class="tt-res" style="color: var(--${k})">${ok ? "✓ Correct" : "✗ Wrong"}: ${NAMES[k]} (${k})</div>`;
+    }
+    tip.innerHTML = html;
+  }
+  function placeTip(e) {
+    const r = wrap.getBoundingClientRect();
+    let x = e.clientX - r.left + 14, y = e.clientY - r.top + 14;
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    if (x + tw > r.width) x = e.clientX - r.left - tw - 14;
+    if (y + th > r.height) y = e.clientY - r.top - th - 14;
+    tip.style.left = Math.max(0, x) + "px"; tip.style.top = Math.max(0, y) + "px";
+  }
+  let dragging = false;
+  pts.forEach(d => {
+    d.g.addEventListener("pointerenter", e => { if (dragging) return; hover = d; tip.style.display = "block"; render(); placeTip(e); });
+    d.g.addEventListener("pointermove", e => { if (hover === d) placeTip(e); });
+    d.g.addEventListener("pointerleave", () => { if (hover === d) { hover = null; tip.style.display = "none"; render(); } });
+  });
+
+  function setLegend() {
+    $("legend").innerHTML = (on
+      ? `<span class="k" style="color: var(--good)"><b>✓</b> correct prediction (TP or TN)</span><span class="k" style="color: var(--bad)"><b>✗</b> wrong prediction (FP or FN)</span>`
+      : `<span class="f">female</span><span class="m">male</span>`) + `<span class="c">Model: p(male) based on weight</span>`;
+  }
+
+  $("toggle").addEventListener("click", () => {
+    on = !on; hl = null;
+    $("toggle").classList.toggle("active", on);
+    $("toggle").setAttribute("aria-pressed", on);
+    $("toggle").textContent = on ? "Hide decision threshold" : "Set decision threshold";
+    $("bottom").classList.toggle("on", on);
+    thrG.setAttribute("display", on ? "" : "none");
+    setLegend(); render();
+  });
+
+  // dragging the threshold
+  const toT = evt => {
+    const pt = svg.createSVGPoint(); pt.x = evt.clientX; pt.y = evt.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    const v = Y1 - (p.y - M.t) / (H - M.t - M.b) * (Y1 - Y0);
+    return Math.min(1, Math.max(0, v));
+  };
+  [hit, ...handles].forEach(h => h.addEventListener("pointerdown", e => {
+    dragging = true; hover = null; tip.style.display = "none";
+    svg.setPointerCapture(e.pointerId); t = toT(e); render(); e.preventDefault();
+  }));
+  svg.addEventListener("pointermove", e => { if (dragging) { t = toT(e); render(); } });
+  const stop = () => { dragging = false; };
+  svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
+  handles.forEach(h => h.addEventListener("keydown", e => {
+    const step = e.shiftKey ? 0.1 : 0.01;
+    if (e.key === "ArrowUp" || e.key === "ArrowRight") t += step;
+    else if (e.key === "ArrowDown" || e.key === "ArrowLeft") t -= step;
+    else return;
+    t = Math.min(1, Math.max(0, Math.round(t * 100) / 100)); render(); e.preventDefault();
+  }));
+
+  // hover highlighting from the counts and matrix
+  document.querySelectorAll("[data-k]").forEach(e => {
+    e.addEventListener("mouseenter", () => { hl = e.dataset.k; render(); });
+    e.addEventListener("mouseleave", () => { hl = null; render(); });
+  });
+
+  setLegend(); render();
+})();
+</script>
+</body>
+</html>
