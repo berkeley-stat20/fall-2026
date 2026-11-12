@@ -345,6 +345,12 @@ window.Quarto = {
  <span class="menu-text">Logistic Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/02-experiments/tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomized Experiments</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -492,16 +498,16 @@ Null Hypothesis: in...
 # A tibble: 500 × 2
    replicate    stat
        &lt;int&gt;   &lt;dbl&gt;
- 1         1  -20.0 
- 2         2 -100.  
- 3         3   89.6 
- 4         4   70.7 
- 5         5  -74.4 
- 6         6  -58.7 
- 7         7  -12.2 
- 8         8   97.1 
- 9         9   19.3 
-10        10    3.13
+ 1         1  -87.6 
+ 2         2   44.0 
+ 3         3   35.3 
+ 4         4   73.1 
+ 5         5  -10.7 
+ 6         6  -73.2 
+ 7         7   19.0 
+ 8         8   -3.78
+ 9         9 -105.  
+10        10   58.4 
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -565,17 +571,17 @@ Null Hypothesis: in...
 Explanatory: sex (factor)
 Null Hypothesis: in...
 # A tibble: 9 × 2
-  replicate   stat
-      &lt;int&gt;  &lt;dbl&gt;
-1         1 -121. 
-2         2  -25.4
-3         3   16.3
-4         4   43.4
-5         5  -58.7
-6         6   16.6
-7         7 -112. 
-8         8  183. 
-9         9   57.5</code></pre>
+  replicate    stat
+      &lt;int&gt;   &lt;dbl&gt;
+1         1  122.  
+2         2 -151.  
+3         3   95.9 
+4         4  109.  
+5         5  -11.0 
+6         6   10.9 
+7         7    2.83
+8         8  -29.6 
+9         9   18.4 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>null <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize</span>() <span class="sc">+</span></span>

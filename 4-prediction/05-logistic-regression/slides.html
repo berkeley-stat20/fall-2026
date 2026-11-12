@@ -226,7 +226,7 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section>
 <section id="warmup" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_30518056d3c9cfb6bd5ff01ac10f70e33ad5d0e8" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h1>Warmup <div id="timer_5c5f5c44d94e4d96d7d146956aa169d1c9e0799b" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -237,12 +237,28 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section id="what-are-the-bestworst-values-for-confusion-matrix-mcr-precision-recall" class="slide level2 warmup-question">
 <h2>What are the best/worst values for Confusion matrix, MCR, Precision, Recall?</h2>
+<p>Imagine your sample has <span class="math inline">\(n=180\)</span>, with <span class="math inline">\(70\)</span> positive observations, and <span class="math inline">\(110\)</span> negative ones.</p>
 <div class="answer fragment">
 <ul>
-<li>Confusion matrix = diagonal is best, completely off diagonal is worst.</li>
-<li>MCR = 0 is best, MCR = 1 is worst.</li>
-<li>Precision = 1 is best, 0 is worst.</li>
-<li>Recall = 1 is best, 0 is worst.</li>
+<li>Diagonal Confusion matrix is best, completely off diagonal is worst.</li>
+</ul>
+<p><span class="math display">\[
+\text{Best case: }
+\begin{pmatrix}
+110 &amp; 0 \\
+0 &amp; 70
+\end{pmatrix}
+\qquad
+\text{Worst case: }
+\begin{pmatrix}
+0 &amp; 110 \\
+70 &amp; 0
+\end{pmatrix}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mbox{MCR} = \frac{0 + 0}{180} = 0\)</span> is best, <span class="math inline">\(\mbox{MCR} =\frac{110 + 70}{180} =  1\)</span> is worst.</li>
+<li><span class="math inline">\(\mbox{Precision} = \frac{TP}{TP + 0} = 1\)</span> is best, <span class="math inline">\(\mbox{Precision} = \frac{0}{0 + FP} = 0\)</span> is worst.</li>
+<li><span class="math inline">\(\mbox{Recall} = \frac{70}{70} = 1\)</span> is best, <span class="math inline">\(\mbox{Recall} = \frac{0}{70} = 0\)</span> is worst.</li>
 </ul>
 </div>
 <!---
@@ -302,7 +318,7 @@ Assuming that no change to the `penguins` dataset was made, will the model be pr
 <div class="slides-only">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3e727f3b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_611828b3" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -328,8 +344,8 @@ Assuming that no change to the `penguins` dataset was made, will the model be pr
           display:block!important;
       }</style></aside>
 </section>
-<section id="what-is-the-misclassification-rate-of-this-model" class="slide level2 warmup-question">
-<h2>What is the misclassification rate of this model?</h2>
+<section id="what-is-the-misclassification-rate-precision-and-recall-of-this-model" class="slide level2 warmup-question">
+<h2>What is the misclassification rate, Precision, and Recall of this model?</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
@@ -345,7 +361,7 @@ Assuming that no change to the `penguins` dataset was made, will the model be pr
 <div class="slides-only">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_48390236" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_3cf7ddab" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -354,12 +370,20 @@ Assuming that no change to the `penguins` dataset was made, will the model be pr
 </div>
 <div class="answer fragment">
 <p>(56+74)/(109+56+74+94) = 130/333</p>
+<p>(94)/(94+56) = 94/150</p>
+<p>(94)/(94+74) = 94/168</p>
 </div>
 </section></section>
 <section>
 <section id="concept-questions" class="title-slide slide level1 center">
 <h1>Concept Questions</h1>
 
+</section>
+<section id="are-fp-or-fn-worse-in-this-situation" class="slide level2">
+<h2>Are FP or FN worse in this situation?</h2>
+<div class="answer fragment">
+<p>It’s up to you but I’d say misclassifying a male penguin as female or vice versa seems equally problematic. But maybe it isn’t. It depends on what you do with that prediction.</p>
+</div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -382,7 +406,7 @@ Assuming that no change to the `penguins` dataset was made, will the model be pr
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ab77046d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_969f742b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -404,12 +428,35 @@ Assuming that no change to the `penguins` dataset was made, will the model be pr
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="important-attendance-required-next-week-1118-and-1120" class="slide level2" data-background-color="#d0c2cf" color="#3d6c28">
+<h2><span style="color: green;">Important: Attendance Required NEXT WEEK 11/18 and 11/20!</span></h2>
+<div class="r-fit-text">
+<p><span style="color: darkorange;"><strong>November 18 &amp; November 20</strong></span></p>
+</div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>We will be conducting an <span style="color: red;">actual experiment in class</span> on these dates.</p>
+<p><span style="color: red;">You need to be present to participate!</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>It’s gonna be soooo much fun!</p>
+</div>
 </section></section>
 <section id="break" class="title-slide slide level1 center">
 <h1>Break</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_79080558" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_aac58d08" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -681,7 +728,7 @@ Each biopsy has 30 features; these come from computing 3 summary statistics (mea
 <h1>Lab: Cancer Diagnosis</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_dd1fcbaf" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_292077d6" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">45</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

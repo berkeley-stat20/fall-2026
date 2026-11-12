@@ -383,6 +383,17 @@ window.Quarto = {
  <span class="menu-text">Wrong by Design</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Prediction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/notes.html" class="sidebar-item-text sidebar-link">
@@ -401,40 +412,35 @@ window.Quarto = {
  <span class="menu-text">Improving Predictions and Overfitting</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Prediction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/05-logistic-regression/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logistic Regression</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Causality</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../5-causation/01-defining-causality/notes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Defining Causality</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
- <span class="menu-text">Causality</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/02-experiments/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomized Experiments</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -497,7 +503,11 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li>counterfactual world</li>
+<li>causation between events</li>
+<li>causation between random variables</li>
+<li>response variable and treatment variable</li>
+<li>potential outcomes</li>
 </ul>
 </div>
 </div>
@@ -544,12 +554,12 @@ E. You asking for a sheet.</p>
 <p>Keep in mind that Analytical Philosophy and Theoretical Physics have to say goodbye here. They don’t quite follow our path, at least not fully. They have generally different approaches to causation. (In fact some philosophers think causation is not a coherent concept at all, which the author of this notes also agrees with…)</p>
 <p>But the following is the core of how Statistics and the Social Sciences think about causation.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>Def. Counterfactual</strong></p>
+<p><strong>def: Counterfactual</strong></p>
 <p>A hypothetical alternative universe where a certain event, that happened in our actual universe, didn’t happen. (Or vice versa).</p>
 </div>
 <p>This notion is the core component of the most widely used definition of a cause: the <strong>conditional counterfactual definition</strong>.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>Def. Causation</strong></p>
+<p><strong>def: Causation</strong></p>
 <p>We say “A causes B” if, in a world where A didn’t happen, B wouldn’t happen either.</p>
 </div>
 <p>Using this definition of causation, let’s revisit two examples from above.</p>
@@ -578,56 +588,77 @@ Check your answer
 <section id="causation-between-variables" class="level3">
 <h3 class="anchored" data-anchor-id="causation-between-variables">Causation between variables</h3>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>Def. Causation between two variables</strong></p>
-<p>We say that random variable <span class="math inline">\(X\)</span> (<strong><em>treatment</em></strong> or <strong><em>explanatory variable</em></strong>) causes random variable <span class="math inline">\(Y\)</span> (<strong><em>response variable</em></strong>) if, in a counterfactual universe where the value of <span class="math inline">\(X\)</span> is different, then the probability distribution of <span class="math inline">\(Y\)</span> is different.</p>
+<p><strong>def: Causation between two variables</strong></p>
+<p>We say that random variable <span class="math inline">\(D\)</span> (<strong><em>treatment</em></strong> or <strong><em>explanatory variable</em></strong>) causes random variable <span class="math inline">\(Y\)</span> (<strong><em>outcome variable</em></strong>) if, in a counterfactual universe where the value of <span class="math inline">\(D\)</span> is different, then the probability distribution of <span class="math inline">\(Y\)</span> is different.</p>
 </div>
 <section id="e.g.-aspirin-again" class="level4">
 <h4 class="anchored" data-anchor-id="e.g.-aspirin-again">E.g. Aspirin again</h4>
 <ul>
-<li><span class="math inline">\(X\)</span> = they take the aspirin or not (discrete, binary, 1 or 0)</li>
+<li><span class="math inline">\(D\)</span> = they take the aspirin or not (discrete, binary, 1 or 0)</li>
 <li><span class="math inline">\(Y\)</span> = how long until the headache goes away (continuous)</li>
 </ul>
-<p>In a world where I take the aspirin, <span class="math inline">\(X = 1\)</span>, I expect the headache to go away in 43 minutes <span class="math inline">\(E(Y) = 43\)</span> minutes</p>
-<p>In a world where I don’t take the aspirin, <span class="math inline">\(X = 0\)</span>, I expect the headache to go away in 318 minutes <span class="math inline">\(E(Y) = 318\)</span> minutes</p>
-<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you took the aspirin and didn’t (the expectation went down), therefore <span class="math inline">\(X\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+<p>In a world where I take the aspirin, <span class="math inline">\(D = 1\)</span>, I expect the headache to go away in 43 minutes <span class="math inline">\(E(Y) = 43\)</span> minutes</p>
+<p>In a world where I don’t take the aspirin, <span class="math inline">\(D = 0\)</span>, I expect the headache to go away in 318 minutes <span class="math inline">\(E(Y) = 318\)</span> minutes</p>
+<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you took the aspirin and didn’t (the expectation went down), therefore <span class="math inline">\(D\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="e.g.-studying-for-stat-20" class="level4">
 <h4 class="anchored" data-anchor-id="e.g.-studying-for-stat-20">E.g. Studying for Stat 20</h4>
 <ul>
-<li><span class="math inline">\(X =\)</span> amount of time studied per day (continuous)</li>
+<li><span class="math inline">\(D =\)</span> amount of time studied per day (continuous)</li>
 <li><span class="math inline">\(Y =\)</span> letter grade at the end of the semester (categorical ordinal)</li>
 </ul>
-<p>In a world where I study <span class="math inline">\(X = 23\)</span> minutes per day, I have a 35% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.35\)</span>.</p>
-<p>In a different world, where I study <span class="math inline">\(X = 38\)</span> minutes per day, I have a 52% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.52\)</span>.</p>
-<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you studied for 23 vs.&nbsp;38 minutes per day (the probability of “A” or higher went up), therefore <span class="math inline">\(X\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+<p>In a world where I study <span class="math inline">\(D = 23\)</span> minutes per day, I have a 35% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.35\)</span>.</p>
+<p>In a different world, where I study <span class="math inline">\(D = 38\)</span> minutes per day, I have a 52% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.52\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you studied for 23 vs.&nbsp;38 minutes per day (the probability of “A” or higher went up), therefore <span class="math inline">\(D\)</span> caused <span class="math inline">\(Y\)</span>.</p>
 <p>Let’s introduce some more language then.</p>
 </section>
 </section>
 </section>
 <section id="the-language-of-causation-potential-outcomes-and-treatment-effect" class="level2">
 <h2 class="anchored" data-anchor-id="the-language-of-causation-potential-outcomes-and-treatment-effect">The language of causation: Potential Outcomes and Treatment Effect</h2>
-<p><strong>Def. Potential Outcomes</strong></p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p>Given a response variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(X\)</span>, for simplicity taking just two values <span class="math inline">\(X=0\)</span> (control) and <span class="math inline">\(X=1\)</span> (treatment). Define:</p>
+<p><strong>def: Potential Outcomes</strong></p>
+<p>Given an outcome variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>. We define</p>
+<p><span class="math display">\[Y(D=d)\]</span></p>
+<p>as the variable</p>
+<p>the potential outcome of <span class="math inline">\(Y\)</span> under for simplicity taking just two values <span class="math inline">\(D=0\)</span> (control) and <span class="math inline">\(D=1\)</span> (treatment). Define:</p>
 <ul>
-<li><span class="math inline">\(Y(X=0)\)</span> or <span class="math inline">\(Y_c\)</span>. The potential outcome in control conditions.</li>
-<li><span class="math inline">\(Y(X=1)\)</span> or <span class="math inline">\(Y_t\)</span>. The potential outcome in treatment conditions.</li>
+<li><span class="math inline">\(Y(D=0)\)</span> or <span class="math inline">\(Y_c\)</span>. The potential outcome in control conditions.</li>
+<li><span class="math inline">\(Y(D=1)\)</span> or <span class="math inline">\(Y_t\)</span>. The potential outcome in treatment conditions.</li>
 </ul>
 </div>
-<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control (<span class="math inline">\(X=0\)</span>), there would be an imaginary unobserved evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except for having a different value of the treatment variable <span class="math inline">\(X=1\)</span>, and vice versa.</p>
+<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control (<span class="math inline">\(D=0\)</span>), there would be an imaginary unobserved evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except for having a different value of the treatment variable <span class="math inline">\(D=1\)</span>, and vice versa.</p>
 <section id="e.g." class="level4">
 <h4 class="anchored" data-anchor-id="e.g.">E.g.</h4>
 <ul>
 <li><span class="math inline">\(Y_c\)</span> = Amount of water I drank after I, the author of these notes, got home at 3:15pm on 11/02/2026, took off my shoes in the hallway and sneezed, walked up the stairs, poured 246 g of water <strong>in a plastic cup</strong>.</li>
 <li><span class="math inline">\(Y_t\)</span> = Amount of water I drank after I, the author of these notes, got home at 3:15pm on 11/02/2026, took off my shoes in the hallway and sneezed, walked up the stairs, poured 246 g of water <strong>in a glass</strong>.</li>
-<li><span class="math inline">\(X\)</span> = type of container you poured the water in. (Glass or plastic cup)</li>
+<li><span class="math inline">\(D\)</span> = Type of container I poured the water in. (Glass or plastic cup)</li>
 </ul>
 <p>Now we’re ready to finally define the effect of taking the treatment.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>Def. Treatment Effect</strong></p>
-<p>Given a response variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(X\)</span>, for simplicity taking just two values <span class="math inline">\(X=0\)</span> (control) and <span class="math inline">\(X=1\)</span> (treatment), We define the treatment effect as:</p>
+<p><strong>def: Treatment Effect</strong></p>
+<p>Given a response variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>, for simplicity taking just two values <span class="math inline">\(D=0\)</span> (control) and <span class="math inline">\(D=1\)</span> (treatment), We define the treatment effect as:</p>
 <p><span class="math display">\[
-\mbox{Treatment Effect} \equiv \delta \equiv Y(X=1) - Y(X=0) \equiv Y_t - Y_c
+\mbox{Treatment Effect} \equiv \delta \equiv Y(D=1) - Y(D=0) \equiv Y_t - Y_c
 \]</span></p>
 </div>
 <p>Okay, no big surprises so far. The effect of taking the treatment is the difference between what would happen if you took the treatment and what would happen if you took the control.</p>
@@ -778,23 +809,23 @@ A population parameter that captures the effect of being administered a particul
 </div>
 <div class="cell quarto-layout-cell" style="flex-basis: 45.5%;justify-content: center;">
 <div class="cell-output-display">
-<div id="joufalvwop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#joufalvwop table {
+<div id="mllxkrislm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mllxkrislm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#joufalvwop thead, #joufalvwop tbody, #joufalvwop tfoot, #joufalvwop tr, #joufalvwop td, #joufalvwop th {
+#mllxkrislm thead, #mllxkrislm tbody, #mllxkrislm tfoot, #mllxkrislm tr, #mllxkrislm td, #mllxkrislm th {
   border-style: none;
 }
 
-#joufalvwop p {
+#mllxkrislm p {
   margin: 0;
   padding: 0;
 }
 
-#joufalvwop .gt_table {
+#mllxkrislm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -820,12 +851,12 @@ A population parameter that captures the effect of being administered a particul
   border-left-color: #D3D3D3;
 }
 
-#joufalvwop .gt_caption {
+#mllxkrislm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#joufalvwop .gt_title {
+#mllxkrislm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -837,7 +868,7 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-width: 0;
 }
 
-#joufalvwop .gt_subtitle {
+#mllxkrislm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -849,7 +880,7 @@ A population parameter that captures the effect of being administered a particul
   border-top-width: 0;
 }
 
-#joufalvwop .gt_heading {
+#mllxkrislm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -861,13 +892,13 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#joufalvwop .gt_bottom_border {
+#mllxkrislm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#joufalvwop .gt_col_headings {
+#mllxkrislm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -882,7 +913,7 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#joufalvwop .gt_col_heading {
+#mllxkrislm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -902,7 +933,7 @@ A population parameter that captures the effect of being administered a particul
   overflow-x: hidden;
 }
 
-#joufalvwop .gt_column_spanner_outer {
+#mllxkrislm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -914,15 +945,15 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 4px;
 }
 
-#joufalvwop .gt_column_spanner_outer:first-child {
+#mllxkrislm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#joufalvwop .gt_column_spanner_outer:last-child {
+#mllxkrislm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#joufalvwop .gt_column_spanner {
+#mllxkrislm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -934,11 +965,11 @@ A population parameter that captures the effect of being administered a particul
   width: 100%;
 }
 
-#joufalvwop .gt_spanner_row {
+#mllxkrislm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#joufalvwop .gt_group_heading {
+#mllxkrislm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -964,7 +995,7 @@ A population parameter that captures the effect of being administered a particul
   text-align: left;
 }
 
-#joufalvwop .gt_empty_group_heading {
+#mllxkrislm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -979,15 +1010,15 @@ A population parameter that captures the effect of being administered a particul
   vertical-align: middle;
 }
 
-#joufalvwop .gt_from_md > :first-child {
+#mllxkrislm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#joufalvwop .gt_from_md > :last-child {
+#mllxkrislm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#joufalvwop .gt_row {
+#mllxkrislm .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1006,7 +1037,7 @@ A population parameter that captures the effect of being administered a particul
   overflow-x: hidden;
 }
 
-#joufalvwop .gt_stub {
+#mllxkrislm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1019,7 +1050,7 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#joufalvwop .gt_stub_row_group {
+#mllxkrislm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1033,15 +1064,15 @@ A population parameter that captures the effect of being administered a particul
   vertical-align: top;
 }
 
-#joufalvwop .gt_row_group_first td {
+#mllxkrislm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#joufalvwop .gt_row_group_first th {
+#mllxkrislm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#joufalvwop .gt_summary_row {
+#mllxkrislm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1051,16 +1082,16 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#joufalvwop .gt_first_summary_row {
+#mllxkrislm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#joufalvwop .gt_first_summary_row.thick {
+#mllxkrislm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#joufalvwop .gt_last_summary_row {
+#mllxkrislm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1070,7 +1101,7 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-color: #D3D3D3;
 }
 
-#joufalvwop .gt_grand_summary_row {
+#mllxkrislm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1080,7 +1111,7 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#joufalvwop .gt_first_grand_summary_row {
+#mllxkrislm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1090,7 +1121,7 @@ A population parameter that captures the effect of being administered a particul
   border-top-color: #D3D3D3;
 }
 
-#joufalvwop .gt_last_grand_summary_row_top {
+#mllxkrislm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1100,11 +1131,11 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-color: #D3D3D3;
 }
 
-#joufalvwop .gt_striped {
+#mllxkrislm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#joufalvwop .gt_table_body {
+#mllxkrislm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1113,7 +1144,7 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-color: #D3D3D3;
 }
 
-#joufalvwop .gt_footnotes {
+#mllxkrislm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1127,7 +1158,7 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#joufalvwop .gt_footnote {
+#mllxkrislm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1136,7 +1167,7 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#joufalvwop .gt_sourcenotes {
+#mllxkrislm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1150,7 +1181,7 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#joufalvwop .gt_sourcenote {
+#mllxkrislm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1158,72 +1189,72 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#joufalvwop .gt_left {
+#mllxkrislm .gt_left {
   text-align: left;
 }
 
-#joufalvwop .gt_center {
+#mllxkrislm .gt_center {
   text-align: center;
 }
 
-#joufalvwop .gt_right {
+#mllxkrislm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#joufalvwop .gt_font_normal {
+#mllxkrislm .gt_font_normal {
   font-weight: normal;
 }
 
-#joufalvwop .gt_font_bold {
+#mllxkrislm .gt_font_bold {
   font-weight: bold;
 }
 
-#joufalvwop .gt_font_italic {
+#mllxkrislm .gt_font_italic {
   font-style: italic;
 }
 
-#joufalvwop .gt_super {
+#mllxkrislm .gt_super {
   font-size: 65%;
 }
 
-#joufalvwop .gt_footnote_marks {
+#mllxkrislm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#joufalvwop .gt_asterisk {
+#mllxkrislm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#joufalvwop .gt_indent_1 {
+#mllxkrislm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#joufalvwop .gt_indent_2 {
+#mllxkrislm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#joufalvwop .gt_indent_3 {
+#mllxkrislm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#joufalvwop .gt_indent_4 {
+#mllxkrislm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#joufalvwop .gt_indent_5 {
+#mllxkrislm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#joufalvwop .katex-display {
+#mllxkrislm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#joufalvwop div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mllxkrislm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1278,23 +1309,23 @@ A population parameter that captures the effect of being administered a particul
 </div>
 <div class="cell quarto-layout-cell" style="flex-basis: 27.3%;justify-content: center;">
 <div class="cell-output-display">
-<div id="vjqzngvsyq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vjqzngvsyq table {
+<div id="mzokyhgqss" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mzokyhgqss table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vjqzngvsyq thead, #vjqzngvsyq tbody, #vjqzngvsyq tfoot, #vjqzngvsyq tr, #vjqzngvsyq td, #vjqzngvsyq th {
+#mzokyhgqss thead, #mzokyhgqss tbody, #mzokyhgqss tfoot, #mzokyhgqss tr, #mzokyhgqss td, #mzokyhgqss th {
   border-style: none;
 }
 
-#vjqzngvsyq p {
+#mzokyhgqss p {
   margin: 0;
   padding: 0;
 }
 
-#vjqzngvsyq .gt_table {
+#mzokyhgqss .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1320,12 +1351,12 @@ A population parameter that captures the effect of being administered a particul
   border-left-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_caption {
+#mzokyhgqss .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vjqzngvsyq .gt_title {
+#mzokyhgqss .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1337,7 +1368,7 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-width: 0;
 }
 
-#vjqzngvsyq .gt_subtitle {
+#mzokyhgqss .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1349,7 +1380,7 @@ A population parameter that captures the effect of being administered a particul
   border-top-width: 0;
 }
 
-#vjqzngvsyq .gt_heading {
+#mzokyhgqss .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1361,13 +1392,13 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_bottom_border {
+#mzokyhgqss .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_col_headings {
+#mzokyhgqss .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1382,7 +1413,7 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_col_heading {
+#mzokyhgqss .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1402,7 +1433,7 @@ A population parameter that captures the effect of being administered a particul
   overflow-x: hidden;
 }
 
-#vjqzngvsyq .gt_column_spanner_outer {
+#mzokyhgqss .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1414,15 +1445,15 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 4px;
 }
 
-#vjqzngvsyq .gt_column_spanner_outer:first-child {
+#mzokyhgqss .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vjqzngvsyq .gt_column_spanner_outer:last-child {
+#mzokyhgqss .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vjqzngvsyq .gt_column_spanner {
+#mzokyhgqss .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1434,11 +1465,11 @@ A population parameter that captures the effect of being administered a particul
   width: 100%;
 }
 
-#vjqzngvsyq .gt_spanner_row {
+#mzokyhgqss .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vjqzngvsyq .gt_group_heading {
+#mzokyhgqss .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1464,7 +1495,7 @@ A population parameter that captures the effect of being administered a particul
   text-align: left;
 }
 
-#vjqzngvsyq .gt_empty_group_heading {
+#mzokyhgqss .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1479,15 +1510,15 @@ A population parameter that captures the effect of being administered a particul
   vertical-align: middle;
 }
 
-#vjqzngvsyq .gt_from_md > :first-child {
+#mzokyhgqss .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vjqzngvsyq .gt_from_md > :last-child {
+#mzokyhgqss .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vjqzngvsyq .gt_row {
+#mzokyhgqss .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1506,7 +1537,7 @@ A population parameter that captures the effect of being administered a particul
   overflow-x: hidden;
 }
 
-#vjqzngvsyq .gt_stub {
+#mzokyhgqss .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1519,7 +1550,7 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#vjqzngvsyq .gt_stub_row_group {
+#mzokyhgqss .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1533,15 +1564,15 @@ A population parameter that captures the effect of being administered a particul
   vertical-align: top;
 }
 
-#vjqzngvsyq .gt_row_group_first td {
+#mzokyhgqss .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vjqzngvsyq .gt_row_group_first th {
+#mzokyhgqss .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vjqzngvsyq .gt_summary_row {
+#mzokyhgqss .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1551,16 +1582,16 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#vjqzngvsyq .gt_first_summary_row {
+#mzokyhgqss .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_first_summary_row.thick {
+#mzokyhgqss .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vjqzngvsyq .gt_last_summary_row {
+#mzokyhgqss .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1570,7 +1601,7 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_grand_summary_row {
+#mzokyhgqss .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1580,7 +1611,7 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#vjqzngvsyq .gt_first_grand_summary_row {
+#mzokyhgqss .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1590,7 +1621,7 @@ A population parameter that captures the effect of being administered a particul
   border-top-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_last_grand_summary_row_top {
+#mzokyhgqss .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1600,11 +1631,11 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_striped {
+#mzokyhgqss .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vjqzngvsyq .gt_table_body {
+#mzokyhgqss .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1613,7 +1644,7 @@ A population parameter that captures the effect of being administered a particul
   border-bottom-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_footnotes {
+#mzokyhgqss .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1627,7 +1658,7 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_footnote {
+#mzokyhgqss .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1636,7 +1667,7 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#vjqzngvsyq .gt_sourcenotes {
+#mzokyhgqss .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1650,7 +1681,7 @@ A population parameter that captures the effect of being administered a particul
   border-right-color: #D3D3D3;
 }
 
-#vjqzngvsyq .gt_sourcenote {
+#mzokyhgqss .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1658,72 +1689,72 @@ A population parameter that captures the effect of being administered a particul
   padding-right: 5px;
 }
 
-#vjqzngvsyq .gt_left {
+#mzokyhgqss .gt_left {
   text-align: left;
 }
 
-#vjqzngvsyq .gt_center {
+#mzokyhgqss .gt_center {
   text-align: center;
 }
 
-#vjqzngvsyq .gt_right {
+#mzokyhgqss .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vjqzngvsyq .gt_font_normal {
+#mzokyhgqss .gt_font_normal {
   font-weight: normal;
 }
 
-#vjqzngvsyq .gt_font_bold {
+#mzokyhgqss .gt_font_bold {
   font-weight: bold;
 }
 
-#vjqzngvsyq .gt_font_italic {
+#mzokyhgqss .gt_font_italic {
   font-style: italic;
 }
 
-#vjqzngvsyq .gt_super {
+#mzokyhgqss .gt_super {
   font-size: 65%;
 }
 
-#vjqzngvsyq .gt_footnote_marks {
+#mzokyhgqss .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vjqzngvsyq .gt_asterisk {
+#mzokyhgqss .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vjqzngvsyq .gt_indent_1 {
+#mzokyhgqss .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vjqzngvsyq .gt_indent_2 {
+#mzokyhgqss .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vjqzngvsyq .gt_indent_3 {
+#mzokyhgqss .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vjqzngvsyq .gt_indent_4 {
+#mzokyhgqss .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vjqzngvsyq .gt_indent_5 {
+#mzokyhgqss .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vjqzngvsyq .katex-display {
+#mzokyhgqss .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vjqzngvsyq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mzokyhgqss div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

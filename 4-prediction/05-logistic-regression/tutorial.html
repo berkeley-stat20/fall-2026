@@ -343,6 +343,12 @@ window.Quarto = {
  <span class="menu-text">Logistic Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/02-experiments/tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomized Experiments</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -508,8 +514,9 @@ What’s the deal with <code>family = "binomial"</code>?
 Which estimate do you trust more? Precision or Recall?
 </summary>
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
-<p>The effective sample size for Precision is 8, for Recall it’s 124.</p>
-<p>They’re both not great, but the sample for precision is really really tiny. I wouldn’t trust that estimate at all: it would have a gigantic confidence interval. Can you calculate it?</p>
+<p>Effectively, if you think about it, the sample size for Precision is 8 (that’s the denominator), for Recall it’s 124.</p>
+<p>They’re both not great, but the size for Precision is really really tiny. I wouldn’t trust that number at all as an estimate of the <em>population Precision</em> (what do you think this is?). It would carry a gigantic confidence interval…</p>
+<p>Can you calculate it?</p>
 <p>Do you see now why I chose a larger percentage for the test set than usual?</p>
 </div>
 </details>

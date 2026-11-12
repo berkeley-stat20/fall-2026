@@ -292,13 +292,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Generalization</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../3-generalization/notes.html" class="sidebar-item-text sidebar-link">
@@ -377,6 +377,17 @@ window.Quarto = {
  <span class="menu-text">Wrong by Design</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Prediction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/notes.html" class="sidebar-item-text sidebar-link">
@@ -395,27 +406,10 @@ window.Quarto = {
  <span class="menu-text">Improving Predictions and Overfitting</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Prediction</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/05-logistic-regression/notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logistic Regression</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../5-causation/01-defining-causality/notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining Causality</span></a>
   </div>
 </li>
       </ul>
@@ -429,6 +423,18 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/01-defining-causality/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining Causality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/02-experiments/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomized Experiments</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -2216,7 +2222,7 @@ Go check the first summary table a few paragraphs above…
 <p>This is so anticlimactic. As you see, this model doesn’t depend on the features (<span class="math inline">\(X\)</span>) at all! It’s the absolutely most banale, basic, trivial, unimaginative, and yet still data-driven method, that you could have come up with to make a prediction about <span class="math inline">\(Y\)</span>: just take a sample and use its mean to guess the future.</p>
 <details>
 <summary>
-How well is your model doing? Come up with a measure of perfermonce
+How well is your model doing? Come up with a measure of performance
 </summary>
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>Well, we can’t really ask the model to give an exactly correct prediction because this is a continuous variable!</p>
@@ -2318,7 +2324,7 @@ Not so fast. What are the units of measurement of the MSE?
 <li><p>In <strong>generalization</strong>, we are guessing unknown and <strong>unobservable</strong> quantities (distribution/population parameters). You will <strong>never</strong> be able to check directly how close you got to the true <span class="math inline">\(\mu\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(\sigma\)</span>, etc…</p></li>
 <li><p>In <strong>prediction</strong>, we are guessing presently unknown, but, in the future, in principle <strong>observable</strong> and knowable quantities (random variables). For example, you can ask the person if they are a Guelph or a Ghibelline (good luck with that!).</p></li>
 </ul>
-<p>This difference has massive consequences and that’s why Statistical Inference (i.e.&nbsp;generalization) and Machine Learning (i.e.&nbsp;prediction) are, in practice, regarded as two completely separate subjects.</p>
+<p>This difference has massive consequences and that’s why Statistical Inference (i.e.&nbsp;generalization) and Machine Learning (i.e.&nbsp;prediction) are, in practice, sometimes regarded as two completely separate subjects.</p>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../4-prediction/01-method-of-least-squares/tutorial.html" class="tutorial-nav-next">Continue on to the tutorial ⮕</a></p>
 </div>

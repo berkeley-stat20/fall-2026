@@ -412,6 +412,17 @@ window.Quarto = {
  <span class="menu-text">Wrong by Design</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Prediction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/notes.html" class="sidebar-item-text sidebar-link">
@@ -430,27 +441,10 @@ window.Quarto = {
  <span class="menu-text">Improving Predictions and Overfitting</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Prediction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../4-prediction/05-logistic-regression/notes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Logistic Regression</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../5-causation/01-defining-causality/notes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Defining Causality</span></a>
   </div>
 </li>
       </ul>
@@ -464,6 +458,18 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/01-defining-causality/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining Causality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../5-causation/02-experiments/notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Randomized Experiments</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -630,7 +636,7 @@ The last time you checked your email inbox, you observed the results of yet anot
 <h2 class="anchored" data-anchor-id="from-linear-to-logistic-regression">From Linear to Logistic Regression</h2>
 <section id="naive-approach-linear-probability-model" class="level3">
 <h3 class="anchored" data-anchor-id="naive-approach-linear-probability-model">Naive approach: Linear Probability Model</h3>
-<p>It would be nice if we could just retain all the awesome advantages of linear regression and carry them over to the problem of classification. We will see in a minute that we can keep only some some.</p>
+<p>It would be nice if we could just retain all the awesome advantages of linear regression and carry them over to the problem of classification. We will see in a minute that we can keep only some.</p>
 <p>Let’s start by taking our existing simple linear regression model, applying it naively to this classification setting, and crossing our fingers. We can visualize the relationship between <code>log_num_char</code> and <code>spam</code> using an ordinary scatter plot.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -639,7 +645,7 @@ The last time you checked your email inbox, you observed the results of yet anot
 </div>
 <p>This is a strange looking scatter plot - the dots can only take <span class="math inline">\(y\)</span> values of 0 or 1 - but it does capture the overall trend observed in the density plots, that spam messages are longer. Since we have a scatter plot, we could fit a simple linear regression model using the method of least squares (in gold).</p>
 <p><span class="math display">\[ \hat{Y} = b_0 + b_1 X \]</span></p>
-<p>While this is doable, it leaves us with a few sppoky questions. The value of <span class="math inline">\(\hat{Y}\)</span> can be anywhere on the real number line.</p>
+<p>While this is doable, it leaves us with a few spooky questions. The value of <span class="math inline">\(\hat{Y}\)</span> can be anywhere on the real number line.</p>
 <p>What does it mean if we predict that the value of <span class="math inline">\(Y\)</span> is .71? I thought <span class="math inline">\(Y\)</span> could only be 0 or 1 …</p>
 <p>One approach to resolving this is to <em>treat our equation not as a value of <span class="math inline">\(Y\)</span>, but as an estimate of the <em>probability</em>, <span class="math inline">\(p\)</span>, that <span class="math inline">\(Y = 1\)</span> if I know the value of the feature X.</em> We can rewrite the model as:</p>
 <p><span class="math display">\[p(X) = b_0 + b_1 X\]</span></p>
@@ -656,7 +662,7 @@ The last time you checked your email inbox, you observed the results of yet anot
 <p>However… What if <span class="math inline">\(\hat{p}(\mathbf{X}) = 1.5\)</span>? Or <span class="math inline">\(-30\)</span>? Well, we can just cut off those values and make them equal to <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span> respectively.</p>
 <p>This is what we call a <em>Linear Probability Model</em>. If you must see a complete formal definition here it is:</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: Linear Probability Model</strong> (you don’t need to remember this)</p>
+<p><strong>def: Linear Probability Model</strong></p>
 <p>If you have an <span class="math inline">\(n\)</span>-sized sample of a binary target variable (<span class="math inline">\(Y_i = 0,1\)</span>) and several features <span class="math inline">\(X_{1,i}, \ldots, X_{q,i}\)</span>.</p>
 <p>Step 1 (model definition) <span class="math display">\[ h(\mathbf{X}) \equiv  b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_q X_q \]</span></p>
 <p>which defines the helper function <span class="math inline">\(h()\)</span> as the linear model.</p>
@@ -682,6 +688,7 @@ The last time you checked your email inbox, you observed the results of yet anot
 <p>which makes the final prediction about <span class="math inline">\(Y\)</span>.</p>
 </div>
 <p>where you have certainly recognized the estimated conditional probability <span class="math inline">\(\hat{P}(Y=1|\mathbf{X})\)</span>: the estimated probability that <span class="math inline">\(Y\)</span> is equal to 1, knowing the value of the <span class="math inline">\(\mathbf{X}= X_1, X_2, \dots , X_q\)</span>.</p>
+<p>You don’t need to remember the mathematical details of the Linear Probability model but it’s a very good introduction to the next model.</p>
 <p>The problem with this model is that it just behaves badly when we fit it on the data: it’s sensitive to outliers and has other unpleasant mathematical properties. Though the author of these notes finds it really pretty!</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -769,11 +776,12 @@ p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_
 <p>Look at it! How pretty! Tucked cozily up inside that exponent.</p>
 <p>But the closeness of the estimation to the data will be measured by a different function than the MSE. You don’t have to remember it. <code>R</code> will do the optimization for you, but I will include it here for completeness.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: Sample Cross-entropy</strong> (you don’t need to remember this)</p>
+<p><strong>def: Sample Cross-entropy</strong></p>
 <p>For a certain model determining probability <span class="math inline">\(p(\mathbf{X})\)</span> for binary data <span class="math inline">\(Y_i\)</span>, the cross-entropy of the model measures how far the model probability distribution is from the data, and is defined mathematically by</p>
 <p><span class="math display">\[ H \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i \cdot {\rm log} \left(p(\mathbf{X}_i)\right) + \left(1-Y_i\right) \cdot {\rm log} \left(1-p(\mathbf{X}_i)\right)  \right] \]</span></p>
 </div>
 <p>This function is not as nice as the MSE, unfortunately. We can’t solve its minimization through calculus like the Ordinary Least Squares method. We will be forced to use numerical methods to optimize it.</p>
+<p>You don’t need to remember the mathematical definition of the Cross-entropy. Just know that we are not optimizing MSE any more when fitting the model in Logistic Regression.</p>
 <p>This might feel like a loss (let me know if you get the pun), but it’s a win!</p>
 </section>
 </section>
@@ -856,6 +864,15 @@ We can visualize the approach that logistic regression takes by sketching the pr
 </table>
 </div>
 <p>Out of these 4 sample quantities we can now build a series of different measures of performance of our model. Unfortunately there is no better or worse measure in absolute. Depending on your circumstances, you might care about one of these 4 numbers more than the others, etc…</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="notes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2880"></p>
+</figure>
+</div>
+</div>
+</div>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Misclassification Rate (MCR)</strong></p>
 <p>This is an estimate of the probability of just being wrong (one way or the other)</p>
