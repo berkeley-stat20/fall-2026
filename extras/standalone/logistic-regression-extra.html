@@ -67,7 +67,7 @@ button {
 }
 button:hover { filter: brightness(1.08); }
 button.active { background: var(--card); color: var(--btn); box-shadow: none; }
-svg { width: 100%; height: auto; display: block; touch-action: none; user-select: none; }
+svg { width: 100%; height: auto; display: block; touch-action: none; user-select: none; overflow: visible; }
 .axis text { fill: var(--muted); font-size: 12px; }
 .axis-title { fill: var(--ink); font-size: 13px; }
 .plot-sub { fill: var(--muted); font-size: 13.5px; font-style: italic; }
@@ -94,10 +94,11 @@ svg { width: 100%; height: auto; display: block; touch-action: none; user-select
 #info ol { margin: 0; padding-left: 1.3em; }
 #info li { margin-bottom: 12px; }
 #info .btnref { color: var(--btn); font-weight: 700; white-space: nowrap; }
+.thr-label.side-label { font-size: 12px; font-weight: 600; }
 .thr-label.thr-hint { font-size: 12px; font-weight: 500; font-style: italic; }
 .thr-label { fill: var(--thr); font-size: 13px; font-weight: 700; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
 .readout { font-size: .95rem; margin-bottom: 14px; }
-.readout .big { font-weight: 600; color: var(--thr); }
+#massRule { font-style: italic; color: var(--muted); margin-top: 6px; padding-left: 10px; border-left: 3px solid color-mix(in srgb, var(--muted) 40%, transparent); }
 td.cell:hover, td.cell.hl { background: var(--panel); }
 table.cm { border-collapse: collapse; width: 100%; margin-bottom: 16px; font-size: .9rem; }
 table.cm th, table.cm td { border: 1px solid var(--line); padding: 8px; text-align: center; }
@@ -125,7 +126,6 @@ button.pill > span { margin-right: .3em; }
 button.pill.active { padding: 5px 15px; border: 2.5px solid var(--ink); color: var(--ink); box-shadow: 0 2px 4px rgba(0, 0, 0, .18); cursor: default; filter: none; }
 button.pill:not(.active):hover { color: var(--ink); border-color: var(--muted); filter: none; }
 #info code { font: .88em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--code-bg); padding: 1px 4px; border-radius: 4px; }
-.note { font-size: .88rem; color: var(--muted); margin: -4px 0 14px; padding-left: 10px; border-left: 3px solid var(--FP); }
 </style>
 </head>
 <body>
@@ -177,14 +177,13 @@ button.pill:not(.active):hover { color: var(--ink); border-color: var(--muted); 
       aria: "Penguins plotted at 0 (female) or 1 (male) against body mass, with the fitted logistic curve",
       xTitle: "body_mass_g", yTitle: "sex",
       neg: "female", pos: "male",
-      predNeg: "predicted female", predPos: "predicted male",
+      predNeg: "classified female", predPos: "classified male",
       curveLabel: "Model: p(male) based on weight", curveAt: 5050, curveAnchor: "end",
       info: `<ol>
         <li>Each dot is one penguin. <b>Hover over a penguin</b> to see how the model calculates its probability of being male.</li>
         <li><b>Scroll down</b> to read the R code that fit the model and the formula it uses to make predictions.</li>
-        <li>Then click the <span class="btnref">Set decision threshold</span> button to turn probabilities into male/female predictions. Drag the threshold up and down and watch how the confusion matrix and error rates change.</li>
+        <li>Then click the <span class="btnref">Set decision threshold</span> button to turn probabilities into male/female classifications. Drag the threshold up and down and watch how the confusion matrix and error rates change.</li>
       </ol>`,
-      evalNote: "",
       metricNotes: {
         mcr: "How often were we wrong?",
         prec: "Interpretation: Of all the penguins we said were male (TP + FP), what fraction really were male (TP)?",
@@ -193,9 +192,9 @@ button.pill:not(.active):hover { color: var(--ink); border-color: var(--muted); 
       tipHead: d => `${d.raw} g penguin`,
       tipX: d => "",
       tipZ: d => `<i>z</i> = −5.16 + 0.00124 × ${d.raw} = ${d.z.toFixed(2)}`,
-      everyPos: "Every penguin is predicted male.",
-      everyNeg: "Every penguin is predicted female.",
-      cutRule: cut => `Same as predicting male when body mass &gt; ${Math.round(cut)} g`,
+      everyPos: "Every penguin is classified male.",
+      everyNeg: "Every penguin is classified female.",
+      cutRule: cut => `Same as classifying penguins as male when body mass &gt; ${Math.round(cut)} g`,
       code: `<h2>Code and output</h2>
 <pre class="code"><span class="com"># female = 0, male = 1, so the model predicts P(male)</span>
 model1 = <span class="fn">glm</span>(sex ~ body_mass_g, data = penguins, family = <span class="str">"binomial"</span>)
@@ -248,7 +247,6 @@ Coefficients:
         prec: "Interpretation: Of everything we put in the spam folder (TP + FP), how much of it was really spam (TP)? When precision is low, real email is getting hidden.",
         rec: "Interpretation: How much of the real spam (TP + FN) did we catch (TP)? When recall is low, spam is getting through to the inbox."
       },
-      evalNote: `<p class="note">A false positive hides a real email in the spam folder. A false negative lets one spam email into the inbox.</p>`,
       tipHead: d => `${fmtN(d.raw)}-character email`,
       tipX: d => `<div class="tt-f">log<sub>10</sub>(${fmtN(d.raw)}) = ${d.x.toFixed(2)}</div>`,
       tipZ: d => `<i>z</i> = 4.001 − 1.451 × ${d.x.toFixed(2)} = ${d.z.toFixed(2)}`,
@@ -304,7 +302,7 @@ Coefficients:
 
   // state
   let D, pts, N, sx, on = false, t = 0.5, hl = null, hover = null, dragging = false;
-  let marks, guide, gline, gdot, thrG, hit, tline, tlabel, handles;
+  let marks, guide, gline, gdot, sides, sideL, sideR, leftLab, rightLab, thrG, hit, tline, tlabel, handles;
   const cat = d => (d.p > t ? (d.y ? "TP" : "FP") : (d.y ? "FN" : "TN"));
 
   const mlab = (label, note) => `<span class="mlab" tabindex="0"><span>${label}</span><span class="mtip" role="tooltip">${note}</span></span>`;
@@ -312,10 +310,9 @@ Coefficients:
     const cell = (k, pred, act) => `<td class="cell" data-k="${k}" style="--c: var(--${k})"><b id="c${k}"></b><span class="nm">${k}: ${NAMES[k]}</span><small>${pred}, actually ${act}</small></td>`;
     return `<h2>Model evaluation</h2>
       <div class="readout">
-        <span class="big">threshold = <span id="tVal">0.50</span></span>
+        <div id="clsRule"></div>
         <div id="massRule"></div>
       </div>
-      ${D.evalNote}
       <h2>Confusion matrix</h2>
       <table class="cm">
         <tr><th></th><th><i>Y</i> = 0<br><small>${D.neg}</small></th><th><i>Y</i> = 1<br><small>${D.pos}</small></th></tr>
@@ -400,6 +397,13 @@ Coefficients:
     guide = el("g", { display: "none", "pointer-events": "none" }, svg);
     gline = el("line", { y1: M.t, y2: H - M.b, stroke: "var(--thr)", "stroke-width": 1.2, "stroke-dasharray": "2 4", opacity: 0.8 }, guide);
     gdot = el("circle", { r: 4.5, fill: "var(--thr)" }, guide);
+    // which classification falls on each side of the vertical guide (depends on the slope's sign)
+    [leftLab, rightLab] = D.B1 > 0 ? [D.neg, D.pos] : [D.pos, D.neg];
+    sides = el("g", { display: "none", "pointer-events": "none" }, svg);
+    sideL = el("text", { "text-anchor": "end", class: "thr-label side-label", y: sy(1) - 14 }, sides);
+    sideL.textContent = `← classify as ${leftLab}`;
+    sideR = el("text", { "text-anchor": "start", class: "thr-label side-label", y: sy(1) - 14 }, sides);
+    sideR.textContent = `classify as ${rightLab} →`;
 
     // marks
     marks = el("g", {}, svg);
@@ -465,7 +469,7 @@ Coefficients:
     handles.forEach(h => { h.setAttribute("transform", `translate(0,${y})`); });
 
     for (const k in c) $("c" + k).textContent = c[k];
-    $("tVal").textContent = t.toFixed(2);
+    $("clsRule").innerHTML = `<b>Decision:</b> classify ${D.unit === "email" ? "an" : "a"} ${D.unit} as ${D.pos} if the model says <i>P</i>(${D.pos}) &gt; <b class="thr-val">${t.toFixed(2)}</b>`;
     let rule, cut = null;
     if (t <= 0) rule = D.everyPos;
     else if (t >= 1) rule = D.everyNeg;
@@ -475,7 +479,22 @@ Coefficients:
     }
     const showGuide = on && cut !== null && cut > D.X0 && cut < D.X1;
     guide.setAttribute("display", showGuide ? "" : "none");
-    if (showGuide) { gline.setAttribute("x1", sx(cut)); gline.setAttribute("x2", sx(cut)); gdot.setAttribute("cx", sx(cut)); gdot.setAttribute("cy", y); }
+    if (showGuide) {
+      const gx = sx(cut);
+      gline.setAttribute("x1", gx); gline.setAttribute("x2", gx); gdot.setAttribute("cx", gx); gdot.setAttribute("cy", y);
+      sideL.setAttribute("x", gx - 6); sideR.setAttribute("x", gx + 6);
+      sideR.textContent = `classify as ${rightLab} →`;
+      sideL.setAttribute("display", ""); sideR.setAttribute("display", "");
+    } else if (on) {
+      // line is off the plot: every point gets one classification, so show one label at the left edge
+      // (the right edge is where the threshold label sits)
+      const allRight = cut !== null ? cut <= D.X0 : (t <= 0) === (D.B1 > 0);
+      sideR.setAttribute("x", M.l + 6);
+      sideR.textContent = `classify all ${D.units} as ${allRight ? rightLab : leftLab}`;
+      sideL.setAttribute("display", "none");
+      sideR.setAttribute("display", "");
+    }
+    sides.setAttribute("display", on ? "" : "none");
     $("massRule").innerHTML = rule;
     $("mMCR").innerHTML = fmtPct(c.FP + c.FN, N);
     $("mPrec").innerHTML = fmtPct(c.TP, c.TP + c.FP);
@@ -510,7 +529,7 @@ Coefficients:
 
   function setLegend() {
     $("legend").innerHTML = (on
-      ? `<span class="k" style="color: var(--good)"><b>✓</b> correct prediction (TP or TN)</span><span class="k" style="color: var(--bad)"><b>✗</b> wrong prediction (FP or FN)</span>`
+      ? `<span class="k" style="color: var(--good)"><b>✓</b> correct classification (TP or TN)</span><span class="k" style="color: var(--bad)"><b>✗</b> wrong classification (FP or FN)</span>`
       : `<span class="c0">${D.neg}</span><span class="c1">${D.pos}</span>`) + `<span class="c">${D.curveLabel}</span>`;
   }
 
