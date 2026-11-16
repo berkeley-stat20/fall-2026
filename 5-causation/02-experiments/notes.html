@@ -118,9 +118,7 @@ window.Quarto = {
 <meta property="og:site_name" content="Stat 20">
 <meta name="twitter:title" content="Randomized Experiments – Stat 20 (Fall 2026)">
 <meta name="twitter:description" content="Principles of experimental design">
-<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/5-causation/02-experiments/notes_files/figure-html/unnamed-chunk-3-1.png">
-<meta name="twitter:image-height" content="960">
-<meta name="twitter:image-width" content="1344">
+<meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/5-causation/02-experiments/images/Cliffhanger-1269x635.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -447,18 +445,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#principles-of-experimental-design" id="toc-principles-of-experimental-design" class="nav-link active" data-scroll-target="#principles-of-experimental-design">Principles of Experimental Design</a>
+  <li><a href="#in-the-previous-episode.-difference-in-means" id="toc-in-the-previous-episode.-difference-in-means" class="nav-link active" data-scroll-target="#in-the-previous-episode.-difference-in-means">In the previous episode. Difference in means?</a></li>
+  <li><a href="#the-problem-of-selection-bias-or-endogeneity" id="toc-the-problem-of-selection-bias-or-endogeneity" class="nav-link" data-scroll-target="#the-problem-of-selection-bias-or-endogeneity">The problem of Selection Bias or Endogeneity</a></li>
+  <li><a href="#principles-of-experimental-design" id="toc-principles-of-experimental-design" class="nav-link" data-scroll-target="#principles-of-experimental-design">Principles of Experimental Design</a>
   <ul class="collapse">
-  <li><a href="#control" id="toc-control" class="nav-link" data-scroll-target="#control">Control</a></li>
+  <li><a href="#control-and-treatment-protocols" id="toc-control-and-treatment-protocols" class="nav-link" data-scroll-target="#control-and-treatment-protocols">Control and Treatment Protocols</a></li>
   <li><a href="#random-assignment" id="toc-random-assignment" class="nav-link" data-scroll-target="#random-assignment">Random Assignment</a></li>
-  <li><a href="#replication" id="toc-replication" class="nav-link" data-scroll-target="#replication">Replication</a></li>
+  <li><a href="#sampling-variance" id="toc-sampling-variance" class="nav-link" data-scroll-target="#sampling-variance">Sampling variance</a></li>
   <li><a href="#blinding" id="toc-blinding" class="nav-link" data-scroll-target="#blinding">Blinding</a></li>
+  <li><a href="#putting-it-all-together-how-to-conduct-a-randomized-experiment" id="toc-putting-it-all-together-how-to-conduct-a-randomized-experiment" class="nav-link" data-scroll-target="#putting-it-all-together-how-to-conduct-a-randomized-experiment">Putting it all together: how to conduct a Randomized Experiment</a></li>
   </ul></li>
   <li><a href="#using-additional-variables-in-experimental-design" id="toc-using-additional-variables-in-experimental-design" class="nav-link" data-scroll-target="#using-additional-variables-in-experimental-design">Using additional variables in experimental design</a>
   <ul class="collapse">
   <li><a href="#covariates" id="toc-covariates" class="nav-link" data-scroll-target="#covariates">Covariates</a></li>
   <li><a href="#covariate-balance" id="toc-covariate-balance" class="nav-link" data-scroll-target="#covariate-balance">Covariate balance</a></li>
-  <li><a href="#evaluating-covariate-balance-across-an-experiment" id="toc-evaluating-covariate-balance-across-an-experiment" class="nav-link" data-scroll-target="#evaluating-covariate-balance-across-an-experiment">Evaluating covariate balance across an experiment</a></li>
+  <li><a href="#a-sanity-check-covariate-balance-in-an-experiment" id="toc-a-sanity-check-covariate-balance-in-an-experiment" class="nav-link" data-scroll-target="#a-sanity-check-covariate-balance-in-an-experiment">A sanity check: covariate balance in an experiment</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
@@ -500,56 +501,167 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li>Selection Bias / Endogeneity Problem</li>
+<li>Randomization solves the Selection Bias Problem (Identification)</li>
+<li>Blinding</li>
+<li>Control and treatment protocols</li>
+<li>Random assignment</li>
+<li>Covariates</li>
+<li>Covariate Balance</li>
+<li>Standardized Mean Difference (SMD)</li>
+<li>Love plot</li>
 </ul>
 </div>
 </div>
 </div>
 <!-- Lead out with running example: are you reading these notes as a website or are you reading them as a pdf on a tablet? Do you think your choice in this regard will affect your understanding of the material and the course -->
-<p><span class="dropcap">C</span>ausation has a tricky relationship with data. We can’t observe the precise counterfactual that would allow us to identify an individual cause. Instead, statisticians use a host of methods to find a good approximation of the counterfactual, usually by focusing on a group-level quantity called an average treatment effect.</p>
-<p>We now introduce the most important tool for approximating group-level counterfactuals, the randomized experiment.<br>
+<div id="fig-claims" class="quarto-float quarto-figure quarto-figure-center anchored" width="500px">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-claims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Cliffhanger-1269x635.jpg" id="fig-claims" class="img-fluid figure-img" width="500">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-claims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+<section id="in-the-previous-episode.-difference-in-means" class="level3">
+<h3 class="anchored" data-anchor-id="in-the-previous-episode.-difference-in-means">In the previous episode. Difference in means?</h3>
+<p><span class="dropbcap">L</span>ast time we spoke, I left you with a cliffhanger. We wanted to estimate the Average Treatment Effect ( <span class="math inline">\(\mbox{ATE} \equiv E(Y_t - Y_c) \mbox{ or } \mu_{Y_t - Y_c}\)</span>). But we can’t observe both counterfactuals for each unit, so instead we thought of using the difference in means between treatment sample and control sample (<span class="math inline">\(\bar{Y}_{D=1}-\bar{Y}_{D=0}\)</span>).</p>
+<p>But does it work? Always? Sometimes? Never?</p>
+</section>
+<section id="the-problem-of-selection-bias-or-endogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-of-selection-bias-or-endogeneity">The problem of Selection Bias or Endogeneity</h2>
+<p>In the slides of last lecture we saw that the true ATE for class score under prof. Biegschott vs prof. Nobbo-Dee (if we had access to both counterfactuals for the entire, tiny, population) was</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: right;">Score with prof. B (<span class="math inline">\(Y_t\)</span>)</th>
+<th style="text-align: right;">Score with prof. N (<span class="math inline">\(Y_c\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Maria</td>
+<td style="text-align: right;">73%</td>
+<td style="text-align: right;">77%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Fan</td>
+<td style="text-align: right;">60%</td>
+<td style="text-align: right;">64%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Durga</td>
+<td style="text-align: right;">80%</td>
+<td style="text-align: right;">95%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Muhammad</td>
+<td style="text-align: right;">69%</td>
+<td style="text-align: right;">70%</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\mbox{ATE} = \frac1{4} \left(-4\% -4\% -15\% -1\%\right) = -6\%\]</span></p>
+<p>But we observed:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: right;">Professor (<span class="math inline">\(D\)</span>)</th>
+<th style="text-align: right;">Score (<span class="math inline">\(Y\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Maria</td>
+<td style="text-align: right;">Biegschott (1)</td>
+<td style="text-align: right;">73%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Fan</td>
+<td style="text-align: right;">Nobbo-Dee (0)</td>
+<td style="text-align: right;">64%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Durga</td>
+<td style="text-align: right;">Biegschott (1)</td>
+<td style="text-align: right;">80%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Muhammad</td>
+<td style="text-align: right;">Nobbo-Dee (0)</td>
+<td style="text-align: right;">70%</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[E(Y|D=1) - E(Y|D=0) = \frac1{2} \left(73\% + 80\%\right) - \frac1{2} \left(64\% + 70\%\right) = 76.5\% - 67\% =+9.5\%\]</span></p>
+<p>Sadly: <span class="math display">\[\mbox{ATE} = -6\% \neq 9.5\% = E(Y|D=1) - E(Y|D=0)\]</span></p>
+<p>We would have been fooled! Because people with higher baseline scores anyway decided to enroll more with one professor vs.&nbsp;the other. They <strong>self selected into the treatment group</strong>. This is called <em>Selection Bias</em> or <em>Endogeneity</em>.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: Selection Bias / Endogeneity Problem</strong></p>
+<p>Given a binary treatment, <span class="math inline">\(D=0,1\)</span>, if the potential outcomes <span class="math inline">\(Y_c, Y_t\)</span> are associated with the treatment variable, (e.g.&nbsp;people with higher <span class="math inline">\(Y_t\)</span> tend to choose to end up in the <span class="math inline">\(D=1\)</span>, treatment, group), then the <strong>difference in means</strong> estimator (<span class="math inline">\(\bar{Y}_{D=1}-\bar{Y}_{D=0}\)</span>) is a <strong>biased estimator of the ATE</strong>.</p>
+<p>Another way to express that is</p>
+<p><span class="math display">\[\mbox{ATE} \equiv E(Y_t-Y_c) \neq E(Y|D=1) - E(Y|D=0)\]</span></p>
+<p>The population <span class="math inline">\(\mbox{ATE}\)</span> is not the same as the difference between the population means for treated and controls. When they are equal, we say the <span class="math inline">\(\mbox{ATE}\)</span> is <strong>identified</strong>.</p>
+</div>
+<p>And so we can’t use that estimator.</p>
+<p>There are many ways to try to get around this huge problem.</p>
+<details>
+<summary>
+If the problem is self-selection. What would you suggest doing?
+</summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
+<p>Well, what if instead of letting people decide for themselves whether to get the control (<span class="math inline">\(D=0\)</span>) or the treatment (<span class="math inline">\(D=1\)</span>), we make the decision ourseleves, the benign scientists, in a completely unbiased way?</p>
+<p>And what’s more unbiased than flipping a coin? (Though it doesn’t have to be 50/50)</p>
+</div>
+</details>
+<p><em>Randomized Experiments</em>, where subjects are randomly assigned to treatment or control conditions by the researcher, are the most scientifically safe, demonstrable, simple (but also expensive, and sometimes unethical) way to eliminate this bias!</p>
 <!--In the last set of notes, randomized experimentation was presented as a method
 for approximating group-level counterfactuals.  Randomized experimentation is a 
 powerful idea but doesn't always work perfectly in practice.  In this set of notes, we will explore a tool called covariate balance which allows us to check how well
 randomized assignment is working.  It will also help us evaluate causal claims 
-in cases where researchers were not able to perform an experiment.--></p>
+in cases where researchers were not able to perform an experiment.-->
+<div style="background-color: #6ed766; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>fact: Randomized Experiments are identified!</strong></p>
+<p>For a randomized experiment,</p>
+<p><span class="math display">\[\mbox{ATE} = E(Y|D=1) - E(Y|D=0)\]</span></p>
+<p>As a consequence, we can use</p>
+<p><span class="math inline">\(\widehat{\mbox{ATE}} = \bar{Y}_{D=1}-\bar{Y}_{D=0}\)</span> to estimate the <span class="math inline">\(\mbox{ATE}\)</span>. It’ll be <strong>unbiased</strong>!</p>
+</div>
+<p>Let’s see how we build and run a good Randomized Experiment.</p>
+</section>
 <section id="principles-of-experimental-design" class="level2">
 <h2 class="anchored" data-anchor-id="principles-of-experimental-design">Principles of Experimental Design</h2>
 <p>An experiment is generally characterized as being a setting where the researcher actively assigns subjects or units to one particular condition or another. The most potent design of an experiment to determine whether one variable, the <em>treatment</em>, affects the outcome at the group level is the aptly named <em>Randomized Controlled Trial (RCT)</em>.</p>
 <p>As a running example, consider an immediately relevant question: would reading these notes as a PDF lead to a deeper understanding and a correspondingly better score on the final exam than reading them as a webpage? Let’s run through each term one-by-one to think through how to design an RCT and effectively answers this question.</p>
-<section id="control" class="level3">
-<h3 class="anchored" data-anchor-id="control">Control</h3>
-<dl>
-<dt><strong>Control</strong></dt>
-<dd>
-(noun) A second condition to which a subject or unit could be assigned that draws a contrast with the treatment condition.
-</dd>
-<dd>
-<p>(verb) Actions taken to eliminate other possible causal factors and ensure that the only difference between the treatment and control group is the factor of interest.</p>
-</dd>
-</dl>
+<section id="control-and-treatment-protocols" class="level3">
+<h3 class="anchored" data-anchor-id="control-and-treatment-protocols">Control and Treatment Protocols</h3>
 <p>When designing an RCT, an essential decision is the nature of your control group. Our research question is: will reading these notes as a webpage result in a deeper understanding? Deeper . . . than what? Deeper than if you didn’t read the notes at all? Deeper than if you read them aloud?</p>
 <p>If we’re most interested in the difference between reading the notes as a webpage and reading them as a pdf, we could declare those who read the website part of the control group and those who read the pdf as part of the treatment group. Small changes to the control group can make an important difference in the precise question that you’ll be answering.</p>
+<p>If we pick a control and treatment that don’t translate to real-life applications, our study will produce useless conclusions.</p>
 <p>We can visualize the distinction between the two groups in a small example with three people in the control group (website) and three people in the treatment group (pdf).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hxubqkazav" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hxubqkazav table {
+<div id="jhxtvdztci" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jhxtvdztci table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hxubqkazav thead, #hxubqkazav tbody, #hxubqkazav tfoot, #hxubqkazav tr, #hxubqkazav td, #hxubqkazav th {
+#jhxtvdztci thead, #jhxtvdztci tbody, #jhxtvdztci tfoot, #jhxtvdztci tr, #jhxtvdztci td, #jhxtvdztci th {
   border-style: none;
 }
 
-#hxubqkazav p {
+#jhxtvdztci p {
   margin: 0;
   padding: 0;
 }
 
-#hxubqkazav .gt_table {
+#jhxtvdztci .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -575,12 +687,12 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-left-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_caption {
+#jhxtvdztci .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hxubqkazav .gt_title {
+#jhxtvdztci .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -592,7 +704,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-bottom-width: 0;
 }
 
-#hxubqkazav .gt_subtitle {
+#jhxtvdztci .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -604,7 +716,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-top-width: 0;
 }
 
-#hxubqkazav .gt_heading {
+#jhxtvdztci .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -616,13 +728,13 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-right-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_bottom_border {
+#jhxtvdztci .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_col_headings {
+#jhxtvdztci .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -637,7 +749,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-right-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_col_heading {
+#jhxtvdztci .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -657,7 +769,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   overflow-x: hidden;
 }
 
-#hxubqkazav .gt_column_spanner_outer {
+#jhxtvdztci .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -669,15 +781,15 @@ in cases where researchers were not able to perform an experiment.--></p>
   padding-right: 4px;
 }
 
-#hxubqkazav .gt_column_spanner_outer:first-child {
+#jhxtvdztci .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hxubqkazav .gt_column_spanner_outer:last-child {
+#jhxtvdztci .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hxubqkazav .gt_column_spanner {
+#jhxtvdztci .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -689,11 +801,11 @@ in cases where researchers were not able to perform an experiment.--></p>
   width: 100%;
 }
 
-#hxubqkazav .gt_spanner_row {
+#jhxtvdztci .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hxubqkazav .gt_group_heading {
+#jhxtvdztci .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -719,7 +831,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   text-align: left;
 }
 
-#hxubqkazav .gt_empty_group_heading {
+#jhxtvdztci .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -734,15 +846,15 @@ in cases where researchers were not able to perform an experiment.--></p>
   vertical-align: middle;
 }
 
-#hxubqkazav .gt_from_md > :first-child {
+#jhxtvdztci .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hxubqkazav .gt_from_md > :last-child {
+#jhxtvdztci .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hxubqkazav .gt_row {
+#jhxtvdztci .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -761,7 +873,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   overflow-x: hidden;
 }
 
-#hxubqkazav .gt_stub {
+#jhxtvdztci .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -774,7 +886,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   padding-right: 5px;
 }
 
-#hxubqkazav .gt_stub_row_group {
+#jhxtvdztci .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -788,15 +900,15 @@ in cases where researchers were not able to perform an experiment.--></p>
   vertical-align: top;
 }
 
-#hxubqkazav .gt_row_group_first td {
+#jhxtvdztci .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hxubqkazav .gt_row_group_first th {
+#jhxtvdztci .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hxubqkazav .gt_summary_row {
+#jhxtvdztci .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -806,16 +918,16 @@ in cases where researchers were not able to perform an experiment.--></p>
   padding-right: 5px;
 }
 
-#hxubqkazav .gt_first_summary_row {
+#jhxtvdztci .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_first_summary_row.thick {
+#jhxtvdztci .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hxubqkazav .gt_last_summary_row {
+#jhxtvdztci .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -825,7 +937,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-bottom-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_grand_summary_row {
+#jhxtvdztci .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -835,7 +947,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   padding-right: 5px;
 }
 
-#hxubqkazav .gt_first_grand_summary_row {
+#jhxtvdztci .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -845,7 +957,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-top-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_last_grand_summary_row_top {
+#jhxtvdztci .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -855,11 +967,11 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-bottom-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_striped {
+#jhxtvdztci .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hxubqkazav .gt_table_body {
+#jhxtvdztci .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -868,7 +980,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-bottom-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_footnotes {
+#jhxtvdztci .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -882,7 +994,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-right-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_footnote {
+#jhxtvdztci .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -891,7 +1003,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   padding-right: 5px;
 }
 
-#hxubqkazav .gt_sourcenotes {
+#jhxtvdztci .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -905,7 +1017,7 @@ in cases where researchers were not able to perform an experiment.--></p>
   border-right-color: #D3D3D3;
 }
 
-#hxubqkazav .gt_sourcenote {
+#jhxtvdztci .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -913,72 +1025,72 @@ in cases where researchers were not able to perform an experiment.--></p>
   padding-right: 5px;
 }
 
-#hxubqkazav .gt_left {
+#jhxtvdztci .gt_left {
   text-align: left;
 }
 
-#hxubqkazav .gt_center {
+#jhxtvdztci .gt_center {
   text-align: center;
 }
 
-#hxubqkazav .gt_right {
+#jhxtvdztci .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hxubqkazav .gt_font_normal {
+#jhxtvdztci .gt_font_normal {
   font-weight: normal;
 }
 
-#hxubqkazav .gt_font_bold {
+#jhxtvdztci .gt_font_bold {
   font-weight: bold;
 }
 
-#hxubqkazav .gt_font_italic {
+#jhxtvdztci .gt_font_italic {
   font-style: italic;
 }
 
-#hxubqkazav .gt_super {
+#jhxtvdztci .gt_super {
   font-size: 65%;
 }
 
-#hxubqkazav .gt_footnote_marks {
+#jhxtvdztci .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hxubqkazav .gt_asterisk {
+#jhxtvdztci .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hxubqkazav .gt_indent_1 {
+#jhxtvdztci .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hxubqkazav .gt_indent_2 {
+#jhxtvdztci .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hxubqkazav .gt_indent_3 {
+#jhxtvdztci .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hxubqkazav .gt_indent_4 {
+#jhxtvdztci .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hxubqkazav .gt_indent_5 {
+#jhxtvdztci .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hxubqkazav .katex-display {
+#jhxtvdztci .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hxubqkazav div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jhxtvdztci div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1059,40 +1171,34 @@ null |> get_p_value(obs_stat, direction = 'both')
 </section>
 <section id="random-assignment" class="level3">
 <h3 class="anchored" data-anchor-id="random-assignment">Random Assignment</h3>
-<dl>
-<dt><strong>Random Assignment</strong></dt>
-<dd>
-The process of assigning subjects to either the treatment or control group in a random fashion, where they’re equally likely to be assigned to each group.
-</dd>
-</dl>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: Random assignment</strong></p>
+<p>The process where the researcher assigns each unit to the treatment or control groups by drawing a random number, 0 or 1, with a fixed probability <span class="math inline">\(p\)</span> of getting 1.</p>
+</div>
+<p>As I said above, the probability <span class="math inline">\(p\)</span> doesn’t have to be 50% but it often is the case. (An exception was the Mythbusters yawning experiment, which used <span class="math inline">\(p\approx \frac{2}{3}\)</span>).</p>
 <p>Because we are conducting an experiment, we are intervening in the process and directly assigning subjects to either the treatment (pdf readers) and control (website readers). There are many ways we could do this. The morning sections could all be assigned the pdf and the afternoon sections the website. Or the instructors could choose to exclusively assign either the pdf or the website version of the notes to their individual sections.</p>
-<p>The problem with both of these approaches is that our two groups might differ on more characteristics than just their reading format. The morning sections perhaps have students who are early risers and more conscientious students. Or perhaps the instructors who choose the website are more tech-savvy and more effective at teaching computing. In both cases, we invite the skeptical observer to question whether it was truly the medium of the notes that led to a difference in course grades or if it was something else.</p>
-<p>The mechanism of random assignment is brilliant because it can snuff out every such skeptical inquiry in one fell swoop. If instead we assigned each student to read the pdf or the website totally at random, every other possible characteristic between these groups should, on average, be balanced. If students are assigned at random, we’d expect an equal number of early-risers to be in both the pdf and the website group. We’d also expect the students with the more effective instructors to be evenly represented in both groups. And so on and so forth, for every possible other characteristic that might muddy the waters of our causal claim.</p>
+<p>The problem with both of these approaches is that our two groups might differ on more characteristics than just their reading format. The morning sections perhaps have students who are early risers and more diligent students (please forgive our stereotypizing). Or perhaps the instructors who choose the website are more tech-savvy and more effective at teaching computing. In both cases, we justify a skeptical observer to question whether it was truly the medium of the notes that led to a difference in course grades or if it was something else.</p>
+<p>The mechanism of random assignment is brilliant because it can obliterate every such suspicion. If we assign each student to read the pdf or the website totally at random, every other possible characteristic between these groups should, on average, be balanced. If students are assigned at random, we’d expect an equal number of early-risers to be in both the pdf and the website group. We’d also expect the students with the more effective instructors to be evenly represented in both groups. And so on and so forth, for every possible other characteristic that might muddy the waters of our causal claim.</p>
 </section>
-<section id="replication" class="level3">
-<h3 class="anchored" data-anchor-id="replication">Replication</h3>
-<dl>
-<dt><strong>Replication</strong></dt>
-<dd>
-The practice of assigning multiple subjects to both the treatment and control group. Also, the practice of repeating an experiment a second time to see if the result is consistent.
-</dd>
-</dl>
-<p>The careful reader will have noted a weakness in the brilliance of the random assignment mechanism for balancing the characteristics between the groups. What if, purely due to bad luck, we happen to randomly assign all of the early-risers to the pdf group and all of the late-risers to the website group? That would indeed bring us back to the problem of there being many ways in which our treatment group is different from our control group.</p>
+<section id="sampling-variance" class="level3">
+<h3 class="anchored" data-anchor-id="sampling-variance">Sampling variance</h3>
+<p>Well yeah. This is still a generalization problem. If you were to repeat the experiment again, you wouldn’t observe the same exact value of the sample statistics, right?</p>
+<p>What if, purely due to bad luck, we happen to randomly assign all of the early-risers to the pdf group and all of the late-risers to the website group? That would indeed bring us back to the problem of there being many ways in which our treatment group is different from our control group.</p>
 <p>The random assignment mechanism will balance out all possible confounding factors <em>on average</em>, but for a given experiment that is not guaranteed. However, it becomes much more likely if we have a large sample size. If you just have four students total in the class, two of whom are early risers, it’s quite easy for both of them to end up in the pdf group if they were assigned at random. If instead you have 800 students, 400 of whom are early risers, it’s very very unlikely that all 400 will have made their way into the pdf group.</p>
+<p>But why are we pointing this out? You know that very well already.</p>
 </section>
 <section id="blinding" class="level3">
 <h3 class="anchored" data-anchor-id="blinding">Blinding</h3>
 <p>Randomized controlled trials have long been considered the gold standard for establishing a group-level causal claim, but care must be taken to ensure that your result means what you think it means. Here we reconsider a study where a new drug was used to treat heart attack patients. In particular, researchers wanted to know if the drug reduced deaths in patients.</p>
 <p>These researchers designed a randomized control trial because they wanted to draw causal conclusions about the drug’s effect. Study volunteers were randomly assigned to one of two study groups. One group, the treatment group, received the drug. The control group did not receive any drug treatment.</p>
 <p>Put yourself in the place of a person in the study. If you are in the treatment group, you are given a fancy new drug that you anticipate will help you. If you are in the control group, you are not treated at all but instead sit by idly, knowing you are missing out on potentially life-saving treatment. These perspectives suggest there are actually two effects in this study: the one of interest is the effectiveness of the drug, and the second is the emotional effect of (not) taking the drug, which is difficult to quantify. In order to control for the emotional effect of taking a drug, the researchers decide to hide from patients which group they are in.</p>
-<dl>
-<dt><strong>Blinding</strong></dt>
-<dd>
-The practice of keeping someone uninformed about which subjects in the study have been assigned to treatment.
-</dd>
-</dl>
 <p>When researchers keep the patients uninformed about the treatments they will receive, the study is said to be <em>single-blind</em>. But there is one problem: if a patient does not receive a treatment, they will know they’re in the control group. A solution to this problem is to give a fake treatment to patients in the control group. This is called a <em>placebo</em>, and an effective placebo is the key to making a study truly blind. A classic example of a placebo is a sugar pill that is made to look like the actual treatment pill. However, offering such a fake treatment may not be ethical in certain experiments. For example, in medical experiments, typically the control group must get the current standard of care. Oftentimes, a placebo results in a slight but real improvement in patients. This effect has been dubbed the placebo effect.</p>
 <p>The patients are not the only ones who should be blinded: doctors and researchers can also unintentionally affect the outcome. When a doctor knows a patient has been given the real treatment, they might inadvertently give that patient more attention or care than a patient that they know is on the placebo. To guard against this, which again has been found to have a measurable effect in some instances, most modern studies employ a <em>double-blind</em> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: (double) Blinding</strong></p>
+<p>The practice of keeping (both) the subjects and the researcher uninformed about which subjects in the study have been assigned to treatment and control.</p>
+<p>Blinding ensures that the experimental conditions are representative of real-life applications, so the conclusions are applicable in real life.</p>
+</div>
 <!--## Job training
 
 [clickbait thing about getting a job, e.g. reference to movie or offspring song
@@ -1123,6 +1229,24 @@ were randomized to receive a job training opportunity, while the others did not.
 -->
 <!-- https://www.ojp.gov/pdffiles1/Digitization/59202NCJRS.pdf-->
 </section>
+<section id="putting-it-all-together-how-to-conduct-a-randomized-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="putting-it-all-together-how-to-conduct-a-randomized-experiment">Putting it all together: how to conduct a Randomized Experiment</h3>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: Randomized Experiment Flow</strong></p>
+<ul>
+<li>Formulate a causal question and identify outcome <span class="math inline">\(Y\)</span> and treatment <span class="math inline">\(D\)</span> variables</li>
+<li>Select a representative sample from the population.</li>
+<li>Make sure that treatment and control conditions are representative of real-world situations.</li>
+<li><strong>Randomization</strong>. Assign each unit to either control or treatment groups randomly with some probability <span class="math inline">\(p\)</span>. (If <span class="math inline">\(p=0.5\)</span> then control and treatment groups will be of similar size).</li>
+<li>Run the experiment and collect the data.</li>
+<li>Perform a <strong>generalization analysis</strong>. For example
+<ul>
+<li>estimate <span class="math inline">\(\mbox{ATE}\)</span> with <span class="math inline">\(\widehat{\mbox{ATE}} = \bar{Y}_{D=1}-\bar{Y}_{D=0}\)</span> and build a Confidence Interval, or</li>
+<li>try and disprove a null hypothesis like <span class="math inline">\(H_0 : \mbox{ATE} =0\)</span> by using test statistic <span class="math inline">\(T=\bar{Y}_{D=1}-\bar{Y}_{D=0}\)</span></li>
+</ul></li>
+</ul>
+</div>
+</section>
 </section>
 <section id="using-additional-variables-in-experimental-design" class="level2">
 <h2 class="anchored" data-anchor-id="using-additional-variables-in-experimental-design">Using additional variables in experimental design</h2>
@@ -1131,23 +1255,23 @@ were randomized to receive a job training opportunity, while the others did not.
 <p>Let’s return to our hypothetical pdf vs.&nbsp;website experiment and imagine that in addition to our subject’s names and understanding level we were able to collect some additional information about each of them.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="mkgnohrkzr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mkgnohrkzr table {
+<div id="rbxrnhfupv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rbxrnhfupv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mkgnohrkzr thead, #mkgnohrkzr tbody, #mkgnohrkzr tfoot, #mkgnohrkzr tr, #mkgnohrkzr td, #mkgnohrkzr th {
+#rbxrnhfupv thead, #rbxrnhfupv tbody, #rbxrnhfupv tfoot, #rbxrnhfupv tr, #rbxrnhfupv td, #rbxrnhfupv th {
   border-style: none;
 }
 
-#mkgnohrkzr p {
+#rbxrnhfupv p {
   margin: 0;
   padding: 0;
 }
 
-#mkgnohrkzr .gt_table {
+#rbxrnhfupv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1173,12 +1297,12 @@ were randomized to receive a job training opportunity, while the others did not.
   border-left-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_caption {
+#rbxrnhfupv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mkgnohrkzr .gt_title {
+#rbxrnhfupv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1190,7 +1314,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-bottom-width: 0;
 }
 
-#mkgnohrkzr .gt_subtitle {
+#rbxrnhfupv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1202,7 +1326,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-top-width: 0;
 }
 
-#mkgnohrkzr .gt_heading {
+#rbxrnhfupv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1214,13 +1338,13 @@ were randomized to receive a job training opportunity, while the others did not.
   border-right-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_bottom_border {
+#rbxrnhfupv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_col_headings {
+#rbxrnhfupv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1235,7 +1359,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-right-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_col_heading {
+#rbxrnhfupv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1255,7 +1379,7 @@ were randomized to receive a job training opportunity, while the others did not.
   overflow-x: hidden;
 }
 
-#mkgnohrkzr .gt_column_spanner_outer {
+#rbxrnhfupv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1267,15 +1391,15 @@ were randomized to receive a job training opportunity, while the others did not.
   padding-right: 4px;
 }
 
-#mkgnohrkzr .gt_column_spanner_outer:first-child {
+#rbxrnhfupv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mkgnohrkzr .gt_column_spanner_outer:last-child {
+#rbxrnhfupv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mkgnohrkzr .gt_column_spanner {
+#rbxrnhfupv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1287,11 +1411,11 @@ were randomized to receive a job training opportunity, while the others did not.
   width: 100%;
 }
 
-#mkgnohrkzr .gt_spanner_row {
+#rbxrnhfupv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mkgnohrkzr .gt_group_heading {
+#rbxrnhfupv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1317,7 +1441,7 @@ were randomized to receive a job training opportunity, while the others did not.
   text-align: left;
 }
 
-#mkgnohrkzr .gt_empty_group_heading {
+#rbxrnhfupv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1332,15 +1456,15 @@ were randomized to receive a job training opportunity, while the others did not.
   vertical-align: middle;
 }
 
-#mkgnohrkzr .gt_from_md > :first-child {
+#rbxrnhfupv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mkgnohrkzr .gt_from_md > :last-child {
+#rbxrnhfupv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mkgnohrkzr .gt_row {
+#rbxrnhfupv .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1359,7 +1483,7 @@ were randomized to receive a job training opportunity, while the others did not.
   overflow-x: hidden;
 }
 
-#mkgnohrkzr .gt_stub {
+#rbxrnhfupv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1372,7 +1496,7 @@ were randomized to receive a job training opportunity, while the others did not.
   padding-right: 5px;
 }
 
-#mkgnohrkzr .gt_stub_row_group {
+#rbxrnhfupv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1386,15 +1510,15 @@ were randomized to receive a job training opportunity, while the others did not.
   vertical-align: top;
 }
 
-#mkgnohrkzr .gt_row_group_first td {
+#rbxrnhfupv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mkgnohrkzr .gt_row_group_first th {
+#rbxrnhfupv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mkgnohrkzr .gt_summary_row {
+#rbxrnhfupv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1404,16 +1528,16 @@ were randomized to receive a job training opportunity, while the others did not.
   padding-right: 5px;
 }
 
-#mkgnohrkzr .gt_first_summary_row {
+#rbxrnhfupv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_first_summary_row.thick {
+#rbxrnhfupv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mkgnohrkzr .gt_last_summary_row {
+#rbxrnhfupv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1423,7 +1547,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-bottom-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_grand_summary_row {
+#rbxrnhfupv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1433,7 +1557,7 @@ were randomized to receive a job training opportunity, while the others did not.
   padding-right: 5px;
 }
 
-#mkgnohrkzr .gt_first_grand_summary_row {
+#rbxrnhfupv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1443,7 +1567,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-top-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_last_grand_summary_row_top {
+#rbxrnhfupv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,11 +1577,11 @@ were randomized to receive a job training opportunity, while the others did not.
   border-bottom-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_striped {
+#rbxrnhfupv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mkgnohrkzr .gt_table_body {
+#rbxrnhfupv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1466,7 +1590,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-bottom-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_footnotes {
+#rbxrnhfupv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1480,7 +1604,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-right-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_footnote {
+#rbxrnhfupv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1489,7 +1613,7 @@ were randomized to receive a job training opportunity, while the others did not.
   padding-right: 5px;
 }
 
-#mkgnohrkzr .gt_sourcenotes {
+#rbxrnhfupv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1503,7 +1627,7 @@ were randomized to receive a job training opportunity, while the others did not.
   border-right-color: #D3D3D3;
 }
 
-#mkgnohrkzr .gt_sourcenote {
+#rbxrnhfupv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1511,72 +1635,72 @@ were randomized to receive a job training opportunity, while the others did not.
   padding-right: 5px;
 }
 
-#mkgnohrkzr .gt_left {
+#rbxrnhfupv .gt_left {
   text-align: left;
 }
 
-#mkgnohrkzr .gt_center {
+#rbxrnhfupv .gt_center {
   text-align: center;
 }
 
-#mkgnohrkzr .gt_right {
+#rbxrnhfupv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mkgnohrkzr .gt_font_normal {
+#rbxrnhfupv .gt_font_normal {
   font-weight: normal;
 }
 
-#mkgnohrkzr .gt_font_bold {
+#rbxrnhfupv .gt_font_bold {
   font-weight: bold;
 }
 
-#mkgnohrkzr .gt_font_italic {
+#rbxrnhfupv .gt_font_italic {
   font-style: italic;
 }
 
-#mkgnohrkzr .gt_super {
+#rbxrnhfupv .gt_super {
   font-size: 65%;
 }
 
-#mkgnohrkzr .gt_footnote_marks {
+#rbxrnhfupv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mkgnohrkzr .gt_asterisk {
+#rbxrnhfupv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mkgnohrkzr .gt_indent_1 {
+#rbxrnhfupv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mkgnohrkzr .gt_indent_2 {
+#rbxrnhfupv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mkgnohrkzr .gt_indent_3 {
+#rbxrnhfupv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mkgnohrkzr .gt_indent_4 {
+#rbxrnhfupv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mkgnohrkzr .gt_indent_5 {
+#rbxrnhfupv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mkgnohrkzr .katex-display {
+#rbxrnhfupv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mkgnohrkzr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rbxrnhfupv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1647,16 +1771,18 @@ were randomized to receive a job training opportunity, while the others did not.
 </div>
 </div>
 </div>
-<p>We introduce a new term to draw an important distinction based on when these additional variables were collected.</p>
-<dl>
-<dt><strong>Covariate</strong></dt>
-<dd>
-A variable collected in a randomized experiment that was measured or determined prior to administering the treatment.
-</dd>
-</dl>
-<p>Notice that covariates cannot be affected by the treatment since they were measured first. Variables measured after treatment, including the outcome variable, may be affected by the treatment. <!--f these v were collected
+<p>Who cares, right?</p>
+<p>Well. In principle we don’t, because randomization is enough to guarantee we can estimate the <span class="math inline">\(\mbox{ATE}\)</span>. However, 1. in the future, when we drop the assumption of randomization, we’ll definitely need to collect more variables in order to estimate the <span class="math inline">\(\mbox{ATE}\)</span>. 2. even for randomized experiment, we can leverage other variables to make sure our randomization was done well!</p>
+<p>If a variable was impacted by the treatment then in practice it would just be another outcome variable that we might or might not be interested in. This is why we instead need to focus on variables that could not have been impacted by treatment.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: (Valid) Covariate</strong></p>
+<p>A measured variable that couldn’t have been impacted by the assignment of the subject to treatment or control.</p>
+</div>
+<p>One way to ensure something couldn’t have been impacted by something else is to think like a Physicist and notice that covariates cannot be affected by the treatment if they were measured before the treatment group was even assigned! Variables measured after treatment, including the outcome variable, may be affected by the treatment!</p>
+<!--f these v were collected
 before or after treatment assignment was determined.  Variables measured or 
-determined in value before treatment assignment --- --> In our example, it’s reasonable to imagine that major, GPA, and native speaker status could all have been measured prior to the assignment, so they are covariates.</p>
+determined in value before treatment assignment --- -->
+<p>In our example, it’s reasonable to imagine that major, GPA, and native speaker status could all have been determined prior to the assignment, so they are valid covariates.</p>
 <!--It 
 is natural to ask why the government bothered collecting this data.  From the last 
 set of notes, we already know how to estimate the ATE using the  treatment and the outcome
@@ -1665,24 +1791,38 @@ alone.-->
 <section id="covariate-balance" class="level3">
 <h3 class="anchored" data-anchor-id="covariate-balance">Covariate balance</h3>
 <p>Note that many of these covariates seem likely to be associated with the outcome. For example, students with a higher GPA may be more committed to doing class readings and be more likely to gain a deep understanding regardless of format. If one group had more high-GPA students, that group might look like it had benefited from its reading format even if there were no difference between the formats for any single student. This motivates us to look for a quality called balance.</p>
-<dl>
-<dt><strong>Covariate balance</strong></dt>
-<dd>
-A covariate is balanced if its empirical distribution in the treated group is similar to its empirical distribution in the control group.
-</dd>
-</dl>
-<p>On the other hand, if the distributions are very different between the treatment group and the control group, we say that the covariate is imbalanced.</p>
-<p>There is a close link between covariate balance and randomized treatment assignment. Because treatment is randomly assigned with equal probability for each individual in our study, there is no way it should be able to systematically move higher-GPA students into one of the two groups. The same is true of all our other covariates. Thus we expect randomization to balance our covariates in general.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: Covariate Balance</strong></p>
+<p>Given a binary treatment <span class="math inline">\(D\)</span> and some covariate <span class="math inline">\(X\)</span>, the covariate is balanced between treatment and control if the (population) distributions of <span class="math inline">\(X\)</span> in control and treatment are the same. (Using PDFs)</p>
+<p><span class="math display">\[f_{X|D=1} = f_{X|D=0}\]</span></p>
+<p>An easier to handle consequence of that is that the expectations are the same:</p>
+<p><span class="math display">\[E(X|D=1)= E(X|D=0)\]</span></p>
+</div>
+<p>The latter statement doesn’t necessarily imply the former, but it’s often close enough…</p>
+<p>On the other hand, if the distributions are different between the treatment group and the control group, we say that the covariate is <em>imbalanced</em>.</p>
+<p>There is a close link between covariate balance and randomized treatment assignment. Because treatment is randomly assigned with equal probability for each individual in our study, there is no way it should be able to systematically move higher-GPA students into one of the two groups. The same is true of all our other covariates. <strong><em>Thus we expect randomization to balance our covariates in general.</em></strong></p>
 <!--in the treatment group and in the
 control group.-->
-<p>To check the balance of our GPA variable we can calculate a measure of difference between groups for a single covariate <span class="math inline">\(x\)</span>:</p>
+<p>To check the balance of our GPA variable, it can be helpful to calculate a measure of difference between groups for a single covariate <span class="math inline">\(X\)</span>.</p>
+<div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
+<p><strong>def: Standardized Mean Difference (SMD)</strong></p>
+<p>With a binary treatment <span class="math inline">\(D\)</span> and some covariate <span class="math inline">\(X\)</span>, define</p>
 <p><span class="math display">\[
-SMD(x) = \frac{\overline{x}_{treatment} - \overline{x}_{control}}{\sqrt{\frac{1}{2}\widehat{\sigma}_{treatment}^2 + \frac{1}{2}\widehat{\sigma}_{control}^2}}
+\mbox{SMD}(X) \equiv \frac{\bar{X}_{D=1} - \bar{X}_{D=0}}{\sqrt{\frac{1}{2}s_{X,D=1}^2 + \frac{1}{2}s_{X, D=0}^2}}
 \]</span></p>
-<p>This quantity is called the standardized mean difference or SMD. The numerator is just the difference in means (subtracting the control mean from the treated mean). To make the differences in means comparable across variables with very different scales, we divide by a `pooled’ standard error estimate which comes from averaging the sample variances of the covariate in the two groups and taking its square error. For GPA in our data frame above, the difference in means between groups is 3.28 <span class="math inline">\(-\)</span> 3.55 <span class="math inline">\(=\)</span> -0.27 and the pooled standard error is 0.41, so the SMD is <!---0.27/0.41 $=$--> -0.66.</p>
+</div>
+<p>The numerator is just the difference in sample means (subtracting the control mean from the treated mean). To make the differences in means comparable across variables with very different scales, we divide by a “pooled” standard error estimate, which comes from averaging the sample variances of the covariate in the two groups and taking the square root. For GPA in our data frame above, the difference in means between groups is 3.28 <span class="math inline">\(-\)</span> 3.55 <span class="math inline">\(=\)</span> -0.27 and the pooled standard error is 0.41, so the SMD is <!---0.27/0.41 $=$--> -0.66.</p>
+<details>
+<summary>
+What are the units of measurment of SMD?
+</summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
+<p>It’s a ratio of something with the same units as <span class="math inline">\(X\)</span> and something with also the same units as <span class="math inline">\(X\)</span>. So, it has no units.</p>
+</div>
+</details>
 </section>
-<section id="evaluating-covariate-balance-across-an-experiment" class="level3">
-<h3 class="anchored" data-anchor-id="evaluating-covariate-balance-across-an-experiment">Evaluating covariate balance across an experiment</h3>
+<section id="a-sanity-check-covariate-balance-in-an-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="a-sanity-check-covariate-balance-in-an-experiment">A sanity check: covariate balance in an experiment</h3>
 <p>To get a quick look at balance across all our variables, we can create a <strong>Love plot</strong>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1736,7 +1876,7 @@ $\left(\begin{array}{c} 6 \\ 3 \end{array}\right)$ unique treatment assignments,
 and that we conduct a one-tailed test (since our test statistic takes on large
 values when the null hypothesis is false).-->
 <!--### What if large imbalances are present?-->
-<p>One of the most important reasons to check covariate balance is to catch problems with how the experiment was run. Suppose that we’d intended to sort a spreadsheet in a random order and assign the top half of the subjects to pdf, but that by accident we sorted on GPA instead of randomly. In this case our covariate balance test would likely have rejected the null hypothesis that treatment was randomly assigned, allowing us to catch the issue. For this reason it is often a good idea to check balance before actually running the experiment!</p>
+<p>One of the most important reasons to check covariate balance is to <strong>catch problems with how the experiment was run</strong>. Suppose that we’d intended to sort a spreadsheet in a random order and assign the top half of the subjects to pdf, but that by accident we sorted on GPA instead of randomly. In this case our covariate balance test would likely have rejected the null hypothesis that treatment was randomly assigned, allowing us to catch the issue. For this reason it is often a good idea to check balance before actually running the experiment!</p>
 <!-- In our example, there is no particular evidence of improper randomization.  
  However, it may still bother us that the pdf group has a mean GPA of 3.55 
  while the website group has a mean GPA of 3.28.  Even if this imbalance is
@@ -1788,7 +1928,9 @@ be done for many variables at once.-->
 </section>
 <section id="summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>You may heard the phrase “Correlation does not imply causation … unless it’s seen in data from a randomized control trial.” While it is sometimes possible to make compelling causal claims from correlations found in data - a topic we will explore in depth soon - it does highlight the particular strength of RCTs. RCTs are able to isolate the effect of interest by creating a carefully selected control group and then assigning subjects to groups at random. By using a large number of replicates and checking balance on measured covariates we can demonstrate convincingly that our control group on average serves as a close counterfactual to our treatment group.</p>
+<p>You may have heard the phrase “Correlation does not imply causation … unless it’s seen in data from a randomized control trial.”</p>
+<p>In other words, we have seen that unfortunately we can’t estimate the <span class="math inline">\(\mbox{ATE}\)</span> unless the data was collected in specific ways, because subjects with higher or lower values of their potential outcomes might prefer to end up in treatment or control, fooling us. (Endogeneity)</p>
+<p>Randomized Experiments are the simplest way to solve this problem, and they work by creating carefully designing control and treatment conditions and then assigning subjects to groups, at random. Then we use estimation or hypothesis testing like we learned in the generalization unit to find the <span class="math inline">\(\mbox{ATE}\)</span>. We can use covariates, variables measured before the treatment, to check if they are balanced between the two groups, as a sanity check that the randomization was done correctly.</p>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../5-causation/02-experiments/tutorial.html" class="tutorial-nav-next">Continue on to the tutorial ⮕</a></p>
 </div>

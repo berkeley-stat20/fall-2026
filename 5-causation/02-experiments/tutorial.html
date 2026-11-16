@@ -366,13 +366,18 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>TODO</li>
+<li><code>cobalt</code> library</li>
+<li>drawing the love plot</li>
+<li>testing for covariance imbalance</li>
 </ul>
 </div>
 </div>
 </div>
 <section id="ideas-in-code" class="level2">
 <h2 class="anchored" data-anchor-id="ideas-in-code">Ideas in Code</h2>
+<p>You won’t need to learn a lot of new code in this unit because most of the heavy lifting will be done by methods learned in the generalization unit. Here we’re gonna learn how to use the <code>cobalt</code> library to check for covariate imbalance.</p>
+<section id="covariate-balance-with-cobalt" class="level3">
+<h3 class="anchored" data-anchor-id="covariate-balance-with-cobalt">Covariate balance with <code>cobalt</code></h3>
 <p>First we create a data frame to store the pdf vs.&nbsp;website data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>format_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Evelyn"</span>, <span class="st">"Grace"</span>, <span class="st">"Juan"</span>, <span class="st">"Alex"</span>, <span class="st">"Monica"</span>, <span class="st">"Sriya"</span>),</span>
@@ -444,6 +449,7 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
 </section>
 
 </main> <!-- /main -->
