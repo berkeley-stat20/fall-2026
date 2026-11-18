@@ -160,7 +160,7 @@ STAT 20: Introduction to Probability and Statistics
 </section>
 <section>
 <section id="warmup" class="title-slide slide level1 center">
-<h1>Warmup <div id="timer_3168973c5203c871fa3194d2697ca23799065c91" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<h1>Warmup <div id="timer_6231bae3279a29f698266556be058f14d6a7edec" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>
@@ -176,9 +176,9 @@ STAT 20: Introduction to Probability and Statistics
 <p>What is the treatment variable? What type of variable is it?</p>
 </div>
 <div class="answer fragment">
-<p><span class="math inline">\(D =\;\)</span> “did the voter receive an informative call?” is a binary variable.<br>
-<span class="math inline">\(D=0\;\)</span> is the control (didn’t receive a call) and<br>
-<span class="math inline">\(D=1\;\)</span> is the treatment (received a call).</p>
+<p>D = “did the voter receive an informative call?” is a binary variable.<br>
+D = 0 is the control (didn’t receive a call) and<br>
+D = 1 is the treatment (received a call).</p>
 </div>
 </section>
 <section id="phone-calls-continued" class="slide level2 warmup-question">
@@ -187,10 +187,10 @@ STAT 20: Introduction to Probability and Statistics
 <p>What type of variable is the outcome variable? What are the distributions of the potential outcomes?</p>
 </div>
 <div class="answer fragment">
-<p><span class="math inline">\(Y\)</span> is a binary variable.</p>
-<p><span class="math display">\[Y_c = Y(D=0) \sim \mbox{Bernoulli} (p_c)\]</span> is distributed as a Bernoulli variable with unknown parameter, probability of success, <span class="math inline">\(p_c\)</span>.</p>
-<p><span class="math display">\[Y_t = Y(D=1) \sim \mbox{Bernoulli} (p_t)\]</span> is distributed as a Bernoulli variable with unknown parameter, probability of success, <span class="math inline">\(p_t\)</span>.</p>
-<p>We’re hoping to learn that <span class="math inline">\(p_t &gt; p_c \mbox{  }\)</span> (the phone call is effective).</p>
+<p><span class="math inline">\(Y\)</span> is a binary variable. The potential outcomes are:</p>
+<p><span class="math display">\[Y_c = Y(D=0) \sim \mbox{Bernoulli} (p_c)\]</span> is distributed as a Bernoulli variable with unknown parameter, probability of success in control, <span class="math inline">\(p_c\)</span>.</p>
+<p><span class="math display">\[Y_t = Y(D=1) \sim \mbox{Bernoulli} (p_t)\]</span> is distributed as a Bernoulli variable with unknown parameter, probability of success in treatment, <span class="math inline">\(p_t\)</span>.</p>
+<p>We’re hoping to learn that <span class="math display">\[H_A: p_t - p_c = \mbox{ATE} &gt; 0\]</span> (i.e.&nbsp;the phone call is effective!).</p>
 </div>
 </section>
 <section id="phone-calls-continued-1" class="slide level2 warmup-question">
@@ -221,7 +221,7 @@ D. <span class="math inline">\(X_4 =\)</span> Whether the voter hung up on the v
       }</style></aside>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_890f74bc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f7d11cd7" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -250,14 +250,14 @@ D. <span class="math inline">\(X_4 =\)</span> Whether the voter hung up on the v
 <section id="which-of-the-following-claims-about-covariate-balance-are-true-1" class="slide level2">
 <h2>Which of the following claims about covariate balance are true?</h2>
 <ul>
-<li><p>A is true, because <span class="math inline">\(E(X |D=1)-E(X |D=0) = \mu_{X ,D=1}-\mu_{X ,D=0} =0\)</span>.</p></li>
-<li><p>B is wrong. <span class="math inline">\(\bar{X}_{D=1}-\bar{X}_{D=0}\)</span> is a random variable, a sample statistic. It won’t be exactly equal to 0, even when <span class="math inline">\(\mu_{X ,D=1}-\mu_{X ,D=0} =0\)</span>!</p></li>
+<li><p>A is true, because <span class="math inline">\(E(X |D=1)-E(X |D=0) =0\)</span>.</p></li>
+<li><p>B is wrong. <span class="math inline">\(\bar{X}_{D=1}-\bar{X}_{D=0}\)</span> is a random variable, a sample statistic. It won’t be exactly equal to 0, even when <span class="math inline">\(E(X |D=1)-E(X |D=0) =0\)</span>!</p></li>
 <li><p>C is right, by definition.</p></li>
 <li><p>D. Yes <span class="math inline">\(H_0: X \mbox{ independent of } D\)</span>, though in practice we usually check <span class="math inline">\(H_0: E(X |D=1)-E(X |D=0)=0\)</span>, which is less strong.</p></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_0ab1f663" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_5bc4d139" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -268,7 +268,7 @@ D. <span class="math inline">\(X_4 =\)</span> Whether the voter hung up on the v
 <h1>Break</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9fddee0a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_bb2f657e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -310,7 +310,7 @@ D. <span class="math inline">\(X_4 =\)</span> Whether the voter hung up on the v
 <li>Complete and submit part II as <em>an individual</em>. The questions will be available on the course website!</li>
 </ol>
 <p>If you don’t finish in the allotted time, you can do so after class.</p>
-<div id="timer_3168973c5203c871fa3194d2697ca23799065c91" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
+<div id="timer_6231bae3279a29f698266556be058f14d6a7edec" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
   <div class="countdown-controls">
     <button class="countdown-bump-down">−</button>
     <button class="countdown-bump-up">+</button>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Defining Causality – Stat 20 (Fall 2026)</title>
+<title>Defining Causation – Stat 20 (Fall 2026)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,13 +118,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/stat20/stat20notes/sidebar.css">
-<meta property="og:title" content="Defining Causality – Stat 20 (Fall 2026)">
+<meta property="og:title" content="Defining Causation – Stat 20 (Fall 2026)">
 <meta property="og:description" content="Conditional counterfactuals and average treatment effects">
 <meta property="og:image" content="https://stat20.berkeley.edu/fall-2026/5-causation/01-defining-causality/images/causal.png">
 <meta property="og:site_name" content="Stat 20">
 <meta property="og:image:height" content="298">
 <meta property="og:image:width" content="452">
-<meta name="twitter:title" content="Defining Causality – Stat 20 (Fall 2026)">
+<meta name="twitter:title" content="Defining Causation – Stat 20 (Fall 2026)">
 <meta name="twitter:description" content="Conditional counterfactuals and average treatment effects">
 <meta name="twitter:image" content="https://stat20.berkeley.edu/fall-2026/5-causation/01-defining-causality/images/causal.png">
 <meta name="twitter:image-height" content="298">
@@ -190,7 +190,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs">Defining Causality</h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">Defining Causation</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -438,7 +438,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../5-causation/01-defining-causality/notes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Defining Causality</span></a>
+ <span class="menu-text">Defining Causation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -485,7 +485,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Defining Causality</h1>
+<h1 class="title d-none d-lg-block">Defining Causation</h1>
 <p class="subtitle lead">Conditional counterfactuals and average treatment effects</p>
 </div>
 
@@ -560,7 +560,7 @@ You don’t believe that’s a big deal, right?
 </section>
 <section id="causation-in-statistics-the-conditional-counterfactual" class="level2">
 <h2 class="anchored" data-anchor-id="causation-in-statistics-the-conditional-counterfactual">Causation in Statistics: The Conditional Counterfactual</h2>
-<p>One of the earliest articulations of what it means to be a cause, in the way we use it in Statstics, can be found in the writing of Thucydides, the ancient Greek historian. It comes at the end of a passage where he describes a village called Orobiae, which experienced an earthquake followed by a tsunami.</p>
+<p>One of the earliest articulations of what it means to be a cause, in the way we use it in Statistics, can be found in the writing of Thucydides, the ancient Greek historian. It comes at the end of a passage where he describes a village called Orobiae, which experienced an earthquake followed by a tsunami.</p>
 <blockquote class="blockquote">
 <p>About the same time that these earthquakes were so common, the sea at Orobiae, in Euboea, retiring from the then line of coast, returned in a huge wave and invaded part of the town, and retreated leaving some of it still under water; so that what was once land is now sea…</p>
 <p>The cause, in my opinion of this phenomenon must be sought in the earthquake. At the point where its shock has been the most violent, the sea is driven back, and suddenly recoiling with redoubled force, causes the inundation.</p>
@@ -568,8 +568,17 @@ You don’t believe that’s a big deal, right?
 </blockquote>
 <p>In the final line, Thucydides makes a leap: he imagines a world where the earthquake didn’t happen, and can’t imagine the tsunami happening. This, for him, is what makes the earthquake the cause of the tsunami. This form of reasoning about causation was summarized centuries later by the Scottish philosopher David Hume, who characterized a cause as a scenario in which “If the first object had not been, the second never had existed.”</p>
 <p>Both of these thoughts rely upon imagining a world that was different from the one that was observed, a notion in logic called <strong>a counterfactual</strong>.</p>
-<p>Keep in mind that Analytical Philosophy and Theoretical Physics have to say goodbye here. They don’t quite follow our path, at least not fully. They have generally different approaches to causation. (In fact some philosophers think causation is not a coherent concept at all, which the author of this notes also agrees with…)</p>
-<p>But the following is the core of how Statistics and the Social Sciences think about causation.</p>
+<details>
+<summary>
+Other fields disagree with this definition…
+</summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
+<p>In Analytical Philosophy for example there are certainly approaches that are skeptical that causation even exists as a real thing or a helpful concept. Hume definitely was skeptical of causality and even the author of this notes generally agrees with this and considers counterfactuals meaningless</p>
+<p>Theoretical Physics also has a generally very different approach to causation. In Physics pretty much anything that could cause something else (based on space-time connectedness) is considered a cause of it. The past causes the future in Physics. Theoretical physicists tend to de-emphasize causation as a different thing from prediction.</p>
+<p>But I digress, and gave only a very small taste of a very vast and complex debate.</p>
+</div>
+</details>
+<p>The following is the core of how Statistics and the Social Sciences think about causation.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Counterfactual</strong></p>
 <p>A hypothetical alternative universe where a certain event, that happened in our actual universe, didn’t happen. (Or vice versa).</p>
@@ -655,12 +664,12 @@ Check your answer
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Potential Outcomes</strong></p>
 <p>Given an outcome variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>, we define</p>
-<p><span class="math display">\[Y(d) \mbox{ or } Y(D=d) \mbox{ or } Y(\mbox{do } D=d)\]</span></p>
+<p><span class="math display">\[Y(d) \mbox{ or } Y(D=d)\]</span></p>
 <p>as the value of <span class="math inline">\(Y\)</span> in a (counterfactual) world where <strong>we set</strong> the value of <span class="math inline">\(D\)</span> equal to <span class="math inline">\(d\)</span>.</p>
 <p>If the treatment variable is binary, as in most cases, taking just two values, <span class="math inline">\(D=0\)</span> (control) and <span class="math inline">\(D=1\)</span> (treatment), then we use this notation:</p>
-<p><span class="math display">\[Y(0) \mbox{ or } Y(D=0) \mbox{ or } Y(\mbox{do } D=0) \mbox{ or } Y_c\]</span> The potential outcome in <strong>control</strong> conditions. <span class="math display">\[Y(1) \mbox{ or } Y(D=1) \mbox{ or } Y(\mbox{do } D=1) \mbox{ or } Y_t\]</span> The potential outcome in <strong>treatment</strong> conditions.</p>
+<p><span class="math display">\[Y(0) \mbox{ or } Y(D=0) \mbox{ or } Y_c\]</span> The potential outcome in <strong>control</strong> conditions. <span class="math display">\[Y(1) \mbox{ or } Y(D=1) \mbox{ or } Y_t\]</span> The potential outcome in <strong>treatment</strong> conditions.</p>
 </div>
-<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control (<span class="math inline">\(D=0\)</span>), there would be an imaginary unobserved evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except for having a different value of the treatment variable <span class="math inline">\(D=1\)</span>, and vice versa.</p>
+<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control (<span class="math inline">\(D=0\)</span>), there would be an imaginary unobserved evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except for having a different value of the treatment variable (<span class="math inline">\(D=1\)</span>), and vice versa.</p>
 <section id="e.g." class="level4">
 <h4 class="anchored" data-anchor-id="e.g.">E.g.</h4>
 <ul>
@@ -1041,23 +1050,23 @@ Have you ever been worried that population-level causal statements didn’t appl
 ::: {.cell-output-display}
 
 ```{=html}
-<div id="pnzoemwmuh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pnzoemwmuh table {
+<div id="cadyubkpop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cadyubkpop table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pnzoemwmuh thead, #pnzoemwmuh tbody, #pnzoemwmuh tfoot, #pnzoemwmuh tr, #pnzoemwmuh td, #pnzoemwmuh th {
+#cadyubkpop thead, #cadyubkpop tbody, #cadyubkpop tfoot, #cadyubkpop tr, #cadyubkpop td, #cadyubkpop th {
   border-style: none;
 }
 
-#pnzoemwmuh p {
+#cadyubkpop p {
   margin: 0;
   padding: 0;
 }
 
-#pnzoemwmuh .gt_table {
+#cadyubkpop .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1083,12 +1092,12 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-left-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_caption {
+#cadyubkpop .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pnzoemwmuh .gt_title {
+#cadyubkpop .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1100,7 +1109,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-width: 0;
 }
 
-#pnzoemwmuh .gt_subtitle {
+#cadyubkpop .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1112,7 +1121,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-width: 0;
 }
 
-#pnzoemwmuh .gt_heading {
+#cadyubkpop .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1124,13 +1133,13 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_bottom_border {
+#cadyubkpop .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_col_headings {
+#cadyubkpop .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1145,7 +1154,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_col_heading {
+#cadyubkpop .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1165,7 +1174,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#pnzoemwmuh .gt_column_spanner_outer {
+#cadyubkpop .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1177,15 +1186,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 4px;
 }
 
-#pnzoemwmuh .gt_column_spanner_outer:first-child {
+#cadyubkpop .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pnzoemwmuh .gt_column_spanner_outer:last-child {
+#cadyubkpop .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pnzoemwmuh .gt_column_spanner {
+#cadyubkpop .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1197,11 +1206,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   width: 100%;
 }
 
-#pnzoemwmuh .gt_spanner_row {
+#cadyubkpop .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pnzoemwmuh .gt_group_heading {
+#cadyubkpop .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1227,7 +1236,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   text-align: left;
 }
 
-#pnzoemwmuh .gt_empty_group_heading {
+#cadyubkpop .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1242,15 +1251,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: middle;
 }
 
-#pnzoemwmuh .gt_from_md > :first-child {
+#cadyubkpop .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pnzoemwmuh .gt_from_md > :last-child {
+#cadyubkpop .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pnzoemwmuh .gt_row {
+#cadyubkpop .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1269,7 +1278,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#pnzoemwmuh .gt_stub {
+#cadyubkpop .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1282,7 +1291,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#pnzoemwmuh .gt_stub_row_group {
+#cadyubkpop .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1296,15 +1305,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: top;
 }
 
-#pnzoemwmuh .gt_row_group_first td {
+#cadyubkpop .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pnzoemwmuh .gt_row_group_first th {
+#cadyubkpop .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pnzoemwmuh .gt_summary_row {
+#cadyubkpop .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1314,16 +1323,16 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#pnzoemwmuh .gt_first_summary_row {
+#cadyubkpop .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_first_summary_row.thick {
+#cadyubkpop .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pnzoemwmuh .gt_last_summary_row {
+#cadyubkpop .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1333,7 +1342,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_grand_summary_row {
+#cadyubkpop .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1343,7 +1352,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#pnzoemwmuh .gt_first_grand_summary_row {
+#cadyubkpop .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1353,7 +1362,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_last_grand_summary_row_top {
+#cadyubkpop .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1363,11 +1372,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_striped {
+#cadyubkpop .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pnzoemwmuh .gt_table_body {
+#cadyubkpop .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1376,7 +1385,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_footnotes {
+#cadyubkpop .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1390,7 +1399,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_footnote {
+#cadyubkpop .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1399,7 +1408,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#pnzoemwmuh .gt_sourcenotes {
+#cadyubkpop .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1413,7 +1422,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#pnzoemwmuh .gt_sourcenote {
+#cadyubkpop .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1421,72 +1430,72 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#pnzoemwmuh .gt_left {
+#cadyubkpop .gt_left {
   text-align: left;
 }
 
-#pnzoemwmuh .gt_center {
+#cadyubkpop .gt_center {
   text-align: center;
 }
 
-#pnzoemwmuh .gt_right {
+#cadyubkpop .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pnzoemwmuh .gt_font_normal {
+#cadyubkpop .gt_font_normal {
   font-weight: normal;
 }
 
-#pnzoemwmuh .gt_font_bold {
+#cadyubkpop .gt_font_bold {
   font-weight: bold;
 }
 
-#pnzoemwmuh .gt_font_italic {
+#cadyubkpop .gt_font_italic {
   font-style: italic;
 }
 
-#pnzoemwmuh .gt_super {
+#cadyubkpop .gt_super {
   font-size: 65%;
 }
 
-#pnzoemwmuh .gt_footnote_marks {
+#cadyubkpop .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pnzoemwmuh .gt_asterisk {
+#cadyubkpop .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pnzoemwmuh .gt_indent_1 {
+#cadyubkpop .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pnzoemwmuh .gt_indent_2 {
+#cadyubkpop .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pnzoemwmuh .gt_indent_3 {
+#cadyubkpop .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pnzoemwmuh .gt_indent_4 {
+#cadyubkpop .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pnzoemwmuh .gt_indent_5 {
+#cadyubkpop .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pnzoemwmuh .katex-display {
+#cadyubkpop .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pnzoemwmuh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cadyubkpop div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1547,23 +1556,23 @@ Have you ever been worried that population-level causal statements didn’t appl
 ::: {.cell-output-display}
 
 ```{=html}
-<div id="hdrqtuljxs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hdrqtuljxs table {
+<div id="xovolbllya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xovolbllya table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hdrqtuljxs thead, #hdrqtuljxs tbody, #hdrqtuljxs tfoot, #hdrqtuljxs tr, #hdrqtuljxs td, #hdrqtuljxs th {
+#xovolbllya thead, #xovolbllya tbody, #xovolbllya tfoot, #xovolbllya tr, #xovolbllya td, #xovolbllya th {
   border-style: none;
 }
 
-#hdrqtuljxs p {
+#xovolbllya p {
   margin: 0;
   padding: 0;
 }
 
-#hdrqtuljxs .gt_table {
+#xovolbllya .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1589,12 +1598,12 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-left-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_caption {
+#xovolbllya .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hdrqtuljxs .gt_title {
+#xovolbllya .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1606,7 +1615,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-width: 0;
 }
 
-#hdrqtuljxs .gt_subtitle {
+#xovolbllya .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1618,7 +1627,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-width: 0;
 }
 
-#hdrqtuljxs .gt_heading {
+#xovolbllya .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1630,13 +1639,13 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_bottom_border {
+#xovolbllya .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_col_headings {
+#xovolbllya .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1651,7 +1660,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_col_heading {
+#xovolbllya .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1671,7 +1680,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#hdrqtuljxs .gt_column_spanner_outer {
+#xovolbllya .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1683,15 +1692,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 4px;
 }
 
-#hdrqtuljxs .gt_column_spanner_outer:first-child {
+#xovolbllya .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hdrqtuljxs .gt_column_spanner_outer:last-child {
+#xovolbllya .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hdrqtuljxs .gt_column_spanner {
+#xovolbllya .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1703,11 +1712,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   width: 100%;
 }
 
-#hdrqtuljxs .gt_spanner_row {
+#xovolbllya .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hdrqtuljxs .gt_group_heading {
+#xovolbllya .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1733,7 +1742,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   text-align: left;
 }
 
-#hdrqtuljxs .gt_empty_group_heading {
+#xovolbllya .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1748,15 +1757,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: middle;
 }
 
-#hdrqtuljxs .gt_from_md > :first-child {
+#xovolbllya .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hdrqtuljxs .gt_from_md > :last-child {
+#xovolbllya .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hdrqtuljxs .gt_row {
+#xovolbllya .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1775,7 +1784,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#hdrqtuljxs .gt_stub {
+#xovolbllya .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1788,7 +1797,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#hdrqtuljxs .gt_stub_row_group {
+#xovolbllya .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1802,15 +1811,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: top;
 }
 
-#hdrqtuljxs .gt_row_group_first td {
+#xovolbllya .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hdrqtuljxs .gt_row_group_first th {
+#xovolbllya .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hdrqtuljxs .gt_summary_row {
+#xovolbllya .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1820,16 +1829,16 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#hdrqtuljxs .gt_first_summary_row {
+#xovolbllya .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_first_summary_row.thick {
+#xovolbllya .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hdrqtuljxs .gt_last_summary_row {
+#xovolbllya .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1839,7 +1848,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_grand_summary_row {
+#xovolbllya .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1849,7 +1858,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#hdrqtuljxs .gt_first_grand_summary_row {
+#xovolbllya .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1859,7 +1868,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_last_grand_summary_row_top {
+#xovolbllya .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1869,11 +1878,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_striped {
+#xovolbllya .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hdrqtuljxs .gt_table_body {
+#xovolbllya .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1882,7 +1891,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_footnotes {
+#xovolbllya .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1896,7 +1905,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_footnote {
+#xovolbllya .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1905,7 +1914,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#hdrqtuljxs .gt_sourcenotes {
+#xovolbllya .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1919,7 +1928,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#hdrqtuljxs .gt_sourcenote {
+#xovolbllya .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1927,72 +1936,72 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#hdrqtuljxs .gt_left {
+#xovolbllya .gt_left {
   text-align: left;
 }
 
-#hdrqtuljxs .gt_center {
+#xovolbllya .gt_center {
   text-align: center;
 }
 
-#hdrqtuljxs .gt_right {
+#xovolbllya .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hdrqtuljxs .gt_font_normal {
+#xovolbllya .gt_font_normal {
   font-weight: normal;
 }
 
-#hdrqtuljxs .gt_font_bold {
+#xovolbllya .gt_font_bold {
   font-weight: bold;
 }
 
-#hdrqtuljxs .gt_font_italic {
+#xovolbllya .gt_font_italic {
   font-style: italic;
 }
 
-#hdrqtuljxs .gt_super {
+#xovolbllya .gt_super {
   font-size: 65%;
 }
 
-#hdrqtuljxs .gt_footnote_marks {
+#xovolbllya .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hdrqtuljxs .gt_asterisk {
+#xovolbllya .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hdrqtuljxs .gt_indent_1 {
+#xovolbllya .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hdrqtuljxs .gt_indent_2 {
+#xovolbllya .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hdrqtuljxs .gt_indent_3 {
+#xovolbllya .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hdrqtuljxs .gt_indent_4 {
+#xovolbllya .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hdrqtuljxs .gt_indent_5 {
+#xovolbllya .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hdrqtuljxs .katex-display {
+#xovolbllya .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hdrqtuljxs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xovolbllya div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
