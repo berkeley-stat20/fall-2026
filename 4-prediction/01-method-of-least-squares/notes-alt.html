@@ -534,7 +534,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .find(function (a) { return a.href === target; });
   if (!link) return;
   link.classList.add("active");
-  for (var el = link.parentElement; el; el = el.parentElement) {
+  // Stop below #quarto-sidebar: on narrow screens it is itself a collapse,
+  // and opening it would cover the page instead of leaving it behind the toggle.
+  var sidebar = document.getElementById("quarto-sidebar");
+  for (var el = link.parentElement; el && el !== sidebar; el = el.parentElement) {
     if (el.classList.contains("collapse")) {
       el.classList.add("show");
       var toggle = document.querySelector('[data-bs-target="#' + el.id + '"]');
