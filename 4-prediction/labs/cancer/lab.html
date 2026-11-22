@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-dccb442230715faafb7cabc2713ab8ef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-55aa7cb742d22dcce8f017b95bf7a725.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -174,9 +174,6 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="0e448cb404be6a7dd8a500cd096574bd" class="alert alert-info hidden"><i class="bi bi-calculator-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>New:</strong> Check your current grade calculation anytime with the calculator icon in the top right, or <a href="https://stat20-grades.wetchler.com/" target="_blank" rel="noopener">open it here</a>.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -336,69 +333,6 @@ window.Quarto = {
 </section>
 
 </main> <!-- /main -->
-<!--
-  Temporary promo for the new grade calculator navbar link.
-  Adds a pulsing underglow to the calculator icon and keeps the site announcement
-  visible until PROMO_END, after which both hide themselves automatically.
-  To remove for good: delete this file, its include-after-body entry, and the
-  announcement block in _quarto.yml.
--->
-<style>
-  /* Pulsing glow under the calculator icon. Berkeley blue reads on both the
-     white student navbar and the yellow staff navbar. */
-  .grade-calc-new {
-    position: relative;
-  }
-  .grade-calc-new::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -2px;
-    width: 26px;
-    height: 8px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background: #3B7EA1;
-    filter: blur(4px);
-    pointer-events: none;
-    animation: grade-calc-glow 1.8s ease-in-out infinite;
-  }
-  @keyframes grade-calc-glow {
-    0%, 100% { opacity: 0.25; transform: translateX(-50%) scaleX(0.8); }
-    50%      { opacity: 0.9;  transform: translateX(-50%) scaleX(1.15); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .grade-calc-new::after { animation: none; opacity: 0.6; }
-  }
-</style>
-<script>
-  (function () {
-    var PROMO_END = new Date("2026-10-12T00:00:00-07:00");
-    var CLICKED_KEY = "stat20-grade-calc-clicked";
-
-    if (new Date() >= PROMO_END) {
-      document.querySelectorAll("#quarto-announcement").forEach(function (el) {
-        el.remove();
-      });
-      return;
-    }
-
-    var clicked = false;
-    try { clicked = localStorage.getItem(CLICKED_KEY) === "1"; } catch (e) {}
-    if (clicked) return;
-
-    document.querySelectorAll('a[href^="https://stat20-grades.wetchler.com"]').forEach(function (link) {
-      if (!link.querySelector(".bi-calculator-fill")) return;
-      link.classList.add("grade-calc-new");
-      link.addEventListener("click", function () {
-        try { localStorage.setItem(CLICKED_KEY, "1"); } catch (e) {}
-        document.querySelectorAll(".grade-calc-new").forEach(function (el) {
-          el.classList.remove("grade-calc-new");
-        });
-      });
-    });
-  })();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

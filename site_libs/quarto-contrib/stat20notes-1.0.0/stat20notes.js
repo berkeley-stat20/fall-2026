@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (firstContainer) {
     
     firstContainer.classList.add('sidebar-title');
-    const firstToggleLink = firstContainer.querySelector('a.sidebar-item-toggle)
+    const firstToggleLink = firstContainer.querySelector('a.sidebar-item-toggle')
     
     if (firstToggleLink) {
         firstToggleLink.remove();
