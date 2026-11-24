@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-167f3abc377d614951b890e2a32fa218.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4f9022a28d869cc1a8ffa1e1a758005e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -339,7 +339,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#letting-r-find-the-best-coefficients-lm" id="toc-letting-r-find-the-best-coefficients-lm" class="nav-link" data-scroll-target="#letting-r-find-the-best-coefficients-lm">Letting R find the best coefficients: <code>lm()</code></a>
   <ul>
-  <li><a href="#where-did-4.90-and-0.028-come-from" id="toc-where-did-4.90-and-0.028-come-from" class="nav-link" data-scroll-target="#where-did-4.90-and-0.028-come-from">Where did 4.90 and 0.028 come from?</a></li>
+  <li><a href="#where-did-4.91-and-0.027-come-from" id="toc-where-did-4.91-and-0.027-come-from" class="nav-link" data-scroll-target="#where-did-4.91-and-0.027-come-from">Where did 4.91 and 0.027 come from?</a></li>
   <li><a href="#your-first-lm" id="toc-your-first-lm" class="nav-link" data-scroll-target="#your-first-lm">Your first <code>lm()</code></a></li>
   <li><a href="#reading-the-code" id="toc-reading-the-code" class="nav-link" data-scroll-target="#reading-the-code">Reading the code</a></li>
   <li><a href="#saving-your-model" id="toc-saving-your-model" class="nav-link" data-scroll-target="#saving-your-model">Saving your model</a></li>
@@ -393,7 +393,7 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
 .version-tabs { margin: 0 0 1.5rem; }
 .version-tabs .nav-link { font-weight: 500; text-transform: none; font-size: 1rem; }
 .version-tabs .nav-link.active { background-color: var(--bs-body-bg); }
-/* First visit only: a few soft pulses on the alternate tab */
+/* Original page only: a few soft pulses on the alternate tab */
 .version-tabs .nav-link.version-pulse { animation: version-pulse 1.6s ease-out 0.6s 3; }
 @keyframes version-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0.55); }
@@ -419,13 +419,8 @@ gtag('config', 'G-WP7F4QKDC8', { 'anonymize_ip': true});
       window.location.replace(new URL("tutorial-alt.html", window.location.href).href + window.location.hash);
       return;
     }
-    // Pulse the alternate tab the first time this browser sees this page
-    var seenKey = "stat20-version-seen:" + window.location.pathname;
-    if (!get(seenKey)) {
-      set(seenKey, "1");
-      var altTab = document.querySelector('.version-tabs a[data-version="alt"]');
-      if (altTab) altTab.classList.add("version-pulse");
-    }
+    var altTab = document.querySelector('.version-tabs a[data-version="alt"]');
+    if (altTab) altTab.classList.add("version-pulse");
   }
 })();
 </script><script>
@@ -504,7 +499,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 <li><code>gdp</code>: GDP per capita, in <em>thousands</em> of dollars. So a <code>gdp</code> of 50 means $50,000.</li>
 <li><code>happiness</code>: the country’s average answer to a survey question rating their life from 0 to 10</li>
 </ul>
-<p>There are 140 countries in all. Let’s make the same scatter plot from the notes, with <code>ggplot</code>:</p>
+<p>There are 131 countries in all. Let’s make the same scatter plot from the notes, with <code>ggplot</code>:</p>
 <div class="cell" data-envir="tutorial_4_01">
 <div>
 <div id="webr-3" class="exercise-cell">
@@ -587,7 +582,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>The MSE of the model <code>happiness = 5</code> is about 1.60.</p>
+<p>The MSE of the model <code>happiness = 5</code> is about 1.64.</p>
 <p>That’s the whole recipe for MSE:</p>
 <ol type="1">
 <li>Make a prediction for every row.</li>
@@ -599,7 +594,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </section>
 <section id="finding-the-best-horizontal-line" class="level3">
 <h3 class="anchored" data-anchor-id="finding-the-best-horizontal-line">Finding the best horizontal line</h3>
-<p><strong>Try it!</strong> In the cell below, change the <code>5</code> to other values and run it each time. Can you find a value with a smaller MSE than 1.60?</p>
+<p><strong>Try it!</strong> In the cell below, change the <code>5</code> to other values and run it each time. Can you find a value with a smaller MSE than 1.64?</p>
 <div class="cell" data-envir="tutorial_4_01">
 <div>
 <div id="webr-8" class="exercise-cell">
@@ -622,7 +617,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>An MSE of about 1.14, our <strong>baseline model</strong> from the notes. If you’d like to see the average itself:</p>
+<p>An MSE of about 1.15, our <strong>baseline model</strong> from the notes. If you’d like to see the average itself:</p>
 <div class="cell" data-envir="tutorial_4_01">
 <div>
 <div id="webr-10" class="exercise-cell">
@@ -633,7 +628,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>About 5.68, just like the notes said.</p>
+<p>About 5.70, just like the notes said.</p>
 </section>
 <section id="predictions-that-depend-on-gdp" class="level3">
 <h3 class="anchored" data-anchor-id="predictions-that-depend-on-gdp">Predictions that depend on gdp</h3>
@@ -641,18 +636,18 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 <blockquote class="blockquote">
 <p><code>happiness = ? + ? * gdp</code></p>
 </blockquote>
-<p>The notes told us the best coefficients (<code>?</code> values) were about 4.90 and 0.028. Let’s plug those in and use the same recipe. The only thing that changes is the <code>prediction</code> line:</p>
+<p>The notes told us the best coefficients (<code>?</code> values) were about 4.91 and 0.027. Let’s plug those in and use the same recipe. The only thing that changes is the <code>prediction</code> line:</p>
 <div class="cell" data-envir="tutorial_4_01">
 <div>
 <div id="webr-11" class="exercise-cell">
 
 </div>
 <script type="webr-11-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJjb2RlIjoibXV0YXRlKGNvdW50cmllcyxcbiAgICAgICBwcmVkaWN0aW9uID0gNC45MCArIDAuMDI4ICogZ2RwLFxuICAgICAgIGVycm9yID0gaGFwcGluZXNzIC0gcHJlZGljdGlvbixcbiAgICAgICBzcXVhcmVkX2Vycm9yID0gZXJyb3JeMikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJjb2RlIjoibXV0YXRlKGNvdW50cmllcyxcbiAgICAgICBwcmVkaWN0aW9uID0gNC45MSArIDAuMDI3ICogZ2RwLFxuICAgICAgIGVycm9yID0gaGFwcGluZXNzIC0gcHJlZGljdGlvbixcbiAgICAgICBzcXVhcmVkX2Vycm9yID0gZXJyb3JeMikifQ==
 </script>
 </div>
 </div>
-<p>This time, the prediction is different for every country, because each country has its own <code>gdp</code>. For Albania, R took the formula <code>4.90 + 0.028 * gdp</code>, swapped in Albania’s <code>gdp</code> (about 22.7), and got <code>4.90 + 0.028 * 22.7</code>, which is about 5.54. Other countries had other gdp values and therefore different predictions.</p>
+<p>This time, the prediction is different for every country, because each country has its own <code>gdp</code>. For Albania, R took the formula <code>4.91 + 0.027 * gdp</code>, swapped in Albania’s <code>gdp</code> (about 22.7), and got <code>4.91 + 0.027 * 22.7</code>, which is about 5.52. Other countries had other gdp values and therefore different predictions.</p>
 <p>And now the MSE:</p>
 <div class="cell" data-envir="tutorial_4_01">
 <div>
@@ -660,18 +655,18 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 
 </div>
 <script type="webr-12-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJjb2RlIjoibXV0YXRlKGNvdW50cmllcyxcbiAgICAgICBwcmVkaWN0aW9uID0gNC45MCArIDAuMDI4ICogZ2RwLFxuICAgICAgIGVycm9yID0gaGFwcGluZXNzIC0gcHJlZGljdGlvbixcbiAgICAgICBzcXVhcmVkX2Vycm9yID0gZXJyb3JeMikgfD5cbiAgc3VtbWFyaXplKG1zZSA9IG1lYW4oc3F1YXJlZF9lcnJvcikpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJjb2RlIjoibXV0YXRlKGNvdW50cmllcyxcbiAgICAgICBwcmVkaWN0aW9uID0gNC45MSArIDAuMDI3ICogZ2RwLFxuICAgICAgIGVycm9yID0gaGFwcGluZXNzIC0gcHJlZGljdGlvbixcbiAgICAgICBzcXVhcmVkX2Vycm9yID0gZXJyb3JeMikgfD5cbiAgc3VtbWFyaXplKG1zZSA9IG1lYW4oc3F1YXJlZF9lcnJvcikpIn0=
 </script>
 </div>
 </div>
-<p>About 0.59. A big improvement over the baseline’s 1.14, just like in the notes.</p>
-<p><strong>Try it!</strong> What values did you try on in Plot 7 of the notes? Plug them in above in place of 4.90 and 0.028, and see if the MSE matches (it should).</p>
+<p>About 0.59. A big improvement over the baseline’s 1.15, just like in the notes.</p>
+<p><strong>Try it!</strong> What values did you try on in Plot 7 of the notes? Plug them in above in place of 4.91 and 0.027, and see if the MSE matches (it should).</p>
 </section>
 </section>
 <section id="letting-r-find-the-best-coefficients-lm" class="level2">
 <h2 class="anchored" data-anchor-id="letting-r-find-the-best-coefficients-lm">Letting R find the best coefficients: <code>lm()</code></h2>
-<section id="where-did-4.90-and-0.028-come-from" class="level3">
-<h3 class="anchored" data-anchor-id="where-did-4.90-and-0.028-come-from">Where did 4.90 and 0.028 come from?</h3>
+<section id="where-did-4.91-and-0.027-come-from" class="level3">
+<h3 class="anchored" data-anchor-id="where-did-4.91-and-0.027-come-from">Where did 4.91 and 0.027 come from?</h3>
 <p>So far, we’ve been <em>given</em> the coefficients (or guessed them). But how do you actually find the very best ones?</p>
 <p>You <em>could</em> keep guessing and checking, like you did when dragging lines in the notes. But that’s tedious, and you’d never know if you’d found the very best values or just pretty good ones. Fortunately, there’s a mathematical shortcut (with a little calculus and linear algebra) that jumps straight to the coefficients with the smallest possible MSE. You don’t need to know the math here. You just need to know how to ask R to do it.</p>
 <p>The R function for this is <code>lm()</code>, short for <strong>linear model</strong>. You might remember it briefly from the <a href="../../2-summarizing-data/05-summarizing-associations/tutorial.html">Summarizing Numerical Associations tutorial</a>, but we’ll start from scratch here.</p>
@@ -692,12 +687,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 <p>Notice the <code>happiness ~ gdp</code> equation doesn’t perfectly parallel the <code>happiness = ? + ? * gdp</code> form we’ve been using. By default, <code>lm</code> <em>assumes</em> you want an intercept. You don’t have to ask for it. So this line is effectively saying, “R, find the best coefficients for the model <code>happiness = ? + ? * gdp</code>.”</p>
 <p>You see them in the output above, under <code>Coefficients</code>. (R tends to print lots of decimal places. We’ll round to a couple.)</p>
 <ul>
-<li><code>(Intercept)</code>: about 4.90. That’s the first <code>?</code>.</li>
-<li><code>gdp</code>: about 0.028. That’s the second <code>?</code>, the number we multiply <code>gdp</code> by.</li>
+<li><code>(Intercept)</code>: about 4.91. That’s the first <code>?</code>.</li>
+<li><code>gdp</code>: about 0.027. That’s the second <code>?</code>, the number we multiply <code>gdp</code> by.</li>
 </ul>
 <p>So R found the best line in this family:</p>
 <blockquote class="blockquote">
-<p><code>happiness = 4.90 + 0.028 * gdp</code></p>
+<p><code>happiness = 4.91 + 0.027 * gdp</code></p>
 </blockquote>
 <p>That’s the line you were hunting for in Plot 7, found exactly, in one line of code.</p>
 </section>
@@ -768,7 +763,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 
 </div>
 <script type="webr-17-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJjb2RlIjoiNC45MCArIDAuMDI4ICogNDAifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJjb2RlIjoiNC45MSArIDAuMDI3ICogNDAifQ==
 </script>
 </div>
 </div>
@@ -795,7 +790,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>About 6.01. (The hand calculation gave 6.02 because we rounded the coefficients to 4.90 and 0.028. <code>predict()</code> uses the unrounded ones.)</p>
+<p>About 6.00. (The hand calculation gave 5.99 because we rounded the coefficients to 4.91 and 0.027. <code>predict()</code> uses the unrounded ones.)</p>
 <p>Let’s break down that line:</p>
 <ul>
 <li>The function is <code>predict()</code>.</li>
@@ -819,7 +814,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>One prediction per row: about 5.18, 6.01, and 7.66.</p>
+<p>One prediction per row: about 5.19, 6.00, and 7.64.</p>
 </section>
 </section>
 <section id="errors-residuals-and-mse-the-quick-way" class="level2">
@@ -852,7 +847,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>That’s 140 numbers, one error per country, in the same order as the rows of <code>countries</code>. The first one should match the error for Albania.</p>
+<p>That’s 131 numbers, one error per country, in the same order as the rows of <code>countries</code>. The first one should match the error for Albania.</p>
 <p>So now our whole MSE recipe fits on one line. Square every residual, then take the mean:</p>
 <div class="cell" data-envir="tutorial_4_01">
 <div>
@@ -866,7 +861,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </div>
 <p>It’s worth reading that from the inside out:</p>
 <ol type="1">
-<li><code>residuals(model)</code>: get the 140 errors</li>
+<li><code>residuals(model)</code>: get the 131 errors</li>
 <li><code>residuals(model)^2</code>: square each one</li>
 <li><code>mean(residuals(model)^2)</code>: average the squares</li>
 </ol>
@@ -920,7 +915,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImVudmlyIjoidHV0b3JpYWxfNF8wMSIsImV2YWwiOnRydWV9LCJj
 </script>
 </div>
 </div>
-<p>The best <code>?</code> is about 5.68: the average happiness. Least squares agrees with what you found by dragging in Plot 5.</p>
+<p>The best <code>?</code> is about 5.70: the average happiness. Least squares agrees with what you found by dragging in Plot 5.</p>
 </section>
 <section id="through-the-origin-happiness-gdp" class="level3">
 <h3 class="anchored" data-anchor-id="through-the-origin-happiness-gdp">Through the origin: <code>happiness = ? * gdp</code></h3>

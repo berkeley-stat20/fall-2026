@@ -500,7 +500,7 @@ window.Quarto = {
 .version-tabs { margin: 0 0 1.5rem; }
 .version-tabs .nav-link { font-weight: 500; text-transform: none; font-size: 1rem; }
 .version-tabs .nav-link.active { background-color: var(--bs-body-bg); }
-/* First visit only: a few soft pulses on the alternate tab */
+/* Original page only: a few soft pulses on the alternate tab */
 .version-tabs .nav-link.version-pulse { animation: version-pulse 1.6s ease-out 0.6s 3; }
 @keyframes version-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0.55); }
@@ -526,13 +526,8 @@ window.Quarto = {
       window.location.replace(new URL("notes-alt.html", window.location.href).href + window.location.hash);
       return;
     }
-    // Pulse the alternate tab the first time this browser sees this page
-    var seenKey = "stat20-version-seen:" + window.location.pathname;
-    if (!get(seenKey)) {
-      set(seenKey, "1");
-      var altTab = document.querySelector('.version-tabs a[data-version="alt"]');
-      if (altTab) altTab.classList.add("version-pulse");
-    }
+    var altTab = document.querySelector('.version-tabs a[data-version="alt"]');
+    if (altTab) altTab.classList.add("version-pulse");
   }
 })();
 </script>
