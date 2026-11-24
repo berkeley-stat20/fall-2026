@@ -541,10 +541,20 @@ window.Quarto = {
 
 <style>
 .version-tabs { margin: 0 0 1.5rem; }
-.version-tabs .nav-link { font-weight: 500; text-transform: none; font-size: 1rem; }
+.version-tabs .nav-link { font-weight: 500; text-transform: none; font-size: 1rem; padding: 0.5rem 1rem; line-height: 1.5; }
 .version-tabs .nav-link.active { background-color: var(--bs-body-bg); }
-/* Original page only: a few soft pulses on the alternate tab */
-.version-tabs .nav-link.version-pulse { animation: version-pulse 1.6s ease-out 0.6s 3; }
+/* The site theme (loaded on tutorials, not notes) draws inactive tabs as gray text in a
+   beige box. Undo that so the inactive tab looks the same on both: plain link-colored text. */
+.version-tabs .nav-tabs .nav-link:not(.active) {
+  background-color: transparent; border-color: transparent; color: var(--bs-link-color);
+}
+.version-tabs .nav-tabs .nav-link:not(.active):hover,
+.version-tabs .nav-tabs .nav-link:not(.active):focus {
+  border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
+  color: var(--bs-link-hover-color);
+}
+/* Original page only: a soft pulse on the alternate tab, repeating indefinitely */
+.version-tabs .nav-link.version-pulse { animation: version-pulse 1.6s ease-out 0.6s infinite; }
 @keyframes version-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0.55); }
   70%  { box-shadow: 0 0 0 10px rgba(var(--bs-primary-rgb), 0); }
@@ -815,7 +825,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <blockquote class="blockquote">
 <p><strong>Baseline model</strong>: <code>happiness = 5.70</code> (MSE = 1.15)</p>
 </blockquote>
-<p>So our baseline model is: “All countries have an average happiness of 5.70.</p>
+<p>So our baseline model is: “All countries have an average happiness of 5.70.”</p>
 </section>
 <section id="doing-better-different-predictions-for-different-levels-of-wealth" class="level3">
 <h3 class="anchored" data-anchor-id="doing-better-different-predictions-for-different-levels-of-wealth">Doing better: different predictions for different levels of wealth</h3>
@@ -843,7 +853,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 </div>
 </div>
-<p>These lines are… all terrible. An MSE of around 12 is about as good as it gets (setting the slope to about 1.2). That’s <em>way</em> worse than our previous model (MSE = 1.15) which just said “every country has a happiness of 5.70”!</p>
+<p>These lines are… all terrible. An MSE of around 12 is about as good as it gets (setting the slope to about 0.12). That’s <em>way</em> worse than our previous model (MSE = 1.15) which just said “every country has a happiness of 5.70”!</p>
 <p>Why?</p>
 <p>The problem is that this model, given the formula <code>happiness = ? * gdp</code>, MUST predict a happiness of zero for a country with a gdp of zero. If you plug in 0 for gdp, no matter what the slope (<code>?</code>) is, <code>?*0</code> will be zero. In other words, this line MUST go through the origin, (0,0). That’s a <em>huge</em> limitation, and it leads to horrible models.</p>
 <section id="the-fix-add-an-intercept" class="level4">
@@ -853,7 +863,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <p><code>happiness = ? + ? * gdp</code></p>
 </blockquote>
 <p>You’ll recognize this as a variant of the classic formula for a line, <code>y = mx + b</code> (here we’ve just written it as <code>y = b + mx</code>).</p>
-<p>This extra <code>? +</code> lets the line slide up and down and intersect the y-axis anywhere, while still letting adjust the slope. Play with the figure below to set both <code>?</code> values. Drag up and down on the left end to change the intercept, and drag the handle on the right to rotate the line, changing the slope on gdp. <strong>Try to find the best line!</strong></p>
+<p>This extra <code>? +</code> lets the line slide up and down and intersect the y-axis anywhere, while still letting you adjust the slope. Play with the figure below to set both <code>?</code> values. Drag up and down on the left end to change the intercept, and drag the handle on the right to rotate the line, changing the slope on gdp. <strong>Try to find the best line!</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="314" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 313;"><span id="cb8-314"><a href="#cb8-314" aria-hidden="true" tabindex="-1"></a><span class="co">// Built by Everett Wetchler + Claude</span></span>
 <span id="cb8-315"><a href="#cb8-315" aria-hidden="true" tabindex="-1"></a><span class="fu">lineExplorer</span>({</span>
@@ -954,7 +964,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <p><em>Also called the “outcome variable” or “dependent variable”</em></p>
 </div>
 </div>
-<p>The information we use to <em>make</em> that prediction are called <strong>features</strong>. Here we only have one: <code>gdp</code>. Features are usually written as <span class="math inline">\(x_1, x_2, x_3, ...\)</span> depending on how many features we’re using. With our <code>happiness = ? + ? * gdp</code> model, we just have <span class="math inline">\(x_1\)</span>, gdp.</p>
+<p>The pieces of information we use to <em>make</em> that prediction are called <strong>features</strong>. Here we only have one: <code>gdp</code>. Features are usually written as <span class="math inline">\(x_1, x_2, x_3, ...\)</span> depending on how many features we’re using. With our <code>happiness = ? + ? * gdp</code> model, we just have <span class="math inline">\(x_1\)</span>, gdp.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Features">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -970,7 +980,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 </div>
 <p>The numbers we <em>multiply</em> the features by (the <code>?</code> values we played with) are called <strong>coefficients</strong>. These are usually written as <span class="math inline">\(\beta_1, \beta_2, \beta_3, ...\)</span>.</p>
-<p>Let’s compare these equations side by side</p>
+<p>Let’s compare these equations side by side:</p>
 <ul>
 <li>Less formal: <code>happiness = ? + ? * gdp</code></li>
 <li>More formal: <span class="math inline">\(y = \beta_0 + \beta_1 x_1\)</span></li>
@@ -989,9 +999,9 @@ document.addEventListener("DOMContentLoaded", function () {
 <p><strong>coefficients (<span class="math inline">\(\beta_0, \beta_1, \beta_2, ...\)</span>)</strong>: how we weight our features before summing to get our prediction</p>
 </div>
 </div>
-<p>So we have TWO coefficients and in our model, <span class="math inline">\(y = \beta_0 + \beta_1 x_1\)</span></p>
+<p>So we have TWO coefficients in our model, <span class="math inline">\(y = \beta_0 + \beta_1 x_1\)</span></p>
 <ul>
-<li><span class="math inline">\(\beta_0\)</span> is our first coefficient (the intecept)</li>
+<li><span class="math inline">\(\beta_0\)</span> is our first coefficient (the intercept)</li>
 <li><span class="math inline">\(\beta_1\)</span> is our second coefficient (multiplied by <span class="math inline">\(x_1\)</span>, our one feature, <code>gdp</code>)</li>
 </ul>
 <p><strong>Look closely</strong> at the equations side by side again:</p>
@@ -1027,6 +1037,11 @@ document.addEventListener("DOMContentLoaded", function () {
 <li><span class="math inline">\(y = \beta_0 + \beta_1 x_1 + \epsilon\)</span></li>
 </ol>
 </blockquote>
+<p>For Egypt, the true happiness, <span class="math inline">\(y_{(Egypt)}\)</span>, is 3.86, while our model’s prediction, <span class="math inline">\(\hat{y}_{(Egypt)}\)</span>, is 5.38. The error, <span class="math inline">\(\epsilon_{(Egypt)}\)</span>, is the difference between the two: -1.52.</p>
+<p>Now we can plug everything in and get a true equality.</p>
+<blockquote class="blockquote">
+<p><span class="math inline">\(3.86 = 4.91 + 0.027 * 17.27 + (-1.52) = 3.86\)</span></p>
+</blockquote>
 <style>
 /* Light blue fill behind the body of the "hats" box (the header is already blue) */
 .callout.hats-box { background-color: #eaf2fc; }
@@ -1047,24 +1062,24 @@ document.addEventListener("DOMContentLoaded", function () {
 <blockquote class="blockquote">
 <p><span class="math inline">\(\hat{y}_{(Egypt)} = \beta_0 + \beta_1 x_{1 (Egypt)} = 4.91 + 0.027 * 17.27 = 5.38\)</span></p>
 </blockquote>
-<p>There is a slight lie in this. We (correctly) wrote <span class="math inline">\(\hat{y}\)</span> instead of <span class="math inline">\(y\)</span> because this is only a prediction, an <em>estimate</em>, not a true formula for Egypt’s happiness level. The thing is… <strong>we are estimating <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> too</strong>! These are not true, unquestionably “best” numbers. Why?</p>
-<p>Many reasons, but here’s a clear one: we only have data here for one year, 2025. The true relationship between country GDP and happiness, across time, may not be exactly this. If we had done this analysis on 2024 data instead, we would get a slightly different line:</p>
+<p>There is a slight lie in this. We (correctly) wrote <span class="math inline">\(\hat{y}\)</span> instead of <span class="math inline">\(y\)</span> because this is only a prediction, an <em>estimate</em>, not a true formula for Egypt’s happiness level. The thing is… <strong>we are estimating <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> too</strong>! These are not the true, universally “best” coefficients. Why?</p>
+<p>Many reasons, but here’s a clear one: we are only looking at data here for one year, 2025. We’re trying to say things about money and happiness <em>in humans</em>, not just in the year 2025. The true relationship may not be exactly this - it’s just the best we can do with what we’ve got. If we had done this analysis on 2024 data instead, we would get a slightly different line:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="474" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 473;"><span id="cb10-474"><a href="#cb10-474" aria-hidden="true" tabindex="-1"></a><span class="co">// Built by Everett Wetchler + Claude</span></span>
-<span id="cb10-475"><a href="#cb10-475" aria-hidden="true" tabindex="-1"></a><span class="fu">fitChart</span>({</span>
-<span id="cb10-476"><a href="#cb10-476" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"Plot 9: The line of best fit for 2024"</span><span class="op">,</span></span>
-<span id="cb10-477"><a href="#cb10-477" aria-hidden="true" tabindex="-1"></a>  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">"Hover over the points to see information about that country"</span><span class="op">,</span></span>
-<span id="cb10-478"><a href="#cb10-478" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Scatter plot of happiness against GDP per capita in 2024, colored by continent, with the least squares line for 2024, which is close to but not the same as the 2025 line."</span><span class="op">,</span></span>
-<span id="cb10-479"><a href="#cb10-479" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> happiness_2024<span class="op">,</span></span>
-<span id="cb10-480"><a href="#cb10-480" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span>fit_2024_coefs</span>
-<span id="cb10-481"><a href="#cb10-481" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="480" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 479;"><span id="cb10-480"><a href="#cb10-480" aria-hidden="true" tabindex="-1"></a><span class="co">// Built by Everett Wetchler + Claude</span></span>
+<span id="cb10-481"><a href="#cb10-481" aria-hidden="true" tabindex="-1"></a><span class="fu">fitChart</span>({</span>
+<span id="cb10-482"><a href="#cb10-482" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"Plot 9: The line of best fit for 2024"</span><span class="op">,</span></span>
+<span id="cb10-483"><a href="#cb10-483" aria-hidden="true" tabindex="-1"></a>  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">"Hover over the points to see information about that country"</span><span class="op">,</span></span>
+<span id="cb10-484"><a href="#cb10-484" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ariaLabel</span><span class="op">:</span> <span class="st">"Scatter plot of happiness against GDP per capita in 2024, colored by continent, with the least squares line for 2024, which is close to but not the same as the 2025 line."</span><span class="op">,</span></span>
+<span id="cb10-485"><a href="#cb10-485" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> happiness_2024<span class="op">,</span></span>
+<span id="cb10-486"><a href="#cb10-486" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span>fit_2024_coefs</span>
+<span id="cb10-487"><a href="#cb10-487" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="expression">
 
 </div>
 </div>
 </div>
-<p>Here’s what equations we would have found if we had used various other years of data:</p>
+<p>Here’s what equations we would have found if we had used data from various years:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1095,13 +1110,13 @@ document.addEventListener("DOMContentLoaded", function () {
 </table>
 </div>
 </div>
-<p>In other words, <em>we are still guessing</em> at the best coefficients for this model. Unless we have all data for all countries for all years, past and future, we cannot be sure that these are THE true coefficients for this relationship. Hence, they are estimates, and deserve hats too. We can write the formula, more rigorously, as:</p>
+<p>These are similar, but there’s still some uncertainty about exactly where the coefficients should be. Even if we pooled all the data together, the future might be different too. In other words, no matter how much data we have, we are still <em>guessing</em> at the best coefficients for this model of money and happiness. These coefficients are <em>estimates</em>, just like <span class="math inline">\(\hat{y}\)</span>, so they deserve hats too. We can write the formula, more rigorously, as:</p>
 <blockquote class="blockquote">
 <p><span class="math inline">\(\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1\)</span></p>
 </blockquote>
 <p>The distinction is minor for the purposes of this course, but you may see it in future classes in statistics, economics, etc.</p>
-<p><strong>He’re not out of the woods yet.</strong></p>
-<p>Our error terms <span class="math inline">\(\epsilon\)</span>, are <em>also</em> estimates. They are based on the coefficients, which (as we just saw) are estimates, which means our error is <em>also</em> an estimate of what the error would be in the (unknowable) true universally best model.</p>
+<p><strong>Even more hats</strong></p>
+<p>Our error term, <span class="math inline">\(\epsilon\)</span>, depends on our model’s coefficients, which we just established are estimates. This means that our error is <em>also</em> an estimate. Specifically, of what the error would be between the truth and the (unknowable) universally best model’s prediction.</p>
 <p>In other words, instead of writing <span class="math inline">\(\epsilon_{(Egypt)} = -1.52\)</span>, we should write <span class="math inline">\(\hat{\epsilon}_{(Egypt)} = -1.52\)</span>.</p>
 <p>So to be totally and obnoxiously rigorous, we should write:</p>
 <blockquote class="blockquote">
@@ -1114,23 +1129,24 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <section id="demystifying-more-equations" class="level4">
 <h4 class="anchored" data-anchor-id="demystifying-more-equations">Demystifying more equations</h4>
-<p>Look at this equation for mean squared error (MSE):</p>
-<p><span class="math display">\[ \mbox{MSE} \equiv \frac1{n} \sum_{i = 1}^n \left(y_i - \hat{y} \right)^2\]</span></p>
+<p>You’ll commonly see the formula for mean squared error written like this:</p>
+<p><span class="math display">\[ \mbox{MSE} \equiv \frac1{n} \sum_{i = 1}^n \left(y_i - \hat{y}_i \right)^2\]</span></p>
+<p>Let’s break it down.</p>
 <ol type="1">
 <li>The <span class="math inline">\(\sum\)</span> symbol means “summation” – add up a bunch of things.</li>
-<li><span class="math inline">\(y_i\)</span> is the <em>true</em> happiness for the <span class="math inline">\(i\)</span>th country in our dataset, while <span class="math inline">\(\hat{y}\)</span> is the <em>prediction</em> for that country.</li>
-<li>We walk through each country: the first, then the second, etc (from the <span class="math inline">\(i = 1\)</span> on bottom to <span class="math inline">\(n\)</span> on top, where <span class="math inline">\(n\)</span> is the total numbrer of countries).
+<li><span class="math inline">\(y_i\)</span> is the <em>true</em> happiness for the <span class="math inline">\(i\)</span>th country in our dataset, while <span class="math inline">\(\hat{y}_i\)</span> is our model’s <em>prediction</em> for that country.</li>
+<li>We walk through each country: from the first (<span class="math inline">\(i = 1\)</span> on bottom) to the last (<span class="math inline">\(n\)</span> on top, where <span class="math inline">\(n\)</span> is the total number of countries).
 <ol type="1">
-<li>For each country, we take the difference between its true happiness, <span class="math inline">\(y_i\)</span>, and our model’s predicted happiness, <span class="math inline">\(\hat{y_i}\)</span>.</li>
+<li>For each country, we take the difference between its true happiness, <span class="math inline">\(y_i\)</span>, and our model’s prediction, <span class="math inline">\(\hat{y}_i\)</span>.</li>
 <li>This difference is the error, and we square it.</li>
 </ol></li>
-<li>To compute an average, we add up <span class="math inline">\(\sum\)</span> these squared errors and divide by how many countries we have. This is equivalent to multiplying the whole thing by <span class="math inline">\(\frac{1}{n}\)</span>, which you see in front.</li>
+<li>To compute an average, we <span class="math inline">\(\sum\)</span> (add up) these squared errors, then divide by how many countries we have (<span class="math inline">\(n\)</span>). Dividing by <span class="math inline">\(n\)</span> is equivalent to multiplying the whole thing by <span class="math inline">\(\frac{1}{n}\)</span>, which is what you see in front.</li>
 <li>Ultimately, this gives us the mean of the squares of the errors. That’s MSE.</li>
 </ol>
 <p>We can also just use the notation for error directly:</p>
-<p><span class="math display">\[ \mbox{MSE} = \sum_{i = 1}^n {\epsilon}_i^2\]</span></p>
+<p><span class="math display">\[ \mbox{MSE} = \frac1{n} \sum_{i = 1}^n {\epsilon}_i^2\]</span></p>
 <p>Where <span class="math inline">\(\epsilon_i\)</span> is the prediction error for the <span class="math inline">\(i\)</span>th country.</p>
-<p><strong>Don’t sweat the equations too much.</strong> If you understood the concepts and how to do the calculations, that’s all you really need to do the work in this class. The tutorial below helps drive it home.</p>
+<p><strong>Don’t sweat the equations too much.</strong> If you understood the concepts and how to do the calculations, that’s all you really need to do the work in this class. The tutorial will help drive it home.</p>
 <div class="tutorial-part-nav tutorial-part-nav-bottom">
 <p><a href="../../4-prediction/01-method-of-least-squares/tutorial-alt.html" class="tutorial-nav-next">Continue on to the (alternate) tutorial ⮕</a></p>
 </div>

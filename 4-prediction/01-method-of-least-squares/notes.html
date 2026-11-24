@@ -498,10 +498,20 @@ window.Quarto = {
 
 <style>
 .version-tabs { margin: 0 0 1.5rem; }
-.version-tabs .nav-link { font-weight: 500; text-transform: none; font-size: 1rem; }
+.version-tabs .nav-link { font-weight: 500; text-transform: none; font-size: 1rem; padding: 0.5rem 1rem; line-height: 1.5; }
 .version-tabs .nav-link.active { background-color: var(--bs-body-bg); }
-/* Original page only: a few soft pulses on the alternate tab */
-.version-tabs .nav-link.version-pulse { animation: version-pulse 1.6s ease-out 0.6s 3; }
+/* The site theme (loaded on tutorials, not notes) draws inactive tabs as gray text in a
+   beige box. Undo that so the inactive tab looks the same on both: plain link-colored text. */
+.version-tabs .nav-tabs .nav-link:not(.active) {
+  background-color: transparent; border-color: transparent; color: var(--bs-link-color);
+}
+.version-tabs .nav-tabs .nav-link:not(.active):hover,
+.version-tabs .nav-tabs .nav-link:not(.active):focus {
+  border-color: var(--bs-secondary-bg) var(--bs-secondary-bg) var(--bs-border-color);
+  color: var(--bs-link-hover-color);
+}
+/* Original page only: a soft pulse on the alternate tab, repeating indefinitely */
+.version-tabs .nav-link.version-pulse { animation: version-pulse 1.6s ease-out 0.6s infinite; }
 @keyframes version-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0.55); }
   70%  { box-shadow: 0 0 0 10px rgba(var(--bs-primary-rgb), 0); }
