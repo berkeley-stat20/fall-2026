@@ -785,7 +785,7 @@ p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_
 <p>Look at it! How pretty! Tucked cozily up inside that exponent.</p>
 <p>But the closeness of the estimation to the data will be measured by a different function than the MSE. You don’t have to remember it. <code>R</code> will do the optimization for you, but I will include it here for completeness.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: Sample Cross-entropy</strong></p>
+<p><strong>def: Sample Cross-entropy</strong> (you don’t need to remember this)</p>
 <p>For a certain model determining probability <span class="math inline">\(p(\mathbf{X})\)</span> for binary data <span class="math inline">\(Y_i\)</span>, the cross-entropy of the model measures how far the model probability distribution is from the data, and is defined mathematically by</p>
 <p><span class="math display">\[ H \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i \cdot {\rm log} \left(p(\mathbf{X}_i)\right) + \left(1-Y_i\right) \cdot {\rm log} \left(1-p(\mathbf{X}_i)\right)  \right] \]</span></p>
 </div>
@@ -802,9 +802,9 @@ p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + b_2 X_2 + \ldots + b_
 <p>Step 1 (model definition) <span class="math display">\[ P(Y=1|\mathbf{X}) = p(\mathbf{X})= \frac1{1 + {\rm e}^{-\left( b_0 + b_1 X_1 + \ldots + b_q X_q  \right)}} \]</span></p>
 <p>which defines the <em>logistic probability model</em> as a function of the features. The <span class="math inline">\(b_0, b_1, \ldots, b_q\)</span> are called the <em>coefficients</em> or <em>weights</em> of the model.</p>
 <p>Step 2 (choice of optimization function) <span class="math display">\[
-H (b_0, b_1, \ldots, b_q) \equiv -\frac1{n} \sum_{i=1}^n \left[ Y_i \cdot {\rm log} \left(p(\mathbf{X}_i)\right) + \left(1-Y_i\right) \cdot {\rm log} \left(1-p(\mathbf{X}_i)\right)  \right]
+H (b_0, b_1, \ldots, b_q)
 \]</span></p>
-<p>which defines the <em>cross-entropy function</em> for the logistic model. When the cross-entropy is close to 0 the estimate of the probability is very good.</p>
+<p>which uses the <em>cross-entropy function</em> definition. When the cross-entropy is close to 0 the estimate of the probability is very good.</p>
 <p>Step 3 (model fitting)</p>
 <p>Now we can use some numerical algorithm (like Gradient Descent or Nelder-Mead) to minimize <span class="math inline">\(H\)</span> and find the optimal coefficients</p>
 <p><span class="math display">\[
