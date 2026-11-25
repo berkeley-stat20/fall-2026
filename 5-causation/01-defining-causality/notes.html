@@ -469,7 +469,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#causation-between-variables" id="toc-causation-between-variables" class="nav-link" data-scroll-target="#causation-between-variables">Causation between variables</a></li>
   </ul></li>
-  <li><a href="#the-language-of-causation-potential-outcomes-and-treatment-effect" id="toc-the-language-of-causation-potential-outcomes-and-treatment-effect" class="nav-link" data-scroll-target="#the-language-of-causation-potential-outcomes-and-treatment-effect">The language of causation: Potential Outcomes and Treatment Effect</a></li>
+  <li><a href="#my-new-creepy-evil-twin-potential-outcomes-and-treatment-effect" id="toc-my-new-creepy-evil-twin-potential-outcomes-and-treatment-effect" class="nav-link" data-scroll-target="#my-new-creepy-evil-twin-potential-outcomes-and-treatment-effect">My New Creepy Evil Twin: Potential Outcomes and Treatment Effect</a></li>
   <li><a href="#a-new-type-of-impossible-task" id="toc-a-new-type-of-impossible-task" class="nav-link" data-scroll-target="#a-new-type-of-impossible-task">A new type of impossible task</a>
   <ul class="collapse">
   <li><a href="#example-gps-routing" id="toc-example-gps-routing" class="nav-link" data-scroll-target="#example-gps-routing">Example: GPS routing</a></li>
@@ -520,7 +520,6 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <ul>
 <li>counterfactual world</li>
-<li>causation between events</li>
 <li>causation between random variables</li>
 <li>outcome variable and treatment variable</li>
 <li>potential outcomes</li>
@@ -550,14 +549,14 @@ You don’t believe that’s a big deal, right?
 <p>Let’s see what your intuition tells you about what is a cause and what is not a cause. Which causes do you identify in the following scenario?</p>
 <blockquote class="blockquote">
 <p>Suppose there is Stat 20 class tomorrow. The <strong>professor has prepared the warmup</strong> for the reader. The <strong>Reader will print</strong> the warmup sheets. The <strong>3 Tutors will be handing out</strong> the sheets to the people who come in on time, as long as they were printed.</p>
-<p>Now, imagine you are in class and have a warmup sheet in your hands. (Call this event “S”)</p>
+<p>Now, imagine you are in class and have a warmup sheet in your hands. (Call this event <span class="math inline">\(S\)</span>)</p>
 <p>What caused you to have the warmup sheet in your hands?</p>
-<p>“P”: The Professor preparing the sheet.<br>
-“R”: The Reader printing the sheets.<br>
-“T1”: Tutor 1 handing out the sheets.<br>
-“T2”: Tutor 2 handing out the sheets.<br>
-“T3”: Tutor 3 handing out the sheets.<br>
-“C”: You coming to class on time.</p>
+<p><span class="math inline">\(P\)</span>: The Professor preparing the sheet.<br>
+<span class="math inline">\(R\)</span>: The Reader printing the sheets.<br>
+<span class="math inline">\(T1\)</span>: Tutor 1 handing out the sheets.<br>
+<span class="math inline">\(T2\)</span>: Tutor 2 handing out the sheets.<br>
+<span class="math inline">\(T3\)</span>: Tutor 3 handing out the sheets.<br>
+<span class="math inline">\(C\)</span>: You coming to class on time.</p>
 </blockquote>
 <p>As you ponder where to draw the line to determine which of these events are the cause of you holding the sheet, you are working out your own internal definition of causation. Keep your answers in mind: we will discuss this example in class. For now, though, let’s introduce the most widely used definitions of cause and effect.</p>
 </section>
@@ -573,12 +572,12 @@ You don’t believe that’s a big deal, right?
 <p>Both of these thoughts rely upon imagining a world that was different from the one that was observed, a notion in logic called <strong>a counterfactual</strong>.</p>
 <details>
 <summary>
-Other fields disagree with this definition…
+Extra: Other fields disagree with this definition…
 </summary>
-<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
-<p>In Analytical Philosophy for example there are certainly approaches that are skeptical that causation even exists as a real thing or a helpful concept. Hume definitely was skeptical of causality and even the author of this notes generally agrees with this and considers counterfactuals meaningless</p>
-<p>Theoretical Physics also has a generally very different approach to causation. In Physics pretty much anything that could cause something else (based on space-time connectedness) is considered a cause of it. The past causes the future in Physics. Theoretical physicists tend to de-emphasize causation as a different thing from prediction.</p>
-<p>But I digress, and gave only a very small taste of a very vast and complex debate.</p>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #f7e7de; color: #333333; padding: 12px; border-radius: 6px;">
+<p>In Philosophy, for example, there are certainly approaches that are skeptical that causation even exists as a real thing or a helpful concept. Hume was somewhat skeptical of causality and even the author of this notes generally considers counterfactuals not very meaningful metaphysically, but a comfortable delusions we use to justify our apparent decision making.</p>
+<p>Theoretical Physics also has a generally very different approach to causation. In Physics pretty much anything that could cause something else (based on space-time connectedness) is considered a cause of it. In Physics, the past causes the future. Theoretical physicists tend to de-emphasize causation as a different thing from prediction.</p>
+<p>But I digress, and gave only a very small and uneducated taste of a very vast and complex debate.</p>
 </div>
 </details>
 <p>The following is the core of how Statistics and the Social Sciences think about causation.</p>
@@ -600,7 +599,9 @@ Other fields disagree with this definition…
 <summary>
 Check your answer
 </summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>You would need to know that, if they hadn’t taken an aspirin, their headache wouldn’t have gotten better.</p>
+</div>
 </details>
 <ol start="2" type="1">
 <li><p>Consider the claim, “She was able to find a good job because she graduated from Berkeley”.</p>
@@ -610,16 +611,21 @@ Check your answer
 <summary>
 Check your answer
 </summary>
+<div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>You would need to know that, if she hadn’t graduated from Berkeley, she wouldn’t have been able to find a good job.</p>
+</div>
 </details>
-<p>These scenarios are way way too simplistic, however. Good for understanding the general idea, but bad for most applications. For example, they do not cover the situation where a variable (e.g.&nbsp;amount of time studied) only increases your chances of observing a value of another variable (e.g.&nbsp;final score in the class).</p>
-<p>So let’s come to a better definition of causation for the Social Sciences</p>
+<!--
+These scenarios are way way too simplistic, however. Good for understanding the general idea, but bad for most applications. For example, they do not cover the situation where a variable (e.g. amount of time studied) only increases your chances of observing a value of another variable (e.g. final score in the class).
+
+So let's come to a better definition of causation for the Social Sciences
+-->
+<p>But, as you know, in Statistics we like to use random variables, so let’s define:</p>
 <section id="causation-between-variables" class="level3">
 <h3 class="anchored" data-anchor-id="causation-between-variables">Causation between variables</h3>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Causation between two variables</strong></p>
-<p>We say that random variable <span class="math inline">\(D\)</span> (<strong><em>treatment variable</em></strong> or <strong><em>explanatory variable</em></strong>) causes random variable <span class="math inline">\(Y\)</span> (<strong><em>outcome variable</em></strong> or <strong><em>response variable</em></strong>) if, in a counterfactual universe where the value of <span class="math inline">\(D\)</span> is different, then the probability distribution of <span class="math inline">\(Y\)</span> is different.</p>
-<p>Better yet, we should say that <span class="math inline">\(Y\)</span> is <em>causally dependent</em> on <span class="math inline">\(D\)</span>.</p>
+<p>We say that random variable <span class="math inline">\(D\)</span> (<strong><em>treatment variable</em></strong>) causes random variable <span class="math inline">\(Y\)</span> (<strong><em>outcome variable</em></strong>) if, in a counterfactual universe where the value of <span class="math inline">\(D\)</span> is different, then <span class="math inline">\(Y\)</span> is different, too.</p>
 </div>
 <section id="e.g.-aspirin-again" class="level4">
 <h4 class="anchored" data-anchor-id="e.g.-aspirin-again">E.g. Aspirin again</h4>
@@ -627,18 +633,51 @@ Check your answer
 <li><span class="math inline">\(D\)</span> = they take the aspirin or not (discrete, binary, 1 or 0)</li>
 <li><span class="math inline">\(Y\)</span> = how long until the headache goes away (continuous)</li>
 </ul>
-<p>In a world where I take the aspirin, <span class="math inline">\(D = 1\)</span>, I expect the headache to go away in 43 minutes <span class="math inline">\(E(Y) = 43\)</span> minutes</p>
-<p>In a world where I don’t take the aspirin, <span class="math inline">\(D = 0\)</span>, I expect the headache to go away in 318 minutes <span class="math inline">\(E(Y) = 318\)</span> minutes</p>
-<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you took the aspirin and didn’t (the expectation went down), therefore <span class="math inline">\(D\)</span> caused <span class="math inline">\(Y\)</span>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>In a world where I take the aspirin, <span class="math inline">\(D = 1\)</span>, my headache went away in 43 minutes.</p>
+<p>In a world where I don’t take the aspirin, <span class="math inline">\(D = 0\)</span>, my headache went away in 318 minutes.</p>
+<p><span class="math inline">\(Y\)</span> changed between the two worlds where you took the aspirin and didn’t, therefore <span class="math inline">\(D\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+<!--
+#### E.g. Aspirin again
+
+- $D$ = they take the aspirin or not (discrete, binary, 1 or 0)
+- $Y$ = how long until the headache goes away (continuous)
+
+In a world where I take the aspirin, $D = 1$, I expect the headache to go away in 43 minutes $E(Y) = 43$ minutes
+
+In a world where I don't take the aspirin, $D = 0$, I expect the headache to go away in 318 minutes $E(Y) = 318$ minutes
+
+The distribution of $Y$ changed between the two worlds where you took the aspirin and didn't (the expectation went down), therefore $D$ caused $Y$.
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](notes_files/figure-html/unnamed-chunk-1-1.png){width=672}
+:::
+:::
+
+
+#### E.g. Studying for Stat 20
+
+- $D =$ amount of time studied per day (continuous)
+- $Y =$ letter grade at the end of the semester (categorical ordinal)
+
+In a world where I study $D = 23$ minutes per day, I have a 35% chance of geting an "A" or higher, i.e. $\mbox{Prob}(Y \geq \mbox{"A"}) = 0.35$.
+
+In a different world, where I study $D = 38$ minutes per day, I have a 52% chance of geting an "A" or higher, i.e. $\mbox{Prob}(Y \geq \mbox{"A"}) = 0.52$.
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](notes_files/figure-html/unnamed-chunk-2-1.png){width=672}
+:::
+:::
+
+
+
+The distribution of $Y$ changed between the two worlds where you studied for 23 vs. 38 minutes per day (the probability of "A" or higher went up), therefore $D$ caused $Y$.
+
+-->
 </section>
 <section id="e.g.-studying-for-stat-20" class="level4">
 <h4 class="anchored" data-anchor-id="e.g.-studying-for-stat-20">E.g. Studying for Stat 20</h4>
@@ -646,46 +685,43 @@ Check your answer
 <li><span class="math inline">\(D =\)</span> amount of time studied per day (continuous)</li>
 <li><span class="math inline">\(Y =\)</span> letter grade at the end of the semester (categorical ordinal)</li>
 </ul>
-<p>In a world where I study <span class="math inline">\(D = 23\)</span> minutes per day, I have a 35% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.35\)</span>.</p>
-<p>In a different world, where I study <span class="math inline">\(D = 38\)</span> minutes per day, I have a 52% chance of geting an “A” or higher, i.e.&nbsp;<span class="math inline">\(\mbox{Prob}(Y \geq \mbox{"A"}) = 0.52\)</span>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
+<p>In a world where I study <span class="math inline">\(D = 23\)</span> minutes per day, I got a “B+”.</p>
+<p>In a world where I study <span class="math inline">\(D = 33\)</span> minutes per day, I got an “A”.</p>
+<p>In a world where I study <span class="math inline">\(D = 54\)</span> minutes per day, I got an “A-”.</p>
+<p><span class="math inline">\(Y\)</span> changed between the three worlds where you studied for 23 vs.&nbsp;38 vs.&nbsp;54 minutes per day, therefore <span class="math inline">\(D\)</span> caused <span class="math inline">\(Y\)</span>.</p>
+<p>The <span class="math inline">\(Y\)</span> variable seems to be multiplying. That’s creepy. There seems to be a <span class="math inline">\(Y\)</span> variable for every different value of <span class="math inline">\(D\)</span> …</p>
+</section>
+</section>
+</section>
+<section id="my-new-creepy-evil-twin-potential-outcomes-and-treatment-effect" class="level2">
+<h2 class="anchored" data-anchor-id="my-new-creepy-evil-twin-potential-outcomes-and-treatment-effect">My New Creepy Evil Twin: Potential Outcomes and Treatment Effect</h2>
+<p>That’s because it is happening! I need you to make an effort and imagine that for every <strong>actual</strong> value of <span class="math inline">\(Y\)</span> there is a whole bunch of new <strong>potential</strong> values of <span class="math inline">\(Y\)</span> for each possible value of the treatment <span class="math inline">\(D\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="notes_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="images/ind-pot-out.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
 </figure>
 </div>
-</div>
-</div>
-<p>The distribution of <span class="math inline">\(Y\)</span> changed between the two worlds where you studied for 23 vs.&nbsp;38 minutes per day (the probability of “A” or higher went up), therefore <span class="math inline">\(D\)</span> caused <span class="math inline">\(Y\)</span>.</p>
-<p>Let’s introduce some more language then.</p>
-</section>
-</section>
-</section>
-<section id="the-language-of-causation-potential-outcomes-and-treatment-effect" class="level2">
-<h2 class="anchored" data-anchor-id="the-language-of-causation-potential-outcomes-and-treatment-effect">The language of causation: Potential Outcomes and Treatment Effect</h2>
+<p>These creepy alternate-universe twins are called the <em>Potential Outcomes</em>.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Potential Outcomes</strong></p>
-<p>Given an outcome variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>, we define</p>
-<p><span class="math display">\[Y(d) \mbox{ or } Y(D=d)\]</span></p>
-<p>as the value of <span class="math inline">\(Y\)</span> in a (counterfactual) world where <strong>we set</strong> the value of <span class="math inline">\(D\)</span> equal to <span class="math inline">\(d\)</span>.</p>
+<p>Given an outcome variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>, we define the <em>potential outcomes</em> <span class="math display">\[Y(d)\]</span> as the value of <span class="math inline">\(Y\)</span> in a hypothetical world where <span class="math inline">\(D\)</span> took the value <span class="math inline">\(d\)</span>.</p>
 <p>If the treatment variable is binary, as in most cases, taking just two values, <span class="math inline">\(D=0\)</span> (control) and <span class="math inline">\(D=1\)</span> (treatment), then we use this notation:</p>
-<p><span class="math display">\[Y(0) \mbox{ or } Y(D=0) \mbox{ or } Y_c\]</span> The potential outcome in <strong>control</strong> conditions. <span class="math display">\[Y(1) \mbox{ or } Y(D=1) \mbox{ or } Y_t\]</span> The potential outcome in <strong>treatment</strong> conditions.</p>
+<p><span class="math display">\[Y(0) \mbox{ or } Y_c\]</span> The potential outcome in <strong>control</strong> conditions. <span class="math display">\[Y(1) \mbox{ or } Y_t\]</span> The potential outcome in <strong>treatment</strong> conditions.</p>
 </div>
-<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control (<span class="math inline">\(D=0\)</span>), there would be an imaginary unobserved evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except for having a different value of the treatment variable (<span class="math inline">\(D=1\)</span>), and vice versa.</p>
+<p>Think about what we just did. We are <em>pretending</em> that, for every data point (<span class="math inline">\(Y_c\)</span>) you could observe under control conditions (<span class="math inline">\(D=0\)</span>), there would be an imaginary <strong>unobserved</strong> evil-twin data point (<span class="math inline">\(Y_t\)</span>) that happened under all the same exact circumstances except at some point they experienced a different value of the treatment variable (<span class="math inline">\(D=1\)</span>), and their futures diverged. The same holds vice versa for the treated.</p>
 <section id="e.g." class="level4">
 <h4 class="anchored" data-anchor-id="e.g.">E.g.</h4>
 <ul>
+<li><span class="math inline">\(D\)</span> = Type of container I poured the water in. (Glass or plastic cup, binary)</li>
 <li><span class="math inline">\(Y_c\)</span> = Amount of water I drank after I, the author of these notes, got home at 3:15pm on 11/02/2026, took off my shoes in the hallway and sneezed, walked up the stairs, poured 246 g of water <strong>in a plastic cup</strong>.</li>
 <li><span class="math inline">\(Y_t\)</span> = Amount of water I drank after I, the author of these notes, got home at 3:15pm on 11/02/2026, took off my shoes in the hallway and sneezed, walked up the stairs, poured 246 g of water <strong>in a glass</strong>.</li>
-<li><span class="math inline">\(D\)</span> = Type of container I poured the water in. (Glass or plastic cup, binary)</li>
 </ul>
-<p>Now we’re ready to finally define the effect of taking the treatment vs.&nbsp;not taking it.</p>
+<p>Now we’re ready to finally define the effect of taking the treatment vs.&nbsp;not taking it for an individual.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: (Individual) Treatment Effect</strong></p>
-<p>Given an outcome variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>, for simplicity taking just two values <span class="math inline">\(D=0\)</span> (control) and <span class="math inline">\(D=1\)</span> (treatment), We define the <em>(individual) treatment effect</em> as:</p>
+<p><strong>def: Individual Treatment Effect</strong></p>
+<p>Given an outcome variable <span class="math inline">\(Y\)</span> and a treatment variable <span class="math inline">\(D\)</span>, for simplicity taking just two values <span class="math inline">\(D=0\)</span> (control) and <span class="math inline">\(D=1\)</span> (treatment), We define the <em>individual treatment effect</em> as:</p>
 <p><span class="math display">\[
-\mbox{(I)TE} \mbox{ or } \delta \equiv Y(1) - Y(0) \mbox{ or } Y_t - Y_c
+\mbox{ITE} \equiv Y(1) - Y(0) \mbox{ or } Y_t - Y_c
 \]</span></p>
 </div>
 <p>Okay, no big surprises so far. The effect of taking the treatment is the difference between what would happen if you took the treatment and what would happen if you took the control.</p>
@@ -792,33 +828,38 @@ Figure&nbsp;1: The Roman god Janus was usually depicted with two heads, symboliz
 </section>
 <section id="from-individual-level-claims-to-population-level-claims" class="level2">
 <h2 class="anchored" data-anchor-id="from-individual-level-claims-to-population-level-claims">From individual-level claims to population-level claims</h2>
-<p>Our desperate inability to observe both counterfactuals (both potential outcomes) and the randomness in each datapoint (after all maybe Evelyn got the higher paying job in treatment completely by luck) pushes us to slightly change our target to something less ambitious.</p>
-<p>Let’s take the stairs down slowly:</p>
+<p>Our desperate inability to observe both counterfactuals (both potential outcomes) <!-- and the randomness in each datapoint (after all maybe Evelyn got the higher paying job in treatment completely by luck) --> pushes us to slightly change our target to something less ambitious.</p>
+<p>Let’s take the stairs down:</p>
 <ol type="1">
-<li>Going to Cal would <em>make Evelyn get</em> a higher-paying job. (Individual-level predictive causal claim)</li>
-<li>Going to Cal would increase <em>Evelyn’s salary expectation</em> for her job. (Individual-level generalization causal claim)</li>
+<li>Going to Cal would <em>make Evelyn get</em> a higher-paying job. (Individual-level predictive causal claim) <!--2. Going to Cal would increase *Evelyn's salary expectation* for her job. (Individual-level generalization causal claim) --></li>
 <li>Going to Cal would increase <em>people’s salary expectation</em> for their job. (Population-level generalization causal claim)</li>
 </ol>
-<p>The first is a strong statement about a single individual, Evelyn and their future observed salary. It’s an individual causal prediction. Very very ambitious. The second is still individual but it’s generalized to Evelyn’s salary variable distribution instead of claiming to be able to predict the outcome. It’s an individual causal generalization. Still very ambitious. The third is a much more general statement that creates expectations for a “generic” individual in a population, in the hopes that it can be helpful advice for everyone in that population. It’s a population-level causal generalization.</p>
+<p>The first is a strong statement about a single individual, Evelyn and their future observed salary. It’s an individual causal prediction. Very very ambitious. <!--The second is still individual but it's generalized to Evelyn's salary variable distribution instead of claiming to be able to predict the outcome. It's an individual causal generalization. Still very ambitious. -->The second is a much more general statement that creates expectations for a “generic” individual in a population, in the hopes that it can be helpful advice for most people in that population. It’s a population-level causal generalization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pop-pot-out.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
 <details>
 <summary>
 Have you ever been worried that population-level causal statements didn’t apply to you?
 </summary>
 <div style="font-family: 'Courier New', Courier, monospace; background-color: #fffde7; color: #333333; padding: 12px; border-radius: 6px;">
 <p>For example, what if you’re allergic to a specific medicine that helps people on average?</p>
+<p>What if coffee makes you sleepy?</p>
 <p>Other examples?</p>
 </div>
 </details>
-<p>Population-level causation is the focus of many sciences, which aim to make general claims about the causal mechanisms of the world. The goal is to estimate the <em>(population) average treatment effect</em>.</p>
+<p>Population-level causation is the focus of many sciences, which aim to make general claims about the causal mechanisms of the world. The goal is to estimate the (population) <em>average treatment effect</em>.</p>
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
 <p><strong>def: Average Treatment Effect</strong></p>
 <p>Given a population, the average treatment effect is the population expectation of the individual treatment effect:</p>
 <p><span class="math display">\[
-\mbox{ATE} \mbox{ or } \tau \equiv E(Y_t - Y_c) \mbox{ or } \mu_{Y_t - Y_c}
+\mbox{ATE} \equiv E(Y_t - Y_c) %\mbox{ or } \mu_{Y_t - Y_c}
 \]</span></p>
 </div>
-<p>You will have recognized the notorious population/distribution expectation <span class="math inline">\(E()\)</span>. Yes: on top of the new challenges with counterfactuals, we will still be facing our traditional enemy: <strong>generalization</strong>! We’ll fight it with the traditional methods: confidence intervals, hypothesis testing, and the like.</p>
-<p>I’ll repeat that, because you didn’t believe me. Solving a causal problem will <em>also</em> involve creating a confidence interval for a population parameter (the <span class="math inline">\(\mbox{ATE}\)</span>) or conducting a hypothesis test for that (e.g.&nbsp;<span class="math inline">\(H_0: \mbox{ATE} =0\)</span>).</p>
+<p>You will have recognized the notorious population/distribution expectation <span class="math inline">\(E()\)</span>. Yes: on top of the new challenges with counterfactuals, we will still be facing our traditional enemy: <strong>generalization</strong>! We’ll fight it with the traditional weapons: confidence intervals, hypothesis tests, and the like.</p>
+<p>I’ll repeat that, because you didn’t believe me. Solving a causal problem will <em>also</em> involve creating a confidence interval for a <strong>population parameter</strong> (the <span class="math inline">\(\mbox{ATE}\)</span>) or conducting a hypothesis test for that (e.g.&nbsp;<span class="math inline">\(H_0: \mbox{ATE} =0\)</span>).</p>
 <section id="e.g.-average-treatment-effect-on-salary-from-going-to-cal" class="level3">
 <h3 class="anchored" data-anchor-id="e.g.-average-treatment-effect-on-salary-from-going-to-cal">E.g. Average Treatment Effect on Salary from going to Cal</h3>
 <p>Imagine the following population and its potential outcomes</p>
@@ -937,7 +978,7 @@ Have you ever been worried that population-level causal statements didn’t appl
 </section>
 <section id="how-to-estimate-the-ate-from-data" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-estimate-the-ate-from-data">How to estimate the ATE from data?</h3>
-<p>Eh but again:<br>
+<p>What we did above was awesome… but:<br>
 1. we only observe one of the two potential outcomes for each individual<br>
 2. we only observe a sample, not the entire population</p>
 <p>Actual data will look like this:</p>
@@ -1053,23 +1094,23 @@ Have you ever been worried that population-level causal statements didn’t appl
 ::: {.cell-output-display}
 
 ```{=html}
-<div id="bofooqyfrv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bofooqyfrv table {
+<div id="bhfncyypxe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bhfncyypxe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bofooqyfrv thead, #bofooqyfrv tbody, #bofooqyfrv tfoot, #bofooqyfrv tr, #bofooqyfrv td, #bofooqyfrv th {
+#bhfncyypxe thead, #bhfncyypxe tbody, #bhfncyypxe tfoot, #bhfncyypxe tr, #bhfncyypxe td, #bhfncyypxe th {
   border-style: none;
 }
 
-#bofooqyfrv p {
+#bhfncyypxe p {
   margin: 0;
   padding: 0;
 }
 
-#bofooqyfrv .gt_table {
+#bhfncyypxe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1095,12 +1136,12 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-left-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_caption {
+#bhfncyypxe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bofooqyfrv .gt_title {
+#bhfncyypxe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1112,7 +1153,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-width: 0;
 }
 
-#bofooqyfrv .gt_subtitle {
+#bhfncyypxe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1124,7 +1165,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-width: 0;
 }
 
-#bofooqyfrv .gt_heading {
+#bhfncyypxe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1136,13 +1177,13 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_bottom_border {
+#bhfncyypxe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_col_headings {
+#bhfncyypxe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1157,7 +1198,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_col_heading {
+#bhfncyypxe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1177,7 +1218,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#bofooqyfrv .gt_column_spanner_outer {
+#bhfncyypxe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1189,15 +1230,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 4px;
 }
 
-#bofooqyfrv .gt_column_spanner_outer:first-child {
+#bhfncyypxe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bofooqyfrv .gt_column_spanner_outer:last-child {
+#bhfncyypxe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bofooqyfrv .gt_column_spanner {
+#bhfncyypxe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1209,11 +1250,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   width: 100%;
 }
 
-#bofooqyfrv .gt_spanner_row {
+#bhfncyypxe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bofooqyfrv .gt_group_heading {
+#bhfncyypxe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1239,7 +1280,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   text-align: left;
 }
 
-#bofooqyfrv .gt_empty_group_heading {
+#bhfncyypxe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1254,15 +1295,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: middle;
 }
 
-#bofooqyfrv .gt_from_md > :first-child {
+#bhfncyypxe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bofooqyfrv .gt_from_md > :last-child {
+#bhfncyypxe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bofooqyfrv .gt_row {
+#bhfncyypxe .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1281,7 +1322,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#bofooqyfrv .gt_stub {
+#bhfncyypxe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1294,7 +1335,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#bofooqyfrv .gt_stub_row_group {
+#bhfncyypxe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1308,15 +1349,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: top;
 }
 
-#bofooqyfrv .gt_row_group_first td {
+#bhfncyypxe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bofooqyfrv .gt_row_group_first th {
+#bhfncyypxe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bofooqyfrv .gt_summary_row {
+#bhfncyypxe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1326,16 +1367,16 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#bofooqyfrv .gt_first_summary_row {
+#bhfncyypxe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_first_summary_row.thick {
+#bhfncyypxe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bofooqyfrv .gt_last_summary_row {
+#bhfncyypxe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1345,7 +1386,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_grand_summary_row {
+#bhfncyypxe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1355,7 +1396,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#bofooqyfrv .gt_first_grand_summary_row {
+#bhfncyypxe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1365,7 +1406,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_last_grand_summary_row_top {
+#bhfncyypxe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1375,11 +1416,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_striped {
+#bhfncyypxe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bofooqyfrv .gt_table_body {
+#bhfncyypxe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1388,7 +1429,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_footnotes {
+#bhfncyypxe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1402,7 +1443,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_footnote {
+#bhfncyypxe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1411,7 +1452,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#bofooqyfrv .gt_sourcenotes {
+#bhfncyypxe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1425,7 +1466,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#bofooqyfrv .gt_sourcenote {
+#bhfncyypxe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1433,72 +1474,72 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#bofooqyfrv .gt_left {
+#bhfncyypxe .gt_left {
   text-align: left;
 }
 
-#bofooqyfrv .gt_center {
+#bhfncyypxe .gt_center {
   text-align: center;
 }
 
-#bofooqyfrv .gt_right {
+#bhfncyypxe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bofooqyfrv .gt_font_normal {
+#bhfncyypxe .gt_font_normal {
   font-weight: normal;
 }
 
-#bofooqyfrv .gt_font_bold {
+#bhfncyypxe .gt_font_bold {
   font-weight: bold;
 }
 
-#bofooqyfrv .gt_font_italic {
+#bhfncyypxe .gt_font_italic {
   font-style: italic;
 }
 
-#bofooqyfrv .gt_super {
+#bhfncyypxe .gt_super {
   font-size: 65%;
 }
 
-#bofooqyfrv .gt_footnote_marks {
+#bhfncyypxe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bofooqyfrv .gt_asterisk {
+#bhfncyypxe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bofooqyfrv .gt_indent_1 {
+#bhfncyypxe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bofooqyfrv .gt_indent_2 {
+#bhfncyypxe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bofooqyfrv .gt_indent_3 {
+#bhfncyypxe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bofooqyfrv .gt_indent_4 {
+#bhfncyypxe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bofooqyfrv .gt_indent_5 {
+#bhfncyypxe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bofooqyfrv .katex-display {
+#bhfncyypxe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bofooqyfrv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bhfncyypxe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1559,23 +1600,23 @@ Have you ever been worried that population-level causal statements didn’t appl
 ::: {.cell-output-display}
 
 ```{=html}
-<div id="rzkybauqaz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rzkybauqaz table {
+<div id="hjwgktqgra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hjwgktqgra table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rzkybauqaz thead, #rzkybauqaz tbody, #rzkybauqaz tfoot, #rzkybauqaz tr, #rzkybauqaz td, #rzkybauqaz th {
+#hjwgktqgra thead, #hjwgktqgra tbody, #hjwgktqgra tfoot, #hjwgktqgra tr, #hjwgktqgra td, #hjwgktqgra th {
   border-style: none;
 }
 
-#rzkybauqaz p {
+#hjwgktqgra p {
   margin: 0;
   padding: 0;
 }
 
-#rzkybauqaz .gt_table {
+#hjwgktqgra .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1601,12 +1642,12 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-left-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_caption {
+#hjwgktqgra .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rzkybauqaz .gt_title {
+#hjwgktqgra .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1618,7 +1659,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-width: 0;
 }
 
-#rzkybauqaz .gt_subtitle {
+#hjwgktqgra .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1630,7 +1671,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-width: 0;
 }
 
-#rzkybauqaz .gt_heading {
+#hjwgktqgra .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1642,13 +1683,13 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_bottom_border {
+#hjwgktqgra .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_col_headings {
+#hjwgktqgra .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1663,7 +1704,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_col_heading {
+#hjwgktqgra .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1683,7 +1724,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#rzkybauqaz .gt_column_spanner_outer {
+#hjwgktqgra .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1695,15 +1736,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 4px;
 }
 
-#rzkybauqaz .gt_column_spanner_outer:first-child {
+#hjwgktqgra .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rzkybauqaz .gt_column_spanner_outer:last-child {
+#hjwgktqgra .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rzkybauqaz .gt_column_spanner {
+#hjwgktqgra .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1715,11 +1756,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   width: 100%;
 }
 
-#rzkybauqaz .gt_spanner_row {
+#hjwgktqgra .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rzkybauqaz .gt_group_heading {
+#hjwgktqgra .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1745,7 +1786,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   text-align: left;
 }
 
-#rzkybauqaz .gt_empty_group_heading {
+#hjwgktqgra .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1760,15 +1801,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: middle;
 }
 
-#rzkybauqaz .gt_from_md > :first-child {
+#hjwgktqgra .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rzkybauqaz .gt_from_md > :last-child {
+#hjwgktqgra .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rzkybauqaz .gt_row {
+#hjwgktqgra .gt_row {
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
@@ -1787,7 +1828,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   overflow-x: hidden;
 }
 
-#rzkybauqaz .gt_stub {
+#hjwgktqgra .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1800,7 +1841,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#rzkybauqaz .gt_stub_row_group {
+#hjwgktqgra .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1814,15 +1855,15 @@ Have you ever been worried that population-level causal statements didn’t appl
   vertical-align: top;
 }
 
-#rzkybauqaz .gt_row_group_first td {
+#hjwgktqgra .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rzkybauqaz .gt_row_group_first th {
+#hjwgktqgra .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rzkybauqaz .gt_summary_row {
+#hjwgktqgra .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1832,16 +1873,16 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#rzkybauqaz .gt_first_summary_row {
+#hjwgktqgra .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_first_summary_row.thick {
+#hjwgktqgra .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rzkybauqaz .gt_last_summary_row {
+#hjwgktqgra .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1851,7 +1892,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_grand_summary_row {
+#hjwgktqgra .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1861,7 +1902,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#rzkybauqaz .gt_first_grand_summary_row {
+#hjwgktqgra .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1871,7 +1912,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-top-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_last_grand_summary_row_top {
+#hjwgktqgra .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1881,11 +1922,11 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_striped {
+#hjwgktqgra .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rzkybauqaz .gt_table_body {
+#hjwgktqgra .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1894,7 +1935,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-bottom-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_footnotes {
+#hjwgktqgra .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1908,7 +1949,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_footnote {
+#hjwgktqgra .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1917,7 +1958,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#rzkybauqaz .gt_sourcenotes {
+#hjwgktqgra .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1931,7 +1972,7 @@ Have you ever been worried that population-level causal statements didn’t appl
   border-right-color: #D3D3D3;
 }
 
-#rzkybauqaz .gt_sourcenote {
+#hjwgktqgra .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1939,72 +1980,72 @@ Have you ever been worried that population-level causal statements didn’t appl
   padding-right: 5px;
 }
 
-#rzkybauqaz .gt_left {
+#hjwgktqgra .gt_left {
   text-align: left;
 }
 
-#rzkybauqaz .gt_center {
+#hjwgktqgra .gt_center {
   text-align: center;
 }
 
-#rzkybauqaz .gt_right {
+#hjwgktqgra .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rzkybauqaz .gt_font_normal {
+#hjwgktqgra .gt_font_normal {
   font-weight: normal;
 }
 
-#rzkybauqaz .gt_font_bold {
+#hjwgktqgra .gt_font_bold {
   font-weight: bold;
 }
 
-#rzkybauqaz .gt_font_italic {
+#hjwgktqgra .gt_font_italic {
   font-style: italic;
 }
 
-#rzkybauqaz .gt_super {
+#hjwgktqgra .gt_super {
   font-size: 65%;
 }
 
-#rzkybauqaz .gt_footnote_marks {
+#hjwgktqgra .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rzkybauqaz .gt_asterisk {
+#hjwgktqgra .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rzkybauqaz .gt_indent_1 {
+#hjwgktqgra .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rzkybauqaz .gt_indent_2 {
+#hjwgktqgra .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rzkybauqaz .gt_indent_3 {
+#hjwgktqgra .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rzkybauqaz .gt_indent_4 {
+#hjwgktqgra .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rzkybauqaz .gt_indent_5 {
+#hjwgktqgra .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rzkybauqaz .katex-display {
+#hjwgktqgra .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rzkybauqaz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hjwgktqgra div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2038,9 +2079,9 @@ Have you ever been worried that population-level causal statements didn’t appl
 :::
 -->
 <div style="background-color: #e7fffb; color: #040109; padding: 12px; border-radius: 6px;">
-<p><strong>def: Difference in Sample Means Estimator</strong></p>
+<p><strong>def: Difference in Sample Means</strong></p>
 <p>Given a sample with <span class="math inline">\(n_t\)</span> treated (<span class="math inline">\(D=1\)</span>) and <span class="math inline">\(n_c\)</span> controls (<span class="math inline">\(D=0\)</span>), the difference in sample means is <span class="math display">\[
-\bar{Y}_{D=1}-\bar{Y}_{D=0} = \frac1{n_t} \sum_{D_i =1} Y_i - \frac1{n_c} \sum_{D_i =0} Y_i
+\bar{Y}_{D=1}-\bar{Y}_{D=0} \equiv \frac1{n_t} \sum_{D_i =1} Y_i - \frac1{n_c} \sum_{D_i =0} Y_i
 \]</span></p>
 </div>
 <p>But is this a good estimator of the true population Average Treatment Effect (ATE)?</p>
@@ -2052,14 +2093,14 @@ Spoiler Alert
 <p>Nope.</p>
 </div>
 </details>
-<p>It is easier to come up with plausible-seeming estimates of average treatment effects than individual treatment effects because at least we see both <em>some</em> subjects under treatment and <em>some</em> others under control conditions. That’s really nice. But, to decide if estimates like the one we’ve just given are reliable, we need to think about how the data for the two groups was generated and whether they serve as good approximations to each other’s counterfactuals.</p>
+<p>It is easier to come up with reasonable estimates of average treatment effects than individual treatment effects because at least we see both <em>some</em> subjects under treatment and <em>some</em> others under control conditions. That’s really nice. But, to decide if estimates like the one we’ve just given are reliable, we need to think about how the data for the two groups was generated and whether they serve as good approximations to each other’s counterfactuals.</p>
 <p>This question will be the focus of the rest of the causality unit.</p>
 <!-- ## Correlation and Causation: the history of Smoking and Cancer -->
 </section>
 </section>
 <section id="summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>We set the stage for reasoning about causation by defining cause and effect in terms of a conditional counterfactual. We say “A causes B” if, in a world where A didn’t happen, B no longer happens. Variable <span class="math inline">\(D\)</span> causes variable <span class="math inline">\(Y\)</span> if, in a world where we set the value of <span class="math inline">\(D\)</span> to something different, then the distribution of <span class="math inline">\(Y\)</span> changes. This definition is problematic, because we can’t simultaneously observe the same subject under both values of <span class="math inline">\(D\)</span>. However, there is more hope to say something meaningful about Average Treatment Effects across a population, though it’s also defined using counterfactuals.</p>
+<p>We set the stage for reasoning about causation by defining cause and effect in terms of a conditional counterfactual. We say “A causes B” if, in a world where A didn’t happen, B no longer happens. Variable <span class="math inline">\(D\)</span> causes variable <span class="math inline">\(Y\)</span> if, in a world where we the value of <span class="math inline">\(D\)</span> is different, then <span class="math inline">\(Y\)</span> changes as well. This definition is problematic, because we can’t simultaneously observe the same subject under both values of <span class="math inline">\(D\)</span>. However, there is more hope to say something meaningful about Average Treatment Effects across a population.</p>
 <p>In the remainder of the causality unit, we will discuss strategies for estimating ATEs using carefully-designed comparisons that leverage knowledge and assumptions about how the data was produced. <!--While we are never able to actually observe all of the data necessary to prove a 
 causal claim absolutely, there are many methods that have been devised to 
 approximate the counterfactual. Chief among these is the randomized control trial (RCT). RCTs are able to isolate the effect of interest by creating a carefully selected control group and then assigning subjects to groups at random. When the number of replicates is large enough, we can be confident that our control group on average serves as a close counterfactual to our treatment group.--></p>
